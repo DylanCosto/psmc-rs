@@ -1,7 +1,11 @@
-# PSMC in Rust — SIMD, parallel bootstraps and optional CUDA
+# PSMC-rs — PSMC in Rust
 
 This Rust workspace implements the original PSMC model, full expected counts,
-Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.4.1
+Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.5.0
+adds an opt-in experimental structured mode; strict arithmetic remains the default.
+See [structured mode and its validation](docs/equivalent-mode-report.md).
+
+Version 0.4.1
 adds ordered 64-state AVX normalization, joint-source transition tiles and emission
 updates within those tiles. The complete 30-bootstrap acceptance benchmark has
 6.1% lower median elapsed time and 6.7% lower aggregate CPU time than v0.3.3,
@@ -18,10 +22,28 @@ kernels remain; v0.4.1 counts use two source rows, sixteen destinations and
 sixteen-site tiles. Bounded message capacity remains. Each fit uses one numerical
 thread; independent bootstrap fits can use all available CPUs. Reusable
 buffers, exact repeated-block caching and the dense oracle remain available. Double precision, summation order,
-sequence boundaries and the statistical method are preserved.
+sequence boundaries and the statistical method are preserved in strict mode.
 
-Use `--backend cpu` for the optimized path. The default remains `dense`, the
-retained scalar oracle. The [parallel report](docs/parallel-report.md) validates
+To try structured arithmetic explicitly:
+
+```bash
+cargo build --release --locked --offline
+./target/release/psmc-rs --mode equivalent -p '4+25*2+4+6' -N 30 input.psmcfa > result.psmc
+```
+
+Equivalent mode supports the CPU backend and uses the same bootstrap command and
+worker controls. It changes floating-point grouping and optimizer trajectories.
+Current validation found a roughly 22% change in an early population-size interval
+of one HG001 bootstrap; it has not met the proposed curve-equivalence gate.
+Strict mode remains the validated choice for exact reproduction. It preserves full transition counts and the Q entropy normalizer;
+transition counting still costs quadratic work per site. `--snapshot` is rejected
+in this experimental mode. Output headers, per-fit statistics and batch manifests
+identify the selected mode. `structured_fallbacks` counts model updates whose
+factors fail eligibility and therefore use the literal calculation.
+
+The optimized `--backend cpu` path is the default; `--backend dense`
+selects the retained scalar oracle. `cargo test` byte-compares both against
+pinned C outputs in `tests/fixtures/golden`. The [parallel report](docs/parallel-report.md) validates
 16-worker synthetic batches against already-parallel vanilla. The
 [human-input report](docs/hg-benchmark-report.md) adds a public HG001/NA12878
 chromosome 22 test with full 64-state, 30-iteration fits. The [CPU headroom report](docs/cpu-next-optimization.md)
@@ -82,8 +104,8 @@ supported. Records remain independent HMM sequences; missing sites carry transit
 | `-d -D -s -C` | Posterior segments, full posterior, forward scales, decoding transition cap |
 | `-T` | Original divergence parameter, with supplied-file restrictions below |
 | `--seed INTEGER` | Replay of the original srand48/drand48 stream |
-| `--mode strict` | Only implemented numerical mode |
-| `--backend dense\|cpu` | Dense oracle (default) or optimized CPU engine |
+| `--mode strict\|equivalent` | Strict (default), or experimental structured CPU arithmetic |
+| `--backend cpu\|dense` | Optimized CPU engine (default) or dense oracle |
 | `--simd auto\|off\|avx` | CPU dispatch: automatic (default), generic CPU, or require AVX support |
 | `--cache on\|off` | Per-expectation repeated-block cache for CPU; default on |
 | `--stats FILE` | Counters and separately instrumented E/M timing for a single fit |

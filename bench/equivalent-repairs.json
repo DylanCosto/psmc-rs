@@ -1,0 +1,254 @@
+{
+  "issue": "GNU objcopy without an explicit output file rewrites the input ELF even when dumping a section. Machine code matched, but artifact hashes changed.",
+  "detected": "hash guard after first strict warmup; no measured pairs executed",
+  "failed_report_sha256": "11e3639d83cd13b17733b6b8fb16ba54e64c48307dc184ac0d74227707980156",
+  "warmup_stderr": "completed 30 bootstrap fits using 16 workers; 0 contain nonfinite legacy output\n",
+  "mutated_target_sha256": "46f55f1fcde1ff3064c5919c4b8dbd9806747c5c0309e4015b4c4e38f826e52a",
+  "mutated_archive_sha256": "b54600f08de1e4ea8771494910a2fd11a5508b5247dfbeef58fd8faa77231edf",
+  "restore_source": "bench/phase-3-validation/20261010T213151632494Z/binaries/candidate",
+  "restored_sha256": "877e7b55d1f0f0882384e5ed257b887de0fbb0c9247a88b1cc11ff142fa6d152",
+  "fix": "Provide a distinct output ELF to objcopy and assert that the input hash is unchanged. Preserve this attempt and restart the fixed protocol; no numerical tolerance or performance threshold changes.",
+  "discarded_attempt_exact_outputs": [
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-00.psmc",
+      "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-01.psmc",
+      "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-02.psmc",
+      "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-03.psmc",
+      "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-04.psmc",
+      "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-05.psmc",
+      "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-06.psmc",
+      "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-07.psmc",
+      "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-08.psmc",
+      "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-09.psmc",
+      "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-10.psmc",
+      "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-11.psmc",
+      "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-12.psmc",
+      "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-13.psmc",
+      "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-14.psmc",
+      "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-15.psmc",
+      "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-16.psmc",
+      "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-17.psmc",
+      "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-18.psmc",
+      "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-19.psmc",
+      "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-20.psmc",
+      "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-21.psmc",
+      "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-22.psmc",
+      "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-23.psmc",
+      "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-24.psmc",
+      "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-25.psmc",
+      "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-26.psmc",
+      "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-27.psmc",
+      "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-28.psmc",
+      "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/v041-before/replicate-29.psmc",
+      "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-00.psmc",
+      "sha256": "0b8b21a6a6342fa88fdca7cb4eee3c62db2cf0e38dcbefa9d27cc435c6a94ac2"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-01.psmc",
+      "sha256": "44c4c4aebd56cb2a38d8149b468639957bc7cf49c195ea9c2278e875d050c2d8"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-02.psmc",
+      "sha256": "30d5ab174d33f5bfb526829e6f8861d5472398f059794fb0bbec5a202327ea58"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-03.psmc",
+      "sha256": "b53c07f67c17821e008b2680b90d0b8c0cf25027a9bea5301ac0c197a59ee511"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-04.psmc",
+      "sha256": "f24fdce9e3d4892c36c5639a88e73bed3c424d8772c54d60ce2fe0a1d4228486"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-05.psmc",
+      "sha256": "13d971c880d38efdb61efd902fe71fc51afa385e8dd92ac54927ccc1bda71f4c"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-06.psmc",
+      "sha256": "60f881fa230074b4b89e2a1978586bba742b33b4bebc45f75210a1bd1c388313"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-07.psmc",
+      "sha256": "448bf35fc38a4c5296174a0edf8e5455c7ea86c741967c73ccdee7fd9829ee0f"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-08.psmc",
+      "sha256": "d1ede5859e234451295ca134f0688d58b5b3c545aa634fd1b4996c2436024da4"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-09.psmc",
+      "sha256": "dbc8589bdde9f75a3a1d5f61d00521e890ab336c72b442701318ea826e2753b7"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-10.psmc",
+      "sha256": "22e695592a341cec4814cbb138f1e82513fe12fa8518c585ba89b21e68e3ebd1"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-11.psmc",
+      "sha256": "de89b682f09c399bc240e39127825cec9e943c4df61fab9ffb835542666f83d1"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-12.psmc",
+      "sha256": "6d51fedff01594451e0200583bb66c907c2ccc3efdab5fd98cf0d30b0c926871"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-13.psmc",
+      "sha256": "d512fbf41d50dd8de959996a89eeba26e33b47389f5ce824f95ecfc9a4be0490"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-14.psmc",
+      "sha256": "1881988f48c964b429928e7317101ce5c79bfb1d381c9570b5aaa78b95795c0e"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-15.psmc",
+      "sha256": "449bacb4a98bb58ed0db177fe16e07495b5e457d249ccc462b16f7193e0b7e48"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-16.psmc",
+      "sha256": "c93b096fc9a4c0abb5483ca992532e722f65364a5a8ec72d5eb2748839e0386b"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-17.psmc",
+      "sha256": "b66471bcf582e2ce65c9da8e88114f339b10c1492982ae0cbaeb139958ad04d1"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-18.psmc",
+      "sha256": "bfaa18a84773b29b25cb1775f910a099eabe54c9b9af7f12ad6f9cd38910e3f8"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-19.psmc",
+      "sha256": "26578095c5b67772675a150513127d44b66285a753a2f4aeb4eb469479a9a676"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-20.psmc",
+      "sha256": "da8f603615d9190265e01f83456ebf6bbff258c1ea1a9c087c7c36d6d965c1aa"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-21.psmc",
+      "sha256": "f35ee0e709def7e5328924bd0a6c49eb702c27db4e985edcfb1bb2fb5ed9c6e7"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-22.psmc",
+      "sha256": "87cd6b267f1a17356fb47a0774fbfc3776105d8d9d50ca6d8d825d9f9845f43c"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-23.psmc",
+      "sha256": "42ed02d656780b52f3598f12eb4b38801d430dffee39dad8674ce3a7efac62c7"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-24.psmc",
+      "sha256": "c43197cdb1fd12a9858ca197860d8e82e0bb00c55ee5e4936286f1a138430eb4"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-25.psmc",
+      "sha256": "3a2ce37697255fc8e4205104e230415605036cc2e19bd4d0950083ba90e31d5f"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-26.psmc",
+      "sha256": "980de4e3d949fa3b3c4b325f75b65936eb2ec15623ade3765bcea50c9f093eae"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-27.psmc",
+      "sha256": "2985e2885de66773905e4aec2a8ae9438b99b3f5b6c1cf9945b90fbdd0fdf04b"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-28.psmc",
+      "sha256": "2d0d846fcac13746cbd585ea0da00541ae745c979eaac6aaf340afc2fab1fb79"
+    },
+    {
+      "path": "work/equivalent/performance-verifier-failure/strict-0/replicate-29.psmc",
+      "sha256": "788ab320a5fa085dc0999de2704b48d51e650958870b01fccb7b08bbe9f42df8"
+    }
+  ],
+  "discarded_attempt_used_for_performance": false
+}

@@ -9,6 +9,7 @@ pub fn header(
     iterations: usize,
     decode: bool,
     sequences: &[&Sequence],
+    mode: &str,
 ) -> io::Result<()> {
     write!(
         out,
@@ -16,7 +17,8 @@ pub fn header(
     )?;
     writeln!(
         out,
-        "MM\tVersion: psmc-rs 0.4.0 (strict f64; reference 82fa2ada83ee)"
+        "MM\tVersion: psmc-rs {} ({mode} f64; reference 82fa2ada83ee)",
+        env!("CARGO_PKG_VERSION")
     )?;
     writeln!(
         out,

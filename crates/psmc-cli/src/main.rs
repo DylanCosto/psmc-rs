@@ -17,7 +17,11 @@ use std::{
     time::{SystemTime, UNIX_EPOCH},
 };
 
-const HELP: &str = "psmc-rs 0.4.1 — strict double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend dense|cpu|cuda --mode strict --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nCUDA: --cuda-tile-sites COUNT (16384) --cuda-memory-mib MIB (1024)\nBootstrap runner: --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nDense remains the scalar oracle. CPU reuses buffers and repeated-record counts.\nInput '-' reads stdin for a single fit. CUDA counts are experimental and require a cuda-feature build.\n-c and -S are unsupported; -S is not the seed flag.\n";
+const HELP: &str = concat!(
+    "psmc-rs ",
+    env!("CARGO_PKG_VERSION"),
+    " — double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend cpu|dense|cuda --mode strict|equivalent --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nCUDA: --cuda-tile-sites COUNT (16384) --cuda-memory-mib MIB (1024)\nBootstrap runner: --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nCPU (default) reuses buffers and repeated-record counts; dense is the scalar oracle.\nInput '-' reads stdin for a single fit. CUDA counts are experimental and require a cuda-feature build.\n-c and -S are unsupported; -S is not the seed flag.\n"
+);
 
 #[derive(Clone)]
 struct Options {
@@ -35,6 +39,7 @@ struct Options {
     snapshot: Option<String>,
     stats: Option<String>,
     backend: String,
+    mode: String,
     cache: bool,
     cuda_tile_sites: usize,
     cuda_memory_mib: usize,
@@ -86,7 +91,8 @@ fn parse() -> Result<Option<Options>, String> {
         seed: None,
         snapshot: None,
         stats: None,
-        backend: "dense".into(),
+        backend: "cpu".into(),
+        mode: "strict".into(),
         cache: true,
         cuda_tile_sites: 16384,
         cuda_memory_mib: 1024,
@@ -112,7 +118,8 @@ fn parse() -> Result<Option<Options>, String> {
             }
             if flag == "--version" {
                 println!(
-                    "psmc-rs 0.4.1; strict f64 dense/cpu Rust; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a"
+                    "psmc-rs {}; strict f64 dense/cpu Rust; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+                    env!("CARGO_PKG_VERSION")
                 );
                 return Ok(None);
             }
@@ -193,10 +200,13 @@ fn parse() -> Result<Option<Options>, String> {
                     })?;
                     batch.set(flag, &value)?;
                 }
-                "--mode" if value != "strict" => {
-                    return Err(format!(
-                        "mode '{value}' is unavailable; only strict arithmetic is implemented"
-                    ));
+                "--mode" => {
+                    if !matches!(value.as_str(), "strict" | "equivalent") {
+                        return Err(format!(
+                            "unsupported mode '{value}'; choose strict or equivalent"
+                        ));
+                    }
+                    options.mode = value;
                 }
                 _ => {}
             }
@@ -290,6 +300,14 @@ fn parse() -> Result<Option<Options>, String> {
     }
     if options.snapshot.is_none() {
         options.snapshot = env::var("PSMC_SNAPSHOT").ok().filter(|v| !v.is_empty());
+    }
+    if options.mode == "equivalent" {
+        if options.backend != "cpu" {
+            return Err("--mode equivalent requires --backend cpu".into());
+        }
+        if options.snapshot.is_some() {
+            return Err("--snapshot is not supported in experimental equivalent mode".into());
+        }
     }
     if options.backend == "cpu" || options.backend == "cuda" {
         options.simd.validate()?;
@@ -519,7 +537,9 @@ impl FitReport {
     fn json(&self, options: &Options, seed: i64) -> String {
         let c = &self.counters;
         format!(
-            "{{\"backend\":{},\"cuda_tile_sites\":{},\"cuda_memory_mib\":{},\"cuda_launches\":{},\"cuda_upload_bytes\":{},\"cuda_download_bytes\":{},\"cuda_count_seconds\":{},\"cuda_fallbacks\":0,\"seed\":{seed},\"sequence_visits\":{},\"sequence_evaluations\":{},\"cache_hits\":{},\"snapshot_cache_bypass\":{},\"model_updates\":{},\"profile_enabled\":{},\"expectation_seconds\":{},\"mstep_seconds\":{},\"nonfinite_output\":{},\"iterations\":{},\"cache_enabled\":{},\"simd_requested\":{},\"simd_selected\":{}}}\n",
+            "{{\"mode\":{},\"structured_fallbacks\":{},\"backend\":{},\"cuda_tile_sites\":{},\"cuda_memory_mib\":{},\"cuda_launches\":{},\"cuda_upload_bytes\":{},\"cuda_download_bytes\":{},\"cuda_count_seconds\":{},\"cuda_fallbacks\":0,\"seed\":{seed},\"sequence_visits\":{},\"sequence_evaluations\":{},\"cache_hits\":{},\"snapshot_cache_bypass\":{},\"model_updates\":{},\"profile_enabled\":{},\"expectation_seconds\":{},\"mstep_seconds\":{},\"nonfinite_output\":{},\"iterations\":{},\"cache_enabled\":{},\"simd_requested\":{},\"simd_selected\":{}}}\n",
+            snapshot::string(&options.mode),
+            c.structured_fallbacks,
             snapshot::string(&options.backend),
             options.cuda_tile_sites,
             options.cuda_memory_mib,
@@ -556,7 +576,13 @@ fn fit(
         return Err("all-missing input requires explicit valid initial parameters (-i)".into());
     }
     let simd_kernel;
-    let mut backend: Box<dyn ExpectationBackend> = if options.backend == "cpu" {
+    let mut backend: Box<dyn ExpectationBackend> = if options.mode == "equivalent" {
+        let mut engine = psmc_cpu::EquivalentBackend::with_simd(&options.settings, options.simd)?;
+        simd_kernel = engine.simd_kernel();
+        engine.profile = options.stats.is_some();
+        engine.cache_enabled = options.cache;
+        Box::new(engine)
+    } else if options.backend == "cpu" {
         let mut engine =
             psmc_cpu::CpuBackend::with_simd(options.settings.pattern.states(), options.simd)?;
         simd_kernel = engine.simd_kernel();
@@ -593,6 +619,7 @@ fn fit(
         options.iterations,
         options.decode,
         sequences,
+        &options.mode,
     )?;
     let mut state = FitState::new_ordered(&options.settings, sequences, rng);
     observer.model(0, &options.settings, &state.model)?;

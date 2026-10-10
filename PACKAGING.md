@@ -1,6 +1,18 @@
-# Current local v0.4.1 optimization deliverable
+# Current local v0.5.0 CPU deliverable
 
-The current project contains the v0.4.1 CPU source and executable, an optional
+The current CPU source and `bin/psmc-rs` / `bin/psmc-rs-v0.5.0` provide strict mode
+by default and opt-in experimental `--mode equivalent`. Structured mode passes
+its performance gate but fails the full-fit numerical qualification gates. See
+[the implementation and results](docs/equivalent-mode-report.md),
+[final audit](bench/equivalent-audit.json) and
+[installed binary manifest](bench/equivalent-install.json).
+The v0.4.1 CPU executable remains available; the optional CUDA binary is unchanged.
+No new portable archive is generated. Existing zip files and CHECKSUMS.sha256
+remain historical snapshots and do not describe this working tree.
+
+# Historical local v0.4.1 optimization deliverable
+
+That milestone contained the v0.4.1 CPU source and executable, an optional
 CUDA build, and the complete optimization campaign reports/runners. See
 [the campaign report](docs/optimization-exhaustion.md),
 [final build provenance](bench/exhaust-final-build.json),

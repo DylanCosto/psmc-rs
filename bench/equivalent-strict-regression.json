@@ -1,0 +1,696 @@
+{
+  "schema_version": 1,
+  "status": "failed",
+  "resource_policy": {
+    "affinity": [
+      0
+    ],
+    "nice": 10,
+    "cargo_jobs": 1,
+    "rust_test_threads": 1,
+    "inference_threads_per_fit": 1,
+    "parallel_jobs": false,
+    "shared_host": true
+  },
+  "protocol": {
+    "scope": "Phase 3a dense, CPU auto AVX and CPU forced scalar versus pinned C; strictly sequential on one CPU",
+    "selection": "^(?!independent_path_enumeration_and_Q$|snapshot_exact_K64_N1$).+",
+    "output_contract": "Only the single MM Version line excluded; all other bytes exact",
+    "snapshot_contract": "Complete ordered events and fields, exact finite binary64 and signed-zero equality; nonfinite class parity separately",
+    "included_snapshots": [
+      "tiny_N2",
+      "grid_N1",
+      "K23_N1",
+      "K64_N1 for cpu/auto only"
+    ],
+    "omitted_repeated_snapshots": {
+      "independent_path_enumeration_and_Q": "The unchanged model, optimizer and dense oracle retain the Phase 1 exhaustive 100,022-event trace. Phase 3a isolated CPU HMM tests check messages/counts over all state sizes. Full dense/CPU outputs and three complete traces are rerun.",
+      "snapshot_exact_K64_N1": "Rerun completely for automatic AVX CPU. Dense/scalar retain prior trace evidence plus current full-output and isolated all-shape gates."
+    },
+    "bootstrap_gate": "All 30 materialized K23/N30 fits through each backend; require 27 finite and the same 3 retained reference pathologies",
+    "timing": "not measured; snapshot runs are correctness diagnostics",
+    "scheduler_gate": "Reported separately by bench/phase2_scheduler.py",
+    "historical_child_report_labels": "The unchanged reused runner emits Phase 1 scope/not_validated text. This parent report and each wrapper's recorded backend arguments define the Phase 3a scope; child commands, results, exclusions and hashes are retained verbatim."
+  },
+  "provenance": {
+    "binaries": {
+      "candidate": {
+        "path": "bench/phase-3-validation/20261010T213151632494Z/binaries/candidate",
+        "sha256": "877e7b55d1f0f0882384e5ed257b887de0fbb0c9247a88b1cc11ff142fa6d152",
+        "copied_from": "target/release/psmc-rs"
+      },
+      "phase1": {
+        "path": "bench/phase-3-validation/20261010T213151632494Z/binaries/phase1",
+        "sha256": "e112ed9a8d7d98cc5e29f497e8567e1de96f3e0210a0cb324a79dc91c5e65dd0",
+        "copied_from": "bin/psmc-rs-phase1"
+      },
+      "phase2": {
+        "path": "bench/phase-3-validation/20261010T213151632494Z/binaries/phase2",
+        "sha256": "fd866573a007003d2388137270ec24f14acb436c42c7084ab8dac076fdabb59a",
+        "copied_from": "bin/psmc-rs-phase2"
+      },
+      "vanilla": {
+        "path": "bench/phase-3-validation/20261010T213151632494Z/binaries/vanilla",
+        "sha256": "da1743512f1925da6277d5a2e5350c70c61c9771d11749df0918605f795ff32b",
+        "copied_from": "work/vanilla/psmc"
+      },
+      "instrumented": {
+        "path": "bench/phase-3-validation/20261010T213151632494Z/binaries/instrumented",
+        "sha256": "2b4bd7dd369ee8fc226270b30bd414a031314fd70445bd5d7a83d4e5d2f2ed55",
+        "copied_from": "work/instrumented/psmc"
+      },
+      "kernel": {
+        "path": "bench/phase-3-validation/20261010T213151632494Z/binaries/kernel",
+        "sha256": "b511b2890fbbf5b504c83fdae7766bb87e84689058b6e4129a03a9e9fc8eeac2",
+        "copied_from": "target/release/examples/simd_bench"
+      }
+    },
+    "source_sha256_at_freeze": {
+      "crates/psmc-cli/src/batch.rs": "ae97a2a5929edcb8b77f0c0b99fea5892c2c897136200f715abe0cb1f6ce26b5",
+      "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+      "crates/psmc-cli/src/legacy.rs": "319ace6fadd3141d1fc8cf9448da86cb94bf79c07f4e4cddc3976326fbf5b013",
+      "crates/psmc-cli/src/main.rs": "3037273e095d20af05a783fc481c27d632f81307641e5f49cf00b5b0ad8aa738",
+      "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+      "crates/psmc-cli/tests/equivalent.rs": "5f60fc13104c705e1d06d2710846e448eec64ae84eacfdab6317d5d0d9c010ca",
+      "crates/psmc-cli/tests/golden.rs": "60d75a67cf486d7ef6fed1cb769282946e7143e2e747e50ef0187e9de9f1cd40",
+      "crates/psmc-core/src/em.rs": "6691cb98393bbb49996dd59698342576c9b3546cb83642870450ba0160305f0b",
+      "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+      "crates/psmc-core/src/lib.rs": "57902b19bdd8d420667fce43842771440094f7357d95d34b94553a5863c92cd0",
+      "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+      "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+      "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+      "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+      "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+      "crates/psmc-core/src/structured.rs": "d8c3420495e204b49ac4f92579cc4b90d8d2cc5cbfacfbb848aae6aa901eecea",
+      "crates/psmc-cpu/examples/cuda_fixture.rs": "11db2adbb88fc00f23ed2f3fe4c4092399e400cb1903bce55d2888f23886aa33",
+      "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+      "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+      "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179",
+      "crates/psmc-cpu/src/equivalent.rs": "49522b31a2dee94f9d500b7850ea40f041a56779a3e2776520ecc67772a52416",
+      "crates/psmc-cpu/src/lib.rs": "db6da770dc72bde981dd1736e7a7fe4b4149e47eb1b80373a588571f13917939",
+      "crates/psmc-cpu/src/simd.rs": "2373e1011971183f203597557d5211997cd20db7edc292c7c0aefe4efca39842",
+      "crates/psmc-cpu/src/tests.rs": "ea2a8ac0c418eca0a6f3da42aa4d0e7bfae87ec364a7a0b6372318173cbcbccb",
+      "crates/psmc-cuda/src/driver.rs": "c6f3c0a2fde681394206d5757c4a8b9162c071443ad001209e5b961b8203642f",
+      "crates/psmc-cuda/src/lib.rs": "362d860fee1b34ebf8a336373efbad7f51f24ff663f474dff4a43f6c0e3e9dae",
+      "crates/psmc-cuda/src/tests.rs": "753fa30d7727174bc5fab8c0246a6e6b5ef71686d4313208ea2f6c8129f9dd48",
+      "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+      "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+      "Cargo.toml": "ead73a1217ee74fd5ad2b1b49568d42260deffac244ff312174bb7dd6b2d317d",
+      "Cargo.lock": "f843908545f670caa9bdb6cee5ac42636c5ece573ec61529d835cca93df6dddf",
+      "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b"
+    },
+    "created_utc": "2026-10-10T21:31:51.685897+00:00"
+  },
+  "run_directory": "bench/phase-3-validation/20261010T213151632494Z",
+  "backend_arguments": {
+    "dense": [
+      "--backend",
+      "dense"
+    ],
+    "cpu": [
+      "--backend",
+      "cpu"
+    ],
+    "scalar": [
+      "--backend",
+      "cpu",
+      "--simd",
+      "off"
+    ]
+  },
+  "complete_phase3a_selection": true,
+  "runner_sha256": "f9456f8dc0f08e7c2bc347a28435edfbaec304271527459f2b5e033f96a6f487",
+  "inherited_runner_sha256": "edc5b39ea01719f74ab1c67670ffceed6d9a3f6bf0676def41c9faf5c0e400ad",
+  "backend_reports": {
+    "dense": {
+      "path": "bench/phase-3-validation/20261010T213151632494Z/dense-wrapper",
+      "sha256": "56432afc92f5057537cfc6ef45ded1352609c2ab0bc7395074c6e9c55b90af1e",
+      "underlying_binary": {
+        "path": "bench/phase-3-validation/20261010T213151632494Z/binaries/candidate",
+        "sha256": "877e7b55d1f0f0882384e5ed257b887de0fbb0c9247a88b1cc11ff142fa6d152",
+        "copied_from": "target/release/psmc-rs"
+      },
+      "prepended_arguments": [
+        "--backend",
+        "dense"
+      ],
+      "execution": {
+        "command": [
+          "/usr/bin/python3",
+          "bench/phase1_differential.py",
+          "--candidate",
+          "bench/phase-3-validation/20261010T213151632494Z/dense-wrapper",
+          "--oracle",
+          "bench/phase-3-validation/20261010T213151632494Z/binaries/vanilla",
+          "--snapshot-oracle",
+          "bench/phase-3-validation/20261010T213151632494Z/binaries/instrumented",
+          "--raw",
+          "bench/phase-3-validation/20261010T213151632494Z/dense-raw",
+          "--report",
+          "bench/phase-3-validation/20261010T213151632494Z/dense-differential.json",
+          "--only",
+          "^(?!independent_path_enumeration_and_Q$|snapshot_exact_K64_N1$).+",
+          "--timeout",
+          "600"
+        ],
+        "returncode": 0,
+        "stdout": "bench/phase-3-validation/20261010T213151632494Z/dense.stdout",
+        "stderr": "bench/phase-3-validation/20261010T213151632494Z/dense.stderr"
+      },
+      "report": "bench/phase-3-validation/20261010T213151632494Z/dense-differential.json",
+      "report_sha256": "13562b3761f926a14e18fa1d205388f09773771a4a80b6c9bbd78b167c664d42",
+      "passed": 113,
+      "failed": 0,
+      "selected_tests": 113,
+      "full_bootstrap_finite": 27,
+      "full_bootstrap_pathologies": [
+        16,
+        26,
+        28
+      ],
+      "snapshots": {
+        "snapshot_exact_tiny_N2": {
+          "arguments": [
+            "-p",
+            "2+2",
+            "-N",
+            "2",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/tiny.psmcfa"
+          ],
+          "seed": 7,
+          "events": 2399,
+          "event_types": {
+            "model": 1196,
+            "sequence": 4,
+            "aggregate": 2,
+            "objective": 1195,
+            "em_end": 2
+          },
+          "finite_numeric_values": 83790,
+          "nonfinite_classes": {
+            "nan": 1208
+          },
+          "non_numeric_values": 2403,
+          "mismatches": 0,
+          "first_mismatches": [],
+          "finite_tolerance": 0,
+          "negative_zero_checked": true,
+          "event_order_checked": true,
+          "compared_sha256": "29b309a55dd96a9d3d727a05c4ea29ecb36eb52b13b66ac9c0eb72e6d332b563",
+          "compared_bytes": 1663,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.5.0 (strict f64; reference 82fa2ada83ee)",
+          "numerical_output": {
+            "finite_outside_initial_RI": true,
+            "nonfinite_record_count": 0,
+            "nonfinite_first_records": [],
+            "expected_initial_RI_nonfinite_records": 1,
+            "classification": "finite_reference_output"
+          }
+        },
+        "snapshot_exact_grid_N1": {
+          "arguments": [
+            "-i",
+            "tests/fixtures/grid.par",
+            "-N",
+            "1",
+            "tests/fixtures/enumeration.psmcfa"
+          ],
+          "seed": 7,
+          "events": 1250,
+          "event_types": {
+            "model": 623,
+            "sequence": 3,
+            "aggregate": 1,
+            "objective": 622,
+            "em_end": 1
+          },
+          "finite_numeric_values": 43839,
+          "nonfinite_classes": {
+            "nan": 60
+          },
+          "non_numeric_values": 1253,
+          "mismatches": 0,
+          "first_mismatches": [],
+          "finite_tolerance": 0,
+          "negative_zero_checked": true,
+          "event_order_checked": true,
+          "compared_sha256": "eecb053ed3de5a69be2e2f628dc6f6c7fc1dde3d248b45227512d91d6ad2207f",
+          "compared_bytes": 1345,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.5.0 (strict f64; reference 82fa2ada83ee)",
+          "numerical_output": {
+            "finite_outside_initial_RI": true,
+            "nonfinite_record_count": 0,
+            "nonfinite_first_records": [],
+            "expected_initial_RI_nonfinite_records": 1,
+            "classification": "finite_reference_output"
+          }
+        },
+        "snapshot_exact_K23_N1": {
+          "arguments": [
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "1",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "seed": 7,
+          "events": 3894,
+          "event_types": {
+            "model": 1945,
+            "sequence": 3,
+            "aggregate": 1,
+            "objective": 1944,
+            "em_end": 1
+          },
+          "finite_numeric_values": 2058058,
+          "nonfinite_classes": {},
+          "non_numeric_values": 3897,
+          "mismatches": 0,
+          "first_mismatches": [],
+          "finite_tolerance": 0,
+          "negative_zero_checked": true,
+          "event_order_checked": true,
+          "compared_sha256": "f953d50a0fd803f8c57739c6e35c021b95cc2a64867869e09a0248de723ad85b",
+          "compared_bytes": 3338,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.5.0 (strict f64; reference 82fa2ada83ee)",
+          "numerical_output": {
+            "finite_outside_initial_RI": true,
+            "nonfinite_record_count": 0,
+            "nonfinite_first_records": [],
+            "expected_initial_RI_nonfinite_records": 1,
+            "classification": "finite_reference_output"
+          }
+        }
+      }
+    },
+    "cpu": {
+      "path": "bench/phase-3-validation/20261010T213151632494Z/cpu-wrapper",
+      "sha256": "fab38e7530b84dcda2fa035fb2ad79938499f820931dccb8ce99408b50ccbccd",
+      "underlying_binary": {
+        "path": "bench/phase-3-validation/20261010T213151632494Z/binaries/candidate",
+        "sha256": "877e7b55d1f0f0882384e5ed257b887de0fbb0c9247a88b1cc11ff142fa6d152",
+        "copied_from": "target/release/psmc-rs"
+      },
+      "prepended_arguments": [
+        "--backend",
+        "cpu"
+      ],
+      "execution": {
+        "command": [
+          "/usr/bin/python3",
+          "bench/phase1_differential.py",
+          "--candidate",
+          "bench/phase-3-validation/20261010T213151632494Z/cpu-wrapper",
+          "--oracle",
+          "bench/phase-3-validation/20261010T213151632494Z/binaries/vanilla",
+          "--snapshot-oracle",
+          "bench/phase-3-validation/20261010T213151632494Z/binaries/instrumented",
+          "--raw",
+          "bench/phase-3-validation/20261010T213151632494Z/cpu-raw",
+          "--report",
+          "bench/phase-3-validation/20261010T213151632494Z/cpu-differential.json",
+          "--only",
+          "^(?!independent_path_enumeration_and_Q$).+",
+          "--timeout",
+          "600"
+        ],
+        "returncode": 1,
+        "stdout": "bench/phase-3-validation/20261010T213151632494Z/cpu.stdout",
+        "stderr": "bench/phase-3-validation/20261010T213151632494Z/cpu.stderr"
+      },
+      "report": "bench/phase-3-validation/20261010T213151632494Z/cpu-differential.json",
+      "report_sha256": "c728ca71321be1cb741a73fdebfb2a9a1ad10842aa551189d499c8664a1c1a02",
+      "passed": 113,
+      "failed": 1,
+      "selected_tests": 114,
+      "full_bootstrap_finite": 27,
+      "full_bootstrap_pathologies": [
+        16,
+        26,
+        28
+      ],
+      "snapshots": {
+        "snapshot_exact_tiny_N2": {
+          "arguments": [
+            "-p",
+            "2+2",
+            "-N",
+            "2",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/tiny.psmcfa"
+          ],
+          "seed": 7,
+          "events": 2399,
+          "event_types": {
+            "model": 1196,
+            "sequence": 4,
+            "aggregate": 2,
+            "objective": 1195,
+            "em_end": 2
+          },
+          "finite_numeric_values": 83790,
+          "nonfinite_classes": {
+            "nan": 1208
+          },
+          "non_numeric_values": 2403,
+          "mismatches": 0,
+          "first_mismatches": [],
+          "finite_tolerance": 0,
+          "negative_zero_checked": true,
+          "event_order_checked": true,
+          "compared_sha256": "29b309a55dd96a9d3d727a05c4ea29ecb36eb52b13b66ac9c0eb72e6d332b563",
+          "compared_bytes": 1663,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.5.0 (strict f64; reference 82fa2ada83ee)",
+          "numerical_output": {
+            "finite_outside_initial_RI": true,
+            "nonfinite_record_count": 0,
+            "nonfinite_first_records": [],
+            "expected_initial_RI_nonfinite_records": 1,
+            "classification": "finite_reference_output"
+          }
+        },
+        "snapshot_exact_grid_N1": {
+          "arguments": [
+            "-i",
+            "tests/fixtures/grid.par",
+            "-N",
+            "1",
+            "tests/fixtures/enumeration.psmcfa"
+          ],
+          "seed": 7,
+          "events": 1250,
+          "event_types": {
+            "model": 623,
+            "sequence": 3,
+            "aggregate": 1,
+            "objective": 622,
+            "em_end": 1
+          },
+          "finite_numeric_values": 43839,
+          "nonfinite_classes": {
+            "nan": 60
+          },
+          "non_numeric_values": 1253,
+          "mismatches": 0,
+          "first_mismatches": [],
+          "finite_tolerance": 0,
+          "negative_zero_checked": true,
+          "event_order_checked": true,
+          "compared_sha256": "eecb053ed3de5a69be2e2f628dc6f6c7fc1dde3d248b45227512d91d6ad2207f",
+          "compared_bytes": 1345,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.5.0 (strict f64; reference 82fa2ada83ee)",
+          "numerical_output": {
+            "finite_outside_initial_RI": true,
+            "nonfinite_record_count": 0,
+            "nonfinite_first_records": [],
+            "expected_initial_RI_nonfinite_records": 1,
+            "classification": "finite_reference_output"
+          }
+        },
+        "snapshot_exact_K23_N1": {
+          "arguments": [
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "1",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "seed": 7,
+          "events": 3894,
+          "event_types": {
+            "model": 1945,
+            "sequence": 3,
+            "aggregate": 1,
+            "objective": 1944,
+            "em_end": 1
+          },
+          "finite_numeric_values": 2058058,
+          "nonfinite_classes": {},
+          "non_numeric_values": 3897,
+          "mismatches": 0,
+          "first_mismatches": [],
+          "finite_tolerance": 0,
+          "negative_zero_checked": true,
+          "event_order_checked": true,
+          "compared_sha256": "f953d50a0fd803f8c57739c6e35c021b95cc2a64867869e09a0248de723ad85b",
+          "compared_bytes": 3338,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.5.0 (strict f64; reference 82fa2ada83ee)",
+          "numerical_output": {
+            "finite_outside_initial_RI": true,
+            "nonfinite_record_count": 0,
+            "nonfinite_first_records": [],
+            "expected_initial_RI_nonfinite_records": 1,
+            "classification": "finite_reference_output"
+          }
+        },
+        "snapshot_exact_K64_N1": {
+          "arguments": [
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "1",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "seed": 7,
+          "events": 15160,
+          "event_types": {
+            "model": 7578,
+            "sequence": 3,
+            "aggregate": 1,
+            "objective": 7577,
+            "em_end": 1
+          },
+          "finite_numeric_values": 36956397,
+          "nonfinite_classes": {},
+          "non_numeric_values": 15163,
+          "mismatches": 0,
+          "first_mismatches": [],
+          "finite_tolerance": 0,
+          "negative_zero_checked": true,
+          "event_order_checked": true,
+          "compared_sha256": "29d9e4ef944d0adb79eeecd125a0e4ea2a258988dd2ffdb6661ddcf113b3b049",
+          "compared_bytes": 8028,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.5.0 (strict f64; reference 82fa2ada83ee)",
+          "numerical_output": {
+            "finite_outside_initial_RI": true,
+            "nonfinite_record_count": 0,
+            "nonfinite_first_records": [],
+            "expected_initial_RI_nonfinite_records": 1,
+            "classification": "finite_reference_output"
+          }
+        }
+      }
+    },
+    "scalar": {
+      "path": "bench/phase-3-validation/20261010T213151632494Z/scalar-wrapper",
+      "sha256": "3d88fbcdbc68982916395f6d9425bc55142ee0d3be3e5a2b0fd8763eab65469f",
+      "underlying_binary": {
+        "path": "bench/phase-3-validation/20261010T213151632494Z/binaries/candidate",
+        "sha256": "877e7b55d1f0f0882384e5ed257b887de0fbb0c9247a88b1cc11ff142fa6d152",
+        "copied_from": "target/release/psmc-rs"
+      },
+      "prepended_arguments": [
+        "--backend",
+        "cpu",
+        "--simd",
+        "off"
+      ],
+      "execution": {
+        "command": [
+          "/usr/bin/python3",
+          "bench/phase1_differential.py",
+          "--candidate",
+          "bench/phase-3-validation/20261010T213151632494Z/scalar-wrapper",
+          "--oracle",
+          "bench/phase-3-validation/20261010T213151632494Z/binaries/vanilla",
+          "--snapshot-oracle",
+          "bench/phase-3-validation/20261010T213151632494Z/binaries/instrumented",
+          "--raw",
+          "bench/phase-3-validation/20261010T213151632494Z/scalar-raw",
+          "--report",
+          "bench/phase-3-validation/20261010T213151632494Z/scalar-differential.json",
+          "--only",
+          "^(?!independent_path_enumeration_and_Q$|snapshot_exact_K64_N1$).+",
+          "--timeout",
+          "600"
+        ],
+        "returncode": 1,
+        "stdout": "bench/phase-3-validation/20261010T213151632494Z/scalar.stdout",
+        "stderr": "bench/phase-3-validation/20261010T213151632494Z/scalar.stderr"
+      },
+      "report": "bench/phase-3-validation/20261010T213151632494Z/scalar-differential.json",
+      "report_sha256": "d6a14af828f494b57fe7d9411887d33eaf373625de75e35af83aff4ecfddb710",
+      "passed": 112,
+      "failed": 1,
+      "selected_tests": 113,
+      "full_bootstrap_finite": 27,
+      "full_bootstrap_pathologies": [
+        16,
+        26,
+        28
+      ],
+      "snapshots": {
+        "snapshot_exact_tiny_N2": {
+          "arguments": [
+            "-p",
+            "2+2",
+            "-N",
+            "2",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/tiny.psmcfa"
+          ],
+          "seed": 7,
+          "events": 2399,
+          "event_types": {
+            "model": 1196,
+            "sequence": 4,
+            "aggregate": 2,
+            "objective": 1195,
+            "em_end": 2
+          },
+          "finite_numeric_values": 83790,
+          "nonfinite_classes": {
+            "nan": 1208
+          },
+          "non_numeric_values": 2403,
+          "mismatches": 0,
+          "first_mismatches": [],
+          "finite_tolerance": 0,
+          "negative_zero_checked": true,
+          "event_order_checked": true,
+          "compared_sha256": "29b309a55dd96a9d3d727a05c4ea29ecb36eb52b13b66ac9c0eb72e6d332b563",
+          "compared_bytes": 1663,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.5.0 (strict f64; reference 82fa2ada83ee)",
+          "numerical_output": {
+            "finite_outside_initial_RI": true,
+            "nonfinite_record_count": 0,
+            "nonfinite_first_records": [],
+            "expected_initial_RI_nonfinite_records": 1,
+            "classification": "finite_reference_output"
+          }
+        },
+        "snapshot_exact_grid_N1": {
+          "arguments": [
+            "-i",
+            "tests/fixtures/grid.par",
+            "-N",
+            "1",
+            "tests/fixtures/enumeration.psmcfa"
+          ],
+          "seed": 7,
+          "events": 1250,
+          "event_types": {
+            "model": 623,
+            "sequence": 3,
+            "aggregate": 1,
+            "objective": 622,
+            "em_end": 1
+          },
+          "finite_numeric_values": 43839,
+          "nonfinite_classes": {
+            "nan": 60
+          },
+          "non_numeric_values": 1253,
+          "mismatches": 0,
+          "first_mismatches": [],
+          "finite_tolerance": 0,
+          "negative_zero_checked": true,
+          "event_order_checked": true,
+          "compared_sha256": "eecb053ed3de5a69be2e2f628dc6f6c7fc1dde3d248b45227512d91d6ad2207f",
+          "compared_bytes": 1345,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.5.0 (strict f64; reference 82fa2ada83ee)",
+          "numerical_output": {
+            "finite_outside_initial_RI": true,
+            "nonfinite_record_count": 0,
+            "nonfinite_first_records": [],
+            "expected_initial_RI_nonfinite_records": 1,
+            "classification": "finite_reference_output"
+          }
+        },
+        "snapshot_exact_K23_N1": {
+          "arguments": [
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "1",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "seed": 7,
+          "events": 3894,
+          "event_types": {
+            "model": 1945,
+            "sequence": 3,
+            "aggregate": 1,
+            "objective": 1944,
+            "em_end": 1
+          },
+          "finite_numeric_values": 2058058,
+          "nonfinite_classes": {},
+          "non_numeric_values": 3897,
+          "mismatches": 0,
+          "first_mismatches": [],
+          "finite_tolerance": 0,
+          "negative_zero_checked": true,
+          "event_order_checked": true,
+          "compared_sha256": "f953d50a0fd803f8c57739c6e35c021b95cc2a64867869e09a0248de723ad85b",
+          "compared_bytes": 3338,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.5.0 (strict f64; reference 82fa2ada83ee)",
+          "numerical_output": {
+            "finite_outside_initial_RI": true,
+            "nonfinite_record_count": 0,
+            "nonfinite_first_records": [],
+            "expected_initial_RI_nonfinite_records": 1,
+            "classification": "finite_reference_output"
+          }
+        }
+      }
+    }
+  },
+  "failures": [
+    {
+      "backend": "cpu",
+      "kind": "differential_failure"
+    },
+    {
+      "backend": "scalar",
+      "kind": "differential_failure"
+    }
+  ],
+  "created_utc": "2026-10-10T21:31:51.686243+00:00",
+  "frozen_binaries_unchanged": true,
+  "completed_utc": "2026-10-10T21:45:51.269063+00:00"
+}

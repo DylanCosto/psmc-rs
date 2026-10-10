@@ -1,0 +1,23 @@
+{
+  "status": "installed",
+  "version": "psmc-rs 0.5.0; strict f64 dense/cpu Rust; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+  "default_mode": "strict",
+  "default_backend": "cpu",
+  "experimental_mode": "equivalent",
+  "numerical_equivalence_qualified": false,
+  "source": "target/release/psmc-rs",
+  "sha256": "46f55f1fcde1ff3064c5919c4b8dbd9806747c5c0309e4015b4c4e38f826e52a",
+  "installed": [
+    "bin/psmc-rs",
+    "bin/psmc-rs-v0.5.0"
+  ],
+  "preserved_cpu": {
+    "path": "bin/psmc-rs-v0.4.1",
+    "sha256": "566883bce56317b8d1720551373959fc3e2808538977240a45ff656cf9ebff43"
+  },
+  "preserved_cuda": {
+    "path": "bin/psmc-rs-cuda",
+    "sha256": "4763281272d642f10dc42ac0879676b99d9f19158b0bf17bcf45de942fa6b8ff"
+  },
+  "audit_sha256": "d67ef42b9c2c4c1c124d94aa341dfdceba2b6f46dd24bf708ea25188cc68888f"
+}

@@ -1,0 +1,1715 @@
+{
+  "status": "completed",
+  "binary_sha256": "46f55f1fcde1ff3064c5919c4b8dbd9806747c5c0309e4015b4c4e38f826e52a",
+  "runner_sha256": "793640bd614a563ad23848cb27d71c3bd45e101f72003121d6c985080e26d74d",
+  "input_sha256": "dcda5cbe66ec6276a9ef208e43e45ae6e0ab68e5a5301c16e2d023b0ffae3e49",
+  "runs": [
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "target/release/psmc-rs",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent/performance/strict-0",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 46.78334062901558,
+      "time_wall_seconds": 46.78,
+      "user_seconds": 612.64,
+      "system_seconds": 1.85,
+      "peak_rss_kib": 1315712,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent/performance/strict-0-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "mode": "strict",
+      "repeat": 0,
+      "cpu_seconds": 614.49,
+      "structured_fallbacks": 0,
+      "model_updates": 3584539,
+      "outputs": [
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-00.psmc",
+          "sha256": "0b8b21a6a6342fa88fdca7cb4eee3c62db2cf0e38dcbefa9d27cc435c6a94ac2"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-01.psmc",
+          "sha256": "44c4c4aebd56cb2a38d8149b468639957bc7cf49c195ea9c2278e875d050c2d8"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-02.psmc",
+          "sha256": "30d5ab174d33f5bfb526829e6f8861d5472398f059794fb0bbec5a202327ea58"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-03.psmc",
+          "sha256": "b53c07f67c17821e008b2680b90d0b8c0cf25027a9bea5301ac0c197a59ee511"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-04.psmc",
+          "sha256": "f24fdce9e3d4892c36c5639a88e73bed3c424d8772c54d60ce2fe0a1d4228486"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-05.psmc",
+          "sha256": "13d971c880d38efdb61efd902fe71fc51afa385e8dd92ac54927ccc1bda71f4c"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-06.psmc",
+          "sha256": "60f881fa230074b4b89e2a1978586bba742b33b4bebc45f75210a1bd1c388313"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-07.psmc",
+          "sha256": "448bf35fc38a4c5296174a0edf8e5455c7ea86c741967c73ccdee7fd9829ee0f"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-08.psmc",
+          "sha256": "d1ede5859e234451295ca134f0688d58b5b3c545aa634fd1b4996c2436024da4"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-09.psmc",
+          "sha256": "dbc8589bdde9f75a3a1d5f61d00521e890ab336c72b442701318ea826e2753b7"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-10.psmc",
+          "sha256": "22e695592a341cec4814cbb138f1e82513fe12fa8518c585ba89b21e68e3ebd1"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-11.psmc",
+          "sha256": "de89b682f09c399bc240e39127825cec9e943c4df61fab9ffb835542666f83d1"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-12.psmc",
+          "sha256": "6d51fedff01594451e0200583bb66c907c2ccc3efdab5fd98cf0d30b0c926871"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-13.psmc",
+          "sha256": "d512fbf41d50dd8de959996a89eeba26e33b47389f5ce824f95ecfc9a4be0490"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-14.psmc",
+          "sha256": "1881988f48c964b429928e7317101ce5c79bfb1d381c9570b5aaa78b95795c0e"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-15.psmc",
+          "sha256": "449bacb4a98bb58ed0db177fe16e07495b5e457d249ccc462b16f7193e0b7e48"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-16.psmc",
+          "sha256": "c93b096fc9a4c0abb5483ca992532e722f65364a5a8ec72d5eb2748839e0386b"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-17.psmc",
+          "sha256": "b66471bcf582e2ce65c9da8e88114f339b10c1492982ae0cbaeb139958ad04d1"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-18.psmc",
+          "sha256": "bfaa18a84773b29b25cb1775f910a099eabe54c9b9af7f12ad6f9cd38910e3f8"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-19.psmc",
+          "sha256": "26578095c5b67772675a150513127d44b66285a753a2f4aeb4eb469479a9a676"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-20.psmc",
+          "sha256": "da8f603615d9190265e01f83456ebf6bbff258c1ea1a9c087c7c36d6d965c1aa"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-21.psmc",
+          "sha256": "f35ee0e709def7e5328924bd0a6c49eb702c27db4e985edcfb1bb2fb5ed9c6e7"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-22.psmc",
+          "sha256": "87cd6b267f1a17356fb47a0774fbfc3776105d8d9d50ca6d8d825d9f9845f43c"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-23.psmc",
+          "sha256": "42ed02d656780b52f3598f12eb4b38801d430dffee39dad8674ce3a7efac62c7"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-24.psmc",
+          "sha256": "c43197cdb1fd12a9858ca197860d8e82e0bb00c55ee5e4936286f1a138430eb4"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-25.psmc",
+          "sha256": "3a2ce37697255fc8e4205104e230415605036cc2e19bd4d0950083ba90e31d5f"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-26.psmc",
+          "sha256": "980de4e3d949fa3b3c4b325f75b65936eb2ec15623ade3765bcea50c9f093eae"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-27.psmc",
+          "sha256": "2985e2885de66773905e4aec2a8ae9438b99b3f5b6c1cf9945b90fbdd0fdf04b"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-28.psmc",
+          "sha256": "2d0d846fcac13746cbd585ea0da00541ae745c979eaac6aaf340afc2fab1fb79"
+        },
+        {
+          "path": "work/equivalent/performance/strict-0/replicate-29.psmc",
+          "sha256": "788ab320a5fa085dc0999de2704b48d51e650958870b01fccb7b08bbe9f42df8"
+        }
+      ]
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "target/release/psmc-rs",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent/performance/equivalent-0",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 32.77077876997646,
+      "time_wall_seconds": 32.76,
+      "user_seconds": 426.61,
+      "system_seconds": 1.81,
+      "peak_rss_kib": 1317556,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent/performance/equivalent-0-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "mode": "equivalent",
+      "repeat": 0,
+      "cpu_seconds": 428.42,
+      "structured_fallbacks": 2057,
+      "model_updates": 3656210,
+      "outputs": [
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-00.psmc",
+          "sha256": "ea1b37900eee3ad8c22d2b5f4d9eec06a1c26ba980f9a4cefd2d27bbe49863e1"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-01.psmc",
+          "sha256": "0c24039df15bdbc5d1da0506620e4b0edcda231b06a2c1b42a56201bbc3e09e2"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-02.psmc",
+          "sha256": "23ecb85e95467fdc6a190146581287d97258726ab6174eda9f3db5913bd3ffd4"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-03.psmc",
+          "sha256": "b49be8976916bf75e9d7aab7a163323f247f0717904e10feaa69134d4aaf6fd2"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-04.psmc",
+          "sha256": "81b06e608749ad1092a2bb2bdfd81176efe5f9ce33ca811d58d2ed4c021075c9"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-05.psmc",
+          "sha256": "5fbe826a3225ed67d8134912e9203cb68b240864297cfebdd14f1b8e05a12125"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-06.psmc",
+          "sha256": "b16fa69b7c5b331c83635e7d7496cae7ed2002c3768d78f6377643c7f52c3cce"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-07.psmc",
+          "sha256": "5adb44ac336d423c2fceef31ee805991c2c67b3d9a806e8c931d6cefb1a6bdff"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-08.psmc",
+          "sha256": "fd0d8e2ed73197a6dad2226200abcb2aac0fc272280ac4aea30ee9de3eea8bf4"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-09.psmc",
+          "sha256": "f456415dd09900ee9292b89c713a06abc9f9b5773faa9fff36903665d1756f81"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-10.psmc",
+          "sha256": "fd7fd1c63465ca4c9dda60ea1207ecc6dbc7ec8d1c877363747951c028300732"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-11.psmc",
+          "sha256": "3694d746354bf93f7de1321227d5bbd8f3790c58194a22699932e8c545f3a9ee"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-12.psmc",
+          "sha256": "b9a011d681d9d58d58d20a9d41943a58f08769f0cf48dfe7ef3f09f96275c83f"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-13.psmc",
+          "sha256": "040a9daaf7c786003000297311673f31d0aaa204e60ac78f293e7dd1591f194a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-14.psmc",
+          "sha256": "a3d4f07ec965c3e5690f3ad955d69687f00082211a75ca4940fd5efb9d91cd9e"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-15.psmc",
+          "sha256": "949fd3bdf89b9ee6fa3825093cf47323e32d7463e998a856da3d2031d00cd64b"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-16.psmc",
+          "sha256": "15c3ec834d4ad712f53802193ebfbda9d33b8db9ea5f68faf1ff90ae6a68a991"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-17.psmc",
+          "sha256": "08469ba8f9ff460cdf38ea2ef9bcc39b4be15d5334ab603d65925ec8e1f4be8a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-18.psmc",
+          "sha256": "16763cce73b6227c309850f7c0757339492a27188ca20ea4c73e7b4f9c651a85"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-19.psmc",
+          "sha256": "fef8aff899d4dfdaf057602a87517dd458a1e5289fd4b69bb313de5572e1d91b"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-20.psmc",
+          "sha256": "e4dac088cffde667035ef719e987b1cc8f634097d12f57fde7ac91fcc65833f7"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-21.psmc",
+          "sha256": "7ecb93a51a18e1a854dc425780b220ff0babe3e74d243f458adb0920e352325a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-22.psmc",
+          "sha256": "37f323aabbf351cd4d5853d658415410a494c8393bd944f8a42e17d08f3c565a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-23.psmc",
+          "sha256": "9de4f9bc1de1fa42e4fab46b35da20691ac33fa457c7f3b26dd38313d2d4d05b"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-24.psmc",
+          "sha256": "cbf440ba7ea9c70a31a35d23d3d7b69513a8343472659490d4dfffb705ca2522"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-25.psmc",
+          "sha256": "cc880d326c15cd9f0a1e3478e90da8595a4ff6f962116b3e1caad2937794441f"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-26.psmc",
+          "sha256": "86076acab304ea75949080774f8bff51289bb21e65d40d8c60fc6f4968b838f6"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-27.psmc",
+          "sha256": "2f639129013c23ff425fa4a0ecb105660a6133386065e947f5ef7936ed4141b2"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-28.psmc",
+          "sha256": "67264d75842e0f218b569d091efdb4c1bcc58fc552fde3ba770e3b70e89a1f05"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-0/replicate-29.psmc",
+          "sha256": "cf5262a581fc5ca47406d2d2177228f8583605bcb0a543bff599f9c1fd7dca62"
+        }
+      ]
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "target/release/psmc-rs",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent/performance/equivalent-1",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 34.13852252700599,
+      "time_wall_seconds": 34.13,
+      "user_seconds": 419.72,
+      "system_seconds": 1.87,
+      "peak_rss_kib": 1259436,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent/performance/equivalent-1-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "mode": "equivalent",
+      "repeat": 1,
+      "cpu_seconds": 421.59000000000003,
+      "structured_fallbacks": 2057,
+      "model_updates": 3656210,
+      "outputs": [
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-00.psmc",
+          "sha256": "ea1b37900eee3ad8c22d2b5f4d9eec06a1c26ba980f9a4cefd2d27bbe49863e1"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-01.psmc",
+          "sha256": "0c24039df15bdbc5d1da0506620e4b0edcda231b06a2c1b42a56201bbc3e09e2"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-02.psmc",
+          "sha256": "23ecb85e95467fdc6a190146581287d97258726ab6174eda9f3db5913bd3ffd4"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-03.psmc",
+          "sha256": "b49be8976916bf75e9d7aab7a163323f247f0717904e10feaa69134d4aaf6fd2"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-04.psmc",
+          "sha256": "81b06e608749ad1092a2bb2bdfd81176efe5f9ce33ca811d58d2ed4c021075c9"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-05.psmc",
+          "sha256": "5fbe826a3225ed67d8134912e9203cb68b240864297cfebdd14f1b8e05a12125"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-06.psmc",
+          "sha256": "b16fa69b7c5b331c83635e7d7496cae7ed2002c3768d78f6377643c7f52c3cce"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-07.psmc",
+          "sha256": "5adb44ac336d423c2fceef31ee805991c2c67b3d9a806e8c931d6cefb1a6bdff"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-08.psmc",
+          "sha256": "fd0d8e2ed73197a6dad2226200abcb2aac0fc272280ac4aea30ee9de3eea8bf4"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-09.psmc",
+          "sha256": "f456415dd09900ee9292b89c713a06abc9f9b5773faa9fff36903665d1756f81"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-10.psmc",
+          "sha256": "fd7fd1c63465ca4c9dda60ea1207ecc6dbc7ec8d1c877363747951c028300732"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-11.psmc",
+          "sha256": "3694d746354bf93f7de1321227d5bbd8f3790c58194a22699932e8c545f3a9ee"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-12.psmc",
+          "sha256": "b9a011d681d9d58d58d20a9d41943a58f08769f0cf48dfe7ef3f09f96275c83f"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-13.psmc",
+          "sha256": "040a9daaf7c786003000297311673f31d0aaa204e60ac78f293e7dd1591f194a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-14.psmc",
+          "sha256": "a3d4f07ec965c3e5690f3ad955d69687f00082211a75ca4940fd5efb9d91cd9e"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-15.psmc",
+          "sha256": "949fd3bdf89b9ee6fa3825093cf47323e32d7463e998a856da3d2031d00cd64b"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-16.psmc",
+          "sha256": "15c3ec834d4ad712f53802193ebfbda9d33b8db9ea5f68faf1ff90ae6a68a991"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-17.psmc",
+          "sha256": "08469ba8f9ff460cdf38ea2ef9bcc39b4be15d5334ab603d65925ec8e1f4be8a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-18.psmc",
+          "sha256": "16763cce73b6227c309850f7c0757339492a27188ca20ea4c73e7b4f9c651a85"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-19.psmc",
+          "sha256": "fef8aff899d4dfdaf057602a87517dd458a1e5289fd4b69bb313de5572e1d91b"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-20.psmc",
+          "sha256": "e4dac088cffde667035ef719e987b1cc8f634097d12f57fde7ac91fcc65833f7"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-21.psmc",
+          "sha256": "7ecb93a51a18e1a854dc425780b220ff0babe3e74d243f458adb0920e352325a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-22.psmc",
+          "sha256": "37f323aabbf351cd4d5853d658415410a494c8393bd944f8a42e17d08f3c565a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-23.psmc",
+          "sha256": "9de4f9bc1de1fa42e4fab46b35da20691ac33fa457c7f3b26dd38313d2d4d05b"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-24.psmc",
+          "sha256": "cbf440ba7ea9c70a31a35d23d3d7b69513a8343472659490d4dfffb705ca2522"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-25.psmc",
+          "sha256": "cc880d326c15cd9f0a1e3478e90da8595a4ff6f962116b3e1caad2937794441f"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-26.psmc",
+          "sha256": "86076acab304ea75949080774f8bff51289bb21e65d40d8c60fc6f4968b838f6"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-27.psmc",
+          "sha256": "2f639129013c23ff425fa4a0ecb105660a6133386065e947f5ef7936ed4141b2"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-28.psmc",
+          "sha256": "67264d75842e0f218b569d091efdb4c1bcc58fc552fde3ba770e3b70e89a1f05"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-1/replicate-29.psmc",
+          "sha256": "cf5262a581fc5ca47406d2d2177228f8583605bcb0a543bff599f9c1fd7dca62"
+        }
+      ]
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "target/release/psmc-rs",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent/performance/strict-1",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 45.481114581984,
+      "time_wall_seconds": 45.48,
+      "user_seconds": 612.28,
+      "system_seconds": 1.97,
+      "peak_rss_kib": 1314896,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent/performance/strict-1-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "mode": "strict",
+      "repeat": 1,
+      "cpu_seconds": 614.25,
+      "structured_fallbacks": 0,
+      "model_updates": 3584539,
+      "outputs": [
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-00.psmc",
+          "sha256": "0b8b21a6a6342fa88fdca7cb4eee3c62db2cf0e38dcbefa9d27cc435c6a94ac2"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-01.psmc",
+          "sha256": "44c4c4aebd56cb2a38d8149b468639957bc7cf49c195ea9c2278e875d050c2d8"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-02.psmc",
+          "sha256": "30d5ab174d33f5bfb526829e6f8861d5472398f059794fb0bbec5a202327ea58"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-03.psmc",
+          "sha256": "b53c07f67c17821e008b2680b90d0b8c0cf25027a9bea5301ac0c197a59ee511"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-04.psmc",
+          "sha256": "f24fdce9e3d4892c36c5639a88e73bed3c424d8772c54d60ce2fe0a1d4228486"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-05.psmc",
+          "sha256": "13d971c880d38efdb61efd902fe71fc51afa385e8dd92ac54927ccc1bda71f4c"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-06.psmc",
+          "sha256": "60f881fa230074b4b89e2a1978586bba742b33b4bebc45f75210a1bd1c388313"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-07.psmc",
+          "sha256": "448bf35fc38a4c5296174a0edf8e5455c7ea86c741967c73ccdee7fd9829ee0f"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-08.psmc",
+          "sha256": "d1ede5859e234451295ca134f0688d58b5b3c545aa634fd1b4996c2436024da4"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-09.psmc",
+          "sha256": "dbc8589bdde9f75a3a1d5f61d00521e890ab336c72b442701318ea826e2753b7"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-10.psmc",
+          "sha256": "22e695592a341cec4814cbb138f1e82513fe12fa8518c585ba89b21e68e3ebd1"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-11.psmc",
+          "sha256": "de89b682f09c399bc240e39127825cec9e943c4df61fab9ffb835542666f83d1"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-12.psmc",
+          "sha256": "6d51fedff01594451e0200583bb66c907c2ccc3efdab5fd98cf0d30b0c926871"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-13.psmc",
+          "sha256": "d512fbf41d50dd8de959996a89eeba26e33b47389f5ce824f95ecfc9a4be0490"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-14.psmc",
+          "sha256": "1881988f48c964b429928e7317101ce5c79bfb1d381c9570b5aaa78b95795c0e"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-15.psmc",
+          "sha256": "449bacb4a98bb58ed0db177fe16e07495b5e457d249ccc462b16f7193e0b7e48"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-16.psmc",
+          "sha256": "c93b096fc9a4c0abb5483ca992532e722f65364a5a8ec72d5eb2748839e0386b"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-17.psmc",
+          "sha256": "b66471bcf582e2ce65c9da8e88114f339b10c1492982ae0cbaeb139958ad04d1"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-18.psmc",
+          "sha256": "bfaa18a84773b29b25cb1775f910a099eabe54c9b9af7f12ad6f9cd38910e3f8"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-19.psmc",
+          "sha256": "26578095c5b67772675a150513127d44b66285a753a2f4aeb4eb469479a9a676"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-20.psmc",
+          "sha256": "da8f603615d9190265e01f83456ebf6bbff258c1ea1a9c087c7c36d6d965c1aa"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-21.psmc",
+          "sha256": "f35ee0e709def7e5328924bd0a6c49eb702c27db4e985edcfb1bb2fb5ed9c6e7"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-22.psmc",
+          "sha256": "87cd6b267f1a17356fb47a0774fbfc3776105d8d9d50ca6d8d825d9f9845f43c"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-23.psmc",
+          "sha256": "42ed02d656780b52f3598f12eb4b38801d430dffee39dad8674ce3a7efac62c7"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-24.psmc",
+          "sha256": "c43197cdb1fd12a9858ca197860d8e82e0bb00c55ee5e4936286f1a138430eb4"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-25.psmc",
+          "sha256": "3a2ce37697255fc8e4205104e230415605036cc2e19bd4d0950083ba90e31d5f"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-26.psmc",
+          "sha256": "980de4e3d949fa3b3c4b325f75b65936eb2ec15623ade3765bcea50c9f093eae"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-27.psmc",
+          "sha256": "2985e2885de66773905e4aec2a8ae9438b99b3f5b6c1cf9945b90fbdd0fdf04b"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-28.psmc",
+          "sha256": "2d0d846fcac13746cbd585ea0da00541ae745c979eaac6aaf340afc2fab1fb79"
+        },
+        {
+          "path": "work/equivalent/performance/strict-1/replicate-29.psmc",
+          "sha256": "788ab320a5fa085dc0999de2704b48d51e650958870b01fccb7b08bbe9f42df8"
+        }
+      ]
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "target/release/psmc-rs",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent/performance/strict-2",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 45.249818217998836,
+      "time_wall_seconds": 45.24,
+      "user_seconds": 613.83,
+      "system_seconds": 1.93,
+      "peak_rss_kib": 1315144,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent/performance/strict-2-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "mode": "strict",
+      "repeat": 2,
+      "cpu_seconds": 615.76,
+      "structured_fallbacks": 0,
+      "model_updates": 3584539,
+      "outputs": [
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-00.psmc",
+          "sha256": "0b8b21a6a6342fa88fdca7cb4eee3c62db2cf0e38dcbefa9d27cc435c6a94ac2"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-01.psmc",
+          "sha256": "44c4c4aebd56cb2a38d8149b468639957bc7cf49c195ea9c2278e875d050c2d8"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-02.psmc",
+          "sha256": "30d5ab174d33f5bfb526829e6f8861d5472398f059794fb0bbec5a202327ea58"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-03.psmc",
+          "sha256": "b53c07f67c17821e008b2680b90d0b8c0cf25027a9bea5301ac0c197a59ee511"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-04.psmc",
+          "sha256": "f24fdce9e3d4892c36c5639a88e73bed3c424d8772c54d60ce2fe0a1d4228486"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-05.psmc",
+          "sha256": "13d971c880d38efdb61efd902fe71fc51afa385e8dd92ac54927ccc1bda71f4c"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-06.psmc",
+          "sha256": "60f881fa230074b4b89e2a1978586bba742b33b4bebc45f75210a1bd1c388313"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-07.psmc",
+          "sha256": "448bf35fc38a4c5296174a0edf8e5455c7ea86c741967c73ccdee7fd9829ee0f"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-08.psmc",
+          "sha256": "d1ede5859e234451295ca134f0688d58b5b3c545aa634fd1b4996c2436024da4"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-09.psmc",
+          "sha256": "dbc8589bdde9f75a3a1d5f61d00521e890ab336c72b442701318ea826e2753b7"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-10.psmc",
+          "sha256": "22e695592a341cec4814cbb138f1e82513fe12fa8518c585ba89b21e68e3ebd1"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-11.psmc",
+          "sha256": "de89b682f09c399bc240e39127825cec9e943c4df61fab9ffb835542666f83d1"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-12.psmc",
+          "sha256": "6d51fedff01594451e0200583bb66c907c2ccc3efdab5fd98cf0d30b0c926871"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-13.psmc",
+          "sha256": "d512fbf41d50dd8de959996a89eeba26e33b47389f5ce824f95ecfc9a4be0490"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-14.psmc",
+          "sha256": "1881988f48c964b429928e7317101ce5c79bfb1d381c9570b5aaa78b95795c0e"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-15.psmc",
+          "sha256": "449bacb4a98bb58ed0db177fe16e07495b5e457d249ccc462b16f7193e0b7e48"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-16.psmc",
+          "sha256": "c93b096fc9a4c0abb5483ca992532e722f65364a5a8ec72d5eb2748839e0386b"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-17.psmc",
+          "sha256": "b66471bcf582e2ce65c9da8e88114f339b10c1492982ae0cbaeb139958ad04d1"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-18.psmc",
+          "sha256": "bfaa18a84773b29b25cb1775f910a099eabe54c9b9af7f12ad6f9cd38910e3f8"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-19.psmc",
+          "sha256": "26578095c5b67772675a150513127d44b66285a753a2f4aeb4eb469479a9a676"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-20.psmc",
+          "sha256": "da8f603615d9190265e01f83456ebf6bbff258c1ea1a9c087c7c36d6d965c1aa"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-21.psmc",
+          "sha256": "f35ee0e709def7e5328924bd0a6c49eb702c27db4e985edcfb1bb2fb5ed9c6e7"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-22.psmc",
+          "sha256": "87cd6b267f1a17356fb47a0774fbfc3776105d8d9d50ca6d8d825d9f9845f43c"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-23.psmc",
+          "sha256": "42ed02d656780b52f3598f12eb4b38801d430dffee39dad8674ce3a7efac62c7"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-24.psmc",
+          "sha256": "c43197cdb1fd12a9858ca197860d8e82e0bb00c55ee5e4936286f1a138430eb4"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-25.psmc",
+          "sha256": "3a2ce37697255fc8e4205104e230415605036cc2e19bd4d0950083ba90e31d5f"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-26.psmc",
+          "sha256": "980de4e3d949fa3b3c4b325f75b65936eb2ec15623ade3765bcea50c9f093eae"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-27.psmc",
+          "sha256": "2985e2885de66773905e4aec2a8ae9438b99b3f5b6c1cf9945b90fbdd0fdf04b"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-28.psmc",
+          "sha256": "2d0d846fcac13746cbd585ea0da00541ae745c979eaac6aaf340afc2fab1fb79"
+        },
+        {
+          "path": "work/equivalent/performance/strict-2/replicate-29.psmc",
+          "sha256": "788ab320a5fa085dc0999de2704b48d51e650958870b01fccb7b08bbe9f42df8"
+        }
+      ]
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "target/release/psmc-rs",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent/performance/equivalent-2",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 32.0054438119987,
+      "time_wall_seconds": 32.0,
+      "user_seconds": 431.66,
+      "system_seconds": 1.86,
+      "peak_rss_kib": 1309132,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent/performance/equivalent-2-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "mode": "equivalent",
+      "repeat": 2,
+      "cpu_seconds": 433.52000000000004,
+      "structured_fallbacks": 2057,
+      "model_updates": 3656210,
+      "outputs": [
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-00.psmc",
+          "sha256": "ea1b37900eee3ad8c22d2b5f4d9eec06a1c26ba980f9a4cefd2d27bbe49863e1"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-01.psmc",
+          "sha256": "0c24039df15bdbc5d1da0506620e4b0edcda231b06a2c1b42a56201bbc3e09e2"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-02.psmc",
+          "sha256": "23ecb85e95467fdc6a190146581287d97258726ab6174eda9f3db5913bd3ffd4"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-03.psmc",
+          "sha256": "b49be8976916bf75e9d7aab7a163323f247f0717904e10feaa69134d4aaf6fd2"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-04.psmc",
+          "sha256": "81b06e608749ad1092a2bb2bdfd81176efe5f9ce33ca811d58d2ed4c021075c9"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-05.psmc",
+          "sha256": "5fbe826a3225ed67d8134912e9203cb68b240864297cfebdd14f1b8e05a12125"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-06.psmc",
+          "sha256": "b16fa69b7c5b331c83635e7d7496cae7ed2002c3768d78f6377643c7f52c3cce"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-07.psmc",
+          "sha256": "5adb44ac336d423c2fceef31ee805991c2c67b3d9a806e8c931d6cefb1a6bdff"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-08.psmc",
+          "sha256": "fd0d8e2ed73197a6dad2226200abcb2aac0fc272280ac4aea30ee9de3eea8bf4"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-09.psmc",
+          "sha256": "f456415dd09900ee9292b89c713a06abc9f9b5773faa9fff36903665d1756f81"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-10.psmc",
+          "sha256": "fd7fd1c63465ca4c9dda60ea1207ecc6dbc7ec8d1c877363747951c028300732"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-11.psmc",
+          "sha256": "3694d746354bf93f7de1321227d5bbd8f3790c58194a22699932e8c545f3a9ee"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-12.psmc",
+          "sha256": "b9a011d681d9d58d58d20a9d41943a58f08769f0cf48dfe7ef3f09f96275c83f"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-13.psmc",
+          "sha256": "040a9daaf7c786003000297311673f31d0aaa204e60ac78f293e7dd1591f194a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-14.psmc",
+          "sha256": "a3d4f07ec965c3e5690f3ad955d69687f00082211a75ca4940fd5efb9d91cd9e"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-15.psmc",
+          "sha256": "949fd3bdf89b9ee6fa3825093cf47323e32d7463e998a856da3d2031d00cd64b"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-16.psmc",
+          "sha256": "15c3ec834d4ad712f53802193ebfbda9d33b8db9ea5f68faf1ff90ae6a68a991"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-17.psmc",
+          "sha256": "08469ba8f9ff460cdf38ea2ef9bcc39b4be15d5334ab603d65925ec8e1f4be8a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-18.psmc",
+          "sha256": "16763cce73b6227c309850f7c0757339492a27188ca20ea4c73e7b4f9c651a85"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-19.psmc",
+          "sha256": "fef8aff899d4dfdaf057602a87517dd458a1e5289fd4b69bb313de5572e1d91b"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-20.psmc",
+          "sha256": "e4dac088cffde667035ef719e987b1cc8f634097d12f57fde7ac91fcc65833f7"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-21.psmc",
+          "sha256": "7ecb93a51a18e1a854dc425780b220ff0babe3e74d243f458adb0920e352325a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-22.psmc",
+          "sha256": "37f323aabbf351cd4d5853d658415410a494c8393bd944f8a42e17d08f3c565a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-23.psmc",
+          "sha256": "9de4f9bc1de1fa42e4fab46b35da20691ac33fa457c7f3b26dd38313d2d4d05b"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-24.psmc",
+          "sha256": "cbf440ba7ea9c70a31a35d23d3d7b69513a8343472659490d4dfffb705ca2522"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-25.psmc",
+          "sha256": "cc880d326c15cd9f0a1e3478e90da8595a4ff6f962116b3e1caad2937794441f"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-26.psmc",
+          "sha256": "86076acab304ea75949080774f8bff51289bb21e65d40d8c60fc6f4968b838f6"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-27.psmc",
+          "sha256": "2f639129013c23ff425fa4a0ecb105660a6133386065e947f5ef7936ed4141b2"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-28.psmc",
+          "sha256": "67264d75842e0f218b569d091efdb4c1bcc58fc552fde3ba770e3b70e89a1f05"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-2/replicate-29.psmc",
+          "sha256": "cf5262a581fc5ca47406d2d2177228f8583605bcb0a543bff599f9c1fd7dca62"
+        }
+      ]
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "target/release/psmc-rs",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent/performance/equivalent-3",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 32.75411612499738,
+      "time_wall_seconds": 32.75,
+      "user_seconds": 427.99,
+      "system_seconds": 1.86,
+      "peak_rss_kib": 1317132,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent/performance/equivalent-3-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "mode": "equivalent",
+      "repeat": 3,
+      "cpu_seconds": 429.85,
+      "structured_fallbacks": 2057,
+      "model_updates": 3656210,
+      "outputs": [
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-00.psmc",
+          "sha256": "ea1b37900eee3ad8c22d2b5f4d9eec06a1c26ba980f9a4cefd2d27bbe49863e1"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-01.psmc",
+          "sha256": "0c24039df15bdbc5d1da0506620e4b0edcda231b06a2c1b42a56201bbc3e09e2"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-02.psmc",
+          "sha256": "23ecb85e95467fdc6a190146581287d97258726ab6174eda9f3db5913bd3ffd4"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-03.psmc",
+          "sha256": "b49be8976916bf75e9d7aab7a163323f247f0717904e10feaa69134d4aaf6fd2"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-04.psmc",
+          "sha256": "81b06e608749ad1092a2bb2bdfd81176efe5f9ce33ca811d58d2ed4c021075c9"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-05.psmc",
+          "sha256": "5fbe826a3225ed67d8134912e9203cb68b240864297cfebdd14f1b8e05a12125"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-06.psmc",
+          "sha256": "b16fa69b7c5b331c83635e7d7496cae7ed2002c3768d78f6377643c7f52c3cce"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-07.psmc",
+          "sha256": "5adb44ac336d423c2fceef31ee805991c2c67b3d9a806e8c931d6cefb1a6bdff"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-08.psmc",
+          "sha256": "fd0d8e2ed73197a6dad2226200abcb2aac0fc272280ac4aea30ee9de3eea8bf4"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-09.psmc",
+          "sha256": "f456415dd09900ee9292b89c713a06abc9f9b5773faa9fff36903665d1756f81"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-10.psmc",
+          "sha256": "fd7fd1c63465ca4c9dda60ea1207ecc6dbc7ec8d1c877363747951c028300732"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-11.psmc",
+          "sha256": "3694d746354bf93f7de1321227d5bbd8f3790c58194a22699932e8c545f3a9ee"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-12.psmc",
+          "sha256": "b9a011d681d9d58d58d20a9d41943a58f08769f0cf48dfe7ef3f09f96275c83f"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-13.psmc",
+          "sha256": "040a9daaf7c786003000297311673f31d0aaa204e60ac78f293e7dd1591f194a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-14.psmc",
+          "sha256": "a3d4f07ec965c3e5690f3ad955d69687f00082211a75ca4940fd5efb9d91cd9e"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-15.psmc",
+          "sha256": "949fd3bdf89b9ee6fa3825093cf47323e32d7463e998a856da3d2031d00cd64b"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-16.psmc",
+          "sha256": "15c3ec834d4ad712f53802193ebfbda9d33b8db9ea5f68faf1ff90ae6a68a991"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-17.psmc",
+          "sha256": "08469ba8f9ff460cdf38ea2ef9bcc39b4be15d5334ab603d65925ec8e1f4be8a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-18.psmc",
+          "sha256": "16763cce73b6227c309850f7c0757339492a27188ca20ea4c73e7b4f9c651a85"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-19.psmc",
+          "sha256": "fef8aff899d4dfdaf057602a87517dd458a1e5289fd4b69bb313de5572e1d91b"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-20.psmc",
+          "sha256": "e4dac088cffde667035ef719e987b1cc8f634097d12f57fde7ac91fcc65833f7"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-21.psmc",
+          "sha256": "7ecb93a51a18e1a854dc425780b220ff0babe3e74d243f458adb0920e352325a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-22.psmc",
+          "sha256": "37f323aabbf351cd4d5853d658415410a494c8393bd944f8a42e17d08f3c565a"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-23.psmc",
+          "sha256": "9de4f9bc1de1fa42e4fab46b35da20691ac33fa457c7f3b26dd38313d2d4d05b"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-24.psmc",
+          "sha256": "cbf440ba7ea9c70a31a35d23d3d7b69513a8343472659490d4dfffb705ca2522"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-25.psmc",
+          "sha256": "cc880d326c15cd9f0a1e3478e90da8595a4ff6f962116b3e1caad2937794441f"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-26.psmc",
+          "sha256": "86076acab304ea75949080774f8bff51289bb21e65d40d8c60fc6f4968b838f6"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-27.psmc",
+          "sha256": "2f639129013c23ff425fa4a0ecb105660a6133386065e947f5ef7936ed4141b2"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-28.psmc",
+          "sha256": "67264d75842e0f218b569d091efdb4c1bcc58fc552fde3ba770e3b70e89a1f05"
+        },
+        {
+          "path": "work/equivalent/performance/equivalent-3/replicate-29.psmc",
+          "sha256": "cf5262a581fc5ca47406d2d2177228f8583605bcb0a543bff599f9c1fd7dca62"
+        }
+      ]
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "target/release/psmc-rs",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent/performance/strict-3",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 45.07351140602259,
+      "time_wall_seconds": 45.07,
+      "user_seconds": 598.08,
+      "system_seconds": 1.89,
+      "peak_rss_kib": 1315144,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent/performance/strict-3-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "mode": "strict",
+      "repeat": 3,
+      "cpu_seconds": 599.97,
+      "structured_fallbacks": 0,
+      "model_updates": 3584539,
+      "outputs": [
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-00.psmc",
+          "sha256": "0b8b21a6a6342fa88fdca7cb4eee3c62db2cf0e38dcbefa9d27cc435c6a94ac2"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-01.psmc",
+          "sha256": "44c4c4aebd56cb2a38d8149b468639957bc7cf49c195ea9c2278e875d050c2d8"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-02.psmc",
+          "sha256": "30d5ab174d33f5bfb526829e6f8861d5472398f059794fb0bbec5a202327ea58"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-03.psmc",
+          "sha256": "b53c07f67c17821e008b2680b90d0b8c0cf25027a9bea5301ac0c197a59ee511"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-04.psmc",
+          "sha256": "f24fdce9e3d4892c36c5639a88e73bed3c424d8772c54d60ce2fe0a1d4228486"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-05.psmc",
+          "sha256": "13d971c880d38efdb61efd902fe71fc51afa385e8dd92ac54927ccc1bda71f4c"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-06.psmc",
+          "sha256": "60f881fa230074b4b89e2a1978586bba742b33b4bebc45f75210a1bd1c388313"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-07.psmc",
+          "sha256": "448bf35fc38a4c5296174a0edf8e5455c7ea86c741967c73ccdee7fd9829ee0f"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-08.psmc",
+          "sha256": "d1ede5859e234451295ca134f0688d58b5b3c545aa634fd1b4996c2436024da4"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-09.psmc",
+          "sha256": "dbc8589bdde9f75a3a1d5f61d00521e890ab336c72b442701318ea826e2753b7"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-10.psmc",
+          "sha256": "22e695592a341cec4814cbb138f1e82513fe12fa8518c585ba89b21e68e3ebd1"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-11.psmc",
+          "sha256": "de89b682f09c399bc240e39127825cec9e943c4df61fab9ffb835542666f83d1"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-12.psmc",
+          "sha256": "6d51fedff01594451e0200583bb66c907c2ccc3efdab5fd98cf0d30b0c926871"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-13.psmc",
+          "sha256": "d512fbf41d50dd8de959996a89eeba26e33b47389f5ce824f95ecfc9a4be0490"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-14.psmc",
+          "sha256": "1881988f48c964b429928e7317101ce5c79bfb1d381c9570b5aaa78b95795c0e"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-15.psmc",
+          "sha256": "449bacb4a98bb58ed0db177fe16e07495b5e457d249ccc462b16f7193e0b7e48"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-16.psmc",
+          "sha256": "c93b096fc9a4c0abb5483ca992532e722f65364a5a8ec72d5eb2748839e0386b"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-17.psmc",
+          "sha256": "b66471bcf582e2ce65c9da8e88114f339b10c1492982ae0cbaeb139958ad04d1"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-18.psmc",
+          "sha256": "bfaa18a84773b29b25cb1775f910a099eabe54c9b9af7f12ad6f9cd38910e3f8"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-19.psmc",
+          "sha256": "26578095c5b67772675a150513127d44b66285a753a2f4aeb4eb469479a9a676"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-20.psmc",
+          "sha256": "da8f603615d9190265e01f83456ebf6bbff258c1ea1a9c087c7c36d6d965c1aa"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-21.psmc",
+          "sha256": "f35ee0e709def7e5328924bd0a6c49eb702c27db4e985edcfb1bb2fb5ed9c6e7"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-22.psmc",
+          "sha256": "87cd6b267f1a17356fb47a0774fbfc3776105d8d9d50ca6d8d825d9f9845f43c"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-23.psmc",
+          "sha256": "42ed02d656780b52f3598f12eb4b38801d430dffee39dad8674ce3a7efac62c7"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-24.psmc",
+          "sha256": "c43197cdb1fd12a9858ca197860d8e82e0bb00c55ee5e4936286f1a138430eb4"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-25.psmc",
+          "sha256": "3a2ce37697255fc8e4205104e230415605036cc2e19bd4d0950083ba90e31d5f"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-26.psmc",
+          "sha256": "980de4e3d949fa3b3c4b325f75b65936eb2ec15623ade3765bcea50c9f093eae"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-27.psmc",
+          "sha256": "2985e2885de66773905e4aec2a8ae9438b99b3f5b6c1cf9945b90fbdd0fdf04b"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-28.psmc",
+          "sha256": "2d0d846fcac13746cbd585ea0da00541ae745c979eaac6aaf340afc2fab1fb79"
+        },
+        {
+          "path": "work/equivalent/performance/strict-3/replicate-29.psmc",
+          "sha256": "788ab320a5fa085dc0999de2704b48d51e650958870b01fccb7b08bbe9f42df8"
+        }
+      ]
+    }
+  ],
+  "protocol": "One warmup per mode, three alternating measured pairs, same binary and 16 workers. >=5% less median wall time, >=2/3 wins; no optional repetitions.",
+  "control_runs": [
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "bin/psmc-rs-v0.4.1",
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent/performance/v041-before",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 43.97069371101679,
+      "time_wall_seconds": 43.96,
+      "user_seconds": 599.17,
+      "system_seconds": 1.86,
+      "peak_rss_kib": 1315052,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent/performance/v041-before-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "label": "before",
+      "binary_sha256": "566883bce56317b8d1720551373959fc3e2808538977240a45ff656cf9ebff43",
+      "cpu_seconds": 601.03,
+      "outputs": [
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/equivalent/performance/v041-before/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "bin/psmc-rs-v0.4.1",
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent/performance/v041-after",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 47.29847948701354,
+      "time_wall_seconds": 47.29,
+      "user_seconds": 605.25,
+      "system_seconds": 2.06,
+      "peak_rss_kib": 1315608,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent/performance/v041-after-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "label": "after",
+      "binary_sha256": "566883bce56317b8d1720551373959fc3e2808538977240a45ff656cf9ebff43",
+      "cpu_seconds": 607.31,
+      "outputs": [
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/equivalent/performance/v041-after/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "strict": {
+      "wall_seconds": 45.249818217998836,
+      "cpu_seconds": 614.25,
+      "peak_rss_kib": 1315144
+    },
+    "equivalent": {
+      "wall_seconds": 32.75411612499738,
+      "cpu_seconds": 429.85,
+      "peak_rss_kib": 1309132
+    }
+  },
+  "strict_vs_v041_control_ratio": 0.991568492021255,
+  "speedup": 1.3815002073423361,
+  "wall_reduction": 0.27614922192175995,
+  "cpu_reduction": 0.3002035002035002,
+  "faster_pairs": 3,
+  "performance_gate": true
+}

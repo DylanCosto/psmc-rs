@@ -75,3 +75,14 @@ change. Compare all startup, compilation, transfer and synchronization costs in
 complete batches against v0.3.3 with 16 CPU workers. Select GPU worker count in a
 separate screen, then use a fixed warmup plus three alternating pairs; require at
 least 5% median improvement and two faster pairs for performance promotion.
+
+## Experimental equivalent extension — 2026-10-10
+
+The explicit user authorization introduces separate structured-mode tests, defined
+before measurement in `docs/equivalent-mode.md`. Strict tolerances do not change.
+Historical Phase 1 rejection of the literal string `--mode equivalent` is obsolete
+for the CPU backend; retain its result in the old runner's report and distinguish
+that expected availability change from numerical failures. New CLI tests require
+explicit selection and reject unsupported backend/snapshot combinations. All
+other strict regression checks still apply. Compiler variation is a measured
+sensitivity reference, not a scientific confidence interval or proof of accuracy.

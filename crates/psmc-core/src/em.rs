@@ -86,6 +86,7 @@ pub struct BackendStats {
     pub cache_hits: u64,
     pub snapshot_cache_bypass: u64,
     pub model_updates: u64,
+    pub structured_fallbacks: u64,
     pub cuda_launches: u64,
     pub cuda_upload_bytes: u64,
     pub cuda_download_bytes: u64,
@@ -105,6 +106,7 @@ pub trait ExpectationBackend {
     fn update_model(&mut self, model: &mut Model, settings: &Settings) {
         model.update(settings);
     }
+    fn materialize_model(&mut self, _model: &mut Model) {}
     fn q(&self, counts: &Counts, model: &Model) -> f64 {
         counts.q(model)
     }
@@ -230,6 +232,9 @@ impl FitState {
             }
             backend.update_model(&mut self.model, settings);
             if observation_error.is_none() {
+                if observer.needs_sequence_messages() {
+                    backend.materialize_model(&mut self.model);
+                }
                 if let Err(error) = observer.model(iteration, settings, &self.model) {
                     observation_error = Some(error);
                 }
@@ -253,6 +258,7 @@ impl FitState {
             return Err(error);
         }
         self.last_candidate_q = last_q;
+        backend.materialize_model(&mut self.model);
         // Deliberately do not copy optimizer params back or reevaluate. C leaves
         // the live model at the final objective callback, not its accepted x.
         let mut sum = 0.0;

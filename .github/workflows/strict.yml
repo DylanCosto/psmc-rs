@@ -1,0 +1,35 @@
+name: Strict PSMC compatibility
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  strict:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Check out pinned vanilla PSMC
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: lh3/psmc
+          ref: 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a
+          path: work/ci-vanilla
+          persist-credentials: false
+      - name: Prepare pinned toolchain and C dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends gcc-13 zlib1g-dev
+          rustup toolchain install 1.90.0 --profile minimal --component rustfmt
+      - name: Build and check live C reference against saved golden outputs
+        run: |
+          make -C work/ci-vanilla -j2 CC=gcc-13 CFLAGS='-O2 -ffp-contract=off -Wno-unused-function' LIBS='-lm -lz'
+          python3 bench/ci_strict_reference.py --reference work/ci-vanilla/psmc
+      - name: Test Rust strict output and structured components
+        run: |
+          cargo fmt --all -- --check
+          cargo test --release --locked --offline --workspace

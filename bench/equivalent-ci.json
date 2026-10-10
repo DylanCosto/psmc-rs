@@ -1,0 +1,19 @@
+{
+  "status": "local_reference_check_passed",
+  "live_C_cases": 4,
+  "rust_golden_combinations": 16,
+  "hosted_workflow": "not_run; no Git remote configured",
+  "files": {
+    ".github/workflows/strict.yml": "f44f47dd3a31befb8f0f0c5c372cd889843b6edb6a23c0614785fda58975d386",
+    "bench/ci_strict_reference.py": "58faad5e4fed2c32f2143172d5266d4c14cbd8ebe0639f08045c0be11c1e022e"
+  },
+  "local_reference": "work/equivalent/c-baseline/o2",
+  "local_reference_sha256": "cd09821ecb2822f5d18c4e3e06e303dbb47cf50356e2c0d31ac65cb4dd0f5304",
+  "log_sha256": "fc6e5c94d5c1f168b2378494a5ec09c1f5d9a0cef15313e92a5647cadcbd40ef",
+  "checkout_action": {
+    "version": "v7",
+    "commit": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+    "source": "https://github.com/actions/checkout"
+  },
+  "reference_commit": "82fa2ada83ee463fe1251b562ae3d60e82d7ad6a"
+}

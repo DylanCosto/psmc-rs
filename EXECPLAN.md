@@ -1055,3 +1055,98 @@ The opportunity assessment and all outcomes are in
 docs/significant-optimization-recheck.md. Evidence, runners and derivations are
 committed together. No candidate or run remains pending for this second look;
 no claim of global optimality or untested-hardware performance is made.
+
+## Structured equivalent mode — 2026-10-10
+
+User explicitly authorizes building and validating structured mode while keeping
+strict available. Preserve pre-existing user edits: CPU default, package-derived
+version text and C golden tests. Contract and predeclared gates are in
+`docs/equivalent-mode.md`; the strict contract remains unchanged.
+
+- [x] Implement guarded structured model, messages and Q with original full counts.
+- [x] Validate isolated algebra, invalid-candidate recovery and strict regressions.
+- [x] Measure the two selected C builds on HG001/HG002 and paired bootstrap samples (resource amendment below).
+- [x] Measure full equivalent fits and fixed paired throughput; publish limitations.
+
+Decision: retain full transition counts and the full Q normalizer. Triangular
+margins do not determine the entropy of the full expected-count matrix. Thus the
+initial structured E-step still has quadratic count work. Factor positivity is
+checked rather than assumed; diagnostic snapshots reject equivalent mode initially.
+
+Progress: implemented opt-in equivalent CPU factors, linear forward/backward scans,
+linear candidate model/Q, full optimized transition counts, matrix synchronization
+before output, factor eligibility checks and literal fallback counters. Component
+coverage spans 2–64 states, masks, short records, explicit times, divergence,
+cache multiplicity and invalid candidate recovery; a 300-candidate parameter sweep
+passes the declared model/Q tolerance. Strict golden and mode CLI tests pass.
+
+Surprises: C compilation first failed because system zlib headers are absent;
+reused the already-extracted local headers and runtime library, retaining the
+failed log. The historical strict validation runner requires CPU pinning; its
+first unpinned invocation exited before tests and was rerun pinned. Its old
+CPU `reject_equivalent_mode` availability check is now obsolete and will be
+reported separately, not classified as a numerical regression.
+
+Preliminary full fits: original HG001 curve max difference ~1.53e-5 log units,
+but bootstrap 13 changes its earliest grouped lambda from 845981 to 657562,
+a ~22% difference (0.252 log units), despite very close theta/rho/likelihood.
+This fails the predeclared exploratory curve screen. Do not relax the threshold
+or claim scientific equivalence; retain opt-in experimental status while completing
+the compiler-sensitivity, held-out HG002 and performance measurements.
+
+Completed Rust validation: all original and 30 paired bootstrap fits for HG001 and
+HG002 in both modes (124 fits), plus 24 scheduling/cache control fits. HG002 maximum
+bootstrap curve change is ~0.001057 log units (~0.11%); the HG001 outlier persists.
+The strict regression has 338 passes and exactly two obsolete CPU availability
+rejections; all ten internal traces remain exact, with the original 27 finite /
+3 pathological synthetic bootstrap classification on all strict backends.
+
+A further same-parameter diagnostic checks 186 printed human-fit parameter
+snapshots on a synthetic 2048-bin sequence, including the sensitive replicate.
+All transition, message, count and Q comparisons pass the predeclared tolerances;
+maximum relative Q error is 2.22e-13. No tolerance has been changed.
+
+Resource amendment: chose the explicitly authorized two-build C sensitivity panel
+(O2 contraction-off versus O2 native/FMA, 0 versus 15 verified FMA instructions).
+Stopped the additional O0 HG001 diagnostic before completion and retained its
+partial output. Full selected-build fit sizes and 30 bootstraps remain unchanged.
+The initial baseline script and failed-header logs remain preserved; the resumption
+runner avoids rerunning completed controls. This does not rescue any failed gate.
+
+All 124 selected C sensitivity fits are complete. All 62 strict human outputs
+match standard C exactly outside the version line. Final high-precision parameter
+analysis: HG001 passes 27/31 exploratory screens and HG002 passes 31/31; only
+7/31 and 6/31 meet every per-fit compiler-envelope criterion. Maximum curve
+errors are 0.251957 and 0.001057 log units. Maximum error relative to pointwise
+bootstrap SD is 5.18% and 0.0694%; no numerical-equivalence qualification.
+
+Benchmark repair: the first attempt stopped during its first strict warmup when
+the immutable-binary hash guard fired. GNU objcopy rewrites its input ELF when no
+separate output file is given, even for --dump-section. Its machine-code sections
+matched, but the container bytes changed. Preserved the attempt and rewritten
+executables, restored the tested archive from the hash-matching strict regression
+freeze, and rebuilt the target. The checker now supplies a distinct output ELF
+and verifies the input hash remains unchanged. Restarted the fixed warmup/three-
+pair protocol; no measured pairs had run, and no thresholds changed. Details are
+in bench/equivalent-repairs.json.
+
+Completion: fixed performance gate passes with 45.2498s strict versus 32.7541s
+structured medians (1.3815x; 27.6% less wall and 30.0% less CPU), three of three
+pair wins and similar ~1.25 GiB RSS. The v0.4.1 controls, 43.97/47.30s, overlap
+new strict timings. All 300 acceptance/control outputs reproduce validated
+numerical results and all mode-pair draws are independently replayed.
+
+Final audit passes: 45 debug and 45 release tests (four GPU hardware tests not run),
+338 applicable strict checks, ten exact traces, 62 exact C/strict human outputs,
+124 Rust human fits, 24 scheduling controls and 186 trajectory component probes.
+C sources/headers match the original pinned archive. Added a pinned GitHub Actions
+workflow for fresh-C/golden/Rust checks; its four live-C cases pass locally.
+Hosted CI is not run because no Git remote is configured.
+
+Installed CPU v0.5.0 with the user's CPU default and strict numerical default;
+preserved CPU v0.4.1 and the optional CUDA binary. Equivalent remains explicitly
+experimental because its full-fit numerical gates fail. docs/equivalent-mode-report.md
+and bench/equivalent-audit.json record the complete results. No inference jobs or
+candidate experiments remain pending. Next permitted work is a separately justified
+scientific-equivalence contract or broader validation; no default-mode switch is
+justified by this milestone.

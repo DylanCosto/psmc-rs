@@ -1,0 +1,125 @@
+{
+  "status": "completed",
+  "environment": {
+    "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)\nbinary: rustc\ncommit-hash: 1159e78c4747b02ef996e55082b704c09b970588\ncommit-date: 2025-09-14\nhost: x86_64-unknown-linux-gnu\nrelease: 1.90.0\nLLVM version: 20.1.8\n",
+    "cargo": "cargo 1.90.0 (840b83a10 2025-07-30)\n",
+    "libc": "glibc 2.39",
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12600K"
+  },
+  "tests": {
+    "debug": {
+      "passed": 45,
+      "failed": 0,
+      "ignored_hardware_cuda": 4,
+      "log_sha256": "58acbab6ba4d3bbddb7e9b2501e4b86fa85251533cbd21e353b741b98ec7b9a7"
+    },
+    "release": {
+      "passed": 45,
+      "failed": 0,
+      "ignored_hardware_cuda": 4,
+      "log_sha256": "7205b55eb9d21a687a5fee7f1ff55c8f4fc119fd86fe1d391b717ba9945953ff"
+    }
+  },
+  "component_report_sha256": "882d1853491eb9f85a8f4c24fef220854fbed4df05287b205282aa3681d99bec",
+  "repairs_report_sha256": "27e9af142ea84ace131505d630b44909f26f82b7ddedba20cc3bf6896d1d66a4",
+  "ci_report_sha256": "adb482fb192fa8930d6aec526d7b42a67c8d0821956c4a770419239f24ca3e5f",
+  "decision": "retain_strict_default_and_opt_in_experimental_equivalent",
+  "strict_checks_passed": 338,
+  "obsolete_availability_checks": [
+    {
+      "backend": "cpu",
+      "case": {
+        "name": "reject_equivalent_mode",
+        "status": "failed",
+        "error": "Expected clean nonzero rejection, got 0"
+      }
+    },
+    {
+      "backend": "scalar",
+      "case": {
+        "name": "reject_equivalent_mode",
+        "status": "failed",
+        "error": "Expected clean nonzero rejection, got 0"
+      }
+    }
+  ],
+  "ordered_internal_traces": 10,
+  "full_human_strict_C_outputs": 62,
+  "C_sensitivity_fits": 124,
+  "human_rust_fits": 124,
+  "repeated_HG001_performance_fits": 240,
+  "v041_control_fits": 60,
+  "numerical_equivalence_qualified": false,
+  "performance_gate": true,
+  "sources": {
+    "Cargo.toml": "ead73a1217ee74fd5ad2b1b49568d42260deffac244ff312174bb7dd6b2d317d",
+    "Cargo.lock": "f843908545f670caa9bdb6cee5ac42636c5ece573ec61529d835cca93df6dddf",
+    "crates/psmc-cuda/src/tests.rs": "753fa30d7727174bc5fab8c0246a6e6b5ef71686d4313208ea2f6c8129f9dd48",
+    "crates/psmc-cuda/src/lib.rs": "362d860fee1b34ebf8a336373efbad7f51f24ff663f474dff4a43f6c0e3e9dae",
+    "crates/psmc-cuda/src/driver.rs": "c6f3c0a2fde681394206d5757c4a8b9162c071443ad001209e5b961b8203642f",
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/structured.rs": "2e8b6068924eb47909e49afabe5fdc9fc059fe8ffc97ea06a854747b810703d8",
+    "crates/psmc-core/src/em.rs": "6691cb98393bbb49996dd59698342576c9b3546cb83642870450ba0160305f0b",
+    "crates/psmc-core/src/lib.rs": "57902b19bdd8d420667fce43842771440094f7357d95d34b94553a5863c92cd0",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+    "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+    "crates/psmc-cli/tests/equivalent.rs": "5f60fc13104c705e1d06d2710846e448eec64ae84eacfdab6317d5d0d9c010ca",
+    "crates/psmc-cli/tests/golden.rs": "60d75a67cf486d7ef6fed1cb769282946e7143e2e747e50ef0187e9de9f1cd40",
+    "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+    "crates/psmc-cli/src/main.rs": "3037273e095d20af05a783fc481c27d632f81307641e5f49cf00b5b0ad8aa738",
+    "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+    "crates/psmc-cli/src/batch.rs": "ae97a2a5929edcb8b77f0c0b99fea5892c2c897136200f715abe0cb1f6ce26b5",
+    "crates/psmc-cli/src/legacy.rs": "319ace6fadd3141d1fc8cf9448da86cb94bf79c07f4e4cddc3976326fbf5b013",
+    "crates/psmc-cpu/examples/equivalent_components.rs": "5514baf8d3e4d4143558b7b6e576807ee8fcbf9363affe51b3bb4354485a6e44",
+    "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+    "crates/psmc-cpu/examples/cuda_fixture.rs": "11db2adbb88fc00f23ed2f3fe4c4092399e400cb1903bce55d2888f23886aa33",
+    "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+    "crates/psmc-cpu/src/tests.rs": "ea2a8ac0c418eca0a6f3da42aa4d0e7bfae87ec364a7a0b6372318173cbcbccb",
+    "crates/psmc-cpu/src/equivalent.rs": "49522b31a2dee94f9d500b7850ea40f041a56779a3e2776520ecc67772a52416",
+    "crates/psmc-cpu/src/simd.rs": "2373e1011971183f203597557d5211997cd20db7edc292c7c0aefe4efca39842",
+    "crates/psmc-cpu/src/lib.rs": "9513e09f27bbf79fd92a7a2e7dcf2fd2d1a6a3acce1d35b1c91f8c36cfa07df0",
+    "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179",
+    "crates/psmc-cuda/Cargo.toml": "021e919aba486f13327947010905bd551383166eee41015563714dcbe672b1e8",
+    "crates/psmc-core/Cargo.toml": "554c9f223b12aa93e03a5f897c334c6adcb53febe0d40dff3c372a08b1d50039",
+    "crates/psmc-io/Cargo.toml": "409bcf90d4bdfd0ba961ec986245e6d884efd1daf4b478a13d3ebc8801e7fe8c",
+    "crates/psmc-cli/Cargo.toml": "e1f55a707a8e1797a869d96efb187d55ce5f69c7f9a91985037aad2058f14acf",
+    "crates/psmc-cpu/Cargo.toml": "fd6caeebb5ea1318c13b3817dc16e16c36bcdbeba1fbc9a02f05d49186d9ef91"
+  },
+  "reports": {
+    "bench/equivalent-c-baseline.json": "aacd86d1b140058326ec3fac68f69c6267debeb24d4f724d9e25faa38e7d7e9a",
+    "bench/equivalent-validation.json": "c63ac5ae8db928777ab97b4634dc122ffc5a7d9f89106ef8fa73d5bcbd87676c",
+    "bench/equivalent-analysis.json": "349564608c320b557d6ed0fdf566f4d4429ca3dd62261c71c86d0a66533b0ee3",
+    "bench/equivalent-performance.json": "061f41f5e825f221e8796b0f8e34f8082b6a8b5df27479f73899ed057e2dae67",
+    "bench/equivalent-strict-regression.json": "d3c3a57dd28a711e12a6ebe98676818c6ecc79011c690127078ff8fd2c9b785f"
+  },
+  "runners": {
+    "bench/equivalent_benchmark.py": "793640bd614a563ad23848cb27d71c3bd45e101f72003121d6c985080e26d74d",
+    "bench/equivalent_c_resume.py": "2c1211c3faaf5cfc9de280b9133cfddb5bb66d50980f08af1d4495f68b624144",
+    "bench/equivalent_audit.py": "cb11e2fdfc37488e1775961151e475d1c3aab61487fefb5140d44cdad5408f88",
+    "bench/equivalent_analysis.py": "0aff9994ca4784e6c6eda27be60cc5dfff6437f64c18cafcb902c70cecd734fc",
+    "bench/equivalent_validate.py": "2246ad311539580733f753a695dafc2a472fd6033bfc7f4fd89ff5fe9e699ec3",
+    "bench/equivalent_c_baseline.py": "2b7cf044fa3f57991a4a8aca3646c26fa560182db57cd3b306e03c064d44dfaf"
+  },
+  "validation_binary": {
+    "path": "work/equivalent/psmc-rs-validation",
+    "sha256": "877e7b55d1f0f0882384e5ed257b887de0fbb0c9247a88b1cc11ff142fa6d152"
+  },
+  "final_binary": {
+    "path": "target/release/psmc-rs",
+    "sha256": "46f55f1fcde1ff3064c5919c4b8dbd9806747c5c0309e4015b4c4e38f826e52a"
+  },
+  "machine_code_unchanged_after_test_and_documentation_additions": true,
+  "base_commit": "f86333f4c9b65934ce6e9fcb2ebef86aac58748f",
+  "limitations": [
+    "Experimental mode has failed at least one full-fit screen; do not claim proven scientific equivalence.",
+    "Full transition counts remain quadratic in state count.",
+    "No new CUDA hardware, ARM/NEON, other libm/platform or private whole-genome validation.",
+    "Concurrent correctness-run timings are not performance evidence.",
+    "Printed decimal precision limits empirical zero-difference claims."
+  ]
+}

@@ -163,7 +163,7 @@ impl Workspace {
         prepared: &PreparedModel<'_>,
         observations: &[u8],
     ) -> (&Messages, &Counts) {
-        self.evaluate_impl(prepared, observations, true)
+        self.evaluate_impl(prepared, observations, true, None)
     }
 
     /// Strict CPU messages and initial/emission counts for the optional CUDA
@@ -173,7 +173,20 @@ impl Workspace {
         prepared: &PreparedModel<'_>,
         observations: &[u8],
     ) -> (&Messages, &Counts) {
-        self.evaluate_impl(prepared, observations, false)
+        self.evaluate_impl(prepared, observations, false, None)
+    }
+
+    /// Experimental messages using factors from the same parameter snapshot and
+    /// state count as `prepared`. The caller must materialize those factors into
+    /// the model before preparing it; mixing snapshots is not a supported input.
+    /// EquivalentBackend owns both lifetimes and performs that synchronization.
+    pub fn evaluate_structured(
+        &mut self,
+        prepared: &PreparedModel<'_>,
+        observations: &[u8],
+        factors: &psmc_core::structured::StructuredModel,
+    ) -> (&Messages, &Counts) {
+        self.evaluate_impl(prepared, observations, true, Some(factors))
     }
 
     fn evaluate_impl(
@@ -181,6 +194,7 @@ impl Workspace {
         prepared: &PreparedModel<'_>,
         observations: &[u8],
         transitions: bool,
+        factors: Option<&psmc_core::structured::StructuredModel>,
     ) -> (&Messages, &Counts) {
         assert!(!observations.is_empty(), "HMM sequence must be nonempty");
         assert!(
@@ -201,6 +215,11 @@ impl Workspace {
                 "AVX layout required; use workspace.prepare(model)"
             );
         }
+        let mut scan = if factors.is_some() {
+            vec![0.0; n]
+        } else {
+            Vec::new()
+        };
         let messages = &mut self.messages;
         messages.length = length;
         // Avoid amortized doubling when a later bootstrap block is slightly larger.
@@ -234,7 +253,13 @@ impl Workspace {
             let previous = &earlier[(u - 1) * n..];
             let current = &mut later[..n];
             let emission = &model.emission[observations[u - 1] as usize * n..][..n];
-            if let Some(avx) = self.avx {
+            if let Some(factors) = factors {
+                factors.forward(current, previous, emission, &mut scan);
+                sum = 0.0;
+                for &value in current.iter() {
+                    sum += value;
+                }
+            } else if let Some(avx) = self.avx {
                 avx.forward(current, previous, &model.transition, emission);
                 sum = 0.0;
                 for &value in current.iter() {
@@ -274,7 +299,10 @@ impl Workspace {
             let next = &later[..n];
             let product =
                 &prepared.emission_transition[observations[u] as usize * square..][..square];
-            if let Some(avx) = self.avx {
+            if let Some(factors) = factors {
+                let emission = &model.emission[observations[u] as usize * n..][..n];
+                factors.backward(current, next, emission, messages.scales[u], &mut scan);
+            } else if let Some(avx) = self.avx {
                 let transpose = &prepared.emission_transition_transpose
                     [observations[u] as usize * square..][..square];
                 avx.backward(current, next, transpose, messages.scales[u]);
@@ -391,3 +419,6 @@ fn reserve_messages(buffer: &mut Vec<f64>, needed: usize) {
         buffer.reserve_exact(needed - buffer.len());
     }
 }
+
+pub mod equivalent;
+pub use equivalent::EquivalentBackend;

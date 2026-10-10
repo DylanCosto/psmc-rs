@@ -342,7 +342,8 @@ pub fn run(options: Options) -> Result<(), Box<dyn std::error::Error>> {
         .collect::<Vec<_>>()
         .join(",");
     let manifest = format!(
-        "{{\"version\":1,\"cuda_buffer_budget_mib\":{},\"cuda_worker_buffer_bytes\":{device_worker_bytes},\"backend\":{},\"seed\":{seed},\"input\":{},\"input_fingerprint_fnv1a64\":{},\"requested_workers\":{},\"workers\":{workers},\"memory_mib\":{},\"input_bytes\":{input_bytes},\"estimated_metadata_bytes\":{metadata_bytes},\"estimated_worker_bytes\":{estimate},\"memory_policy\":\"conservative admission estimate, not an OS RSS hard limit; input loading precedes admission\",\"task_order\":{},\"iterations\":{},\"states\":{},\"source_records\":[{records}],\"replicates\":[{}],\"failed_replicates\":{failed},\"nonfinite_replicates\":{nonfinite}}}\n",
+        "{{\"mode\":{},\"version\":1,\"cuda_buffer_budget_mib\":{},\"cuda_worker_buffer_bytes\":{device_worker_bytes},\"backend\":{},\"seed\":{seed},\"input\":{},\"input_fingerprint_fnv1a64\":{},\"requested_workers\":{},\"workers\":{workers},\"memory_mib\":{},\"input_bytes\":{input_bytes},\"estimated_metadata_bytes\":{metadata_bytes},\"estimated_worker_bytes\":{estimate},\"memory_policy\":\"conservative admission estimate, not an OS RSS hard limit; input loading precedes admission\",\"task_order\":{},\"iterations\":{},\"states\":{},\"source_records\":[{records}],\"replicates\":[{}],\"failed_replicates\":{failed},\"nonfinite_replicates\":{nonfinite}}}\n",
+        string(&options.mode),
         options.cuda_memory_mib,
         string(&options.backend),
         string(&options.input),

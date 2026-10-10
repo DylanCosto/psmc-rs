@@ -62,3 +62,14 @@ crates/psmc-cuda/README.md. Every multiply/add uses explicit round-to-nearest f6
 with no contraction, altered site order or tile partial-sum reduction. CPU model,
 messages, initial/emission counts, log-likelihood, normalizer and optimizer stay
 unchanged. CUDA runtime failures are errors; no equivalent-mode substitution.
+
+## Experimental equivalent extension — explicitly authorized 2026-10-10
+
+`--mode strict` retains every contract above and remains the numerical default.
+`--mode equivalent --backend cpu` opts into real-arithmetic triangular factors
+with different binary64 grouping. See `docs/equivalent-mode.md` for the derivation,
+predeclared component tolerances and empirical full-fit gates. Full expected
+transition counts, original entropy normalizer, model, optimizer, observations and
+iteration count remain. Guarded ineligible candidates use literal dense model/Q
+calculations and are counted in `structured_fallbacks`. This is explicitly not a
+strict-output claim, and the mode name is not evidence of scientific equivalence.

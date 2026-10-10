@@ -46,3 +46,5 @@ impl Sequence {
         self.observations.iter().filter(|&&x| x == 1).count()
     }
 }
+
+pub mod structured;
