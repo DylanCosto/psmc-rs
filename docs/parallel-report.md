@@ -159,7 +159,7 @@ appropriate worker/affinity matrix and does not inherit these speed claims.
 Changes comprise benchmark/validation/generator runners and reports, the scheduling
 derivation, this report, README, EXECPLAN, packaging metadata and the evidence
 archive. No production crate changes or version bump are warranted. Source,
-experimental test, derivation and timings are committed together; package manifests
+experimental test, derivation and timings share commit `65d1d87`; package manifests
 and every-member checksums identify the portable delivery independently of Git.
 The new `../psmc-rust-parallel.zip` preserves all prior archives. The rejected
 candidate is evidence only; `bin/psmc-rs` is the retained release.

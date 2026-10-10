@@ -483,7 +483,7 @@ and independent replicate workers; no nested numerical pools or subagents.
 - [x] Record wall/CPU time, sampled aggregate process RSS, actual worker admission,
   source/input hashes and shared-host variability. Distinguish scaling over serial
   Rust from advantage over already-parallel vanilla.
-- [ ] Commit source, proof/tests and timing evidence together; provide a measured
+- [x] Commit source, proof/tests and timing evidence together; provide a measured
   full-core run configuration and verified package while preserving old artifacts.
 
 Real user inputs remain unavailable. No scientific model changes, within-sequence
@@ -506,5 +506,16 @@ was not a useful queue priority on these workloads; the reason is not proven.
 
 See docs/parallel-report.md for commands, hashes, CPU/wall/RSS ranges, validation,
 limits and the 16-worker example. Full K64 parallel timings and production data
-remain future work. The next gate is delivery integrity and the separate package;
-old releases must remain intact.
+remain future work. Delivery integrity passes. The first separate package verified all 31,117 members
+by CRC and SHA-256; old releases remain intact.
+
+### Multicore delivery completion
+
+Experimental source generator/test, derivation, validation and timings are
+committed together in `65d1d87`. The unchanged production executable and all
+source hashes pass bench/parallel_delivery_check.py. The milestone is complete: the
+16-worker configuration is documented, the slower candidate is rejected, and
+the distinct full-core package preserves prior archives. Packaging metadata and
+this completion record are committed separately, then the final package is
+regenerated and every member verified again. Its sibling .sha256 records the
+final digest without a self-referential embedded archive hash.

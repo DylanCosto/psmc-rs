@@ -1,0 +1,34 @@
+{
+  "archive_name": "psmc-rust-parallel.zip",
+  "archive_root": "psmc-rs",
+  "scope": "Unchanged production 0.3.1, full-core measurements and validation, rejected scheduler source/binary evidence, prior release executables, fixtures and historical ordinary raw evidence.",
+  "excluded_directory_names": [
+    ".git",
+    "__pycache__",
+    "target",
+    "work"
+  ],
+  "excluded_suffixes": [
+    ".pyc",
+    ".jsonl.gz"
+  ],
+  "excluded_test_symlinks": [
+    "bench/phase-2-validation/20261010T045322201860Z/cpu-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/phase-2-validation/20261010T045322201860Z/dense-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/phase-2-validation/20261010T045711704482Z/cpu-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/phase-2-validation/20261010T045711704482Z/dense-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/phase-3-validation/20261010T052725318411Z/cpu-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/phase-3-validation/20261010T052725318411Z/dense-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/phase-3-validation/20261010T052725318411Z/scalar-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/phase-3-validation/20261010T070508408256Z/cpu-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/phase-3-validation/20261010T070508408256Z/dense-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/phase-3-validation/20261010T070508408256Z/scalar-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/raw/phase1-final-tests/safety-dangling_output_snapshot_symlink/dangling-alias.psmc"
+  ],
+  "omitted_snapshot_manifest": "bench/parallel-snapshot-manifest.json",
+  "omitted_snapshot_files": 81,
+  "omitted_snapshot_bytes": 2861095437,
+  "checksums": "CHECKSUMS.sha256 covers every packaged file except itself",
+  "runner": "bench/package_parallel.py",
+  "historical_archives": "All earlier zip files, including the CPU campaign, are neither read nor replaced by this runner."
+}
