@@ -1,9 +1,9 @@
 # PSMC in Rust — SIMD and parallel bootstraps
 
 This Rust workspace implements the original PSMC model, full expected counts,
-Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.3.2
-adds an ordered, register-tiled 64-state AVX count kernel and avoids excess
-message-buffer capacity growth. Each fit uses one numerical
+Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.3.3
+widens the ordered 64-state AVX message and count kernels to 32 independent
+destinations. The eight-site count tiles and bounded message capacity remain. Each fit uses one numerical
 thread; independent bootstrap fits can use all available CPUs. Reusable
 buffers, exact repeated-block caching and the dense oracle remain available. Double precision, summation order,
 sequence boundaries and the statistical method are preserved.
@@ -12,8 +12,11 @@ Use `--backend cpu` for the optimized path. The default remains `dense`, the
 retained scalar oracle. The [parallel report](docs/parallel-report.md) validates
 16-worker synthetic batches against already-parallel vanilla. The
 [human-input report](docs/hg-benchmark-report.md) adds a public HG001/NA12878
-chromosome 22 test with full 64-state, 30-iteration fits. The [count-kernel report](docs/counts-optimization.md) records the latest matched
-measurements, exact comparisons and limitations. The [CPU campaign report](docs/cpu-campaign-report.md)
+chromosome 22 test with full 64-state, 30-iteration fits. The [CPU headroom report](docs/cpu-next-optimization.md)
+records v0.3.3: 2.1% lower median human batch wall time and 2.8% lower CPU time
+versus v0.3.2 across six paired measurements, with overlapping ranges. It also
+validates a larger public HG002 chromosome 1 input exactly against vanilla PSMC.
+The [count-kernel report](docs/counts-optimization.md) retains the v0.3.2 measurements. The [CPU campaign report](docs/cpu-campaign-report.md)
 retains the previous kernel campaign evidence. The [Phase 3a report](docs/phase-3-simd-report.md)
 retains the previous SIMD release evidence. The pinned external reference is
 [`lh3/psmc` at 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a](https://github.com/lh3/psmc/tree/82fa2ada83ee463fe1251b562ae3d60e82d7ad6a).
@@ -32,8 +35,8 @@ target/release/psmc-rs --backend cpu --seed 42 -p '4+5*3+4' -N 30 \
   -t 15 -r 4 -I 0 -o work/example.psmc tests/fixtures/workload.psmcfa
 ```
 
-The supplied executable is `bin/psmc-rs`; `bin/psmc-rs-v0.3.1` preserves the
-previous CPU release; `bin/psmc-rs-phase3a` preserves the earlier SIMD executable;
+The supplied executable is `bin/psmc-rs`; `bin/psmc-rs-v0.3.2` preserves the
+previous release, and `bin/psmc-rs-v0.3.1` the earlier CPU release; `bin/psmc-rs-phase3a` preserves the earlier SIMD executable;
 `bin/psmc-rs-phase2` preserves the prior
 optimized CPU release and `bin/psmc-rs-phase1` the original dense release. Rust 1.90.0 is pinned and must already be installed for
 an offline build. There are no registry dependencies. The tested stack is
@@ -76,7 +79,8 @@ bin/psmc-rs bootstrap --backend cpu --replicates 30 --workers 16 \
 ```
 
 The current full-core configuration uses **16 workers** on this tested 16-logical-CPU
-host. Omit `--workers` to request the available CPU count on another machine;
+host. The v0.3.3 campaign retested 8/10/16 workers: 16 had the shortest elapsed
+time, while 10 physical-core workers used less total CPU time. Omit `--workers` to request the available CPU count on another machine;
 memory admission may reduce it. Single fits remain single-threaded. The parallel
 milestone validates the existing 0.3.1 queue; the slower experimental scheduling
 change was rejected. Historical SIMD measurements used one worker.

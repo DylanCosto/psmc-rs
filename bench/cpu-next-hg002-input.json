@@ -1,0 +1,102 @@
+{
+  "status": "passed",
+  "runner_sha256": "c5bb101ce22a53424e033b134c705a575a78833a166aff337e3a62ea14d53f35",
+  "source_urls": {
+    "vcf": "https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/AshkenazimTrio/HG002_NA24385_son/NISTv4.2.1/GRCh38/HG002_GRCh38_1_22_v4.2.1_benchmark.vcf.gz",
+    "bed": "https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/AshkenazimTrio/HG002_NA24385_son/NISTv4.2.1/GRCh38/HG002_GRCh38_1_22_v4.2.1_benchmark_noinconsistent.bed",
+    "readme": "https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/AshkenazimTrio/HG002_NA24385_son/NISTv4.2.1/README_v4.2.1.txt"
+  },
+  "source_files": {
+    "work/cpu-next/hg002/benchmark.vcf.gz": "adb4d4a50048aa13353a06b84fcfcbca09a5d17525efaa4cea44f8822e81175c",
+    "work/cpu-next/hg002/callable.bed": "fba9a57c36ec88e5d14ea3e259c8866c7935f4998d3ec0fa2d6c3962da5b5575",
+    "work/cpu-next/README_v4.2.1.txt": "70e7d8cd54119c40e1be946574ce1b91db835af594809466bcf7d3727eaa9699"
+  },
+  "upstream_checksum": "not supplied for these VCF/BED files; local SHA256 and gzip CRC verified",
+  "reference_converter": {
+    "path": "work/vanilla/utils/fq2psmcfa",
+    "sha256": "ebb10aab193413b8c910ecd38760edb62f49c896c21e362fe7239eef465bbdeb",
+    "source_commit": "82fa2ada83ee463fe1251b562ae3d60e82d7ad6a"
+  },
+  "sample": "HG002",
+  "chromosome": "chr1",
+  "assembly": "GRCh38",
+  "bases": 248956422,
+  "callable_bed_bases": 215123482,
+  "encoded_base_counts": {
+    "N": 34368276,
+    "A": 214429062,
+    "M": 159084
+  },
+  "variant_counts": {
+    "records": 319349,
+    "masked_variant_records": 47826,
+    "heterozygous_snv_records": 164157,
+    "called_het_bases": 159084
+  },
+  "output": {
+    "path": "work/cpu-next/hg002/HG002_GRCh38_chr1.psmcfa",
+    "sha256": "16d0f60777857fc724d46464da84c9b46c0755d3dbd7f678dfc88f1caed9bc14",
+    "command": [
+      "work/vanilla/utils/fq2psmcfa",
+      "work/cpu-next/hg002/HG002_GRCh38_chr1.states.fa"
+    ],
+    "pseudo_state_input_sha256": "04d40c4ebd7de95d3b7ccd815ba3fb54707a660915a99b526a525fcc8e1ca846",
+    "bins": 2489565,
+    "counts": {
+      "N": 307821,
+      "T": 2038125,
+      "K": 143619
+    },
+    "independent_binning_exact": true
+  },
+  "tests": {
+    "status": "passed",
+    "fixtures": [
+      {
+        "path": "work/cpu-next/hg002/tests/thresholds.psmcfa",
+        "sha256": "18baadacde425fe7a75ac7d4acb7508b22c1f9dd5b13745938bbd8ea58eff33a",
+        "command": [
+          "work/vanilla/utils/fq2psmcfa",
+          "work/cpu-next/hg002/tests/thresholds.states.fa"
+        ],
+        "pseudo_state_input_sha256": "ac3bd266f18a988e5d273dc4d63b6e9fa81f055cd5888360bf084df1992495df",
+        "bins": 103,
+        "counts": {
+          "T": 102,
+          "N": 1
+        },
+        "independent_binning_exact": true
+      },
+      {
+        "path": "work/cpu-next/hg002/tests/coordinates.psmcfa",
+        "sha256": "b0bcc8897b87733114b661549e606fe8d9eacc05787be8a1102e79e6b0b894a0",
+        "command": [
+          "work/vanilla/utils/fq2psmcfa",
+          "work/cpu-next/hg002/tests/coordinates.states.fa"
+        ],
+        "pseudo_state_input_sha256": "b27aaa9c3923a8cfed2bac924d746db4db6e8f30fcc62bf696843967826e9335",
+        "bins": 111,
+        "counts": {
+          "K": 2,
+          "T": 107,
+          "N": 2
+        },
+        "independent_binning_exact": true
+      }
+    ],
+    "malformed_bed_rejected": 3
+  },
+  "contract": [
+    "GIAB v4.2.1 README explicitly includes confident homozygous reference calls; BED and VCF used together.",
+    "Only inside high-confidence BED: A represents a homozygous state, M a called diploid PASS heterozygous simple SNV, N missing. Letters are state placeholders, not actual reference bases.",
+    "Non-simple-SNV, non-PASS or missing/invalid diploid genotype records mask the reference span plus five bases each side. All exclusions precede heterozygous assignments.",
+    "All chromosome coordinates and missing regions retained in one HMM record; no artificial internal boundaries.",
+    "Pinned fq2psmcfa default 100-base bins: N if >90 missing, else K if a called heterozygote, else T. Last partial bin still uses denominator 100, including legacy all-missing-tail behavior.",
+    "Public GIAB HG002 data; local benchmark-only intermediate files, no raw genome redistribution."
+  ],
+  "limitations": [
+    "Single chromosome of one individual, not whole-genome or user data.",
+    "Confidence/variant exclusions induce ascertainment; this is a compatibility/performance fixture, not a recommended demographic analysis pipeline.",
+    "VCF header fileDate is not release date; source is explicitly pinned to NIST v4.2.1."
+  ]
+}

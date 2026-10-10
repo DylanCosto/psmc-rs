@@ -1,0 +1,146 @@
+{
+  "status": "passed",
+  "decision": "promote",
+  "runner_sha256": "d38fb9e885e3bbc2ae60478c7ce2c35c7a7d998d53e7753c1f8b999907d05d78",
+  "source_matches_expected_release": true,
+  "acceptance_criteria": {
+    "wall_at_least_two_percent": true,
+    "cpu_median_improves": true,
+    "wall_positive_pairs": true,
+    "cpu_positive_pairs": true
+  },
+  "candidate_sha256": "f0c3282e87e3eed0cc31c63a438429c19ad47cedec4c56c1150cc8520838e305",
+  "baseline_sha256": "24d47084c2914aa44109040b7f5593efb7353621cb0d36ccdb28cd1a060f4c83",
+  "outputs_rechecked": {
+    "profile": 12,
+    "screen": 72,
+    "combination": 12,
+    "scaling": 180,
+    "confirmation": 240,
+    "batches": 720,
+    "hg001-unsplit": 2,
+    "hg002-unsplit": 3
+  },
+  "total_outputs_rechecked": 1241,
+  "unit_tests": [
+    35,
+    35
+  ],
+  "regression_cases": 340,
+  "regenerated_source_matches": [
+    "counts32s8",
+    "counts32s4",
+    "messages32",
+    "noreserve",
+    "dispatch",
+    "combined"
+  ],
+  "effects": {
+    "human": {
+      "wall_reduction_percent": 2.0874028370678532,
+      "throughput_ratio": 1.021319042672255,
+      "cpu_reduction_percent": 2.8111430304596063
+    },
+    "original": {
+      "wall_reduction_percent": -0.8988009772536776,
+      "throughput_ratio": 0.9910920549248519,
+      "cpu_reduction_percent": -0.8882936445085754
+    },
+    "model-based": {
+      "wall_reduction_percent": 0.3588505905785633,
+      "throughput_ratio": 1.0036014296573805,
+      "cpu_reduction_percent": -2.7311778661947894
+    }
+  },
+  "pooled_human_summary": {
+    "baseline": {
+      "wall_seconds": {
+        "median": 51.28871279700252,
+        "minimum": 49.705025050003314,
+        "maximum": 53.18508015200496
+      },
+      "cpu_seconds": {
+        "median": 674.9525120000001,
+        "minimum": 670.0830449999999,
+        "maximum": 682.175933
+      },
+      "sampled_aggregate_rss_kib": {
+        "median": 1316392.0,
+        "minimum": 1258160,
+        "maximum": 1316804
+      }
+    },
+    "candidate": {
+      "wall_seconds": {
+        "median": 50.218110750982305,
+        "minimum": 48.711772871989524,
+        "maximum": 51.697087788023055
+      },
+      "cpu_seconds": {
+        "median": 655.9786315,
+        "minimum": 647.8828999999998,
+        "maximum": 690.1135180000001
+      },
+      "sampled_aggregate_rss_kib": {
+        "median": 1316272.0,
+        "minimum": 1307728,
+        "maximum": 1316468
+      }
+    }
+  },
+  "paired_human_effects": [
+    {
+      "block": "primary",
+      "repeat": 1,
+      "wall_reduction_percent": -2.0684247235311037,
+      "cpu_reduction_percent": 3.3130438332460765
+    },
+    {
+      "block": "primary",
+      "repeat": 2,
+      "wall_reduction_percent": 4.442783454016452,
+      "cpu_reduction_percent": -2.910615168310615
+    },
+    {
+      "block": "primary",
+      "repeat": 3,
+      "wall_reduction_percent": 3.496587489526215,
+      "cpu_reduction_percent": 2.6634894550076282
+    },
+    {
+      "block": "confirmation",
+      "repeat": 1,
+      "wall_reduction_percent": 5.179092640391336,
+      "cpu_reduction_percent": 3.7117449649458067
+    },
+    {
+      "block": "confirmation",
+      "repeat": 2,
+      "wall_reduction_percent": 0.7746571072124175,
+      "cpu_reduction_percent": 1.4137079882717063
+    },
+    {
+      "block": "confirmation",
+      "repeat": 3,
+      "wall_reduction_percent": 1.0268614497169093,
+      "cpu_reduction_percent": 3.700866855412799
+    }
+  ],
+  "reports": {
+    "profile": "5faa66268cf28d031a2d6170c44afd959b0915e0841e0739f72f092c1fb82920",
+    "hg002-input": "66290a606379bb7d7760fe75d5dd77531dcd28df29d342a3ececdd618e318341",
+    "hg002-sampling": "d54abaf1e8af98f69891e837175844717d33ee53c8524f3bb9e2d2ffff068d28",
+    "screen": "ff3ed1fcde4b6e2555eb51cd1eccb73879e07a4ca5728225c8ef917160557ad2",
+    "combination": "bec8af8294416949b6ee165b44074a8191cab2466066db2833f5b5df914c6d1d",
+    "gates": "5bbb3c9871eb0917249fd0adf02a6269e1898b26a1ec1899d3c400f6a81584c9",
+    "build": "393641c0947ea9c864f535dbfe1e6cf51986e47ecc3fb3e535991fca95cb3ee3",
+    "validation": "6239d5a4814c07b97a883a6805f478bde89fccff76342188e1fd3255fe6fa73e",
+    "extended": "7a99661a114ba9c6a0f4ad4bfa1c8d6f41adcc1edcdb5ff8899ce23102e8fff5",
+    "scheduler": "4651e7fd20f8f2d491be452f21eb681ac5d0a67bce60f46bce0501024d14a444",
+    "review": "80ac97ff19e0d097101b1ea4abee8e01bb01b6c2fd5a5c68c6eff8a34ef135a1",
+    "large": "4be099b1e8451ec0d6c80b6edac27dcbba9f82880db445a03b46c0310b09cecd",
+    "scaling": "3adc03b5133ecae4e23204ca6ec08b338c60c90bfc2ffc935bb14aebb65ce9b6",
+    "batches": "2699db3ed20b945b5efd9702072e18f610472d312a7f4a353f3f19314dd7f0c8",
+    "confirmation": "cff0164f5c65baac7baa5ce32cbcf5dd9104b054bd84c4a503c123b56baeb871"
+  }
+}

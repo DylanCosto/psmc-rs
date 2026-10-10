@@ -581,7 +581,7 @@ previous archive is replaced and no production source or executable is changed.
 This completes the public human chromosome milestone; whole-genome and actual
 user-workload claims remain untested.
 
-## Ordered-count and workspace campaign — 2026-10-10 (in progress)
+## Ordered-count and workspace campaign — 2026-10-10 (complete)
 
 User authorized continued optimization after the HG001 chromosome milestone.
 One gated milestone: retain exact f64 site order while reducing transition-count
@@ -647,3 +647,128 @@ Next permitted work: profile the accepted kernel on a larger documented public
 workload before generalizing to whole-genome performance. The 10x target remains
 unproven. ARM/NEON, GPU and the actual user's genome remain not_run. C output is
 reused as an exact oracle; C timing is not repeated or newly claimed here.
+
+
+## CPU headroom campaign — 2026-10-10 (complete)
+
+Goal: finish an evidence-gated CPU campaign against frozen v0.3.2, with a fresh
+profile, larger public human validation where obtainable, investigation of K23
+controls, ordered-kernel experiments and renewed worker scaling. A measured
+no-promotion outcome is valid; unmeasured speedups or a guaranteed 10x are not.
+Baseline source: 4ab9ff5; executable SHA256
+24d47084c2914aa44109040b7f5593efb7353621cb0d36ccdb28cd1a060f4c83,
+frozen at work/cpu-next/baseline. Preserve previous reports and releases.
+
+Plan and acceptance sequence:
+- [x] Establish fresh v0.3.2 CPU attribution on full HG001 K64/N30 and K23 controls,
+      using disposable instrumentation with outputs checked against pinned C.
+- [x] Research a larger public human encoded PSMC input. Pin source, hash, license,
+      encoding/missingness, original boundaries and fixed bootstrap procedure.
+      No VCF reference imputation, whole-cohort downloads or private input uploads.
+      Record any provenance/access limitation; duplicated chr22 is not a human genome.
+- [x] Derive and build isolated ordered kernel candidates guided by the profile;
+      include controls to distinguish allocation/dispatch effects in K23. Test
+      finite bits, signed zero, nonfinite classes, tails, tile boundaries and reuse.
+- [x] Screen complete N30 fits with fixed CPU affinity and rotated repeated runs.
+      Validate held-out input before accepting a winner. Reject kernel-only gains
+      that do not survive whole fits; keep all failed/rejected evidence.
+- [x] Re-evaluate 8/10/16 workers (physical-core affinity where useful), then repeat
+      best configurations. Keep independent groups sequential and count all 30
+      replicates, every repeated block and all reference pathological outcomes.
+- [x] Validate any final candidate through complete dense/CPU/scalar internal and
+      C gates, extended fixtures, scheduler/cache and CLI checks. Audit assembly.
+- [x] Run matched uninstrumented before/after complete batches, one warmup plus
+      at least three alternating measurement pairs. Record wall/CPU/RSS, hashes,
+      commands, ranges and limitations; confirm larger-input exactness if acquired.
+- [x] Publish the measured decision, preserve binaries, commit source/proof/tests/
+      timings together, and close the goal only after the delivery audit passes.
+
+Decision: full-core authorization remains active for independent fits. Per-fit
+arithmetic stays single-threaded, ordered f64. No model/optimizer/grid/iteration
+changes, FMA, fast-math, dropped seeds/masks/duplicates or new HMM boundaries.
+Do not rerun previously rejected compiler/cache/scheduler ideas without new
+profile evidence. ARM/NEON and GPU remain untested on this x86-64 host.
+
+Completion criterion: either promote a candidate with repeatable full-workload
+benefit and all exactness gates, or document why the current release remains best
+within the tested search. Larger data are an external availability dependency,
+not permission to substitute undocumented or artificial whole-genome evidence.
+
+Progress: the fresh profile passes all 12 C-output checks. Five isolated candidates
+(count destinations 32/sites 8 or 4, message destinations 32, allocation control,
+and outer count dispatch) pass debug/release suites before timing. No production
+source has changed. Full-fit repeated screens are running on CPU 0.
+
+Larger fixture: pinned GIAB HG002 GRCh38/NIST v4.2.1 VCF plus high-confidence BED,
+with the upstream explicit homozygous-reference contract. Converted whole chr1
+has 2,489,565 bins (N=307,821; T=2,038,125; K=143,619). A/M/N are state placeholders,
+not reconstructed bases. The pinned C converter exactly matches independent
+binning, including its partial-tail behavior. Raw files stay ignored locally.
+Full fitting remains pending; this is not whole-genome validation.
+
+Decision: advance combined 32-destination message/count kernels (eight count sites)
+to final gates as a provisional v0.3.3 candidate. Confirmation medians: baseline
+10.1171 s, messages-only 9.8745 s, combined 9.7782 s. All 12 confirmation fits
+match C; combined suites pass. Baseline had one slower round, so final acceptance
+still requires alternating complete batches. Allocation/dispatch remain unchanged.
+
+Progress: provisional v0.3.3 (f0c3282e87e3eed0cc31c63a438429c19ad47cedec4c56c1150cc8520838e305)
+passes 35 debug and 35 release tests; 340 dense/CPU/scalar full regression cases;
+66 extended cases; ordered scheduler/cache checks; and 38 CLI checks. Assembly
+contains 99 packed AVX arithmetic instructions, zero FMA and zero horizontal
+reductions. Full original HG002 chr1 C/baseline/candidate fits are running next.
+Fifty original 50,000-bin blocks and 30 seeds 20261101..20261130 are also pinned
+for future HG002 bootstraps, explicitly prepared_not_fitted in this campaign.
+
+Larger-input gate passed: complete original HG002 chr1 K64/N30 outputs are finite
+and byte-exact to pinned C except version metadata for both v0.3.2 and the
+provisional v0.3.3. Single descriptive times are C 272.762 s, baseline 69.434 s,
+candidate 65.700 s; these are not repeated speed estimates. Rust peak RSS is
+2,514,988/2,514,996 KiB. Neither a whole genome nor 30 HG002 fits is claimed.
+
+Decision before seeing the final primary pair: the first two human pairs disagree
+on wall and CPU direction (candidate wall +2.1% / -4.4%, CPU -3.3% / +2.9%).
+Add exactly one confirmation block: one warmup plus three pairs with opposite
+ordering. Pool all six measured pairs; retain every result. Do not keep sampling
+until a favorable result appears. This extra block resolves a material uncertainty
+rather than repeating an already-established performance result.
+
+Confirmation acceptance rule, recorded before its measurements: promote only if
+all exactness gates remain passed, pooled human median wall time improves by at
+least 2%, pooled median CPU time improves, and at least four of six paired human
+comparisons improve each metric. This is a practical release threshold, not a
+statistical significance claim. The first three paired signs are 2/3 positive
+for each metric. Otherwise retain v0.3.2 and commit the measured no-promotion
+result with the larger fixture/provenance and all rejected candidate evidence.
+No further performance repetitions will be selected based on the confirmation.
+
+Completion decision: accept v0.3.3. The fixed confirmation passes the predeclared
+rule: pooled human wall medians 51.288713 s baseline vs 50.218111 s candidate
+(2.0874% lower, 1.02132x throughput); total CPU medians 674.952512 vs 655.978632 s
+(2.8111% lower). Five of six paired comparisons improve each metric. Wall ranges
+49.705025–53.185080 and 48.711773–51.697088 overlap; this is a modest measured
+shared-host gain, not a formal significance or cross-machine guarantee.
+
+Worker screen: paired mean seconds 59.1704 (8), 52.4418 (10 physical-core),
+49.6976 (16). Fresh repeated confirmation uses 16 for both releases. Ten workers
+use less total CPU time but take longer. K23 original/model-based wall medians
+change by +0.90%/-0.36%, with overlapping ranges; no K23 gain or memory reduction
+is claimed. The allocation/dispatch controls were rejected without production
+changes. No new scheduling behavior is introduced.
+
+All 960 primary/confirmation batch outputs and 180 worker-screen outputs match
+retained C, with independently replayed bootstrap draws; all 480 human batch
+outputs are finite. All synthetic reference pathologies remain. Two unsplit
+HG001 controls and the larger HG002 controls also pass. The delivery audit
+regenerates all six isolated candidate sources and rechecks 1,241 outputs.
+Published bin/psmc-rs and target/release/psmc-rs are
+f0c3282e87e3eed0cc31c63a438429c19ad47cedec4c56c1150cc8520838e305;
+bin/psmc-rs-v0.3.2 preserves the previous executable. Previous reports/archives
+remain unchanged. docs/cpu-next-optimization.md and bench/cpu-next-*.json retain
+source hashes, actual commands, all timings, rejected candidates and limitations.
+
+Next permitted milestone: whole-genome/user-workload validation and fresh
+profiling before another CPU campaign. ARM/NEON, GPU and actual user data remain
+not_run. The prepared HG002 bootstrap samples are not fitted; no whole-genome or
+10x claim is made. This bounded campaign is complete; no further repetitions are
+selected to improve its result.

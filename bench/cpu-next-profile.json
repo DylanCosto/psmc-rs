@@ -1,0 +1,1853 @@
+{
+  "status": "passed",
+  "source_sha256": {
+    "crates/psmc-cli/src/batch.rs": "ef27669f8bf349afc8b848a2fb17ed09121fa345f25b568838ba53f83b015ea8",
+    "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+    "crates/psmc-cli/src/legacy.rs": "a6a61a135278c0309b024569c229188e62f19269df9e9c3df34d095cc5f462fa",
+    "crates/psmc-cli/src/main.rs": "a18a1f744db6aac0a9b6ee37d224de312c7705c67532493cc2291714e52b7ed2",
+    "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+    "crates/psmc-core/src/em.rs": "fd667334b4d470049dad57358bdd23ce0fd23006e347f13704079026c7f1c52f",
+    "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+    "crates/psmc-core/src/lib.rs": "b0b6804c719504d3d7b2f44290a21f45babd590fe9e59e913c0c6dcafb41b01b",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+    "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+    "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179",
+    "crates/psmc-cpu/src/lib.rs": "fbca6f1c55da1ab8da489fa4439ae6c3ce238c240c16271d4c863dc203e12f5b",
+    "crates/psmc-cpu/src/simd.rs": "b9433fa47e4989372aa136917e999320117f263276785ab1a00d2fe0437b0acd",
+    "crates/psmc-cpu/src/tests.rs": "ea2a8ac0c418eca0a6f3da42aa4d0e7bfae87ec364a7a0b6372318173cbcbccb",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+    "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+    "Cargo.toml": "4898abdaea24371628d5866d76a09ebe6e9ffcfc233aac9c4284071d387a7fcf",
+    "Cargo.lock": "10aab43550c27ac27e701dc4c5cf3dd9835b06d518dfcd2e6eab0530d12a0509",
+    "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b"
+  },
+  "baseline_sha256": "24d47084c2914aa44109040b7f5593efb7353621cb0d36ccdb28cd1a060f4c83",
+  "instrumented_binary_sha256": "f3fa922601b930ad29601367045cd7e72ea2ec0dd2d0c8a8bf17455192902e59",
+  "source_injection_reference": "f98c1f1ec64cd3eb226487431d8a2e59b2878558aeaaf15a48fae2e5ef6d91b8",
+  "instrumented_sources": {
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/em.rs": "02340a297b8a7e8ca4cf40c53e571ca0d556f3759a4ad6f2d7102a45469d7014",
+    "crates/psmc-core/src/lib.rs": "91431fd296f0104f4acd0388fb96694ab284f51c6525bef51ffefb8249eccdf2",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-core/src/diagnostic_profile.rs": "66b43d89314251ceef9ee534f1246f240d211d4d13ba3b52c244d8a1710b0ea8",
+    "crates/psmc-core/src/hmm.rs": "60113b7e03b00066de62a8a9d7bf48940792619b50202921018934a619a14436",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+    "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+    "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+    "crates/psmc-cli/src/main.rs": "826f8b23a770b82a5d0f9255a3cab0e8975f42a46f3ff4a6e61a38cd6f90e610",
+    "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+    "crates/psmc-cli/src/batch.rs": "ef27669f8bf349afc8b848a2fb17ed09121fa345f25b568838ba53f83b015ea8",
+    "crates/psmc-cli/src/legacy.rs": "a6a61a135278c0309b024569c229188e62f19269df9e9c3df34d095cc5f462fa",
+    "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+    "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+    "crates/psmc-cpu/src/tests.rs": "ea2a8ac0c418eca0a6f3da42aa4d0e7bfae87ec364a7a0b6372318173cbcbccb",
+    "crates/psmc-cpu/src/simd.rs": "b9433fa47e4989372aa136917e999320117f263276785ab1a00d2fe0437b0acd",
+    "crates/psmc-cpu/src/lib.rs": "b211e5370ffe02cf54193a9c0c54a74393f4b5b3704bebebfd73a94fd606b538",
+    "crates/psmc-cpu/src/engine.rs": "82b4954ae2deefac0518aa515531f4819967313a69d0598e78466a6cd2f76f7d"
+  },
+  "build_command": [
+    "cargo",
+    "build",
+    "--release",
+    "--locked",
+    "--offline",
+    "--jobs",
+    "16"
+  ],
+  "runner_sha256": "5228985674055ac31f622b4aaba4d40b5ca3a785d8cf819df707ff05d08da210",
+  "cases": [
+    {
+      "id": "hg-unsplit",
+      "input": "work/hg-input/NA12878_chr22.psmcfa",
+      "oracle": "bench/hg/pilot/vanilla.psmc",
+      "args": [
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0"
+      ],
+      "input_sha256": "0fe05d6fc19a94a3129803dc214660e0a72f2335ce5940b35fc3c9eab3698ea5",
+      "oracle_sha256": "ab933882ca33091a5652067c946d059fab10b27cde51fd8c463e3fda46540209",
+      "runs": [
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cpu-next/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "5",
+            "-I",
+            "0",
+            "work/hg-input/NA12878_chr22.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 16.87951105099637,
+          "time_wall_seconds": 16.87,
+          "user_seconds": 16.68,
+          "system_seconds": 0.19,
+          "peak_rss_kib": 515936,
+          "output_sha256": "9b66c9b2df1a819cd4f77440b69648d4deae8ce0f100cb61aabca1effacac370",
+          "output": "work/cpu-next/profile/hg-unsplit-0.psmc",
+          "optimizer_evaluations": [
+            4226,
+            4536,
+            3862,
+            4230,
+            4816,
+            4105,
+            4135,
+            3816,
+            3830,
+            3895,
+            3504,
+            4315,
+            4474,
+            3447,
+            3451,
+            3458,
+            3848,
+            3944,
+            3632,
+            3703,
+            3910,
+            3595,
+            3845,
+            3504,
+            3472,
+            3233,
+            4026,
+            4197,
+            3213,
+            4011
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "49c68b6662da1cdacb75fbc887f8f1095f02b54a8cdf5417d0f1bf972bee1f15",
+            "compared_bytes": 120938,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.2 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 14338428657,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 732374,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 654888268,
+                "calls": 116233
+              },
+              "q": {
+                "nanoseconds": 1814779769,
+                "calls": 116263
+              },
+              "normalizer": {
+                "nanoseconds": 587074,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 148027201,
+                "calls": 30
+              },
+              "forward": {
+                "nanoseconds": 3789041268,
+                "calls": 30
+              },
+              "backward": {
+                "nanoseconds": 3270825090,
+                "calls": 30
+              },
+              "likelihood_check": {
+                "nanoseconds": 16489150,
+                "calls": 30
+              },
+              "counts": {
+                "nanoseconds": 7107181973,
+                "calls": 30
+              },
+              "fit_process_main": {
+                "nanoseconds": 16872857375,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 16850385550,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 6506807944,
+                "calls": 30
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 600251113,
+                "calls": 30
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 135.00005
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cpu-next/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "5",
+            "-I",
+            "0",
+            "work/hg-input/NA12878_chr22.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 16.94430462399032,
+          "time_wall_seconds": 16.94,
+          "user_seconds": 16.72,
+          "system_seconds": 0.21,
+          "peak_rss_kib": 516080,
+          "output_sha256": "9b66c9b2df1a819cd4f77440b69648d4deae8ce0f100cb61aabca1effacac370",
+          "output": "work/cpu-next/profile/hg-unsplit-1.psmc",
+          "optimizer_evaluations": [
+            4226,
+            4536,
+            3862,
+            4230,
+            4816,
+            4105,
+            4135,
+            3816,
+            3830,
+            3895,
+            3504,
+            4315,
+            4474,
+            3447,
+            3451,
+            3458,
+            3848,
+            3944,
+            3632,
+            3703,
+            3910,
+            3595,
+            3845,
+            3504,
+            3472,
+            3233,
+            4026,
+            4197,
+            3213,
+            4011
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "49c68b6662da1cdacb75fbc887f8f1095f02b54a8cdf5417d0f1bf972bee1f15",
+            "compared_bytes": 120938,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.2 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 14383872271,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 760488,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 668464871,
+                "calls": 116233
+              },
+              "q": {
+                "nanoseconds": 1820918276,
+                "calls": 116263
+              },
+              "normalizer": {
+                "nanoseconds": 614669,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 151636935,
+                "calls": 30
+              },
+              "forward": {
+                "nanoseconds": 3798325789,
+                "calls": 30
+              },
+              "backward": {
+                "nanoseconds": 3284635581,
+                "calls": 30
+              },
+              "likelihood_check": {
+                "nanoseconds": 16329657,
+                "calls": 30
+              },
+              "counts": {
+                "nanoseconds": 7125835939,
+                "calls": 30
+              },
+              "fit_process_main": {
+                "nanoseconds": 16937738713,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 16915198066,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 6527259083,
+                "calls": 30
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 598446499,
+                "calls": 30
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 133.67585
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cpu-next/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "5",
+            "-I",
+            "0",
+            "work/hg-input/NA12878_chr22.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 20.8774788499868,
+          "time_wall_seconds": 20.87,
+          "user_seconds": 20.64,
+          "system_seconds": 0.22,
+          "peak_rss_kib": 516060,
+          "output_sha256": "9b66c9b2df1a819cd4f77440b69648d4deae8ce0f100cb61aabca1effacac370",
+          "output": "work/cpu-next/profile/hg-unsplit-2.psmc",
+          "optimizer_evaluations": [
+            4226,
+            4536,
+            3862,
+            4230,
+            4816,
+            4105,
+            4135,
+            3816,
+            3830,
+            3895,
+            3504,
+            4315,
+            4474,
+            3447,
+            3451,
+            3458,
+            3848,
+            3944,
+            3632,
+            3703,
+            3910,
+            3595,
+            3845,
+            3504,
+            3472,
+            3233,
+            4026,
+            4197,
+            3213,
+            4011
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "49c68b6662da1cdacb75fbc887f8f1095f02b54a8cdf5417d0f1bf972bee1f15",
+            "compared_bytes": 120938,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.2 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 18346485306,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 767586,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 644441585,
+                "calls": 116233
+              },
+              "q": {
+                "nanoseconds": 1813632176,
+                "calls": 116263
+              },
+              "normalizer": {
+                "nanoseconds": 591063,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 150954948,
+                "calls": 30
+              },
+              "forward": {
+                "nanoseconds": 4687979269,
+                "calls": 30
+              },
+              "backward": {
+                "nanoseconds": 4312854305,
+                "calls": 30
+              },
+              "likelihood_check": {
+                "nanoseconds": 16382321,
+                "calls": 30
+              },
+              "counts": {
+                "nanoseconds": 9171316869,
+                "calls": 30
+              },
+              "fit_process_main": {
+                "nanoseconds": 20870948716,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 20846811136,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 8552227893,
+                "calls": 30
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 618961247,
+                "calls": 30
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 134.26405
+          }
+        }
+      ],
+      "cpu_seconds_medians": {
+        "expectation_inclusive": 14.383872271,
+        "prepare": 0.000760488,
+        "model_update": 0.654888268,
+        "q": 1.814779769,
+        "normalizer": 0.000591063,
+        "workspace_setup": 0.150954948,
+        "forward": 3.798325789,
+        "backward": 3.284635581,
+        "likelihood_check": 0.016382321,
+        "counts": 7.125835939,
+        "fit_process_main": 16.937738713,
+        "iteration_inclusive": 16.915198066,
+        "transition_counts64": 6.527259083,
+        "emissions_and_other_counts": 0.600251113
+      }
+    },
+    {
+      "id": "hg-bootstrap01",
+      "input": "work/hg-input/bootstrap-01.psmcfa",
+      "oracle": "bench/hg/batches-20261010T143948538510Z/warmup-0-vanilla-w16/replicate-01.psmc",
+      "args": [
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0"
+      ],
+      "input_sha256": "652c6a6007c5cf7ab672a4e35e196e85234cc12e0a732d93118be87b765caee9",
+      "oracle_sha256": "d3fb8fd3127a50e3b533c16449d25de6c59d37e40ed2911ebc6132e839f94395",
+      "runs": [
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cpu-next/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "5",
+            "-I",
+            "0",
+            "work/hg-input/bootstrap-01.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 12.946885882993229,
+          "time_wall_seconds": 12.94,
+          "user_seconds": 12.84,
+          "system_seconds": 0.09,
+          "peak_rss_kib": 63056,
+          "output_sha256": "42218d559f73e416b8de2a689cdb37245f2eae17f31a3801c978a5f442a98ecb",
+          "output": "work/cpu-next/profile/hg-bootstrap01-0.psmc",
+          "optimizer_evaluations": [
+            4416,
+            4682,
+            5301,
+            4131,
+            4557,
+            3990,
+            3758,
+            3868,
+            4407,
+            4542,
+            4196,
+            4085,
+            4385,
+            4012,
+            4191,
+            4115,
+            3559,
+            4943,
+            3848,
+            4257,
+            4214,
+            3483,
+            4466,
+            3669,
+            3807,
+            3774,
+            4042,
+            5008,
+            4205,
+            4255
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "9fe982b33ec4846eea4d96fa9dfef316b51857a7ecbff94bf4926ba75bc29e08",
+            "compared_bytes": 120953,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.2 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 10209773647,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 747937,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 699125512,
+                "calls": 126166
+              },
+              "q": {
+                "nanoseconds": 1974136130,
+                "calls": 126196
+              },
+              "normalizer": {
+                "nanoseconds": 600449,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 34056729,
+                "calls": 180
+              },
+              "forward": {
+                "nanoseconds": 2485233245,
+                "calls": 180
+              },
+              "backward": {
+                "nanoseconds": 2613931093,
+                "calls": 180
+              },
+              "likelihood_check": {
+                "nanoseconds": 10067625,
+                "calls": 180
+              },
+              "counts": {
+                "nanoseconds": 5053786437,
+                "calls": 180
+              },
+              "fit_process_main": {
+                "nanoseconds": 12936796698,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 12928988633,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 4660784775,
+                "calls": 180
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 392194124,
+                "calls": 180
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 132.48985
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cpu-next/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "5",
+            "-I",
+            "0",
+            "work/hg-input/bootstrap-01.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 10.705993028008379,
+          "time_wall_seconds": 10.7,
+          "user_seconds": 10.62,
+          "system_seconds": 0.07,
+          "peak_rss_kib": 63020,
+          "output_sha256": "42218d559f73e416b8de2a689cdb37245f2eae17f31a3801c978a5f442a98ecb",
+          "output": "work/cpu-next/profile/hg-bootstrap01-1.psmc",
+          "optimizer_evaluations": [
+            4416,
+            4682,
+            5301,
+            4131,
+            4557,
+            3990,
+            3758,
+            3868,
+            4407,
+            4542,
+            4196,
+            4085,
+            4385,
+            4012,
+            4191,
+            4115,
+            3559,
+            4943,
+            3848,
+            4257,
+            4214,
+            3483,
+            4466,
+            3669,
+            3807,
+            3774,
+            4042,
+            5008,
+            4205,
+            4255
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "9fe982b33ec4846eea4d96fa9dfef316b51857a7ecbff94bf4926ba75bc29e08",
+            "compared_bytes": 120953,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.2 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 7972454800,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 726128,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 696250563,
+                "calls": 126166
+              },
+              "q": {
+                "nanoseconds": 1977201081,
+                "calls": 126196
+              },
+              "normalizer": {
+                "nanoseconds": 614792,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 33790727,
+                "calls": 180
+              },
+              "forward": {
+                "nanoseconds": 2056002126,
+                "calls": 180
+              },
+              "backward": {
+                "nanoseconds": 1965503134,
+                "calls": 180
+              },
+              "likelihood_check": {
+                "nanoseconds": 10103134,
+                "calls": 180
+              },
+              "counts": {
+                "nanoseconds": 3894842180,
+                "calls": 180
+              },
+              "fit_process_main": {
+                "nanoseconds": 10699935561,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 10692099796,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 3525088981,
+                "calls": 180
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 368999659,
+                "calls": 180
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 135.3836
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cpu-next/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "5",
+            "-I",
+            "0",
+            "work/hg-input/bootstrap-01.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 10.738717950996943,
+          "time_wall_seconds": 10.73,
+          "user_seconds": 10.65,
+          "system_seconds": 0.08,
+          "peak_rss_kib": 63124,
+          "output_sha256": "42218d559f73e416b8de2a689cdb37245f2eae17f31a3801c978a5f442a98ecb",
+          "output": "work/cpu-next/profile/hg-bootstrap01-2.psmc",
+          "optimizer_evaluations": [
+            4416,
+            4682,
+            5301,
+            4131,
+            4557,
+            3990,
+            3758,
+            3868,
+            4407,
+            4542,
+            4196,
+            4085,
+            4385,
+            4012,
+            4191,
+            4115,
+            3559,
+            4943,
+            3848,
+            4257,
+            4214,
+            3483,
+            4466,
+            3669,
+            3807,
+            3774,
+            4042,
+            5008,
+            4205,
+            4255
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "9fe982b33ec4846eea4d96fa9dfef316b51857a7ecbff94bf4926ba75bc29e08",
+            "compared_bytes": 120953,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.2 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 8016047629,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 731323,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 696339220,
+                "calls": 126166
+              },
+              "q": {
+                "nanoseconds": 1965090078,
+                "calls": 126196
+              },
+              "normalizer": {
+                "nanoseconds": 588113,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 35064131,
+                "calls": 180
+              },
+              "forward": {
+                "nanoseconds": 2074980043,
+                "calls": 180
+              },
+              "backward": {
+                "nanoseconds": 1971719080,
+                "calls": 180
+              },
+              "likelihood_check": {
+                "nanoseconds": 10315990,
+                "calls": 180
+              },
+              "counts": {
+                "nanoseconds": 3911593913,
+                "calls": 180
+              },
+              "fit_process_main": {
+                "nanoseconds": 10731921433,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 10723087877,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 3524299876,
+                "calls": 180
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 386492588,
+                "calls": 180
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 176.22465
+          }
+        }
+      ],
+      "cpu_seconds_medians": {
+        "expectation_inclusive": 8.016047629,
+        "prepare": 0.000731323,
+        "model_update": 0.69633922,
+        "q": 1.97413613,
+        "normalizer": 0.000600449,
+        "workspace_setup": 0.034056729,
+        "forward": 2.074980043,
+        "backward": 1.97171908,
+        "likelihood_check": 0.010103134,
+        "counts": 3.911593913,
+        "fit_process_main": 10.731921433,
+        "iteration_inclusive": 10.723087877,
+        "transition_counts64": 3.525088981,
+        "emissions_and_other_counts": 0.386492588
+      }
+    },
+    {
+      "id": "k23-n30",
+      "input": "tests/fixtures/workload.psmcfa",
+      "args": [
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0"
+      ],
+      "oracle": "bench/cpu-campaign-profile/20261010T072419292205Z/k23-n30-vanilla.psmc",
+      "input_sha256": "7c0e0a0cf3b929ac01fc1de203a7a08ade75bbd42e3e8004fcb4514c0ad1df9b",
+      "oracle_sha256": "1c7a5edbe3397e5311a58a79146a94e72c08dba6a2b40c9906884356b565062a",
+      "runs": [
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cpu-next/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 0.30101100500905886,
+          "time_wall_seconds": 0.3,
+          "user_seconds": 0.27,
+          "system_seconds": 0.01,
+          "peak_rss_kib": 5180,
+          "output_sha256": "46e22d04b0f0ea3f7ccd8392414525fc4de8d5c2517c716eacb8424fbfae3933",
+          "output": "work/cpu-next/profile/k23-n30-0.psmc",
+          "optimizer_evaluations": [
+            1944,
+            1698,
+            1850,
+            1549,
+            1926,
+            1687,
+            1461,
+            1750,
+            1367,
+            1540,
+            1552,
+            1703,
+            1371,
+            1845,
+            1728,
+            1801,
+            1775,
+            1710,
+            1526,
+            1450,
+            1494,
+            1456,
+            1371,
+            1227,
+            1480,
+            1548,
+            1495,
+            1118,
+            1222,
+            1508
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "2eeb37a0c4d871f363ddad8b4ae50f9be00761f6987f6b84dd33b067fd77d74e",
+            "compared_bytes": 45885,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.2 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 115852934,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 106545,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 61476411,
+                "calls": 47152
+              },
+              "q": {
+                "nanoseconds": 102974626,
+                "calls": 47182
+              },
+              "normalizer": {
+                "nanoseconds": 93375,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 1711107,
+                "calls": 90
+              },
+              "forward": {
+                "nanoseconds": 30566240,
+                "calls": 90
+              },
+              "backward": {
+                "nanoseconds": 25360047,
+                "calls": 90
+              },
+              "likelihood_check": {
+                "nanoseconds": 410678,
+                "calls": 90
+              },
+              "counts": {
+                "nanoseconds": 57321580,
+                "calls": 90
+              },
+              "fit_process_main": {
+                "nanoseconds": 296067331,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 294673535,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 0,
+                "calls": 0
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 57262752,
+                "calls": 90
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 133.298
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cpu-next/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 0.2981863750028424,
+          "time_wall_seconds": 0.29,
+          "user_seconds": 0.27,
+          "system_seconds": 0.02,
+          "peak_rss_kib": 5212,
+          "output_sha256": "46e22d04b0f0ea3f7ccd8392414525fc4de8d5c2517c716eacb8424fbfae3933",
+          "output": "work/cpu-next/profile/k23-n30-1.psmc",
+          "optimizer_evaluations": [
+            1944,
+            1698,
+            1850,
+            1549,
+            1926,
+            1687,
+            1461,
+            1750,
+            1367,
+            1540,
+            1552,
+            1703,
+            1371,
+            1845,
+            1728,
+            1801,
+            1775,
+            1710,
+            1526,
+            1450,
+            1494,
+            1456,
+            1371,
+            1227,
+            1480,
+            1548,
+            1495,
+            1118,
+            1222,
+            1508
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "2eeb37a0c4d871f363ddad8b4ae50f9be00761f6987f6b84dd33b067fd77d74e",
+            "compared_bytes": 45885,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.2 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 113396325,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 99846,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 60896536,
+                "calls": 47152
+              },
+              "q": {
+                "nanoseconds": 102978127,
+                "calls": 47182
+              },
+              "normalizer": {
+                "nanoseconds": 92583,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 1717905,
+                "calls": 90
+              },
+              "forward": {
+                "nanoseconds": 29956329,
+                "calls": 90
+              },
+              "backward": {
+                "nanoseconds": 24412200,
+                "calls": 90
+              },
+              "likelihood_check": {
+                "nanoseconds": 402180,
+                "calls": 90
+              },
+              "counts": {
+                "nanoseconds": 56454337,
+                "calls": 90
+              },
+              "fit_process_main": {
+                "nanoseconds": 292962440,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 291627345,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 0,
+                "calls": 0
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 56393943,
+                "calls": 90
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 132.77335
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cpu-next/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 0.30023504002019763,
+          "time_wall_seconds": 0.29,
+          "user_seconds": 0.27,
+          "system_seconds": 0.02,
+          "peak_rss_kib": 5284,
+          "output_sha256": "46e22d04b0f0ea3f7ccd8392414525fc4de8d5c2517c716eacb8424fbfae3933",
+          "output": "work/cpu-next/profile/k23-n30-2.psmc",
+          "optimizer_evaluations": [
+            1944,
+            1698,
+            1850,
+            1549,
+            1926,
+            1687,
+            1461,
+            1750,
+            1367,
+            1540,
+            1552,
+            1703,
+            1371,
+            1845,
+            1728,
+            1801,
+            1775,
+            1710,
+            1526,
+            1450,
+            1494,
+            1456,
+            1371,
+            1227,
+            1480,
+            1548,
+            1495,
+            1118,
+            1222,
+            1508
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "2eeb37a0c4d871f363ddad8b4ae50f9be00761f6987f6b84dd33b067fd77d74e",
+            "compared_bytes": 45885,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.2 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 112902974,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 96674,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 62441592,
+                "calls": 47152
+              },
+              "q": {
+                "nanoseconds": 103269167,
+                "calls": 47182
+              },
+              "normalizer": {
+                "nanoseconds": 89551,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 1661817,
+                "calls": 90
+              },
+              "forward": {
+                "nanoseconds": 30199112,
+                "calls": 90
+              },
+              "backward": {
+                "nanoseconds": 24189154,
+                "calls": 90
+              },
+              "likelihood_check": {
+                "nanoseconds": 399360,
+                "calls": 90
+              },
+              "counts": {
+                "nanoseconds": 56016620,
+                "calls": 90
+              },
+              "fit_process_main": {
+                "nanoseconds": 294201775,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 292913052,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 0,
+                "calls": 0
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 55960045,
+                "calls": 90
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 133.17755
+          }
+        }
+      ],
+      "cpu_seconds_medians": {
+        "expectation_inclusive": 0.113396325,
+        "prepare": 9.9846e-05,
+        "model_update": 0.061476411,
+        "q": 0.102978127,
+        "normalizer": 9.2583e-05,
+        "workspace_setup": 0.001711107,
+        "forward": 0.030199112,
+        "backward": 0.0244122,
+        "likelihood_check": 0.00040218,
+        "counts": 0.056454337,
+        "fit_process_main": 0.294201775,
+        "iteration_inclusive": 0.292913052,
+        "transition_counts64": 0.0,
+        "emissions_and_other_counts": 0.056393943
+      }
+    },
+    {
+      "id": "bootstrap-00-k23-n30",
+      "input": "tests/fixtures/bootstrap/replicate-00.psmcfa",
+      "args": [
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0"
+      ],
+      "oracle": "bench/cpu-campaign-profile/20261010T072419292205Z/bootstrap-00-k23-n30-vanilla.psmc",
+      "input_sha256": "6853aac2d0aeeedcee6ef74782c33e59eb2a3ff1cc9a7e62fb997b3c8e23c5fd",
+      "oracle_sha256": "aaa43db38173bcf4939613b8d447c662359394940f0909b0546f139e6c4eec53",
+      "runs": [
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cpu-next/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/bootstrap/replicate-00.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 0.2555399779812433,
+          "time_wall_seconds": 0.25,
+          "user_seconds": 0.22,
+          "system_seconds": 0.02,
+          "peak_rss_kib": 3536,
+          "output_sha256": "c023fd5b5c633d4baff8de122da1c44e2e4e7bd64ae1546a0a1306525e8bbff7",
+          "output": "work/cpu-next/profile/bootstrap-00-k23-n30-0.psmc",
+          "optimizer_evaluations": [
+            1971,
+            1692,
+            1582,
+            1814,
+            1479,
+            1501,
+            1548,
+            1504,
+            1582,
+            1745,
+            1486,
+            1547,
+            1378,
+            1486,
+            1654,
+            1386,
+            1522,
+            1716,
+            1683,
+            1527,
+            1630,
+            1518,
+            1644,
+            1776,
+            1596,
+            1744,
+            1915,
+            1377,
+            1310,
+            1689
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "f57110fa687430fc2cbd3d6b8d1554cbaa86cbf1bea79b07af48a5b1ddd719a1",
+            "compared_bytes": 45325,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.2 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 69929707,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 84709,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 61035270,
+                "calls": 48002
+              },
+              "q": {
+                "nanoseconds": 104021701,
+                "calls": 48032
+              },
+              "normalizer": {
+                "nanoseconds": 90990,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 298479,
+                "calls": 240
+              },
+              "forward": {
+                "nanoseconds": 18382068,
+                "calls": 240
+              },
+              "backward": {
+                "nanoseconds": 15358273,
+                "calls": 240
+              },
+              "likelihood_check": {
+                "nanoseconds": 282843,
+                "calls": 240
+              },
+              "counts": {
+                "nanoseconds": 34790336,
+                "calls": 240
+              },
+              "fit_process_main": {
+                "nanoseconds": 250509110,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 249427235,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 0,
+                "calls": 0
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 34687331,
+                "calls": 240
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 133.8441
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cpu-next/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/bootstrap/replicate-00.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 0.2583582889928948,
+          "time_wall_seconds": 0.25,
+          "user_seconds": 0.22,
+          "system_seconds": 0.02,
+          "peak_rss_kib": 3348,
+          "output_sha256": "c023fd5b5c633d4baff8de122da1c44e2e4e7bd64ae1546a0a1306525e8bbff7",
+          "output": "work/cpu-next/profile/bootstrap-00-k23-n30-1.psmc",
+          "optimizer_evaluations": [
+            1971,
+            1692,
+            1582,
+            1814,
+            1479,
+            1501,
+            1548,
+            1504,
+            1582,
+            1745,
+            1486,
+            1547,
+            1378,
+            1486,
+            1654,
+            1386,
+            1522,
+            1716,
+            1683,
+            1527,
+            1630,
+            1518,
+            1644,
+            1776,
+            1596,
+            1744,
+            1915,
+            1377,
+            1310,
+            1689
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "f57110fa687430fc2cbd3d6b8d1554cbaa86cbf1bea79b07af48a5b1ddd719a1",
+            "compared_bytes": 45325,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.2 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 70134142,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 96269,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 62238757,
+                "calls": 48002
+              },
+              "q": {
+                "nanoseconds": 105110607,
+                "calls": 48032
+              },
+              "normalizer": {
+                "nanoseconds": 93523,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 318836,
+                "calls": 240
+              },
+              "forward": {
+                "nanoseconds": 18589998,
+                "calls": 240
+              },
+              "backward": {
+                "nanoseconds": 15442058,
+                "calls": 240
+              },
+              "likelihood_check": {
+                "nanoseconds": 286368,
+                "calls": 240
+              },
+              "counts": {
+                "nanoseconds": 34648615,
+                "calls": 240
+              },
+              "fit_process_main": {
+                "nanoseconds": 253423148,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 252201492,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 0,
+                "calls": 0
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 34543892,
+                "calls": 240
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 132.7874
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cpu-next/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/bootstrap/replicate-00.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 0.25754664299893193,
+          "time_wall_seconds": 0.25,
+          "user_seconds": 0.23,
+          "system_seconds": 0.02,
+          "peak_rss_kib": 3524,
+          "output_sha256": "c023fd5b5c633d4baff8de122da1c44e2e4e7bd64ae1546a0a1306525e8bbff7",
+          "output": "work/cpu-next/profile/bootstrap-00-k23-n30-2.psmc",
+          "optimizer_evaluations": [
+            1971,
+            1692,
+            1582,
+            1814,
+            1479,
+            1501,
+            1548,
+            1504,
+            1582,
+            1745,
+            1486,
+            1547,
+            1378,
+            1486,
+            1654,
+            1386,
+            1522,
+            1716,
+            1683,
+            1527,
+            1630,
+            1518,
+            1644,
+            1776,
+            1596,
+            1744,
+            1915,
+            1377,
+            1310,
+            1689
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "f57110fa687430fc2cbd3d6b8d1554cbaa86cbf1bea79b07af48a5b1ddd719a1",
+            "compared_bytes": 45325,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.2 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 68611300,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 108665,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 62508910,
+                "calls": 48002
+              },
+              "q": {
+                "nanoseconds": 105479439,
+                "calls": 48032
+              },
+              "normalizer": {
+                "nanoseconds": 88297,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 310720,
+                "calls": 240
+              },
+              "forward": {
+                "nanoseconds": 17997903,
+                "calls": 240
+              },
+              "backward": {
+                "nanoseconds": 15040765,
+                "calls": 240
+              },
+              "likelihood_check": {
+                "nanoseconds": 275255,
+                "calls": 240
+              },
+              "counts": {
+                "nanoseconds": 34147203,
+                "calls": 240
+              },
+              "fit_process_main": {
+                "nanoseconds": 252540465,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 251285162,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 0,
+                "calls": 0
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 34050381,
+                "calls": 240
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 133.9089
+          }
+        }
+      ],
+      "cpu_seconds_medians": {
+        "expectation_inclusive": 0.069929707,
+        "prepare": 9.6269e-05,
+        "model_update": 0.062238757,
+        "q": 0.105110607,
+        "normalizer": 9.099e-05,
+        "workspace_setup": 0.00031072,
+        "forward": 0.018382068,
+        "backward": 0.015358273,
+        "likelihood_check": 0.000282843,
+        "counts": 0.034648615,
+        "fit_process_main": 0.252540465,
+        "iteration_inclusive": 0.251285162,
+        "transition_counts64": 0.0,
+        "emissions_and_other_counts": 0.034543892
+      }
+    }
+  ],
+  "limitations": [
+    "Diagnostic only; not release timing. Inclusive sections overlap children.",
+    "Three repetitions pinned to CPU 0. No hardware-counter availability assumed.",
+    "transition_counts64 is a child of counts; emissions_and_other_counts includes all counts for non-K64 paths."
+  ]
+}
