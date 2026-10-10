@@ -1,0 +1,13 @@
+{
+  "source_commit": "7ee52716beecc51f5432e8ca3a681c8032792920",
+  "version": "0.3.1",
+  "binary": "bin/psmc-rs",
+  "binary_sha256": "b0fc39d7c31637221de1152fc0d502bb65c90d0a5b9d6672250fe3117f75bfa4",
+  "baseline_commit": "6a4d102",
+  "campaign_checkpoint": "f16131e",
+  "report": "docs/cpu-campaign-report.md",
+  "delivery_audit": "bench/cpu-campaign-delivery-check.json",
+  "resource_scope": "All heavy jobs sequential, affinity CPU 0, nice 10; one Cargo job/test thread/bootstrap worker.",
+  "archive": "psmc-rust-cpu-campaign.zip",
+  "archive_verification": "package_cpu_campaign.py verifies CRC and SHA-256 of every included member; archive digest is stored in its sibling .zip.sha256 file."
+}

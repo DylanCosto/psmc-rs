@@ -333,7 +333,7 @@ changed optimizer or tolerance relaxation.
   bootstrap, cache/scheduler and dispatch/safety gates. Run repeated uninstrumented
   comparisons against Phase 3a and vanilla; retain CPU/wall medians and ranges,
   RSS, exact output checks, fallback counts and all provenance.
-- [ ] Commit accepted source, derivations, tests and timings together; update the
+- [x] Commit accepted source, derivations, tests and timings together; update the
   report and deliver a verified source/binary archive with prior releases intact.
 
 The queue is reordered by profiling evidence, with one milestone in flight. A
@@ -436,5 +436,31 @@ remain pending suitable inputs/hardware; multicore and CUDA are outside this goa
   b0fc39d7c31637221de1152fc0d502bb65c90d0a5b9d6672250fe3117f75bfa4.
   Dense core, CPU workspace/cache and old release hashes remain unchanged.
 - See docs/cpu-campaign-report.md for accepted/rejected decisions, complete
-  measurements, remaining limits and reproduction. Source commit and verified
-  archive are the last delivery steps; the goal is not complete until they finish.
+  measurements, remaining limits and reproduction. Accepted source/tests/timings are committed together as `7ee5271`;
+  the portable archive passes CRC and every-member SHA-256 verification.
+
+
+### Campaign completion audit
+
+All campaign queue items are resolved: profiling and expanded fixtures completed;
+separate fixed-64 AVX functions accepted; Q caches, model reuse, count tiles,
+masked tails and compiler/PGO variants rejected with complete-fit evidence;
+structured algebra quarantined by exact counterexamples; checkpointing retained
+as a measured memory/CPU tradeoff outside the release. Final correctness,
+scheduler/cache/dispatch, matched timing, reprofiling and delivery consistency
+checks pass. No unexplored candidate is silently marked successful.
+
+The accepted numerical source, isolated tests, derivation and timings share commit
+`7ee5271`. The package contains the new executable, preserved prior binaries,
+source, fixtures and reports, with all 18,952 initial members hash-verified.
+Packaging metadata is committed separately and the final archive is regenerated
+and reverified after this completion record. CHECKSUMS.sha256 covers every included
+file except itself; the archive's sibling .sha256 records its final digest.
+Old archives and all exact local snapshot streams remain intact.
+
+Remaining items are explicit scope limits, not passed tests: real production
+inputs/settings, physical ARM/NEON/AVX-512/no-AVX hardware, precise hardware-counter
+attribution, and any alternative numerical contract. Future work starts with a
+representative workload or such hardware/contract authorization; no 10x or
+universal CPU optimum is asserted. Everything in this campaign used one allowed
+CPU at reduced priority, one build/test/bootstrap worker and no subagents.

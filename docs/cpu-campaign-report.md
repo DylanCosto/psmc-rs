@@ -15,8 +15,9 @@ jobs, subagents or multiworker benchmarks are used.
 
 The retained comparison is Phase 3a source `6a4d102`, binary
 `8e417125208343026d56bae1b540b058371e4a0e949ca148a73c696b217f637b`.
-The campaign starts from checkpoint `f16131e`; source digests in the final build
-record identify the exact changes. Pinned vanilla remains commit
+The campaign starts from checkpoint `f16131e`; accepted source, tests, derivation
+and timings share commit `7ee5271`. Source digests in the final build record
+identify the exact changes. Pinned vanilla remains commit
 `82fa2ada83ee463fe1251b562ae3d60e82d7ad6a`. Rust 1.90.0, opt-level 2, one codegen
 unit, no LTO, generic target plus runtime AVX detection, and the same system libm
 remain the release configuration. Clippy was installed for the pinned toolchain;
@@ -188,7 +189,10 @@ manifest. All included files receive SHA-256 checksums and archive verification.
 
 The [delivery consistency audit](../bench/cpu-campaign-delivery-check.json) confirms
 the delivered binary, source hashes, all required gate reports and preserved old
-release hashes.
+release hashes. The [release record](../bench/cpu-campaign-release.json) identifies
+the source commit and artifact. The portable archive is `psmc-rust-cpu-campaign.zip`;
+its CRC and every included member's SHA-256 are verified, and a sibling `.zip.sha256`
+records the final archive digest.
 
 ## Limits
 
