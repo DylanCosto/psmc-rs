@@ -519,3 +519,64 @@ the distinct full-core package preserves prior archives. Packaging metadata and
 this completion record are committed separately, then the final package is
 regenerated and every member verified again. Its sibling .sha256 records the
 final digest without a self-referential embedded archive hash.
+
+## Public human PSMC test — authorized 2026-10-10
+
+The user has no production file available and requests an HG test. Use the public
+upstream NA12878 chromosome 22 PSMC fixture, pinned by source commit and SHA-256.
+This is the complete supplied chromosome fixture, not an actual whole-genome
+benchmark. Preserve encoded masks and document incomplete raw-calling provenance.
+The separate prospective upstream GRCh38 acquisition manifest does not establish
+provenance for this bundled test input. Keep downloaded input local and uncommitted.
+
+- [x] Pin and inspect all input bytes; split with pinned C splitfa at an explicit
+  50,000 bins so this chromosome has ten resampling blocks; retain every bin.
+- [x] Compare a full unsplit 64-state, 30-iteration Rust fit with vanilla C.
+- [x] Run all 30 fixed bootstraps, compare exact output and finite classification,
+  and benchmark matched parallel C/Rust without dropping samples or rounds.
+- [x] Screen worker counts, record elapsed/CPU/memory and profile a representative
+  slow fit; retain all raw evidence and report limitations, hashes and commands.
+- [x] Commit runners and measured evidence with a human-input milestone report.
+
+No production numerical changes are planned before bottlenecks are measured.
+Full-core authorization remains active; independent benchmark groups run serially.
+
+Progress: all 508,185 supplied bins are retained (116,551 missing, 356,491
+homozygous, 35,143 heterozygous). The unsplit full K64/N30 fit is finite and matches
+C exactly except the version line: first observed wall times 58.22 s C and
+18.15 s Rust. These are single-run pilot measurements, not repeated medians.
+The 30-bootstrap matrix uses a 4096 MiB admission estimate so all 16 workers can
+be admitted with these larger blocks. Eight- and ten-worker runs are exploratory
+single screens; the repeated matched C/Rust comparison is fixed at 16 workers
+with one warmup plus three measurements, retaining every seed.
+
+Measured batch results: one warmup and three paired 16-worker measurements are
+complete. Median wall time is 69.616 s Rust versus 255.305 s parallel vanilla
+(3.667x); respective ranges are 66.840–70.179 and 252.131–257.880 s. All 30
+canonical C bootstraps and all subsequent outputs are finite; 180 Rust outputs
+match the 30 canonical C fits across 8/10/16-worker runs. Ninety repeated C outputs
+also match. No underflow warnings occurred in completed batches. Exploratory
+8/10-worker Rust batches took 79.213/73.814 s, using less CPU/RSS. Their single
+screens do not establish a universal worker optimum.
+
+Median sampled aggregate RSS is higher for Rust: 1,316,596 KiB versus 970,256 KiB
+for parallel C. This is live-process RSS sampled every 20 ms, not physical PSS or
+a hard memory cap. The result supports further allocation profiling. The release
+binary and scientific/numerical source remain unchanged.
+
+Completion: the source-verified diagnostic build matches C on both the unsplit
+input and bootstrap 01 (selected by maximum optimizer evaluations). Expected
+count accumulation is the largest measured exclusive section: 52.9% and 47.5%
+of diagnostic main CPU time. Next permitted optimization: exact count-kernel
+work plus measurement of workspace capacity/allocation, with full human and
+existing synthetic/internal exactness gates and repeated whole-batch timings.
+
+bench/hg_report.py rechecked all 270 subsequent outputs, the unsplit pair, both
+diagnostic outputs, input/binary/source hashes, 30/30 finite bootstrap outcomes,
+zero underflow warnings and timing summaries. bench/hg-delivery-check.json passes.
+Runners, provenance, complete measured reports and docs/hg-benchmark-report.md are
+committed together. The human fixture and materialized samples remain local under
+ignored work/hg-input; ordinary raw results remain under ignored bench/hg. No
+previous archive is replaced and no production source or executable is changed.
+This completes the public human chromosome milestone; whole-genome and actual
+user-workload claims remain untested.

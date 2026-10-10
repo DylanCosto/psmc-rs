@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "source_unchanged": true,
+  "underflow_warnings": 0,
+  "counters": {
+    "sequence_visits": 9000,
+    "sequence_evaluations": 5880,
+    "cache_hits": 3120,
+    "model_updates": 3584539
+  },
+  "report_sha256": {
+    "input": "1d9092e0831bd44386ded44a59f90648d84a6449213c32d61698eaf5611c4750",
+    "pilot": "5556d24cce3ef0cd0a345786d220116fb641b4b7fd230d3f89dc8163c880026c",
+    "benchmark": "7850a197ffc80fd70f2281f5860865d404b4174e6ac80c0086f0b350c77b71d7",
+    "profile": "e6cd0df3b23f01523a57db55d56a01f2e387042c5d38668e4779e95e7433d058"
+  },
+  "human_report_sha256": "7f3a419c81dbd98b0d1d7c6e1fb377be68840ee755e5113087faa5301c42ac56",
+  "timed_bootstrap_outputs": 300,
+  "canonical_c_bootstraps": 30,
+  "subsequent_exact_comparisons": 270,
+  "finite_bootstraps": 30,
+  "unsplit_exact": true,
+  "diagnostic_comparisons": 2,
+  "runner_sha256": "896831c817de9f637cdb2b2101b9b2b318df9c5dba464d5293165b0bd75a4b67"
+}

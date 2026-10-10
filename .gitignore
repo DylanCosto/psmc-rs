@@ -32,3 +32,5 @@ target/
 /bench/cpu-campaign-final/
 
 /bench/parallel/
+
+/bench/hg/

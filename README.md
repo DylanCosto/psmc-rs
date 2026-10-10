@@ -9,7 +9,9 @@ sequence boundaries and the statistical method are preserved.
 
 Use `--backend cpu` for the optimized path. The default remains `dense`, the
 retained scalar oracle. The [parallel report](docs/parallel-report.md) validates
-16-worker batches against already-parallel vanilla. Read the [CPU campaign report](docs/cpu-campaign-report.md) for current
+16-worker synthetic batches against already-parallel vanilla. The
+[human-input report](docs/hg-benchmark-report.md) adds a public HG001/NA12878
+chromosome 22 test with full 64-state, 30-iteration fits. Read the [CPU campaign report](docs/cpu-campaign-report.md) for current
 measurements, exact comparisons and limitations. The [Phase 3a report](docs/phase-3-simd-report.md)
 retains the previous SIMD release evidence. The pinned external reference is
 [`lh3/psmc` at 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a](https://github.com/lh3/psmc/tree/82fa2ada83ee463fe1251b562ae3d60e82d7ad6a).

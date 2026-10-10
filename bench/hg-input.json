@@ -1,0 +1,3517 @@
+{
+  "status": "passed",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/kevinkorfmann/smckit/b5f0a200a99ecd86191780f0c8166d3e2ee0d776/src/smckit/data/examples/psmc/NA12878_chr22.psmcfa",
+      "path": "work/hg-input/NA12878_chr22.psmcfa",
+      "sha256": "0fe05d6fc19a94a3129803dc214660e0a72f2335ce5940b35fc3c9eab3698ea5",
+      "bytes": 516662
+    },
+    {
+      "url": "https://raw.githubusercontent.com/kevinkorfmann/smckit/b5f0a200a99ecd86191780f0c8166d3e2ee0d776/LICENSE",
+      "path": "work/hg-input/LICENSE",
+      "sha256": "e9db8652d8026b7b74eb4477f8d87907b5d44d3ea300a68f742717e7327caa87",
+      "bytes": 1071
+    }
+  ],
+  "upstream_commit": "b5f0a200a99ecd86191780f0c8166d3e2ee0d776",
+  "upstream_description": "Public smckit quickstart labels this a real NA12878 chromosome 22 PSMC example.",
+  "upstream_documentation": "https://smckit.readthedocs.io/en/latest/get-started/quickstart-psmc.html",
+  "provenance_limit": "Raw read accession, variant caller, filters and assembly for this particular bundled fixture are not independently established. The separate upstream prospective GRCh38 acquisition manifest is NOT provenance for this fixture.",
+  "scope": "Full supplied chromosome fixture, not a whole genome; all encoded missing bins retained. No new VCF conversion or imputation. Local downloaded data are not committed.",
+  "license": "Upstream repository MIT license retained locally; no redistribution of human input in this milestone.",
+  "input": "work/hg-input/NA12878_chr22.psmcfa",
+  "input_sha256": "0fe05d6fc19a94a3129803dc214660e0a72f2335ce5940b35fc3c9eab3698ea5",
+  "bins": 508185,
+  "symbols": {
+    "N": 116551,
+    "T": 356491,
+    "K": 35143
+  },
+  "split_command": [
+    "work/vanilla/utils/splitfa",
+    "work/hg-input/NA12878_chr22.psmcfa",
+    "50000"
+  ],
+  "split_binary_sha256": "8935d415f52367c92d25cf086eaf655593bd5512a186ed8d7fc193e8ab00a905",
+  "blocks": "work/hg-input/blocks-50000.psmcfa",
+  "blocks_sha256": "dcda5cbe66ec6276a9ef208e43e45ae6e0ab68e5a5301c16e2d023b0ffae3e49",
+  "split_rationale": "Explicit 50,000-bin bootstrap blocks (about 5 Mb at the standard 100-bp encoding). Default 500,000-bin splitfa would leave this fixture as one block, giving no meaningful resampling. This choice is fixed before outcomes; complete blocks and the remainder are retained.",
+  "blocks_summary": [
+    {
+      "name": "chr22_1",
+      "bins": 50000,
+      "symbols": {
+        "N": 50000
+      }
+    },
+    {
+      "name": "chr22_2",
+      "bins": 50000,
+      "symbols": {
+        "N": 50000
+      }
+    },
+    {
+      "name": "chr22_3",
+      "bins": 50000,
+      "symbols": {
+        "N": 13189,
+        "T": 35830,
+        "K": 981
+      }
+    },
+    {
+      "name": "chr22_4",
+      "bins": 50000,
+      "symbols": {
+        "T": 42792,
+        "N": 3248,
+        "K": 3960
+      }
+    },
+    {
+      "name": "chr22_5",
+      "bins": 50000,
+      "symbols": {
+        "T": 45868,
+        "K": 4132
+      }
+    },
+    {
+      "name": "chr22_6",
+      "bins": 50000,
+      "symbols": {
+        "K": 4264,
+        "T": 45736
+      }
+    },
+    {
+      "name": "chr22_7",
+      "bins": 50000,
+      "symbols": {
+        "T": 44592,
+        "K": 5408
+      }
+    },
+    {
+      "name": "chr22_8",
+      "bins": 50000,
+      "symbols": {
+        "T": 45440,
+        "K": 4560
+      }
+    },
+    {
+      "name": "chr22_9",
+      "bins": 50000,
+      "symbols": {
+        "T": 44289,
+        "K": 5711
+      }
+    },
+    {
+      "name": "chr22_10",
+      "bins": 58185,
+      "symbols": {
+        "T": 51944,
+        "K": 6127,
+        "N": 114
+      }
+    }
+  ],
+  "seed": 20261012,
+  "replicates": [
+    {
+      "index": 0,
+      "seed": 20261012,
+      "indices": [
+        1,
+        6,
+        5,
+        4,
+        8,
+        0,
+        0,
+        3,
+        3,
+        5
+      ],
+      "draws": [
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 450000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 450000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": false,
+          "before_length": 500000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-00.psmcfa",
+      "sha256": "45c89d34b768bcdcb33becf0138e9ac6146fe495d284330e59dcf00890a13c88"
+    },
+    {
+      "index": 1,
+      "seed": 20261013,
+      "indices": [
+        0,
+        3,
+        2,
+        9,
+        8,
+        2,
+        5,
+        9,
+        1,
+        2
+      ],
+      "draws": [
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 208185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 208185,
+          "after_length": 258185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 258185,
+          "after_length": 308185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 308185,
+          "after_length": 358185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 358185,
+          "after_length": 416370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 416370,
+          "after_length": 466370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 466370,
+          "after_length": 516370,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-01.psmcfa",
+      "sha256": "652c6a6007c5cf7ab672a4e35e196e85234cc12e0a732d93118be87b765caee9"
+    },
+    {
+      "index": 2,
+      "seed": 20261014,
+      "indices": [
+        9,
+        0,
+        9,
+        3,
+        8,
+        4,
+        0,
+        5,
+        0,
+        8
+      ],
+      "draws": [
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 58185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 58185,
+          "after_length": 108185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 108185,
+          "after_length": 166370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 166370,
+          "after_length": 216370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 216370,
+          "after_length": 266370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 266370,
+          "after_length": 316370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 316370,
+          "after_length": 366370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 366370,
+          "after_length": 416370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 416370,
+          "after_length": 466370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 466370,
+          "after_length": 516370,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-02.psmcfa",
+      "sha256": "e23ac4823d7581b82410af92601d6d26d7f7c86620f085c92c3230853f27ee6d"
+    },
+    {
+      "index": 3,
+      "seed": 20261015,
+      "indices": [
+        8,
+        7,
+        7,
+        8,
+        8,
+        6,
+        5,
+        1,
+        9,
+        4
+      ],
+      "draws": [
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 458185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 458185,
+          "after_length": 508185,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-03.psmcfa",
+      "sha256": "9f58972e6a89f4b20a0b9e85e9cdd4d3a33f876ff560e82ad572a7fde599d967"
+    },
+    {
+      "index": 4,
+      "seed": 20261016,
+      "indices": [
+        6,
+        4,
+        4,
+        3,
+        8,
+        8,
+        0,
+        8,
+        8,
+        0
+      ],
+      "draws": [
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 450000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 450000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": false,
+          "before_length": 500000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-04.psmcfa",
+      "sha256": "e383b434577310027e51d0ecfc53eefee737d3715abe214aef9197d4e799b0e4"
+    },
+    {
+      "index": 5,
+      "seed": 20261017,
+      "indices": [
+        5,
+        1,
+        1,
+        7,
+        8,
+        0,
+        5,
+        4,
+        6,
+        6
+      ],
+      "draws": [
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 450000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 450000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": false,
+          "before_length": 500000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-05.psmcfa",
+      "sha256": "a67aa48d2bfdb2f69db553d1499915a0a7ff6d32dc02fe9cb4e6c5ed67f3c7d9"
+    },
+    {
+      "index": 6,
+      "seed": 20261018,
+      "indices": [
+        4,
+        8,
+        9,
+        2,
+        8,
+        3,
+        0,
+        0,
+        5,
+        3
+      ],
+      "draws": [
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 158185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 158185,
+          "after_length": 208185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 208185,
+          "after_length": 258185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 258185,
+          "after_length": 308185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 308185,
+          "after_length": 358185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 358185,
+          "after_length": 408185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 408185,
+          "after_length": 458185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 458185,
+          "after_length": 508185,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-06.psmcfa",
+      "sha256": "7bf93d43765052c0a2d7c1f9ece1fce96c9f3ee772d908df3898d383ddc5a75b"
+    },
+    {
+      "index": 7,
+      "seed": 20261019,
+      "indices": [
+        2,
+        5,
+        6,
+        7,
+        8,
+        5,
+        5,
+        6,
+        4,
+        9
+      ],
+      "draws": [
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 450000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 450000,
+          "after_length": 508185,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-07.psmcfa",
+      "sha256": "3572013b49b3037ba70b10ba5d316bb8cdfbc4717c69ad2e62063050e788ae6c"
+    },
+    {
+      "index": 8,
+      "seed": 20261020,
+      "indices": [
+        1,
+        2,
+        4,
+        1,
+        7,
+        7,
+        0,
+        3,
+        3,
+        5
+      ],
+      "draws": [
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 450000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 450000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": false,
+          "before_length": 500000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-08.psmcfa",
+      "sha256": "a47636c50aace6fb59652878fc4f97c22e3574e47139d595fc7c437b137cb747"
+    },
+    {
+      "index": 9,
+      "seed": 20261021,
+      "indices": [
+        0,
+        9,
+        1,
+        6,
+        7,
+        9,
+        5,
+        9,
+        1,
+        1
+      ],
+      "draws": [
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 108185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 108185,
+          "after_length": 158185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 158185,
+          "after_length": 208185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 208185,
+          "after_length": 258185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 258185,
+          "after_length": 316370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 316370,
+          "after_length": 366370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 366370,
+          "after_length": 424555,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 424555,
+          "after_length": 474555,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 474555,
+          "after_length": 524555,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-09.psmcfa",
+      "sha256": "1dd9866cfdc293c19099747735dcf457a06bcd066aa9e7d3b3a93f4562e09ac6"
+    },
+    {
+      "index": 10,
+      "seed": 20261022,
+      "indices": [
+        9,
+        6,
+        8,
+        1,
+        7,
+        1,
+        0,
+        5,
+        0,
+        8
+      ],
+      "draws": [
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 58185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 58185,
+          "after_length": 108185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 108185,
+          "after_length": 158185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 158185,
+          "after_length": 208185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 208185,
+          "after_length": 258185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 258185,
+          "after_length": 308185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 308185,
+          "after_length": 358185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 358185,
+          "after_length": 408185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 408185,
+          "after_length": 458185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 458185,
+          "after_length": 508185,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-10.psmcfa",
+      "sha256": "2bd559e48be5a3c8ef6c591c290a6dba84046480b87ad20e51cf4ac5cb70cd45"
+    },
+    {
+      "index": 11,
+      "seed": 20261023,
+      "indices": [
+        7,
+        3,
+        6,
+        5,
+        7,
+        3,
+        5,
+        1,
+        9,
+        4
+      ],
+      "draws": [
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 458185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 458185,
+          "after_length": 508185,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-11.psmcfa",
+      "sha256": "cf5a6a8103bc50fa5355231d2bcd0c0fddc9f68afd6db0fc11a970672481a197"
+    },
+    {
+      "index": 12,
+      "seed": 20261024,
+      "indices": [
+        6,
+        0,
+        3,
+        0,
+        7,
+        5,
+        0,
+        7,
+        8,
+        0
+      ],
+      "draws": [
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 450000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 450000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": false,
+          "before_length": 500000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-12.psmcfa",
+      "sha256": "82d504c47a5f1c0f1bcb01223266208c22bf5f678e481b72550d407c9c29da38"
+    },
+    {
+      "index": 13,
+      "seed": 20261025,
+      "indices": [
+        5,
+        7,
+        1,
+        5,
+        7,
+        8,
+        5,
+        4,
+        7,
+        6
+      ],
+      "draws": [
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 450000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 450000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": false,
+          "before_length": 500000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-13.psmcfa",
+      "sha256": "fbb1f6daca9066418f2b4ff16d1a26b365d49efba294898a6578f2d048313ac0"
+    },
+    {
+      "index": 14,
+      "seed": 20261026,
+      "indices": [
+        3,
+        4,
+        8,
+        9,
+        7,
+        0,
+        0,
+        0,
+        5,
+        2
+      ],
+      "draws": [
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 208185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 208185,
+          "after_length": 258185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 258185,
+          "after_length": 308185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 308185,
+          "after_length": 358185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 358185,
+          "after_length": 408185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 408185,
+          "after_length": 458185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 458185,
+          "after_length": 508185,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-14.psmcfa",
+      "sha256": "a97aaa1fb54d44414b54e61910123f89c6d0c8db2f536db33f849a27f0e8dcc7"
+    },
+    {
+      "index": 15,
+      "seed": 20261027,
+      "indices": [
+        2,
+        1,
+        5,
+        4,
+        7,
+        2,
+        5,
+        6,
+        4,
+        9
+      ],
+      "draws": [
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 450000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 450000,
+          "after_length": 508185,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-15.psmcfa",
+      "sha256": "67a0082729e2ecd618f2825a6d8cbb85a4e787dde2febbe52a32d294cd78dcb6"
+    },
+    {
+      "index": 16,
+      "seed": 20261028,
+      "indices": [
+        1,
+        8,
+        3,
+        8,
+        7,
+        4,
+        0,
+        2,
+        3,
+        5
+      ],
+      "draws": [
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 450000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 450000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": false,
+          "before_length": 500000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-16.psmcfa",
+      "sha256": "c54c12a0edd29b8cae110bb5f05eb177e86b12c5297a199b0a5f1eab0993c60c"
+    },
+    {
+      "index": 17,
+      "seed": 20261029,
+      "indices": [
+        9,
+        5,
+        0,
+        3,
+        6,
+        6,
+        5,
+        8,
+        2,
+        1
+      ],
+      "draws": [
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 58185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 58185,
+          "after_length": 108185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 108185,
+          "after_length": 158185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 158185,
+          "after_length": 208185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 208185,
+          "after_length": 258185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 258185,
+          "after_length": 308185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 308185,
+          "after_length": 358185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 358185,
+          "after_length": 408185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 408185,
+          "after_length": 458185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 458185,
+          "after_length": 508185,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-17.psmcfa",
+      "sha256": "787da967fdf9043bde4edce69e08eba5e9d5c5359a546550800d6a98ec3cc56e"
+    },
+    {
+      "index": 18,
+      "seed": 20261030,
+      "indices": [
+        8,
+        2,
+        7,
+        8,
+        6,
+        8,
+        0,
+        5,
+        0,
+        7
+      ],
+      "draws": [
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 450000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 450000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": false,
+          "before_length": 500000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-18.psmcfa",
+      "sha256": "614c3f42eb9f2e9acc677ee1d635e3331268444069986da2d41fe578ebd3b403"
+    },
+    {
+      "index": 19,
+      "seed": 20261031,
+      "indices": [
+        7,
+        9,
+        5,
+        2,
+        6,
+        1,
+        5,
+        1,
+        9,
+        3
+      ],
+      "draws": [
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 108185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 108185,
+          "after_length": 158185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 158185,
+          "after_length": 208185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 208185,
+          "after_length": 258185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 258185,
+          "after_length": 308185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 308185,
+          "after_length": 358185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 358185,
+          "after_length": 408185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 408185,
+          "after_length": 466370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 466370,
+          "after_length": 516370,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-19.psmcfa",
+      "sha256": "3e99c03960e01f837458e50f03065c5773c2116f665b4ac8a3e99fbeb757e470"
+    },
+    {
+      "index": 20,
+      "seed": 20261032,
+      "indices": [
+        6,
+        6,
+        2,
+        7,
+        6,
+        3,
+        0,
+        7,
+        8,
+        0
+      ],
+      "draws": [
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 450000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 450000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": false,
+          "before_length": 500000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-20.psmcfa",
+      "sha256": "d29118eeea835a62f57cb13586940d82ff61ac4a5fdc83981fea75c074189244"
+    },
+    {
+      "index": 21,
+      "seed": 20261033,
+      "indices": [
+        4,
+        3,
+        0,
+        2,
+        6,
+        5,
+        5,
+        3,
+        7,
+        6
+      ],
+      "draws": [
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 450000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 450000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": false,
+          "before_length": 500000,
+          "after_length": 500000,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-21.psmcfa",
+      "sha256": "30cf87982d6ccd69f6e4b81ae0aac32c4b6365c9fe0d2d80b1ecb3e53745f790"
+    },
+    {
+      "index": 22,
+      "seed": 20261034,
+      "indices": [
+        3,
+        1,
+        7,
+        6,
+        6,
+        7,
+        9,
+        0,
+        5,
+        2
+      ],
+      "draws": [
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 358185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 358185,
+          "after_length": 408185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 408185,
+          "after_length": 458185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 458185,
+          "after_length": 508185,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-22.psmcfa",
+      "sha256": "ec00a5575a91e532a6bb5f812b6cab31a7325aeb3085825fc87dda803cf91ede"
+    },
+    {
+      "index": 23,
+      "seed": 20261035,
+      "indices": [
+        2,
+        8,
+        4,
+        1,
+        6,
+        9,
+        4,
+        6,
+        4,
+        8
+      ],
+      "draws": [
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 308185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 308185,
+          "after_length": 358185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 358185,
+          "after_length": 408185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 408185,
+          "after_length": 458185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 458185,
+          "after_length": 508185,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-23.psmcfa",
+      "sha256": "44cf1a35485cd717e38e5e799c76155b5189c71993157a639947fe4bd9c35685"
+    },
+    {
+      "index": 24,
+      "seed": 20261036,
+      "indices": [
+        0,
+        5,
+        2,
+        6,
+        6,
+        1,
+        9,
+        2,
+        3,
+        5
+      ],
+      "draws": [
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 358185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 358185,
+          "after_length": 408185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 408185,
+          "after_length": 458185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 458185,
+          "after_length": 508185,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-24.psmcfa",
+      "sha256": "068a9d0c100b0cf1db27aa568cd6fa3fec50582af87356ed2747b486be47644a"
+    },
+    {
+      "index": 25,
+      "seed": 20261037,
+      "indices": [
+        9,
+        2,
+        9,
+        0,
+        5,
+        4,
+        4,
+        8,
+        2,
+        1
+      ],
+      "draws": [
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 58185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 58185,
+          "after_length": 108185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 108185,
+          "after_length": 166370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 166370,
+          "after_length": 216370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 216370,
+          "after_length": 266370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 266370,
+          "after_length": 316370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 316370,
+          "after_length": 366370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 366370,
+          "after_length": 416370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 416370,
+          "after_length": 466370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 466370,
+          "after_length": 516370,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-25.psmcfa",
+      "sha256": "32561ed7da503cf5f806d8a3b97c4958a038dedd0d3918ca4e12223a76578b43"
+    },
+    {
+      "index": 26,
+      "seed": 20261038,
+      "indices": [
+        8,
+        9,
+        6,
+        5,
+        5,
+        6,
+        9,
+        4,
+        0,
+        7
+      ],
+      "draws": [
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 108185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 108185,
+          "after_length": 158185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 158185,
+          "after_length": 208185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 208185,
+          "after_length": 258185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 258185,
+          "after_length": 308185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 308185,
+          "after_length": 366370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 366370,
+          "after_length": 416370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 416370,
+          "after_length": 466370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 466370,
+          "after_length": 516370,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-26.psmcfa",
+      "sha256": "787a3378d30895e1ec507f64f81f31d7f3a7ef35210be415652cd1330e7929bc"
+    },
+    {
+      "index": 27,
+      "seed": 20261039,
+      "indices": [
+        7,
+        6,
+        4,
+        0,
+        5,
+        8,
+        4,
+        1,
+        9,
+        3
+      ],
+      "draws": [
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 350000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 350000,
+          "after_length": 400000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 400000,
+          "after_length": 458185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 458185,
+          "after_length": 508185,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-27.psmcfa",
+      "sha256": "982741968103ec55d6da9f5ac1637b0a976a489f7a8aa7b7dcb694fb83f33f71"
+    },
+    {
+      "index": 28,
+      "seed": 20261040,
+      "indices": [
+        5,
+        3,
+        1,
+        4,
+        5,
+        0,
+        9,
+        7,
+        8,
+        9
+      ],
+      "draws": [
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 150000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 150000,
+          "after_length": 200000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 200000,
+          "after_length": 250000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 250000,
+          "after_length": 300000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 300000,
+          "after_length": 358185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 358185,
+          "after_length": 408185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 408185,
+          "after_length": 458185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 458185,
+          "after_length": 516370,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-28.psmcfa",
+      "sha256": "f7686739c51acbc8366446f6aac114361f8680e27e217cb4694cd560ff7ad91b"
+    },
+    {
+      "index": 29,
+      "seed": 20261041,
+      "indices": [
+        4,
+        0,
+        9,
+        9,
+        5,
+        2,
+        4,
+        3,
+        7,
+        6
+      ],
+      "draws": [
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 50000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 50000,
+          "after_length": 100000,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 100000,
+          "after_length": 158185,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 58185,
+          "accepted": true,
+          "before_length": 158185,
+          "after_length": 216370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 216370,
+          "after_length": 266370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 266370,
+          "after_length": 316370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 316370,
+          "after_length": 366370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 366370,
+          "after_length": 416370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 416370,
+          "after_length": 466370,
+          "target_length": 508185,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 50000,
+          "accepted": true,
+          "before_length": 466370,
+          "after_length": 516370,
+          "target_length": 508185,
+          "stop": true
+        }
+      ],
+      "path": "work/hg-input/bootstrap-29.psmcfa",
+      "sha256": "3f8ea3bdc978a5176728b68b7645209e55530bfdc98b4b47ad79a9d456abc02c"
+    }
+  ],
+  "runner_sha256": "1db913278affc64a6362ba6f29bc4ae8a128fa0861bff20eb948374312c13a5f"
+}
