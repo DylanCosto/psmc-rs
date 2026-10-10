@@ -1,7 +1,8 @@
 # CPU campaign: profiling, finite coverage and candidate screening
 
-The CPU campaign remains active. No new numerical implementation has entered the
-release. Phase 3a commit `6a4d102` and binary SHA-256
+This document records the historical campaign screens. The [release acceptance
+record](cpu-campaign-report.md) identifies the final candidate and its acceptance
+status. At the initial checkpoint no new implementation had entered the release. Phase 3a commit `6a4d102` and binary SHA-256
 `8e417125208343026d56bae1b540b058371e4a0e949ca148a73c696b217f637b`
 remain the baseline. Pinned vanilla C remains
 `82fa2ada83ee463fe1251b562ae3d60e82d7ad6a`.
@@ -149,10 +150,10 @@ equivalent numerical contract. [Recorded comparisons](../bench/cpu-campaign-alge
 
 ## Outstanding acceptance work
 
-Model invariant reuse, count-kernel layout, long-record
-checkpointing, final accepted-candidate compatibility gates, full-batch timing,
-memory accounting and release packaging remain outstanding. No production source
-or earlier executable/archive has been replaced. ARM/NEON, AVX-512 and physical
+At the initial checkpoint, model reuse, count layout, checkpointing and final
+acceptance remained outstanding. The subsequent sections below record those
+experiments; final gates, timing and delivery are summarized in the release report.
+Earlier executables and archives remain preserved. ARM/NEON, AVX-512 and physical
 non-AVX testing still lack appropriate hardware; multicore and CUDA remain outside
 the current goal.
 
@@ -162,3 +163,51 @@ campaign benchmark files, rather than silently substituting later optimized
 sources. Frozen binaries, source hashes, injections and raw logs identify the
 actual runs. Diagnostic timers, experimental caches and their source copies are
 not in the delivered inference binary.
+
+## Scheduling, caching and memory screens
+
+The next screen evaluated 8/16-destination AVX scheduling and ordered count tiles
+of 64/256 sites. All candidates passed debug/release unit suites and all complete
+output screens. Count tiling regressed the principal fits (K23 median ratios
+0.917/0.873x, K64/N5 0.956/0.946x) despite preserved accumulation order. It is
+rejected. Wide scheduling substantially improves the K64 isolated kernel; its
+complete-fit benefit is pursued only through separate fixed-64 functions, with
+small-state controls retained. [Kernel derivation](cpu-campaign-kernel-derivation.md),
+[screen](../bench/cpu-campaign-kernels.json),
+[fixed-64 derivation](cpu-campaign-wide64-derivation.md).
+
+Exact discretization-grid caching and exact lambda/tau-dependent model invariant
+reuse both passed dedicated poison/reuse/nonfinite tests and all output screens.
+Neither consistently improves complete fits: old bootstrap 00 is essentially
+neutral (0.997/1.002x), K64/N5 0.963/0.989x and the new model-based bootstrap
+0.955/0.950x. The apparently favorable old K23 medians have very broad overlapping
+ranges (baseline 0.274–0.507 CPU seconds; grid cache 0.265–0.546). Neither is
+promoted. [Derivation](cpu-campaign-model-derivation.md),
+[all samples](../bench/cpu-campaign-model.json).
+
+The diagnostic preparation-plus-workspace-setup fraction is at most approximately
+1.1% across the profiled cases. Main time outside the measured EM scope is at most
+approximately 0.94%. These inclusive/residual figures justify deprioritizing more
+fine-grained setup and I/O changes; they are not precise allocation or I/O profiles.
+No assumption that those costs vanish on whole genomes is made.
+
+AVX masked tails pass extended lane tests and Linux protected-page tests with
+buffers ending immediately before an inaccessible page. Their isolated K23 kernel
+improves, yet complete K23 fits and bootstrap controls regress. Both masked-tail
+variants are rejected; original scalar tails remain. No specific compiler/cache
+cause is established by these timings. [Derivation](cpu-campaign-tail-derivation.md),
+[all samples](../bench/cpu-campaign-tails.json).
+
+Exact checkpoint/recompute retains every scale and boundary vector, regenerates
+forward/backward tiles, and accumulates count cells in original ascending site
+order. Debug/release tests and long-record checks compare all regenerated messages
+and counts exactly. For a 200,000-bin K23 record, 256-site tiles reduce peak RSS
+from about 76,084 to 4,692 KiB, while two evaluations rise from 0.289 to 0.369 CPU
+seconds. K64 reduces 204,492 to 5,584 KiB at 256-site tiles but costs 1.531 versus
+1.263 CPU seconds. All tile choices and noisy ranges are retained. This is a
+useful memory experiment, not a CPU acceleration or a released fitting mode.
+Naively fusing a descending backward sweep with counts would reverse addend order;
+the exact experiment instead retains ascending count traversal. No slower memory
+mode is introduced into the production CLI without a workload needing that tradeoff.
+[Derivation](cpu-campaign-checkpoint-derivation.md),
+[time and memory evidence](../bench/cpu-campaign-checkpoint.json).

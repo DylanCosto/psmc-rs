@@ -76,7 +76,11 @@ impl Avx {
         // n/4*4; every matrix row has n cells and every input/output has n cells.
         // Mutable out cannot alias the borrowed inputs. Unaligned accesses are used.
         unsafe {
-            x86::forward(out, previous, matrix, emission)
+            if n == 64 {
+                x86::forward64(out, previous, matrix, emission)
+            } else {
+                x86::forward(out, previous, matrix, emission)
+            }
         }
         #[cfg(not(target_arch = "x86_64"))]
         unreachable!("AVX capability is never constructed on this architecture");
@@ -92,7 +96,11 @@ impl Avx {
         #[cfg(target_arch = "x86_64")]
         // SAFETY: same detected capability and in-bounds row/lane proof as forward.
         unsafe {
-            x86::backward(out, next, transpose, scale)
+            if n == 64 {
+                x86::backward64(out, next, transpose, scale)
+            } else {
+                x86::backward(out, next, transpose, scale)
+            }
         }
         #[cfg(not(target_arch = "x86_64"))]
         unreachable!("AVX capability is never constructed on this architecture");
@@ -179,6 +187,95 @@ mod x86 {
     }
 
     #[target_feature(enable = "avx")]
+    pub(super) unsafe fn forward64(
+        out: &mut [f64],
+        previous: &[f64],
+        matrix: &[f64],
+        emission: &[f64],
+    ) {
+        // SAFETY: called only after the safe wrapper checks n==64 and all
+        // shapes. k+15<=63, l<64; all row and vector addresses are in bounds.
+        // Four independent ordered chains; no FMA or horizontal reduction.
+        unsafe {
+            for k in (0..64).step_by(16) {
+                let mut sum0 = _mm256_setzero_pd();
+                let mut sum1 = _mm256_setzero_pd();
+                let mut sum2 = _mm256_setzero_pd();
+                let mut sum3 = _mm256_setzero_pd();
+                for (l, &f) in previous.iter().enumerate() {
+                    let v = _mm256_set1_pd(f);
+                    let a0 = _mm256_loadu_pd(matrix.as_ptr().add(l * 64 + k));
+                    sum0 = _mm256_add_pd(sum0, _mm256_mul_pd(v, a0));
+                    let a1 = _mm256_loadu_pd(matrix.as_ptr().add(l * 64 + k + 4));
+                    sum1 = _mm256_add_pd(sum1, _mm256_mul_pd(v, a1));
+                    let a2 = _mm256_loadu_pd(matrix.as_ptr().add(l * 64 + k + 8));
+                    sum2 = _mm256_add_pd(sum2, _mm256_mul_pd(v, a2));
+                    let a3 = _mm256_loadu_pd(matrix.as_ptr().add(l * 64 + k + 12));
+                    sum3 = _mm256_add_pd(sum3, _mm256_mul_pd(v, a3));
+                }
+                _mm256_storeu_pd(
+                    out.as_mut_ptr().add(k),
+                    _mm256_mul_pd(_mm256_loadu_pd(emission.as_ptr().add(k)), sum0),
+                );
+                _mm256_storeu_pd(
+                    out.as_mut_ptr().add(k + 4),
+                    _mm256_mul_pd(_mm256_loadu_pd(emission.as_ptr().add(k + 4)), sum1),
+                );
+                _mm256_storeu_pd(
+                    out.as_mut_ptr().add(k + 8),
+                    _mm256_mul_pd(_mm256_loadu_pd(emission.as_ptr().add(k + 8)), sum2),
+                );
+                _mm256_storeu_pd(
+                    out.as_mut_ptr().add(k + 12),
+                    _mm256_mul_pd(_mm256_loadu_pd(emission.as_ptr().add(k + 12)), sum3),
+                );
+            }
+        }
+    }
+
+    #[target_feature(enable = "avx")]
+    pub(super) unsafe fn backward64(out: &mut [f64], next: &[f64], transpose: &[f64], scale: f64) {
+        // SAFETY: called only after the safe wrapper checks n==64 and all
+        // shapes. k+15<=63, l<64; all row and vector addresses are in bounds.
+        // Four independent ordered chains; no FMA or horizontal reduction.
+        unsafe {
+            for k in (0..64).step_by(16) {
+                let mut sum0 = _mm256_setzero_pd();
+                let mut sum1 = _mm256_setzero_pd();
+                let mut sum2 = _mm256_setzero_pd();
+                let mut sum3 = _mm256_setzero_pd();
+                for (l, &b) in next.iter().enumerate() {
+                    let v = _mm256_set1_pd(b);
+                    let a0 = _mm256_loadu_pd(transpose.as_ptr().add(l * 64 + k));
+                    sum0 = _mm256_add_pd(sum0, _mm256_mul_pd(a0, v));
+                    let a1 = _mm256_loadu_pd(transpose.as_ptr().add(l * 64 + k + 4));
+                    sum1 = _mm256_add_pd(sum1, _mm256_mul_pd(a1, v));
+                    let a2 = _mm256_loadu_pd(transpose.as_ptr().add(l * 64 + k + 8));
+                    sum2 = _mm256_add_pd(sum2, _mm256_mul_pd(a2, v));
+                    let a3 = _mm256_loadu_pd(transpose.as_ptr().add(l * 64 + k + 12));
+                    sum3 = _mm256_add_pd(sum3, _mm256_mul_pd(a3, v));
+                }
+                _mm256_storeu_pd(
+                    out.as_mut_ptr().add(k),
+                    _mm256_div_pd(sum0, _mm256_set1_pd(scale)),
+                );
+                _mm256_storeu_pd(
+                    out.as_mut_ptr().add(k + 4),
+                    _mm256_div_pd(sum1, _mm256_set1_pd(scale)),
+                );
+                _mm256_storeu_pd(
+                    out.as_mut_ptr().add(k + 8),
+                    _mm256_div_pd(sum2, _mm256_set1_pd(scale)),
+                );
+                _mm256_storeu_pd(
+                    out.as_mut_ptr().add(k + 12),
+                    _mm256_div_pd(sum3, _mm256_set1_pd(scale)),
+                );
+            }
+        }
+    }
+
+    #[target_feature(enable = "avx")]
     pub(super) unsafe fn counts(
         counts: &mut [f64],
         forward: &[f64],
@@ -253,7 +350,7 @@ mod lane_tests {
             f64::NEG_INFINITY,
             f64::NAN,
         ];
-        for n in 1..=13 {
+        for n in (1..=33).chain([63, 64, 65]) {
             for offset in 0..values.len() {
                 let f: Vec<_> = (0..n)
                     .map(|i| values[(i + offset) % values.len()])
@@ -319,6 +416,51 @@ mod lane_tests {
         assert!(
             std::panic::catch_unwind(|| avx.backward(&mut [0.0; 4], &[1.0; 3], &[1.0; 16], 1.0))
                 .is_err()
+        );
+        assert!(
+            std::panic::catch_unwind(|| avx.forward(
+                &mut [0.0; 64],
+                &[1.0; 63],
+                &[1.0; 4096],
+                &[1.0; 64]
+            ))
+            .is_err()
+        );
+        assert!(
+            std::panic::catch_unwind(|| avx.forward(
+                &mut [0.0; 64],
+                &[1.0; 64],
+                &[1.0; 4095],
+                &[1.0; 64]
+            ))
+            .is_err()
+        );
+        assert!(
+            std::panic::catch_unwind(|| avx.forward(
+                &mut [0.0; 64],
+                &[1.0; 64],
+                &[1.0; 4096],
+                &[1.0; 63]
+            ))
+            .is_err()
+        );
+        assert!(
+            std::panic::catch_unwind(|| avx.backward(
+                &mut [0.0; 64],
+                &[1.0; 63],
+                &[1.0; 4096],
+                1.0
+            ))
+            .is_err()
+        );
+        assert!(
+            std::panic::catch_unwind(|| avx.backward(
+                &mut [0.0; 64],
+                &[1.0; 64],
+                &[1.0; 4095],
+                1.0
+            ))
+            .is_err()
         );
         assert!(
             std::panic::catch_unwind(|| avx.counts(

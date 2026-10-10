@@ -1,0 +1,5 @@
+       Fresh psmc-core v0.3.1 (${PROJECT}/crates/psmc-core)
+       Fresh psmc-io v0.3.1 (${PROJECT}/crates/psmc-io)
+       Fresh psmc-cpu v0.3.1 (${PROJECT}/crates/psmc-cpu)
+       Fresh psmc-cli v0.3.1 (${PROJECT}/crates/psmc-cli)
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.02s

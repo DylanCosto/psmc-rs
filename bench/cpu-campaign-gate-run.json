@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "resource_policy": {
+    "affinity": [
+      0
+    ],
+    "nice": 10,
+    "cargo_jobs": 1,
+    "rust_test_threads": 1,
+    "inference_threads_per_fit": 1,
+    "parallel_jobs": false,
+    "shared_host": true
+  },
+  "steps": [
+    {
+      "command": [
+        "python3",
+        "bench/cpu_campaign_build.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "bench/cpu_campaign_cargo.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "bench/phase3_validate.py",
+        "--run",
+        "--report",
+        "bench/cpu-campaign-validation.json"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "bench/cpu_campaign_extended_gate.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "bench/phase3_scheduler.py",
+        "--run",
+        "--validation",
+        "bench/cpu-campaign-validation.json",
+        "--report",
+        "bench/cpu-campaign-scheduler.json"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "bench/cpu_campaign_review.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "bench/cpu_campaign_benchmark.py",
+        "--run"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "bench/cpu_campaign_final_profile.py"
+      ],
+      "returncode": 0
+    }
+  ],
+  "runner_sha256": "370095e3919091a386b2f1338b64d8495bf987d7b10cbe2294331c9fa1d159b0"
+}

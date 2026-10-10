@@ -1,0 +1,3528 @@
+{
+  "status": "screened_not_promoted",
+  "resource_policy": {
+    "affinity": [
+      0
+    ],
+    "nice": 10,
+    "cargo_jobs": 1,
+    "rust_test_threads": 1,
+    "inference_threads_per_fit": 1,
+    "parallel_jobs": false,
+    "shared_host": true
+  },
+  "raw_directory": "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z",
+  "source_sha256": {
+    "crates/psmc-cli/src/batch.rs": "ef27669f8bf349afc8b848a2fb17ed09121fa345f25b568838ba53f83b015ea8",
+    "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+    "crates/psmc-cli/src/legacy.rs": "96c0d71d9ca34b419ede491870b4b1a41b7196de0e1c8405098dff99913267f3",
+    "crates/psmc-cli/src/main.rs": "55fdb479f72c48d43f15dbf43d56cd78b8500b3acfaa2142336109f9ce5e4b45",
+    "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+    "crates/psmc-core/src/em.rs": "fd667334b4d470049dad57358bdd23ce0fd23006e347f13704079026c7f1c52f",
+    "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+    "crates/psmc-core/src/lib.rs": "b0b6804c719504d3d7b2f44290a21f45babd590fe9e59e913c0c6dcafb41b01b",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+    "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+    "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179",
+    "crates/psmc-cpu/src/lib.rs": "dd5111f7b243bb5164858ff8c9f885b3eaf2eaee6e2aa4265546d9ff612e3893",
+    "crates/psmc-cpu/src/simd.rs": "2cac4ed5597e7784b6b65882885bbd30dbfdb2642daee93369c325e60e7654ef",
+    "crates/psmc-cpu/src/tests.rs": "9252b373e04da0ff705f440c19db2d05c74c4238113ec9ab6e7e80df4ef0cf3b",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+    "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+    "Cargo.toml": "139971d1905df7429e4bb80e1091af7eb0b818cdfade96740136cb64ae281f92",
+    "Cargo.lock": "091bd9b910a7a0e7ddca1158671e40c21e1632a2d7671a312553f89f7a69c0fa",
+    "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b"
+  },
+  "experiment_source_sha256": "832df28545f64c827c74503eaa5b6f5e93575546f48af2f97388318955772186",
+  "example_sha256": "25b814926a82c1410db4f0d7cd632c513e1679790af080ccd2a4afa31dfb9237",
+  "runner_sha256": "1b63858289aaf9d8e11559d65adbb5a6e3c9b85c3770a90fd4d33de1f20ef5a0",
+  "tests": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--jobs",
+        "1",
+        "--workspace",
+        "--",
+        "--test-threads=1"
+      ],
+      "returncode": 0,
+      "log": "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/debug.test.log",
+      "sha256": "06739aae62a9e84b0a5c3128a026a002614202109806b58f80072e5c5da078a7"
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--jobs",
+        "1",
+        "--workspace",
+        "--release",
+        "--",
+        "--test-threads=1"
+      ],
+      "returncode": 0,
+      "log": "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/release.test.log",
+      "sha256": "6f3bed0bcc6ab4c734b2010f16aea7c06b9df19d47cd7e175c087f12e0122032"
+    }
+  ],
+  "cases": [
+    {
+      "states": 23,
+      "bins": 20000,
+      "repeats": 2,
+      "checks": [
+        {
+          "command": [
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "check",
+            "23",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "check",
+            "states": 23,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.036221812
+          }
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "check",
+            "23",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "check",
+            "states": 23,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.036719553
+          }
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "check",
+            "23",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "check",
+            "states": 23,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.035233307
+          }
+        }
+      ],
+      "runs": [
+        {
+          "label": "baseline",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-0-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "23",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 23,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.028649196
+          },
+          "wall_seconds": 0.030665272002806887,
+          "cpu_seconds": 0.030217999999997858,
+          "peak_rss_kib": 10004
+        },
+        {
+          "label": "cp64",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-0-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.038947314
+          },
+          "wall_seconds": 0.04091109399450943,
+          "cpu_seconds": 0.04057299999999997,
+          "peak_rss_kib": 2948
+        },
+        {
+          "label": "cp256",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-0-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.038093176
+          },
+          "wall_seconds": 0.0401159530156292,
+          "cpu_seconds": 0.03976399999999991,
+          "peak_rss_kib": 2988
+        },
+        {
+          "label": "cp1024",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-0-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.036296944
+          },
+          "wall_seconds": 0.03888963800272904,
+          "cpu_seconds": 0.038427000000000655,
+          "peak_rss_kib": 3032
+        },
+        {
+          "label": "cp64",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-1-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.035209103
+          },
+          "wall_seconds": 0.037706447998061776,
+          "cpu_seconds": 0.03730499999999948,
+          "peak_rss_kib": 3032
+        },
+        {
+          "label": "cp256",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-1-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.034095084
+          },
+          "wall_seconds": 0.036150241998257115,
+          "cpu_seconds": 0.035791000000001905,
+          "peak_rss_kib": 3044
+        },
+        {
+          "label": "cp1024",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-1-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.034187778
+          },
+          "wall_seconds": 0.03625511098653078,
+          "cpu_seconds": 0.0357339999999986,
+          "peak_rss_kib": 2996
+        },
+        {
+          "label": "baseline",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-1-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "23",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 23,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.024327072
+          },
+          "wall_seconds": 0.02630947600118816,
+          "cpu_seconds": 0.025913000000001407,
+          "peak_rss_kib": 9908
+        },
+        {
+          "label": "cp256",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-2-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.03433158
+          },
+          "wall_seconds": 0.03646757701062597,
+          "cpu_seconds": 0.03599399999999986,
+          "peak_rss_kib": 2880
+        },
+        {
+          "label": "cp1024",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-2-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.03775247
+          },
+          "wall_seconds": 0.03981581699918024,
+          "cpu_seconds": 0.039417999999997955,
+          "peak_rss_kib": 2996
+        },
+        {
+          "label": "baseline",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-2-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "23",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 23,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.02755831
+          },
+          "wall_seconds": 0.029428673995425925,
+          "cpu_seconds": 0.029098000000000734,
+          "peak_rss_kib": 9936
+        },
+        {
+          "label": "cp64",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-2-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.037653825
+          },
+          "wall_seconds": 0.039784938999218866,
+          "cpu_seconds": 0.03939499999999918,
+          "peak_rss_kib": 2948
+        },
+        {
+          "label": "cp1024",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-3-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.03076013
+          },
+          "wall_seconds": 0.03310164200956933,
+          "cpu_seconds": 0.03273400000000093,
+          "peak_rss_kib": 3140
+        },
+        {
+          "label": "baseline",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-3-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "23",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 23,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.028059985
+          },
+          "wall_seconds": 0.0301862700143829,
+          "cpu_seconds": 0.02979799999999999,
+          "peak_rss_kib": 9992
+        },
+        {
+          "label": "cp64",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-3-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.037667897
+          },
+          "wall_seconds": 0.0401828300091438,
+          "cpu_seconds": 0.039774999999999894,
+          "peak_rss_kib": 2908
+        },
+        {
+          "label": "cp256",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-3-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.037556548
+          },
+          "wall_seconds": 0.03959947300609201,
+          "cpu_seconds": 0.03922700000000079,
+          "peak_rss_kib": 3040
+        },
+        {
+          "label": "baseline",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-4-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "23",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 23,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.026218659
+          },
+          "wall_seconds": 0.028571524017024785,
+          "cpu_seconds": 0.02812599999999832,
+          "peak_rss_kib": 10016
+        },
+        {
+          "label": "cp64",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-4-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.030782615
+          },
+          "wall_seconds": 0.03444340400164947,
+          "cpu_seconds": 0.033764000000002126,
+          "peak_rss_kib": 2880
+        },
+        {
+          "label": "cp256",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-4-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.038488299
+          },
+          "wall_seconds": 0.041138396016322076,
+          "cpu_seconds": 0.040673999999998545,
+          "peak_rss_kib": 3016
+        },
+        {
+          "label": "cp1024",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-4-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.036738874
+          },
+          "wall_seconds": 0.03902652699616738,
+          "cpu_seconds": 0.03849999999999909,
+          "peak_rss_kib": 2992
+        },
+        {
+          "label": "cp64",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-5-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.040758636
+          },
+          "wall_seconds": 0.04310427900054492,
+          "cpu_seconds": 0.04270100000000321,
+          "peak_rss_kib": 3020
+        },
+        {
+          "label": "cp256",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-5-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.040918792
+          },
+          "wall_seconds": 0.04336965098627843,
+          "cpu_seconds": 0.04297099999999743,
+          "peak_rss_kib": 2988
+        },
+        {
+          "label": "cp1024",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-5-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.039527765
+          },
+          "wall_seconds": 0.04237034701509401,
+          "cpu_seconds": 0.04186900000000082,
+          "peak_rss_kib": 3028
+        },
+        {
+          "label": "baseline",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l20000-5-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "23",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 23,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 15464633909997408024,
+            "section_wall_seconds": 0.030417491
+          },
+          "wall_seconds": 0.03293223099899478,
+          "cpu_seconds": 0.03242199999999884,
+          "peak_rss_kib": 10004
+        }
+      ],
+      "summary": {
+        "baseline": {
+          "cpu_seconds": {
+            "median": 0.029098000000000734,
+            "minimum": 0.025913000000001407,
+            "maximum": 0.03242199999999884
+          },
+          "wall_seconds": {
+            "median": 0.029428673995425925,
+            "minimum": 0.02630947600118816,
+            "maximum": 0.03293223099899478
+          },
+          "peak_rss_kib": {
+            "median": 9992,
+            "minimum": 9908,
+            "maximum": 10016
+          }
+        },
+        "cp64": {
+          "cpu_seconds": {
+            "median": 0.03939499999999918,
+            "minimum": 0.033764000000002126,
+            "maximum": 0.04270100000000321
+          },
+          "wall_seconds": {
+            "median": 0.039784938999218866,
+            "minimum": 0.03444340400164947,
+            "maximum": 0.04310427900054492
+          },
+          "peak_rss_kib": {
+            "median": 2948,
+            "minimum": 2880,
+            "maximum": 3032
+          }
+        },
+        "cp256": {
+          "cpu_seconds": {
+            "median": 0.03922700000000079,
+            "minimum": 0.035791000000001905,
+            "maximum": 0.04297099999999743
+          },
+          "wall_seconds": {
+            "median": 0.03959947300609201,
+            "minimum": 0.036150241998257115,
+            "maximum": 0.04336965098627843
+          },
+          "peak_rss_kib": {
+            "median": 3016,
+            "minimum": 2880,
+            "maximum": 3044
+          }
+        },
+        "cp1024": {
+          "cpu_seconds": {
+            "median": 0.03849999999999909,
+            "minimum": 0.03273400000000093,
+            "maximum": 0.04186900000000082
+          },
+          "wall_seconds": {
+            "median": 0.03902652699616738,
+            "minimum": 0.03310164200956933,
+            "maximum": 0.04237034701509401
+          },
+          "peak_rss_kib": {
+            "median": 2996,
+            "minimum": 2992,
+            "maximum": 3140
+          }
+        }
+      }
+    },
+    {
+      "states": 64,
+      "bins": 20000,
+      "repeats": 2,
+      "checks": [
+        {
+          "command": [
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "check",
+            "64",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "check",
+            "states": 64,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.178383445
+          }
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "check",
+            "64",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "check",
+            "states": 64,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.168825366
+          }
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "check",
+            "64",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "check",
+            "states": 64,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.170327643
+          }
+        }
+      ],
+      "runs": [
+        {
+          "label": "baseline",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-0-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "64",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 64,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.120253397
+          },
+          "wall_seconds": 0.1226028360251803,
+          "cpu_seconds": 0.12217500000000214,
+          "peak_rss_kib": 23088
+        },
+        {
+          "label": "cp64",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-0-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.181107938
+          },
+          "wall_seconds": 0.1837870450108312,
+          "cpu_seconds": 0.18330199999999763,
+          "peak_rss_kib": 3496
+        },
+        {
+          "label": "cp256",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-0-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.181774802
+          },
+          "wall_seconds": 0.1841569939861074,
+          "cpu_seconds": 0.18371300000000046,
+          "peak_rss_kib": 3348
+        },
+        {
+          "label": "cp1024",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-0-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.190293779
+          },
+          "wall_seconds": 0.1932665650092531,
+          "cpu_seconds": 0.19165700000000085,
+          "peak_rss_kib": 3996
+        },
+        {
+          "label": "cp64",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-1-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.199858704
+          },
+          "wall_seconds": 0.20236925600329414,
+          "cpu_seconds": 0.20192999999999883,
+          "peak_rss_kib": 3252
+        },
+        {
+          "label": "cp256",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-1-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.192142941
+          },
+          "wall_seconds": 0.1944509909953922,
+          "cpu_seconds": 0.19402900000000312,
+          "peak_rss_kib": 3496
+        },
+        {
+          "label": "cp1024",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-1-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.187048247
+          },
+          "wall_seconds": 0.18905081300181337,
+          "cpu_seconds": 0.18866699999999859,
+          "peak_rss_kib": 4016
+        },
+        {
+          "label": "baseline",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-1-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "64",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 64,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.13116891
+          },
+          "wall_seconds": 0.13315800498821773,
+          "cpu_seconds": 0.13281300000000074,
+          "peak_rss_kib": 23040
+        },
+        {
+          "label": "cp256",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-2-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.180157097
+          },
+          "wall_seconds": 0.18215687898918986,
+          "cpu_seconds": 0.18102299999999882,
+          "peak_rss_kib": 3456
+        },
+        {
+          "label": "cp1024",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-2-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.180779991
+          },
+          "wall_seconds": 0.1828492819913663,
+          "cpu_seconds": 0.18250600000000095,
+          "peak_rss_kib": 4008
+        },
+        {
+          "label": "baseline",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-2-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "64",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 64,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.124880177
+          },
+          "wall_seconds": 0.12681359899579547,
+          "cpu_seconds": 0.1264609999999986,
+          "peak_rss_kib": 23060
+        },
+        {
+          "label": "cp64",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-2-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.197702249
+          },
+          "wall_seconds": 0.19975905900355428,
+          "cpu_seconds": 0.19940400000000147,
+          "peak_rss_kib": 3400
+        },
+        {
+          "label": "cp1024",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-3-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.203915103
+          },
+          "wall_seconds": 0.2062721689871978,
+          "cpu_seconds": 0.20584699999999878,
+          "peak_rss_kib": 4132
+        },
+        {
+          "label": "baseline",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-3-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "64",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 64,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.136533675
+          },
+          "wall_seconds": 0.13907534501049668,
+          "cpu_seconds": 0.13865400000000072,
+          "peak_rss_kib": 23040
+        },
+        {
+          "label": "cp64",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-3-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.189564527
+          },
+          "wall_seconds": 0.19164514902513474,
+          "cpu_seconds": 0.19039500000000076,
+          "peak_rss_kib": 3248
+        },
+        {
+          "label": "cp256",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-3-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.181950635
+          },
+          "wall_seconds": 0.18486049998318776,
+          "cpu_seconds": 0.18431499999999823,
+          "peak_rss_kib": 3384
+        },
+        {
+          "label": "baseline",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-4-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "64",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 64,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.124852071
+          },
+          "wall_seconds": 0.126921222981764,
+          "cpu_seconds": 0.12656000000000045,
+          "peak_rss_kib": 23136
+        },
+        {
+          "label": "cp64",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-4-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.179520558
+          },
+          "wall_seconds": 0.18148451700108126,
+          "cpu_seconds": 0.18092399999999875,
+          "peak_rss_kib": 3316
+        },
+        {
+          "label": "cp256",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-4-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.1819741
+          },
+          "wall_seconds": 0.18415222998009995,
+          "cpu_seconds": 0.18379600000000318,
+          "peak_rss_kib": 3344
+        },
+        {
+          "label": "cp1024",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-4-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.2009468
+          },
+          "wall_seconds": 0.20327446999726817,
+          "cpu_seconds": 0.2028949999999985,
+          "peak_rss_kib": 4124
+        },
+        {
+          "label": "cp64",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-5-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.196834463
+          },
+          "wall_seconds": 0.19943425501696765,
+          "cpu_seconds": 0.19807900000000167,
+          "peak_rss_kib": 3332
+        },
+        {
+          "label": "cp256",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-5-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.188704801
+          },
+          "wall_seconds": 0.19125350000103936,
+          "cpu_seconds": 0.19082899999999992,
+          "peak_rss_kib": 3340
+        },
+        {
+          "label": "cp1024",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-5-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "20000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 20000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.19445156
+          },
+          "wall_seconds": 0.1970736610237509,
+          "cpu_seconds": 0.1965449999999982,
+          "peak_rss_kib": 4152
+        },
+        {
+          "label": "baseline",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l20000-5-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "64",
+            "20000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 64,
+            "bins": 20000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 12690249305641255074,
+            "section_wall_seconds": 0.121368555
+          },
+          "wall_seconds": 0.12492757799918763,
+          "cpu_seconds": 0.12417800000000101,
+          "peak_rss_kib": 22940
+        }
+      ],
+      "summary": {
+        "baseline": {
+          "cpu_seconds": {
+            "median": 0.12656000000000045,
+            "minimum": 0.12417800000000101,
+            "maximum": 0.13865400000000072
+          },
+          "wall_seconds": {
+            "median": 0.126921222981764,
+            "minimum": 0.12492757799918763,
+            "maximum": 0.13907534501049668
+          },
+          "peak_rss_kib": {
+            "median": 23040,
+            "minimum": 22940,
+            "maximum": 23136
+          }
+        },
+        "cp64": {
+          "cpu_seconds": {
+            "median": 0.19807900000000167,
+            "minimum": 0.18092399999999875,
+            "maximum": 0.20192999999999883
+          },
+          "wall_seconds": {
+            "median": 0.19943425501696765,
+            "minimum": 0.18148451700108126,
+            "maximum": 0.20236925600329414
+          },
+          "peak_rss_kib": {
+            "median": 3316,
+            "minimum": 3248,
+            "maximum": 3400
+          }
+        },
+        "cp256": {
+          "cpu_seconds": {
+            "median": 0.18431499999999823,
+            "minimum": 0.18102299999999882,
+            "maximum": 0.19402900000000312
+          },
+          "wall_seconds": {
+            "median": 0.18486049998318776,
+            "minimum": 0.18215687898918986,
+            "maximum": 0.1944509909953922
+          },
+          "peak_rss_kib": {
+            "median": 3384,
+            "minimum": 3340,
+            "maximum": 3496
+          }
+        },
+        "cp1024": {
+          "cpu_seconds": {
+            "median": 0.1965449999999982,
+            "minimum": 0.18250600000000095,
+            "maximum": 0.20584699999999878
+          },
+          "wall_seconds": {
+            "median": 0.1970736610237509,
+            "minimum": 0.1828492819913663,
+            "maximum": 0.2062721689871978
+          },
+          "peak_rss_kib": {
+            "median": 4124,
+            "minimum": 4008,
+            "maximum": 4152
+          }
+        }
+      }
+    },
+    {
+      "states": 23,
+      "bins": 200000,
+      "repeats": 2,
+      "checks": [
+        {
+          "command": [
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "check",
+            "23",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "check",
+            "states": 23,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.338520052
+          }
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "check",
+            "23",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "check",
+            "states": 23,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.376610095
+          }
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "check",
+            "23",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "check",
+            "states": 23,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.362960416
+          }
+        }
+      ],
+      "runs": [
+        {
+          "label": "baseline",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-0-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "23",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 23,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.268864352
+          },
+          "wall_seconds": 0.27299687499180436,
+          "cpu_seconds": 0.27229999999999777,
+          "peak_rss_kib": 76112
+        },
+        {
+          "label": "cp64",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-0-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.359579944
+          },
+          "wall_seconds": 0.3631234950153157,
+          "cpu_seconds": 0.3624360000000013,
+          "peak_rss_kib": 5500
+        },
+        {
+          "label": "cp256",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-0-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.385749884
+          },
+          "wall_seconds": 0.3884434979991056,
+          "cpu_seconds": 0.3875480000000011,
+          "peak_rss_kib": 4680
+        },
+        {
+          "label": "cp1024",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-0-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.365243342
+          },
+          "wall_seconds": 0.3678688669751864,
+          "cpu_seconds": 0.3668179999999994,
+          "peak_rss_kib": 4660
+        },
+        {
+          "label": "cp64",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-1-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.355777956
+          },
+          "wall_seconds": 0.3592458429920953,
+          "cpu_seconds": 0.35861499999999946,
+          "peak_rss_kib": 5520
+        },
+        {
+          "label": "cp256",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-1-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.402519461
+          },
+          "wall_seconds": 0.40826116397511214,
+          "cpu_seconds": 0.40667400000000065,
+          "peak_rss_kib": 4696
+        },
+        {
+          "label": "cp1024",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-1-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.377030391
+          },
+          "wall_seconds": 0.37976137999794446,
+          "cpu_seconds": 0.3788670000000005,
+          "peak_rss_kib": 4832
+        },
+        {
+          "label": "baseline",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-1-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "23",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 23,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.264936475
+          },
+          "wall_seconds": 0.2678763289877679,
+          "cpu_seconds": 0.26741099999999673,
+          "peak_rss_kib": 76084
+        },
+        {
+          "label": "cp256",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-2-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.374138379
+          },
+          "wall_seconds": 0.37759929901221767,
+          "cpu_seconds": 0.3766110000000007,
+          "peak_rss_kib": 4756
+        },
+        {
+          "label": "cp1024",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-2-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.384803085
+          },
+          "wall_seconds": 0.38863034700625576,
+          "cpu_seconds": 0.3875450000000016,
+          "peak_rss_kib": 4704
+        },
+        {
+          "label": "baseline",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-2-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "23",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 23,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.274072266
+          },
+          "wall_seconds": 0.27815297301276587,
+          "cpu_seconds": 0.27750799999999964,
+          "peak_rss_kib": 76112
+        },
+        {
+          "label": "cp64",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-2-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.348123004
+          },
+          "wall_seconds": 0.3513928299944382,
+          "cpu_seconds": 0.35052300000000125,
+          "peak_rss_kib": 5608
+        },
+        {
+          "label": "cp1024",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-3-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.379292931
+          },
+          "wall_seconds": 0.382678763999138,
+          "cpu_seconds": 0.380938,
+          "peak_rss_kib": 4776
+        },
+        {
+          "label": "baseline",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-3-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "23",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 23,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.288599239
+          },
+          "wall_seconds": 0.29152658698149025,
+          "cpu_seconds": 0.29106799999999877,
+          "peak_rss_kib": 76068
+        },
+        {
+          "label": "cp64",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-3-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.36463293
+          },
+          "wall_seconds": 0.3675535740039777,
+          "cpu_seconds": 0.36646100000000015,
+          "peak_rss_kib": 5544
+        },
+        {
+          "label": "cp256",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-3-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.366274913
+          },
+          "wall_seconds": 0.3689846879860852,
+          "cpu_seconds": 0.3686030000000011,
+          "peak_rss_kib": 4648
+        },
+        {
+          "label": "baseline",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-4-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "23",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 23,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.292750772
+          },
+          "wall_seconds": 0.29609701997833326,
+          "cpu_seconds": 0.2956599999999967,
+          "peak_rss_kib": 76064
+        },
+        {
+          "label": "cp64",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-4-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.379651621
+          },
+          "wall_seconds": 0.38283363002119586,
+          "cpu_seconds": 0.3808480000000043,
+          "peak_rss_kib": 5584
+        },
+        {
+          "label": "cp256",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-4-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.358813304
+          },
+          "wall_seconds": 0.36148061402491294,
+          "cpu_seconds": 0.36098899999999556,
+          "peak_rss_kib": 4660
+        },
+        {
+          "label": "cp1024",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-4-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.38215133
+          },
+          "wall_seconds": 0.38495777000207454,
+          "cpu_seconds": 0.3842999999999992,
+          "peak_rss_kib": 4756
+        },
+        {
+          "label": "cp64",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-5-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.382561133
+          },
+          "wall_seconds": 0.3853870349994395,
+          "cpu_seconds": 0.3843730000000045,
+          "peak_rss_kib": 5512
+        },
+        {
+          "label": "cp256",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-5-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.350538224
+          },
+          "wall_seconds": 0.35323175697703846,
+          "cpu_seconds": 0.35285100000000114,
+          "peak_rss_kib": 4692
+        },
+        {
+          "label": "cp1024",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-5-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "23",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 23,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.375748031
+          },
+          "wall_seconds": 0.3784894609998446,
+          "cpu_seconds": 0.3778029999999992,
+          "peak_rss_kib": 4744
+        },
+        {
+          "label": "baseline",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k23-l200000-5-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "23",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 23,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 8805541806387956310,
+            "section_wall_seconds": 0.286929927
+          },
+          "wall_seconds": 0.2897679489979055,
+          "cpu_seconds": 0.28900900000000007,
+          "peak_rss_kib": 76164
+        }
+      ],
+      "summary": {
+        "baseline": {
+          "cpu_seconds": {
+            "median": 0.28900900000000007,
+            "minimum": 0.26741099999999673,
+            "maximum": 0.2956599999999967
+          },
+          "wall_seconds": {
+            "median": 0.2897679489979055,
+            "minimum": 0.2678763289877679,
+            "maximum": 0.29609701997833326
+          },
+          "peak_rss_kib": {
+            "median": 76084,
+            "minimum": 76064,
+            "maximum": 76164
+          }
+        },
+        "cp64": {
+          "cpu_seconds": {
+            "median": 0.36646100000000015,
+            "minimum": 0.35052300000000125,
+            "maximum": 0.3843730000000045
+          },
+          "wall_seconds": {
+            "median": 0.3675535740039777,
+            "minimum": 0.3513928299944382,
+            "maximum": 0.3853870349994395
+          },
+          "peak_rss_kib": {
+            "median": 5544,
+            "minimum": 5512,
+            "maximum": 5608
+          }
+        },
+        "cp256": {
+          "cpu_seconds": {
+            "median": 0.3686030000000011,
+            "minimum": 0.35285100000000114,
+            "maximum": 0.40667400000000065
+          },
+          "wall_seconds": {
+            "median": 0.3689846879860852,
+            "minimum": 0.35323175697703846,
+            "maximum": 0.40826116397511214
+          },
+          "peak_rss_kib": {
+            "median": 4692,
+            "minimum": 4648,
+            "maximum": 4756
+          }
+        },
+        "cp1024": {
+          "cpu_seconds": {
+            "median": 0.380938,
+            "minimum": 0.3778029999999992,
+            "maximum": 0.3875450000000016
+          },
+          "wall_seconds": {
+            "median": 0.382678763999138,
+            "minimum": 0.3784894609998446,
+            "maximum": 0.38863034700625576
+          },
+          "peak_rss_kib": {
+            "median": 4756,
+            "minimum": 4704,
+            "maximum": 4832
+          }
+        }
+      }
+    },
+    {
+      "states": 64,
+      "bins": 200000,
+      "repeats": 2,
+      "checks": [
+        {
+          "command": [
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "check",
+            "64",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "check",
+            "states": 64,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.776432751
+          }
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "check",
+            "64",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "check",
+            "states": 64,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.778385379
+          }
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "check",
+            "64",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "check",
+            "states": 64,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.7807717410000001
+          }
+        }
+      ],
+      "runs": [
+        {
+          "label": "baseline",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-0-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "64",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 64,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.394326835
+          },
+          "wall_seconds": 1.3986157220206223,
+          "cpu_seconds": 1.3969240000000007,
+          "peak_rss_kib": 204496
+        },
+        {
+          "label": "cp64",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-0-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.566972676
+          },
+          "wall_seconds": 1.5712998220114969,
+          "cpu_seconds": 1.5689690000000005,
+          "peak_rss_kib": 7732
+        },
+        {
+          "label": "cp256",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-0-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.250258438
+          },
+          "wall_seconds": 1.2528306049935054,
+          "cpu_seconds": 1.2511170000000025,
+          "peak_rss_kib": 5504
+        },
+        {
+          "label": "cp1024",
+          "rep": 0,
+          "warmup": true,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-0-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.756523893
+          },
+          "wall_seconds": 1.7593094070034567,
+          "cpu_seconds": 1.755614999999998,
+          "peak_rss_kib": 5796
+        },
+        {
+          "label": "cp64",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-1-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 2.182338682
+          },
+          "wall_seconds": 2.185359627008438,
+          "cpu_seconds": 2.1814530000000047,
+          "peak_rss_kib": 7880
+        },
+        {
+          "label": "cp256",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-1-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.443812137
+          },
+          "wall_seconds": 1.4469848459993955,
+          "cpu_seconds": 1.445680999999995,
+          "peak_rss_kib": 5612
+        },
+        {
+          "label": "cp1024",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-1-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.092100206
+          },
+          "wall_seconds": 1.0942505809944123,
+          "cpu_seconds": 1.0930559999999985,
+          "peak_rss_kib": 5840
+        },
+        {
+          "label": "baseline",
+          "rep": 1,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-1-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "64",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 64,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 0.764840641
+          },
+          "wall_seconds": 0.7668492910161149,
+          "cpu_seconds": 0.7660020000000012,
+          "peak_rss_kib": 204516
+        },
+        {
+          "label": "cp256",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-2-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.107089339
+          },
+          "wall_seconds": 1.1090686139941681,
+          "cpu_seconds": 1.1069689999999994,
+          "peak_rss_kib": 5592
+        },
+        {
+          "label": "cp1024",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-2-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 0.964459546
+          },
+          "wall_seconds": 0.9666302260011435,
+          "cpu_seconds": 0.9662830000000042,
+          "peak_rss_kib": 5864
+        },
+        {
+          "label": "baseline",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-2-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "64",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 64,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 0.705274399
+          },
+          "wall_seconds": 0.7071767689776607,
+          "cpu_seconds": 0.7067140000000016,
+          "peak_rss_kib": 204476
+        },
+        {
+          "label": "cp64",
+          "rep": 2,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-2-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.131016515
+          },
+          "wall_seconds": 1.1336712620104663,
+          "cpu_seconds": 1.1330369999999963,
+          "peak_rss_kib": 7880
+        },
+        {
+          "label": "cp1024",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-3-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.841078261
+          },
+          "wall_seconds": 1.8437686809920706,
+          "cpu_seconds": 1.841976000000003,
+          "peak_rss_kib": 5788
+        },
+        {
+          "label": "baseline",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-3-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "64",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 64,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.262118512
+          },
+          "wall_seconds": 1.265424996992806,
+          "cpu_seconds": 1.2628049999999988,
+          "peak_rss_kib": 204468
+        },
+        {
+          "label": "cp64",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-3-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.860428836
+          },
+          "wall_seconds": 1.863966420001816,
+          "cpu_seconds": 1.861828,
+          "peak_rss_kib": 7808
+        },
+        {
+          "label": "cp256",
+          "rep": 3,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-3-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.8669069390000002
+          },
+          "wall_seconds": 1.8698699479864445,
+          "cpu_seconds": 1.8459169999999991,
+          "peak_rss_kib": 5556
+        },
+        {
+          "label": "baseline",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-4-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "64",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 64,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.263994959
+          },
+          "wall_seconds": 1.266846484009875,
+          "cpu_seconds": 1.2656359999999998,
+          "peak_rss_kib": 204504
+        },
+        {
+          "label": "cp64",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-4-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.4532914510000001
+          },
+          "wall_seconds": 1.4561731640133075,
+          "cpu_seconds": 1.4539420000000005,
+          "peak_rss_kib": 7828
+        },
+        {
+          "label": "cp256",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-4-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.530461504
+          },
+          "wall_seconds": 1.5326838769833557,
+          "cpu_seconds": 1.5307729999999977,
+          "peak_rss_kib": 5584
+        },
+        {
+          "label": "cp1024",
+          "rep": 4,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-4-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.704494542
+          },
+          "wall_seconds": 1.7074861009896267,
+          "cpu_seconds": 1.7021200000000043,
+          "peak_rss_kib": 5772
+        },
+        {
+          "label": "cp64",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-5-cp64.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "64"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 64,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.820672914
+          },
+          "wall_seconds": 1.8238824159780052,
+          "cpu_seconds": 1.8218589999999928,
+          "peak_rss_kib": 7828
+        },
+        {
+          "label": "cp256",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-5-cp256.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.820659439
+          },
+          "wall_seconds": 1.8238450390053913,
+          "cpu_seconds": 1.821502000000001,
+          "peak_rss_kib": 5556
+        },
+        {
+          "label": "cp1024",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-5-cp1024.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "checkpoint",
+            "64",
+            "200000",
+            "2",
+            "1024"
+          ],
+          "result": {
+            "mode": "checkpoint",
+            "states": 64,
+            "bins": 200000,
+            "tile": 1024,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.3222566740000001
+          },
+          "wall_seconds": 1.325523208011873,
+          "cpu_seconds": 1.3239580000000037,
+          "peak_rss_kib": 5684
+        },
+        {
+          "label": "baseline",
+          "rep": 5,
+          "warmup": false,
+          "command": [
+            "/usr/bin/time",
+            "-f",
+            "%M",
+            "-o",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/k64-l200000-5-baseline.rss",
+            "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+            "baseline",
+            "64",
+            "200000",
+            "2",
+            "256"
+          ],
+          "result": {
+            "mode": "baseline",
+            "states": 64,
+            "bins": 200000,
+            "tile": 256,
+            "repeats": 2,
+            "checksum": 4903890731565820054,
+            "section_wall_seconds": 1.2648724740000001
+          },
+          "wall_seconds": 1.2677675239974633,
+          "cpu_seconds": 1.2668049999999993,
+          "peak_rss_kib": 204492
+        }
+      ],
+      "summary": {
+        "baseline": {
+          "cpu_seconds": {
+            "median": 1.2628049999999988,
+            "minimum": 0.7067140000000016,
+            "maximum": 1.2668049999999993
+          },
+          "wall_seconds": {
+            "median": 1.265424996992806,
+            "minimum": 0.7071767689776607,
+            "maximum": 1.2677675239974633
+          },
+          "peak_rss_kib": {
+            "median": 204492,
+            "minimum": 204468,
+            "maximum": 204516
+          }
+        },
+        "cp64": {
+          "cpu_seconds": {
+            "median": 1.8218589999999928,
+            "minimum": 1.1330369999999963,
+            "maximum": 2.1814530000000047
+          },
+          "wall_seconds": {
+            "median": 1.8238824159780052,
+            "minimum": 1.1336712620104663,
+            "maximum": 2.185359627008438
+          },
+          "peak_rss_kib": {
+            "median": 7828,
+            "minimum": 7808,
+            "maximum": 7880
+          }
+        },
+        "cp256": {
+          "cpu_seconds": {
+            "median": 1.5307729999999977,
+            "minimum": 1.1069689999999994,
+            "maximum": 1.8459169999999991
+          },
+          "wall_seconds": {
+            "median": 1.5326838769833557,
+            "minimum": 1.1090686139941681,
+            "maximum": 1.8698699479864445
+          },
+          "peak_rss_kib": {
+            "median": 5584,
+            "minimum": 5556,
+            "maximum": 5612
+          }
+        },
+        "cp1024": {
+          "cpu_seconds": {
+            "median": 1.3239580000000037,
+            "minimum": 0.9662830000000042,
+            "maximum": 1.841976000000003
+          },
+          "wall_seconds": {
+            "median": 1.325523208011873,
+            "minimum": 0.9666302260011435,
+            "maximum": 1.8437686809920706
+          },
+          "peak_rss_kib": {
+            "median": 5788,
+            "minimum": 5684,
+            "maximum": 5864
+          }
+        }
+      }
+    }
+  ],
+  "binary": {
+    "path": "bench/cpu-campaign-engineering/checkpoint-20261010T063312496995Z/checkpoint-bench",
+    "sha256": "14d90cf00d158a6c78fab03bc077663987bbfd7ff93237c30314c37a606d73e9",
+    "command": [
+      "cargo",
+      "build",
+      "--release",
+      "--locked",
+      "--offline",
+      "--jobs",
+      "1",
+      "-p",
+      "psmc-cpu",
+      "--example",
+      "checkpoint_bench"
+    ]
+  },
+  "limitations": [
+    "Isolated fixed-model HMM experiment, not integrated into fitting or snapshots.",
+    "Exact checks run in separate processes so baseline message allocation cannot contaminate checkpoint RSS.",
+    "Candidate recomputes forward and backward messages once; no sequence boundaries or count addends change.",
+    "Shared-host timings; no full-fit, real-genome or multiworker claim."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "status": "passed",
+  "created_utc": "2026-10-10T07:26:36.367072+00:00",
+  "resource_policy": {
+    "affinity": [
+      0
+    ],
+    "nice": 10,
+    "cargo_jobs": 1,
+    "rust_test_threads": 1,
+    "inference_threads_per_fit": 1,
+    "parallel_jobs": false,
+    "shared_host": true
+  },
+  "binary": "bin/psmc-rs",
+  "sha256": "b0fc39d7c31637221de1152fc0d502bb65c90d0a5b9d6672250fe3117f75bfa4",
+  "source_hashes_unchanged": true,
+  "unchanged_numerics": {
+    "crates/psmc-core/src/em.rs": "fd667334b4d470049dad57358bdd23ce0fd23006e347f13704079026c7f1c52f",
+    "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+    "crates/psmc-core/src/lib.rs": "b0b6804c719504d3d7b2f44290a21f45babd590fe9e59e913c0c6dcafb41b01b",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-cpu/src/lib.rs": "dd5111f7b243bb5164858ff8c9f885b3eaf2eaee6e2aa4265546d9ff612e3893",
+    "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179"
+  },
+  "retained_release_sha256": {
+    "bin/psmc-rs-phase3a": "8e417125208343026d56bae1b540b058371e4a0e949ca148a73c696b217f637b",
+    "bin/psmc-rs-phase2": "fd866573a007003d2388137270ec24f14acb436c42c7084ab8dac076fdabb59a",
+    "bin/psmc-rs-phase1": "e112ed9a8d7d98cc5e29f497e8567e1de96f3e0210a0cb324a79dc91c5e65dd0",
+    "../psmc-rust-phase-3-simd.zip": "ddb123cd6349803f399df9d18d1f47d2f25af6ee315e74a9170299e824e86c19",
+    "../psmc-rust-phase-2.zip": "b7291706a41ebf269402d99cabdee1eb2a75de1fafbbc25e347a7616905bf2bc",
+    "../psmc-rust-phase-1.zip": "5125a2e3c6bec8062f12fb5af15e3ac01da46b85d558dfbf3f35717025a22fc9"
+  },
+  "checks": {
+    "differential": 340,
+    "extended": 66,
+    "extended_finite": 39,
+    "extended_pathologies": 27,
+    "cli_review": 38,
+    "scheduler_fits": 60,
+    "unit_tests_each": 32,
+    "snapshot_pairs": 10,
+    "events": 37789,
+    "finite_fields": 43513458,
+    "snapshot_mismatches": 0
+  },
+  "evidence_sha256": {
+    "bench/cpu-campaign-build.json": "99bc5212af520281969c24b759a4845006e48f56a18a05851754670af2ab3c80",
+    "bench/cpu-campaign-validation.json": "c359627659758e163926149eeeb2039b8772b72d1d54bcfabca13199668993c1",
+    "bench/cpu-campaign-scheduler.json": "4f8bf7388150f9f89a154e2958477dea3aa4cbaf7b25137b41ddff224e37945e",
+    "bench/cpu-campaign-benchmark.json": "1a6280f9a976885e96b1f2983987ca0bfcb6fa3f88991cb528f47e357393c5c0",
+    "bench/cpu-campaign-review.json": "31fef50d940c075f26810d15cc1c852126237289d922b8160ea152b517373dd4",
+    "bench/cpu-campaign-cargo.json": "866e88200cd78b28d2dbc9e39a8a4ca8d41ef952db6a145f01719127fca367c5",
+    "bench/cpu-campaign-assembly.json": "e1356c74c46d74a4f33871cb869430fc897715945fd3baa254ae404eaa211c74",
+    "bench/cpu-campaign-extended.json": "5714e714ddf2d29fa93df85bddf2e9690f03746db2460ca36219ea894b3960ba",
+    "bench/cpu-campaign-final-profile.json": "265bdcdf5f3d43fb2e6398b48f2aa9bf55f4e76fe17a4aac52796587519d7247",
+    "bench/cpu-campaign-gate-run.json": "800b4e52ee44b448a578cb547c2239e709e008de96c2f4ad766b17ee2c8230c8"
+  },
+  "runner_sha256": "44f933e9da38d7a3b06f6091e082d7802487f4aa12601c85c3d11c4a86e1bcd6"
+}

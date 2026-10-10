@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "binary_sha256": "b0fc39d7c31637221de1152fc0d502bb65c90d0a5b9d6672250fe3117f75bfa4",
+  "command": [
+    "objdump",
+    "-d",
+    "-C",
+    "target/release/psmc-rs"
+  ],
+  "fma_ops": 0,
+  "horizontal_ops": 0,
+  "packed_avx_ops": 51,
+  "scope": "Whole executable instruction inventory; isolated exact tests validate lane and operand order.",
+  "runner_sha256": "151c7f730bfce76f19a35c2fbf0bdaa8c0e64091c15b6594ddd909a55a93de79"
+}

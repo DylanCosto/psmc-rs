@@ -1,15 +1,16 @@
 # PSMC in Rust — strict single-thread SIMD
 
 This Rust workspace implements the original PSMC model, full expected counts,
-Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.3
-adds runtime-selected AVX kernels to the CPU backend. Each fit uses one numerical
+Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.3.1
+adds separately scheduled 64-state AVX message kernels to the existing CPU backend. Each fit uses one numerical
 thread; the existing bootstrap queue can be limited to one worker. Reusable
 buffers, exact repeated-block caching and the dense oracle remain available. Double precision, summation order,
 sequence boundaries and the statistical method are preserved.
 
 Use `--backend cpu` for the optimized path. The default remains `dense`, the
-retained scalar oracle. Read the [Phase 3a report](docs/phase-3-simd-report.md) for
-measured speed, exact comparisons and limitations. The pinned external reference is
+retained scalar oracle. Read the [CPU campaign report](docs/cpu-campaign-report.md) for current
+measurements, exact comparisons and limitations. The [Phase 3a report](docs/phase-3-simd-report.md)
+retains the previous SIMD release evidence. The pinned external reference is
 [`lh3/psmc` at 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a](https://github.com/lh3/psmc/tree/82fa2ada83ee463fe1251b562ae3d60e82d7ad6a).
 The [Phase 1 report](docs/phase-1-report.md) and
 [Phase 0 decision](docs/phase-0-decision.md) retain historical evidence.
@@ -26,7 +27,8 @@ target/release/psmc-rs --backend cpu --seed 42 -p '4+5*3+4' -N 30 \
   -t 15 -r 4 -I 0 -o work/example.psmc tests/fixtures/workload.psmcfa
 ```
 
-The supplied executable is `bin/psmc-rs`; `bin/psmc-rs-phase2` preserves the prior
+The supplied executable is `bin/psmc-rs`; `bin/psmc-rs-phase3a` preserves the previous SIMD executable;
+`bin/psmc-rs-phase2` preserves the prior
 optimized CPU release and `bin/psmc-rs-phase1` the original dense release. Rust 1.90.0 is pinned and must already be installed for
 an offline build. There are no registry dependencies. The tested stack is
 x86-64 Linux/glibc 2.39 using system `libm`, `libc` and `libz.so.1`. No CUDA,

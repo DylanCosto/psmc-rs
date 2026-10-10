@@ -304,32 +304,32 @@ changed optimizer or tolerance relaxation.
 
 ### Acceptance-gated work queue
 
-- [ ] Freeze Phase 3a inputs/binaries and obtain CPU-time attribution for messages,
+- [x] Freeze Phase 3a inputs/binaries and obtain CPU-time attribution for messages,
   counts, model construction, Q/logarithms, preparation/cache, allocation and I/O;
   retain optimizer evaluation counts and shared-host variation. Estimate attainable
   whole-workload gains before choosing the first implementation.
-- [ ] Extend finite synthetic coverage across state sizes, sequence lengths,
+- [x] Extend finite synthetic coverage across state sizes, sequence lengths,
   masking, repeated blocks and complete bootstrap trajectories. Retain all existing
   fixtures and nonfinite controls separately. Select fixtures by workload properties,
   not measured speed. Real workload validation remains pending user inputs/settings.
-- [ ] Optimize measured model/Q bottlenecks using exact invariant reuse and reduced
+- [x] Optimize measured model/Q bottlenecks using exact invariant reuse and reduced
   repeated work, preserving every observable callback and live-model side effect.
-- [ ] Evaluate AVX register scheduling, independent-lane unrolling, count tiling,
+- [x] Evaluate AVX register scheduling, independent-lane unrolling, count tiling,
   layout/preparation and allocation improvements while retaining each cell's
   original accumulation order. Profile again after each accepted change.
-- [ ] Evaluate compiler optimization level, LTO and profile-guided optimization
+- [x] Evaluate compiler optimization level, LTO and profile-guided optimization
   sequentially. PGO training and held-out evaluation inputs must be distinct;
   every promoted build configuration must pass the complete numerical gate.
-- [ ] Derive and prototype structured message recurrences and factored objectives
+- [x] Derive and prototype structured message recurrences and factored objectives
   from actual C equations. Compare exact internal values and optimizer trajectories.
   Failed strict candidates remain isolated experiments; equivalent-mode promotion
   requires explicit review of a prespecified contract. Algebraic identity alone
   does not establish binary64 compatibility.
-- [ ] Assess long-record memory improvements: backward/count fusion and forward
+- [x] Assess long-record memory improvements: backward/count fusion and forward
   checkpoint/recompute. Preserve sequence boundaries, scaling, tiny initializers,
   per-cell addend order and message values. Measure RSS versus runtime and retain
   the existing path when strictness or useful performance cannot be established.
-- [ ] Run final sequential unit, isolated, pinned-C full-fit/snapshot, all 30 existing
+- [x] Run final sequential unit, isolated, pinned-C full-fit/snapshot, all 30 existing
   bootstrap, cache/scheduler and dispatch/safety gates. Run repeated uninstrumented
   comparisons against Phase 3a and vanilla; retain CPU/wall medians and ranges,
   RSS, exact output checks, fallback counts and all provenance.
@@ -389,3 +389,52 @@ remain pending suitable inputs/hardware; multicore and CUDA are outside this goa
 - Production numerical source, delivered binary and previous releases are unchanged.
 - See docs/cpu-campaign-progress.md for attribution, derivation links, counts,
   timing ratios, limits and remaining acceptance work. The full goal remains active.
+
+### Campaign progress — SIMD, model reuse and memory
+
+- Wide 8/16-destination kernels and ordered 64/256-site count tiles pass isolated
+  and full-output screens. Tiles regress complete fits and are rejected. Generic
+  unrolling has mixed results; separate fixed-64 message kernels demonstrate a
+  repeated full-fit K64/N30 gain and proceed to final acceptance screening.
+- Exact grid/lambda/tau model reuse passes isolated reuse/poison/nonfinite and
+  output controls but offers no consistent whole-fit gain; neither cache is promoted.
+- Masked tails pass lane and protected-page tests but regress whole-fit controls;
+  retain the original scalar tails.
+- Checkpoint/recompute preserves every regenerated message and ascending per-cell
+  count order. Long-record RSS falls dramatically, at additional CPU cost. It
+  remains a measured memory experiment, not a released CPU acceleration.
+- Preparation plus workspace setup is at most about 1.1% in the diagnostic cases;
+  main outside EM is at most about 0.94%. Further setup/I/O work is deprioritized
+  within this synthetic envelope, without claiming precise per-allocation profiles.
+- Full final gates, final uninstrumented timing, source commit and packaging remain
+  outstanding. Candidate screens do not constitute release acceptance.
+
+### Campaign acceptance — 0.3.1
+
+- Accepted separate fixed-64 AVX message functions after 340 dense/CPU/scalar
+  differential checks, 66 extended cases, 60 scheduler fits, 38 CLI controls and
+  32 unit tests in each build mode. Ten snapshot pairs compare 43,513,458 finite
+  fields and 37,789 ordered events with zero mismatches. The standalone K64 trace
+  contains 36,956,397 finite fields. Signed zero and callback order remain exact.
+- Final full K64/N30 CPU medians are 4.996 seconds for Phase 3a and 4.616 seconds
+  for 0.3.1: 1.082x throughput, with separated ranges. Earlier balanced confirmation
+  found 1.116x. K64/N5 is 1.155x but is explicitly a partial trajectory. K23 controls
+  are effectively unchanged; the small 1.028x serial K23 batch change is not claimed
+  as a reliable incremental bootstrap gain. Raw CPU/wall/RSS ranges remain visible.
+- The original batch retains 27 finite and three pathological reference outputs;
+  the 66 added cases retain 39 finite and 27 pathological outputs. Nonfinite parity
+  is not valid inference. No seeds or measurements were discarded.
+- Reprofiling shows Q/model/count work dominates. Full K64 message passes account
+  for about 12.3% of diagnostic main CPU; instrumentation overhead prevents a
+  precise uninstrumented ceiling. The explored exact alternatives did not improve
+  full fits. Further tiny setup/I/O work is deferred pending larger real inputs.
+- Hardware performance counters, actual user workloads/settings, ARM/NEON, AVX-512
+  and physical no-AVX tests remain unavailable/not_run. Multicore and CUDA remain
+  outside scope. Structured algebra requires a separately approved numerical
+  contract after exact counterexamples; no tolerance has been relaxed.
+- Delivery consistency audit passes; current executable SHA-256 is
+  b0fc39d7c31637221de1152fc0d502bb65c90d0a5b9d6672250fe3117f75bfa4.
+  Dense core, CPU workspace/cache and old release hashes remain unchanged.
+- See docs/cpu-campaign-report.md for accepted/rejected decisions, complete
+  measurements, remaining limits and reproduction. Source commit and verified
+  archive are the last delivery steps; the goal is not complete until they finish.

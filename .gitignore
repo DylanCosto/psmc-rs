@@ -25,3 +25,8 @@ target/
 /bench/cpu-campaign-fixtures/
 /bench/cpu-campaign-q/
 /bench/cpu-campaign-compilers/
+/bench/cpu-campaign-engineering/
+
+/bench/cpu-campaign-review/
+/bench/cpu-campaign-benchmark/
+/bench/cpu-campaign-final/
