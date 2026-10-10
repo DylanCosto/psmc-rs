@@ -1,0 +1,2120 @@
+{
+  "status": "passed",
+  "resource_policy": {
+    "affinity": [
+      0
+    ],
+    "nice": 10,
+    "cargo_jobs": 1,
+    "rust_test_threads": 1,
+    "inference_threads_per_fit": 1,
+    "parallel_jobs": false,
+    "shared_host": true
+  },
+  "provenance": {
+    "binaries": {
+      "phase3a": {
+        "path": "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+        "sha256": "8e417125208343026d56bae1b540b058371e4a0e949ca148a73c696b217f637b",
+        "copied_from": "bin/psmc-rs"
+      },
+      "vanilla": {
+        "path": "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+        "sha256": "da1743512f1925da6277d5a2e5350c70c61c9771d11749df0918605f795ff32b",
+        "copied_from": "work/vanilla/psmc"
+      }
+    },
+    "source_sha256_at_freeze": {
+      "crates/psmc-cli/src/batch.rs": "ef27669f8bf349afc8b848a2fb17ed09121fa345f25b568838ba53f83b015ea8",
+      "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+      "crates/psmc-cli/src/legacy.rs": "96c0d71d9ca34b419ede491870b4b1a41b7196de0e1c8405098dff99913267f3",
+      "crates/psmc-cli/src/main.rs": "55fdb479f72c48d43f15dbf43d56cd78b8500b3acfaa2142336109f9ce5e4b45",
+      "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+      "crates/psmc-core/src/em.rs": "fd667334b4d470049dad57358bdd23ce0fd23006e347f13704079026c7f1c52f",
+      "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+      "crates/psmc-core/src/lib.rs": "b0b6804c719504d3d7b2f44290a21f45babd590fe9e59e913c0c6dcafb41b01b",
+      "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+      "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+      "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+      "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+      "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+      "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+      "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+      "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179",
+      "crates/psmc-cpu/src/lib.rs": "dd5111f7b243bb5164858ff8c9f885b3eaf2eaee6e2aa4265546d9ff612e3893",
+      "crates/psmc-cpu/src/simd.rs": "2cac4ed5597e7784b6b65882885bbd30dbfdb2642daee93369c325e60e7654ef",
+      "crates/psmc-cpu/src/tests.rs": "9252b373e04da0ff705f440c19db2d05c74c4238113ec9ab6e7e80df4ef0cf3b",
+      "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+      "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+      "Cargo.toml": "139971d1905df7429e4bb80e1091af7eb0b818cdfade96740136cb64ae281f92",
+      "Cargo.lock": "091bd9b910a7a0e7ddca1158671e40c21e1632a2d7671a312553f89f7a69c0fa",
+      "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b"
+    },
+    "created_utc": "2026-10-10T06:04:17.510585+00:00"
+  },
+  "raw_directory": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z",
+  "manifest": "tests/fixtures/cpu-campaign-hmm/manifest.json",
+  "manifest_sha256": "f393396f850a5bd7fb85080668e5df77d71866fc7e6bb4eb288b8c8ac4c2317b",
+  "cases": [
+    {
+      "id": "hmm-unsplit-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/model-100000.psmcfa",
+      "input_sha256": "553dbfdbd92f057881a3735d939d685b8e02fb68cb905263efd1f6767d52c42e",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-unsplit-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/model-100000.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-unsplit-k23-n30-vanilla.psmc",
+          "sha256": "c2da3b65a8c4f80d223396e25a67b69e77d71fe2821590d231605ca32ce039db",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-unsplit-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/model-100000.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-unsplit-k23-n30-phase3a.psmc",
+          "sha256": "7d4ac18cc65620a4277c077f2e9fd7abd4bf4a61ad8c2dc1540213ef0654ca4b",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-00-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-00.psmcfa",
+      "input_sha256": "bb3c680809ec7d1399ffddd5ba1cc556c87ffb05d070cc6a9aee2cfa9fe8dcce",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-00-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-00.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-00-k23-n30-vanilla.psmc",
+          "sha256": "8d76eb8449490666676a66951319afea76c703a219c5093cdaeaf6ff87068935",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-00-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-00.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-00-k23-n30-phase3a.psmc",
+          "sha256": "acfbb6844a80b8013bdb0de7e7717121ffe082e36870b86ea9f0f06505c7bf32",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-01-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-01.psmcfa",
+      "input_sha256": "f9e19283e09e8889b90006b72d6d1d2d1694d7e412e863fae0e77a0774367274",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-01-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-01.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-01-k23-n30-vanilla.psmc",
+          "sha256": "cdd63fbe1d4b0bb42e4c9b59cf77497f5ff27d0537e6838e444c174f8d78db2b",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-01-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-01.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-01-k23-n30-phase3a.psmc",
+          "sha256": "af6b57e595732e4ab837fffa19181d76638d57770c6c67e13f8979f50ee05ccb",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-02-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-02.psmcfa",
+      "input_sha256": "4e46df8db2fa7c67412bc3349242a0baf5e6e08003b631c87b56172665c1802d",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-02-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-02.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-02-k23-n30-vanilla.psmc",
+          "sha256": "4b4fc7e51c9ba5ba4c0f3b1d8709881cc34202f5c430def0737cc796c74bc569",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-02-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-02.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-02-k23-n30-phase3a.psmc",
+          "sha256": "2f6280fed7b9c6cc14dc52dc61d43a4f15fa11245051c3338267eb3851df1839",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-03-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-03.psmcfa",
+      "input_sha256": "7a420401f279b33f22352b1aac800e0efa4c04019cfef2752dd3233695f3de7b",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-03-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-03.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-03-k23-n30-vanilla.psmc",
+          "sha256": "5600f79ea4a91bc150a61dac2e64bc7250f558a3b09075a192d5c5b432d4d61f",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-03-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-03.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-03-k23-n30-phase3a.psmc",
+          "sha256": "f4e3d2277c78afa4bcf424aec9800f3e4308991de5cae6ac5d11cd00a4489f28",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-04-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-04.psmcfa",
+      "input_sha256": "091d124753b719272c0e90687c746b58a427faef8e6e6e9e24a9b5355aad0155",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-04-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-04.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-04-k23-n30-vanilla.psmc",
+          "sha256": "88f7894ecd20aeb196782bfbf49b76c02ff716426972548405d968bdc6135f74",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-04-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-04.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-04-k23-n30-phase3a.psmc",
+          "sha256": "57253fe51998ccb3ff8046e876cf4056eadc57711be857f6abd4fe337bceb569",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-05-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-05.psmcfa",
+      "input_sha256": "4f468bf9adf0f631d00cd7155e841bab0db3ea721bee4912f46500a0401b858b",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-05-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-05.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-05-k23-n30-vanilla.psmc",
+          "sha256": "da1c445be175d88f2013e80f302b2635bf6d9aa1609e75a3731801394220c1d1",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-05-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-05.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-05-k23-n30-phase3a.psmc",
+          "sha256": "f656058101d1fa79b55af7baa44533fbe8710fb11e3e4d6de23cce527464496c",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-06-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-06.psmcfa",
+      "input_sha256": "4f1c4a28143986fd5e7669127198de7ac733e42768af03ba547c16f5f6354efc",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-06-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-06.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-06-k23-n30-vanilla.psmc",
+          "sha256": "e47be9d456e2decaed693b4bba94abe340a2dff41d6053bbe1b45fc5a44913b2",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-06-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-06.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-06-k23-n30-phase3a.psmc",
+          "sha256": "5b43d6e1c5b32c4a8277d1d3ad1d2ff8ce8190ee2bdbfd355b4666aa721bd6f9",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-07-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-07.psmcfa",
+      "input_sha256": "fe8049113b01c2034074f5571776d641a5d861f4bf29daff54070c91c7e2fb02",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-07-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-07.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-07-k23-n30-vanilla.psmc",
+          "sha256": "bb5f3dd6bcfa96b4bc8283703fdf373db53f028aed2fbe4449199390b592a1ab",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-07-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-07.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-07-k23-n30-phase3a.psmc",
+          "sha256": "9ad81adddf72376fe9965a6505b6b270c7bebeba82136bf55625df176d63bb75",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-08-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-08.psmcfa",
+      "input_sha256": "cd0698284741f3cec13222297d955a79c5d6e06a1ec01aa1cdc74087e13cc8ff",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-08-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-08.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-08-k23-n30-vanilla.psmc",
+          "sha256": "732f72e91b0deb74443a8a2bcc8d067177f8ceb59be46931cc4fbb3a6d5f1ecc",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-08-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-08.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-08-k23-n30-phase3a.psmc",
+          "sha256": "1bcf0762a2e280fa433a413c12a7c7b8c4ceb9a39ecdaf226a048b292453c0bb",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-09-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-09.psmcfa",
+      "input_sha256": "b41892614ec8442dc605a8b9d942ca1147418918f8a2ebeb57151832e8272d46",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-09-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-09.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-09-k23-n30-vanilla.psmc",
+          "sha256": "0e01149cc68fc279bc620b2b85150e3423f96b735f4d025b8b46b77ddd133e06",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-09-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-09.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-09-k23-n30-phase3a.psmc",
+          "sha256": "9a77da8e11cf99b5edb4f784e08ad971015e4471a47ee1a4232c2aac9e0ee6ec",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-10-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-10.psmcfa",
+      "input_sha256": "a05c1e6da404874dfd2b796e47ddf3abaade59d1aff6ba79b8a0a24627d35876",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-10-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-10.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-10-k23-n30-vanilla.psmc",
+          "sha256": "fb0b7b1c0b02820739339c9b8aa724b92679d7db87232c1fd8ec62bb0e11eb1a",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-10-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-10.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-10-k23-n30-phase3a.psmc",
+          "sha256": "2135d1acdc8182eaf01eea7663f3609dcbf8a4754aefd720c02663cda2d7fa83",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-11-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-11.psmcfa",
+      "input_sha256": "47122aa4db48548e023d3ea2d54d9c32274b37b688c1167decf596861d4ac2e6",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-11-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-11.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-11-k23-n30-vanilla.psmc",
+          "sha256": "c8445ac75bfa2d32ae9875b18d9130979ae081b0e73037d4e1fae6f0890167c7",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-11-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-11.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-11-k23-n30-phase3a.psmc",
+          "sha256": "d3ecf4f81196197f48263c226b9b54dbfaad8d8ee38a410671cc23814c8a29af",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-12-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-12.psmcfa",
+      "input_sha256": "6fb7ddc90b5f0a7748d4beec978ec46db92c1bd7813e3515fd26bb664d15914d",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-12-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-12.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-12-k23-n30-vanilla.psmc",
+          "sha256": "9888e17c3028d8f36fba4ab05e243f1918f9e421b1b9ed42250d278f3b8f7dc9",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-12-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-12.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-12-k23-n30-phase3a.psmc",
+          "sha256": "e085201a0441333d4910157d60cf0e8f7856c932f1f6a9dbf38f1099b47fc17a",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-13-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-13.psmcfa",
+      "input_sha256": "ebb9510a36542da5791caef06604d1f6f52795e2d642ea0e9aba1811b043de03",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-13-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-13.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-13-k23-n30-vanilla.psmc",
+          "sha256": "eeab6bd173e9cb219f7cb8537cef17296bcb7d0685b36f5fd08c7cdcfd32993f",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-13-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-13.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-13-k23-n30-phase3a.psmc",
+          "sha256": "26a313071d46524768dfdeb5b2c52ab8d0a073a4dc9226cbb893a97fd68377bb",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-14-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-14.psmcfa",
+      "input_sha256": "fb6492625184534e8b6866ab4e594814135a4d380fe91354d3351fd53bfcd96e",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-14-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-14.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-14-k23-n30-vanilla.psmc",
+          "sha256": "9370f907758797b4a09b4003e2bda643b0368dccce549b1ad10d97e0eb2ed3e3",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-14-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-14.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-14-k23-n30-phase3a.psmc",
+          "sha256": "8ebbf130a769ee1930f6042244d791fd772632f4eee98a32dbcd26dec954fa36",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-15-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-15.psmcfa",
+      "input_sha256": "d9b95cd1c52be61e4cbba985d1eadc4907f620a2c4dc9e645e888e5a88361b59",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-15-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-15.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-15-k23-n30-vanilla.psmc",
+          "sha256": "4b538ac9ae05faeda6e6477b798f69ef41cb50d59876378fc59ad0445f146c01",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-15-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-15.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-15-k23-n30-phase3a.psmc",
+          "sha256": "bb64e565e328d741c5d76e3177131340931c81901443b178359f35b4fed8fd17",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-16-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-16.psmcfa",
+      "input_sha256": "56b647f046992ce7f283583ec8191b90e2fa2757a9a439ad012c0e7a3f8a6733",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-16-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-16.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-16-k23-n30-vanilla.psmc",
+          "sha256": "4aff2f98eaaf501207d7a491fdefeb335382ec957aae86fdc1dcefee3a34ee58",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-16-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-16.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-16-k23-n30-phase3a.psmc",
+          "sha256": "0eaa2536a2fbf877518ad03044eccac025e078978ace7f78256cf2fbce34b0c5",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-17-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-17.psmcfa",
+      "input_sha256": "a11227b52a2f1e8aa06275ee029d32f10b2a863041ffa30b0d78a0e2084b08cd",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-17-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-17.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-17-k23-n30-vanilla.psmc",
+          "sha256": "331bddad34e3ff559c98ec28b82aa4075678c646e9dc6aae2492d01446a44796",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-17-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-17.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-17-k23-n30-phase3a.psmc",
+          "sha256": "2a52ec4f4a320a7823f6809e79c2cfd0ec31b701180f504f0c8407bb8a688116",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-18-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-18.psmcfa",
+      "input_sha256": "89f551299d5262b98ee25b21abde61e8d19f58e4f380f68c6a796db47e014912",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-18-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-18.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-18-k23-n30-vanilla.psmc",
+          "sha256": "a1082d4b0b57161481791417bcca8c897fbb1bae39a1e3a852e7add2037e6718",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-18-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-18.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-18-k23-n30-phase3a.psmc",
+          "sha256": "bb5d47ebb1b7578ac226d92201e61f7592140941d8d5cafe7f7d645a038e7e51",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-19-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-19.psmcfa",
+      "input_sha256": "7d70e3928f7136bc261546c747614ccc5a3580c38c6248e8745666c3dc9cc224",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-19-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-19.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-19-k23-n30-vanilla.psmc",
+          "sha256": "7c066bf32c6c442fe57b2ed24163d69b1f88a1e663eed473ecb630070b2a7455",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-19-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-19.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-19-k23-n30-phase3a.psmc",
+          "sha256": "eadb007ffe88ebff8fd2f077befddf1599553303c1412d9818d7c899a80450de",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-20-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-20.psmcfa",
+      "input_sha256": "4f5116c788b7a59ec503dfbab09e0b2a064893cffca7c70ca18d32d7833ae44d",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-20-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-20.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-20-k23-n30-vanilla.psmc",
+          "sha256": "faa6905ae28a49597140c5bfda67f73d1088d7f2c7c367da82b2304c6fd03fa5",
+          "nonfinite": [
+            {
+              "round": 27,
+              "record": "QD\t-4.716351 -> -nan"
+            },
+            {
+              "round": 29,
+              "record": "LK\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "QD\t-nan -> -nan"
+            },
+            {
+              "round": 29,
+              "record": "RI\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t0\t0.000000\t0.633858\t62.501306\t0.035879\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t1\t0.023376\t0.633858\t74.025683\t0.042494\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t2\t0.052218\t0.633858\t86.842551\t0.049852\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t3\t0.087801\t0.633858\t100.686881\t0.057799\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t4\t0.131702\t0.724729\t101.163402\t0.058072\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t5\t0.185866\t0.724729\t114.914038\t0.065966\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t6\t0.252691\t0.724729\t128.041058\t0.073501\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t7\t0.335138\t0.819848\t124.137607\t0.071261\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t8\t0.436858\t0.819848\t133.564117\t0.076672\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t9\t0.562356\t0.819848\t139.193778\t0.079904\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t10\t0.717192\t1.144828\t103.123643\t0.059198\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t11\t0.908222\t1.144828\t105.929192\t0.060808\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t12\t1.143909\t1.144828\t104.265604\t0.059853\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t13\t1.434692\t0.588515\t165.188663\t0.094826\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t14\t1.793448\t0.588515\t104.476534\t0.059974\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t15\t2.236070\t0.588515\t56.647128\t0.032518\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t16\t2.782161\t0.327929\t32.501954\t0.018658\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t17\t3.455909\t0.327929\t4.434589\t0.002546\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t18\t4.287156\t0.327929\t0.368698\t0.000212\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t19\t5.312719\t0.006807\t0.017047\t0.000010\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t20\t6.578022\t0.006807\t0.000000\t0.000000\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t21\t8.139109\t0.006807\t0.000000\t0.000000\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t22\t10.065123\t0.006807\t0.000000\t0.000000\t-nan"
+            },
+            {
+              "round": 30,
+              "record": "QD\t-4.697903 -> -nan"
+            }
+          ]
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-20-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-20.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-20-k23-n30-phase3a.psmc",
+          "sha256": "0f66608f519edf020179decfa7c478ead9595e7a82a731bd1036d00673d41323",
+          "nonfinite": [
+            {
+              "round": 27,
+              "record": "QD\t-4.716351 -> -nan"
+            },
+            {
+              "round": 29,
+              "record": "LK\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "QD\t-nan -> -nan"
+            },
+            {
+              "round": 29,
+              "record": "RI\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t0\t0.000000\t0.633858\t62.501306\t0.035879\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t1\t0.023376\t0.633858\t74.025683\t0.042494\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t2\t0.052218\t0.633858\t86.842551\t0.049852\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t3\t0.087801\t0.633858\t100.686881\t0.057799\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t4\t0.131702\t0.724729\t101.163402\t0.058072\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t5\t0.185866\t0.724729\t114.914038\t0.065966\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t6\t0.252691\t0.724729\t128.041058\t0.073501\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t7\t0.335138\t0.819848\t124.137607\t0.071261\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t8\t0.436858\t0.819848\t133.564117\t0.076672\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t9\t0.562356\t0.819848\t139.193778\t0.079904\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t10\t0.717192\t1.144828\t103.123643\t0.059198\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t11\t0.908222\t1.144828\t105.929192\t0.060808\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t12\t1.143909\t1.144828\t104.265604\t0.059853\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t13\t1.434692\t0.588515\t165.188663\t0.094826\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t14\t1.793448\t0.588515\t104.476534\t0.059974\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t15\t2.236070\t0.588515\t56.647128\t0.032518\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t16\t2.782161\t0.327929\t32.501954\t0.018658\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t17\t3.455909\t0.327929\t4.434589\t0.002546\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t18\t4.287156\t0.327929\t0.368698\t0.000212\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t19\t5.312719\t0.006807\t0.017047\t0.000010\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t20\t6.578022\t0.006807\t0.000000\t0.000000\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t21\t8.139109\t0.006807\t0.000000\t0.000000\t-nan"
+            },
+            {
+              "round": 29,
+              "record": "RS\t22\t10.065123\t0.006807\t0.000000\t0.000000\t-nan"
+            },
+            {
+              "round": 30,
+              "record": "QD\t-4.697903 -> -nan"
+            }
+          ]
+        }
+      ],
+      "exact_output_match": true,
+      "finite": false
+    },
+    {
+      "id": "hmm-bootstrap-21-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-21.psmcfa",
+      "input_sha256": "736b0e3e36e1832128298ef75647959b39bfe159789b725d410674bfa6c0dfe7",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-21-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-21.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-21-k23-n30-vanilla.psmc",
+          "sha256": "a6354982b6aaf57289cdaed0c43cb30414bbc27472f59f5f56849f277b43777f",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-21-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-21.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-21-k23-n30-phase3a.psmc",
+          "sha256": "bc4387de56698f08ec4741713c231726bb181701e63373c470b6e3b8378663a2",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-22-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-22.psmcfa",
+      "input_sha256": "a360530cdd625ed00df8febeca96ae1b71e2e2f6cab8cb68475f9675368e7736",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-22-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-22.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-22-k23-n30-vanilla.psmc",
+          "sha256": "be0f5d1c9ffdfce9874005bbe06cae77c193aab40a9da55539a8b9b7672e12e2",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-22-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-22.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-22-k23-n30-phase3a.psmc",
+          "sha256": "171515bcb34944c4233538e33ef1f7d2494769a82d8b98e0dcaf01bc97b0bd59",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-23-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-23.psmcfa",
+      "input_sha256": "3dc00c39ca2b6b156c716c79fb763f68864b9d2f55b472774005bf8a677f73d3",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-23-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-23.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-23-k23-n30-vanilla.psmc",
+          "sha256": "b2aeec83b8c3dfb0afd2d44b75b76e4b5d41c0e52bd827a6093fba5ff13b0223",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-23-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-23.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-23-k23-n30-phase3a.psmc",
+          "sha256": "90f747d870860041ec372cd3cd8ab2c1c684fca3bcf01025b69e83a0226fa53c",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-24-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-24.psmcfa",
+      "input_sha256": "22f5ce29b56ab651d20da044dcf65a9c1c72c911e24557110f9d9efdc5811771",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-24-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-24.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-24-k23-n30-vanilla.psmc",
+          "sha256": "5d34e977d3ba43f70e1f3ea97c9d772761a90f4a135bff3a8ed37d6024d70832",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-24-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-24.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-24-k23-n30-phase3a.psmc",
+          "sha256": "a9d4257f40d8c8d1644648a95019ff07a2de623d39fb879e74f04f424264e7f4",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-25-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-25.psmcfa",
+      "input_sha256": "b7409bbbdac95d2830c915fe331a017522d4ad2a89bf135b460bae533548fa16",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-25-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-25.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-25-k23-n30-vanilla.psmc",
+          "sha256": "d1ac1b12820fb220b592f2f4cef11fb5d4ebde688f18509f1ab7f74e9f7d96c1",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-25-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-25.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-25-k23-n30-phase3a.psmc",
+          "sha256": "b06c61e533aa8846608f29c1b9c647141631ff84dad18e2355190a329f5f86a4",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-26-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-26.psmcfa",
+      "input_sha256": "e65b34d8a6bfe612ab8f462e3e0af55ea86c96f53ab4cff0ade4bf799577f1a5",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-26-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-26.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-26-k23-n30-vanilla.psmc",
+          "sha256": "64bc56607fc5370d9c8af8ce70cbb051b22f2d32cf6dc77250b4493f0d7227b5",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-26-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-26.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-26-k23-n30-phase3a.psmc",
+          "sha256": "7da063165d93e9202f084124c74912711fca4b96377c93e89849d2044a675dfd",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-27-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-27.psmcfa",
+      "input_sha256": "594048969dfc5187020c1d376a578e8128a3fa8875afe672a4df74945787ddc0",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-27-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-27.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-27-k23-n30-vanilla.psmc",
+          "sha256": "412745a0cc0c1b56c8fce7406cdf793a911a9442cd48c3ba0bac4cbe8a6de12c",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-27-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-27.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-27-k23-n30-phase3a.psmc",
+          "sha256": "cbf27e1b9951eb52f476e58ea15ff25235c4df9a3d21cd9b0aec73b1f37c6174",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-28-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-28.psmcfa",
+      "input_sha256": "1e2d3f8aea2bc6ae536e100b3b2b9e4a5fc3c5ff3d3dc502df06554a71eb9546",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-28-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-28.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-28-k23-n30-vanilla.psmc",
+          "sha256": "850dd413399e02dabea7ec3e7939329663c626f3742a82e29ed31fd004d5c84f",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-28-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-28.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-28-k23-n30-phase3a.psmc",
+          "sha256": "2d9fcdb8ceeb3e8cfd9437c0124e612e9de917fed33ffce93e9d080ff03f6598",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    },
+    {
+      "id": "hmm-bootstrap-29-k23-n30",
+      "input": "tests/fixtures/cpu-campaign-hmm/bootstrap-29.psmcfa",
+      "input_sha256": "ade1ede335d317d0ecf34965bbf3413fa42f78f069f963fddf76e48aa6ee29fd",
+      "runs": [
+        {
+          "label": "vanilla",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/vanilla",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-29-k23-n30-vanilla.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-29.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-29-k23-n30-vanilla.psmc",
+          "sha256": "d83f9da512e4700b68f042f2ef4198d3c7238c8c37a9f3a6cf6c1c65e7373715",
+          "nonfinite": []
+        },
+        {
+          "label": "phase3a",
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060417488167Z/bin/phase3a",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-29-k23-n30-phase3a.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/cpu-campaign-hmm/bootstrap-29.psmcfa"
+          ],
+          "output": "bench/cpu-campaign-fixtures/hmm-20261010T061111046817Z/hmm-bootstrap-29-k23-n30-phase3a.psmc",
+          "sha256": "10fe811c07b116f763dd863133c70c567e23f1fa7ae4d27f7abe418afc9c8b37",
+          "nonfinite": []
+        }
+      ],
+      "exact_output_match": true,
+      "finite": true
+    }
+  ],
+  "finite_cases": 30,
+  "finite_bootstraps": 29,
+  "limitations": [
+    "Synthetic finite/pathological counts reported separately; no speed or real-workload validation claim."
+  ]
+}

@@ -21,3 +21,7 @@ target/
 /bench/phase-3-review/
 /bench/phase-3-benchmark/
 /bench/phase-3-profile/
+/bench/cpu-campaign-profile/
+/bench/cpu-campaign-fixtures/
+/bench/cpu-campaign-q/
+/bench/cpu-campaign-compilers/

@@ -282,3 +282,110 @@ and package. Keep Phase 3's broader structured-algebra checkbox open.
 - Serial 30-fit batch result is neutral versus Phase 2: CPU ratio 1.005× with overlapping ranges, wall ratio 0.936× (slower median). No new bootstrap improvement is claimed. SIMD/vanilla ratio 1.634× CPU time largely retains existing Phase 2 gains. All measured output remains exact. Multiworker SIMD throughput is untested by user request.
 - Separate E/M wall samples are too contention-sensitive for a precise new attribution; unchanged M-step varied substantially. Preserve these diagnostics and report ranges/CPU time rather than selecting favorable wall results. The source/derivation/tests/timings are committed together and the prior releases remain intact.
 - Next permitted work remains real-workload profiling and Phase 3 structured/full-count/objective optimization with exact gates. SIMD does not establish the 10× objective.
+
+## CPU optimization campaign — authorized goal, 2026-10-10
+
+The user requested a comprehensive goal and strategy to maximize CPU optimization.
+The previous one-CPU restriction remains in force. This is a campaign plan, not a
+claim that any new implementation or benchmark has passed. Baseline: commit
+`6a4d102` and the preserved Phase 3a executable. The active goal records the full
+acceptance and completion contract.
+
+### Resource and numerical contract
+
+Heavy commands and descendants use one allowed logical CPU at reduced priority;
+Cargo jobs, test threads and bootstrap workers remain one. No simultaneous heavy
+jobs, subagents, multicore benchmarks or GPU work. Retain dense Rust and pinned C,
+old archives and executable hashes. Preserve full binary64 precision, strict
+operation/reduction order, optimizer callbacks and side effects, full counts and
+Q normalizer, initialization, iterations, input boundaries, masks, sampling and
+repeated-block multiplicity. No fast-math, approximate logarithms, fewer iterations,
+changed optimizer or tolerance relaxation.
+
+### Acceptance-gated work queue
+
+- [ ] Freeze Phase 3a inputs/binaries and obtain CPU-time attribution for messages,
+  counts, model construction, Q/logarithms, preparation/cache, allocation and I/O;
+  retain optimizer evaluation counts and shared-host variation. Estimate attainable
+  whole-workload gains before choosing the first implementation.
+- [ ] Extend finite synthetic coverage across state sizes, sequence lengths,
+  masking, repeated blocks and complete bootstrap trajectories. Retain all existing
+  fixtures and nonfinite controls separately. Select fixtures by workload properties,
+  not measured speed. Real workload validation remains pending user inputs/settings.
+- [ ] Optimize measured model/Q bottlenecks using exact invariant reuse and reduced
+  repeated work, preserving every observable callback and live-model side effect.
+- [ ] Evaluate AVX register scheduling, independent-lane unrolling, count tiling,
+  layout/preparation and allocation improvements while retaining each cell's
+  original accumulation order. Profile again after each accepted change.
+- [ ] Evaluate compiler optimization level, LTO and profile-guided optimization
+  sequentially. PGO training and held-out evaluation inputs must be distinct;
+  every promoted build configuration must pass the complete numerical gate.
+- [ ] Derive and prototype structured message recurrences and factored objectives
+  from actual C equations. Compare exact internal values and optimizer trajectories.
+  Failed strict candidates remain isolated experiments; equivalent-mode promotion
+  requires explicit review of a prespecified contract. Algebraic identity alone
+  does not establish binary64 compatibility.
+- [ ] Assess long-record memory improvements: backward/count fusion and forward
+  checkpoint/recompute. Preserve sequence boundaries, scaling, tiny initializers,
+  per-cell addend order and message values. Measure RSS versus runtime and retain
+  the existing path when strictness or useful performance cannot be established.
+- [ ] Run final sequential unit, isolated, pinned-C full-fit/snapshot, all 30 existing
+  bootstrap, cache/scheduler and dispatch/safety gates. Run repeated uninstrumented
+  comparisons against Phase 3a and vanilla; retain CPU/wall medians and ranges,
+  RSS, exact output checks, fallback counts and all provenance.
+- [ ] Commit accepted source, derivations, tests and timings together; update the
+  report and deliver a verified source/binary archive with prior releases intact.
+
+The queue is reordered by profiling evidence, with one milestone in flight. A
+candidate must demonstrate exactness and useful performance before promotion;
+ambiguous timing is not a win. Kernel, complete-fit and bootstrap ratios are
+reported separately. Reference pathology parity remains distinct from finite
+scientific validation. Do not infer parallel throughput from serial measurements.
+
+### Completion and stopping rule
+
+Finish when the prioritized candidate classes have been accepted, rejected with
+evidence, or explicitly deferred for unavailable data/hardware or an unapproved
+numerical contract; quantify remaining bottlenecks and diminishing returns where
+measurements permit. Deliver the fastest validated strict release within the
+measured workload envelope. If nothing earns promotion, retain Phase 3a and deliver
+the investigation evidence. No claim of a universal CPU optimum or 10x speedup is
+implied. Real production validation, ARM/NEON, AVX-512 and physical no-AVX testing
+remain pending suitable inputs/hardware; multicore and CUDA are outside this goal.
+
+### Decisions and known uncertainties
+
+- Prioritize model/objective work alongside profiling: SIMD improved finite
+  unsplit fits but did not establish an incremental serial-bootstrap gain.
+- Earlier M-step attribution motivates investigation, but the last shared-host
+  wall samples cannot establish a reliable current fraction or speedup ceiling.
+- Strict algebra may fail because floating-point grouping changes; do not silently
+  substitute an equivalent numerical contract.
+- Checkpointing may reduce memory while costing time; record that tradeoff rather
+  than classifying every memory improvement as a speed improvement.
+
+### Campaign progress — initial profiling and candidate screen
+
+- Separate one-thread CPU instrumentation passes exact output checks against
+  Phase 3a and vanilla. Hardware performance counters are blocked by the host;
+  no global permission was changed. Q accounts for about 35–46% of instrumented
+  main CPU time, model construction about 16–25%; timer overhead and allocation,
+  cache and I/O residuals are explicitly reported, not hidden as precise attribution.
+- Added 35 mixed/long/masked cases: all outputs exact, 9 finite (7 bootstraps),
+  remaining cases retained as vanilla pathology controls. Added an independent
+  PSMC-model-generated 100,000-bin fixture: unsplit and 29/30 bootstraps finite,
+  all 31 outputs exact. Bootstrap 20's vanilla pathology remains recorded.
+- Three strict Q experiments pass isolated controls and output screening but
+  establish no consistent end-to-end benefit. Positional and direct-map log caches
+  are not promoted; the flat-loop K64 result does not override K23 regressions.
+- Compiler/LTO/PGO screen completed with independently generated training
+  observations and 144 exact warmup/measured outputs. Shared-host ranges and
+  inconsistent ratios support no promotion; original compiler settings remain.
+  Broader internal gates are reserved for a candidate that earns promotion.
+- Literal reconstruction of the 23-state C model is exact; the direct triangular
+  factor rewrite changes 164 matrix entries, all three forward-vector comparisons
+  and one normalized Q example. This strict counterexample keeps the formulation
+  experimental; no tolerance is relaxed and no failed candidate is timed as a win.
+- Production numerical source, delivered binary and previous releases are unchanged.
+- See docs/cpu-campaign-progress.md for attribution, derivation links, counts,
+  timing ratios, limits and remaining acceptance work. The full goal remains active.

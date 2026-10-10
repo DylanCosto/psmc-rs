@@ -1,0 +1,892 @@
+{
+  "status": "passed",
+  "resource_policy": {
+    "affinity": [
+      0
+    ],
+    "nice": 10,
+    "cargo_jobs": 1,
+    "rust_test_threads": 1,
+    "inference_threads_per_fit": 1,
+    "parallel_jobs": false,
+    "shared_host": true
+  },
+  "provenance": {
+    "binaries": {
+      "phase3a": {
+        "path": "bench/cpu-campaign-profile/20261010T060330160593Z/bin/phase3a",
+        "sha256": "8e417125208343026d56bae1b540b058371e4a0e949ca148a73c696b217f637b",
+        "copied_from": "bin/psmc-rs"
+      },
+      "vanilla": {
+        "path": "bench/cpu-campaign-profile/20261010T060330160593Z/bin/vanilla",
+        "sha256": "da1743512f1925da6277d5a2e5350c70c61c9771d11749df0918605f795ff32b",
+        "copied_from": "work/vanilla/psmc"
+      }
+    },
+    "source_sha256_at_freeze": {
+      "crates/psmc-cli/src/batch.rs": "ef27669f8bf349afc8b848a2fb17ed09121fa345f25b568838ba53f83b015ea8",
+      "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+      "crates/psmc-cli/src/legacy.rs": "96c0d71d9ca34b419ede491870b4b1a41b7196de0e1c8405098dff99913267f3",
+      "crates/psmc-cli/src/main.rs": "55fdb479f72c48d43f15dbf43d56cd78b8500b3acfaa2142336109f9ce5e4b45",
+      "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+      "crates/psmc-core/src/em.rs": "fd667334b4d470049dad57358bdd23ce0fd23006e347f13704079026c7f1c52f",
+      "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+      "crates/psmc-core/src/lib.rs": "b0b6804c719504d3d7b2f44290a21f45babd590fe9e59e913c0c6dcafb41b01b",
+      "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+      "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+      "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+      "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+      "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+      "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+      "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+      "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179",
+      "crates/psmc-cpu/src/lib.rs": "dd5111f7b243bb5164858ff8c9f885b3eaf2eaee6e2aa4265546d9ff612e3893",
+      "crates/psmc-cpu/src/simd.rs": "2cac4ed5597e7784b6b65882885bbd30dbfdb2642daee93369c325e60e7654ef",
+      "crates/psmc-cpu/src/tests.rs": "9252b373e04da0ff705f440c19db2d05c74c4238113ec9ab6e7e80df4ef0cf3b",
+      "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+      "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+      "Cargo.toml": "139971d1905df7429e4bb80e1091af7eb0b818cdfade96740136cb64ae281f92",
+      "Cargo.lock": "091bd9b910a7a0e7ddca1158671e40c21e1632a2d7671a312553f89f7a69c0fa",
+      "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b"
+    },
+    "created_utc": "2026-10-10T06:03:30.187485+00:00"
+  },
+  "instrumented_binary_sha256": "9c385fd32bfc8e7e27eefe8cbbec5866e506416adb2b0976c17f99722b59116a",
+  "raw_directory": "bench/cpu-campaign-profile/20261010T060330160593Z",
+  "cases": [
+    {
+      "id": "k23-n30",
+      "input": "tests/fixtures/workload.psmcfa",
+      "args": [
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0"
+      ],
+      "input_sha256": "7c0e0a0cf3b929ac01fc1de203a7a08ade75bbd42e3e8004fcb4514c0ad1df9b",
+      "runs": [
+        {
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060330160593Z/bin/diagnostic",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-profile/20261010T060330160593Z/k23-n30-0.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 252121159,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 209509,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 132414457,
+                "calls": 47152
+              },
+              "q": {
+                "nanoseconds": 247126655,
+                "calls": 47182
+              },
+              "normalizer": {
+                "nanoseconds": 231576,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 3467162,
+                "calls": 90
+              },
+              "forward": {
+                "nanoseconds": 65085553,
+                "calls": 90
+              },
+              "backward": {
+                "nanoseconds": 55902858,
+                "calls": 90
+              },
+              "likelihood_check": {
+                "nanoseconds": 720300,
+                "calls": 90
+              },
+              "counts": {
+                "nanoseconds": 125859042,
+                "calls": 90
+              },
+              "fit_process_main": {
+                "nanoseconds": 666986286,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 664498152,
+                "calls": 30
+              }
+            },
+            "log_calls": 28274864,
+            "exp_calls": 3159251
+          },
+          "output_sha256": "da04b40ddc956136812f3fb0faf93689603fe433b7acbea0f694894961602090"
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060330160593Z/bin/diagnostic",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-profile/20261010T060330160593Z/k23-n30-1.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 208991842,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 197197,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 112190243,
+                "calls": 47152
+              },
+              "q": {
+                "nanoseconds": 202320446,
+                "calls": 47182
+              },
+              "normalizer": {
+                "nanoseconds": 184690,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 3281472,
+                "calls": 90
+              },
+              "forward": {
+                "nanoseconds": 54238750,
+                "calls": 90
+              },
+              "backward": {
+                "nanoseconds": 46636601,
+                "calls": 90
+              },
+              "likelihood_check": {
+                "nanoseconds": 602849,
+                "calls": 90
+              },
+              "counts": {
+                "nanoseconds": 103238679,
+                "calls": 90
+              },
+              "fit_process_main": {
+                "nanoseconds": 553383601,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 551055334,
+                "calls": 30
+              }
+            },
+            "log_calls": 28274864,
+            "exp_calls": 3159251
+          },
+          "output_sha256": "da04b40ddc956136812f3fb0faf93689603fe433b7acbea0f694894961602090"
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060330160593Z/bin/diagnostic",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-profile/20261010T060330160593Z/k23-n30-2.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 211493291,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 191139,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 112094697,
+                "calls": 47152
+              },
+              "q": {
+                "nanoseconds": 212948830,
+                "calls": 47182
+              },
+              "normalizer": {
+                "nanoseconds": 180216,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 3148256,
+                "calls": 90
+              },
+              "forward": {
+                "nanoseconds": 54140646,
+                "calls": 90
+              },
+              "backward": {
+                "nanoseconds": 46646881,
+                "calls": 90
+              },
+              "likelihood_check": {
+                "nanoseconds": 599290,
+                "calls": 90
+              },
+              "counts": {
+                "nanoseconds": 106010534,
+                "calls": 90
+              },
+              "fit_process_main": {
+                "nanoseconds": 566150231,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 563846878,
+                "calls": 30
+              }
+            },
+            "log_calls": 28274864,
+            "exp_calls": 3159251
+          },
+          "output_sha256": "da04b40ddc956136812f3fb0faf93689603fe433b7acbea0f694894961602090"
+        }
+      ],
+      "cpu_seconds_medians": {
+        "expectation_inclusive": 0.211493291,
+        "prepare": 0.000197197,
+        "model_update": 0.112190243,
+        "q": 0.21294883,
+        "normalizer": 0.00018469,
+        "workspace_setup": 0.003281472,
+        "forward": 0.05423875,
+        "backward": 0.046646881,
+        "likelihood_check": 0.000602849,
+        "counts": 0.106010534,
+        "fit_process_main": 0.566150231,
+        "iteration_inclusive": 0.563846878
+      },
+      "exact_output_match": true
+    },
+    {
+      "id": "k64-n5",
+      "input": "tests/fixtures/profile.psmcfa",
+      "args": [
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "5",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0"
+      ],
+      "input_sha256": "564b68c18437ce6fbb29a59a8f31a1f781037c7b9c7e4298815b53caa259efe7",
+      "runs": [
+        {
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060330160593Z/bin/diagnostic",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-profile/20261010T060330160593Z/k64-n5-0.psmc",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "5",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/profile.psmcfa"
+          ],
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 567961963,
+                "calls": 5
+              },
+              "prepare": {
+                "nanoseconds": 210905,
+                "calls": 5
+              },
+              "model_update": {
+                "nanoseconds": 230611214,
+                "calls": 29909
+              },
+              "q": {
+                "nanoseconds": 666222666,
+                "calls": 29914
+              },
+              "normalizer": {
+                "nanoseconds": 132723,
+                "calls": 5
+              },
+              "workspace_setup": {
+                "nanoseconds": 11259504,
+                "calls": 15
+              },
+              "forward": {
+                "nanoseconds": 144109705,
+                "calls": 15
+              },
+              "backward": {
+                "nanoseconds": 158275832,
+                "calls": 15
+              },
+              "likelihood_check": {
+                "nanoseconds": 370966,
+                "calls": 15
+              },
+              "counts": {
+                "nanoseconds": 253407084,
+                "calls": 15
+              },
+              "fit_process_main": {
+                "nanoseconds": 1482310231,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 1479673154,
+                "calls": 5
+              }
+            },
+            "log_calls": 128323296,
+            "exp_calls": 5682900
+          },
+          "output_sha256": "2354cefc424a6bee76319302ac77043e86eb4aed177a10313824007f5c82483e"
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060330160593Z/bin/diagnostic",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-profile/20261010T060330160593Z/k64-n5-1.psmc",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "5",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/profile.psmcfa"
+          ],
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 642697448,
+                "calls": 5
+              },
+              "prepare": {
+                "nanoseconds": 260857,
+                "calls": 5
+              },
+              "model_update": {
+                "nanoseconds": 281629419,
+                "calls": 29909
+              },
+              "q": {
+                "nanoseconds": 773061490,
+                "calls": 29914
+              },
+              "normalizer": {
+                "nanoseconds": 159026,
+                "calls": 5
+              },
+              "workspace_setup": {
+                "nanoseconds": 14413233,
+                "calls": 15
+              },
+              "forward": {
+                "nanoseconds": 162771114,
+                "calls": 15
+              },
+              "backward": {
+                "nanoseconds": 187649424,
+                "calls": 15
+              },
+              "likelihood_check": {
+                "nanoseconds": 395896,
+                "calls": 15
+              },
+              "counts": {
+                "nanoseconds": 276784544,
+                "calls": 15
+              },
+              "fit_process_main": {
+                "nanoseconds": 1717263722,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 1714437777,
+                "calls": 5
+              }
+            },
+            "log_calls": 128323296,
+            "exp_calls": 5682900
+          },
+          "output_sha256": "2354cefc424a6bee76319302ac77043e86eb4aed177a10313824007f5c82483e"
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060330160593Z/bin/diagnostic",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-profile/20261010T060330160593Z/k64-n5-2.psmc",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "5",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/profile.psmcfa"
+          ],
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 576400255,
+                "calls": 5
+              },
+              "prepare": {
+                "nanoseconds": 235276,
+                "calls": 5
+              },
+              "model_update": {
+                "nanoseconds": 285475000,
+                "calls": 29909
+              },
+              "q": {
+                "nanoseconds": 730346469,
+                "calls": 29914
+              },
+              "normalizer": {
+                "nanoseconds": 141919,
+                "calls": 5
+              },
+              "workspace_setup": {
+                "nanoseconds": 12715367,
+                "calls": 15
+              },
+              "forward": {
+                "nanoseconds": 146551118,
+                "calls": 15
+              },
+              "backward": {
+                "nanoseconds": 155745845,
+                "calls": 15
+              },
+              "likelihood_check": {
+                "nanoseconds": 407091,
+                "calls": 15
+              },
+              "counts": {
+                "nanoseconds": 260360479,
+                "calls": 15
+              },
+              "fit_process_main": {
+                "nanoseconds": 1611417927,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 1608399864,
+                "calls": 5
+              }
+            },
+            "log_calls": 128323296,
+            "exp_calls": 5682900
+          },
+          "output_sha256": "2354cefc424a6bee76319302ac77043e86eb4aed177a10313824007f5c82483e"
+        }
+      ],
+      "cpu_seconds_medians": {
+        "expectation_inclusive": 0.576400255,
+        "prepare": 0.000235276,
+        "model_update": 0.281629419,
+        "q": 0.730346469,
+        "normalizer": 0.000141919,
+        "workspace_setup": 0.012715367,
+        "forward": 0.146551118,
+        "backward": 0.158275832,
+        "likelihood_check": 0.000395896,
+        "counts": 0.260360479,
+        "fit_process_main": 1.611417927,
+        "iteration_inclusive": 1.608399864
+      },
+      "exact_output_match": true
+    },
+    {
+      "id": "bootstrap-00-k23-n30",
+      "input": "tests/fixtures/bootstrap/replicate-00.psmcfa",
+      "args": [
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0"
+      ],
+      "input_sha256": "6853aac2d0aeeedcee6ef74782c33e59eb2a3ff1cc9a7e62fb997b3c8e23c5fd",
+      "runs": [
+        {
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060330160593Z/bin/diagnostic",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-profile/20261010T060330160593Z/bootstrap-00-k23-n30-0.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/bootstrap/replicate-00.psmcfa"
+          ],
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 138524574,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 206344,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 122694184,
+                "calls": 48002
+              },
+              "q": {
+                "nanoseconds": 236815359,
+                "calls": 48032
+              },
+              "normalizer": {
+                "nanoseconds": 189908,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 615166,
+                "calls": 240
+              },
+              "forward": {
+                "nanoseconds": 35826708,
+                "calls": 240
+              },
+              "backward": {
+                "nanoseconds": 30501854,
+                "calls": 240
+              },
+              "likelihood_check": {
+                "nanoseconds": 455013,
+                "calls": 240
+              },
+              "counts": {
+                "nanoseconds": 69275136,
+                "calls": 240
+              },
+              "fit_process_main": {
+                "nanoseconds": 530094860,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 527921012,
+                "calls": 30
+              }
+            },
+            "log_calls": 28789338,
+            "exp_calls": 3216201
+          },
+          "output_sha256": "c8b9e503fa8724428aaf9b5887a5ea34f42f439d8cb31f43ae14af88b0a3acd1"
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060330160593Z/bin/diagnostic",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-profile/20261010T060330160593Z/bootstrap-00-k23-n30-1.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/bootstrap/replicate-00.psmcfa"
+          ],
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 153089803,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 222576,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 130639252,
+                "calls": 48002
+              },
+              "q": {
+                "nanoseconds": 234134704,
+                "calls": 48032
+              },
+              "normalizer": {
+                "nanoseconds": 196353,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 759972,
+                "calls": 240
+              },
+              "forward": {
+                "nanoseconds": 40146271,
+                "calls": 240
+              },
+              "backward": {
+                "nanoseconds": 33378956,
+                "calls": 240
+              },
+              "likelihood_check": {
+                "nanoseconds": 495302,
+                "calls": 240
+              },
+              "counts": {
+                "nanoseconds": 76313414,
+                "calls": 240
+              },
+              "fit_process_main": {
+                "nanoseconds": 552024718,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 549483306,
+                "calls": 30
+              }
+            },
+            "log_calls": 28789338,
+            "exp_calls": 3216201
+          },
+          "output_sha256": "c8b9e503fa8724428aaf9b5887a5ea34f42f439d8cb31f43ae14af88b0a3acd1"
+        },
+        {
+          "command": [
+            "bench/cpu-campaign-profile/20261010T060330160593Z/bin/diagnostic",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-o",
+            "bench/cpu-campaign-profile/20261010T060330160593Z/bootstrap-00-k23-n30-2.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/bootstrap/replicate-00.psmcfa"
+          ],
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 131398273,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 205612,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 114811046,
+                "calls": 48002
+              },
+              "q": {
+                "nanoseconds": 217797477,
+                "calls": 48032
+              },
+              "normalizer": {
+                "nanoseconds": 173644,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 625118,
+                "calls": 240
+              },
+              "forward": {
+                "nanoseconds": 33804374,
+                "calls": 240
+              },
+              "backward": {
+                "nanoseconds": 28875865,
+                "calls": 240
+              },
+              "likelihood_check": {
+                "nanoseconds": 443601,
+                "calls": 240
+              },
+              "counts": {
+                "nanoseconds": 65854619,
+                "calls": 240
+              },
+              "fit_process_main": {
+                "nanoseconds": 493860788,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 491674482,
+                "calls": 30
+              }
+            },
+            "log_calls": 28789338,
+            "exp_calls": 3216201
+          },
+          "output_sha256": "c8b9e503fa8724428aaf9b5887a5ea34f42f439d8cb31f43ae14af88b0a3acd1"
+        }
+      ],
+      "cpu_seconds_medians": {
+        "expectation_inclusive": 0.138524574,
+        "prepare": 0.000206344,
+        "model_update": 0.122694184,
+        "q": 0.234134704,
+        "normalizer": 0.000189908,
+        "workspace_setup": 0.000625118,
+        "forward": 0.035826708,
+        "backward": 0.030501854,
+        "likelihood_check": 0.000455013,
+        "counts": 0.069275136,
+        "fit_process_main": 0.53009486,
+        "iteration_inclusive": 0.527921012
+      },
+      "exact_output_match": true
+    }
+  ],
+  "runner_sha256": "ee5510bf999cd316a6f3cc6afbc11ffad6bdd085db4466d46dd8fe232d620b12",
+  "module_sha256": "b5b3ba3dd843f996bc7e0437992f8abc2671f2bb892f2d637daccab21cb608df",
+  "limitations": [
+    "Diagnostic instrumentation overhead is included; not a release speed benchmark.",
+    "Nested expectation/iteration/main scopes overlap; do not add inclusive and child scopes.",
+    "Workspace setup includes observation validation and resize/zeroing; preparation includes layout allocation.",
+    "Expectation residual includes hashing/cache, aggregation, observer and instrumentation; main residual includes parsing/output/startup inside main.",
+    "Log/exp counts include model, Q, likelihood and normalizer; no per-log timing claimed.",
+    "Hardware counters unavailable: perf_event_paranoid=4; no system settings changed.",
+    "Shared host; CPU time avoids descheduling time but not cache/frequency contention."
+  ]
+}

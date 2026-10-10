@@ -1,0 +1,4123 @@
+{
+  "schema_version": 1,
+  "source": "synthetic only, no biological input",
+  "generator_seed": 20261010,
+  "generator_sha256": "4864aecf9ef910909de933b242ee70970f3a81cd59564f63f4c2e2951f500953",
+  "rng": "Python random.Random; stored bytes/hashes canonical",
+  "design": "50,000 bins, three unequal records, alternating heterozygosity and contiguous masks; 4,000-bin upstream splitting; 30 consecutive fixed seeds. Chosen before timing or fit results. All outcomes retained.",
+  "records": [
+    {
+      "name": "campaign_0",
+      "bins": 12000,
+      "heterozygous": 585,
+      "missing": 560
+    },
+    {
+      "name": "campaign_1",
+      "bins": 16373,
+      "heterozygous": 846,
+      "missing": 700
+    },
+    {
+      "name": "campaign_2",
+      "bins": 21627,
+      "heterozygous": 1057,
+      "missing": 980
+    }
+  ],
+  "split_command": [
+    "work/vanilla/utils/splitfa",
+    "tests/fixtures/cpu-campaign/mixed-50000.psmcfa",
+    "4000"
+  ],
+  "blocks": [
+    {
+      "name": "campaign_0_1",
+      "bins": 4000
+    },
+    {
+      "name": "campaign_0_2",
+      "bins": 4000
+    },
+    {
+      "name": "campaign_0_3",
+      "bins": 4000
+    },
+    {
+      "name": "campaign_1_1",
+      "bins": 4000
+    },
+    {
+      "name": "campaign_1_2",
+      "bins": 4000
+    },
+    {
+      "name": "campaign_1_3",
+      "bins": 4000
+    },
+    {
+      "name": "campaign_1_4",
+      "bins": 4373
+    },
+    {
+      "name": "campaign_2_1",
+      "bins": 4000
+    },
+    {
+      "name": "campaign_2_2",
+      "bins": 4000
+    },
+    {
+      "name": "campaign_2_3",
+      "bins": 4000
+    },
+    {
+      "name": "campaign_2_4",
+      "bins": 4000
+    },
+    {
+      "name": "campaign_2_5",
+      "bins": 5627
+    }
+  ],
+  "inputs": {
+    "tests/fixtures/cpu-campaign/mixed-50000.psmcfa": "5b1eae74e086a73dfd6e0888534fc1289081da18c950ba6a3d7bc8482bae370e",
+    "tests/fixtures/cpu-campaign/blocks-4000.psmcfa": "b45bd20fbefcdf3925a887fe2029d50882af32280e556a2bd8372442c8b661f8",
+    "tests/fixtures/cpu-campaign/masked-50000.psmcfa": "40ef9052fd58b211bfb921169e77d0944201e655baafd24494faa5e1b1641b9a",
+    "tests/fixtures/cpu-campaign/long-200000.psmcfa": "83d5f62f3939c46a242c15fc67d7151427e62eeaef264f9ef6d2873fa37e6618"
+  },
+  "replicates": [
+    {
+      "id": 0,
+      "seed": 20261010,
+      "indices": [
+        5,
+        2,
+        0,
+        6,
+        10,
+        6,
+        1,
+        1,
+        6,
+        4,
+        10,
+        7
+      ],
+      "draws": [
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16373,
+          "after_length": 20373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 20373,
+          "after_length": 24746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 24746,
+          "after_length": 28746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 28746,
+          "after_length": 32746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 32746,
+          "after_length": 37119,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 37119,
+          "after_length": 41119,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 41119,
+          "after_length": 45119,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 45119,
+          "after_length": 49119,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": false,
+          "before_length": 49119,
+          "after_length": 49119,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-00.psmcfa",
+      "sha256": "b844ba93ff400f076036a538dc510ef45a223a0fc52ecc7dca5496179d372eff"
+    },
+    {
+      "id": 1,
+      "seed": 20261011,
+      "indices": [
+        3,
+        10,
+        9,
+        11,
+        10,
+        9,
+        7,
+        8,
+        5,
+        11,
+        9,
+        9
+      ],
+      "draws": [
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 17627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 17627,
+          "after_length": 21627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 21627,
+          "after_length": 25627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 25627,
+          "after_length": 29627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 29627,
+          "after_length": 33627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 33627,
+          "after_length": 37627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 37627,
+          "after_length": 43254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 43254,
+          "after_length": 47254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 47254,
+          "after_length": 51254,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-01.psmcfa",
+      "sha256": "df5f27178b99bf361bc2357bb48a369209c6237520893d9bc8e6edd26452ea84"
+    },
+    {
+      "id": 2,
+      "seed": 20261012,
+      "indices": [
+        2,
+        7,
+        6,
+        5,
+        10,
+        0,
+        1,
+        3,
+        3,
+        7,
+        8,
+        0
+      ],
+      "draws": [
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12373,
+          "after_length": 16373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16373,
+          "after_length": 20373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20373,
+          "after_length": 24373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 24373,
+          "after_length": 28373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 28373,
+          "after_length": 32373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 32373,
+          "after_length": 36373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 36373,
+          "after_length": 40373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 40373,
+          "after_length": 44373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 44373,
+          "after_length": 48373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": false,
+          "before_length": 48373,
+          "after_length": 48373,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-02.psmcfa",
+      "sha256": "99c5f662ca8800b40eacb8c429cb9ed0c2ab35668be38772535a4573253e589e"
+    },
+    {
+      "id": 3,
+      "seed": 20261013,
+      "indices": [
+        0,
+        3,
+        2,
+        10,
+        10,
+        2,
+        7,
+        11,
+        2,
+        2,
+        6,
+        2
+      ],
+      "draws": [
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16000,
+          "after_length": 20000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20000,
+          "after_length": 24000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 24000,
+          "after_length": 28000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 28000,
+          "after_length": 33627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 33627,
+          "after_length": 37627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 37627,
+          "after_length": 41627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 41627,
+          "after_length": 46000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 46000,
+          "after_length": 50000,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-03.psmcfa",
+      "sha256": "8e4266350b7a11434506af8068b550d7aa2a7f267916198115732f4c5b5e51d3"
+    },
+    {
+      "id": 4,
+      "seed": 20261014,
+      "indices": [
+        11,
+        0,
+        11,
+        4,
+        10,
+        5,
+        1,
+        6,
+        0,
+        10,
+        5,
+        5
+      ],
+      "draws": [
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 5627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 5627,
+          "after_length": 9627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 9627,
+          "after_length": 15254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 15254,
+          "after_length": 19254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 19254,
+          "after_length": 23254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 23254,
+          "after_length": 27254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 27254,
+          "after_length": 31254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 31254,
+          "after_length": 35627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 35627,
+          "after_length": 39627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 39627,
+          "after_length": 43627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 43627,
+          "after_length": 47627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 47627,
+          "after_length": 51627,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-04.psmcfa",
+      "sha256": "b38e0e7f4acfb46e962070c96aea65458133a887b33e8afc7bb1274279ae1b42"
+    },
+    {
+      "id": 5,
+      "seed": 20261015,
+      "indices": [
+        9,
+        8,
+        8,
+        10,
+        10,
+        7,
+        7,
+        2,
+        11,
+        5,
+        4,
+        8
+      ],
+      "draws": [
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16000,
+          "after_length": 20000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20000,
+          "after_length": 24000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 24000,
+          "after_length": 28000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 28000,
+          "after_length": 32000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 32000,
+          "after_length": 37627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 37627,
+          "after_length": 41627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 41627,
+          "after_length": 45627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 45627,
+          "after_length": 49627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": false,
+          "before_length": 49627,
+          "after_length": 49627,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-05.psmcfa",
+      "sha256": "547963baa7428cf3f0c1aad51ab478df05981475826194185ff0103a02103c1b"
+    },
+    {
+      "id": 6,
+      "seed": 20261016,
+      "indices": [
+        8,
+        5,
+        5,
+        3,
+        10,
+        10,
+        0,
+        9,
+        9,
+        0,
+        3,
+        10
+      ],
+      "draws": [
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16000,
+          "after_length": 20000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20000,
+          "after_length": 24000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 24000,
+          "after_length": 28000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 28000,
+          "after_length": 32000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 32000,
+          "after_length": 36000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 36000,
+          "after_length": 40000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 40000,
+          "after_length": 44000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 44000,
+          "after_length": 48000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": false,
+          "before_length": 48000,
+          "after_length": 48000,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-06.psmcfa",
+      "sha256": "73ecc23b8c06377eb8ec1123f75af14701045bcad649f1e1ed6f9cc8ee557149"
+    },
+    {
+      "id": 7,
+      "seed": 20261017,
+      "indices": [
+        6,
+        1,
+        2,
+        9,
+        9,
+        1,
+        6,
+        5,
+        8,
+        8,
+        2,
+        1
+      ],
+      "draws": [
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4373,
+          "after_length": 8373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8373,
+          "after_length": 12373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12373,
+          "after_length": 16373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16373,
+          "after_length": 20373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20373,
+          "after_length": 24373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 24373,
+          "after_length": 28746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 28746,
+          "after_length": 32746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 32746,
+          "after_length": 36746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 36746,
+          "after_length": 40746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 40746,
+          "after_length": 44746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 44746,
+          "after_length": 48746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": false,
+          "before_length": 48746,
+          "after_length": 48746,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-07.psmcfa",
+      "sha256": "751cf3798de97cc4eb6fe21943ff577204c83428293f550d954afd349128e6c4"
+    },
+    {
+      "id": 8,
+      "seed": 20261018,
+      "indices": [
+        5,
+        9,
+        11,
+        2,
+        9,
+        3,
+        0,
+        0,
+        6,
+        3,
+        1,
+        4
+      ],
+      "draws": [
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 13627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 13627,
+          "after_length": 17627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 17627,
+          "after_length": 21627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 21627,
+          "after_length": 25627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 25627,
+          "after_length": 29627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 29627,
+          "after_length": 33627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 33627,
+          "after_length": 38000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 38000,
+          "after_length": 42000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 42000,
+          "after_length": 46000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 46000,
+          "after_length": 50000,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-08.psmcfa",
+      "sha256": "1d5c7e9fc3118e294ec114a67c1f9720c2b8bec9393d91a2cedde4145882da0f"
+    },
+    {
+      "id": 9,
+      "seed": 20261019,
+      "indices": [
+        3,
+        6,
+        8,
+        8,
+        9,
+        6,
+        6,
+        8,
+        5,
+        11,
+        0,
+        6
+      ],
+      "draws": [
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8373,
+          "after_length": 12373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12373,
+          "after_length": 16373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16373,
+          "after_length": 20373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 20373,
+          "after_length": 24746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 24746,
+          "after_length": 29119,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 29119,
+          "after_length": 33119,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 33119,
+          "after_length": 37119,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 37119,
+          "after_length": 42746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 42746,
+          "after_length": 46746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 46746,
+          "after_length": 51119,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-09.psmcfa",
+      "sha256": "61e0f4334b8f0061249dbf31fd2b39becbdd56e59b8d92890f630e51a28ec723"
+    },
+    {
+      "id": 10,
+      "seed": 20261020,
+      "indices": [
+        1,
+        2,
+        4,
+        2,
+        9,
+        8,
+        0,
+        3,
+        3,
+        6,
+        10,
+        9
+      ],
+      "draws": [
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16000,
+          "after_length": 20000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20000,
+          "after_length": 24000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 24000,
+          "after_length": 28000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 28000,
+          "after_length": 32000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 32000,
+          "after_length": 36000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 36000,
+          "after_length": 40373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 40373,
+          "after_length": 44373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 44373,
+          "after_length": 48373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": false,
+          "before_length": 48373,
+          "after_length": 48373,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-10.psmcfa",
+      "sha256": "d76c66d4d45a948886915ebc1fbb9138db7079a4f8e44c8bf39d2478b844e4e7"
+    },
+    {
+      "id": 11,
+      "seed": 20261021,
+      "indices": [
+        0,
+        11,
+        1,
+        7,
+        9,
+        11,
+        6,
+        11,
+        2,
+        2,
+        9
+      ],
+      "draws": [
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 9627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 9627,
+          "after_length": 13627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 13627,
+          "after_length": 17627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 17627,
+          "after_length": 21627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 21627,
+          "after_length": 27254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 27254,
+          "after_length": 31627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 31627,
+          "after_length": 37254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 37254,
+          "after_length": 41254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 41254,
+          "after_length": 45254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 45254,
+          "after_length": 49254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": false,
+          "before_length": 49254,
+          "after_length": 49254,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-11.psmcfa",
+      "sha256": "aa254aa29d8e0c44fa44a17a7b0362464f2b6f5c7c95f1ece2a6977f6f71c1a9"
+    },
+    {
+      "id": 12,
+      "seed": 20261022,
+      "indices": [
+        10,
+        7,
+        10,
+        1,
+        9,
+        1,
+        0,
+        6,
+        0,
+        9,
+        8,
+        2
+      ],
+      "draws": [
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16000,
+          "after_length": 20000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20000,
+          "after_length": 24000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 24000,
+          "after_length": 28000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 28000,
+          "after_length": 32373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 32373,
+          "after_length": 36373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 36373,
+          "after_length": 40373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 40373,
+          "after_length": 44373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 44373,
+          "after_length": 48373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": false,
+          "before_length": 48373,
+          "after_length": 48373,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-12.psmcfa",
+      "sha256": "d758beac469b37cb9f17b4d9e892640c64842eb391a4030dfc5a0d97f6c7da82"
+    },
+    {
+      "id": 13,
+      "seed": 20261023,
+      "indices": [
+        9,
+        4,
+        7,
+        6,
+        9,
+        4,
+        6,
+        1,
+        11,
+        5,
+        7,
+        5
+      ],
+      "draws": [
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16373,
+          "after_length": 20373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20373,
+          "after_length": 24373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 24373,
+          "after_length": 28746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 28746,
+          "after_length": 32746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 32746,
+          "after_length": 38373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 38373,
+          "after_length": 42373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 42373,
+          "after_length": 46373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 46373,
+          "after_length": 50373,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-13.psmcfa",
+      "sha256": "baeb1184bf21d25944bb90f47e719ae0a0eb642ee14fd0deb70e803a4792b4f4"
+    },
+    {
+      "id": 14,
+      "seed": 20261024,
+      "indices": [
+        7,
+        0,
+        4,
+        0,
+        8,
+        7,
+        0,
+        9,
+        9,
+        0,
+        6,
+        7
+      ],
+      "draws": [
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16000,
+          "after_length": 20000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20000,
+          "after_length": 24000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 24000,
+          "after_length": 28000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 28000,
+          "after_length": 32000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 32000,
+          "after_length": 36000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 36000,
+          "after_length": 40000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 40000,
+          "after_length": 44373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 44373,
+          "after_length": 48373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": false,
+          "before_length": 48373,
+          "after_length": 48373,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-14.psmcfa",
+      "sha256": "e015fbd42da59bf0befd2ee6edfc73d72babb4e7fb7238a99e5592c02ebecebb"
+    },
+    {
+      "id": 15,
+      "seed": 20261025,
+      "indices": [
+        6,
+        9,
+        1,
+        6,
+        8,
+        9,
+        6,
+        4,
+        8,
+        8,
+        5,
+        10
+      ],
+      "draws": [
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4373,
+          "after_length": 8373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8373,
+          "after_length": 12373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 12373,
+          "after_length": 16746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16746,
+          "after_length": 20746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20746,
+          "after_length": 24746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 24746,
+          "after_length": 29119,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 29119,
+          "after_length": 33119,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 33119,
+          "after_length": 37119,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 37119,
+          "after_length": 41119,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 41119,
+          "after_length": 45119,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 45119,
+          "after_length": 49119,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": false,
+          "before_length": 49119,
+          "after_length": 49119,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-15.psmcfa",
+      "sha256": "eb0b1185867e14c98e593bf6a0d0ccbbf2251bc0531ee39c3701a7cd3e3e4c20"
+    },
+    {
+      "id": 16,
+      "seed": 20261026,
+      "indices": [
+        4,
+        5,
+        10,
+        11,
+        8,
+        0,
+        0,
+        0,
+        6,
+        3,
+        4,
+        1
+      ],
+      "draws": [
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 17627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 17627,
+          "after_length": 21627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 21627,
+          "after_length": 25627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 25627,
+          "after_length": 29627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 29627,
+          "after_length": 33627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 33627,
+          "after_length": 38000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 38000,
+          "after_length": 42000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 42000,
+          "after_length": 46000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 46000,
+          "after_length": 50000,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-16.psmcfa",
+      "sha256": "588d4ce74ea1d4935c61cfef8faa171f69a5d933635ba5d2ad3a7e09bdec1395"
+    },
+    {
+      "id": 17,
+      "seed": 20261027,
+      "indices": [
+        3,
+        2,
+        6,
+        5,
+        8,
+        2,
+        6,
+        7,
+        5,
+        10,
+        3,
+        3
+      ],
+      "draws": [
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12373,
+          "after_length": 16373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16373,
+          "after_length": 20373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20373,
+          "after_length": 24373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 24373,
+          "after_length": 28746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 28746,
+          "after_length": 32746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 32746,
+          "after_length": 36746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 36746,
+          "after_length": 40746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 40746,
+          "after_length": 44746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 44746,
+          "after_length": 48746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": false,
+          "before_length": 48746,
+          "after_length": 48746,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-17.psmcfa",
+      "sha256": "1b5acea7825996237689f0b9d7e5c78acb1afa28e18e3040d8d5a5743b2adbc4"
+    },
+    {
+      "id": 18,
+      "seed": 20261028,
+      "indices": [
+        1,
+        10,
+        3,
+        10,
+        8,
+        5,
+        0,
+        3,
+        4,
+        6,
+        1,
+        6
+      ],
+      "draws": [
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16000,
+          "after_length": 20000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20000,
+          "after_length": 24000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 24000,
+          "after_length": 28000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 28000,
+          "after_length": 32000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 32000,
+          "after_length": 36000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 36000,
+          "after_length": 40373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 40373,
+          "after_length": 44373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 44373,
+          "after_length": 48746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": false,
+          "before_length": 48746,
+          "after_length": 48746,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-18.psmcfa",
+      "sha256": "caa59564d7e10ec25a26f8e0e7ffc0200675177d9373d0b429db628c81ded16c"
+    },
+    {
+      "id": 19,
+      "seed": 20261029,
+      "indices": [
+        11,
+        6,
+        0,
+        4,
+        8,
+        8,
+        6,
+        10,
+        2,
+        1,
+        0,
+        9
+      ],
+      "draws": [
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 5627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 5627,
+          "after_length": 10000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 10000,
+          "after_length": 14000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 14000,
+          "after_length": 18000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 18000,
+          "after_length": 22000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 22000,
+          "after_length": 26000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 26000,
+          "after_length": 30373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 30373,
+          "after_length": 34373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 34373,
+          "after_length": 38373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 38373,
+          "after_length": 42373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 42373,
+          "after_length": 46373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 46373,
+          "after_length": 50373,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-19.psmcfa",
+      "sha256": "5eddcab314bbe6c23ceb2853cecc1c7176630700ca97a7bac136cded36a6f1dd"
+    },
+    {
+      "id": 20,
+      "seed": 20261030,
+      "indices": [
+        10,
+        3,
+        9,
+        9,
+        8,
+        10,
+        0,
+        6,
+        1,
+        9,
+        11,
+        11
+      ],
+      "draws": [
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16000,
+          "after_length": 20000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20000,
+          "after_length": 24000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 24000,
+          "after_length": 28000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 28000,
+          "after_length": 32373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 32373,
+          "after_length": 36373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 36373,
+          "after_length": 40373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 40373,
+          "after_length": 46000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 46000,
+          "after_length": 51627,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-20.psmcfa",
+      "sha256": "4e556827681c4032f392a8955307ebd231e00b900b572d5b660bad335be844a9"
+    },
+    {
+      "id": 21,
+      "seed": 20261031,
+      "indices": [
+        8,
+        11,
+        6,
+        3,
+        7,
+        1,
+        6,
+        1,
+        11,
+        4,
+        10
+      ],
+      "draws": [
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 9627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 9627,
+          "after_length": 14000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 14000,
+          "after_length": 18000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 18000,
+          "after_length": 22000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 22000,
+          "after_length": 26000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 26000,
+          "after_length": 30373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 30373,
+          "after_length": 34373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 34373,
+          "after_length": 40000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 40000,
+          "after_length": 44000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 44000,
+          "after_length": 48000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": false,
+          "before_length": 48000,
+          "after_length": 48000,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-21.psmcfa",
+      "sha256": "2be98206646ba965f1d3a7163fe0be650226bfa03801112c6e33cba5579c2b0b"
+    },
+    {
+      "id": 22,
+      "seed": 20261032,
+      "indices": [
+        7,
+        8,
+        3,
+        9,
+        7,
+        3,
+        0,
+        9,
+        10,
+        0,
+        9,
+        5
+      ],
+      "draws": [
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16000,
+          "after_length": 20000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20000,
+          "after_length": 24000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 24000,
+          "after_length": 28000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 28000,
+          "after_length": 32000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 32000,
+          "after_length": 36000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 36000,
+          "after_length": 40000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 40000,
+          "after_length": 44000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 44000,
+          "after_length": 48000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": false,
+          "before_length": 48000,
+          "after_length": 48000,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-22.psmcfa",
+      "sha256": "9c7442babedb0daff3310cf1791666b37a534d87f0ce85893f5120d9d691b572"
+    },
+    {
+      "id": 23,
+      "seed": 20261033,
+      "indices": [
+        5,
+        4,
+        0,
+        2,
+        7,
+        6,
+        6,
+        4,
+        8,
+        7,
+        8,
+        7
+      ],
+      "draws": [
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16000,
+          "after_length": 20000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 20000,
+          "after_length": 24373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 24373,
+          "after_length": 28746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 28746,
+          "after_length": 32746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 32746,
+          "after_length": 36746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 36746,
+          "after_length": 40746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 40746,
+          "after_length": 44746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 44746,
+          "after_length": 48746,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": false,
+          "before_length": 48746,
+          "after_length": 48746,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-23.psmcfa",
+      "sha256": "79256f31a26567cdb9461909e7695709edc58e32a67ddf7c5dcf9d9639522a93"
+    },
+    {
+      "id": 24,
+      "seed": 20261034,
+      "indices": [
+        4,
+        1,
+        8,
+        8,
+        7,
+        9,
+        11,
+        0,
+        7,
+        3,
+        7,
+        10
+      ],
+      "draws": [
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16000,
+          "after_length": 20000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20000,
+          "after_length": 24000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 24000,
+          "after_length": 29627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 29627,
+          "after_length": 33627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 33627,
+          "after_length": 37627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 37627,
+          "after_length": 41627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 41627,
+          "after_length": 45627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 45627,
+          "after_length": 49627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": false,
+          "before_length": 49627,
+          "after_length": 49627,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-24.psmcfa",
+      "sha256": "778cadac98f0bfa6d33c338fc104aaa3cade3f632cebf7841b9e843da35a7b2a"
+    },
+    {
+      "id": 25,
+      "seed": 20261035,
+      "indices": [
+        2,
+        9,
+        5,
+        1,
+        7,
+        11,
+        5,
+        7,
+        5,
+        10,
+        5,
+        0
+      ],
+      "draws": [
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 9,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16000,
+          "after_length": 20000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 20000,
+          "after_length": 25627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 25627,
+          "after_length": 29627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 29627,
+          "after_length": 33627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 33627,
+          "after_length": 37627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 37627,
+          "after_length": 41627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 41627,
+          "after_length": 45627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 45627,
+          "after_length": 49627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": false,
+          "before_length": 49627,
+          "after_length": 49627,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-25.psmcfa",
+      "sha256": "1ed52fcbbeae375c98740a59571498d550a370790e61724b2e346d3047f26916"
+    },
+    {
+      "id": 26,
+      "seed": 20261036,
+      "indices": [
+        1,
+        6,
+        2,
+        7,
+        7,
+        2,
+        11,
+        2,
+        4,
+        6,
+        4,
+        3
+      ],
+      "draws": [
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8373,
+          "after_length": 12373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12373,
+          "after_length": 16373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 16373,
+          "after_length": 20373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20373,
+          "after_length": 24373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 24373,
+          "after_length": 30000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 30000,
+          "after_length": 34000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 34000,
+          "after_length": 38000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 38000,
+          "after_length": 42373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 42373,
+          "after_length": 46373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 46373,
+          "after_length": 50373,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-26.psmcfa",
+      "sha256": "b4da0c345057d87d5e3ec4a633051f9f49998815f8bd38807f637be71703c543"
+    },
+    {
+      "id": 27,
+      "seed": 20261037,
+      "indices": [
+        11,
+        2,
+        11,
+        1,
+        7,
+        4,
+        5,
+        10,
+        2,
+        1,
+        3,
+        6
+      ],
+      "draws": [
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 5627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 5627,
+          "after_length": 9627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 9627,
+          "after_length": 15254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 15254,
+          "after_length": 19254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 19254,
+          "after_length": 23254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 23254,
+          "after_length": 27254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 27254,
+          "after_length": 31254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 31254,
+          "after_length": 35254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 35254,
+          "after_length": 39254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 39254,
+          "after_length": 43254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 3,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 43254,
+          "after_length": 47254,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 47254,
+          "after_length": 51627,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-27.psmcfa",
+      "sha256": "3165eb5b167a8d73f332aef9bcbbeab5fdddf3868fd02408bba296e657afe575"
+    },
+    {
+      "id": 28,
+      "seed": 20261038,
+      "indices": [
+        10,
+        11,
+        8,
+        6,
+        6,
+        7,
+        11,
+        5,
+        1,
+        8,
+        2
+      ],
+      "draws": [
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 9627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 9627,
+          "after_length": 13627,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 13627,
+          "after_length": 18000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 18000,
+          "after_length": 22373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 22373,
+          "after_length": 26373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 26373,
+          "after_length": 32000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 32000,
+          "after_length": 36000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 36000,
+          "after_length": 40000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 40000,
+          "after_length": 44000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 2,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 44000,
+          "after_length": 48000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": false,
+          "before_length": 48000,
+          "after_length": 48000,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-28.psmcfa",
+      "sha256": "f50dcc4f33c7f7b9285aba09d012df96c66b0b04e1af4393d12d216a1ffaf371"
+    },
+    {
+      "id": 29,
+      "seed": 20261039,
+      "indices": [
+        8,
+        7,
+        5,
+        0,
+        6,
+        10,
+        5,
+        1,
+        11,
+        4,
+        1,
+        11
+      ],
+      "draws": [
+        {
+          "source_index": 8,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 0,
+          "after_length": 4000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 7,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 4000,
+          "after_length": 8000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 8000,
+          "after_length": 12000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 0,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 12000,
+          "after_length": 16000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 6,
+          "length": 4373,
+          "accepted": true,
+          "before_length": 16000,
+          "after_length": 20373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 10,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 20373,
+          "after_length": 24373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 5,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 24373,
+          "after_length": 28373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 28373,
+          "after_length": 32373,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 32373,
+          "after_length": 38000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 4,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 38000,
+          "after_length": 42000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 1,
+          "length": 4000,
+          "accepted": true,
+          "before_length": 42000,
+          "after_length": 46000,
+          "target_length": 50000,
+          "stop": false
+        },
+        {
+          "source_index": 11,
+          "length": 5627,
+          "accepted": true,
+          "before_length": 46000,
+          "after_length": 51627,
+          "target_length": 50000,
+          "stop": true
+        }
+      ],
+      "file": "tests/fixtures/cpu-campaign/bootstrap-29.psmcfa",
+      "sha256": "ab4ccb035cbe8f2535fdacad411c6bbb96439dba7717c07815cb6a2f456d7af3"
+    }
+  ]
+}

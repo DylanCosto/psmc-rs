@@ -1,0 +1,242 @@
+{
+  "status": "strict_counterexample_confirmed",
+  "resource_policy": {
+    "affinity": [
+      0
+    ],
+    "nice": 10,
+    "cargo_jobs": 1,
+    "rust_test_threads": 1,
+    "inference_threads_per_fit": 1,
+    "parallel_jobs": false,
+    "shared_host": true
+  },
+  "source": "Pinned core.c::psmc_update_hmm and khmm.c::hmm_Q",
+  "model_snapshot": "tests/fixtures/cpu-campaign-hmm/generating-model.jsonl",
+  "model_sha256": "fb2a6a3b4e7cd53588ed9dcd32e9d598e20688667b6de184f6658ed00b9bc4e1",
+  "states": 23,
+  "literal_reconstruction": {
+    "values": 529,
+    "bit_mismatches": 0,
+    "maximum_absolute_error": 0,
+    "maximum_relative_error": 0,
+    "first_mismatches": []
+  },
+  "factored_reconstruction": {
+    "values": 529,
+    "bit_mismatches": 164,
+    "maximum_absolute_error": 3.469446951953614e-18,
+    "maximum_relative_error": 2.337628848510125e-16,
+    "first_mismatches": [
+      {
+        "index": 1,
+        "expected": 5.954402045234839e-06,
+        "actual": 5.95440204523484e-06
+      },
+      {
+        "index": 4,
+        "expected": 1.3550757513232531e-05,
+        "actual": 1.3550757513232533e-05
+      },
+      {
+        "index": 5,
+        "expected": 1.546752263713229e-05,
+        "actual": 1.5467522637132292e-05
+      },
+      {
+        "index": 8,
+        "expected": 1.2936198867227068e-05,
+        "actual": 1.293619886722707e-05
+      },
+      {
+        "index": 9,
+        "expected": 1.4085707209470764e-05,
+        "actual": 1.4085707209470766e-05
+      },
+      {
+        "index": 10,
+        "expected": 9.586622816374423e-06,
+        "actual": 9.586622816374425e-06
+      },
+      {
+        "index": 11,
+        "expected": 1.0459029304688687e-05,
+        "actual": 1.0459029304688688e-05
+      },
+      {
+        "index": 14,
+        "expected": 1.230483732705168e-05,
+        "actual": 1.2304837327051682e-05
+      }
+    ]
+  },
+  "forward_vectors": [
+    {
+      "name": "uniform",
+      "values": 23,
+      "bit_mismatches": 15,
+      "maximum_absolute_error": 1.3877787807814457e-17,
+      "maximum_relative_error": 3.574234361148038e-16,
+      "first_mismatches": [
+        {
+          "index": 0,
+          "expected": 0.04344138235600718,
+          "actual": 0.043441382356007176
+        },
+        {
+          "index": 1,
+          "expected": 0.04336123008667082,
+          "actual": 0.043361230086670824
+        },
+        {
+          "index": 2,
+          "expected": 0.04326648677814203,
+          "actual": 0.043266486778142016
+        },
+        {
+          "index": 3,
+          "expected": 0.04315573569527918,
+          "actual": 0.043155735695279196
+        },
+        {
+          "index": 4,
+          "expected": 0.04307116486444433,
+          "actual": 0.043071164864444324
+        },
+        {
+          "index": 6,
+          "expected": 0.0428102485932802,
+          "actual": 0.042810248593280205
+        },
+        {
+          "index": 7,
+          "expected": 0.042412404125147844,
+          "actual": 0.04241240412514785
+        },
+        {
+          "index": 9,
+          "expected": 0.04188196713358475,
+          "actual": 0.041881967133584753
+        }
+      ]
+    },
+    {
+      "name": "initial",
+      "values": 23,
+      "bit_mismatches": 13,
+      "maximum_absolute_error": 4.163336342344337e-17,
+      "maximum_relative_error": 6.03892755256708e-16,
+      "first_mismatches": [
+        {
+          "index": 0,
+          "expected": 0.02504252260591473,
+          "actual": 0.025042522605914736
+        },
+        {
+          "index": 1,
+          "expected": 0.030515571716868122,
+          "actual": 0.03051557171686812
+        },
+        {
+          "index": 2,
+          "expected": 0.03689655505151265,
+          "actual": 0.03689655505151266
+        },
+        {
+          "index": 4,
+          "expected": 0.06894165075013273,
+          "actual": 0.06894165075013277
+        },
+        {
+          "index": 5,
+          "expected": 0.07839781544500816,
+          "actual": 0.07839781544500818
+        },
+        {
+          "index": 6,
+          "expected": 0.08691216901051835,
+          "actual": 0.08691216901051838
+        },
+        {
+          "index": 7,
+          "expected": 0.05786878090789413,
+          "actual": 0.057868780907894136
+        },
+        {
+          "index": 9,
+          "expected": 0.06945664775439535,
+          "actual": 0.06945664775439538
+        }
+      ]
+    },
+    {
+      "name": "uneven",
+      "values": 23,
+      "bit_mismatches": 16,
+      "maximum_absolute_error": 2.7755575615628914e-17,
+      "maximum_relative_error": 4.048064177834497e-16,
+      "first_mismatches": [
+        {
+          "index": 0,
+          "expected": 0.006408860581662895,
+          "actual": 0.006408860581662894
+        },
+        {
+          "index": 1,
+          "expected": 0.05114112168551555,
+          "actual": 0.051141121685515545
+        },
+        {
+          "index": 2,
+          "expected": 0.012788475164094796,
+          "actual": 0.012788475164094794
+        },
+        {
+          "index": 3,
+          "expected": 0.05724197198582429,
+          "actual": 0.0572419719858243
+        },
+        {
+          "index": 4,
+          "expected": 0.01915785537920225,
+          "actual": 0.019157855379202254
+        },
+        {
+          "index": 5,
+          "expected": 0.06320093755007053,
+          "actual": 0.06320093755007054
+        },
+        {
+          "index": 6,
+          "expected": 0.02545109957473386,
+          "actual": 0.025451099574733863
+        },
+        {
+          "index": 7,
+          "expected": 0.06856505825082221,
+          "actual": 0.06856505825082224
+        }
+      ]
+    }
+  ],
+  "factored_objective": {
+    "values": 1,
+    "bit_mismatches": 1,
+    "maximum_absolute_error": 7.105427357601002e-15,
+    "maximum_relative_error": 7.935358759293593e-16,
+    "first_mismatches": [
+      {
+        "index": 0,
+        "expected": -8.954134996454178,
+        "actual": -8.954134996454185
+      }
+    ]
+  },
+  "runner_sha256": "f08d818601bc765fa6e1de940593bff32376f1fc28e7b7104089a26b3349d68f",
+  "conclusion": "This direct factor/prefix/suffix/log-margin rewrite is not strict-compatible even at a valid initial model. It remains an isolated experiment, not a production backend.",
+  "limitations": [
+    "One valid model counterexample disproves universal exactness of this formulation; it does not rule out all future strict algorithms.",
+    "No full EM run, optimizer-trajectory or speed claim for the failed strict candidate.",
+    "The real-arithmetic identity is distinct from operation-order-preserving binary64 computation."
+  ]
+}
