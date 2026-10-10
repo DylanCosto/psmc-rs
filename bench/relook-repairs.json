@@ -1,0 +1,12 @@
+{
+  "status": "repaired",
+  "events": [
+    {
+      "stage": "forward prototype generation",
+      "error": "AssertionError: expected two trailing newlines, source function has one",
+      "effect": "Stopped before writing modified numerical source or compiling; no numerical test failure",
+      "preserved_directory": "work/relook/forward-generation-failed",
+      "repair": "Match the actual function suffix before inserting the ordered scale loop."
+    }
+  ]
+}

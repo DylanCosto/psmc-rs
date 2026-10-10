@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "runner_sha256": "5e831f0b135beb6bea66228bd779bc7101fc80f1d10c777f86badf0b225035e6",
+  "base": "30efe0b",
+  "prototype_source_sha256": "e70a1519c6574fc437254d2bb26d21cb50aa87a74a186f154927ea268edaabf0",
+  "directory": "work/relook/reproduce",
+  "exact_final_source_hashes": {
+    "crates/psmc-cuda/src/tests.rs": "753fa30d7727174bc5fab8c0246a6e6b5ef71686d4313208ea2f6c8129f9dd48",
+    "crates/psmc-cuda/src/lib.rs": "362d860fee1b34ebf8a336373efbad7f51f24ff663f474dff4a43f6c0e3e9dae",
+    "crates/psmc-cuda/src/driver.rs": "c6f3c0a2fde681394206d5757c4a8b9162c071443ad001209e5b961b8203642f",
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/em.rs": "341fa85bbf7f19edefd4fb2dbdd786f997caed34172ed18534805a85c3cd3db1",
+    "crates/psmc-core/src/lib.rs": "b0b6804c719504d3d7b2f44290a21f45babd590fe9e59e913c0c6dcafb41b01b",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+    "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+    "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+    "crates/psmc-cli/src/main.rs": "d079dc592b3eb86e194579219ede72d03ba227ed16937903d591d5c71e351f7e",
+    "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+    "crates/psmc-cli/src/batch.rs": "5220c9cad1372563cbce13c716b9b89eab04ed2dcfe2b29baed9b404779dd458",
+    "crates/psmc-cli/src/legacy.rs": "aa62f79a2c02097d6e832eec726f2c3a3e42e62805e7a5cb45d956017573a6b4",
+    "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+    "crates/psmc-cpu/examples/cuda_fixture.rs": "11db2adbb88fc00f23ed2f3fe4c4092399e400cb1903bce55d2888f23886aa33",
+    "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+    "crates/psmc-cpu/src/tests.rs": "ea2a8ac0c418eca0a6f3da42aa4d0e7bfae87ec364a7a0b6372318173cbcbccb",
+    "crates/psmc-cpu/src/simd.rs": "29cef2f2f18057e6b98b0ba7dede8d55a604f0ccd95531c5fb5d21eb5e433816",
+    "crates/psmc-cpu/src/lib.rs": "a93218155ec9746a72a9433ccc4d5ddc6e66f8dac9af50ebd868873f10dc5dfc",
+    "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179"
+  },
+  "exact_configuration_hashes": {
+    "Cargo.toml": "a1cfef03b6ac8d37fa7d7f79f321ca40cb57f5e60be78947598596510e43e0b9",
+    "Cargo.lock": "a031398ab01ebf1be23d5295df6505d7c6ea5fc7335564d0ddf74449171b072a",
+    "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b"
+  }
+}

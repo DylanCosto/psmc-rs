@@ -1,0 +1,1859 @@
+{
+  "status": "passed",
+  "decision": "retain",
+  "runner_sha256": "6e7d0f286178b96faf74cf187cc54d7762460c9425b0ffc60a15c3ba8a78b9a1",
+  "baseline": "30efe0b",
+  "installed_cpu_sha256": "566883bce56317b8d1720551373959fc3e2808538977240a45ff656cf9ebff43",
+  "installed_cuda_sha256": "4763281272d642f10dc42ac0879676b99d9f19158b0bf17bcf45de942fa6b8ff",
+  "candidate": {
+    "path": "work/relook/final-build/psmc-rs-cpu",
+    "sha256": "e60049aed7d0a9224cdabee193e2ecd58893ed210a6eccf1e59a1b57812ae68d"
+  },
+  "unit_tests": [
+    41,
+    45
+  ],
+  "outputs_rechecked": {
+    "probe": 2,
+    "cycles": 2,
+    "counts": 40,
+    "forward": 16,
+    "q": 16,
+    "batches-probe": 30,
+    "batches-screen": 150,
+    "batches-accept": 240
+  },
+  "total_outputs_rechecked": 496,
+  "batches": [
+    {
+      "manifest": "work/relook/batches-probe/diagnostic-0/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-probe/diagnostic-0/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "manifest": "work/relook/batches-screen/installed-0/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-0/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "manifest": "work/relook/batches-screen/uniform16-0/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform16-0/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "manifest": "work/relook/batches-screen/uniform64-0/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-screen/uniform64-0/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "manifest": "work/relook/batches-screen/uniformwide-0/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-screen/uniformwide-0/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "manifest": "work/relook/batches-screen/installed-1/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-screen/installed-1/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "manifest": "work/relook/batches-accept/baseline-0/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-0/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "manifest": "work/relook/batches-accept/candidate-0/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-0/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "manifest": "work/relook/batches-accept/candidate-1/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-1/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "manifest": "work/relook/batches-accept/baseline-1/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-1/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "manifest": "work/relook/batches-accept/baseline-2/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-2/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "manifest": "work/relook/batches-accept/candidate-2/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-2/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "manifest": "work/relook/batches-accept/candidate-3/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-accept/candidate-3/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    },
+    {
+      "manifest": "work/relook/batches-accept/baseline-3/manifest.json",
+      "sha256": "e9b09945e1c5cc694b3d0e8165f4ab21490d45d8658c7fbaed7945e18f90be68",
+      "outputs": [
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-00.psmc",
+          "sha256": "6b0eee61b9fdab7fc98ba14679dba53244f5d53f9e4262cee8e27b84dfbd73c6"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-01.psmc",
+          "sha256": "acc56410e7ec70f32db9dee2867b3d73c244aa0fdde23394ca83c0a4716da1d2"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-02.psmc",
+          "sha256": "26049b4e9fe83f6d48302c0f58dfea0d7af24e809f489d13a458ebae16695dd7"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-03.psmc",
+          "sha256": "c30901f1932b91d23b7506ec2a5708a138ba34bce460a31e665173b2242ae015"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-04.psmc",
+          "sha256": "578e101c36bddbaa737998e3cfd479c752b7312f7a927ff43ac704d22e5bb7c2"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-05.psmc",
+          "sha256": "163e3f5a470ca1c4a2cd9f1bfdfa8ec46bc6e01756afe499fd8547d08159636a"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-06.psmc",
+          "sha256": "6524af9a824a3004e38ec0ea23c0df094116d8080a43ce5517de965d90fc84de"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-07.psmc",
+          "sha256": "c7b2fc7b91b586137e40f3f93b6402103b531ec751375d10a47d7a46f6b17866"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-08.psmc",
+          "sha256": "ab6c7b7f36998542b956ac1743a60ffc5c5b136ced6a2f3e77064aeb4c80d725"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-09.psmc",
+          "sha256": "f09fbb43553823c46f8c00192fc239df93762a70d7783d13fb49935d93d7f7cf"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-10.psmc",
+          "sha256": "32e35fad37e20d3c33b2e73b7633b9bed05dee7f6ab5f499cc78f60eeb307a3d"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-11.psmc",
+          "sha256": "3afae8fcc78ce846c7c56dcec39d92f98bd201bcf212c8fbdc2e27a1cde344b5"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-12.psmc",
+          "sha256": "9d70be04aec6b32bd422ed16c784fdd250575678963aff8158fdebb7e1fee1dd"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-13.psmc",
+          "sha256": "8708cc7d9e62d9aef532990146715bd9ef09a466531a58ce5a3657c082a645d3"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-14.psmc",
+          "sha256": "8401fa428a993f18488de9e15a335b953b254fdeac80242b5dcca46d23202f71"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-15.psmc",
+          "sha256": "0b4186ef48085875d20467c80407e161d22dc23bb76c1f6bf2dbb756282eae3b"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-16.psmc",
+          "sha256": "33859ebe2b22af4fb2e81e7a23bde87db43b27d078e51e8f3be2b84fc8b10b42"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-17.psmc",
+          "sha256": "a160e0cc1a0c406cc706f970ebe7fae09968fff8b5cce09ea5636c36a86f03f9"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-18.psmc",
+          "sha256": "f02e70a9c92a39a9171bbc9dbe4a61c9c5032d9056f15f25213b517fd803211c"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-19.psmc",
+          "sha256": "597f8641098377f090f93bef17c4f74865d50e34b553ddc10dd6c67398b41e41"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-20.psmc",
+          "sha256": "1ec6ffda92b7303d14d5817df26c2c405fece1e8b2ad3c1c92f1942833944f95"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-21.psmc",
+          "sha256": "618f95c05d4412b2095404053264eef6d2d83942edd926d6233520976a6390f9"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-22.psmc",
+          "sha256": "17d590ca4c66b55e134b968f57d2d3d5b84f2dc040eba24c40b18f09d038a2f1"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-23.psmc",
+          "sha256": "b968249485add96535d6a24603a606c5e51f78866308cf8d463e57eb4393fe5d"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-24.psmc",
+          "sha256": "1f7d374dc1880a8bf3bc7107495974230389afe1a26bd8a7b4180f91b30d650e"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-25.psmc",
+          "sha256": "8dd3d284a0f565a473c84625b7cdecb684e08ee74279a9295cc357ab492c223d"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-26.psmc",
+          "sha256": "856a17361175c131107f21ce8e73caf48bacb50114665c612dab4945d87d54ce"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-27.psmc",
+          "sha256": "1c765c83e721529d63985b024726fbc86f1513b971b77203208b59b8088061a6"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-28.psmc",
+          "sha256": "3bd21da6c332f3d5163badab9237de9ef36561fb14d49ed4f12dd7827fbff309"
+        },
+        {
+          "path": "work/relook/batches-accept/baseline-3/replicate-29.psmc",
+          "sha256": "8349b5f2aa10f1988039885af64edf186b4f902007235fecd72fa12f3ac1ef8d"
+        }
+      ]
+    }
+  ],
+  "performance_gate": false,
+  "wall_reduction": 0.019261252697212017,
+  "cpu_reduction": 0.03141040500712,
+  "faster_pairs": 2,
+  "reports": {
+    "bench/relook-batches-accept.json": {
+      "status": "passed_exactness",
+      "sha256": "9f589654cb518ba1239d82ee441726ff23740addc95b07bc074277f76a698274"
+    },
+    "bench/relook-batches-probe.json": {
+      "status": "passed_exactness",
+      "sha256": "98b0ca87b9a476cdcf6af43717b8b80b61e0415e7bb48f8b14a488da1637fba1"
+    },
+    "bench/relook-batches-screen.json": {
+      "status": "passed_exactness",
+      "sha256": "8f84ab5086e81f0f0b330da9150d0d2046129178c980a30a6fcec5f442d8b326"
+    },
+    "bench/relook-build.json": {
+      "status": "passed",
+      "sha256": "582de8bf9de3973eefb7a9563b9af9ce7d3d41b29ed0f80472f990d3d17277e0"
+    },
+    "bench/relook-counts.json": {
+      "status": "screened",
+      "sha256": "2e8293ddd3680c777273fd0f4549a49a33f1c5ea9ae2670e7747bf4d0f41f211"
+    },
+    "bench/relook-cycles.json": {
+      "status": "passed",
+      "sha256": "7ec2a12c58822e5dbd4e937dc730bd8bd42262ba56afd11fcde19356deac94e9"
+    },
+    "bench/relook-forward.json": {
+      "status": "screened",
+      "sha256": "4b2ef12be3a9d410459f155d113defb54af5f9791ef9e1f276726b6b2b3b136c"
+    },
+    "bench/relook-probe.json": {
+      "status": "passed",
+      "sha256": "d843899d6dadfba3e19a77727636994b0859beb40f739b75d2e1390b0a7de5b8"
+    },
+    "bench/relook-q.json": {
+      "status": "screened",
+      "sha256": "adf88b33a99a7d5119d727a7b65e457f8f20bc6a67009d5de0efcba517dc1b90"
+    },
+    "bench/relook-repairs.json": {
+      "status": "repaired",
+      "sha256": "1775441ffc2a8218ab97318d947d3f4b986bfbf18452b78951dbcdff62327825"
+    },
+    "bench/relook-reproduction.json": {
+      "status": "passed",
+      "sha256": "623a7f435bfc5719223811b163fbcc07d46a67ef1f2b5196f4bb583a64ee7f4e"
+    },
+    "bench/relook-restoration.json": {
+      "status": "passed",
+      "sha256": "698160b41a961916445ebe757fad06e5a02cb7e889318480dc4664c29dfa64e1"
+    }
+  },
+  "limitation": "Shared host; finite public chromosome controls and fixed 30 bootstraps. No significance claim for other hardware, whole genomes or private inputs.",
+  "runners": {
+    "bench/relook_forward.py": "7ab1c43b94c36f22332ac2bedf4d86a0c6e319163755b45bce8ae089cdacb605",
+    "bench/relook_counts.py": "40be6701380884b509265b3bed4e4f6c6bd0f21fcc948d487200aaef638942f0",
+    "bench/relook_batches.py": "16afa6552190ea2504a3a076c3381d511bec09e75f2abdb44c43053d3427dbeb",
+    "bench/relook_cycles.py": "421862f411e6123ac5a28b91a4446f1be4f0e088b827f13a02d6512aa58c980c",
+    "bench/relook_audit.py": "6e7d0f286178b96faf74cf187cc54d7762460c9425b0ffc60a15c3ba8a78b9a1",
+    "bench/relook_build.py": "0ca87406a982c9854dceddd044af0bf7447e2c280616695884618336e5fb6ee9",
+    "bench/relook_probe.py": "a9d5b148ac589f81547ee7ffe6a00b29a201702f8eecd3a39577689161545425",
+    "bench/relook_q.py": "44b706ad008328441331ee85e346d861c0313bbf8d88f8f0b2537d0dcb3c3810",
+    "bench/relook_prepare.py": "5e831f0b135beb6bea66228bd779bc7101fc80f1d10c777f86badf0b225035e6"
+  }
+}

@@ -960,3 +960,98 @@ All credible identified opportunities are implemented, measured/rejected or
 bounded by explicit exactness/hardware/data constraints. Source, derivations,
 tests and timings are committed together. Broader input validation/reliability
 is the next permitted milestone; no new optimization family is left pending.
+
+
+## Significant-optimization second look — 2026-10-10
+
+The user explicitly reopens optimization after the completed campaign. Baseline
+is clean commit 30efe0b and installed CPU v0.4.1; previous reports stay unchanged.
+
+- [x] Inspect current code and prior exclusions for a distinct high-impact mechanism.
+- [x] Measure exact message repetition and homogeneous-symbol runs on complete HG fits.
+- [x] Prototype only mechanisms supported by that evidence; preserve every ordered
+      per-cell addition, intermediate multiplication, boundary and optimizer call.
+- [x] Screen complete fits with one warmup and three rotated measurements; a
+      significant candidate must show at least 5% median full-batch wall reduction,
+      lower aggregate CPU time and at least two of three faster fixed paired batches
+      against v0.4.1. No optional timing repetitions to rescue a failed candidate.
+- [x] Run full compatibility gates before any promotion; document a measured no-change
+      conclusion if no candidate earns promotion, then commit the new evidence.
+
+New hypotheses: exact (bitwise, not approximate) fixed points in forward/backward
+messages may eliminate redundant matrix-vector evaluations within homogeneous
+stretches. First measure frequency before introducing a path. Separately, a run
+or uniform-tile count kernel can hoist unchanged emission-transition coefficients
+while retaining all site additions in original order. This is distinct from the
+previous tile-width/source-unrolling search. No lower precision, tree reduction,
+new model, stopping tolerance, cross-fit count cache or GPU retry is authorized.
+
+Predeclared full-batch screen: each uniform-coefficient variant once, between two
+installed v0.4.1 controls, with all 30 unchanged seeds and 16 workers. Select only
+a candidate with at least a 2% screen reduction and lower aggregate CPU time for
+fresh fixed acceptance pairs; the significant-improvement acceptance bar remains
+5%. A separate diagnostic full batch measures repetition across all 30 fits;
+its instrumented elapsed time is not a performance result.
+
+One final distinct mechanism is tested before closing this second look: collect
+the same ascending forward scaling sum inside the K64 message kernel after each
+32-state output group, then perform the original vector divisions. This lets the
+processor overlap the first group's ordered scalar additions with independent
+work on the next group and removes a separate normalization call. No sum is
+reassociated. Screen one isolated candidate plus installed control; combine with
+the count candidate only if each independently shows useful complete-fit or
+full-batch gains. No further candidate families will be added in this second look.
+
+The repetition diagnostic also samples short cycles (lags 2/3/4/8/16/32/64) at
+every 64th interior site across complete HG001/HG002 fits. Adjacent equality alone
+cannot reject periodic recurrence reuse. Homogeneous spans and full finite row-bit
+equality are required; backward row equality remains only an upper bound pending
+matching scale phases. This extends the existing repetition hypothesis rather
+than introducing an approximate convergence test.
+
+Audit-driven scope adjustment before further timing: the prior Q report contains
+an overlooked 1.150x K64 flat-loop screen, rejected because K23 regressed. That is
+concrete evidence for a K64-only objective dispatch, leaving other shapes on the
+unchanged oracle path, with no log cache or RefCell. Test this focused variant;
+it overrides the just-recorded family limit because the audit found a specific
+untested way to address the earlier rejection. It does not repeat general log
+caching. Any combined candidate still needs the same fresh 5% batch gate.
+
+A forward-generator suffix assertion stopped before compilation because the
+function ends in one newline rather than two. Preserved the untouched scratch
+source and recorded the repair in bench/relook-repairs.json. No numerical gate
+was relaxed and no numerical mismatch occurred.
+
+Candidate selection: uniformwide takes 43.1824s versus surrounding installed
+controls 44.5376/45.4638s (4.04% below their mean), with 4.32% less CPU time.
+Uniform16 has essentially no batch elapsed gain; uniform64 raises CPU time.
+Forward fusion yields only 0.61% on the full single fit; K64-guarded flat Q yields
+0.34% and its K23 control regresses 4.86%. Do not combine or promote those paths.
+Short-cycle/history probes find essentially no repetitions on HG002; HG001's
+additional cycle coverage is small. Reject numerical recurrence reuse as a
+significant general route on these measured inputs.
+
+Provisional v0.4.2 contains only the wider homogeneous-coefficient count path and
+its tests; installed v0.4.1 stays untouched. Freeze this reviewable final candidate,
+then run the predeclared complete-batch acceptance. Reject and restore production
+source if the 5% significance gate fails; no extra repetitions will rescue it.
+
+Second-look completion: the frozen candidate passes 41 debug tests and all 45
+release tests including hardware CUDA checks. Fixed complete-batch acceptance
+finds 46.2849s installed median versus 45.3934s candidate, a 1.93% reduction;
+aggregate CPU falls 3.14%, with two of three faster pairs and overlapping ranges.
+This fails the predeclared 5% significance gate. No additional repetition or
+combined candidate is used to rescue the result.
+
+Retained v0.4.1. Restored only the four provisional production files and rebuilt
+the ordinary target; source/configuration and installed/rebuilt binary hashes
+match the original release exactly. The 340-case promotion regression was not
+rerun because this candidate did not pass performance admission. The final audit
+rechecks all 496 C-output comparisons and all batch draws, reproduces the frozen
+candidate sources exactly, and verifies the no-change decision. There are no
+numerical mismatches; the single generator assertion repair is preserved.
+
+The opportunity assessment and all outcomes are in
+docs/significant-optimization-recheck.md. Evidence, runners and derivations are
+committed together. No candidate or run remains pending for this second look;
+no claim of global optimality or untested-hardware performance is made.

@@ -7,7 +7,10 @@ updates within those tiles. The complete 30-bootstrap acceptance benchmark has
 6.1% lower median elapsed time and 6.7% lower aggregate CPU time than v0.3.3,
 with essentially unchanged memory. See the
 [optimization campaign](docs/optimization-exhaustion.md) for exactness gates,
-all rejected alternatives and hardware/workload limits. Version 0.4.0 introduced
+all rejected alternatives and hardware/workload limits. A subsequent
+[significant-optimization review](docs/significant-optimization-recheck.md)
+retained v0.4.1: its best candidate reduced median batch time only 1.93%, below
+the predeclared 5% promotion threshold. Version 0.4.0 introduced
 the optional experimental CUDA transition-count backend. See the
 [CUDA implementation and usage](crates/psmc-cuda/README.md) and
 [CUDA milestone report](docs/cuda-report.md). Version 0.3.3's ordered AVX message
