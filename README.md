@@ -1,7 +1,10 @@
-# PSMC in Rust — SIMD and parallel bootstraps
+# PSMC in Rust — SIMD, parallel bootstraps and optional CUDA
 
 This Rust workspace implements the original PSMC model, full expected counts,
-Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.3.3
+Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.4.0
+adds an optional experimental CUDA transition-count backend. See the
+[CUDA implementation and usage](crates/psmc-cuda/README.md) and
+[CUDA milestone report](docs/cuda-report.md). Version 0.3.3
 widens the ordered 64-state AVX message and count kernels to 32 independent
 destinations. The eight-site count tiles and bounded message capacity remain. Each fit uses one numerical
 thread; independent bootstrap fits can use all available CPUs. Reusable
@@ -22,6 +25,16 @@ retains the previous SIMD release evidence. The pinned external reference is
 [`lh3/psmc` at 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a](https://github.com/lh3/psmc/tree/82fa2ada83ee463fe1251b562ae3d60e82d7ad6a).
 The [Phase 1 report](docs/phase-1-report.md) and
 [Phase 0 decision](docs/phase-0-decision.md) retain historical evidence.
+
+The CUDA backend preserves ordered double-precision counts while messages, model
+updates and optimization remain on the CPU. It requires an explicit `cuda` Cargo
+feature and `--backend cuda`; normal CPU builds require no NVIDIA installation.
+On this RTX 5060 Ti, CUDA takes 64.0 seconds versus 49.6 seconds for the optimized
+CPU on 30 human bootstraps, so CPU remains recommended. CUDA uses less aggregate
+CPU time but is experimental. The isolated GPU message prototype is retained
+only as benchmark evidence.
+The existing `bin/psmc-rs` CPU executable is preserved; the optional GPU executable
+is delivered separately as `bin/psmc-rs-cuda`.
 
 ## Build and run
 

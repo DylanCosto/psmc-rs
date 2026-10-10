@@ -16,7 +16,7 @@ pub fn header(
     )?;
     writeln!(
         out,
-        "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+        "MM\tVersion: psmc-rs 0.4.0 (strict f64; reference 82fa2ada83ee)"
     )?;
     writeln!(
         out,

@@ -1,0 +1,42 @@
+{
+  "status": "passed_exactness",
+  "kernel_sha256": "71d1b046a32e457e316859895ab2fa6daa2c502c431596c69fa4ca782f2ca57d",
+  "ptx_sha256": "31ff685cc2668922c914017829bc31f960aa5ba7729dc003fdaef6f396026072",
+  "options": [
+    "--gpu-architecture=compute_75",
+    "--fmad=false",
+    "--ftz=false",
+    "--prec-div=true"
+  ],
+  "cases": [
+    {
+      "states": 64,
+      "sites": 257,
+      "cpu_messages_and_emissions_seconds": 0.000514919,
+      "command": [
+        "target/release/examples/cuda_fixture",
+        "257",
+        "work/cuda/resident/257.bin"
+      ],
+      "fixture_sha256": "176f9df92e35728c85a15c8dcee2570e1ee2a9437c432eb24b389ccfd420845c",
+      "gpu_kernel_seconds": 0.0024522409948986024,
+      "gpu_alloc_transfer_compute_seconds": 0.002918191981734708,
+      "mismatched_arrays": []
+    },
+    {
+      "states": 64,
+      "sites": 50001,
+      "cpu_messages_and_emissions_seconds": 0.036359311,
+      "command": [
+        "target/release/examples/cuda_fixture",
+        "50001",
+        "work/cuda/resident/50001.bin"
+      ],
+      "fixture_sha256": "61da353934dab3ed3675c333f0e3caa9021b182ecb577ba531df61b0cee8757d",
+      "gpu_kernel_seconds": 0.5026003249804489,
+      "gpu_alloc_transfer_compute_seconds": 0.5520354329783004,
+      "mismatched_arrays": []
+    }
+  ],
+  "decision": "Do not integrate this resident-message design unless compute is faster than CPU."
+}

@@ -1,0 +1,13 @@
+[package]
+name = "psmc-cuda"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+psmc-core = { path = "../psmc-core" }
+psmc-cpu = { path = "../psmc-cpu" }
+
+[lints]
+workspace = true

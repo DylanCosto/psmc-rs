@@ -17,7 +17,7 @@ use std::{
     time::{SystemTime, UNIX_EPOCH},
 };
 
-const HELP: &str = "psmc-rs 0.3.3 — strict double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend dense|cpu --mode strict --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nBootstrap runner: --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nDense remains the scalar oracle. CPU reuses buffers and repeated-record counts.\nInput '-' reads stdin for a single fit. GPU/equivalent/research are unavailable.\n-c and -S are unsupported; -S is not the seed flag.\n";
+const HELP: &str = "psmc-rs 0.4.0 — strict double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend dense|cpu|cuda --mode strict --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nCUDA: --cuda-tile-sites COUNT (16384) --cuda-memory-mib MIB (1024)\nBootstrap runner: --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nDense remains the scalar oracle. CPU reuses buffers and repeated-record counts.\nInput '-' reads stdin for a single fit. CUDA counts are experimental and require a cuda-feature build.\n-c and -S are unsupported; -S is not the seed flag.\n";
 
 #[derive(Clone)]
 struct Options {
@@ -36,6 +36,8 @@ struct Options {
     stats: Option<String>,
     backend: String,
     cache: bool,
+    cuda_tile_sites: usize,
+    cuda_memory_mib: usize,
     simd: psmc_cpu::SimdMode,
     batch: Option<batch::BatchOptions>,
 }
@@ -86,6 +88,8 @@ fn parse() -> Result<Option<Options>, String> {
         stats: None,
         backend: "dense".into(),
         cache: true,
+        cuda_tile_sites: 16384,
+        cuda_memory_mib: 1024,
         simd: psmc_cpu::SimdMode::Auto,
         batch,
     };
@@ -108,7 +112,7 @@ fn parse() -> Result<Option<Options>, String> {
             }
             if flag == "--version" {
                 println!(
-                    "psmc-rs 0.3.3; strict f64 dense/cpu Rust; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a"
+                    "psmc-rs 0.4.0; strict f64 dense/cpu Rust; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a"
                 );
                 return Ok(None);
             }
@@ -120,6 +124,8 @@ fn parse() -> Result<Option<Options>, String> {
                     | "--backend"
                     | "--stats"
                     | "--cache"
+                    | "--cuda-tile-sites"
+                    | "--cuda-memory-mib"
                     | "--simd"
                     | "--workers"
                     | "--replicates"
@@ -148,12 +154,30 @@ fn parse() -> Result<Option<Options>, String> {
                 "--snapshot" => options.snapshot = Some(value),
                 "--stats" => options.stats = Some(value),
                 "--backend" => {
-                    if !matches!(value.as_str(), "dense" | "cpu") {
+                    if !matches!(value.as_str(), "dense" | "cpu" | "cuda") {
                         return Err(format!(
-                            "unsupported backend '{value}'; choose dense or cpu"
+                            "unsupported backend '{value}'; choose dense, cpu or cuda"
                         ));
                     }
                     options.backend = value;
+                }
+                "--cuda-memory-mib" => {
+                    options.cuda_memory_mib =
+                        value.parse().map_err(|_| "invalid CUDA memory budget")?;
+                    if options.cuda_memory_mib == 0
+                        || options.cuda_memory_mib.checked_mul(1024 * 1024).is_none()
+                    {
+                        return Err(
+                            "--cuda-memory-mib requires a positive, representable budget".into(),
+                        );
+                    }
+                }
+                "--cuda-tile-sites" => {
+                    options.cuda_tile_sites =
+                        value.parse().map_err(|_| "invalid CUDA tile sites")?;
+                    if !(1..=1_048_576).contains(&options.cuda_tile_sites) {
+                        return Err("--cuda-tile-sites must be 1..1048576".into());
+                    }
                 }
                 "--simd" => options.simd = psmc_cpu::SimdMode::parse(&value)?,
                 "--cache" => {
@@ -267,12 +291,41 @@ fn parse() -> Result<Option<Options>, String> {
     if options.snapshot.is_none() {
         options.snapshot = env::var("PSMC_SNAPSHOT").ok().filter(|v| !v.is_empty());
     }
-    if options.backend == "cpu" {
+    if options.backend == "cpu" || options.backend == "cuda" {
         options.simd.validate()?;
     } else if options.simd == psmc_cpu::SimdMode::Avx {
-        return Err("--simd avx requires --backend cpu".into());
+        return Err("--simd avx requires --backend cpu or cuda".into());
+    }
+    if options.backend == "cuda" {
+        #[cfg(not(feature = "cuda"))]
+        return Err("CUDA backend requires a build with --features cuda".into());
+        #[cfg(feature = "cuda")]
+        {
+            let n = options.settings.pattern.states();
+            if n > 1024 {
+                return Err("CUDA supports at most 1024 states".into());
+            }
+            if cuda_worker_bytes(&options)? > options.cuda_memory_mib * 1024 * 1024 {
+                return Err("CUDA buffer budget cannot admit one worker; reduce --cuda-tile-sites or increase --cuda-memory-mib".into());
+            }
+        }
     }
     Ok(Some(options))
+}
+
+// Exact upper bound for explicitly allocated device buffers per independent fit.
+// Driver context/module overhead and other applications are outside this budget.
+fn cuda_worker_bytes(options: &Options) -> Result<usize, String> {
+    let n = options.settings.pattern.states();
+    n.checked_mul(options.cuda_tile_sites)
+        .and_then(|x| x.checked_mul(16))
+        .and_then(|x| x.checked_add(options.cuda_tile_sites))
+        .and_then(|x| {
+            n.checked_mul(n)
+                .and_then(|s| s.checked_mul(32))
+                .and_then(|s| x.checked_add(s))
+        })
+        .ok_or_else(|| "CUDA buffer estimate overflow".into())
 }
 
 fn same_file(a: &str, b: &str) -> bool {
@@ -466,8 +519,14 @@ impl FitReport {
     fn json(&self, options: &Options, seed: i64) -> String {
         let c = &self.counters;
         format!(
-            "{{\"backend\":{},\"seed\":{seed},\"sequence_visits\":{},\"sequence_evaluations\":{},\"cache_hits\":{},\"snapshot_cache_bypass\":{},\"model_updates\":{},\"profile_enabled\":{},\"expectation_seconds\":{},\"mstep_seconds\":{},\"nonfinite_output\":{},\"iterations\":{},\"cache_enabled\":{},\"simd_requested\":{},\"simd_selected\":{}}}\n",
+            "{{\"backend\":{},\"cuda_tile_sites\":{},\"cuda_memory_mib\":{},\"cuda_launches\":{},\"cuda_upload_bytes\":{},\"cuda_download_bytes\":{},\"cuda_count_seconds\":{},\"cuda_fallbacks\":0,\"seed\":{seed},\"sequence_visits\":{},\"sequence_evaluations\":{},\"cache_hits\":{},\"snapshot_cache_bypass\":{},\"model_updates\":{},\"profile_enabled\":{},\"expectation_seconds\":{},\"mstep_seconds\":{},\"nonfinite_output\":{},\"iterations\":{},\"cache_enabled\":{},\"simd_requested\":{},\"simd_selected\":{}}}\n",
             snapshot::string(&options.backend),
+            options.cuda_tile_sites,
+            options.cuda_memory_mib,
+            c.cuda_launches,
+            c.cuda_upload_bytes,
+            c.cuda_download_bytes,
+            c.cuda_count_seconds,
             c.sequence_visits,
             c.sequence_evaluations,
             c.cache_hits,
@@ -504,6 +563,23 @@ fn fit(
         engine.profile = options.stats.is_some();
         engine.cache_enabled = options.cache;
         Box::new(engine)
+    } else if options.backend == "cuda" {
+        #[cfg(feature = "cuda")]
+        {
+            let mut engine = psmc_cuda::CudaBackend::new(
+                options.settings.pattern.states(),
+                options.simd,
+                options.cuda_tile_sites,
+            )?;
+            simd_kernel = engine.simd_kernel();
+            engine.profile = options.stats.is_some();
+            engine.cache_enabled = options.cache;
+            Box::new(engine)
+        }
+        #[cfg(not(feature = "cuda"))]
+        {
+            return Err("CUDA backend requires a build with --features cuda; CPU builds require no CUDA installation".into());
+        }
     } else {
         simd_kernel = "scalar-dense";
         Box::new(DenseBackend {

@@ -53,3 +53,12 @@ thread. Independent lanes may execute simultaneously, but every scalar lane's
 operation grouping and addend order remain the Phase 2 order. No horizontal
 reduction, FMA, vector math substitution or structured-algebra change is included.
 See docs/phase-3-simd-derivation.md for the pre-validation derivation and gate.
+
+## Optional CUDA extension — explicitly authorized 2026-10-10
+
+The historical phase scopes above remain historical. An optional hybrid backend
+may move transition-count cells to CUDA using the operation-order derivation in
+crates/psmc-cuda/README.md. Every multiply/add uses explicit round-to-nearest f64,
+with no contraction, altered site order or tile partial-sum reduction. CPU model,
+messages, initial/emission counts, log-likelihood, normalizer and optimizer stay
+unchanged. CUDA runtime failures are errors; no equivalent-mode substitution.

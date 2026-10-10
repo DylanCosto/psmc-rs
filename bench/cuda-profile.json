@@ -1,0 +1,1853 @@
+{
+  "status": "passed",
+  "source_sha256": {
+    "crates/psmc-cli/src/batch.rs": "ef27669f8bf349afc8b848a2fb17ed09121fa345f25b568838ba53f83b015ea8",
+    "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+    "crates/psmc-cli/src/legacy.rs": "9889de80f2973b7de5d7f05c6bfe76b15333cb575671176d382657ad4e2cafe4",
+    "crates/psmc-cli/src/main.rs": "1b9afab8c3814e05f0f934ac866465e6efc35f78d4533358522651ca6a0b4861",
+    "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+    "crates/psmc-core/src/em.rs": "fd667334b4d470049dad57358bdd23ce0fd23006e347f13704079026c7f1c52f",
+    "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+    "crates/psmc-core/src/lib.rs": "b0b6804c719504d3d7b2f44290a21f45babd590fe9e59e913c0c6dcafb41b01b",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+    "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+    "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179",
+    "crates/psmc-cpu/src/lib.rs": "fbca6f1c55da1ab8da489fa4439ae6c3ce238c240c16271d4c863dc203e12f5b",
+    "crates/psmc-cpu/src/simd.rs": "4ce6fbac725baec01b563469fa0dc55db71002d1d093acad254ea00a909a0cb6",
+    "crates/psmc-cpu/src/tests.rs": "ea2a8ac0c418eca0a6f3da42aa4d0e7bfae87ec364a7a0b6372318173cbcbccb",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+    "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+    "Cargo.toml": "fb413888b1860b635f512490e8ae1524751e8abf2ed50a8745d32548ef383887",
+    "Cargo.lock": "355d1f3a3643cb375200d54fb395a117247532a2f22c07e449ccfbc7bf0c1fd3",
+    "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b"
+  },
+  "baseline_sha256": "f0c3282e87e3eed0cc31c63a438429c19ad47cedec4c56c1150cc8520838e305",
+  "instrumented_binary_sha256": "c6cebfbd95fa211ffbba3d9139be6ef0156b0b54b83e0e319b2ef5c22cc75683",
+  "source_injection_reference": "f98c1f1ec64cd3eb226487431d8a2e59b2878558aeaaf15a48fae2e5ef6d91b8",
+  "instrumented_sources": {
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/em.rs": "02340a297b8a7e8ca4cf40c53e571ca0d556f3759a4ad6f2d7102a45469d7014",
+    "crates/psmc-core/src/lib.rs": "91431fd296f0104f4acd0388fb96694ab284f51c6525bef51ffefb8249eccdf2",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-core/src/diagnostic_profile.rs": "66b43d89314251ceef9ee534f1246f240d211d4d13ba3b52c244d8a1710b0ea8",
+    "crates/psmc-core/src/hmm.rs": "60113b7e03b00066de62a8a9d7bf48940792619b50202921018934a619a14436",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+    "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+    "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+    "crates/psmc-cli/src/main.rs": "207ffa47bb8f5fcc1fba6f00ab2b8bd0d4b0266ab87857fa32973b6837fd6f05",
+    "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+    "crates/psmc-cli/src/batch.rs": "ef27669f8bf349afc8b848a2fb17ed09121fa345f25b568838ba53f83b015ea8",
+    "crates/psmc-cli/src/legacy.rs": "9889de80f2973b7de5d7f05c6bfe76b15333cb575671176d382657ad4e2cafe4",
+    "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+    "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+    "crates/psmc-cpu/src/tests.rs": "ea2a8ac0c418eca0a6f3da42aa4d0e7bfae87ec364a7a0b6372318173cbcbccb",
+    "crates/psmc-cpu/src/simd.rs": "4ce6fbac725baec01b563469fa0dc55db71002d1d093acad254ea00a909a0cb6",
+    "crates/psmc-cpu/src/lib.rs": "b211e5370ffe02cf54193a9c0c54a74393f4b5b3704bebebfd73a94fd606b538",
+    "crates/psmc-cpu/src/engine.rs": "82b4954ae2deefac0518aa515531f4819967313a69d0598e78466a6cd2f76f7d"
+  },
+  "build_command": [
+    "cargo",
+    "build",
+    "--release",
+    "--locked",
+    "--offline",
+    "--jobs",
+    "16"
+  ],
+  "runner_sha256": "2a4fdbac6d9a973ac2a372e803eef97ec2c5bafa82efc46887e21a17343fa5ba",
+  "cases": [
+    {
+      "id": "hg-unsplit",
+      "input": "work/hg-input/NA12878_chr22.psmcfa",
+      "oracle": "bench/hg/pilot/vanilla.psmc",
+      "args": [
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0"
+      ],
+      "input_sha256": "0fe05d6fc19a94a3129803dc214660e0a72f2335ce5940b35fc3c9eab3698ea5",
+      "oracle_sha256": "ab933882ca33091a5652067c946d059fab10b27cde51fd8c463e3fda46540209",
+      "runs": [
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cuda/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "5",
+            "-I",
+            "0",
+            "work/hg-input/NA12878_chr22.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 15.393798370001605,
+          "time_wall_seconds": 15.39,
+          "user_seconds": 15.19,
+          "system_seconds": 0.19,
+          "peak_rss_kib": 516220,
+          "output_sha256": "4a6a9679d9904984dc8e03e6139fd10b804d273802383608d0f0090494be59d4",
+          "output": "work/cuda/profile/hg-unsplit-0.psmc",
+          "optimizer_evaluations": [
+            4226,
+            4536,
+            3862,
+            4230,
+            4816,
+            4105,
+            4135,
+            3816,
+            3830,
+            3895,
+            3504,
+            4315,
+            4474,
+            3447,
+            3451,
+            3458,
+            3848,
+            3944,
+            3632,
+            3703,
+            3910,
+            3595,
+            3845,
+            3504,
+            3472,
+            3233,
+            4026,
+            4197,
+            3213,
+            4011
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "49c68b6662da1cdacb75fbc887f8f1095f02b54a8cdf5417d0f1bf972bee1f15",
+            "compared_bytes": 120938,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 13021970207,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 693713,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 606091736,
+                "calls": 116233
+              },
+              "q": {
+                "nanoseconds": 1699362288,
+                "calls": 116263
+              },
+              "normalizer": {
+                "nanoseconds": 539123,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 143733753,
+                "calls": 30
+              },
+              "forward": {
+                "nanoseconds": 3392918831,
+                "calls": 30
+              },
+              "backward": {
+                "nanoseconds": 2960664049,
+                "calls": 30
+              },
+              "likelihood_check": {
+                "nanoseconds": 15546982,
+                "calls": 30
+              },
+              "counts": {
+                "nanoseconds": 6502538780,
+                "calls": 30
+              },
+              "fit_process_main": {
+                "nanoseconds": 15387443435,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 15367110163,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 5957637530,
+                "calls": 30
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 544796683,
+                "calls": 30
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 132.11105
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cuda/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "5",
+            "-I",
+            "0",
+            "work/hg-input/NA12878_chr22.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 15.300460116995964,
+          "time_wall_seconds": 15.29,
+          "user_seconds": 15.1,
+          "system_seconds": 0.19,
+          "peak_rss_kib": 516036,
+          "output_sha256": "4a6a9679d9904984dc8e03e6139fd10b804d273802383608d0f0090494be59d4",
+          "output": "work/cuda/profile/hg-unsplit-1.psmc",
+          "optimizer_evaluations": [
+            4226,
+            4536,
+            3862,
+            4230,
+            4816,
+            4105,
+            4135,
+            3816,
+            3830,
+            3895,
+            3504,
+            4315,
+            4474,
+            3447,
+            3451,
+            3458,
+            3848,
+            3944,
+            3632,
+            3703,
+            3910,
+            3595,
+            3845,
+            3504,
+            3472,
+            3233,
+            4026,
+            4197,
+            3213,
+            4011
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "49c68b6662da1cdacb75fbc887f8f1095f02b54a8cdf5417d0f1bf972bee1f15",
+            "compared_bytes": 120938,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 12945915568,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 710490,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 592391615,
+                "calls": 116233
+              },
+              "q": {
+                "nanoseconds": 1696257457,
+                "calls": 116263
+              },
+              "normalizer": {
+                "nanoseconds": 543297,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 145157248,
+                "calls": 30
+              },
+              "forward": {
+                "nanoseconds": 3398915937,
+                "calls": 30
+              },
+              "backward": {
+                "nanoseconds": 2880852382,
+                "calls": 30
+              },
+              "likelihood_check": {
+                "nanoseconds": 15568278,
+                "calls": 30
+              },
+              "counts": {
+                "nanoseconds": 6498730694,
+                "calls": 30
+              },
+              "fit_process_main": {
+                "nanoseconds": 15294119683,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 15273056357,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 5953609747,
+                "calls": 30
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 545005921,
+                "calls": 30
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 127.8057
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cuda/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "5",
+            "-I",
+            "0",
+            "work/hg-input/NA12878_chr22.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 15.291825433028862,
+          "time_wall_seconds": 15.29,
+          "user_seconds": 15.09,
+          "system_seconds": 0.19,
+          "peak_rss_kib": 516060,
+          "output_sha256": "4a6a9679d9904984dc8e03e6139fd10b804d273802383608d0f0090494be59d4",
+          "output": "work/cuda/profile/hg-unsplit-2.psmc",
+          "optimizer_evaluations": [
+            4226,
+            4536,
+            3862,
+            4230,
+            4816,
+            4105,
+            4135,
+            3816,
+            3830,
+            3895,
+            3504,
+            4315,
+            4474,
+            3447,
+            3451,
+            3458,
+            3848,
+            3944,
+            3632,
+            3703,
+            3910,
+            3595,
+            3845,
+            3504,
+            3472,
+            3233,
+            4026,
+            4197,
+            3213,
+            4011
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "49c68b6662da1cdacb75fbc887f8f1095f02b54a8cdf5417d0f1bf972bee1f15",
+            "compared_bytes": 120938,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 12940728993,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 710367,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 591552117,
+                "calls": 116233
+              },
+              "q": {
+                "nanoseconds": 1692490779,
+                "calls": 116263
+              },
+              "normalizer": {
+                "nanoseconds": 561469,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 144103781,
+                "calls": 30
+              },
+              "forward": {
+                "nanoseconds": 3359922552,
+                "calls": 30
+              },
+              "backward": {
+                "nanoseconds": 2864492131,
+                "calls": 30
+              },
+              "likelihood_check": {
+                "nanoseconds": 15869844,
+                "calls": 30
+              },
+              "counts": {
+                "nanoseconds": 6549603286,
+                "calls": 30
+              },
+              "fit_process_main": {
+                "nanoseconds": 15285666501,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 15263704022,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 5998173970,
+                "calls": 30
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 551321499,
+                "calls": 30
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 128.0762
+          }
+        }
+      ],
+      "cpu_seconds_medians": {
+        "expectation_inclusive": 12.945915568,
+        "prepare": 0.000710367,
+        "model_update": 0.592391615,
+        "q": 1.696257457,
+        "normalizer": 0.000543297,
+        "workspace_setup": 0.144103781,
+        "forward": 3.392918831,
+        "backward": 2.880852382,
+        "likelihood_check": 0.015568278,
+        "counts": 6.50253878,
+        "fit_process_main": 15.294119683,
+        "iteration_inclusive": 15.273056357,
+        "transition_counts64": 5.95763753,
+        "emissions_and_other_counts": 0.545005921
+      }
+    },
+    {
+      "id": "hg-bootstrap01",
+      "input": "work/hg-input/bootstrap-01.psmcfa",
+      "oracle": "bench/hg/batches-20261010T143948538510Z/warmup-0-vanilla-w16/replicate-01.psmc",
+      "args": [
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0"
+      ],
+      "input_sha256": "652c6a6007c5cf7ab672a4e35e196e85234cc12e0a732d93118be87b765caee9",
+      "oracle_sha256": "d3fb8fd3127a50e3b533c16449d25de6c59d37e40ed2911ebc6132e839f94395",
+      "runs": [
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cuda/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "5",
+            "-I",
+            "0",
+            "work/hg-input/bootstrap-01.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 9.836182092985837,
+          "time_wall_seconds": 9.83,
+          "user_seconds": 9.75,
+          "system_seconds": 0.08,
+          "peak_rss_kib": 63076,
+          "output_sha256": "0b922d38ca30be6fc0ad6e610f393534022dbedcfe66a22823cf1f214bfc80f6",
+          "output": "work/cuda/profile/hg-bootstrap01-0.psmc",
+          "optimizer_evaluations": [
+            4416,
+            4682,
+            5301,
+            4131,
+            4557,
+            3990,
+            3758,
+            3868,
+            4407,
+            4542,
+            4196,
+            4085,
+            4385,
+            4012,
+            4191,
+            4115,
+            3559,
+            4943,
+            3848,
+            4257,
+            4214,
+            3483,
+            4466,
+            3669,
+            3807,
+            3774,
+            4042,
+            5008,
+            4205,
+            4255
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "9fe982b33ec4846eea4d96fa9dfef316b51857a7ecbff94bf4926ba75bc29e08",
+            "compared_bytes": 120953,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 7271808485,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 661252,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 650227873,
+                "calls": 126166
+              },
+              "q": {
+                "nanoseconds": 1858107022,
+                "calls": 126196
+              },
+              "normalizer": {
+                "nanoseconds": 559475,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 32806953,
+                "calls": 180
+              },
+              "forward": {
+                "nanoseconds": 1963182911,
+                "calls": 180
+              },
+              "backward": {
+                "nanoseconds": 1740987806,
+                "calls": 180
+              },
+              "likelihood_check": {
+                "nanoseconds": 9723343,
+                "calls": 180
+              },
+              "counts": {
+                "nanoseconds": 3513345436,
+                "calls": 180
+              },
+              "fit_process_main": {
+                "nanoseconds": 9830131565,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 9823015609,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 3171363636,
+                "calls": 180
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 341314258,
+                "calls": 180
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 135.7651
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cuda/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "5",
+            "-I",
+            "0",
+            "work/hg-input/bootstrap-01.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 9.750565539987292,
+          "time_wall_seconds": 9.74,
+          "user_seconds": 9.68,
+          "system_seconds": 0.06,
+          "peak_rss_kib": 63076,
+          "output_sha256": "0b922d38ca30be6fc0ad6e610f393534022dbedcfe66a22823cf1f214bfc80f6",
+          "output": "work/cuda/profile/hg-bootstrap01-1.psmc",
+          "optimizer_evaluations": [
+            4416,
+            4682,
+            5301,
+            4131,
+            4557,
+            3990,
+            3758,
+            3868,
+            4407,
+            4542,
+            4196,
+            4085,
+            4385,
+            4012,
+            4191,
+            4115,
+            3559,
+            4943,
+            3848,
+            4257,
+            4214,
+            3483,
+            4466,
+            3669,
+            3807,
+            3774,
+            4042,
+            5008,
+            4205,
+            4255
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "9fe982b33ec4846eea4d96fa9dfef316b51857a7ecbff94bf4926ba75bc29e08",
+            "compared_bytes": 120953,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 7192138494,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 685056,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 658415062,
+                "calls": 126166
+              },
+              "q": {
+                "nanoseconds": 1845121981,
+                "calls": 126196
+              },
+              "normalizer": {
+                "nanoseconds": 556013,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 32690840,
+                "calls": 180
+              },
+              "forward": {
+                "nanoseconds": 1937401284,
+                "calls": 180
+              },
+              "backward": {
+                "nanoseconds": 1717772395,
+                "calls": 180
+              },
+              "likelihood_check": {
+                "nanoseconds": 9606184,
+                "calls": 180
+              },
+              "counts": {
+                "nanoseconds": 3483182999,
+                "calls": 180
+              },
+              "fit_process_main": {
+                "nanoseconds": 9744895535,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 9737756202,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 3141903860,
+                "calls": 180
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 340634019,
+                "calls": 180
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 132.34005
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cuda/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "5",
+            "-I",
+            "0",
+            "work/hg-input/bootstrap-01.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 9.746427453996148,
+          "time_wall_seconds": 9.74,
+          "user_seconds": 9.67,
+          "system_seconds": 0.06,
+          "peak_rss_kib": 63032,
+          "output_sha256": "0b922d38ca30be6fc0ad6e610f393534022dbedcfe66a22823cf1f214bfc80f6",
+          "output": "work/cuda/profile/hg-bootstrap01-2.psmc",
+          "optimizer_evaluations": [
+            4416,
+            4682,
+            5301,
+            4131,
+            4557,
+            3990,
+            3758,
+            3868,
+            4407,
+            4542,
+            4196,
+            4085,
+            4385,
+            4012,
+            4191,
+            4115,
+            3559,
+            4943,
+            3848,
+            4257,
+            4214,
+            3483,
+            4466,
+            3669,
+            3807,
+            3774,
+            4042,
+            5008,
+            4205,
+            4255
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "9fe982b33ec4846eea4d96fa9dfef316b51857a7ecbff94bf4926ba75bc29e08",
+            "compared_bytes": 120953,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 7197466784,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 718366,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 645364514,
+                "calls": 126166
+              },
+              "q": {
+                "nanoseconds": 1847920382,
+                "calls": 126196
+              },
+              "normalizer": {
+                "nanoseconds": 554590,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 32865686,
+                "calls": 180
+              },
+              "forward": {
+                "nanoseconds": 1939955350,
+                "calls": 180
+              },
+              "backward": {
+                "nanoseconds": 1723614210,
+                "calls": 180
+              },
+              "likelihood_check": {
+                "nanoseconds": 9651940,
+                "calls": 180
+              },
+              "counts": {
+                "nanoseconds": 3479692284,
+                "calls": 180
+              },
+              "fit_process_main": {
+                "nanoseconds": 9740607802,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 9733140996,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 3138625385,
+                "calls": 180
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 340434766,
+                "calls": 180
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 128.975
+          }
+        }
+      ],
+      "cpu_seconds_medians": {
+        "expectation_inclusive": 7.197466784,
+        "prepare": 0.000685056,
+        "model_update": 0.650227873,
+        "q": 1.847920382,
+        "normalizer": 0.000556013,
+        "workspace_setup": 0.032806953,
+        "forward": 1.93995535,
+        "backward": 1.72361421,
+        "likelihood_check": 0.00965194,
+        "counts": 3.483182999,
+        "fit_process_main": 9.744895535,
+        "iteration_inclusive": 9.737756202,
+        "transition_counts64": 3.14190386,
+        "emissions_and_other_counts": 0.340634019
+      }
+    },
+    {
+      "id": "k23-n30",
+      "input": "tests/fixtures/workload.psmcfa",
+      "args": [
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0"
+      ],
+      "oracle": "bench/cpu-campaign-profile/20261010T072419292205Z/k23-n30-vanilla.psmc",
+      "input_sha256": "7c0e0a0cf3b929ac01fc1de203a7a08ade75bbd42e3e8004fcb4514c0ad1df9b",
+      "oracle_sha256": "1c7a5edbe3397e5311a58a79146a94e72c08dba6a2b40c9906884356b565062a",
+      "runs": [
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cuda/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 0.27809712997986935,
+          "time_wall_seconds": 0.27,
+          "user_seconds": 0.25,
+          "system_seconds": 0.02,
+          "peak_rss_kib": 5308,
+          "output_sha256": "e322764b7d4f31fca4466e105c71b8764b401fc48591cf52f27363b4e1ec8bef",
+          "output": "work/cuda/profile/k23-n30-0.psmc",
+          "optimizer_evaluations": [
+            1944,
+            1698,
+            1850,
+            1549,
+            1926,
+            1687,
+            1461,
+            1750,
+            1367,
+            1540,
+            1552,
+            1703,
+            1371,
+            1845,
+            1728,
+            1801,
+            1775,
+            1710,
+            1526,
+            1450,
+            1494,
+            1456,
+            1371,
+            1227,
+            1480,
+            1548,
+            1495,
+            1118,
+            1222,
+            1508
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "2eeb37a0c4d871f363ddad8b4ae50f9be00761f6987f6b84dd33b067fd77d74e",
+            "compared_bytes": 45885,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 105396600,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 77112,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 56822533,
+                "calls": 47152
+              },
+              "q": {
+                "nanoseconds": 96254518,
+                "calls": 47182
+              },
+              "normalizer": {
+                "nanoseconds": 79834,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 1391594,
+                "calls": 90
+              },
+              "forward": {
+                "nanoseconds": 28552051,
+                "calls": 90
+              },
+              "backward": {
+                "nanoseconds": 23067212,
+                "calls": 90
+              },
+              "likelihood_check": {
+                "nanoseconds": 382538,
+                "calls": 90
+              },
+              "counts": {
+                "nanoseconds": 51612942,
+                "calls": 90
+              },
+              "fit_process_main": {
+                "nanoseconds": 273040455,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 271966905,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 0,
+                "calls": 0
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 51566937,
+                "calls": 90
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 131.00295
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cuda/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 0.2856124000099953,
+          "time_wall_seconds": 0.28,
+          "user_seconds": 0.25,
+          "system_seconds": 0.02,
+          "peak_rss_kib": 5296,
+          "output_sha256": "e322764b7d4f31fca4466e105c71b8764b401fc48591cf52f27363b4e1ec8bef",
+          "output": "work/cuda/profile/k23-n30-1.psmc",
+          "optimizer_evaluations": [
+            1944,
+            1698,
+            1850,
+            1549,
+            1926,
+            1687,
+            1461,
+            1750,
+            1367,
+            1540,
+            1552,
+            1703,
+            1371,
+            1845,
+            1728,
+            1801,
+            1775,
+            1710,
+            1526,
+            1450,
+            1494,
+            1456,
+            1371,
+            1227,
+            1480,
+            1548,
+            1495,
+            1118,
+            1222,
+            1508
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "2eeb37a0c4d871f363ddad8b4ae50f9be00761f6987f6b84dd33b067fd77d74e",
+            "compared_bytes": 45885,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 106904250,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 75144,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 61301413,
+                "calls": 47152
+              },
+              "q": {
+                "nanoseconds": 97683003,
+                "calls": 47182
+              },
+              "normalizer": {
+                "nanoseconds": 82881,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 1322691,
+                "calls": 90
+              },
+              "forward": {
+                "nanoseconds": 29062268,
+                "calls": 90
+              },
+              "backward": {
+                "nanoseconds": 23414167,
+                "calls": 90
+              },
+              "likelihood_check": {
+                "nanoseconds": 387313,
+                "calls": 90
+              },
+              "counts": {
+                "nanoseconds": 52315416,
+                "calls": 90
+              },
+              "fit_process_main": {
+                "nanoseconds": 280563169,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 279481116,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 0,
+                "calls": 0
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 52264441,
+                "calls": 90
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 133.191
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cuda/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 0.27600798101047985,
+          "time_wall_seconds": 0.27,
+          "user_seconds": 0.25,
+          "system_seconds": 0.01,
+          "peak_rss_kib": 5144,
+          "output_sha256": "e322764b7d4f31fca4466e105c71b8764b401fc48591cf52f27363b4e1ec8bef",
+          "output": "work/cuda/profile/k23-n30-2.psmc",
+          "optimizer_evaluations": [
+            1944,
+            1698,
+            1850,
+            1549,
+            1926,
+            1687,
+            1461,
+            1750,
+            1367,
+            1540,
+            1552,
+            1703,
+            1371,
+            1845,
+            1728,
+            1801,
+            1775,
+            1710,
+            1526,
+            1450,
+            1494,
+            1456,
+            1371,
+            1227,
+            1480,
+            1548,
+            1495,
+            1118,
+            1222,
+            1508
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "2eeb37a0c4d871f363ddad8b4ae50f9be00761f6987f6b84dd33b067fd77d74e",
+            "compared_bytes": 45885,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 104758392,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 70410,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 56282706,
+                "calls": 47152
+              },
+              "q": {
+                "nanoseconds": 95995783,
+                "calls": 47182
+              },
+              "normalizer": {
+                "nanoseconds": 77426,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 1312912,
+                "calls": 90
+              },
+              "forward": {
+                "nanoseconds": 28673469,
+                "calls": 90
+              },
+              "backward": {
+                "nanoseconds": 23097771,
+                "calls": 90
+              },
+              "likelihood_check": {
+                "nanoseconds": 378260,
+                "calls": 90
+              },
+              "counts": {
+                "nanoseconds": 50927649,
+                "calls": 90
+              },
+              "fit_process_main": {
+                "nanoseconds": 271287313,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 270266144,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 0,
+                "calls": 0
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 50881620,
+                "calls": 90
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 123.73165
+          }
+        }
+      ],
+      "cpu_seconds_medians": {
+        "expectation_inclusive": 0.1053966,
+        "prepare": 7.5144e-05,
+        "model_update": 0.056822533,
+        "q": 0.096254518,
+        "normalizer": 7.9834e-05,
+        "workspace_setup": 0.001322691,
+        "forward": 0.028673469,
+        "backward": 0.023097771,
+        "likelihood_check": 0.000382538,
+        "counts": 0.051612942,
+        "fit_process_main": 0.273040455,
+        "iteration_inclusive": 0.271966905,
+        "transition_counts64": 0.0,
+        "emissions_and_other_counts": 0.051566937
+      }
+    },
+    {
+      "id": "bootstrap-00-k23-n30",
+      "input": "tests/fixtures/bootstrap/replicate-00.psmcfa",
+      "args": [
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0"
+      ],
+      "oracle": "bench/cpu-campaign-profile/20261010T072419292205Z/bootstrap-00-k23-n30-vanilla.psmc",
+      "input_sha256": "6853aac2d0aeeedcee6ef74782c33e59eb2a3ff1cc9a7e62fb997b3c8e23c5fd",
+      "oracle_sha256": "aaa43db38173bcf4939613b8d447c662359394940f0909b0546f139e6c4eec53",
+      "runs": [
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cuda/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/bootstrap/replicate-00.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 0.23538094401010312,
+          "time_wall_seconds": 0.23,
+          "user_seconds": 0.21,
+          "system_seconds": 0.01,
+          "peak_rss_kib": 3528,
+          "output_sha256": "8ce4415f074861f565b4a501689347c9f2688a64dd12e5cc6c6460bf8092a357",
+          "output": "work/cuda/profile/bootstrap-00-k23-n30-0.psmc",
+          "optimizer_evaluations": [
+            1971,
+            1692,
+            1582,
+            1814,
+            1479,
+            1501,
+            1548,
+            1504,
+            1582,
+            1745,
+            1486,
+            1547,
+            1378,
+            1486,
+            1654,
+            1386,
+            1522,
+            1716,
+            1683,
+            1527,
+            1630,
+            1518,
+            1644,
+            1776,
+            1596,
+            1744,
+            1915,
+            1377,
+            1310,
+            1689
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "f57110fa687430fc2cbd3d6b8d1554cbaa86cbf1bea79b07af48a5b1ddd719a1",
+            "compared_bytes": 45325,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 63407261,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 73715,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 56646438,
+                "calls": 48002
+              },
+              "q": {
+                "nanoseconds": 96150410,
+                "calls": 48032
+              },
+              "normalizer": {
+                "nanoseconds": 76187,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 270240,
+                "calls": 240
+              },
+              "forward": {
+                "nanoseconds": 17151638,
+                "calls": 240
+              },
+              "backward": {
+                "nanoseconds": 14161012,
+                "calls": 240
+              },
+              "likelihood_check": {
+                "nanoseconds": 262087,
+                "calls": 240
+              },
+              "counts": {
+                "nanoseconds": 30852695,
+                "calls": 240
+              },
+              "fit_process_main": {
+                "nanoseconds": 230478017,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 229577096,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 0,
+                "calls": 0
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 30767118,
+                "calls": 240
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 121.7426
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cuda/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/bootstrap/replicate-00.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 0.2414031290099956,
+          "time_wall_seconds": 0.24,
+          "user_seconds": 0.22,
+          "system_seconds": 0.01,
+          "peak_rss_kib": 3512,
+          "output_sha256": "8ce4415f074861f565b4a501689347c9f2688a64dd12e5cc6c6460bf8092a357",
+          "output": "work/cuda/profile/bootstrap-00-k23-n30-1.psmc",
+          "optimizer_evaluations": [
+            1971,
+            1692,
+            1582,
+            1814,
+            1479,
+            1501,
+            1548,
+            1504,
+            1582,
+            1745,
+            1486,
+            1547,
+            1378,
+            1486,
+            1654,
+            1386,
+            1522,
+            1716,
+            1683,
+            1527,
+            1630,
+            1518,
+            1644,
+            1776,
+            1596,
+            1744,
+            1915,
+            1377,
+            1310,
+            1689
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "f57110fa687430fc2cbd3d6b8d1554cbaa86cbf1bea79b07af48a5b1ddd719a1",
+            "compared_bytes": 45325,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 64143353,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 65622,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 58001764,
+                "calls": 48002
+              },
+              "q": {
+                "nanoseconds": 99164960,
+                "calls": 48032
+              },
+              "normalizer": {
+                "nanoseconds": 76713,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 260959,
+                "calls": 240
+              },
+              "forward": {
+                "nanoseconds": 17166481,
+                "calls": 240
+              },
+              "backward": {
+                "nanoseconds": 14410176,
+                "calls": 240
+              },
+              "likelihood_check": {
+                "nanoseconds": 262986,
+                "calls": 240
+              },
+              "counts": {
+                "nanoseconds": 31326111,
+                "calls": 240
+              },
+              "fit_process_main": {
+                "nanoseconds": 236444301,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 235553411,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 0,
+                "calls": 0
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 31241206,
+                "calls": 240
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 128.31615
+          }
+        },
+        {
+          "command": [
+            "taskset",
+            "-c",
+            "0",
+            "work/cuda/profile/source/target/release/psmc-rs",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/bootstrap/replicate-00.psmcfa"
+          ],
+          "exit_code": 0,
+          "wall_seconds": 0.24046952999196947,
+          "time_wall_seconds": 0.23,
+          "user_seconds": 0.21,
+          "system_seconds": 0.02,
+          "peak_rss_kib": 3496,
+          "output_sha256": "8ce4415f074861f565b4a501689347c9f2688a64dd12e5cc6c6460bf8092a357",
+          "output": "work/cuda/profile/bootstrap-00-k23-n30-2.psmc",
+          "optimizer_evaluations": [
+            1971,
+            1692,
+            1582,
+            1814,
+            1479,
+            1501,
+            1548,
+            1504,
+            1582,
+            1745,
+            1486,
+            1547,
+            1378,
+            1486,
+            1654,
+            1386,
+            1522,
+            1716,
+            1683,
+            1527,
+            1630,
+            1518,
+            1644,
+            1776,
+            1596,
+            1744,
+            1915,
+            1377,
+            1310,
+            1689
+          ],
+          "nonfinite_records_beyond_initial_RI": [],
+          "comparison": {
+            "compared_sha256": "f57110fa687430fc2cbd3d6b8d1554cbaa86cbf1bea79b07af48a5b1ddd719a1",
+            "compared_bytes": 45325,
+            "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+            "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+          },
+          "profile": {
+            "clock": "CLOCK_THREAD_CPUTIME_ID",
+            "sections": {
+              "expectation_inclusive": {
+                "nanoseconds": 64182000,
+                "calls": 30
+              },
+              "prepare": {
+                "nanoseconds": 69260,
+                "calls": 30
+              },
+              "model_update": {
+                "nanoseconds": 58748296,
+                "calls": 48002
+              },
+              "q": {
+                "nanoseconds": 98071854,
+                "calls": 48032
+              },
+              "normalizer": {
+                "nanoseconds": 77801,
+                "calls": 30
+              },
+              "workspace_setup": {
+                "nanoseconds": 254882,
+                "calls": 240
+              },
+              "forward": {
+                "nanoseconds": 17185234,
+                "calls": 240
+              },
+              "backward": {
+                "nanoseconds": 14434654,
+                "calls": 240
+              },
+              "likelihood_check": {
+                "nanoseconds": 261713,
+                "calls": 240
+              },
+              "counts": {
+                "nanoseconds": 31329212,
+                "calls": 240
+              },
+              "fit_process_main": {
+                "nanoseconds": 235580349,
+                "calls": 1
+              },
+              "iteration_inclusive": {
+                "nanoseconds": 234672596,
+                "calls": 30
+              },
+              "transition_counts64": {
+                "nanoseconds": 0,
+                "calls": 0
+              },
+              "emissions_and_other_counts": {
+                "nanoseconds": 31243306,
+                "calls": 240
+              }
+            },
+            "log_calls": 0,
+            "exp_calls": 0,
+            "clock_ns_per_call": 132.4065
+          }
+        }
+      ],
+      "cpu_seconds_medians": {
+        "expectation_inclusive": 0.064143353,
+        "prepare": 6.926e-05,
+        "model_update": 0.058001764,
+        "q": 0.098071854,
+        "normalizer": 7.6713e-05,
+        "workspace_setup": 0.000260959,
+        "forward": 0.017166481,
+        "backward": 0.014410176,
+        "likelihood_check": 0.000262087,
+        "counts": 0.031326111,
+        "fit_process_main": 0.235580349,
+        "iteration_inclusive": 0.234672596,
+        "transition_counts64": 0.0,
+        "emissions_and_other_counts": 0.031241206
+      }
+    }
+  ],
+  "limitations": [
+    "Diagnostic only; not release timing. Inclusive sections overlap children.",
+    "Three repetitions pinned to CPU 0. No hardware-counter availability assumed.",
+    "transition_counts64 is a child of counts; emissions_and_other_counts includes all counts for non-K64 paths."
+  ]
+}

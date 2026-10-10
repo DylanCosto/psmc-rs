@@ -772,3 +772,73 @@ profiling before another CPU campaign. ARM/NEON, GPU and actual user data remain
 not_run. The prepared HG002 bootstrap samples are not fitted; no whole-genome or
 10x claim is made. This bounded campaign is complete; no further repetitions are
 selected to improve its result.
+
+## Optional CUDA feasibility milestone — 2026-10-10
+
+User explicitly authorized a new goal and implementation. Baseline is v0.3.3,
+commit 0905ea0, preserved as bin/psmc-rs-v0.3.3. CPU-only behavior stays available.
+
+Plan and acceptance rule (recorded before GPU measurements):
+- [x] Reprofile v0.3.3, pin GPU/compiler/driver/source and benchmark inputs.
+- [x] Build an optional runtime-loaded CUDA count backend; isolate unsafe FFI,
+      preserve every ascending count addition and multiply grouping, no FMA.
+      Bound device buffers by computational site tiles, carrying count sums.
+- [x] Test counts against dense/CPU at boundaries, masks, pathological values,
+      arbitrary state sizes, repeated records and changing parameters.
+- [x] Screen realistic counts including transfers. Only if promising, investigate
+      resident forward/backward plus counts; record a negative result honestly.
+- [x] Validate complete fits and ordered internal snapshots against pinned C,
+      HG001/HG002 N30 and 30 fixed HG001 bootstrap replicates. Verify CPU builds
+      with no CUDA installed, runtime errors, cache/memory/scheduler behavior.
+- [x] Compare complete 30-bootstrap throughput with 16-worker CPU. Screen GPU
+      worker counts before fixed alternating measurements (warmup + three pairs).
+      Promote only with all exactness gates and >=5% median end-to-end improvement,
+      with >=2/3 pairs faster; otherwise retain explicit experimental opt-in.
+- [x] Document commands, hashes, timings, memory, failures, unsupported hardware,
+      next milestone; commit implementation, proof, tests and measured decision.
+
+Decisions: CUDA is optional behind a Cargo feature and explicit backend selection.
+Linux runtime loading permits CPU-only compilation without CUDA headers/libraries.
+Reuse the locally installed NVRTC if compatible; no new downloaded dependency.
+Model construction, libm/log-likelihood, optimizer and record aggregation stay CPU.
+GPU memory failures are explicit errors, never silent approximate substitutions.
+The compatibility contract remains exact finite bits plus nonfinite class parity.
+
+CUDA progress: optional runtime-loaded NVRTC 12.9 / CUDA Driver backend now
+computes ordered transition counts. CPU messages and initial/emission counts
+remain, with a separate GPU-buffer budget bounding bootstrap worker admission.
+Unit gates include shapes 1..129, tile tails, masks, exact parameter changes,
+repeated-record multiplicity, explicit nonfused PTX and concurrent uploads.
+
+Surprise and repair: initial broader gate failed bootstrap 24 and 26 although
+small tests and four internal snapshots passed. Pageable HtoD uploads on the
+legacy default stream lacked a dependency before a nonblocking compute stream.
+Explicit upload-stream completion now precedes launch. Both failing full N30
+cases pass three repeated checks after repair. The original failed report and
+initial timings remain archived; initial timings do not support acceptance.
+The old harness's reject_cuda_backend case also fails by design for a CUDA build;
+its replacement checks CPU-build rejection and CUDA runtime/argument errors.
+
+Resident-message decision: an isolated strict CUDA F/B prototype exactly matches
+all messages and scales for 257 and 50,001 sites. At 50,001 sites its kernels take
+0.503 s versus 0.0364 s for CPU messages plus emission counts. This one-record
+persistent-block design is rejected before production integration. It does not
+prove every possible batched GPU message design is slow. Focus this milestone
+on the hybrid count backend and complete-workload go/no-go evidence.
+
+
+CUDA completion decision: retain experimental opt-in v0.4.0 and keep v0.3.3 CPU
+recommended. All 113 C gates, 39,142,084 finite snapshot values, 35 existing plus
+five CUDA release tests, 66 extended fixtures, 360 human batch outputs, unsplit
+HG001/HG002 and nine error/scheduler controls pass. Missing hardware tests in the
+default suite are explicitly ignored and separately executed on the actual GPU.
+The final audit passes and the existing CPU executable is unchanged.
+
+Fixed paired batch medians: CPU 49.562635 s vs CUDA
+64.024233 s (29.18% longer CUDA); aggregate CPU time
+650.06 vs 517.96 s (20.32% less CUDA).
+GPU wins 0/3 pairs, so performance promotion is rejected without more timing
+repetitions. Both selected configurations use 16 workers. The optional backend
+is functional and exact on the tested stack; it is not a whole-GPU inference
+implementation or a speedup claim. docs/cuda-report.md records all results,
+limitations, commands, repaired failures and the next possible experiment.

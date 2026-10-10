@@ -9,10 +9,16 @@ publish.workspace = true
 name = "psmc-rs"
 path = "src/main.rs"
 
+[features]
+default = []
+cuda = ["dep:psmc-cuda"]
+
 [dependencies]
 psmc-core = { path = "../psmc-core" }
 psmc-io = { path = "../psmc-io" }
 psmc-cpu = { path = "../psmc-cpu" }
+
+psmc-cuda = { path = "../psmc-cuda", optional = true }
 
 [lints]
 workspace = true

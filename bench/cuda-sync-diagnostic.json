@@ -1,0 +1,146 @@
+[
+  {
+    "rep": 24,
+    "mode": "cpu",
+    "repeat": 0,
+    "passed": true,
+    "comparison": {
+      "compared_sha256": "1072b0c564baf8bcc855572afb33b56cc12741e96d3d66804da267cda7481073",
+      "compared_bytes": 45359,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+    }
+  },
+  {
+    "rep": 24,
+    "mode": "cpu",
+    "repeat": 1,
+    "passed": true,
+    "comparison": {
+      "compared_sha256": "1072b0c564baf8bcc855572afb33b56cc12741e96d3d66804da267cda7481073",
+      "compared_bytes": 45359,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+    }
+  },
+  {
+    "rep": 24,
+    "mode": "cpu",
+    "repeat": 2,
+    "passed": true,
+    "comparison": {
+      "compared_sha256": "1072b0c564baf8bcc855572afb33b56cc12741e96d3d66804da267cda7481073",
+      "compared_bytes": 45359,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+    }
+  },
+  {
+    "rep": 24,
+    "mode": "cuda",
+    "repeat": 0,
+    "passed": true,
+    "comparison": {
+      "compared_sha256": "1072b0c564baf8bcc855572afb33b56cc12741e96d3d66804da267cda7481073",
+      "compared_bytes": 45359,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+    }
+  },
+  {
+    "rep": 24,
+    "mode": "cuda",
+    "repeat": 1,
+    "passed": true,
+    "comparison": {
+      "compared_sha256": "1072b0c564baf8bcc855572afb33b56cc12741e96d3d66804da267cda7481073",
+      "compared_bytes": 45359,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+    }
+  },
+  {
+    "rep": 24,
+    "mode": "cuda",
+    "repeat": 2,
+    "passed": true,
+    "comparison": {
+      "compared_sha256": "1072b0c564baf8bcc855572afb33b56cc12741e96d3d66804da267cda7481073",
+      "compared_bytes": 45359,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+    }
+  },
+  {
+    "rep": 26,
+    "mode": "cpu",
+    "repeat": 0,
+    "passed": true,
+    "comparison": {
+      "compared_sha256": "24590dd9ef8aa5822fe58e259d6ab86b868a3e45b6a6667980c474b6c5cf763e",
+      "compared_bytes": 45159,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+    }
+  },
+  {
+    "rep": 26,
+    "mode": "cpu",
+    "repeat": 1,
+    "passed": true,
+    "comparison": {
+      "compared_sha256": "24590dd9ef8aa5822fe58e259d6ab86b868a3e45b6a6667980c474b6c5cf763e",
+      "compared_bytes": 45159,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+    }
+  },
+  {
+    "rep": 26,
+    "mode": "cpu",
+    "repeat": 2,
+    "passed": true,
+    "comparison": {
+      "compared_sha256": "24590dd9ef8aa5822fe58e259d6ab86b868a3e45b6a6667980c474b6c5cf763e",
+      "compared_bytes": 45159,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+    }
+  },
+  {
+    "rep": 26,
+    "mode": "cuda",
+    "repeat": 0,
+    "passed": true,
+    "comparison": {
+      "compared_sha256": "24590dd9ef8aa5822fe58e259d6ab86b868a3e45b6a6667980c474b6c5cf763e",
+      "compared_bytes": 45159,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+    }
+  },
+  {
+    "rep": 26,
+    "mode": "cuda",
+    "repeat": 1,
+    "passed": true,
+    "comparison": {
+      "compared_sha256": "24590dd9ef8aa5822fe58e259d6ab86b868a3e45b6a6667980c474b6c5cf763e",
+      "compared_bytes": 45159,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+    }
+  },
+  {
+    "rep": 26,
+    "mode": "cuda",
+    "repeat": 2,
+    "passed": true,
+    "comparison": {
+      "compared_sha256": "24590dd9ef8aa5822fe58e259d6ab86b868a3e45b6a6667980c474b6c5cf763e",
+      "compared_bytes": 45159,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.3 (strict f64; reference 82fa2ada83ee)"
+    }
+  }
+]

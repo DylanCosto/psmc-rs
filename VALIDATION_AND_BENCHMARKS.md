@@ -62,3 +62,16 @@ heavy jobs and descendants to one logical CPU, lower process priority, use one
 Cargo job and one test thread. Record CPU time as well as wall-time variation on
 the shared host. Strict parity remains exact; unavailable AVX and ARM require
 explicit fallback/not_run classification, not fictitious hardware validation.
+
+## Optional CUDA milestone — 2026-10-10
+
+Run ignored hardware tests explicitly; ordinary CPU test success does not imply
+GPU coverage. Require complete C/Rust output and ordered snapshot equality, all
+30 synthetic and all 30 HG001 bootstrap fits, larger HG002 chr1, memory admission
+and transfer concurrency. Preserve earlier failed evidence. The historical test
+that rejects any CUDA selection is replaced for a CUDA build by CPU-build rejection
+and explicit missing-runtime/invalid-option tests. Exactness tolerances do not
+change. Compare all startup, compilation, transfer and synchronization costs in
+complete batches against v0.3.3 with 16 CPU workers. Select GPU worker count in a
+separate screen, then use a fixed warmup plus three alternating pairs; require at
+least 5% median improvement and two faster pairs for performance promotion.

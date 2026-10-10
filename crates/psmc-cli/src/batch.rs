@@ -251,11 +251,22 @@ pub fn run(options: Options) -> Result<(), Box<dyn std::error::Error>> {
         .ok_or("resident memory estimate overflow")?;
     let available = std::thread::available_parallelism().map_or(1, usize::from);
     let by_memory = budget.saturating_sub(resident_bytes) / estimate;
+    let device_worker_bytes = if options.backend == "cuda" {
+        crate::cuda_worker_bytes(&options)?
+    } else {
+        0
+    };
+    let by_device_memory = if device_worker_bytes == 0 {
+        usize::MAX
+    } else {
+        options.cuda_memory_mib * 1024 * 1024 / device_worker_bytes
+    };
     let workers = config
         .workers
         .min(config.replicates)
         .min(available)
-        .min(by_memory);
+        .min(by_memory)
+        .min(by_device_memory);
     if workers == 0 {
         return Err(format!("memory budget cannot admit one worker: input/metadata {resident_bytes} bytes plus estimated worker {estimate} bytes; increase --memory-mib").into());
     }
@@ -331,7 +342,8 @@ pub fn run(options: Options) -> Result<(), Box<dyn std::error::Error>> {
         .collect::<Vec<_>>()
         .join(",");
     let manifest = format!(
-        "{{\"version\":1,\"backend\":{},\"seed\":{seed},\"input\":{},\"input_fingerprint_fnv1a64\":{},\"requested_workers\":{},\"workers\":{workers},\"memory_mib\":{},\"input_bytes\":{input_bytes},\"estimated_metadata_bytes\":{metadata_bytes},\"estimated_worker_bytes\":{estimate},\"memory_policy\":\"conservative admission estimate, not an OS RSS hard limit; input loading precedes admission\",\"task_order\":{},\"iterations\":{},\"states\":{},\"source_records\":[{records}],\"replicates\":[{}],\"failed_replicates\":{failed},\"nonfinite_replicates\":{nonfinite}}}\n",
+        "{{\"version\":1,\"cuda_buffer_budget_mib\":{},\"cuda_worker_buffer_bytes\":{device_worker_bytes},\"backend\":{},\"seed\":{seed},\"input\":{},\"input_fingerprint_fnv1a64\":{},\"requested_workers\":{},\"workers\":{workers},\"memory_mib\":{},\"input_bytes\":{input_bytes},\"estimated_metadata_bytes\":{metadata_bytes},\"estimated_worker_bytes\":{estimate},\"memory_policy\":\"conservative admission estimate, not an OS RSS hard limit; input loading precedes admission\",\"task_order\":{},\"iterations\":{},\"states\":{},\"source_records\":[{records}],\"replicates\":[{}],\"failed_replicates\":{failed},\"nonfinite_replicates\":{nonfinite}}}\n",
+        options.cuda_memory_mib,
         string(&options.backend),
         string(&options.input),
         string(&fingerprint(&sequences)),

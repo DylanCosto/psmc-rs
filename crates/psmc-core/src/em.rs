@@ -86,6 +86,10 @@ pub struct BackendStats {
     pub cache_hits: u64,
     pub snapshot_cache_bypass: u64,
     pub model_updates: u64,
+    pub cuda_launches: u64,
+    pub cuda_upload_bytes: u64,
+    pub cuda_download_bytes: u64,
+    pub cuda_count_seconds: f64,
 }
 
 /// Implementations must aggregate complete records in the original order.

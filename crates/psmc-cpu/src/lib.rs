@@ -163,6 +163,25 @@ impl Workspace {
         prepared: &PreparedModel<'_>,
         observations: &[u8],
     ) -> (&Messages, &Counts) {
+        self.evaluate_impl(prepared, observations, true)
+    }
+
+    /// Strict CPU messages and initial/emission counts for the optional CUDA
+    /// transition-count backend. Transition cells retain their tiny initializer.
+    pub fn evaluate_without_transitions(
+        &mut self,
+        prepared: &PreparedModel<'_>,
+        observations: &[u8],
+    ) -> (&Messages, &Counts) {
+        self.evaluate_impl(prepared, observations, false)
+    }
+
+    fn evaluate_impl(
+        &mut self,
+        prepared: &PreparedModel<'_>,
+        observations: &[u8],
+        transitions: bool,
+    ) -> (&Messages, &Counts) {
         assert!(!observations.is_empty(), "HMM sequence must be nonempty");
         assert!(
             observations.iter().all(|&symbol| symbol <= 2),
@@ -293,7 +312,7 @@ impl Workspace {
         counts.a.fill(TINY);
         counts.e.fill(TINY);
         counts.q0 = 0.0;
-        let sequence_counts = self.avx.filter(|_| n == 64);
+        let sequence_counts = self.avx.filter(|_| transitions && n == 64);
         if let Some(avx) = sequence_counts {
             avx.counts_sequence64(
                 &mut counts.a,
@@ -312,7 +331,7 @@ impl Workspace {
             let product =
                 &prepared.emission_transition[observations[u] as usize * square..][..square];
             if let Some(avx) = self.avx {
-                if sequence_counts.is_none() {
+                if transitions && sequence_counts.is_none() {
                     avx.counts(&mut counts.a, forward, product, next_backward);
                 }
                 for ((count, &f), &b) in emission_counts.iter_mut().zip(forward).zip(backward) {
@@ -326,12 +345,14 @@ impl Workspace {
                     .zip(counts.a.chunks_exact_mut(n))
                     .zip(product.chunks_exact(n))
                 {
-                    for ((count, &ae), &next) in transition_counts
-                        .iter_mut()
-                        .zip(product_row)
-                        .zip(next_backward)
-                    {
-                        *count += fuk * ae * next;
+                    if transitions {
+                        for ((count, &ae), &next) in transition_counts
+                            .iter_mut()
+                            .zip(product_row)
+                            .zip(next_backward)
+                        {
+                            *count += fuk * ae * next;
+                        }
                     }
                     *emission_count += fuk * buk * scale;
                 }
