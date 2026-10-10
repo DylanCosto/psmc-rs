@@ -1,0 +1,348 @@
+{
+  "status": "passed",
+  "scope": "Self-review of SIMD CLI and one-worker integration on AVX hardware; absence-of-AVX dispatch is a unit-test simulation, other hardware not_run.",
+  "created_utc": "2026-10-10T05:26:41.886144+00:00",
+  "binary_sha256": "8e417125208343026d56bae1b540b058371e4a0e949ca148a73c696b217f637b",
+  "resource_policy": {
+    "affinity": [
+      0
+    ],
+    "nice": 10,
+    "cargo_jobs": 1,
+    "rust_test_threads": 1,
+    "inference_threads_per_fit": 1,
+    "parallel_jobs": false,
+    "shared_host": true
+  },
+  "checks": [
+    {
+      "name": "states-1-auto",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "077b028dcfa1b65564741f7279e6e0f9050cab181132682a46a7c1b71f723952",
+      "compared_bytes": 928,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-1-off",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "077b028dcfa1b65564741f7279e6e0f9050cab181132682a46a7c1b71f723952",
+      "compared_bytes": 928,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-1-avx",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "077b028dcfa1b65564741f7279e6e0f9050cab181132682a46a7c1b71f723952",
+      "compared_bytes": 928,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-2-auto",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "fa5e6eacc52d56f536b086673b61d0a315cd2bd2089cd545d6a15f0a9a60766a",
+      "compared_bytes": 1053,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-2-off",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "fa5e6eacc52d56f536b086673b61d0a315cd2bd2089cd545d6a15f0a9a60766a",
+      "compared_bytes": 1053,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-2-avx",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "fa5e6eacc52d56f536b086673b61d0a315cd2bd2089cd545d6a15f0a9a60766a",
+      "compared_bytes": 1053,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-3-auto",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "1ee9d759b1932141d5797b02bda2acea04d9dacc0ef25b7d87beb8047fe7f2c1",
+      "compared_bytes": 1170,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-3-off",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "1ee9d759b1932141d5797b02bda2acea04d9dacc0ef25b7d87beb8047fe7f2c1",
+      "compared_bytes": 1170,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-3-avx",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "1ee9d759b1932141d5797b02bda2acea04d9dacc0ef25b7d87beb8047fe7f2c1",
+      "compared_bytes": 1170,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-4-auto",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "29cb86d2c15cfa13dc08b3e38831c6bcc6800511628118eccc9022a611e9e47f",
+      "compared_bytes": 1298,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-4-off",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "29cb86d2c15cfa13dc08b3e38831c6bcc6800511628118eccc9022a611e9e47f",
+      "compared_bytes": 1298,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-4-avx",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "29cb86d2c15cfa13dc08b3e38831c6bcc6800511628118eccc9022a611e9e47f",
+      "compared_bytes": 1298,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-5-auto",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "3966415e889c68a0e257bbfb05540176b5fbfb5b1f20a52177ffe90efbd3c81e",
+      "compared_bytes": 1424,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-5-off",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "3966415e889c68a0e257bbfb05540176b5fbfb5b1f20a52177ffe90efbd3c81e",
+      "compared_bytes": 1424,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-5-avx",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "3966415e889c68a0e257bbfb05540176b5fbfb5b1f20a52177ffe90efbd3c81e",
+      "compared_bytes": 1424,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-6-auto",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "c92441fd267a27b5f70b5b5c10106c42cbce36204fcb7ab9b61ea32c068da2f1",
+      "compared_bytes": 1546,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-6-off",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "c92441fd267a27b5f70b5b5c10106c42cbce36204fcb7ab9b61ea32c068da2f1",
+      "compared_bytes": 1546,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-6-avx",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "c92441fd267a27b5f70b5b5c10106c42cbce36204fcb7ab9b61ea32c068da2f1",
+      "compared_bytes": 1546,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-7-auto",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "9024a7ca0a44f8396c960aaac7ecf6a5684fd49bdf4eb4b20eaa850fdcfae4ef",
+      "compared_bytes": 1670,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-7-off",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "9024a7ca0a44f8396c960aaac7ecf6a5684fd49bdf4eb4b20eaa850fdcfae4ef",
+      "compared_bytes": 1670,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-7-avx",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "9024a7ca0a44f8396c960aaac7ecf6a5684fd49bdf4eb4b20eaa850fdcfae4ef",
+      "compared_bytes": 1670,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-8-auto",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "5a2002a727dd199aa01419c361832964da14ff4208ee2c37b67ee2e375a2484a",
+      "compared_bytes": 1794,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-8-off",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "5a2002a727dd199aa01419c361832964da14ff4208ee2c37b67ee2e375a2484a",
+      "compared_bytes": 1794,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-8-avx",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "5a2002a727dd199aa01419c361832964da14ff4208ee2c37b67ee2e375a2484a",
+      "compared_bytes": 1794,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-9-auto",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "c1b8536bcba937728acd914a9de774a69c440e22c346f096542d8008a3a226ce",
+      "compared_bytes": 1918,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-9-off",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "c1b8536bcba937728acd914a9de774a69c440e22c346f096542d8008a3a226ce",
+      "compared_bytes": 1918,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-9-avx",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "c1b8536bcba937728acd914a9de774a69c440e22c346f096542d8008a3a226ce",
+      "compared_bytes": 1918,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-23-auto",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "6d5f566d529c6e1350e34e0b626285010ccd4cf59773a814f09a8dd018b9d74d",
+      "compared_bytes": 3686,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-23-off",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "6d5f566d529c6e1350e34e0b626285010ccd4cf59773a814f09a8dd018b9d74d",
+      "compared_bytes": 3686,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-23-avx",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "6d5f566d529c6e1350e34e0b626285010ccd4cf59773a814f09a8dd018b9d74d",
+      "compared_bytes": 3686,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-64-auto",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "8164f3535d2383d2a2440758e84fce9d1d6c802187e25675fd1bde9ff9f51575",
+      "compared_bytes": 8856,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-64-off",
+      "passed": true,
+      "selected": "scalar",
+      "compared_sha256": "8164f3535d2383d2a2440758e84fce9d1d6c802187e25675fd1bde9ff9f51575",
+      "compared_bytes": 8856,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "states-64-avx",
+      "passed": true,
+      "selected": "avx",
+      "compared_sha256": "8164f3535d2383d2a2440758e84fce9d1d6c802187e25675fd1bde9ff9f51575",
+      "compared_bytes": 8856,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+    },
+    {
+      "name": "invalid",
+      "passed": true,
+      "returncode": 2,
+      "output_preserved": true
+    },
+    {
+      "name": "dense-forced-avx",
+      "passed": true,
+      "returncode": 2,
+      "output_preserved": true
+    },
+    {
+      "name": "batch-off",
+      "passed": true,
+      "workers": 1,
+      "replicates": 3
+    },
+    {
+      "name": "batch-auto",
+      "passed": true,
+      "workers": 1,
+      "replicates": 3
+    },
+    {
+      "name": "batch-avx",
+      "passed": true,
+      "workers": 1,
+      "replicates": 3
+    }
+  ],
+  "raw_directory": "bench/phase-3-review/20261010T052622087575Z",
+  "runner_sha256": "f085c3cbb595b4a8bde6cd41ced9dd46b0ba4c07585c92676861e569d5107d6e"
+}

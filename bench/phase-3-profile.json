@@ -1,0 +1,314 @@
+{
+  "status": "passed",
+  "resource_policy": {
+    "affinity": [
+      0
+    ],
+    "nice": 10,
+    "cargo_jobs": 1,
+    "rust_test_threads": 1,
+    "inference_threads_per_fit": 1,
+    "parallel_jobs": false,
+    "shared_host": true
+  },
+  "created_utc": "2026-10-10T05:34:40.081800+00:00",
+  "provenance": {
+    "binaries": {
+      "candidate": {
+        "path": "bench/phase-3-validation/20261010T052725318411Z/binaries/candidate",
+        "sha256": "8e417125208343026d56bae1b540b058371e4a0e949ca148a73c696b217f637b",
+        "copied_from": "target/release/psmc-rs"
+      },
+      "phase1": {
+        "path": "bench/phase-3-validation/20261010T052725318411Z/binaries/phase1",
+        "sha256": "e112ed9a8d7d98cc5e29f497e8567e1de96f3e0210a0cb324a79dc91c5e65dd0",
+        "copied_from": "bin/psmc-rs-phase1"
+      },
+      "phase2": {
+        "path": "bench/phase-3-validation/20261010T052725318411Z/binaries/phase2",
+        "sha256": "fd866573a007003d2388137270ec24f14acb436c42c7084ab8dac076fdabb59a",
+        "copied_from": "bin/psmc-rs-phase2"
+      },
+      "vanilla": {
+        "path": "bench/phase-3-validation/20261010T052725318411Z/binaries/vanilla",
+        "sha256": "da1743512f1925da6277d5a2e5350c70c61c9771d11749df0918605f795ff32b",
+        "copied_from": "work/vanilla/psmc"
+      },
+      "instrumented": {
+        "path": "bench/phase-3-validation/20261010T052725318411Z/binaries/instrumented",
+        "sha256": "2b4bd7dd369ee8fc226270b30bd414a031314fd70445bd5d7a83d4e5d2f2ed55",
+        "copied_from": "work/instrumented/psmc"
+      },
+      "kernel": {
+        "path": "bench/phase-3-validation/20261010T052725318411Z/binaries/kernel",
+        "sha256": "8c2a0c8a763b2badf55e623a0d6615bfacf5bf936c81cfb3fa013604cc632f97",
+        "copied_from": "target/release/examples/simd_bench"
+      }
+    },
+    "source_sha256_at_freeze": {
+      "crates/psmc-cli/src/batch.rs": "ef27669f8bf349afc8b848a2fb17ed09121fa345f25b568838ba53f83b015ea8",
+      "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+      "crates/psmc-cli/src/legacy.rs": "96c0d71d9ca34b419ede491870b4b1a41b7196de0e1c8405098dff99913267f3",
+      "crates/psmc-cli/src/main.rs": "55fdb479f72c48d43f15dbf43d56cd78b8500b3acfaa2142336109f9ce5e4b45",
+      "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+      "crates/psmc-core/src/em.rs": "fd667334b4d470049dad57358bdd23ce0fd23006e347f13704079026c7f1c52f",
+      "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+      "crates/psmc-core/src/lib.rs": "b0b6804c719504d3d7b2f44290a21f45babd590fe9e59e913c0c6dcafb41b01b",
+      "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+      "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+      "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+      "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+      "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+      "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+      "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+      "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179",
+      "crates/psmc-cpu/src/lib.rs": "dd5111f7b243bb5164858ff8c9f885b3eaf2eaee6e2aa4265546d9ff612e3893",
+      "crates/psmc-cpu/src/simd.rs": "2cac4ed5597e7784b6b65882885bbd30dbfdb2642daee93369c325e60e7654ef",
+      "crates/psmc-cpu/src/tests.rs": "9252b373e04da0ff705f440c19db2d05c74c4238113ec9ab6e7e80df4ef0cf3b",
+      "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+      "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+      "Cargo.toml": "139971d1905df7429e4bb80e1091af7eb0b818cdfade96740136cb64ae281f92",
+      "Cargo.lock": "091bd9b910a7a0e7ddca1158671e40c21e1632a2d7671a312553f89f7a69c0fa",
+      "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b"
+    },
+    "created_utc": "2026-10-10T05:27:30.812319+00:00"
+  },
+  "raw_directory": "bench/phase-3-profile/20261010T053431Z",
+  "cases": [
+    {
+      "id": "k23-n30",
+      "input": "tests/fixtures/workload.psmcfa",
+      "arguments": [
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0"
+      ],
+      "input_sha256": "7c0e0a0cf3b929ac01fc1de203a7a08ade75bbd42e3e8004fcb4514c0ad1df9b",
+      "runs": [
+        {
+          "backend": "scalar",
+          "command": [
+            "bench/phase-3-validation/20261010T052725318411Z/binaries/candidate",
+            "--backend",
+            "cpu",
+            "--simd",
+            "off",
+            "--seed",
+            "42",
+            "--stats",
+            "bench/phase-3-profile/20261010T053431Z/k23-n30-scalar.stats.json",
+            "-o",
+            "bench/phase-3-profile/20261010T053431Z/k23-n30-scalar.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "stats": {
+            "backend": "cpu",
+            "seed": 42,
+            "sequence_visits": 90,
+            "sequence_evaluations": 90,
+            "cache_hits": 0,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 47152,
+            "profile_enabled": true,
+            "expectation_seconds": 0.34808439599999996,
+            "mstep_seconds": 0.318915923,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "off",
+            "simd_selected": "scalar"
+          },
+          "output_sha256": "da04b40ddc956136812f3fb0faf93689603fe433b7acbea0f694894961602090",
+          "expectation_fraction_of_timed_sections": 0.5218654115816097,
+          "mstep_fraction_of_timed_sections": 0.47813458841839024
+        },
+        {
+          "backend": "simd",
+          "command": [
+            "bench/phase-3-validation/20261010T052725318411Z/binaries/candidate",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "--stats",
+            "bench/phase-3-profile/20261010T053431Z/k23-n30-simd.stats.json",
+            "-o",
+            "bench/phase-3-profile/20261010T053431Z/k23-n30-simd.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "stats": {
+            "backend": "cpu",
+            "seed": 42,
+            "sequence_visits": 90,
+            "sequence_evaluations": 90,
+            "cache_hits": 0,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 47152,
+            "profile_enabled": true,
+            "expectation_seconds": 0.524143638,
+            "mstep_seconds": 0.7706930839999998,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          },
+          "output_sha256": "da04b40ddc956136812f3fb0faf93689603fe433b7acbea0f694894961602090",
+          "expectation_fraction_of_timed_sections": 0.40479515995685517,
+          "mstep_fraction_of_timed_sections": 0.5952048400431448
+        }
+      ],
+      "strict_output_match": true
+    },
+    {
+      "id": "k64-n5",
+      "input": "tests/fixtures/profile.psmcfa",
+      "arguments": [
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "5",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0"
+      ],
+      "input_sha256": "564b68c18437ce6fbb29a59a8f31a1f781037c7b9c7e4298815b53caa259efe7",
+      "runs": [
+        {
+          "backend": "scalar",
+          "command": [
+            "bench/phase-3-validation/20261010T052725318411Z/binaries/candidate",
+            "--backend",
+            "cpu",
+            "--simd",
+            "off",
+            "--seed",
+            "42",
+            "--stats",
+            "bench/phase-3-profile/20261010T053431Z/k64-n5-scalar.stats.json",
+            "-o",
+            "bench/phase-3-profile/20261010T053431Z/k64-n5-scalar.psmc",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "5",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/profile.psmcfa"
+          ],
+          "stats": {
+            "backend": "cpu",
+            "seed": 42,
+            "sequence_visits": 15,
+            "sequence_evaluations": 15,
+            "cache_hits": 0,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 29909,
+            "profile_enabled": true,
+            "expectation_seconds": 2.285937163,
+            "mstep_seconds": 1.7804532,
+            "nonfinite_output": false,
+            "iterations": 5,
+            "cache_enabled": true,
+            "simd_requested": "off",
+            "simd_selected": "scalar"
+          },
+          "output_sha256": "2354cefc424a6bee76319302ac77043e86eb4aed177a10313824007f5c82483e",
+          "expectation_fraction_of_timed_sections": 0.5621538905363572,
+          "mstep_fraction_of_timed_sections": 0.4378461094636427
+        },
+        {
+          "backend": "simd",
+          "command": [
+            "bench/phase-3-validation/20261010T052725318411Z/binaries/candidate",
+            "--backend",
+            "cpu",
+            "--simd",
+            "auto",
+            "--seed",
+            "42",
+            "--stats",
+            "bench/phase-3-profile/20261010T053431Z/k64-n5-simd.stats.json",
+            "-o",
+            "bench/phase-3-profile/20261010T053431Z/k64-n5-simd.psmc",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "5",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/profile.psmcfa"
+          ],
+          "stats": {
+            "backend": "cpu",
+            "seed": 42,
+            "sequence_visits": 15,
+            "sequence_evaluations": 15,
+            "cache_hits": 0,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 29909,
+            "profile_enabled": true,
+            "expectation_seconds": 0.831291588,
+            "mstep_seconds": 1.553061692,
+            "nonfinite_output": false,
+            "iterations": 5,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          },
+          "output_sha256": "2354cefc424a6bee76319302ac77043e86eb4aed177a10313824007f5c82483e",
+          "expectation_fraction_of_timed_sections": 0.3486444710072494,
+          "mstep_fraction_of_timed_sections": 0.6513555289927506
+        }
+      ],
+      "strict_output_match": true
+    }
+  ],
+  "limitations": [
+    "One diagnostic run per case and backend; use the repeated uninstrumented benchmark for speed claims.",
+    "E includes per-model preparation, sequence evaluation/cache and the aggregate normalizer; M includes Q0 and optimizer callbacks/model updates.",
+    "Other initialization, parsing, I/O, decoding and reporting costs are outside these sections.",
+    "No sampling-profiler attribution within the M-step is claimed."
+  ],
+  "runner_sha256": "035fdd822958ccacd1b80ab3177d4422c5676a142048e84acd5bdbae08b29e97"
+}

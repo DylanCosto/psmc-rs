@@ -17,7 +17,7 @@ use std::{
     time::{SystemTime, UNIX_EPOCH},
 };
 
-const HELP: &str = "psmc-rs 0.2.0 — strict double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend dense|cpu --mode strict --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --help --version\nBootstrap runner: --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nDense remains the scalar oracle. CPU reuses buffers and repeated-record counts.\nInput '-' reads stdin for a single fit. GPU/equivalent/research are unavailable.\n-c and -S are unsupported; -S is not the seed flag.\n";
+const HELP: &str = "psmc-rs 0.3.0 — strict double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend dense|cpu --mode strict --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nBootstrap runner: --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nDense remains the scalar oracle. CPU reuses buffers and repeated-record counts.\nInput '-' reads stdin for a single fit. GPU/equivalent/research are unavailable.\n-c and -S are unsupported; -S is not the seed flag.\n";
 
 #[derive(Clone)]
 struct Options {
@@ -36,6 +36,7 @@ struct Options {
     stats: Option<String>,
     backend: String,
     cache: bool,
+    simd: psmc_cpu::SimdMode,
     batch: Option<batch::BatchOptions>,
 }
 
@@ -85,6 +86,7 @@ fn parse() -> Result<Option<Options>, String> {
         stats: None,
         backend: "dense".into(),
         cache: true,
+        simd: psmc_cpu::SimdMode::Auto,
         batch,
     };
     let mut i = 0;
@@ -106,7 +108,7 @@ fn parse() -> Result<Option<Options>, String> {
             }
             if flag == "--version" {
                 println!(
-                    "psmc-rs 0.2.0; strict f64 dense/cpu Rust; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a"
+                    "psmc-rs 0.3.0; strict f64 dense/cpu Rust; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a"
                 );
                 return Ok(None);
             }
@@ -118,6 +120,7 @@ fn parse() -> Result<Option<Options>, String> {
                     | "--backend"
                     | "--stats"
                     | "--cache"
+                    | "--simd"
                     | "--workers"
                     | "--replicates"
                     | "--output-dir"
@@ -152,6 +155,7 @@ fn parse() -> Result<Option<Options>, String> {
                     }
                     options.backend = value;
                 }
+                "--simd" => options.simd = psmc_cpu::SimdMode::parse(&value)?,
                 "--cache" => {
                     options.cache = match value.as_str() {
                         "on" => true,
@@ -262,6 +266,11 @@ fn parse() -> Result<Option<Options>, String> {
     }
     if options.snapshot.is_none() {
         options.snapshot = env::var("PSMC_SNAPSHOT").ok().filter(|v| !v.is_empty());
+    }
+    if options.backend == "cpu" {
+        options.simd.validate()?;
+    } else if options.simd == psmc_cpu::SimdMode::Avx {
+        return Err("--simd avx requires --backend cpu".into());
     }
     Ok(Some(options))
 }
@@ -451,12 +460,13 @@ struct FitReport {
     expectation_seconds: f64,
     mstep_seconds: f64,
     nonfinite_output: bool,
+    simd_kernel: &'static str,
 }
 impl FitReport {
     fn json(&self, options: &Options, seed: i64) -> String {
         let c = &self.counters;
         format!(
-            "{{\"backend\":{},\"seed\":{seed},\"sequence_visits\":{},\"sequence_evaluations\":{},\"cache_hits\":{},\"snapshot_cache_bypass\":{},\"model_updates\":{},\"profile_enabled\":{},\"expectation_seconds\":{},\"mstep_seconds\":{},\"nonfinite_output\":{},\"iterations\":{},\"cache_enabled\":{}}}\n",
+            "{{\"backend\":{},\"seed\":{seed},\"sequence_visits\":{},\"sequence_evaluations\":{},\"cache_hits\":{},\"snapshot_cache_bypass\":{},\"model_updates\":{},\"profile_enabled\":{},\"expectation_seconds\":{},\"mstep_seconds\":{},\"nonfinite_output\":{},\"iterations\":{},\"cache_enabled\":{},\"simd_requested\":{},\"simd_selected\":{}}}\n",
             snapshot::string(&options.backend),
             c.sequence_visits,
             c.sequence_evaluations,
@@ -468,7 +478,9 @@ impl FitReport {
             self.mstep_seconds,
             self.nonfinite_output,
             options.iterations,
-            options.cache
+            options.cache,
+            snapshot::string(options.simd.name()),
+            snapshot::string(self.simd_kernel)
         )
     }
 }
@@ -484,12 +496,16 @@ fn fit(
     if effective_length == 0 && options.settings.initial_params.is_none() {
         return Err("all-missing input requires explicit valid initial parameters (-i)".into());
     }
+    let simd_kernel;
     let mut backend: Box<dyn ExpectationBackend> = if options.backend == "cpu" {
-        let mut engine = psmc_cpu::CpuBackend::new(options.settings.pattern.states());
+        let mut engine =
+            psmc_cpu::CpuBackend::with_simd(options.settings.pattern.states(), options.simd)?;
+        simd_kernel = engine.simd_kernel();
         engine.profile = options.stats.is_some();
         engine.cache_enabled = options.cache;
         Box::new(engine)
     } else {
+        simd_kernel = "scalar-dense";
         Box::new(DenseBackend {
             profile: options.stats.is_some(),
             ..DenseBackend::default()
@@ -557,6 +573,7 @@ fn fit(
         expectation_seconds: state.expectation_seconds,
         mstep_seconds: state.mstep_seconds,
         nonfinite_output,
+        simd_kernel,
     })
 }
 

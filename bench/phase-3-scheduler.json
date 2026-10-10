@@ -1,0 +1,3803 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "resource_policy": {
+    "affinity": [
+      0
+    ],
+    "nice": 10,
+    "cargo_jobs": 1,
+    "rust_test_threads": 1,
+    "inference_threads_per_fit": 1,
+    "parallel_jobs": false,
+    "shared_host": true
+  },
+  "protocol": {
+    "scope": "Deterministic scheduling of identical independent legacy bootstrap fits",
+    "worker_counts": [
+      1
+    ],
+    "task_orders": [
+      "forward",
+      "reverse"
+    ],
+    "replicates": 30,
+    "arguments": [
+      "-p",
+      "4+5*3+4",
+      "-N",
+      "30",
+      "-t",
+      "15",
+      "-r",
+      "4",
+      "-I",
+      "0"
+    ],
+    "seed_base": 20261009,
+    "memory_mib": 2048,
+    "comparison": "All numerical output bytes and all non-version metadata equal to pinned vanilla materialized replicate; 27 finite, 3 retained reference pathologies",
+    "cache_control": "Non-snapshot CPU fit must visit every occurrence, reuse exact repeated-block statistics, and count every repeated addition. Snapshot fit bypasses the counts cache to emit full messages.",
+    "timing": "not a benchmark; timing suite runs separately"
+  },
+  "provenance": {
+    "binaries": {
+      "candidate": {
+        "path": "bench/phase-3-validation/20261010T052725318411Z/binaries/candidate",
+        "sha256": "8e417125208343026d56bae1b540b058371e4a0e949ca148a73c696b217f637b",
+        "copied_from": "target/release/psmc-rs"
+      },
+      "phase1": {
+        "path": "bench/phase-3-validation/20261010T052725318411Z/binaries/phase1",
+        "sha256": "e112ed9a8d7d98cc5e29f497e8567e1de96f3e0210a0cb324a79dc91c5e65dd0",
+        "copied_from": "bin/psmc-rs-phase1"
+      },
+      "phase2": {
+        "path": "bench/phase-3-validation/20261010T052725318411Z/binaries/phase2",
+        "sha256": "fd866573a007003d2388137270ec24f14acb436c42c7084ab8dac076fdabb59a",
+        "copied_from": "bin/psmc-rs-phase2"
+      },
+      "vanilla": {
+        "path": "bench/phase-3-validation/20261010T052725318411Z/binaries/vanilla",
+        "sha256": "da1743512f1925da6277d5a2e5350c70c61c9771d11749df0918605f795ff32b",
+        "copied_from": "work/vanilla/psmc"
+      },
+      "instrumented": {
+        "path": "bench/phase-3-validation/20261010T052725318411Z/binaries/instrumented",
+        "sha256": "2b4bd7dd369ee8fc226270b30bd414a031314fd70445bd5d7a83d4e5d2f2ed55",
+        "copied_from": "work/instrumented/psmc"
+      },
+      "kernel": {
+        "path": "bench/phase-3-validation/20261010T052725318411Z/binaries/kernel",
+        "sha256": "8c2a0c8a763b2badf55e623a0d6615bfacf5bf936c81cfb3fa013604cc632f97",
+        "copied_from": "target/release/examples/simd_bench"
+      }
+    },
+    "source_sha256_at_freeze": {
+      "crates/psmc-cli/src/batch.rs": "ef27669f8bf349afc8b848a2fb17ed09121fa345f25b568838ba53f83b015ea8",
+      "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+      "crates/psmc-cli/src/legacy.rs": "96c0d71d9ca34b419ede491870b4b1a41b7196de0e1c8405098dff99913267f3",
+      "crates/psmc-cli/src/main.rs": "55fdb479f72c48d43f15dbf43d56cd78b8500b3acfaa2142336109f9ce5e4b45",
+      "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+      "crates/psmc-core/src/em.rs": "fd667334b4d470049dad57358bdd23ce0fd23006e347f13704079026c7f1c52f",
+      "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+      "crates/psmc-core/src/lib.rs": "b0b6804c719504d3d7b2f44290a21f45babd590fe9e59e913c0c6dcafb41b01b",
+      "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+      "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+      "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+      "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+      "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+      "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+      "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+      "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179",
+      "crates/psmc-cpu/src/lib.rs": "dd5111f7b243bb5164858ff8c9f885b3eaf2eaee6e2aa4265546d9ff612e3893",
+      "crates/psmc-cpu/src/simd.rs": "2cac4ed5597e7784b6b65882885bbd30dbfdb2642daee93369c325e60e7654ef",
+      "crates/psmc-cpu/src/tests.rs": "9252b373e04da0ff705f440c19db2d05c74c4238113ec9ab6e7e80df4ef0cf3b",
+      "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+      "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+      "Cargo.toml": "139971d1905df7429e4bb80e1091af7eb0b818cdfade96740136cb64ae281f92",
+      "Cargo.lock": "091bd9b910a7a0e7ddca1158671e40c21e1632a2d7671a312553f89f7a69c0fa",
+      "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b"
+    },
+    "created_utc": "2026-10-10T05:27:30.812319+00:00"
+  },
+  "validation_sha256": "60118cbcfc031d7ad80ba8fd0c09715501c03774791cfb48a9e57393a2541d3e",
+  "run_directory": "bench/phase-3-scheduler/20261010T053324506805Z",
+  "created_utc": "2026-10-10T05:33:24.547621+00:00",
+  "runner_sha256": "3b73564ed653c944bbeb4fce74f66f4e54bb9ae9a06bdef226ca21e76a8d154d",
+  "runs": [
+    {
+      "workers": 1,
+      "task_order": "forward",
+      "command": [
+        "bench/phase-3-validation/20261010T052725318411Z/binaries/candidate",
+        "bootstrap",
+        "--replicates",
+        "30",
+        "--workers",
+        "1",
+        "--seed",
+        "20261009",
+        "--output-dir",
+        "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward",
+        "--memory-mib",
+        "2048",
+        "--task-order",
+        "forward",
+        "--backend",
+        "cpu",
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "returncode": 0,
+      "directory": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward",
+      "comparisons": [
+        {
+          "replicate": 0,
+          "output_sha256": "c8b9e503fa8724428aaf9b5887a5ea34f42f439d8cb31f43ae14af88b0a3acd1",
+          "compared_sha256": "f57110fa687430fc2cbd3d6b8d1554cbaa86cbf1bea79b07af48a5b1ddd719a1",
+          "compared_bytes": 45325,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 1,
+          "output_sha256": "5ef09b21d23a7273782c1e7f13ab56ff67e237502bc2b3250045ab84059d388d",
+          "compared_sha256": "382f44a7d171efe31d093fe2d94bef64ae173977075030067f64134fb36ef5bb",
+          "compared_bytes": 45538,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 2,
+          "output_sha256": "754ec2416cd2af3a4e5e5f20188c8674cefe201e9caeb1909a7b9f76e01bd862",
+          "compared_sha256": "5be5ec74f766fe0a5b5023563fe5548a8ef9c510518bceb047d3680db9b74569",
+          "compared_bytes": 45221,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 3,
+          "output_sha256": "7d4b65529be20140877d922fc30da0f12a0a5c1e170bdba8fb182ec936f83331",
+          "compared_sha256": "6f020dbda3260bbf371115ab74c31d728fe7775e63f6fe7448d417ca7e0f5238",
+          "compared_bytes": 45592,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 4,
+          "output_sha256": "6337abf829844e8c7e283d77fb605230aa22294212900752213f69bcee24ffe7",
+          "compared_sha256": "2c0b24fc31bd2b6b5d1eb9cd1f314c2400e3096e72d9a93bd99805db90297988",
+          "compared_bytes": 46004,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 5,
+          "output_sha256": "5540d8516542b8c1ee34ecdea085beec9f25bde11792e7f91c4c78eafa877ea7",
+          "compared_sha256": "7b76c17d5bafb2e2bef54f39cb72b32c59a9876594e431138d732e8a017a5823",
+          "compared_bytes": 45517,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 6,
+          "output_sha256": "6d90de3f747bd935f70c8b0ba8e21eef0e60140cdb3865db081d3732eb289c2b",
+          "compared_sha256": "7e6af326f342939b58a606c1c1350fcaac9124d779aba0b9e1bd40ad268ed7b6",
+          "compared_bytes": 45265,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 7,
+          "output_sha256": "c44a0354336282a36efaf5f6b53b2809a118bb75bdb505cbccf3a8bff1cbd76e",
+          "compared_sha256": "794e6dbdc63c1e4d9e37a4ae512584b0f249a20b4bc31862022e037a04e953aa",
+          "compared_bytes": 45471,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 8,
+          "output_sha256": "b345d20ddc679c050bc93be01bb532105f0dc709f3ab8673fbeccc1d46154316",
+          "compared_sha256": "d9314bf85b9a439d931b59cacee697959cbe2e273cdd21faf4b33305f7d339a9",
+          "compared_bytes": 45411,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 9,
+          "output_sha256": "7a4f363bc4e0b76da051d4fd92edd1d20c2d80c37e9ce47d99b469340690832b",
+          "compared_sha256": "71613d09a8a9f3fd677f194fd121bd55a6cad1fded4e083f15544806827458e0",
+          "compared_bytes": 45308,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 10,
+          "output_sha256": "619943fadedc1fda79462b3dcd12f384cf74c26549493a733911c45713f89e6b",
+          "compared_sha256": "ceeb4844d077e241045083b0fc4f9789e8488f32d3bfaf090c4bad974c8045d9",
+          "compared_bytes": 45327,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 11,
+          "output_sha256": "5759a5293cb03c3c7421e22281e6a63e2688228d375e63f88885d07923192b94",
+          "compared_sha256": "c09c7f7eab38004d5bafa008c3a99ac1327e25767e675427e26360cecf4ee7db",
+          "compared_bytes": 45402,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 12,
+          "output_sha256": "3a7291a88061df32f19bfacd39a91a9e0e464be53770cfccaa44959560e5afa4",
+          "compared_sha256": "7f933ad6a973ac3329309dffc0795f45260751b146a589682f63a6984efc2ef2",
+          "compared_bytes": 45690,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 13,
+          "output_sha256": "5f8d547095834564e2ce8971aa08cbd84f84ea946f78226484b682fb4a2ef23b",
+          "compared_sha256": "0b49d8446e8e1be4ece2d8bae3a8644ed4f526c0437cb017ea1efaf7c7dea889",
+          "compared_bytes": 45523,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 14,
+          "output_sha256": "40252684d0b03628395223d0f6fae6f92b1de6fcd16619a7fa4ea195fc5772ab",
+          "compared_sha256": "b1c835ea0cbed10c9be8d12d5b6ed00685072ef7499a4a265dbb6107b6efed63",
+          "compared_bytes": 45319,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 15,
+          "output_sha256": "b18a33c978ecfbb6394fe15a1a144e340867ca1d99f4ac4f5f6169619ddbcd50",
+          "compared_sha256": "cc5c9db4f3d01c7e575910ab70029cd47b13f734738980811089453e9a62cecb",
+          "compared_bytes": 45401,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 16,
+          "output_sha256": "72a0430a75dd3fa7d5ee1e3d8efde41eeeb1469bd8953464ef63650bc219ac49",
+          "compared_sha256": "e25334e88f2965b98688d6c3391c4ecfff096470e45b78d80fa182c692af0d99",
+          "compared_bytes": 44962,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 17,
+          "output_sha256": "f5d39535ec1c0699b09b8d8b122c68313f9a4149baf36d3d2220c0e7b0c1715c",
+          "compared_sha256": "eae4e6fd214dd0349f624124d5dff128fab26771d2b70a227a8fae69494931f7",
+          "compared_bytes": 45345,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 18,
+          "output_sha256": "63ed2224e28a5ccfccf915ecef4aba52bdf94fd3e8f96ab90e24ea8bbd539c37",
+          "compared_sha256": "a59e0824d85ffed3b97d44b6758280c2ca8575ddf166668cbbcdf837dc8ce7ea",
+          "compared_bytes": 45395,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 19,
+          "output_sha256": "7ded2544c79267736fdc5d8e1aeb6efceb9a82f3ade8a4f393106581b3183800",
+          "compared_sha256": "c8d1792cb514023ded298a4166cc6cfe28f672ab57c5994b42dba93ad3a56874",
+          "compared_bytes": 45375,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 20,
+          "output_sha256": "d776a17803bf82b3691cbb09e59789a6cc6d795d35c9794486c97ee075ee31df",
+          "compared_sha256": "4c712f6a53ee32305d12e8f61be073b106613564e8387b32633e387aa5546319",
+          "compared_bytes": 45336,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 21,
+          "output_sha256": "0236f840624a5c310d821363c80532637a7258737feec277e8a4c721345e2aa0",
+          "compared_sha256": "9383aff94167710d6b42091c6ee859bc9bacbd214c34d2f13bee633e900a3c3a",
+          "compared_bytes": 45248,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 22,
+          "output_sha256": "4472e564c72367468c8f3f115222f5a8c54f78c0ffb97633693ef581cb58c622",
+          "compared_sha256": "16e86d287d3742112f8af8ce32d72984190a2951a1554ee2868a82dc9f40c81a",
+          "compared_bytes": 45260,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 23,
+          "output_sha256": "1e9fcc4d3dd8b14431cbf31e4aa4c43b3fc127cfe6f0d848935306bc39ed7090",
+          "compared_sha256": "b65633a320cedb190087b089967cfc68f81f03c4f48e8397e6e348edc2dd5508",
+          "compared_bytes": 45293,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 24,
+          "output_sha256": "92bd3b808f0e6ce667dee2caac4cc7fce4bc9eb59ac9008a6ab7611f729b526d",
+          "compared_sha256": "1072b0c564baf8bcc855572afb33b56cc12741e96d3d66804da267cda7481073",
+          "compared_bytes": 45359,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 25,
+          "output_sha256": "a755216cb9b98e73cb4284fe2d946509c3241426c91836918cc473e5db58284d",
+          "compared_sha256": "cce6614fc816ab7c866aff9eb373c4155b599bc416a19f3283d2fbf7198b0389",
+          "compared_bytes": 45252,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 26,
+          "output_sha256": "3e06492a086dc15ea33dcf172aedb43397cdeb07653b6e38bebba7be6519aab9",
+          "compared_sha256": "24590dd9ef8aa5822fe58e259d6ab86b868a3e45b6a6667980c474b6c5cf763e",
+          "compared_bytes": 45159,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 27,
+          "output_sha256": "f1bb5b283fc7bd56e3f56699e5f21af55dceff8af66d30bec8b75804bd24c23a",
+          "compared_sha256": "856464263a27af92c5f692973f42d69db3edc31497255a80f8da044c9aba97ff",
+          "compared_bytes": 45541,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 28,
+          "output_sha256": "650140fb5d6e8edc385adc594946d19f8ee7e22f4d0390f88846bfa94dbc5e85",
+          "compared_sha256": "c794a3f7a803cbe06234b69940335639ee33bef70522d484707e7e25006b05bd",
+          "compared_bytes": 50868,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 29,
+          "output_sha256": "24b01e2db840196e15da7ab771e72fc321905ee62166d94eeaad94fb4e754ce7",
+          "compared_sha256": "a0f4ddfd406620800ac2e9f2b5e035d05673a13b50fe37359f371641e9c98355",
+          "compared_bytes": 45236,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        }
+      ],
+      "failures": [],
+      "manifest": {
+        "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/manifest.json",
+        "sha256": "8db1497b1cb0695dc6915729bfb7e08fd7a93b0c595837b6e62306428e0cdeb8",
+        "contents": {
+          "version": 1,
+          "backend": "cpu",
+          "seed": 20261009,
+          "input": "tests/fixtures/blocks.psmcfa",
+          "input_fingerprint_fnv1a64": "4d80eda7a17de723",
+          "requested_workers": 1,
+          "workers": 1,
+          "memory_mib": 2048,
+          "input_bytes": 16153,
+          "estimated_metadata_bytes": 193516,
+          "estimated_worker_bytes": 18008456,
+          "memory_policy": "conservative admission estimate, not an OS RSS hard limit; input loading precedes admission",
+          "task_order": "forward",
+          "iterations": 30,
+          "states": 23,
+          "source_records": [
+            {
+              "index": 0,
+              "name": "synthetic_1_1",
+              "length": 1000
+            },
+            {
+              "index": 1,
+              "name": "synthetic_1_2",
+              "length": 1000
+            },
+            {
+              "index": 2,
+              "name": "synthetic_1_3",
+              "length": 1200
+            },
+            {
+              "index": 3,
+              "name": "synthetic_2_1",
+              "length": 1000
+            },
+            {
+              "index": 4,
+              "name": "synthetic_2_2",
+              "length": 1000
+            },
+            {
+              "index": 5,
+              "name": "synthetic_2_3",
+              "length": 1000
+            },
+            {
+              "index": 6,
+              "name": "synthetic_2_4",
+              "length": 1173
+            },
+            {
+              "index": 7,
+              "name": "synthetic_3_1",
+              "length": 1000
+            },
+            {
+              "index": 8,
+              "name": "synthetic_3_2",
+              "length": 1000
+            },
+            {
+              "index": 9,
+              "name": "synthetic_3_3",
+              "length": 1000
+            },
+            {
+              "index": 10,
+              "name": "synthetic_3_4",
+              "length": 1000
+            },
+            {
+              "index": 11,
+              "name": "synthetic_3_5",
+              "length": 1000
+            },
+            {
+              "index": 12,
+              "name": "synthetic_3_6",
+              "length": 827
+            }
+          ],
+          "replicates": [
+            {
+              "index": 0,
+              "seed": 20261009,
+              "source_indices": [
+                7,
+                6,
+                3,
+                0,
+                12,
+                4,
+                7,
+                6,
+                8,
+                9,
+                12,
+                4,
+                4
+              ],
+              "length": 13000,
+              "output": "replicate-00.psmc",
+              "stats": "replicate-00.stats.json",
+              "draws": "replicate-00.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 1,
+              "seed": 20261010,
+              "source_indices": [
+                5,
+                2,
+                0,
+                6,
+                11,
+                7,
+                1,
+                1,
+                7,
+                4,
+                11,
+                7,
+                9
+              ],
+              "length": 13373,
+              "output": "replicate-01.psmc",
+              "stats": "replicate-01.stats.json",
+              "draws": "replicate-01.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 2,
+              "seed": 20261011,
+              "source_indices": [
+                4,
+                11,
+                9,
+                12,
+                11,
+                10,
+                7,
+                9,
+                5,
+                12,
+                9,
+                10,
+                1,
+                1
+              ],
+              "length": 13654,
+              "output": "replicate-02.psmc",
+              "stats": "replicate-02.stats.json",
+              "draws": "replicate-02.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 3,
+              "seed": 20261012,
+              "source_indices": [
+                2,
+                7,
+                6,
+                5,
+                11,
+                0,
+                1,
+                4,
+                4,
+                7,
+                8,
+                0,
+                6
+              ],
+              "length": 13546,
+              "output": "replicate-03.psmc",
+              "stats": "replicate-03.stats.json",
+              "draws": "replicate-03.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 4,
+              "seed": 20261013,
+              "source_indices": [
+                0,
+                3,
+                3,
+                11,
+                11,
+                2,
+                7,
+                12,
+                2,
+                2,
+                7,
+                3,
+                12
+              ],
+              "length": 13254,
+              "output": "replicate-04.psmc",
+              "stats": "replicate-04.stats.json",
+              "draws": "replicate-04.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 5,
+              "seed": 20261014,
+              "source_indices": [
+                12,
+                0,
+                12,
+                4,
+                11,
+                5,
+                1,
+                7,
+                0,
+                10,
+                6,
+                6,
+                4
+              ],
+              "length": 13000,
+              "output": "replicate-05.psmc",
+              "stats": "replicate-05.stats.json",
+              "draws": "replicate-05.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 6,
+              "seed": 20261015,
+              "source_indices": [
+                10,
+                9,
+                9,
+                10,
+                11,
+                8,
+                7,
+                2,
+                12,
+                5,
+                5,
+                8,
+                9
+              ],
+              "length": 13027,
+              "output": "replicate-06.psmc",
+              "stats": "replicate-06.stats.json",
+              "draws": "replicate-06.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 7,
+              "seed": 20261016,
+              "source_indices": [
+                8,
+                5,
+                5,
+                4,
+                10,
+                11,
+                1,
+                10,
+                10,
+                0,
+                3,
+                11,
+                1
+              ],
+              "length": 13000,
+              "output": "replicate-07.psmc",
+              "stats": "replicate-07.stats.json",
+              "draws": "replicate-07.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 8,
+              "seed": 20261017,
+              "source_indices": [
+                7,
+                1,
+                2,
+                10,
+                10,
+                1,
+                7,
+                5,
+                8,
+                9,
+                2,
+                1,
+                6
+              ],
+              "length": 13573,
+              "output": "replicate-08.psmc",
+              "stats": "replicate-08.stats.json",
+              "draws": "replicate-08.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 9,
+              "seed": 20261018,
+              "source_indices": [
+                5,
+                10,
+                12,
+                3,
+                10,
+                3,
+                0,
+                0,
+                7,
+                4,
+                1,
+                4,
+                12,
+                9
+              ],
+              "length": 13654,
+              "output": "replicate-09.psmc",
+              "stats": "replicate-09.stats.json",
+              "draws": "replicate-09.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 10,
+              "seed": 20261019,
+              "source_indices": [
+                3,
+                6,
+                8,
+                9,
+                10,
+                6,
+                7,
+                8,
+                5,
+                12,
+                0,
+                7,
+                4
+              ],
+              "length": 13173,
+              "output": "replicate-10.psmc",
+              "stats": "replicate-10.stats.json",
+              "draws": "replicate-10.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 11,
+              "seed": 20261020,
+              "source_indices": [
+                2,
+                3,
+                5,
+                2,
+                10,
+                9,
+                0,
+                3,
+                4,
+                7,
+                11,
+                10,
+                9
+              ],
+              "length": 13400,
+              "output": "replicate-11.psmc",
+              "stats": "replicate-11.stats.json",
+              "draws": "replicate-11.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 12,
+              "seed": 20261021,
+              "source_indices": [
+                0,
+                12,
+                1,
+                8,
+                10,
+                12,
+                7,
+                11,
+                2,
+                2,
+                10,
+                0,
+                1
+              ],
+              "length": 13054,
+              "output": "replicate-12.psmc",
+              "stats": "replicate-12.stats.json",
+              "draws": "replicate-12.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 13,
+              "seed": 20261022,
+              "source_indices": [
+                11,
+                8,
+                11,
+                1,
+                10,
+                2,
+                0,
+                7,
+                0,
+                10,
+                9,
+                2,
+                6
+              ],
+              "length": 13573,
+              "output": "replicate-13.psmc",
+              "stats": "replicate-13.stats.json",
+              "draws": "replicate-13.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 14,
+              "seed": 20261023,
+              "source_indices": [
+                10,
+                4,
+                8,
+                7,
+                9,
+                4,
+                7,
+                2,
+                12,
+                5,
+                8,
+                5,
+                12
+              ],
+              "length": 12854,
+              "output": "replicate-14.psmc",
+              "stats": "replicate-14.stats.json",
+              "draws": "replicate-14.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 15,
+              "seed": 20261024,
+              "source_indices": [
+                8,
+                0,
+                4,
+                0,
+                9,
+                7,
+                0,
+                10,
+                10,
+                0,
+                6,
+                8,
+                4
+              ],
+              "length": 13173,
+              "output": "replicate-15.psmc",
+              "stats": "replicate-15.stats.json",
+              "draws": "replicate-15.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 16,
+              "seed": 20261025,
+              "source_indices": [
+                6,
+                9,
+                1,
+                6,
+                9,
+                10,
+                6,
+                5,
+                9,
+                8,
+                5,
+                11,
+                9
+              ],
+              "length": 13519,
+              "output": "replicate-16.psmc",
+              "stats": "replicate-16.stats.json",
+              "draws": "replicate-16.draws.jsonl",
+              "nonfinite_output": true
+            },
+            {
+              "index": 17,
+              "seed": 20261026,
+              "source_indices": [
+                5,
+                6,
+                10,
+                12,
+                9,
+                0,
+                0,
+                0,
+                7,
+                3,
+                4,
+                1,
+                1
+              ],
+              "length": 13000,
+              "output": "replicate-17.psmc",
+              "stats": "replicate-17.stats.json",
+              "draws": "replicate-17.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 18,
+              "seed": 20261027,
+              "source_indices": [
+                3,
+                2,
+                7,
+                5,
+                9,
+                3,
+                6,
+                8,
+                5,
+                11,
+                3,
+                4,
+                6
+              ],
+              "length": 13546,
+              "output": "replicate-18.psmc",
+              "stats": "replicate-18.stats.json",
+              "draws": "replicate-18.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 19,
+              "seed": 20261028,
+              "source_indices": [
+                1,
+                11,
+                4,
+                11,
+                9,
+                5,
+                0,
+                3,
+                4,
+                6,
+                2,
+                7,
+                12
+              ],
+              "length": 13200,
+              "output": "replicate-19.psmc",
+              "stats": "replicate-19.stats.json",
+              "draws": "replicate-19.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 20,
+              "seed": 20261029,
+              "source_indices": [
+                12,
+                7,
+                0,
+                4,
+                8,
+                8,
+                6,
+                11,
+                2,
+                1,
+                0,
+                9,
+                4
+              ],
+              "length": 13200,
+              "output": "replicate-20.psmc",
+              "stats": "replicate-20.stats.json",
+              "draws": "replicate-20.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 21,
+              "seed": 20261030,
+              "source_indices": [
+                11,
+                3,
+                10,
+                10,
+                8,
+                11,
+                0,
+                6,
+                1,
+                10,
+                12,
+                12,
+                9
+              ],
+              "length": 12827,
+              "output": "replicate-21.psmc",
+              "stats": "replicate-21.stats.json",
+              "draws": "replicate-21.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 22,
+              "seed": 20261031,
+              "source_indices": [
+                9,
+                12,
+                6,
+                3,
+                8,
+                1,
+                6,
+                1,
+                12,
+                5,
+                11,
+                2,
+                1
+              ],
+              "length": 13200,
+              "output": "replicate-22.psmc",
+              "stats": "replicate-22.stats.json",
+              "draws": "replicate-22.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 23,
+              "seed": 20261032,
+              "source_indices": [
+                7,
+                9,
+                3,
+                9,
+                8,
+                4,
+                0,
+                9,
+                10,
+                0,
+                10,
+                5,
+                6
+              ],
+              "length": 13173,
+              "output": "replicate-23.psmc",
+              "stats": "replicate-23.stats.json",
+              "draws": "replicate-23.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 24,
+              "seed": 20261033,
+              "source_indices": [
+                6,
+                5,
+                0,
+                2,
+                8,
+                7,
+                6,
+                4,
+                9,
+                8,
+                8,
+                8,
+                12
+              ],
+              "length": 13373,
+              "output": "replicate-24.psmc",
+              "stats": "replicate-24.stats.json",
+              "draws": "replicate-24.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 25,
+              "seed": 20261034,
+              "source_indices": [
+                4,
+                1,
+                9,
+                8,
+                8,
+                9,
+                12,
+                0,
+                7,
+                3,
+                7,
+                11,
+                4
+              ],
+              "length": 12827,
+              "output": "replicate-25.psmc",
+              "stats": "replicate-25.stats.json",
+              "draws": "replicate-25.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 26,
+              "seed": 20261035,
+              "source_indices": [
+                2,
+                10,
+                6,
+                2,
+                8,
+                12,
+                6,
+                8,
+                6,
+                11,
+                6,
+                1
+              ],
+              "length": 12919,
+              "output": "replicate-26.psmc",
+              "stats": "replicate-26.stats.json",
+              "draws": "replicate-26.draws.jsonl",
+              "nonfinite_output": true
+            },
+            {
+              "index": 27,
+              "seed": 20261036,
+              "source_indices": [
+                1,
+                6,
+                2,
+                8,
+                7,
+                2,
+                12,
+                3,
+                4,
+                6,
+                5,
+                3,
+                1
+              ],
+              "length": 13573,
+              "output": "replicate-27.psmc",
+              "stats": "replicate-27.stats.json",
+              "draws": "replicate-27.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 28,
+              "seed": 20261037,
+              "source_indices": [
+                12,
+                2,
+                12,
+                1,
+                7,
+                5,
+                6,
+                11,
+                2,
+                1,
+                3,
+                6,
+                6
+              ],
+              "length": 13573,
+              "output": "replicate-28.psmc",
+              "stats": "replicate-28.stats.json",
+              "draws": "replicate-28.draws.jsonl",
+              "nonfinite_output": true
+            },
+            {
+              "index": 29,
+              "seed": 20261038,
+              "source_indices": [
+                10,
+                11,
+                9,
+                7,
+                7,
+                8,
+                12,
+                6,
+                1,
+                9,
+                2,
+                9,
+                12
+              ],
+              "length": 13027,
+              "output": "replicate-29.psmc",
+              "stats": "replicate-29.stats.json",
+              "draws": "replicate-29.draws.jsonl",
+              "nonfinite_output": false
+            }
+          ],
+          "failed_replicates": 0,
+          "nonfinite_replicates": 3
+        }
+      },
+      "manifest_sampling_and_budget_match": true,
+      "stats_files": [
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-00.stats.json",
+          "sha256": "dff2f3d25acf160480eccad12ff3353ae25d303cefbffb7ea4bedd4c55d64321",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261009,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 48002,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-01.stats.json",
+          "sha256": "6ea84071506acbee49981defe23caa2e24988c56970e14c455f838bf5a43f0a5",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261010,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 46504,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-02.stats.json",
+          "sha256": "c3c564373fb6ac95e1d758483630883d29bd4945abd72f10e9e5cd7edaa0a6e3",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261011,
+            "sequence_visits": 420,
+            "sequence_evaluations": 240,
+            "cache_hits": 180,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 132029,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-03.stats.json",
+          "sha256": "226943c528a09971cb143890620ec26ff5679be20883406522c249bf8bbb61b7",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261012,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 45920,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-04.stats.json",
+          "sha256": "b998dc9d478632a97129210286da5882f31076f91953f2433f2e4269f8e9770d",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261013,
+            "sequence_visits": 390,
+            "sequence_evaluations": 180,
+            "cache_hits": 210,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 41931,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-05.stats.json",
+          "sha256": "3fdc193f2caa5c204c0fb1937a2b5037bcbda7f991782f3c96ff07bfd639c477",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261014,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 52874,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-06.stats.json",
+          "sha256": "b45e2fa0c3242fa836be53802a8890565464bbf3cda3e4c3f58326f4ae46243a",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261015,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 46990,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-07.stats.json",
+          "sha256": "e99cb403cffe40d432d09b136007cdfc51e368ba2d4cd250cd1ed3dc2ba71425",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261016,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 48132,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-08.stats.json",
+          "sha256": "8506a9f15d7bfe3500c8f25000bcc452872db76977026eff7f2b74af14b28292",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261017,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 49420,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-09.stats.json",
+          "sha256": "6c19942abc76ded730c98f680648daefaa67898f6e726ed8f2ab93de03452d55",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261018,
+            "sequence_visits": 420,
+            "sequence_evaluations": 270,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 57146,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-10.stats.json",
+          "sha256": "6750e2cf6865c53852d69fa125537e7c6bdd6f191a6ea478196ac730018af797",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261019,
+            "sequence_visits": 390,
+            "sequence_evaluations": 300,
+            "cache_hits": 90,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 48111,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-11.stats.json",
+          "sha256": "da03a22566eb22487a3f9c05a41c9c620b32d6b3275c41777f88192c7c19a3a5",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261020,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 47517,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-12.stats.json",
+          "sha256": "5f1616a1bc2204d130eaeb245b42dafa61235fec898805a3588c5f860ac2aae8",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261021,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 51754,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-13.stats.json",
+          "sha256": "6bf70b94c9090a0206d10a520819d74d94913231ab0aac92f546ad4802f2dcc2",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261022,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 51420,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-14.stats.json",
+          "sha256": "26daad94fa8f08625e55e82eeba19e3ce1dfba276b86d5922bdc26e7270ace01",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261023,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 45373,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-15.stats.json",
+          "sha256": "6e8930907339feaccc6d8564b742a6cdd95193e58d11969b725ff72b53069543",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261024,
+            "sequence_visits": 390,
+            "sequence_evaluations": 210,
+            "cache_hits": 180,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 53974,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-16.stats.json",
+          "sha256": "179751290f4c6a0866e32bc2eb16f4171c405cbbe13ce88396df5ec065173e25",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261025,
+            "sequence_visits": 390,
+            "sequence_evaluations": 210,
+            "cache_hits": 180,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 45475,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": true,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-17.stats.json",
+          "sha256": "5eed69d3d7ed661b34998507d13211529e2afb66483c1eb5541125c622247d7e",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261026,
+            "sequence_visits": 390,
+            "sequence_evaluations": 300,
+            "cache_hits": 90,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 54809,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-18.stats.json",
+          "sha256": "83ddb37c737780087e746a15294f2edff8e759bea0803b2a5951b18645e3db3e",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261027,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 47979,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-19.stats.json",
+          "sha256": "71b382a853e1bcfd4c12bf8262f6b61ba8391e6851a12f396e371c8d3292ee32",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261028,
+            "sequence_visits": 390,
+            "sequence_evaluations": 330,
+            "cache_hits": 60,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 47301,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-20.stats.json",
+          "sha256": "c0f7788e2ca597b96b33b86e9e3bb7536f3fdceb8fb83b4c387625a0e756fa22",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261029,
+            "sequence_visits": 390,
+            "sequence_evaluations": 300,
+            "cache_hits": 90,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 47820,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-21.stats.json",
+          "sha256": "41cb9535f1a11322d27f4fedcd4260a361337af348367af9f90161d329cb2b52",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261030,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 60237,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-22.stats.json",
+          "sha256": "9293f30ca201ab647d4a534d0409c3ccd30a674bea36c655792d97938790dc7a",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261031,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 71701,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-23.stats.json",
+          "sha256": "89fac0830ea97e6cd7ccdf569ce98d02c7d6e4fae09646e7e174a0baf8b5d574",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261032,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 50837,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-24.stats.json",
+          "sha256": "fcf505909a5f10560219806a2d22fb69ddd357f6b05202c042df9d9ca384e537",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261033,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 43273,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-25.stats.json",
+          "sha256": "a004f5f605ad36bcc903123b1dd6ad62af1483a5810fe6229cd21f931749bed9",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261034,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 49019,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-26.stats.json",
+          "sha256": "6f6cd8465eff537fa4efa8bddffbc1cd1e31d6a583e624d27869a2fb822439e2",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261035,
+            "sequence_visits": 360,
+            "sequence_evaluations": 210,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 44698,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": true,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-27.stats.json",
+          "sha256": "9689cc9400cf6363ed5b3f1566042c1a937686a9161af821893c76b6cbf9c06a",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261036,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 46496,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-28.stats.json",
+          "sha256": "2af1d91e7650f37707b292842c72243a404c06e9335cb095b2d84c7fce14d6da",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261037,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 37614,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": true,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-forward/replicate-29.stats.json",
+          "sha256": "21c903ed8ac4b4b70623145f9cbb2de748d2017967ba43c33b010a978573a3f4",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261038,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 55822,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        }
+      ],
+      "cache_summary": {
+        "sequence_visits": 11730,
+        "cache_hits": 3990,
+        "hit_fraction": 0.340153452685422
+      },
+      "passed": true
+    },
+    {
+      "workers": 1,
+      "task_order": "reverse",
+      "command": [
+        "bench/phase-3-validation/20261010T052725318411Z/binaries/candidate",
+        "bootstrap",
+        "--replicates",
+        "30",
+        "--workers",
+        "1",
+        "--seed",
+        "20261009",
+        "--output-dir",
+        "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse",
+        "--memory-mib",
+        "2048",
+        "--task-order",
+        "reverse",
+        "--backend",
+        "cpu",
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "returncode": 0,
+      "directory": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse",
+      "comparisons": [
+        {
+          "replicate": 0,
+          "output_sha256": "c8b9e503fa8724428aaf9b5887a5ea34f42f439d8cb31f43ae14af88b0a3acd1",
+          "compared_sha256": "f57110fa687430fc2cbd3d6b8d1554cbaa86cbf1bea79b07af48a5b1ddd719a1",
+          "compared_bytes": 45325,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 1,
+          "output_sha256": "5ef09b21d23a7273782c1e7f13ab56ff67e237502bc2b3250045ab84059d388d",
+          "compared_sha256": "382f44a7d171efe31d093fe2d94bef64ae173977075030067f64134fb36ef5bb",
+          "compared_bytes": 45538,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 2,
+          "output_sha256": "754ec2416cd2af3a4e5e5f20188c8674cefe201e9caeb1909a7b9f76e01bd862",
+          "compared_sha256": "5be5ec74f766fe0a5b5023563fe5548a8ef9c510518bceb047d3680db9b74569",
+          "compared_bytes": 45221,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 3,
+          "output_sha256": "7d4b65529be20140877d922fc30da0f12a0a5c1e170bdba8fb182ec936f83331",
+          "compared_sha256": "6f020dbda3260bbf371115ab74c31d728fe7775e63f6fe7448d417ca7e0f5238",
+          "compared_bytes": 45592,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 4,
+          "output_sha256": "6337abf829844e8c7e283d77fb605230aa22294212900752213f69bcee24ffe7",
+          "compared_sha256": "2c0b24fc31bd2b6b5d1eb9cd1f314c2400e3096e72d9a93bd99805db90297988",
+          "compared_bytes": 46004,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 5,
+          "output_sha256": "5540d8516542b8c1ee34ecdea085beec9f25bde11792e7f91c4c78eafa877ea7",
+          "compared_sha256": "7b76c17d5bafb2e2bef54f39cb72b32c59a9876594e431138d732e8a017a5823",
+          "compared_bytes": 45517,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 6,
+          "output_sha256": "6d90de3f747bd935f70c8b0ba8e21eef0e60140cdb3865db081d3732eb289c2b",
+          "compared_sha256": "7e6af326f342939b58a606c1c1350fcaac9124d779aba0b9e1bd40ad268ed7b6",
+          "compared_bytes": 45265,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 7,
+          "output_sha256": "c44a0354336282a36efaf5f6b53b2809a118bb75bdb505cbccf3a8bff1cbd76e",
+          "compared_sha256": "794e6dbdc63c1e4d9e37a4ae512584b0f249a20b4bc31862022e037a04e953aa",
+          "compared_bytes": 45471,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 8,
+          "output_sha256": "b345d20ddc679c050bc93be01bb532105f0dc709f3ab8673fbeccc1d46154316",
+          "compared_sha256": "d9314bf85b9a439d931b59cacee697959cbe2e273cdd21faf4b33305f7d339a9",
+          "compared_bytes": 45411,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 9,
+          "output_sha256": "7a4f363bc4e0b76da051d4fd92edd1d20c2d80c37e9ce47d99b469340690832b",
+          "compared_sha256": "71613d09a8a9f3fd677f194fd121bd55a6cad1fded4e083f15544806827458e0",
+          "compared_bytes": 45308,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 10,
+          "output_sha256": "619943fadedc1fda79462b3dcd12f384cf74c26549493a733911c45713f89e6b",
+          "compared_sha256": "ceeb4844d077e241045083b0fc4f9789e8488f32d3bfaf090c4bad974c8045d9",
+          "compared_bytes": 45327,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 11,
+          "output_sha256": "5759a5293cb03c3c7421e22281e6a63e2688228d375e63f88885d07923192b94",
+          "compared_sha256": "c09c7f7eab38004d5bafa008c3a99ac1327e25767e675427e26360cecf4ee7db",
+          "compared_bytes": 45402,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 12,
+          "output_sha256": "3a7291a88061df32f19bfacd39a91a9e0e464be53770cfccaa44959560e5afa4",
+          "compared_sha256": "7f933ad6a973ac3329309dffc0795f45260751b146a589682f63a6984efc2ef2",
+          "compared_bytes": 45690,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 13,
+          "output_sha256": "5f8d547095834564e2ce8971aa08cbd84f84ea946f78226484b682fb4a2ef23b",
+          "compared_sha256": "0b49d8446e8e1be4ece2d8bae3a8644ed4f526c0437cb017ea1efaf7c7dea889",
+          "compared_bytes": 45523,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 14,
+          "output_sha256": "40252684d0b03628395223d0f6fae6f92b1de6fcd16619a7fa4ea195fc5772ab",
+          "compared_sha256": "b1c835ea0cbed10c9be8d12d5b6ed00685072ef7499a4a265dbb6107b6efed63",
+          "compared_bytes": 45319,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 15,
+          "output_sha256": "b18a33c978ecfbb6394fe15a1a144e340867ca1d99f4ac4f5f6169619ddbcd50",
+          "compared_sha256": "cc5c9db4f3d01c7e575910ab70029cd47b13f734738980811089453e9a62cecb",
+          "compared_bytes": 45401,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 16,
+          "output_sha256": "72a0430a75dd3fa7d5ee1e3d8efde41eeeb1469bd8953464ef63650bc219ac49",
+          "compared_sha256": "e25334e88f2965b98688d6c3391c4ecfff096470e45b78d80fa182c692af0d99",
+          "compared_bytes": 44962,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 17,
+          "output_sha256": "f5d39535ec1c0699b09b8d8b122c68313f9a4149baf36d3d2220c0e7b0c1715c",
+          "compared_sha256": "eae4e6fd214dd0349f624124d5dff128fab26771d2b70a227a8fae69494931f7",
+          "compared_bytes": 45345,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 18,
+          "output_sha256": "63ed2224e28a5ccfccf915ecef4aba52bdf94fd3e8f96ab90e24ea8bbd539c37",
+          "compared_sha256": "a59e0824d85ffed3b97d44b6758280c2ca8575ddf166668cbbcdf837dc8ce7ea",
+          "compared_bytes": 45395,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 19,
+          "output_sha256": "7ded2544c79267736fdc5d8e1aeb6efceb9a82f3ade8a4f393106581b3183800",
+          "compared_sha256": "c8d1792cb514023ded298a4166cc6cfe28f672ab57c5994b42dba93ad3a56874",
+          "compared_bytes": 45375,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 20,
+          "output_sha256": "d776a17803bf82b3691cbb09e59789a6cc6d795d35c9794486c97ee075ee31df",
+          "compared_sha256": "4c712f6a53ee32305d12e8f61be073b106613564e8387b32633e387aa5546319",
+          "compared_bytes": 45336,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 21,
+          "output_sha256": "0236f840624a5c310d821363c80532637a7258737feec277e8a4c721345e2aa0",
+          "compared_sha256": "9383aff94167710d6b42091c6ee859bc9bacbd214c34d2f13bee633e900a3c3a",
+          "compared_bytes": 45248,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 22,
+          "output_sha256": "4472e564c72367468c8f3f115222f5a8c54f78c0ffb97633693ef581cb58c622",
+          "compared_sha256": "16e86d287d3742112f8af8ce32d72984190a2951a1554ee2868a82dc9f40c81a",
+          "compared_bytes": 45260,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 23,
+          "output_sha256": "1e9fcc4d3dd8b14431cbf31e4aa4c43b3fc127cfe6f0d848935306bc39ed7090",
+          "compared_sha256": "b65633a320cedb190087b089967cfc68f81f03c4f48e8397e6e348edc2dd5508",
+          "compared_bytes": 45293,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 24,
+          "output_sha256": "92bd3b808f0e6ce667dee2caac4cc7fce4bc9eb59ac9008a6ab7611f729b526d",
+          "compared_sha256": "1072b0c564baf8bcc855572afb33b56cc12741e96d3d66804da267cda7481073",
+          "compared_bytes": 45359,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 25,
+          "output_sha256": "a755216cb9b98e73cb4284fe2d946509c3241426c91836918cc473e5db58284d",
+          "compared_sha256": "cce6614fc816ab7c866aff9eb373c4155b599bc416a19f3283d2fbf7198b0389",
+          "compared_bytes": 45252,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 26,
+          "output_sha256": "3e06492a086dc15ea33dcf172aedb43397cdeb07653b6e38bebba7be6519aab9",
+          "compared_sha256": "24590dd9ef8aa5822fe58e259d6ab86b868a3e45b6a6667980c474b6c5cf763e",
+          "compared_bytes": 45159,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 27,
+          "output_sha256": "f1bb5b283fc7bd56e3f56699e5f21af55dceff8af66d30bec8b75804bd24c23a",
+          "compared_sha256": "856464263a27af92c5f692973f42d69db3edc31497255a80f8da044c9aba97ff",
+          "compared_bytes": 45541,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 28,
+          "output_sha256": "650140fb5d6e8edc385adc594946d19f8ee7e22f4d0390f88846bfa94dbc5e85",
+          "compared_sha256": "c794a3f7a803cbe06234b69940335639ee33bef70522d484707e7e25006b05bd",
+          "compared_bytes": 50868,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "replicate": 29,
+          "output_sha256": "24b01e2db840196e15da7ab771e72fc321905ee62166d94eeaad94fb4e754ce7",
+          "compared_sha256": "a0f4ddfd406620800ac2e9f2b5e035d05673a13b50fe37359f371641e9c98355",
+          "compared_bytes": 45236,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+        }
+      ],
+      "failures": [],
+      "manifest": {
+        "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/manifest.json",
+        "sha256": "fa38bf846f80f46822a98470c902c0c05f486e5e29e1702a472ffbd3fd369ff3",
+        "contents": {
+          "version": 1,
+          "backend": "cpu",
+          "seed": 20261009,
+          "input": "tests/fixtures/blocks.psmcfa",
+          "input_fingerprint_fnv1a64": "4d80eda7a17de723",
+          "requested_workers": 1,
+          "workers": 1,
+          "memory_mib": 2048,
+          "input_bytes": 16153,
+          "estimated_metadata_bytes": 193516,
+          "estimated_worker_bytes": 18008456,
+          "memory_policy": "conservative admission estimate, not an OS RSS hard limit; input loading precedes admission",
+          "task_order": "reverse",
+          "iterations": 30,
+          "states": 23,
+          "source_records": [
+            {
+              "index": 0,
+              "name": "synthetic_1_1",
+              "length": 1000
+            },
+            {
+              "index": 1,
+              "name": "synthetic_1_2",
+              "length": 1000
+            },
+            {
+              "index": 2,
+              "name": "synthetic_1_3",
+              "length": 1200
+            },
+            {
+              "index": 3,
+              "name": "synthetic_2_1",
+              "length": 1000
+            },
+            {
+              "index": 4,
+              "name": "synthetic_2_2",
+              "length": 1000
+            },
+            {
+              "index": 5,
+              "name": "synthetic_2_3",
+              "length": 1000
+            },
+            {
+              "index": 6,
+              "name": "synthetic_2_4",
+              "length": 1173
+            },
+            {
+              "index": 7,
+              "name": "synthetic_3_1",
+              "length": 1000
+            },
+            {
+              "index": 8,
+              "name": "synthetic_3_2",
+              "length": 1000
+            },
+            {
+              "index": 9,
+              "name": "synthetic_3_3",
+              "length": 1000
+            },
+            {
+              "index": 10,
+              "name": "synthetic_3_4",
+              "length": 1000
+            },
+            {
+              "index": 11,
+              "name": "synthetic_3_5",
+              "length": 1000
+            },
+            {
+              "index": 12,
+              "name": "synthetic_3_6",
+              "length": 827
+            }
+          ],
+          "replicates": [
+            {
+              "index": 0,
+              "seed": 20261009,
+              "source_indices": [
+                7,
+                6,
+                3,
+                0,
+                12,
+                4,
+                7,
+                6,
+                8,
+                9,
+                12,
+                4,
+                4
+              ],
+              "length": 13000,
+              "output": "replicate-00.psmc",
+              "stats": "replicate-00.stats.json",
+              "draws": "replicate-00.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 1,
+              "seed": 20261010,
+              "source_indices": [
+                5,
+                2,
+                0,
+                6,
+                11,
+                7,
+                1,
+                1,
+                7,
+                4,
+                11,
+                7,
+                9
+              ],
+              "length": 13373,
+              "output": "replicate-01.psmc",
+              "stats": "replicate-01.stats.json",
+              "draws": "replicate-01.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 2,
+              "seed": 20261011,
+              "source_indices": [
+                4,
+                11,
+                9,
+                12,
+                11,
+                10,
+                7,
+                9,
+                5,
+                12,
+                9,
+                10,
+                1,
+                1
+              ],
+              "length": 13654,
+              "output": "replicate-02.psmc",
+              "stats": "replicate-02.stats.json",
+              "draws": "replicate-02.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 3,
+              "seed": 20261012,
+              "source_indices": [
+                2,
+                7,
+                6,
+                5,
+                11,
+                0,
+                1,
+                4,
+                4,
+                7,
+                8,
+                0,
+                6
+              ],
+              "length": 13546,
+              "output": "replicate-03.psmc",
+              "stats": "replicate-03.stats.json",
+              "draws": "replicate-03.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 4,
+              "seed": 20261013,
+              "source_indices": [
+                0,
+                3,
+                3,
+                11,
+                11,
+                2,
+                7,
+                12,
+                2,
+                2,
+                7,
+                3,
+                12
+              ],
+              "length": 13254,
+              "output": "replicate-04.psmc",
+              "stats": "replicate-04.stats.json",
+              "draws": "replicate-04.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 5,
+              "seed": 20261014,
+              "source_indices": [
+                12,
+                0,
+                12,
+                4,
+                11,
+                5,
+                1,
+                7,
+                0,
+                10,
+                6,
+                6,
+                4
+              ],
+              "length": 13000,
+              "output": "replicate-05.psmc",
+              "stats": "replicate-05.stats.json",
+              "draws": "replicate-05.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 6,
+              "seed": 20261015,
+              "source_indices": [
+                10,
+                9,
+                9,
+                10,
+                11,
+                8,
+                7,
+                2,
+                12,
+                5,
+                5,
+                8,
+                9
+              ],
+              "length": 13027,
+              "output": "replicate-06.psmc",
+              "stats": "replicate-06.stats.json",
+              "draws": "replicate-06.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 7,
+              "seed": 20261016,
+              "source_indices": [
+                8,
+                5,
+                5,
+                4,
+                10,
+                11,
+                1,
+                10,
+                10,
+                0,
+                3,
+                11,
+                1
+              ],
+              "length": 13000,
+              "output": "replicate-07.psmc",
+              "stats": "replicate-07.stats.json",
+              "draws": "replicate-07.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 8,
+              "seed": 20261017,
+              "source_indices": [
+                7,
+                1,
+                2,
+                10,
+                10,
+                1,
+                7,
+                5,
+                8,
+                9,
+                2,
+                1,
+                6
+              ],
+              "length": 13573,
+              "output": "replicate-08.psmc",
+              "stats": "replicate-08.stats.json",
+              "draws": "replicate-08.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 9,
+              "seed": 20261018,
+              "source_indices": [
+                5,
+                10,
+                12,
+                3,
+                10,
+                3,
+                0,
+                0,
+                7,
+                4,
+                1,
+                4,
+                12,
+                9
+              ],
+              "length": 13654,
+              "output": "replicate-09.psmc",
+              "stats": "replicate-09.stats.json",
+              "draws": "replicate-09.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 10,
+              "seed": 20261019,
+              "source_indices": [
+                3,
+                6,
+                8,
+                9,
+                10,
+                6,
+                7,
+                8,
+                5,
+                12,
+                0,
+                7,
+                4
+              ],
+              "length": 13173,
+              "output": "replicate-10.psmc",
+              "stats": "replicate-10.stats.json",
+              "draws": "replicate-10.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 11,
+              "seed": 20261020,
+              "source_indices": [
+                2,
+                3,
+                5,
+                2,
+                10,
+                9,
+                0,
+                3,
+                4,
+                7,
+                11,
+                10,
+                9
+              ],
+              "length": 13400,
+              "output": "replicate-11.psmc",
+              "stats": "replicate-11.stats.json",
+              "draws": "replicate-11.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 12,
+              "seed": 20261021,
+              "source_indices": [
+                0,
+                12,
+                1,
+                8,
+                10,
+                12,
+                7,
+                11,
+                2,
+                2,
+                10,
+                0,
+                1
+              ],
+              "length": 13054,
+              "output": "replicate-12.psmc",
+              "stats": "replicate-12.stats.json",
+              "draws": "replicate-12.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 13,
+              "seed": 20261022,
+              "source_indices": [
+                11,
+                8,
+                11,
+                1,
+                10,
+                2,
+                0,
+                7,
+                0,
+                10,
+                9,
+                2,
+                6
+              ],
+              "length": 13573,
+              "output": "replicate-13.psmc",
+              "stats": "replicate-13.stats.json",
+              "draws": "replicate-13.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 14,
+              "seed": 20261023,
+              "source_indices": [
+                10,
+                4,
+                8,
+                7,
+                9,
+                4,
+                7,
+                2,
+                12,
+                5,
+                8,
+                5,
+                12
+              ],
+              "length": 12854,
+              "output": "replicate-14.psmc",
+              "stats": "replicate-14.stats.json",
+              "draws": "replicate-14.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 15,
+              "seed": 20261024,
+              "source_indices": [
+                8,
+                0,
+                4,
+                0,
+                9,
+                7,
+                0,
+                10,
+                10,
+                0,
+                6,
+                8,
+                4
+              ],
+              "length": 13173,
+              "output": "replicate-15.psmc",
+              "stats": "replicate-15.stats.json",
+              "draws": "replicate-15.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 16,
+              "seed": 20261025,
+              "source_indices": [
+                6,
+                9,
+                1,
+                6,
+                9,
+                10,
+                6,
+                5,
+                9,
+                8,
+                5,
+                11,
+                9
+              ],
+              "length": 13519,
+              "output": "replicate-16.psmc",
+              "stats": "replicate-16.stats.json",
+              "draws": "replicate-16.draws.jsonl",
+              "nonfinite_output": true
+            },
+            {
+              "index": 17,
+              "seed": 20261026,
+              "source_indices": [
+                5,
+                6,
+                10,
+                12,
+                9,
+                0,
+                0,
+                0,
+                7,
+                3,
+                4,
+                1,
+                1
+              ],
+              "length": 13000,
+              "output": "replicate-17.psmc",
+              "stats": "replicate-17.stats.json",
+              "draws": "replicate-17.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 18,
+              "seed": 20261027,
+              "source_indices": [
+                3,
+                2,
+                7,
+                5,
+                9,
+                3,
+                6,
+                8,
+                5,
+                11,
+                3,
+                4,
+                6
+              ],
+              "length": 13546,
+              "output": "replicate-18.psmc",
+              "stats": "replicate-18.stats.json",
+              "draws": "replicate-18.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 19,
+              "seed": 20261028,
+              "source_indices": [
+                1,
+                11,
+                4,
+                11,
+                9,
+                5,
+                0,
+                3,
+                4,
+                6,
+                2,
+                7,
+                12
+              ],
+              "length": 13200,
+              "output": "replicate-19.psmc",
+              "stats": "replicate-19.stats.json",
+              "draws": "replicate-19.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 20,
+              "seed": 20261029,
+              "source_indices": [
+                12,
+                7,
+                0,
+                4,
+                8,
+                8,
+                6,
+                11,
+                2,
+                1,
+                0,
+                9,
+                4
+              ],
+              "length": 13200,
+              "output": "replicate-20.psmc",
+              "stats": "replicate-20.stats.json",
+              "draws": "replicate-20.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 21,
+              "seed": 20261030,
+              "source_indices": [
+                11,
+                3,
+                10,
+                10,
+                8,
+                11,
+                0,
+                6,
+                1,
+                10,
+                12,
+                12,
+                9
+              ],
+              "length": 12827,
+              "output": "replicate-21.psmc",
+              "stats": "replicate-21.stats.json",
+              "draws": "replicate-21.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 22,
+              "seed": 20261031,
+              "source_indices": [
+                9,
+                12,
+                6,
+                3,
+                8,
+                1,
+                6,
+                1,
+                12,
+                5,
+                11,
+                2,
+                1
+              ],
+              "length": 13200,
+              "output": "replicate-22.psmc",
+              "stats": "replicate-22.stats.json",
+              "draws": "replicate-22.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 23,
+              "seed": 20261032,
+              "source_indices": [
+                7,
+                9,
+                3,
+                9,
+                8,
+                4,
+                0,
+                9,
+                10,
+                0,
+                10,
+                5,
+                6
+              ],
+              "length": 13173,
+              "output": "replicate-23.psmc",
+              "stats": "replicate-23.stats.json",
+              "draws": "replicate-23.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 24,
+              "seed": 20261033,
+              "source_indices": [
+                6,
+                5,
+                0,
+                2,
+                8,
+                7,
+                6,
+                4,
+                9,
+                8,
+                8,
+                8,
+                12
+              ],
+              "length": 13373,
+              "output": "replicate-24.psmc",
+              "stats": "replicate-24.stats.json",
+              "draws": "replicate-24.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 25,
+              "seed": 20261034,
+              "source_indices": [
+                4,
+                1,
+                9,
+                8,
+                8,
+                9,
+                12,
+                0,
+                7,
+                3,
+                7,
+                11,
+                4
+              ],
+              "length": 12827,
+              "output": "replicate-25.psmc",
+              "stats": "replicate-25.stats.json",
+              "draws": "replicate-25.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 26,
+              "seed": 20261035,
+              "source_indices": [
+                2,
+                10,
+                6,
+                2,
+                8,
+                12,
+                6,
+                8,
+                6,
+                11,
+                6,
+                1
+              ],
+              "length": 12919,
+              "output": "replicate-26.psmc",
+              "stats": "replicate-26.stats.json",
+              "draws": "replicate-26.draws.jsonl",
+              "nonfinite_output": true
+            },
+            {
+              "index": 27,
+              "seed": 20261036,
+              "source_indices": [
+                1,
+                6,
+                2,
+                8,
+                7,
+                2,
+                12,
+                3,
+                4,
+                6,
+                5,
+                3,
+                1
+              ],
+              "length": 13573,
+              "output": "replicate-27.psmc",
+              "stats": "replicate-27.stats.json",
+              "draws": "replicate-27.draws.jsonl",
+              "nonfinite_output": false
+            },
+            {
+              "index": 28,
+              "seed": 20261037,
+              "source_indices": [
+                12,
+                2,
+                12,
+                1,
+                7,
+                5,
+                6,
+                11,
+                2,
+                1,
+                3,
+                6,
+                6
+              ],
+              "length": 13573,
+              "output": "replicate-28.psmc",
+              "stats": "replicate-28.stats.json",
+              "draws": "replicate-28.draws.jsonl",
+              "nonfinite_output": true
+            },
+            {
+              "index": 29,
+              "seed": 20261038,
+              "source_indices": [
+                10,
+                11,
+                9,
+                7,
+                7,
+                8,
+                12,
+                6,
+                1,
+                9,
+                2,
+                9,
+                12
+              ],
+              "length": 13027,
+              "output": "replicate-29.psmc",
+              "stats": "replicate-29.stats.json",
+              "draws": "replicate-29.draws.jsonl",
+              "nonfinite_output": false
+            }
+          ],
+          "failed_replicates": 0,
+          "nonfinite_replicates": 3
+        }
+      },
+      "manifest_sampling_and_budget_match": true,
+      "stats_files": [
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-00.stats.json",
+          "sha256": "dff2f3d25acf160480eccad12ff3353ae25d303cefbffb7ea4bedd4c55d64321",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261009,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 48002,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-01.stats.json",
+          "sha256": "6ea84071506acbee49981defe23caa2e24988c56970e14c455f838bf5a43f0a5",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261010,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 46504,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-02.stats.json",
+          "sha256": "c3c564373fb6ac95e1d758483630883d29bd4945abd72f10e9e5cd7edaa0a6e3",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261011,
+            "sequence_visits": 420,
+            "sequence_evaluations": 240,
+            "cache_hits": 180,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 132029,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-03.stats.json",
+          "sha256": "226943c528a09971cb143890620ec26ff5679be20883406522c249bf8bbb61b7",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261012,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 45920,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-04.stats.json",
+          "sha256": "b998dc9d478632a97129210286da5882f31076f91953f2433f2e4269f8e9770d",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261013,
+            "sequence_visits": 390,
+            "sequence_evaluations": 180,
+            "cache_hits": 210,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 41931,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-05.stats.json",
+          "sha256": "3fdc193f2caa5c204c0fb1937a2b5037bcbda7f991782f3c96ff07bfd639c477",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261014,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 52874,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-06.stats.json",
+          "sha256": "b45e2fa0c3242fa836be53802a8890565464bbf3cda3e4c3f58326f4ae46243a",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261015,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 46990,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-07.stats.json",
+          "sha256": "e99cb403cffe40d432d09b136007cdfc51e368ba2d4cd250cd1ed3dc2ba71425",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261016,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 48132,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-08.stats.json",
+          "sha256": "8506a9f15d7bfe3500c8f25000bcc452872db76977026eff7f2b74af14b28292",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261017,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 49420,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-09.stats.json",
+          "sha256": "6c19942abc76ded730c98f680648daefaa67898f6e726ed8f2ab93de03452d55",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261018,
+            "sequence_visits": 420,
+            "sequence_evaluations": 270,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 57146,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-10.stats.json",
+          "sha256": "6750e2cf6865c53852d69fa125537e7c6bdd6f191a6ea478196ac730018af797",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261019,
+            "sequence_visits": 390,
+            "sequence_evaluations": 300,
+            "cache_hits": 90,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 48111,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-11.stats.json",
+          "sha256": "da03a22566eb22487a3f9c05a41c9c620b32d6b3275c41777f88192c7c19a3a5",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261020,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 47517,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-12.stats.json",
+          "sha256": "5f1616a1bc2204d130eaeb245b42dafa61235fec898805a3588c5f860ac2aae8",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261021,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 51754,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-13.stats.json",
+          "sha256": "6bf70b94c9090a0206d10a520819d74d94913231ab0aac92f546ad4802f2dcc2",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261022,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 51420,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-14.stats.json",
+          "sha256": "26daad94fa8f08625e55e82eeba19e3ce1dfba276b86d5922bdc26e7270ace01",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261023,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 45373,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-15.stats.json",
+          "sha256": "6e8930907339feaccc6d8564b742a6cdd95193e58d11969b725ff72b53069543",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261024,
+            "sequence_visits": 390,
+            "sequence_evaluations": 210,
+            "cache_hits": 180,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 53974,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-16.stats.json",
+          "sha256": "179751290f4c6a0866e32bc2eb16f4171c405cbbe13ce88396df5ec065173e25",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261025,
+            "sequence_visits": 390,
+            "sequence_evaluations": 210,
+            "cache_hits": 180,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 45475,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": true,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-17.stats.json",
+          "sha256": "5eed69d3d7ed661b34998507d13211529e2afb66483c1eb5541125c622247d7e",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261026,
+            "sequence_visits": 390,
+            "sequence_evaluations": 300,
+            "cache_hits": 90,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 54809,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-18.stats.json",
+          "sha256": "83ddb37c737780087e746a15294f2edff8e759bea0803b2a5951b18645e3db3e",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261027,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 47979,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-19.stats.json",
+          "sha256": "71b382a853e1bcfd4c12bf8262f6b61ba8391e6851a12f396e371c8d3292ee32",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261028,
+            "sequence_visits": 390,
+            "sequence_evaluations": 330,
+            "cache_hits": 60,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 47301,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-20.stats.json",
+          "sha256": "c0f7788e2ca597b96b33b86e9e3bb7536f3fdceb8fb83b4c387625a0e756fa22",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261029,
+            "sequence_visits": 390,
+            "sequence_evaluations": 300,
+            "cache_hits": 90,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 47820,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-21.stats.json",
+          "sha256": "41cb9535f1a11322d27f4fedcd4260a361337af348367af9f90161d329cb2b52",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261030,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 60237,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-22.stats.json",
+          "sha256": "9293f30ca201ab647d4a534d0409c3ccd30a674bea36c655792d97938790dc7a",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261031,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 71701,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-23.stats.json",
+          "sha256": "89fac0830ea97e6cd7ccdf569ce98d02c7d6e4fae09646e7e174a0baf8b5d574",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261032,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 50837,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-24.stats.json",
+          "sha256": "fcf505909a5f10560219806a2d22fb69ddd357f6b05202c042df9d9ca384e537",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261033,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 43273,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-25.stats.json",
+          "sha256": "a004f5f605ad36bcc903123b1dd6ad62af1483a5810fe6229cd21f931749bed9",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261034,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 49019,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-26.stats.json",
+          "sha256": "6f6cd8465eff537fa4efa8bddffbc1cd1e31d6a583e624d27869a2fb822439e2",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261035,
+            "sequence_visits": 360,
+            "sequence_evaluations": 210,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 44698,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": true,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-27.stats.json",
+          "sha256": "9689cc9400cf6363ed5b3f1566042c1a937686a9161af821893c76b6cbf9c06a",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261036,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 46496,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-28.stats.json",
+          "sha256": "2af1d91e7650f37707b292842c72243a404c06e9335cb095b2d84c7fce14d6da",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261037,
+            "sequence_visits": 390,
+            "sequence_evaluations": 240,
+            "cache_hits": 150,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 37614,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": true,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        },
+        {
+          "path": "bench/phase-3-scheduler/20261010T053324506805Z/workers-1-reverse/replicate-29.stats.json",
+          "sha256": "21c903ed8ac4b4b70623145f9cbb2de748d2017967ba43c33b010a978573a3f4",
+          "contents": {
+            "backend": "cpu",
+            "seed": 20261038,
+            "sequence_visits": 390,
+            "sequence_evaluations": 270,
+            "cache_hits": 120,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 55822,
+            "profile_enabled": false,
+            "expectation_seconds": 0,
+            "mstep_seconds": 0,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true,
+            "simd_requested": "auto",
+            "simd_selected": "avx"
+          }
+        }
+      ],
+      "cache_summary": {
+        "sequence_visits": 11730,
+        "cache_hits": 3990,
+        "hit_fraction": 0.340153452685422
+      },
+      "passed": true
+    }
+  ],
+  "cache_controls": [
+    {
+      "snapshot": false,
+      "cache": "on",
+      "command": [
+        "bench/phase-3-validation/20261010T052725318411Z/binaries/candidate",
+        "--backend",
+        "cpu",
+        "--cache",
+        "on",
+        "--stats",
+        "bench/phase-3-scheduler/20261010T053324506805Z/cache-normal.stats.json",
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "1",
+        "-I",
+        "0",
+        "tests/fixtures/bootstrap/replicate-00.psmcfa"
+      ],
+      "returncode": 0,
+      "stats_path": "bench/phase-3-scheduler/20261010T053324506805Z/cache-normal.stats.json",
+      "stats": {
+        "backend": "cpu",
+        "seed": 1792513814,
+        "sequence_visits": 13,
+        "sequence_evaluations": 8,
+        "cache_hits": 5,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 1971,
+        "profile_enabled": true,
+        "expectation_seconds": 0.002399355,
+        "mstep_seconds": 0.006346634,
+        "nonfinite_output": false,
+        "iterations": 1,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      }
+    },
+    {
+      "snapshot": false,
+      "cache": "off",
+      "command": [
+        "bench/phase-3-validation/20261010T052725318411Z/binaries/candidate",
+        "--backend",
+        "cpu",
+        "--cache",
+        "off",
+        "--stats",
+        "bench/phase-3-scheduler/20261010T053324506805Z/cache-off.stats.json",
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "1",
+        "-I",
+        "0",
+        "tests/fixtures/bootstrap/replicate-00.psmcfa"
+      ],
+      "returncode": 0,
+      "stats_path": "bench/phase-3-scheduler/20261010T053324506805Z/cache-off.stats.json",
+      "stats": {
+        "backend": "cpu",
+        "seed": 1792513808,
+        "sequence_visits": 13,
+        "sequence_evaluations": 13,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 1971,
+        "profile_enabled": true,
+        "expectation_seconds": 0.003640775,
+        "mstep_seconds": 0.006554989,
+        "nonfinite_output": false,
+        "iterations": 1,
+        "cache_enabled": false,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      }
+    },
+    {
+      "snapshot": true,
+      "cache": "on",
+      "command": [
+        "bench/phase-3-validation/20261010T052725318411Z/binaries/candidate",
+        "--backend",
+        "cpu",
+        "--cache",
+        "on",
+        "--stats",
+        "bench/phase-3-scheduler/20261010T053324506805Z/cache-snapshot.stats.json",
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "1",
+        "-I",
+        "0",
+        "--snapshot",
+        "bench/phase-3-scheduler/20261010T053324506805Z/cache-snapshot.jsonl",
+        "tests/fixtures/bootstrap/replicate-00.psmcfa"
+      ],
+      "returncode": 0,
+      "stats_path": "bench/phase-3-scheduler/20261010T053324506805Z/cache-snapshot.stats.json",
+      "stats": {
+        "backend": "cpu",
+        "seed": 1792513809,
+        "sequence_visits": 13,
+        "sequence_evaluations": 13,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 13,
+        "model_updates": 1971,
+        "profile_enabled": true,
+        "expectation_seconds": 0.294508701,
+        "mstep_seconds": 0.229624184,
+        "nonfinite_output": false,
+        "iterations": 1,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      }
+    }
+  ],
+  "failures": [],
+  "cache_accounting_passed": true,
+  "cache_snapshot": {
+    "path": "bench/phase-3-scheduler/20261010T053324506805Z/cache-snapshot.jsonl.gz",
+    "sha256": "2e7daf196a9a8f21d47d77ad1640880929cbc90e753e068acefe788553b55478"
+  },
+  "randomized_bootstrap_control": {
+    "command": [
+      "bench/phase-3-validation/20261010T052725318411Z/binaries/candidate",
+      "bootstrap",
+      "--replicates",
+      "3",
+      "--workers",
+      "1",
+      "--seed",
+      "20261009",
+      "--output-dir",
+      "bench/phase-3-scheduler/20261010T053324506805Z/randomized-bootstrap",
+      "--memory-mib",
+      "2048",
+      "--task-order",
+      "reverse",
+      "--backend",
+      "cpu",
+      "-p",
+      "4+5*3+4",
+      "-N",
+      "2",
+      "-t",
+      "15",
+      "-r",
+      "4",
+      "-I",
+      "0.1",
+      "tests/fixtures/blocks.psmcfa"
+    ],
+    "returncode": 0,
+    "comparisons": [
+      {
+        "replicate": 0,
+        "seed": 20261009,
+        "oracle_command": [
+          "bench/phase-3-validation/20261010T052725318411Z/binaries/instrumented",
+          "-b",
+          "-p",
+          "4+5*3+4",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0.1",
+          "tests/fixtures/blocks.psmcfa"
+        ],
+        "compared_sha256": "f72a4d3a741400b385648ce0321796f1c2d1ab000b63a363e2a4835d9b27c2e8",
+        "compared_bytes": 4792,
+        "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+        "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+      },
+      {
+        "replicate": 1,
+        "seed": 20261010,
+        "oracle_command": [
+          "bench/phase-3-validation/20261010T052725318411Z/binaries/instrumented",
+          "-b",
+          "-p",
+          "4+5*3+4",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0.1",
+          "tests/fixtures/blocks.psmcfa"
+        ],
+        "compared_sha256": "8a7372226ddba6c849039855a3e484b175250c5283bab78f32bc46f2443ae60e",
+        "compared_bytes": 4787,
+        "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+        "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+      },
+      {
+        "replicate": 2,
+        "seed": 20261011,
+        "oracle_command": [
+          "bench/phase-3-validation/20261010T052725318411Z/binaries/instrumented",
+          "-b",
+          "-p",
+          "4+5*3+4",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0.1",
+          "tests/fixtures/blocks.psmcfa"
+        ],
+        "compared_sha256": "d2b5b024b1fe12ce9ae14186aaaa355258774609174dbedcd33b2c128123001f",
+        "compared_bytes": 4791,
+        "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+        "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.0 (strict f64; reference 82fa2ada83ee)"
+      }
+    ],
+    "failures": [],
+    "passed": true
+  },
+  "completed_utc": "2026-10-10T05:33:42.226868+00:00"
+}

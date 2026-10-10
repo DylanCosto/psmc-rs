@@ -199,3 +199,85 @@ fn rejects_bad_observation() {
     let model = toy_model();
     Workspace::new(model.n).evaluate(&PreparedModel::new(&model), &[0, 3]);
 }
+
+#[test]
+fn simd_modes_tails_and_poisoned_buffers_are_exact() {
+    for n in [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 15, 16, 17, 23, 24, 25, 63, 64, 65,
+    ] {
+        let settings = Settings {
+            pattern: Pattern {
+                text: n.to_string(),
+                groups: (0..n).collect(),
+                n_free: n,
+            },
+            max_t: 15.0,
+            alpha: 0.1,
+            tr_ratio: 4.0,
+            ran_init: 0.1,
+            divergence: Some(0.001),
+            initial_params: None,
+            explicit_times: None,
+        };
+        let mut model = Model::new(&settings, 130, 1370, &mut LegacyRng::new(29));
+        for mode in [SimdMode::Auto, SimdMode::Off, SimdMode::Avx] {
+            if mode == SimdMode::Avx && !avx_available() {
+                continue;
+            }
+            let mut workspace = Workspace::with_simd(n, mode).unwrap();
+            let selected = if n >= 4 && mode != SimdMode::Off && avx_available() {
+                "avx"
+            } else {
+                "scalar"
+            };
+            assert_eq!(workspace.simd_kernel(), selected);
+            for length in [1, 2, 3, 7, 64, 5, 127, 1] {
+                let observations: Vec<_> =
+                    (0..length).map(|i| ((i * 7 + i / 9) % 3) as u8).collect();
+                workspace.messages.forward.fill(f64::NAN);
+                workspace.messages.backward.fill(f64::NAN);
+                workspace.messages.scales.fill(f64::NAN);
+                workspace.counts.a.fill(f64::NAN);
+                workspace.counts.e.fill(f64::NAN);
+                workspace.counts.a0.fill(f64::NAN);
+                let prepared = workspace.prepare(&model);
+                compare(&mut workspace, &prepared, &observations);
+            }
+            model.params[0] *= 1.01;
+            model.update(&settings);
+            let prepared = workspace.prepare(&model);
+            compare(&mut workspace, &prepared, &[2; 33]);
+        }
+    }
+}
+
+#[test]
+fn every_short_pattern_exercises_four_actual_lanes() {
+    let mut model = toy_model();
+    model.n = 4;
+    model.initial = vec![0.1, 0.2, 0.3, 0.4];
+    model.transition = vec![
+        0.4, 0.3, 0.2, 0.1, 0.1, 0.4, 0.3, 0.2, 0.2, 0.1, 0.4, 0.3, 0.3, 0.2, 0.1, 0.4,
+    ];
+    model.emission = vec![0.9, 0.8, 0.7, 0.6, 0.1, 0.2, 0.3, 0.4, 1.0, 1.0, 1.0, 1.0];
+    let mut workspace = Workspace::new(4);
+    let prepared = workspace.prepare(&model);
+    for length in 1..=7 {
+        for pattern in 0..3_usize.pow(length as u32) {
+            let mut id = pattern;
+            let observations: Vec<_> = (0..length)
+                .map(|_| {
+                    let z = (id % 3) as u8;
+                    id /= 3;
+                    z
+                })
+                .collect();
+            compare(&mut workspace, &prepared, &observations);
+        }
+    }
+    drop(prepared);
+    model.emission[..4].fill(0.0);
+    model.transition[7] = f64::NAN;
+    let prepared = workspace.prepare(&model);
+    compare(&mut workspace, &prepared, &[0, 1, 2, 0]);
+}

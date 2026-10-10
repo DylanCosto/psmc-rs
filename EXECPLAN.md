@@ -181,7 +181,8 @@ Stop and investigate on a numerical-gate failure, inconsistent random replay, ch
 - [ ] Phase 0 acceptance: actual-workload baseline, numerical failure investigation, missing companion documents, and decision review.
 - [x] Phase 1: dense Rust oracle; 115 exact differential checks, 30 full bootstrap trajectories, isolated and internal snapshot gates, conversion, review and measured baseline complete on the pinned Linux stack.
 - [x] Phase 2: strict CPU workspaces, exact repeated-block cache and bounded bootstrap queue; 226 differential checks, 180 schedule-invariant fits, 17 review controls and equal-worker measurements complete on the pinned synthetic stack.
-- [ ] Phase 3: structured CPU/full-count acceleration.
+- [x] Phase 3a: strict single-thread AVX SIMD, generic fallback, 340 differential checks, 32 debug/release unit tests, 38 CLI controls and serial benchmarks.
+- [ ] Phase 3: broader structured CPU/full-count and objective acceleration.
 - [ ] Phase 4: optional CUDA promotion.
 - [ ] Phase 5: validation and release.
 - [ ] Phase 6: long-read input layer.
@@ -247,3 +248,37 @@ The original Phase 1 math/validation sections remain historical; this authorizat
 - Harness review added explicit checks for admitted workers, every C process exit and mutually exclusive benchmark selectors. Post-run audit confirms the measured invocation was unaffected: all 360 C child exits zero, all 12 Rust manifests use requested workers. Immutable measured runner/report retained. No production source changed after the final gate.
 - Separate section timing puts M-step work at about 44–48% of optimized timed sections; HMM speed alone cannot establish 10×. Next permitted milestone: Phase 3 structured CPU/full-count algebra with independent numerical gates. CUDA, new input methods, checkpointing and production validation remain later work.
 - Source, isolated derivations/tests/timings, final build and exact comparison evidence are delivered together in the Phase 2 archive. Phase 0 and Phase 1 archives remain unchanged; large full snapshots remain local with explicit omission hashes.
+
+## Phase 3a authorization and resource policy — 2026-10-10
+
+The user explicitly requested a comprehensive goal and implementation after the
+SIMD discussion, adding: "keep it single threaded for now, I have other processes
+using CPU." Build a strict SIMD milestone before structured algebra. No subagents,
+concurrent jobs or parallel bootstrap measurements. Heavy commands and descendants
+are pinned to one allowed logical CPU at reduced scheduling priority; Cargo jobs
+and Rust test threads are one. All fits use one numerical thread and batch tests,
+if run, use one worker. Shared-host timings are diagnostic and retain variation.
+
+Preserve the dense oracle, Phase 2 binary and prior archives. Inspect existing
+compiler vectorization first. Implement runtime-dispatched AVX on independent
+count/destination lanes with scalar tails and fallback, preserving every lane's
+binary64 operation order. Do not use FMA, horizontal reassociation, approximate
+math, altered Q/log functions, structured recurrences, fewer iterations or GPU.
+ARM NEON requires actual ARM validation and remains not_run in this milestone.
+
+Acceptance requires isolated message/count bit comparisons (NaNs by class),
+forced scalar/AVX and automatic selection controls, complete pinned-C trajectories
+and all 30 existing bootstraps run sequentially, source/binary provenance,
+single-thread before/after timings, documentation and a source/evidence commit
+and package. Keep Phase 3's broader structured-algebra checkbox open.
+
+## Phase 3a completion — 2026-10-10
+
+- User-requested one-CPU resource policy honored for builds, tests and measurements: logical CPU 0, nice 10, Cargo jobs=1, Rust test threads=1, bootstrap workers=1. No subagents or parallel throughput tests.
+- Version 0.3 adds private guarded AVX forward/backward/count lanes, scalar tails and runtime auto/off/avx selection. Every lane preserves binary64 operation order; no FMA, horizontal sum, reduced precision or changed Q/optimizer. Dense remains default; generic CPU and the exact Phase 2 binary remain available.
+- All 340 differential controls pass, including 90 complete materialized bootstrap comparisons across dense/auto/generic paths. Ten complete snapshot pairs compare 37,789 events and 43,513,458 finite numeric fields exactly. Debug/release each pass 32 unit tests; 38 CLI selection/safety controls and 60 one-worker forward/reverse scheduler fits pass. Original nonfinite cases 16/26/28 remain separate from finite validation.
+- Compiler inspection confirms existing Phase 2 SSE2 and new AVX instruction sites, with no FMA/horizontal adds in the specialized functions. Safe wrappers, tail remainders, unaligned slices, subnormals, signed zeros and nonfinite classes are tested. Absence-of-AVX selection is simulated in unit tests; ARM and physical no-AVX machines are not_run.
+- Under shared-host contention, median child CPU-time speedups over preserved Phase 2 are 1.122× (K23/N30) and 1.312× (K64/N5). Both are about 1.47× versus vanilla in this run. K64/N5 remains a partial trajectory.
+- Serial 30-fit batch result is neutral versus Phase 2: CPU ratio 1.005× with overlapping ranges, wall ratio 0.936× (slower median). No new bootstrap improvement is claimed. SIMD/vanilla ratio 1.634× CPU time largely retains existing Phase 2 gains. All measured output remains exact. Multiworker SIMD throughput is untested by user request.
+- Separate E/M wall samples are too contention-sensitive for a precise new attribution; unchanged M-step varied substantially. Preserve these diagnostics and report ranges/CPU time rather than selecting favorable wall results. The source/derivation/tests/timings are committed together and the prior releases remain intact.
+- Next permitted work remains real-workload profiling and Phase 3 structured/full-count/objective optimization with exact gates. SIMD does not establish the 10× objective.

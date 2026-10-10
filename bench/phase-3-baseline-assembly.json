@@ -1,0 +1,9 @@
+{
+  "phase2_binary_sha256": "fd866573a007003d2388137270ec24f14acb436c42c7084ab8dac076fdabb59a",
+  "function": "psmc_cpu::Workspace::evaluate",
+  "packed_sse_operations": 14,
+  "packed_avx_operations": 0,
+  "fma_operations": 0,
+  "assembly_lines": 1638,
+  "scope": "Static instruction-site counts, not runtime counts. Existing generic build already uses SSE2 packed operations; no AVX width measured here."
+}

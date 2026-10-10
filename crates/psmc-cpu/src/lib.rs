@@ -36,6 +36,9 @@ use psmc_core::{
     model::Model,
 };
 
+mod simd;
+pub use simd::{SimdMode, avx_available};
+
 const TINY: f64 = 1e-25;
 
 /// Arrays derived once from one immutable parameter snapshot. The borrow prevents
@@ -45,10 +48,15 @@ pub struct PreparedModel<'a> {
     model: &'a Model,
     transpose: Vec<f64>,
     emission_transition: Vec<f64>,
+    emission_transition_transpose: Vec<f64>,
 }
 
 impl<'a> PreparedModel<'a> {
     pub fn new(model: &'a Model) -> Self {
+        Self::with_avx_layout(model, avx_available() && model.n >= 4)
+    }
+
+    fn with_avx_layout(model: &'a Model, avx: bool) -> Self {
         let n = model.n;
         assert!(n > 0, "HMM must have at least one state");
         let square = n.checked_mul(n).expect("HMM state count is too large");
@@ -78,10 +86,26 @@ impl<'a> PreparedModel<'a> {
                 }
             }
         }
+        let mut emission_transition_transpose = if avx {
+            vec![0.0; emission_transition.len()]
+        } else {
+            Vec::new()
+        };
+        if avx {
+            for z in 0..3 {
+                for k in 0..n {
+                    for l in 0..n {
+                        emission_transition_transpose[z * square + l * n + k] =
+                            emission_transition[z * square + k * n + l];
+                    }
+                }
+            }
+        }
         Self {
             model,
             transpose,
             emission_transition,
+            emission_transition_transpose,
         }
     }
 
@@ -96,12 +120,18 @@ impl<'a> PreparedModel<'a> {
 pub struct Workspace {
     messages: Messages,
     counts: Counts,
+    avx: Option<simd::Avx>,
 }
 
 impl Workspace {
     pub fn new(n: usize) -> Self {
+        Self::with_simd(n, SimdMode::Auto).expect("auto SIMD always has a fallback")
+    }
+
+    pub fn with_simd(n: usize, mode: SimdMode) -> Result<Self, String> {
         assert!(n > 0, "HMM must have at least one state");
-        Self {
+        let avx = simd::Avx::select(mode, n)?;
+        Ok(Self {
             messages: Messages {
                 length: 0,
                 n,
@@ -112,7 +142,17 @@ impl Workspace {
                 backward_check: 0.0,
             },
             counts: Counts::zero(n),
-        }
+            avx,
+        })
+    }
+
+    pub fn simd_kernel(&self) -> &'static str {
+        if self.avx.is_some() { "avx" } else { "scalar" }
+    }
+
+    /// Prepare only the layouts used by this workspace's selected kernel.
+    pub fn prepare<'a>(&self, model: &'a Model) -> PreparedModel<'a> {
+        PreparedModel::with_avx_layout(model, self.avx.is_some())
     }
 
     /// Evaluate one existing sequence with exactly the dense oracle's binary64
@@ -135,6 +175,13 @@ impl Workspace {
         let rows = length.checked_add(1).expect("HMM sequence is too long");
         let cells = rows.checked_mul(n).expect("HMM messages are too large");
         let square = n * n; // PreparedModel already checked this product.
+        if self.avx.is_some() {
+            assert_eq!(
+                prepared.emission_transition_transpose.len(),
+                3 * square,
+                "AVX layout required; use workspace.prepare(model)"
+            );
+        }
         let messages = &mut self.messages;
         messages.length = length;
         messages.forward.resize(cells, 0.0);
@@ -163,18 +210,26 @@ impl Workspace {
             let previous = &earlier[(u - 1) * n..];
             let current = &mut later[..n];
             let emission = &model.emission[observations[u - 1] as usize * n..][..n];
-            sum = 0.0;
-            for ((target, &emission), transition) in current
-                .iter_mut()
-                .zip(emission)
-                .zip(prepared.transpose.chunks_exact(n))
-            {
-                let mut tmp = 0.0;
-                for (&forward, &a) in previous.iter().zip(transition) {
-                    tmp += forward * a;
+            if let Some(avx) = self.avx {
+                avx.forward(current, previous, &model.transition, emission);
+                sum = 0.0;
+                for &value in current.iter() {
+                    sum += value;
                 }
-                *target = emission * tmp;
-                sum += *target;
+            } else {
+                sum = 0.0;
+                for ((target, &emission), transition) in current
+                    .iter_mut()
+                    .zip(emission)
+                    .zip(prepared.transpose.chunks_exact(n))
+                {
+                    let mut tmp = 0.0;
+                    for (&forward, &a) in previous.iter().zip(transition) {
+                        tmp += forward * a;
+                    }
+                    *target = emission * tmp;
+                    sum += *target;
+                }
             }
             for target in current {
                 *target /= sum;
@@ -191,12 +246,18 @@ impl Workspace {
             let next = &later[..n];
             let product =
                 &prepared.emission_transition[observations[u] as usize * square..][..square];
-            for (target, product_row) in current.iter_mut().zip(product.chunks_exact(n)) {
-                let mut tmp = 0.0;
-                for (&ae, &backward) in product_row.iter().zip(next) {
-                    tmp += ae * backward;
+            if let Some(avx) = self.avx {
+                let transpose = &prepared.emission_transition_transpose
+                    [observations[u] as usize * square..][..square];
+                avx.backward(current, next, transpose, messages.scales[u]);
+            } else {
+                for (target, product_row) in current.iter_mut().zip(product.chunks_exact(n)) {
+                    let mut tmp = 0.0;
+                    for (&ae, &backward) in product_row.iter().zip(next) {
+                        tmp += ae * backward;
+                    }
+                    *target = tmp / messages.scales[u];
                 }
-                *target = tmp / messages.scales[u];
             }
         }
         let mut backward_check = 0.0;
@@ -235,21 +296,28 @@ impl Workspace {
             let emission_counts = &mut counts.e[observations[u - 1] as usize * n..][..n];
             let product =
                 &prepared.emission_transition[observations[u] as usize * square..][..square];
-            for ((((&fuk, &buk), emission_count), transition_counts), product_row) in forward
-                .iter()
-                .zip(backward)
-                .zip(emission_counts)
-                .zip(counts.a.chunks_exact_mut(n))
-                .zip(product.chunks_exact(n))
-            {
-                for ((count, &ae), &next) in transition_counts
-                    .iter_mut()
-                    .zip(product_row)
-                    .zip(next_backward)
-                {
-                    *count += fuk * ae * next;
+            if let Some(avx) = self.avx {
+                avx.counts(&mut counts.a, forward, product, next_backward);
+                for ((count, &f), &b) in emission_counts.iter_mut().zip(forward).zip(backward) {
+                    *count += f * b * scale;
                 }
-                *emission_count += fuk * buk * scale;
+            } else {
+                for ((((&fuk, &buk), emission_count), transition_counts), product_row) in forward
+                    .iter()
+                    .zip(backward)
+                    .zip(emission_counts)
+                    .zip(counts.a.chunks_exact_mut(n))
+                    .zip(product.chunks_exact(n))
+                {
+                    for ((count, &ae), &next) in transition_counts
+                        .iter_mut()
+                        .zip(product_row)
+                        .zip(next_backward)
+                    {
+                        *count += fuk * ae * next;
+                    }
+                    *emission_count += fuk * buk * scale;
+                }
             }
         }
         for (((count, &initial), &emission), &backward) in counts

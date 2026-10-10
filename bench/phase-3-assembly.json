@@ -1,0 +1,9 @@
+{
+  "binary_sha256": "8e417125208343026d56bae1b540b058371e4a0e949ca148a73c696b217f637b",
+  "functions": 3,
+  "packed_avx_ops": 27,
+  "fma_ops": 0,
+  "horizontal_ops": 0,
+  "assembly": "bench/phase-3/avx-assembly.txt",
+  "scope": "Static inspection of all three specialized numerical functions; not a dynamic instruction count."
+}

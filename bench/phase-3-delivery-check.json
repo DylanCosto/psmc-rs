@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "created_utc": "2026-10-10T05:46:01.271589+00:00",
+  "resource_policy": {
+    "affinity": [
+      0
+    ],
+    "nice": 10,
+    "cargo_jobs": 1,
+    "rust_test_threads": 1,
+    "inference_threads_per_fit": 1,
+    "parallel_jobs": false,
+    "shared_host": true
+  },
+  "binary": "bin/psmc-rs",
+  "sha256": "8e417125208343026d56bae1b540b058371e4a0e949ca148a73c696b217f637b",
+  "source_hashes_unchanged": true,
+  "unchanged_phase2_numerics": {
+    "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/em.rs": "fd667334b4d470049dad57358bdd23ce0fd23006e347f13704079026c7f1c52f",
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9"
+  },
+  "checks": {
+    "differential": 340,
+    "cli_review": 38,
+    "scheduler_fits": 60,
+    "unit_tests_each": 32,
+    "snapshot_pairs": 10,
+    "events": 37789,
+    "finite_fields": 43513458,
+    "snapshot_mismatches": 0
+  },
+  "evidence_sha256": {
+    "bench/phase-3-build.json": "2dbae702dc6caee08b48c2bce3f12d26ff62db77b1f77fb04b8ed63ee72efa02",
+    "bench/phase-3-validation.json": "60118cbcfc031d7ad80ba8fd0c09715501c03774791cfb48a9e57393a2541d3e",
+    "bench/phase-3-scheduler.json": "3e43d8fbb4694dbb5e671490b7f98a357b6bba894570b744cb45574cc59c410b",
+    "bench/phase-3-benchmark.json": "aa1d6235f600dca0f65918f9367dd8364a0f7933d53b4f69b8c2cab2eccecc7d",
+    "bench/phase-3-review.json": "66787e40c839aab354a79eb7be9259821fc367166526e7d620cc88e2605d31e8",
+    "bench/phase-3-cargo-checks.json": "6fb80094b9bb03c7f3d2a4b8b51e0a61840c3f0f336544fbb0493ddf9a9fa895",
+    "bench/phase-3-assembly.json": "3596df85cf1d7e66f4ab3ac8ab28336dd360d51341b41d3e642bddd5a0383391",
+    "bench/phase-3-profile.json": "ec7bf09cacffd243259d02c671bfd5661817ffc71fbfa83418699393df6ac229"
+  },
+  "runner_sha256": "60e05ebfdeb274fb07d04a8ea1fe8b49604577fc59a531990032c7f86c0e3135"
+}

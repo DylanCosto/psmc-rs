@@ -1,0 +1,421 @@
+000000000003ea10 <psmc_cpu::simd::x86::forward>:
+   3ea10:	55                   	push   %rbp
+   3ea11:	41 57                	push   %r15
+   3ea13:	41 56                	push   %r14
+   3ea15:	41 55                	push   %r13
+   3ea17:	41 54                	push   %r12
+   3ea19:	53                   	push   %rbx
+   3ea1a:	50                   	push   %rax
+   3ea1b:	48 8b 5c 24 40       	mov    0x40(%rsp),%rbx
+   3ea20:	48 89 f0             	mov    %rsi,%rax
+   3ea23:	48 83 e0 fc          	and    $0xfffffffffffffffc,%rax
+   3ea27:	48 83 fe 04          	cmp    $0x4,%rsi
+   3ea2b:	73 79                	jae    3eaa6 <psmc_cpu::simd::x86::forward+0x96>
+   3ea2d:	48 39 f0             	cmp    %rsi,%rax
+   3ea30:	74 62                	je     3ea94 <psmc_cpu::simd::x86::forward+0x84>
+   3ea32:	4c 8b 54 24 48       	mov    0x48(%rsp),%r10
+   3ea37:	4c 8d 34 cd 00 00 00 	lea    0x0(,%rcx,8),%r14
+   3ea3e:	00 
+   3ea3f:	90                   	nop
+   3ea40:	c5 f9 57 c0          	vxorpd %xmm0,%xmm0,%xmm0
+   3ea44:	48 85 c9             	test   %rcx,%rcx
+   3ea47:	74 2c                	je     3ea75 <psmc_cpu::simd::x86::forward+0x65>
+   3ea49:	45 31 ff             	xor    %r15d,%r15d
+   3ea4c:	49 89 c3             	mov    %rax,%r11
+   3ea4f:	90                   	nop
+   3ea50:	4d 39 cb             	cmp    %r9,%r11
+   3ea53:	0f 83 c4 00 00 00    	jae    3eb1d <psmc_cpu::simd::x86::forward+0x10d>
+   3ea59:	c4 a1 7b 10 0c 3a    	vmovsd (%rdx,%r15,1),%xmm1
+   3ea5f:	c4 81 73 59 0c d8    	vmulsd (%r8,%r11,8),%xmm1,%xmm1
+   3ea65:	c5 fb 58 c1          	vaddsd %xmm1,%xmm0,%xmm0
+   3ea69:	49 01 f3             	add    %rsi,%r11
+   3ea6c:	49 83 c7 08          	add    $0x8,%r15
+   3ea70:	4d 39 fe             	cmp    %r15,%r14
+   3ea73:	75 db                	jne    3ea50 <psmc_cpu::simd::x86::forward+0x40>
+   3ea75:	4c 39 d0             	cmp    %r10,%rax
+   3ea78:	0f 83 b5 00 00 00    	jae    3eb33 <psmc_cpu::simd::x86::forward+0x123>
+   3ea7e:	c5 fb 59 04 c3       	vmulsd (%rbx,%rax,8),%xmm0,%xmm0
+   3ea83:	c5 fb 11 04 c7       	vmovsd %xmm0,(%rdi,%rax,8)
+   3ea88:	4c 8d 58 01          	lea    0x1(%rax),%r11
+   3ea8c:	4c 89 d8             	mov    %r11,%rax
+   3ea8f:	49 39 f3             	cmp    %rsi,%r11
+   3ea92:	72 ac                	jb     3ea40 <psmc_cpu::simd::x86::forward+0x30>
+   3ea94:	48 83 c4 08          	add    $0x8,%rsp
+   3ea98:	5b                   	pop    %rbx
+   3ea99:	41 5c                	pop    %r12
+   3ea9b:	41 5d                	pop    %r13
+   3ea9d:	41 5e                	pop    %r14
+   3ea9f:	41 5f                	pop    %r15
+   3eaa1:	5d                   	pop    %rbp
+   3eaa2:	c5 f8 77             	vzeroupper
+   3eaa5:	c3                   	ret
+   3eaa6:	49 89 f2             	mov    %rsi,%r10
+   3eaa9:	49 c1 ea 02          	shr    $0x2,%r10
+   3eaad:	4c 8d 1c f5 00 00 00 	lea    0x0(,%rsi,8),%r11
+   3eab4:	00 
+   3eab5:	4c 8d 34 cd 00 00 00 	lea    0x0(,%rcx,8),%r14
+   3eabc:	00 
+   3eabd:	45 31 e4             	xor    %r12d,%r12d
+   3eac0:	4d 89 c7             	mov    %r8,%r15
+   3eac3:	eb 2b                	jmp    3eaf0 <psmc_cpu::simd::x86::forward+0xe0>
+   3eac5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+   3eacc:	00 00 00 00 
+   3ead0:	c4 a1 7d 59 04 e3    	vmulpd (%rbx,%r12,8),%ymm0,%ymm0
+   3ead6:	c4 a1 7d 11 04 e7    	vmovupd %ymm0,(%rdi,%r12,8)
+   3eadc:	49 83 c4 04          	add    $0x4,%r12
+   3eae0:	49 ff ca             	dec    %r10
+   3eae3:	49 83 c7 20          	add    $0x20,%r15
+   3eae7:	4d 85 d2             	test   %r10,%r10
+   3eaea:	0f 84 3d ff ff ff    	je     3ea2d <psmc_cpu::simd::x86::forward+0x1d>
+   3eaf0:	c5 f9 57 c0          	vxorpd %xmm0,%xmm0,%xmm0
+   3eaf4:	48 85 c9             	test   %rcx,%rcx
+   3eaf7:	74 d7                	je     3ead0 <psmc_cpu::simd::x86::forward+0xc0>
+   3eaf9:	45 31 ed             	xor    %r13d,%r13d
+   3eafc:	4c 89 fd             	mov    %r15,%rbp
+   3eaff:	90                   	nop
+   3eb00:	c4 a2 7d 19 0c 2a    	vbroadcastsd (%rdx,%r13,1),%ymm1
+   3eb06:	c5 f5 59 4d 00       	vmulpd 0x0(%rbp),%ymm1,%ymm1
+   3eb0b:	c5 fd 58 c1          	vaddpd %ymm1,%ymm0,%ymm0
+   3eb0f:	4c 01 dd             	add    %r11,%rbp
+   3eb12:	49 83 c5 08          	add    $0x8,%r13
+   3eb16:	4d 39 ee             	cmp    %r13,%r14
+   3eb19:	75 e5                	jne    3eb00 <psmc_cpu::simd::x86::forward+0xf0>
+   3eb1b:	eb b3                	jmp    3ead0 <psmc_cpu::simd::x86::forward+0xc0>
+   3eb1d:	48 8d 15 1c 34 06 00 	lea    0x6341c(%rip),%rdx        # a1f40 <__frame_dummy_init_array_entry+0x1bd0>
+   3eb24:	4c 89 df             	mov    %r11,%rdi
+   3eb27:	4c 89 ce             	mov    %r9,%rsi
+   3eb2a:	c5 f8 77             	vzeroupper
+   3eb2d:	ff 15 65 8c 06 00    	call   *0x68c65(%rip)        # a7798 <_DYNAMIC+0x348>
+   3eb33:	48 8d 15 ee 33 06 00 	lea    0x633ee(%rip),%rdx        # a1f28 <__frame_dummy_init_array_entry+0x1bb8>
+   3eb3a:	48 89 c7             	mov    %rax,%rdi
+   3eb3d:	4c 89 d6             	mov    %r10,%rsi
+   3eb40:	c5 f8 77             	vzeroupper
+   3eb43:	ff 15 4f 8c 06 00    	call   *0x68c4f(%rip)        # a7798 <_DYNAMIC+0x348>
+   3eb49:	cc                   	int3
+   3eb4a:	cc                   	int3
+   3eb4b:	cc                   	int3
+   3eb4c:	cc                   	int3
+   3eb4d:	cc                   	int3
+   3eb4e:	cc                   	int3
+   3eb4f:	cc                   	int3
+
+000000000003eb50 <psmc_cpu::simd::x86::backward>:
+   3eb50:	41 57                	push   %r15
+   3eb52:	41 56                	push   %r14
+   3eb54:	41 55                	push   %r13
+   3eb56:	41 54                	push   %r12
+   3eb58:	53                   	push   %rbx
+   3eb59:	49 89 f2             	mov    %rsi,%r10
+   3eb5c:	49 83 e2 fc          	and    $0xfffffffffffffffc,%r10
+   3eb60:	48 83 fe 04          	cmp    $0x4,%rsi
+   3eb64:	73 16                	jae    3eb7c <psmc_cpu::simd::x86::backward+0x2c>
+   3eb66:	49 39 f2             	cmp    %rsi,%r10
+   3eb69:	0f 85 8f 00 00 00    	jne    3ebfe <psmc_cpu::simd::x86::backward+0xae>
+   3eb6f:	5b                   	pop    %rbx
+   3eb70:	41 5c                	pop    %r12
+   3eb72:	41 5d                	pop    %r13
+   3eb74:	41 5e                	pop    %r14
+   3eb76:	41 5f                	pop    %r15
+   3eb78:	c5 f8 77             	vzeroupper
+   3eb7b:	c3                   	ret
+   3eb7c:	48 89 f0             	mov    %rsi,%rax
+   3eb7f:	48 c1 e8 02          	shr    $0x2,%rax
+   3eb83:	c5 fb 12 c8          	vmovddup %xmm0,%xmm1
+   3eb87:	c4 e3 75 18 c9 01    	vinsertf128 $0x1,%xmm1,%ymm1,%ymm1
+   3eb8d:	4c 8d 1c f5 00 00 00 	lea    0x0(,%rsi,8),%r11
+   3eb94:	00 
+   3eb95:	48 8d 1c cd 00 00 00 	lea    0x0(,%rcx,8),%rbx
+   3eb9c:	00 
+   3eb9d:	45 31 f6             	xor    %r14d,%r14d
+   3eba0:	4d 89 c7             	mov    %r8,%r15
+   3eba3:	eb 25                	jmp    3ebca <psmc_cpu::simd::x86::backward+0x7a>
+   3eba5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+   3ebac:	00 00 00 00 
+   3ebb0:	c5 ed 5e d1          	vdivpd %ymm1,%ymm2,%ymm2
+   3ebb4:	48 ff c8             	dec    %rax
+   3ebb7:	c4 a1 7d 11 14 f7    	vmovupd %ymm2,(%rdi,%r14,8)
+   3ebbd:	49 83 c6 04          	add    $0x4,%r14
+   3ebc1:	49 83 c7 20          	add    $0x20,%r15
+   3ebc5:	48 85 c0             	test   %rax,%rax
+   3ebc8:	74 9c                	je     3eb66 <psmc_cpu::simd::x86::backward+0x16>
+   3ebca:	c5 e9 57 d2          	vxorpd %xmm2,%xmm2,%xmm2
+   3ebce:	48 85 c9             	test   %rcx,%rcx
+   3ebd1:	74 dd                	je     3ebb0 <psmc_cpu::simd::x86::backward+0x60>
+   3ebd3:	45 31 e4             	xor    %r12d,%r12d
+   3ebd6:	4d 89 fd             	mov    %r15,%r13
+   3ebd9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+   3ebe0:	c4 a2 7d 19 1c 22    	vbroadcastsd (%rdx,%r12,1),%ymm3
+   3ebe6:	c4 c1 65 59 5d 00    	vmulpd 0x0(%r13),%ymm3,%ymm3
+   3ebec:	c5 ed 58 d3          	vaddpd %ymm3,%ymm2,%ymm2
+   3ebf0:	4d 01 dd             	add    %r11,%r13
+   3ebf3:	49 83 c4 08          	add    $0x8,%r12
+   3ebf7:	4c 39 e3             	cmp    %r12,%rbx
+   3ebfa:	75 e4                	jne    3ebe0 <psmc_cpu::simd::x86::backward+0x90>
+   3ebfc:	eb b2                	jmp    3ebb0 <psmc_cpu::simd::x86::backward+0x60>
+   3ebfe:	4c 8d 1c cd 00 00 00 	lea    0x0(,%rcx,8),%r11
+   3ec05:	00 
+   3ec06:	eb 1e                	jmp    3ec26 <psmc_cpu::simd::x86::backward+0xd6>
+   3ec08:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+   3ec0f:	00 
+   3ec10:	c5 f3 5e c8          	vdivsd %xmm0,%xmm1,%xmm1
+   3ec14:	c4 a1 7b 11 0c d7    	vmovsd %xmm1,(%rdi,%r10,8)
+   3ec1a:	49 ff c2             	inc    %r10
+   3ec1d:	49 39 f2             	cmp    %rsi,%r10
+   3ec20:	0f 83 49 ff ff ff    	jae    3eb6f <psmc_cpu::simd::x86::backward+0x1f>
+   3ec26:	c5 f1 57 c9          	vxorpd %xmm1,%xmm1,%xmm1
+   3ec2a:	48 85 c9             	test   %rcx,%rcx
+   3ec2d:	74 e1                	je     3ec10 <psmc_cpu::simd::x86::backward+0xc0>
+   3ec2f:	31 db                	xor    %ebx,%ebx
+   3ec31:	4c 89 d0             	mov    %r10,%rax
+   3ec34:	66 66 66 2e 0f 1f 84 	data16 data16 cs nopw 0x0(%rax,%rax,1)
+   3ec3b:	00 00 00 00 00 
+   3ec40:	4c 39 c8             	cmp    %r9,%rax
+   3ec43:	73 1d                	jae    3ec62 <psmc_cpu::simd::x86::backward+0x112>
+   3ec45:	c5 fb 10 14 1a       	vmovsd (%rdx,%rbx,1),%xmm2
+   3ec4a:	c4 c1 6b 59 14 c0    	vmulsd (%r8,%rax,8),%xmm2,%xmm2
+   3ec50:	c5 f3 58 ca          	vaddsd %xmm2,%xmm1,%xmm1
+   3ec54:	48 01 f0             	add    %rsi,%rax
+   3ec57:	48 83 c3 08          	add    $0x8,%rbx
+   3ec5b:	49 39 db             	cmp    %rbx,%r11
+   3ec5e:	75 e0                	jne    3ec40 <psmc_cpu::simd::x86::backward+0xf0>
+   3ec60:	eb ae                	jmp    3ec10 <psmc_cpu::simd::x86::backward+0xc0>
+   3ec62:	48 8d 15 ef 32 06 00 	lea    0x632ef(%rip),%rdx        # a1f58 <__frame_dummy_init_array_entry+0x1be8>
+   3ec69:	48 89 c7             	mov    %rax,%rdi
+   3ec6c:	4c 89 ce             	mov    %r9,%rsi
+   3ec6f:	c5 f8 77             	vzeroupper
+   3ec72:	ff 15 20 8b 06 00    	call   *0x68b20(%rip)        # a7798 <_DYNAMIC+0x348>
+   3ec78:	cc                   	int3
+   3ec79:	cc                   	int3
+   3ec7a:	cc                   	int3
+   3ec7b:	cc                   	int3
+   3ec7c:	cc                   	int3
+   3ec7d:	cc                   	int3
+   3ec7e:	cc                   	int3
+   3ec7f:	cc                   	int3
+
+000000000003ec80 <psmc_cpu::simd::x86::counts>:
+   3ec80:	55                   	push   %rbp
+   3ec81:	41 57                	push   %r15
+   3ec83:	41 56                	push   %r14
+   3ec85:	41 55                	push   %r13
+   3ec87:	41 54                	push   %r12
+   3ec89:	53                   	push   %rbx
+   3ec8a:	48 83 ec 68          	sub    $0x68,%rsp
+   3ec8e:	4c 89 4c 24 20       	mov    %r9,0x20(%rsp)
+   3ec93:	4c 89 44 24 18       	mov    %r8,0x18(%rsp)
+   3ec98:	48 89 54 24 08       	mov    %rdx,0x8(%rsp)
+   3ec9d:	48 89 7c 24 10       	mov    %rdi,0x10(%rsp)
+   3eca2:	48 85 c9             	test   %rcx,%rcx
+   3eca5:	0f 84 07 03 00 00    	je     3efb2 <psmc_cpu::simd::x86::counts+0x332>
+   3ecab:	49 89 f5             	mov    %rsi,%r13
+   3ecae:	4c 8b 9c 24 a8 00 00 	mov    0xa8(%rsp),%r11
+   3ecb5:	00 
+   3ecb6:	48 8b 9c 24 a0 00 00 	mov    0xa0(%rsp),%rbx
+   3ecbd:	00 
+   3ecbe:	48 89 cf             	mov    %rcx,%rdi
+   3ecc1:	48 83 e7 fc          	and    $0xfffffffffffffffc,%rdi
+   3ecc5:	49 89 c8             	mov    %rcx,%r8
+   3ecc8:	49 c1 e8 02          	shr    $0x2,%r8
+   3eccc:	49 89 f9             	mov    %rdi,%r9
+   3eccf:	49 83 c9 01          	or     $0x1,%r9
+   3ecd3:	4c 39 c9             	cmp    %r9,%rcx
+   3ecd6:	4c 0f 47 c9          	cmova  %rcx,%r9
+   3ecda:	48 89 fa             	mov    %rdi,%rdx
+   3ecdd:	48 f7 d2             	not    %rdx
+   3ece0:	49 01 d1             	add    %rdx,%r9
+   3ece3:	31 c0                	xor    %eax,%eax
+   3ece5:	49 29 fb             	sub    %rdi,%r11
+   3ece8:	4c 0f 42 d8          	cmovb  %rax,%r11
+   3ecec:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+   3ecf1:	48 8d 04 c8          	lea    (%rax,%rcx,8),%rax
+   3ecf5:	48 89 44 24 60       	mov    %rax,0x60(%rsp)
+   3ecfa:	4d 39 d9             	cmp    %r11,%r9
+   3ecfd:	4d 0f 43 cb          	cmovae %r11,%r9
+   3ed01:	49 ff c1             	inc    %r9
+   3ed04:	4c 89 c0             	mov    %r8,%rax
+   3ed07:	48 83 e0 fe          	and    $0xfffffffffffffffe,%rax
+   3ed0b:	48 89 44 24 38       	mov    %rax,0x38(%rsp)
+   3ed10:	44 89 c8             	mov    %r9d,%eax
+   3ed13:	83 e0 0f             	and    $0xf,%eax
+   3ed16:	41 ba 10 00 00 00    	mov    $0x10,%r10d
+   3ed1c:	4c 0f 45 d0          	cmovne %rax,%r10
+   3ed20:	4c 89 4c 24 40       	mov    %r9,0x40(%rsp)
+   3ed25:	4d 29 d1             	sub    %r10,%r9
+   3ed28:	49 01 f9             	add    %rdi,%r9
+   3ed2b:	4c 89 4c 24 30       	mov    %r9,0x30(%rsp)
+   3ed30:	48 89 7c 24 28       	mov    %rdi,0x28(%rsp)
+   3ed35:	4c 8d 4f 01          	lea    0x1(%rdi),%r9
+   3ed39:	4c 39 c9             	cmp    %r9,%rcx
+   3ed3c:	4c 0f 47 c9          	cmova  %rcx,%r9
+   3ed40:	4c 8b 74 24 18       	mov    0x18(%rsp),%r14
+   3ed45:	49 8d 7e 20          	lea    0x20(%r14),%rdi
+   3ed49:	48 8d 04 cd 00 00 00 	lea    0x0(,%rcx,8),%rax
+   3ed50:	00 
+   3ed51:	48 89 44 24 58       	mov    %rax,0x58(%rsp)
+   3ed56:	49 01 d1             	add    %rdx,%r9
+   3ed59:	4d 39 d9             	cmp    %r11,%r9
+   3ed5c:	4d 0f 43 cb          	cmovae %r11,%r9
+   3ed60:	4d 29 d1             	sub    %r10,%r9
+   3ed63:	45 31 d2             	xor    %r10d,%r10d
+   3ed66:	49 ff c1             	inc    %r9
+   3ed69:	4c 89 44 24 48       	mov    %r8,0x48(%rsp)
+   3ed6e:	4c 89 c0             	mov    %r8,%rax
+   3ed71:	48 c1 e0 05          	shl    $0x5,%rax
+   3ed75:	4d 8d 24 06          	lea    (%r14,%rax,1),%r12
+   3ed79:	49 83 c4 60          	add    $0x60,%r12
+   3ed7d:	48 8d 54 03 60       	lea    0x60(%rbx,%rax,1),%rdx
+   3ed82:	4c 8b 7c 24 10       	mov    0x10(%rsp),%r15
+   3ed87:	4d 8d 04 07          	lea    (%r15,%rax,1),%r8
+   3ed8b:	49 83 c0 60          	add    $0x60,%r8
+   3ed8f:	49 8d 6f 20          	lea    0x20(%r15),%rbp
+   3ed93:	48 89 74 24 50       	mov    %rsi,0x50(%rsp)
+   3ed98:	eb 3c                	jmp    3edd6 <psmc_cpu::simd::x86::counts+0x156>
+   3ed9a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+   3eda0:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+   3eda5:	48 83 c0 08          	add    $0x8,%rax
+   3eda9:	49 89 f2             	mov    %rsi,%r10
+   3edac:	49 ff c2             	inc    %r10
+   3edaf:	48 8b 74 24 58       	mov    0x58(%rsp),%rsi
+   3edb4:	48 01 f7             	add    %rsi,%rdi
+   3edb7:	48 01 f5             	add    %rsi,%rbp
+   3edba:	49 01 f4             	add    %rsi,%r12
+   3edbd:	49 01 f0             	add    %rsi,%r8
+   3edc0:	49 01 f7             	add    %rsi,%r15
+   3edc3:	49 01 f6             	add    %rsi,%r14
+   3edc6:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
+   3edcb:	48 3b 44 24 60       	cmp    0x60(%rsp),%rax
+   3edd0:	0f 84 dc 01 00 00    	je     3efb2 <psmc_cpu::simd::x86::counts+0x332>
+   3edd6:	4c 89 d6             	mov    %r10,%rsi
+   3edd9:	4c 0f af d1          	imul   %rcx,%r10
+   3eddd:	4d 89 eb             	mov    %r13,%r11
+   3ede0:	4d 29 d3             	sub    %r10,%r11
+   3ede3:	0f 82 db 01 00 00    	jb     3efc4 <psmc_cpu::simd::x86::counts+0x344>
+   3ede9:	4c 39 d9             	cmp    %r11,%rcx
+   3edec:	0f 87 e8 01 00 00    	ja     3efda <psmc_cpu::simd::x86::counts+0x35a>
+   3edf2:	4c 8b 5c 24 20       	mov    0x20(%rsp),%r11
+   3edf7:	4d 29 d3             	sub    %r10,%r11
+   3edfa:	0f 82 e3 01 00 00    	jb     3efe3 <psmc_cpu::simd::x86::counts+0x363>
+   3ee00:	4c 39 d9             	cmp    %r11,%rcx
+   3ee03:	0f 87 f2 01 00 00    	ja     3effb <psmc_cpu::simd::x86::counts+0x37b>
+   3ee09:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+   3ee0e:	c5 fb 10 00          	vmovsd (%rax),%xmm0
+   3ee12:	c5 fb 12 c8          	vmovddup %xmm0,%xmm1
+   3ee16:	48 83 f9 04          	cmp    $0x4,%rcx
+   3ee1a:	0f 82 a6 00 00 00    	jb     3eec6 <psmc_cpu::simd::x86::counts+0x246>
+   3ee20:	c4 e3 75 18 d1 01    	vinsertf128 $0x1,%xmm1,%ymm1,%ymm2
+   3ee26:	48 83 7c 24 48 01    	cmpq   $0x1,0x48(%rsp)
+   3ee2c:	75 12                	jne    3ee40 <psmc_cpu::simd::x86::counts+0x1c0>
+   3ee2e:	31 c0                	xor    %eax,%eax
+   3ee30:	eb 61                	jmp    3ee93 <psmc_cpu::simd::x86::counts+0x213>
+   3ee32:	66 66 66 66 66 2e 0f 	data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+   3ee39:	1f 84 00 00 00 00 00 
+   3ee40:	4c 8b 6c 24 38       	mov    0x38(%rsp),%r13
+   3ee45:	45 31 db             	xor    %r11d,%r11d
+   3ee48:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+   3ee4f:	00 
+   3ee50:	c4 a1 6d 59 5c df e0 	vmulpd -0x20(%rdi,%r11,8),%ymm2,%ymm3
+   3ee57:	c4 a1 65 59 1c db    	vmulpd (%rbx,%r11,8),%ymm3,%ymm3
+   3ee5d:	c4 a1 65 58 5c dd e0 	vaddpd -0x20(%rbp,%r11,8),%ymm3,%ymm3
+   3ee64:	c4 a1 7d 11 5c dd e0 	vmovupd %ymm3,-0x20(%rbp,%r11,8)
+   3ee6b:	c4 a1 6d 59 1c df    	vmulpd (%rdi,%r11,8),%ymm2,%ymm3
+   3ee71:	c4 a1 65 59 5c db 20 	vmulpd 0x20(%rbx,%r11,8),%ymm3,%ymm3
+   3ee78:	c4 a1 65 58 5c dd 00 	vaddpd 0x0(%rbp,%r11,8),%ymm3,%ymm3
+   3ee7f:	49 8d 43 08          	lea    0x8(%r11),%rax
+   3ee83:	c4 a1 7d 11 5c dd 00 	vmovupd %ymm3,0x0(%rbp,%r11,8)
+   3ee8a:	49 89 c3             	mov    %rax,%r11
+   3ee8d:	49 83 c5 fe          	add    $0xfffffffffffffffe,%r13
+   3ee91:	75 bd                	jne    3ee50 <psmc_cpu::simd::x86::counts+0x1d0>
+   3ee93:	f6 c1 04             	test   $0x4,%cl
+   3ee96:	4c 8b 6c 24 50       	mov    0x50(%rsp),%r13
+   3ee9b:	74 29                	je     3eec6 <psmc_cpu::simd::x86::counts+0x246>
+   3ee9d:	4c 8b 5c 24 18       	mov    0x18(%rsp),%r11
+   3eea2:	4f 8d 1c d3          	lea    (%r11,%r10,8),%r11
+   3eea6:	c4 c1 6d 59 14 c3    	vmulpd (%r11,%rax,8),%ymm2,%ymm2
+   3eeac:	c5 ed 59 14 c3       	vmulpd (%rbx,%rax,8),%ymm2,%ymm2
+   3eeb1:	4c 8b 5c 24 10       	mov    0x10(%rsp),%r11
+   3eeb6:	4f 8d 14 d3          	lea    (%r11,%r10,8),%r10
+   3eeba:	c4 c1 6d 58 14 c2    	vaddpd (%r10,%rax,8),%ymm2,%ymm2
+   3eec0:	c4 c1 7d 11 14 c2    	vmovupd %ymm2,(%r10,%rax,8)
+   3eec6:	48 39 4c 24 28       	cmp    %rcx,0x28(%rsp)
+   3eecb:	4c 8b 9c 24 a8 00 00 	mov    0xa8(%rsp),%r11
+   3eed2:	00 
+   3eed3:	0f 84 c7 fe ff ff    	je     3eda0 <psmc_cpu::simd::x86::counts+0x120>
+   3eed9:	4c 8b 54 24 28       	mov    0x28(%rsp),%r10
+   3eede:	48 83 7c 24 40 10    	cmpq   $0x10,0x40(%rsp)
+   3eee4:	0f 86 96 00 00 00    	jbe    3ef80 <psmc_cpu::simd::x86::counts+0x300>
+   3eeea:	c4 e3 75 18 c9 01    	vinsertf128 $0x1,%xmm1,%ymm1,%ymm1
+   3eef0:	45 31 d2             	xor    %r10d,%r10d
+   3eef3:	66 66 66 66 2e 0f 1f 	data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+   3eefa:	84 00 00 00 00 00 
+   3ef00:	c4 81 75 59 54 d4 a0 	vmulpd -0x60(%r12,%r10,8),%ymm1,%ymm2
+   3ef07:	c4 81 75 59 5c d4 c0 	vmulpd -0x40(%r12,%r10,8),%ymm1,%ymm3
+   3ef0e:	c4 81 75 59 64 d4 e0 	vmulpd -0x20(%r12,%r10,8),%ymm1,%ymm4
+   3ef15:	c4 81 75 59 2c d4    	vmulpd (%r12,%r10,8),%ymm1,%ymm5
+   3ef1b:	c4 a1 6d 59 54 d2 a0 	vmulpd -0x60(%rdx,%r10,8),%ymm2,%ymm2
+   3ef22:	c4 a1 65 59 5c d2 c0 	vmulpd -0x40(%rdx,%r10,8),%ymm3,%ymm3
+   3ef29:	c4 a1 5d 59 64 d2 e0 	vmulpd -0x20(%rdx,%r10,8),%ymm4,%ymm4
+   3ef30:	c4 a1 55 59 2c d2    	vmulpd (%rdx,%r10,8),%ymm5,%ymm5
+   3ef36:	c4 81 6d 58 54 d0 a0 	vaddpd -0x60(%r8,%r10,8),%ymm2,%ymm2
+   3ef3d:	c4 81 65 58 5c d0 c0 	vaddpd -0x40(%r8,%r10,8),%ymm3,%ymm3
+   3ef44:	c4 81 5d 58 64 d0 e0 	vaddpd -0x20(%r8,%r10,8),%ymm4,%ymm4
+   3ef4b:	c4 81 55 58 2c d0    	vaddpd (%r8,%r10,8),%ymm5,%ymm5
+   3ef51:	c4 81 7d 11 54 d0 a0 	vmovupd %ymm2,-0x60(%r8,%r10,8)
+   3ef58:	c4 81 7d 11 5c d0 c0 	vmovupd %ymm3,-0x40(%r8,%r10,8)
+   3ef5f:	c4 81 7d 11 64 d0 e0 	vmovupd %ymm4,-0x20(%r8,%r10,8)
+   3ef66:	c4 81 7d 11 2c d0    	vmovupd %ymm5,(%r8,%r10,8)
+   3ef6c:	49 83 c2 10          	add    $0x10,%r10
+   3ef70:	4d 39 d1             	cmp    %r10,%r9
+   3ef73:	75 8b                	jne    3ef00 <psmc_cpu::simd::x86::counts+0x280>
+   3ef75:	4c 8b 54 24 30       	mov    0x30(%rsp),%r10
+   3ef7a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+   3ef80:	4d 39 da             	cmp    %r11,%r10
+   3ef83:	0f 83 88 00 00 00    	jae    3f011 <psmc_cpu::simd::x86::counts+0x391>
+   3ef89:	c4 81 7b 59 0c d6    	vmulsd (%r14,%r10,8),%xmm0,%xmm1
+   3ef8f:	c4 a1 73 59 0c d3    	vmulsd (%rbx,%r10,8),%xmm1,%xmm1
+   3ef95:	c4 81 73 58 0c d7    	vaddsd (%r15,%r10,8),%xmm1,%xmm1
+   3ef9b:	c4 81 7b 11 0c d7    	vmovsd %xmm1,(%r15,%r10,8)
+   3efa1:	49 8d 42 01          	lea    0x1(%r10),%rax
+   3efa5:	49 89 c2             	mov    %rax,%r10
+   3efa8:	48 39 c8             	cmp    %rcx,%rax
+   3efab:	72 d3                	jb     3ef80 <psmc_cpu::simd::x86::counts+0x300>
+   3efad:	e9 ee fd ff ff       	jmp    3eda0 <psmc_cpu::simd::x86::counts+0x120>
+   3efb2:	48 83 c4 68          	add    $0x68,%rsp
+   3efb6:	5b                   	pop    %rbx
+   3efb7:	41 5c                	pop    %r12
+   3efb9:	41 5d                	pop    %r13
+   3efbb:	41 5e                	pop    %r14
+   3efbd:	41 5f                	pop    %r15
+   3efbf:	5d                   	pop    %rbp
+   3efc0:	c5 f8 77             	vzeroupper
+   3efc3:	c3                   	ret
+   3efc4:	48 8d 15 a5 2f 06 00 	lea    0x62fa5(%rip),%rdx        # a1f70 <__frame_dummy_init_array_entry+0x1c00>
+   3efcb:	4c 89 d7             	mov    %r10,%rdi
+   3efce:	4c 89 ee             	mov    %r13,%rsi
+   3efd1:	c5 f8 77             	vzeroupper
+   3efd4:	ff 15 16 87 06 00    	call   *0x68716(%rip)        # a76f0 <_DYNAMIC+0x2a0>
+   3efda:	48 8d 15 a7 2f 06 00 	lea    0x62fa7(%rip),%rdx        # a1f88 <__frame_dummy_init_array_entry+0x1c18>
+   3efe1:	eb 1f                	jmp    3f002 <psmc_cpu::simd::x86::counts+0x382>
+   3efe3:	48 8d 15 b6 2f 06 00 	lea    0x62fb6(%rip),%rdx        # a1fa0 <__frame_dummy_init_array_entry+0x1c30>
+   3efea:	4c 89 d7             	mov    %r10,%rdi
+   3efed:	48 8b 74 24 20       	mov    0x20(%rsp),%rsi
+   3eff2:	c5 f8 77             	vzeroupper
+   3eff5:	ff 15 f5 86 06 00    	call   *0x686f5(%rip)        # a76f0 <_DYNAMIC+0x2a0>
+   3effb:	48 8d 15 b6 2f 06 00 	lea    0x62fb6(%rip),%rdx        # a1fb8 <__frame_dummy_init_array_entry+0x1c48>
+   3f002:	48 89 cf             	mov    %rcx,%rdi
+   3f005:	4c 89 de             	mov    %r11,%rsi
+   3f008:	c5 f8 77             	vzeroupper
+   3f00b:	ff 15 17 8b 06 00    	call   *0x68b17(%rip)        # a7b28 <_DYNAMIC+0x6d8>
+   3f011:	48 8d 15 b8 2f 06 00 	lea    0x62fb8(%rip),%rdx        # a1fd0 <__frame_dummy_init_array_entry+0x1c60>
+   3f018:	4c 89 d7             	mov    %r10,%rdi
+   3f01b:	4c 89 de             	mov    %r11,%rsi
+   3f01e:	c5 f8 77             	vzeroupper
+   3f021:	ff 15 71 87 06 00    	call   *0x68771(%rip)        # a7798 <_DYNAMIC+0x348>
+   3f027:	cc                   	int3
+   3f028:	cc                   	int3
+   3f029:	cc                   	int3
+   3f02a:	cc                   	int3
+   3f02b:	cc                   	int3
+   3f02c:	cc                   	int3
+   3f02d:	cc                   	int3
+   3f02e:	cc                   	int3
+   3f02f:	cc                   	int3

@@ -1,0 +1,87 @@
+{
+  "scope": "Initial isolated implementation probe; one run per shape/mode, not accepted performance evidence",
+  "created_utc": "2026-10-10T05:22:16.432405+00:00",
+  "binary_sha256": "8c2a0c8a763b2badf55e623a0d6615bfacf5bf936c81cfb3fa013604cc632f97",
+  "affinity": [
+    0
+  ],
+  "nice": 10,
+  "results": [
+    {
+      "backend": "off",
+      "simd_selected": "scalar",
+      "states": 23,
+      "first_record_bins": 4400,
+      "records": 3,
+      "repeats": 20,
+      "seconds": 0.212170045,
+      "checksum": 17814259554189488996,
+      "exact_check": true,
+      "command": [
+        "target/release/examples/simd_bench",
+        "off",
+        "23",
+        "4400",
+        "20",
+        "3"
+      ]
+    },
+    {
+      "backend": "avx",
+      "simd_selected": "avx",
+      "states": 23,
+      "first_record_bins": 4400,
+      "records": 3,
+      "repeats": 20,
+      "seconds": 0.149088937,
+      "checksum": 17814259554189488996,
+      "exact_check": true,
+      "command": [
+        "target/release/examples/simd_bench",
+        "avx",
+        "23",
+        "4400",
+        "20",
+        "3"
+      ]
+    },
+    {
+      "backend": "off",
+      "simd_selected": "scalar",
+      "states": 64,
+      "first_record_bins": 17600,
+      "records": 3,
+      "repeats": 5,
+      "seconds": 1.848479475,
+      "checksum": 18068266863712664676,
+      "exact_check": true,
+      "command": [
+        "target/release/examples/simd_bench",
+        "off",
+        "64",
+        "17600",
+        "5",
+        "3"
+      ]
+    },
+    {
+      "backend": "avx",
+      "simd_selected": "avx",
+      "states": 64,
+      "first_record_bins": 17600,
+      "records": 3,
+      "repeats": 5,
+      "seconds": 0.674827557,
+      "checksum": 18068266863712664676,
+      "exact_check": true,
+      "command": [
+        "target/release/examples/simd_bench",
+        "avx",
+        "64",
+        "17600",
+        "5",
+        "3"
+      ]
+    }
+  ]
+}

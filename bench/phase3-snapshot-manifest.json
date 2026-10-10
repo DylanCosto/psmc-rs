@@ -1,0 +1,312 @@
+{
+  "scope": "All compressed internal JSONL snapshots in packaged evidence directories; full streams remain in local project.",
+  "files": [
+    {
+      "path": "bench/phase-2-scheduler/20261010T045443390145Z/cache-snapshot.jsonl.gz",
+      "bytes": 19001347,
+      "sha256": "a3a55cf87339f3f8d8526c6f3dc3371c8c81f82515663566094a5464f1938c7a"
+    },
+    {
+      "path": "bench/phase-2-scheduler/20261010T045833927513Z/cache-snapshot.jsonl.gz",
+      "bytes": 19001347,
+      "sha256": "bf8ed58ce69188d2671d27250b8401edba33db4e5eb5a7a57cfbc39ce4cc09cb"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045322201860Z/cpu-raw/K23_N1-C.jsonl.gz",
+      "bytes": 17089735,
+      "sha256": "09dde2c37fe4ea165ca3621305ec581c0ef150fe8de1247dedc31fd67688d370"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045322201860Z/cpu-raw/K23_N1-Rust.jsonl.gz",
+      "bytes": 18846827,
+      "sha256": "b3d0a84281ae7b4d07d65dc100f180b02f8c5233c31ee31b2e8e481ed5b26fe7"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045322201860Z/cpu-raw/grid_N1-C.jsonl.gz",
+      "bytes": 140887,
+      "sha256": "388d7e573d1f1b1451c0d7c0e4641c3d541336b0ff9c5f0eb99e0fb16ce931a3"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045322201860Z/cpu-raw/grid_N1-Rust.jsonl.gz",
+      "bytes": 159123,
+      "sha256": "d282ac49159edc96ec0c333632b0a44911f01ba41a8de54e72bea3991c4c2853"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045322201860Z/cpu-raw/tiny_N2-C.jsonl.gz",
+      "bytes": 353208,
+      "sha256": "78f681b10f98b8ae26dd9d3a030dc01bf6a035025c0c5b7cda091f0c87d86af6"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045322201860Z/cpu-raw/tiny_N2-Rust.jsonl.gz",
+      "bytes": 393132,
+      "sha256": "4c3164e0483de5138fe455e5993f0d5ef9f5084ff1eb81a8a88c491395845703"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045322201860Z/dense-raw/K23_N1-C.jsonl.gz",
+      "bytes": 17089735,
+      "sha256": "767cddc0eb624edca3de0f9b2a9e3a9a7264e36e997e55bac2c43db0bd9572b1"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045322201860Z/dense-raw/K23_N1-Rust.jsonl.gz",
+      "bytes": 18846827,
+      "sha256": "2256331ad2b7f477ba6383efc7d65628d885451010f76428780fc974e4c37c9f"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045322201860Z/dense-raw/grid_N1-C.jsonl.gz",
+      "bytes": 140887,
+      "sha256": "c90202d91398b6890899494caf9c7240c157e995b7900eab5410b3244f0bb432"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045322201860Z/dense-raw/grid_N1-Rust.jsonl.gz",
+      "bytes": 159123,
+      "sha256": "5274466d2dd4827bc568b328eccfa753f8f6071b7152317877ef0c9e917f5dc5"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045322201860Z/dense-raw/tiny_N2-C.jsonl.gz",
+      "bytes": 353208,
+      "sha256": "20f345add858910c9d1098c908be8fa944699fef86722feb6b2166b759dca0e5"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045322201860Z/dense-raw/tiny_N2-Rust.jsonl.gz",
+      "bytes": 393132,
+      "sha256": "35674eb2c7c574c317b047f5c09e295eb5e1fca7588e184787332239672a54b7"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045711704482Z/cpu-raw/K23_N1-C.jsonl.gz",
+      "bytes": 17089735,
+      "sha256": "b703cf5279e268708c1dac778ec5bbd00b734e4a8b11eec338213df8b2379229"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045711704482Z/cpu-raw/K23_N1-Rust.jsonl.gz",
+      "bytes": 18846827,
+      "sha256": "3279cc7269f7f1f658e7f26369f42aaebb5a96fb9f591f8e46b291a1970e1e1c"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045711704482Z/cpu-raw/grid_N1-C.jsonl.gz",
+      "bytes": 140887,
+      "sha256": "f7f7c4655dcab416de92e195ef203dd305d0d7e970fa28dba948fc7ccabe1c68"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045711704482Z/cpu-raw/grid_N1-Rust.jsonl.gz",
+      "bytes": 159123,
+      "sha256": "924bb5b939d4b09c5bd38dd14a68fe2c57a2502ab8049e8008293f47165ef64a"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045711704482Z/cpu-raw/tiny_N2-C.jsonl.gz",
+      "bytes": 353208,
+      "sha256": "5277b3b3e4ed96fa5c0a48acd32498bf693523f47730a261f5bd1a9781251079"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045711704482Z/cpu-raw/tiny_N2-Rust.jsonl.gz",
+      "bytes": 393132,
+      "sha256": "6d874443a74678f52d4558ddaded714b427d6e70021199d249af7951023637e1"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045711704482Z/dense-raw/K23_N1-C.jsonl.gz",
+      "bytes": 17089735,
+      "sha256": "4d6c95c28ec75452b7f2f3a2c9b6abc9eaa9094dab3395d73e4344f1a77510c1"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045711704482Z/dense-raw/K23_N1-Rust.jsonl.gz",
+      "bytes": 18846827,
+      "sha256": "32d7fc49fc17122d818ed2e2fff5d9cff238cc840469755fa8a9c1eb192dd5fc"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045711704482Z/dense-raw/grid_N1-C.jsonl.gz",
+      "bytes": 140887,
+      "sha256": "9d8f346af10d496d8cae5eceef76c1a1372698a86c78f77d2c7c8c08faad357e"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045711704482Z/dense-raw/grid_N1-Rust.jsonl.gz",
+      "bytes": 159123,
+      "sha256": "567f6fb99530008cef9c6b2ca94962e8cbe154a33042d97fd6c89d34858a116b"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045711704482Z/dense-raw/tiny_N2-C.jsonl.gz",
+      "bytes": 353208,
+      "sha256": "889a0a088a2148367495166ccf012a4323fca234c989b7d7ada903b0759e9bf2"
+    },
+    {
+      "path": "bench/phase-2-validation/20261010T045711704482Z/dense-raw/tiny_N2-Rust.jsonl.gz",
+      "bytes": 393132,
+      "sha256": "430ae72d5426751e7c494c743794ac6adfc62a66ee551321a425bb3b207ae207"
+    },
+    {
+      "path": "bench/phase-3-scheduler/20261010T053324506805Z/cache-snapshot.jsonl.gz",
+      "bytes": 19001347,
+      "sha256": "2e7daf196a9a8f21d47d77ad1640880929cbc90e753e068acefe788553b55478"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/cpu-raw/K23_N1-C.jsonl.gz",
+      "bytes": 17089735,
+      "sha256": "12e385cf2414d243624048f11ee1fa549d165377a84d976bc8fd3abf586dc327"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/cpu-raw/K23_N1-Rust.jsonl.gz",
+      "bytes": 18846827,
+      "sha256": "d38aa867b87401ffeed139a3dd24ba13d159ce02b89b857c1734d12ba9533361"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/cpu-raw/K64_N1-C.jsonl.gz",
+      "bytes": 377904875,
+      "sha256": "05f6281be5f548bd6a8b7b298ab1dd102b09f088862d212ba92214c581f9ef9e"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/cpu-raw/K64_N1-Rust.jsonl.gz",
+      "bytes": 398746173,
+      "sha256": "5efaecc93d184b67bb3743c8f8580c9eeca5ce9491b1ce42c416bdaef46127db"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/cpu-raw/grid_N1-C.jsonl.gz",
+      "bytes": 140887,
+      "sha256": "f0f103db3780482e5bc65160ec001571f5351cc586ac5757739b5985e5463dfe"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/cpu-raw/grid_N1-Rust.jsonl.gz",
+      "bytes": 159123,
+      "sha256": "e7a82e5a4580daf500b4c8012df5087fcda97e1b7315898530ef75081f7bdfa3"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/cpu-raw/tiny_N2-C.jsonl.gz",
+      "bytes": 353208,
+      "sha256": "d434b4b676a5d0a758484fc4dcccc87966580b06ed76f9ccfd1c7a444f28130a"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/cpu-raw/tiny_N2-Rust.jsonl.gz",
+      "bytes": 393132,
+      "sha256": "d496c50c5619b155db7e23e4e367780823d5485f2bb36aa637c040359fcc5d43"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/dense-raw/K23_N1-C.jsonl.gz",
+      "bytes": 17089735,
+      "sha256": "4faeaf62bec1aa61a66a670d325666f5dfa26129561906baccff5272243d7678"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/dense-raw/K23_N1-Rust.jsonl.gz",
+      "bytes": 18846827,
+      "sha256": "be99cf2b7bfe7cc8e820348d064e9234e03e5321d8d72b361c2d90dc61bceeed"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/dense-raw/grid_N1-C.jsonl.gz",
+      "bytes": 140887,
+      "sha256": "9fb9b5f2a7b1c17aa3cbd7d1a7c41e2e8438294559d1f61e74f93a5bb52524e4"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/dense-raw/grid_N1-Rust.jsonl.gz",
+      "bytes": 159123,
+      "sha256": "72eedbe8d7bffbb2e51591f02af32efa89cd29023b7728efd11e888e94e5dfd4"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/dense-raw/tiny_N2-C.jsonl.gz",
+      "bytes": 353208,
+      "sha256": "747516e382b1e8eb61e7b4aee3d022f6532dbd1407d9d3d4b675427f79f43c45"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/dense-raw/tiny_N2-Rust.jsonl.gz",
+      "bytes": 393132,
+      "sha256": "c4b0d5768ad3f4b14286cc9ecb7171afb56628d054be3bde980cef3f3c57a554"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/scalar-raw/K23_N1-C.jsonl.gz",
+      "bytes": 17089735,
+      "sha256": "e0a54c845b040130010cec1383a01c061831028152fd97e80de8f307c2f9e9c2"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/scalar-raw/K23_N1-Rust.jsonl.gz",
+      "bytes": 18846827,
+      "sha256": "c0a344ab365b2aafbe1dc9bae2e216b3cf68d5e2cd3cf07998cd85b2af884a45"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/scalar-raw/grid_N1-C.jsonl.gz",
+      "bytes": 140887,
+      "sha256": "b1fd65e577739ef05fb8c4df9005ad54677422ada64f912962750dabef8c6d65"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/scalar-raw/grid_N1-Rust.jsonl.gz",
+      "bytes": 159123,
+      "sha256": "f304be00fa295e5bc7525e6490ba3a4da9edd97535c1f4db8a5c566297fd0e28"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/scalar-raw/tiny_N2-C.jsonl.gz",
+      "bytes": 353208,
+      "sha256": "7365361b4371f32f8370ad72c32433dec640cb25caef890ca3ef275526a1b029"
+    },
+    {
+      "path": "bench/phase-3-validation/20261010T052725318411Z/scalar-raw/tiny_N2-Rust.jsonl.gz",
+      "bytes": 393132,
+      "sha256": "df5f6b476da713c15886f33a1be3c195abd122311ceffd0238ab9f8668d88f05"
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/K23_N1-C.jsonl.gz",
+      "bytes": 17089735,
+      "sha256": "2e41cb1b3e3535664549594719c88703721fdc3458080e6534c7e099de4b9f7d"
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/K23_N1-Rust.jsonl.gz",
+      "bytes": 18846827,
+      "sha256": "af6d2c0f6f1bf45f3598fc290ebdd9c7545987ef833ef80fe7a0f8144112fc15"
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/K64_N1-C.jsonl.gz",
+      "bytes": 377904875,
+      "sha256": "9662fb6f90f47499a5c0c82980f9a0b5ad823ee72a416fcf9aeac0ec4367390b"
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/K64_N1-Rust.jsonl.gz",
+      "bytes": 398746173,
+      "sha256": "31f40cf3fcb61e055233586d0cdc80f19bdfb93eb8db673b9ce409277c7e2aeb"
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/enumeration-C.jsonl.gz",
+      "bytes": 16285479,
+      "sha256": "df813a40d67b555d48676f0ab2707d690b33583aee27272992341ed386c06c51"
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/enumeration-Rust.jsonl.gz",
+      "bytes": 17937913,
+      "sha256": "a706e81899027b98b943904ebaa7fed44e335dd781f6381b1dddeb8cdcf6aaa0"
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/grid_N1-C.jsonl.gz",
+      "bytes": 140887,
+      "sha256": "3742cc725cc7a99c9727af5654ef0983b3a3ad0f0ae2cb2b1538f02646249fd3"
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/grid_N1-Rust.jsonl.gz",
+      "bytes": 159123,
+      "sha256": "2a5771947457a873e7ad4d018d7b816c7d1660b52a92c6e29a966ce4e4804c90"
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/tiny_N2-C.jsonl.gz",
+      "bytes": 353208,
+      "sha256": "0b279d3f9fe366b07e19878ec5e020fd4c19969bf5456bafb86ab612112bd20b"
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/tiny_N2-Rust.jsonl.gz",
+      "bytes": 393132,
+      "sha256": "811b4af70865de89ddfab9a1f1869208dec58e520672b12580acff2a30d0f34a"
+    },
+    {
+      "path": "bench/raw/phase1-smoke/tiny_N2-C.jsonl.gz",
+      "bytes": 285915,
+      "sha256": "4c4d02120f9ba612f99da47bb78d0f668a5844e802c356097467293c2b8d1188"
+    },
+    {
+      "path": "bench/raw/phase1-smoke/tiny_N2-Rust.jsonl.gz",
+      "bytes": 312555,
+      "sha256": "088150497add9c79b60decf353105a69b69b34ab281ea23b75cdedf3f729e3a2"
+    },
+    {
+      "path": "bench/raw/tests/enumeration-snapshot.jsonl.gz",
+      "bytes": 13503011,
+      "sha256": "f1a1d63f171c93dad132fbbd5e9c37ff6c072d10bf0982019f0be96a25f8e18a"
+    }
+  ],
+  "total_compressed_bytes": 1954494306,
+  "reproduction": {
+    "phase3": "Build pinned C references and simd_bench, then taskset -c CPU nice -n 10 python3 bench/phase3_validate.py --run; comparisons consume complete streams before compression.",
+    "phase2": "Use the preserved Phase 2 source archive and bench/phase2_validate.py.",
+    "phase1": "See bench/phase1-snapshot-manifest.json; use preserved Phase 1 source archive.",
+    "other": "See owning report and retained command; ordinary uncompressed small JSONL traces are packaged."
+  }
+}

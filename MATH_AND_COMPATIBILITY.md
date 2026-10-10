@@ -45,3 +45,11 @@ trajectories and all 30 fixed bootstraps, across worker counts and task order.
 Count/cache/profile metadata is additive and excluded from numerical output.
 Record snapshot cache bypass explicitly. Preserve previous evidence separately;
 no relaxed tolerance, changed algebra, reduced precision or CUDA is introduced.
+
+## Phase 3a extension — strict single-thread SIMD
+
+The user authorized a SIMD implementation while limiting execution to one CPU
+thread. Independent lanes may execute simultaneously, but every scalar lane's
+operation grouping and addend order remain the Phase 2 order. No horizontal
+reduction, FMA, vector math substitution or structured-algebra change is included.
+See docs/phase-3-simd-derivation.md for the pre-validation derivation and gate.

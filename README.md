@@ -1,13 +1,14 @@
-# PSMC in Rust — strict CPU optimization
+# PSMC in Rust — strict single-thread SIMD
 
 This Rust workspace implements the original PSMC model, full expected counts,
-Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.2
-adds an optimized CPU backend, reusable numerical buffers, repeated-block caching,
-and a bounded parallel bootstrap runner. Double precision, summation order,
+Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.3
+adds runtime-selected AVX kernels to the CPU backend. Each fit uses one numerical
+thread; the existing bootstrap queue can be limited to one worker. Reusable
+buffers, exact repeated-block caching and the dense oracle remain available. Double precision, summation order,
 sequence boundaries and the statistical method are preserved.
 
 Use `--backend cpu` for the optimized path. The default remains `dense`, the
-retained scalar oracle. Read the [Phase 2 report](docs/phase-2-report.md) for
+retained scalar oracle. Read the [Phase 3a report](docs/phase-3-simd-report.md) for
 measured speed, exact comparisons and limitations. The pinned external reference is
 [`lh3/psmc` at 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a](https://github.com/lh3/psmc/tree/82fa2ada83ee463fe1251b562ae3d60e82d7ad6a).
 The [Phase 1 report](docs/phase-1-report.md) and
@@ -19,14 +20,14 @@ Run from this directory:
 
 ```bash
 mkdir -p work
-cargo build --release --locked --offline
-cargo test --workspace --locked --offline
+cargo build --release --locked --offline --jobs 1
+cargo test --workspace --locked --offline --jobs 1 -- --test-threads=1
 target/release/psmc-rs --backend cpu --seed 42 -p '4+5*3+4' -N 30 \
   -t 15 -r 4 -I 0 -o work/example.psmc tests/fixtures/workload.psmcfa
 ```
 
-The supplied executable is `bin/psmc-rs`; `bin/psmc-rs-phase1` preserves the
-previous dense release. Rust 1.90.0 is pinned and must already be installed for
+The supplied executable is `bin/psmc-rs`; `bin/psmc-rs-phase2` preserves the prior
+optimized CPU release and `bin/psmc-rs-phase1` the original dense release. Rust 1.90.0 is pinned and must already be installed for
 an offline build. There are no registry dependencies. The tested stack is
 x86-64 Linux/glibc 2.39 using system `libm`, `libc` and `libz.so.1`. No CUDA,
 zlib headers or Python environment is needed to build or run inference.
@@ -46,6 +47,7 @@ supported. Records remain independent HMM sequences; missing sites carry transit
 | `--seed INTEGER` | Replay of the original srand48/drand48 stream |
 | `--mode strict` | Only implemented numerical mode |
 | `--backend dense\|cpu` | Dense oracle (default) or optimized CPU engine |
+| `--simd auto\|off\|avx` | CPU dispatch: automatic (default), generic CPU, or require AVX support |
 | `--cache on\|off` | Per-expectation repeated-block cache for CPU; default on |
 | `--stats FILE` | Counters and separately instrumented E/M timing for a single fit |
 | `--snapshot FILE` | Test-only JSONL matrices, messages, counts and optimizer callbacks |
@@ -60,10 +62,14 @@ Supply blocks already split by your established preprocessing procedure. This
 runner does not introduce new HMM boundaries or perform splitting.
 
 ```bash
-bin/psmc-rs bootstrap --backend cpu --replicates 30 --workers 4 \
+bin/psmc-rs bootstrap --backend cpu --replicates 30 --workers 1 \
   --memory-mib 2048 --seed 20261009 --output-dir work/bootstrap-example \
   -p '4+5*3+4' -N 30 -t 15 -r 4 -I 0 tests/fixtures/blocks.psmcfa
 ```
+
+The current user-requested workflow uses **one worker**. Single fits are already
+single-threaded. The existing queue still supports explicit multiworker operation,
+but no multiworker jobs were run for this SIMD milestone.
 
 The destination must not exist. Replicate `i` uses seed `base + i`, consumes the
 same ordered bootstrap draws and then the same initialization RNG stream as an
@@ -90,6 +96,26 @@ is a scheduling diagnostic; it does not change sampling or reductions. Batch
 phase timers are disabled (`profile_enabled: false`, seconds zero); counters
 remain active. Failed jobs are reported, partial files retained, other jobs
 finish, and the batch exits with failure. No atomic resume is claimed.
+
+## SIMD selection and exactness
+
+`--backend cpu` defaults to `--simd auto`. On tested x86-64 hardware with CPU/OS
+AVX support, models with at least four states use four independent f64 lanes.
+Smaller models and unsupported hardware use the generic CPU path. `--simd off`
+disables the explicit AVX kernels; ordinary compiler optimizations, including
+baseline SSE2 where available, remain enabled. `--simd avx` requires CPU/OS AVX
+support and the CPU backend; unsupported requests fail before opening outputs.
+Small shapes still use scalar tails. `--stats` reports both requested and selected
+paths (`simd_requested`, `simd_selected`). Dense reports `scalar-dense`.
+
+AVX does not add worker threads. Each lane retains the original ordered adds,
+multiplies and divisions; there is no FMA or horizontal reduction. The additional
+backward layout is copied from the exact existing emission-transition products.
+The [derivation](docs/phase-3-simd-derivation.md) documents bounds checks and the
+small isolated unsafe intrinsic module. Default compiler target features stay
+portable; this is runtime dispatch, not a globally native-only executable.
+ARM NEON, AVX-512 and non-x86-64 execution remain unvalidated; other architectures
+retain the generic path. Explicit AVX support here does not require AVX2.
 
 ## Compatibility and limits
 
@@ -140,29 +166,31 @@ acceleration, production runtime and GPU performance remain unproven.
 
 ## Reproduce this milestone
 
-Build normal and instrumented C following [the reference instructions](README_PHASE0.md),
-then run from this directory (Python 3.11+ for provenance tools):
+Build the C references using [the retained instructions](README_PHASE0.md).
+Use one allowed logical CPU and low scheduling priority while other work runs.
+Here CPU 0 is the tested affinity; choose an allowed CPU on another machine.
+All commands below are sequential. Do not run timing with builds/tests/profiling.
 
 ```bash
-cargo fmt --all --check
-cargo test --workspace --locked --offline
-cargo test --workspace --release --locked --offline
-python3 bench/phase2_build.py
-python3 bench/phase2_validate.py --run
-python3 bench/phase2_scheduler.py --run
-python3 bench/phase2-review.py --binary target/release/psmc-rs
-python3 -m unittest discover -s bench -p test_phase2_harness.py
-# Only after tests/builds finish; no profiling/compression alongside measurement:
-python3 bench/phase2_benchmark.py --run
-# Separate diagnostic, outside the measurement window:
-python3 bench/phase2_profile.py
+taskset -c 0 nice -n 10 env CARGO_BUILD_JOBS=1 RUST_TEST_THREADS=1 \
+  cargo test --workspace --release --locked --offline --jobs 1 -- --test-threads=1
+taskset -c 0 nice -n 10 cargo build --release --locked --offline --jobs 1 \
+  -p psmc-cpu --example simd_bench
+taskset -c 0 nice -n 10 python3 bench/phase3_build.py
+taskset -c 0 nice -n 10 python3 bench/phase3_review.py
+taskset -c 0 nice -n 10 python3 bench/phase3_validate.py --run
+taskset -c 0 nice -n 10 python3 bench/phase3_scheduler.py --run --workers 1
+taskset -c 0 nice -n 10 python3 bench/phase3_benchmark.py --run
 ```
 
-Preserve parent reports before rerunning. Phase 2 uses timestamped raw directories
-and frozen executable copies. The [protocol](docs/phase-2-validation-protocol.md)
-states which large Phase 1 traces are retained rather than regenerated. No test
-tolerance was loosened. Historical Phase 1 runners remain for the archived
-Phase 1 source; do not overwrite their reports by rerunning them against 0.2.
+The build remains Rust 1.90.0 with no registry dependencies. Raw gate/benchmark
+runs use timestamped directories and frozen executable copies; preserve parent
+reports before rerunning. The SIMD gate adds the complete K64 internal trace on
+the automatic CPU path. No tolerance was relaxed. Historical Phase 1/2 runners
+and reports describe those archived source versions; do not overwrite them with
+new runs. The one-CPU runners reject broad affinity and the scheduler gate rejects
+worker counts above one. Wall time is sensitive to shared CPU load; per-process
+CPU time and ranges are also reported.
 
 ## Source and package
 
@@ -173,13 +201,14 @@ Phase 1 source; do not overwrite their reports by rerunning them against 0.2.
 - `reference`, `tests/fixtures`, `bench`, `docs`: pinned C, synthetic inputs,
   reproducible evidence, derivations and limitations.
 
-Unsafe code remains confined to system math/formatting and owned gzip input.
+Unsafe code is confined to system math/formatting, owned gzip input and the
+checked, runtime-guarded AVX intrinsic module.
 Inference does not call C PSMC. Original MIT notices remain in translated sources
 and [LICENSE.psmc.txt](reference/LICENSE.psmc.txt). No user genome was accessed
 or uploaded. The supplied execution plan is context, not proof of implementation;
 this CPU milestone follows the user's explicit optimization request.
 
-The compact `psmc-rust-phase-2.zip` contains source, executable, fixtures and
+The compact `psmc-rust-phase-3-simd.zip` contains source, executable, fixtures and
 inspectable evidence. Large snapshots and build environments remain local with
 explicit omission hashes/reproduction instructions. See [PACKAGING.md](PACKAGING.md).
-The Phase 0 and Phase 1 archives remain unchanged.
+The Phase 0, Phase 1 and Phase 2 archives remain unchanged.

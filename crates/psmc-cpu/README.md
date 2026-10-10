@@ -1,4 +1,4 @@
-# Strict CPU workspace
+# Strict CPU workspace and SIMD
 
 `PreparedModel::new(&model)` creates one transition transpose and one array of
 emission-transition products for a borrowed immutable model. `Workspace::new(n)`
@@ -19,9 +19,9 @@ record, including duplicate records.
 The reference is `psmc-core/src/hmm.rs`, itself a literal translation of pinned
 `lh3/psmc` `khmm.c` commit
 `82fa2ada83ee463fe1251b562ae3d60e82d7ad6a`. This change only changes storage access
-and lifetime. It does not change a real-arithmetic formula or a binary64
-expression. No unsafe code, parallel reduction, structured factorization,
-`mul_add`, or fast-math is used.
+and lifetime. The generic storage path does not change a real-arithmetic formula or a binary64
+expression. Phase 3a adds isolated, guarded AVX intrinsics on independent lanes;
+there is no parallel reduction, structured factorization, `mul_add` or fast-math.
 
 For states `k,l = 0..n` and original sequence sites `u = 1..L`:
 
@@ -79,3 +79,26 @@ and source hashes, commands, raw outputs, exact-check status, medians, and a
 source/binary stability guard. Its synthetic three-record workloads have 13,203
 bins with 23 states and 52,803 bins with 64 states. Process wall time and RSS
 include the separate correctness check and cannot isolate kernel memory usage.
+
+## Phase 3a explicit SIMD
+
+`Workspace::with_simd(n, SimdMode::{Auto,Off,Avx})` controls dispatch. Prefer
+`workspace.prepare(&model)` to build only the layouts the selected path needs.
+`Workspace::new` selects automatically; `PreparedModel::new` also prepares the
+AVX layout when available, so the existing API remains usable. SIMD workspaces
+require that layout and reject incompatible preparation before numerical access.
+`simd_kernel()` reports `avx` or `scalar`; the latter may still use compiler-emitted
+baseline vector instructions. n<4 uses the scalar path.
+
+Forward and backward group four independent output states, keeping the reduction
+inside each lane in source order. Count kernels group four independent destination
+cells, preserving each cell's site order. All tails remain scalar. Safe wrappers
+check slice dimensions and hold a private runtime-detected AVX capability. The
+additional backward layout costs 3*n*n*8 bytes per prepared snapshot. No threads,
+FMA, approximate math, horizontal sums or new log/exp implementation are added.
+See ../../docs/phase-3-simd-derivation.md and ../../docs/phase-3-simd-report.md.
+
+The original isolated timing report above is historical Phase 2 evidence. For the
+new path, build `--example simd_bench`; its modes are dense/off/auto/avx. The Phase 3
+benchmark driver freezes this executable and runs off/avx sequentially. Do not
+infer a fourfold end-to-end speedup from vector width.

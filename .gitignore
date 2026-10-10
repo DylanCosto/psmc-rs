@@ -15,3 +15,9 @@ target/
 /bench/phase-2-benchmark/
 /bench/phase-2-profile/
 *.jsonl.gz
+
+/bench/phase-3-validation/
+/bench/phase-3-scheduler/
+/bench/phase-3-review/
+/bench/phase-3-benchmark/
+/bench/phase-3-profile/

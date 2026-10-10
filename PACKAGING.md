@@ -1,40 +1,38 @@
-# Phase 2 package contents
+# Phase 3a SIMD package contents
 
-`../psmc-rust-phase-2.zip` is a local source-and-evidence package rooted at
-`psmc-rs/`. It includes Rust 0.2 source, pinned toolchain/lockfile, `bin/psmc-rs`,
-the preserved `bin/psmc-rs-phase1`, synthetic fixtures, reference build scripts
-and licenses, derivations, validation/benchmark runners, machine-readable reports,
-ordinary raw evidence and `CHECKSUMS.sha256`. From the extracted root:
+`../psmc-rust-phase-3-simd.zip` is the local Rust 0.3 source-and-evidence package.
+It includes source, pinned toolchain/lockfile, `bin/psmc-rs`, preserved Phase 1/2
+executables, synthetic fixtures, pinned reference build scripts/licenses,
+derivations, exactness checks, benchmark runners, reports and ordinary raw output.
+No private genome was accessed or uploaded. Verify the extracted package with:
 
 ```sh
 sha256sum --check CHECKSUMS.sha256
 ```
 
-`bench/package_phase2.py` recreates the package, tests archive CRCs and verifies
-every member's SHA-256 against the source file. `bench/phase2-package-manifest.json`
-records exclusions. Build/runtime caches (`work/`, `target/`, `.git/`, Python
-caches), test symlinks and large compressed internal snapshot streams are excluded.
-`bench/phase2-snapshot-manifest.json` records each omitted stream's exact path,
-compressed size and SHA-256. The original Phase 1 ten-file snapshot manifest is
-also retained; its historical scope does not include new Phase 2 runs.
+`bench/package_phase3.py` recreates it under one-CPU affinity at reduced priority,
+checks archive CRCs and verifies every member against its SHA-256. The archive
+has a sibling `.zip.sha256` file. `bench/phase3-package-manifest.json` records
+exclusions. Build/runtime caches (`work/`, `target/`, `.git/`, Python caches), test
+symlinks and compressed internal JSONL snapshots are omitted. Exact snapshot
+paths, sizes and hashes are in `bench/phase3-snapshot-manifest.json`; full streams
+remain in the local project. Every snapshot event was compared before compression.
 
-Complete snapshots remain in the local project. Comparisons read every event
-before compression; packaging does not truncate correctness tests. Recreate
-Phase 2 snapshots with `python3 bench/phase2_validate.py --run` after rebuilding
-the pinned C references. Historical Phase 1 snapshots require the source in the
-unchanged Phase 1 archive and the commands in its snapshot manifest.
+Reproduce new snapshots by building the C references and `simd_bench`, then running
+`taskset -c CPU nice -n 10 python3 bench/phase3_validate.py --run` from the project.
+Use an allowed logical CPU. The new gate includes the full K64 trace for automatic
+AVX. Source and commands for historical snapshots are in the unchanged Phase 1/2
+archives and their manifests. Historical package/build reports describe those
+releases; only current Phase 3 reports identify the delivered executable.
 
-Both the preliminary and final Phase 2 validation runs remain as separately
-identified evidence. Only the final executable hash in the Phase 2 parent reports
-supports the delivered result. Corrected review failures and the initial model
-performance regression remain labeled historical; neither is silently deleted.
-The Phase 0 and Phase 1 archives are unchanged. Historical Phase 1 package/build
-manifests describe that prior release, not this archive's current source.
+The Linux binary is dynamically linked for the tested x86-64/glibc stack.
+`bench/phase-3-build.json` records compiler, system libraries, release settings and
+source digests. The default compiled ISA stays generic; guarded AVX functions are
+selected at runtime. `--simd off` exercises the generic CPU path on this host;
+physical no-AVX and ARM machines have not been tested. No cross-platform bitwise
+claim or globally native-only binary is implied.
 
-The Linux executable is dynamically linked for the tested x86-64/glibc stack.
-Shared dependencies, toolchain, profile and all build-source hashes are in
-`bench/phase-2-build.json`; Phase 1's binary has its own retained build record.
-Rebuild and rerun compatibility gates on another stack. C/PHLASH environments
-are rebuildable from their supplied scripts and are not distributed here.
-Local Git history is excluded from the zip; the source, derivations, tests and
-measurements are bundled together as a single reviewed milestone.
+Source, derivations, tests and measurements are committed together locally.
+Git history is excluded from this portable zip. Prior archives remain unchanged.
+Raw shared-host timing ranges and CPU time remain visible; packaging does not
+convert diagnostic measurements into a production or 10× claim.

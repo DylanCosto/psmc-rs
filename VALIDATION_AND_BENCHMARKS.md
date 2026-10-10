@@ -51,3 +51,14 @@ trajectories and all 30 fixed bootstraps, across worker counts and task order.
 Count/cache/profile metadata is additive and excluded from numerical output.
 Record snapshot cache bypass explicitly. Preserve previous evidence separately;
 no relaxed tolerance, changed algebra, reduced precision or CUDA is introduced.
+
+## Phase 3a extension — strict single-thread SIMD
+
+Run compiler inspection, isolated auto/off/AVX exactness and tail/dispatch tests,
+then complete C/Rust output and snapshot gates sequentially. Preserve all prior
+reports. Full 30-bootstrap comparisons are serial; multiworker validation and
+throughput are explicitly not_run under the user's resource restriction. Pin
+heavy jobs and descendants to one logical CPU, lower process priority, use one
+Cargo job and one test thread. Record CPU time as well as wall-time variation on
+the shared host. Strict parity remains exact; unavailable AVX and ARM require
+explicit fallback/not_run classification, not fictitious hardware validation.

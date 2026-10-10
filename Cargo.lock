@@ -4,7 +4,7 @@ version = 4
 
 [[package]]
 name = "psmc-cli"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "psmc-core",
  "psmc-cpu",
@@ -13,18 +13,18 @@ dependencies = [
 
 [[package]]
 name = "psmc-core"
-version = "0.2.0"
+version = "0.3.0"
 
 [[package]]
 name = "psmc-cpu"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "psmc-core",
 ]
 
 [[package]]
 name = "psmc-io"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "psmc-core",
 ]

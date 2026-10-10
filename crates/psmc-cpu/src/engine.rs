@@ -1,6 +1,6 @@
 //! Per-fit CPU engine. Cached counts exist only during one expectation call;
 //! the immutable model and encoded bytes therefore define their entire lifetime.
-use crate::{PreparedModel, Workspace};
+use crate::{SimdMode, Workspace};
 use psmc_core::{
     Sequence, Settings,
     em::{BackendStats, ExpectationBackend, Observer},
@@ -26,13 +26,19 @@ struct Cached {
 
 impl CpuBackend {
     pub fn new(states: usize) -> Self {
-        Self {
-            workspace: Workspace::new(states),
+        Self::with_simd(states, SimdMode::Auto).expect("auto SIMD always has a fallback")
+    }
+    pub fn with_simd(states: usize, mode: SimdMode) -> Result<Self, String> {
+        Ok(Self {
+            workspace: Workspace::with_simd(states, mode)?,
             model_workspace: ModelWorkspace::new(states),
             profile: false,
             cache_enabled: true,
             counters: BackendStats::default(),
-        }
+        })
+    }
+    pub fn simd_kernel(&self) -> &'static str {
+        self.workspace.simd_kernel()
     }
 }
 
@@ -50,7 +56,7 @@ impl ExpectationBackend for CpuBackend {
         iteration: usize,
         observer: &mut dyn Observer,
     ) -> io::Result<(Counts, f64)> {
-        let prepared = PreparedModel::new(model);
+        let prepared = self.workspace.prepare(model);
         let mut aggregate = Counts::zero(model.n);
         let mut likelihood = 0.0;
         // Only duplicated byte strings warrant a saved count matrix. HashMap
