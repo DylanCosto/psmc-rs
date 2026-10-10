@@ -1,3 +1,17 @@
+# Current local v0.4.1 optimization deliverable
+
+The current project contains the v0.4.1 CPU source and executable, an optional
+CUDA build, and the complete optimization campaign reports/runners. See
+[the campaign report](docs/optimization-exhaustion.md),
+[final build provenance](bench/exhaust-final-build.json),
+[evidence audit](bench/exhaust-audit.json) and
+[installed binary manifest](bench/exhaust-install.json).
+Previous CPU and CUDA executables remain under versioned names in `bin/`.
+No new portable zip is produced by this optimization milestone. The older zip
+archives, package manifests and `CHECKSUMS.sha256` below are historical snapshots;
+they do not describe the current working tree. Raw traces, prototype sources,
+public inputs and build environments remain local and excluded from Git.
+
 # Parallel milestone package contents
 
 `../psmc-rust-parallel.zip` adds the full-core benchmark and correctness evidence

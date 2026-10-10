@@ -1,0 +1,14 @@
+{
+  "cpu": {
+    "psmc_cpu::simd::x86::forward64": 86,
+    "psmc_cpu::simd::x86::backward64": 91,
+    "psmc_cpu::simd::x86::counts_sequence64": 166,
+    "psmc_cpu::Workspace::evaluate_impl": 2256
+  },
+  "refine": {
+    "psmc_cpu::simd::x86::forward64": 86,
+    "psmc_cpu::simd::x86::backward64": 91,
+    "psmc_cpu::simd::x86::counts_sequence64": 166,
+    "psmc_cpu::Workspace::evaluate_impl": 2256
+  }
+}

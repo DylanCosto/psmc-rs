@@ -1,0 +1,74 @@
+{
+  "status": "passed_exactness",
+  "kernel_sha256": "d0e1c04d09bf5207de751e27ba522e1b316366ca313bb402b1e582cd7509f921",
+  "ptx_sha256": "4af2a94ad279c9344071c506cce65073ee263e6afa85f378b8c19de701ccfe6a",
+  "options": [
+    "--gpu-architecture=compute_75",
+    "--fmad=false",
+    "--ftz=false",
+    "--prec-div=true"
+  ],
+  "cases": [
+    {
+      "batch": 1,
+      "states": 64,
+      "sites": 50001,
+      "cpu_messages_and_emissions_seconds": 0.041331933,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/cuda_fixture",
+        "50001",
+        "work/exhaust/resident/50001.bin"
+      ],
+      "fixture_sha256": "61da353934dab3ed3675c333f0e3caa9021b182ecb577ba531df61b0cee8757d",
+      "gpu_kernel_seconds": 0.6155843939923216,
+      "gpu_alloc_transfer_compute_seconds": 0.6658279039838817,
+      "mismatched_arrays": []
+    },
+    {
+      "batch": 8,
+      "states": 64,
+      "sites": 50001,
+      "cpu_messages_and_emissions_seconds": 0.038405916,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/cuda_fixture",
+        "50001",
+        "work/exhaust/resident/50001.bin"
+      ],
+      "fixture_sha256": "61da353934dab3ed3675c333f0e3caa9021b182ecb577ba531df61b0cee8757d",
+      "gpu_kernel_seconds": 0.6264815070026089,
+      "gpu_alloc_transfer_compute_seconds": 1.3384159129927866,
+      "mismatched_arrays": []
+    },
+    {
+      "batch": 16,
+      "states": 64,
+      "sites": 50001,
+      "cpu_messages_and_emissions_seconds": 0.041099035,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/cuda_fixture",
+        "50001",
+        "work/exhaust/resident/50001.bin"
+      ],
+      "fixture_sha256": "61da353934dab3ed3675c333f0e3caa9021b182ecb577ba531df61b0cee8757d",
+      "gpu_kernel_seconds": 0.614340051979525,
+      "gpu_alloc_transfer_compute_seconds": 1.9592216619930696,
+      "mismatched_arrays": []
+    },
+    {
+      "batch": 32,
+      "states": 64,
+      "sites": 50001,
+      "cpu_messages_and_emissions_seconds": 0.03762294,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/cuda_fixture",
+        "50001",
+        "work/exhaust/resident/50001.bin"
+      ],
+      "fixture_sha256": "61da353934dab3ed3675c333f0e3caa9021b182ecb577ba531df61b0cee8757d",
+      "gpu_kernel_seconds": 0.6167789579776581,
+      "gpu_alloc_transfer_compute_seconds": 3.2749276010144968,
+      "mismatched_arrays": []
+    }
+  ],
+  "decision": "Compare batched kernels to measured independent CPU messages; synthetic repeated fixture is an occupancy probe, not an inference speed claim."
+}

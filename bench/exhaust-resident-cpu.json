@@ -1,0 +1,315 @@
+{
+  "status": "measured",
+  "source_sha256": "cd76873638dcd0a8e35111ff5f4a5d69ac57e8e3f1400ae07e9a74b08cd92456",
+  "binary_sha256": "6a08db9980ac23bb5ba30db7d8480c008574924c94d368bbb46c3a2386e536a5",
+  "build_command": [
+    "cargo",
+    "build",
+    "--release",
+    "--locked",
+    "--offline",
+    "-p",
+    "psmc-cpu",
+    "--example",
+    "exhaust_resident_cpu"
+  ],
+  "runs": [
+    {
+      "jobs": 1,
+      "workers": 1,
+      "seconds": 0.039865871,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "1",
+        "1"
+      ],
+      "repeat": 0
+    },
+    {
+      "jobs": 1,
+      "workers": 1,
+      "seconds": 0.039597974,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "1",
+        "1"
+      ],
+      "repeat": 1
+    },
+    {
+      "jobs": 1,
+      "workers": 1,
+      "seconds": 0.040993004,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "1",
+        "1"
+      ],
+      "repeat": 2
+    },
+    {
+      "jobs": 1,
+      "workers": 1,
+      "seconds": 0.044184696,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "1",
+        "1"
+      ],
+      "repeat": 3
+    },
+    {
+      "jobs": 8,
+      "workers": 8,
+      "seconds": 0.110016286,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "8",
+        "8"
+      ],
+      "repeat": 0
+    },
+    {
+      "jobs": 8,
+      "workers": 8,
+      "seconds": 0.098656298,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "8",
+        "8"
+      ],
+      "repeat": 1
+    },
+    {
+      "jobs": 8,
+      "workers": 8,
+      "seconds": 0.081893,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "8",
+        "8"
+      ],
+      "repeat": 2
+    },
+    {
+      "jobs": 8,
+      "workers": 8,
+      "seconds": 0.081488508,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "8",
+        "8"
+      ],
+      "repeat": 3
+    },
+    {
+      "jobs": 16,
+      "workers": 10,
+      "seconds": 0.119042012,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "16",
+        "10"
+      ],
+      "repeat": 0
+    },
+    {
+      "jobs": 16,
+      "workers": 10,
+      "seconds": 0.114240727,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "16",
+        "10"
+      ],
+      "repeat": 1
+    },
+    {
+      "jobs": 16,
+      "workers": 10,
+      "seconds": 0.12733876,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "16",
+        "10"
+      ],
+      "repeat": 2
+    },
+    {
+      "jobs": 16,
+      "workers": 10,
+      "seconds": 0.118967432,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "16",
+        "10"
+      ],
+      "repeat": 3
+    },
+    {
+      "jobs": 16,
+      "workers": 16,
+      "seconds": 0.145886487,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "16",
+        "16"
+      ],
+      "repeat": 0
+    },
+    {
+      "jobs": 16,
+      "workers": 16,
+      "seconds": 0.138796052,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "16",
+        "16"
+      ],
+      "repeat": 1
+    },
+    {
+      "jobs": 16,
+      "workers": 16,
+      "seconds": 0.130097239,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "16",
+        "16"
+      ],
+      "repeat": 2
+    },
+    {
+      "jobs": 16,
+      "workers": 16,
+      "seconds": 0.131001498,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "16",
+        "16"
+      ],
+      "repeat": 3
+    },
+    {
+      "jobs": 32,
+      "workers": 10,
+      "seconds": 0.211489364,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "32",
+        "10"
+      ],
+      "repeat": 0
+    },
+    {
+      "jobs": 32,
+      "workers": 10,
+      "seconds": 0.215271007,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "32",
+        "10"
+      ],
+      "repeat": 1
+    },
+    {
+      "jobs": 32,
+      "workers": 10,
+      "seconds": 0.263587097,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "32",
+        "10"
+      ],
+      "repeat": 2
+    },
+    {
+      "jobs": 32,
+      "workers": 10,
+      "seconds": 0.197527022,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "32",
+        "10"
+      ],
+      "repeat": 3
+    },
+    {
+      "jobs": 32,
+      "workers": 16,
+      "seconds": 0.215220161,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "32",
+        "16"
+      ],
+      "repeat": 0
+    },
+    {
+      "jobs": 32,
+      "workers": 16,
+      "seconds": 0.219678958,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "32",
+        "16"
+      ],
+      "repeat": 1
+    },
+    {
+      "jobs": 32,
+      "workers": 16,
+      "seconds": 0.226123291,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "32",
+        "16"
+      ],
+      "repeat": 2
+    },
+    {
+      "jobs": 32,
+      "workers": 16,
+      "seconds": 0.223450598,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "32",
+        "16"
+      ],
+      "repeat": 3
+    }
+  ],
+  "scope": "Same 50001-site K64 synthetic model/observations as GPU probe; independent tasks with per-worker workspace. Includes CPU emission counts and log-likelihood; GPU probe omits those, so this comparison favors GPU.",
+  "medians": [
+    {
+      "jobs": 1,
+      "workers": 1,
+      "seconds": 0.040993004
+    },
+    {
+      "jobs": 8,
+      "workers": 8,
+      "seconds": 0.081893
+    },
+    {
+      "jobs": 16,
+      "workers": 10,
+      "seconds": 0.118967432
+    },
+    {
+      "jobs": 16,
+      "workers": 16,
+      "seconds": 0.131001498
+    },
+    {
+      "jobs": 32,
+      "workers": 10,
+      "seconds": 0.215271007
+    },
+    {
+      "jobs": 32,
+      "workers": 16,
+      "seconds": 0.223450598
+    }
+  ]
+}

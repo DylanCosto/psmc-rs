@@ -1,0 +1,30 @@
+{
+  "tiny_N2": {
+    "total": 1195,
+    "repeats": 26,
+    "adjacent": 0,
+    "path": "work/cuda/final-gates/tiny_N2-C.jsonl.gz",
+    "sha256": "0f04a03d37895444d40a160c1de34faf527e5b0c90e1711dcc34f1f75a6e556b"
+  },
+  "grid_N1": {
+    "total": 622,
+    "repeats": 21,
+    "adjacent": 0,
+    "path": "work/cuda/final-gates/grid_N1-C.jsonl.gz",
+    "sha256": "0d307817143586d5fee093d62b560ed1ceb3e623ce938e0dbd53784391c533c4"
+  },
+  "K23_N1": {
+    "total": 1944,
+    "repeats": 15,
+    "adjacent": 0,
+    "path": "work/cuda/final-gates/K23_N1-C.jsonl.gz",
+    "sha256": "727faa8b658e547e3fdcf3687f04bb30fcb6abb1655da4d5800a0c273eb02361"
+  },
+  "K64_N1": {
+    "total": 7577,
+    "repeats": 171,
+    "adjacent": 0,
+    "path": "work/cuda/final-gates/K64_N1-C.jsonl.gz",
+    "sha256": "b2025dd3d2689a8e7b5320a8dc925493955e2ea5f9e180955ec67bd4542e195a"
+  }
+}

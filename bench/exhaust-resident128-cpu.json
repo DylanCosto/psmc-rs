@@ -1,0 +1,109 @@
+{
+  "status": "measured",
+  "binary": "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+  "binary_sha256": "6a08db9980ac23bb5ba30db7d8480c008574924c94d368bbb46c3a2386e536a5",
+  "runner_sha256": "c03dce1792b9cd03d4adafe63510156a3a950039c7656c0f380b70d5c9dda1bf",
+  "scope": "Same 50001-site K64 synthetic model/observations as GPU probe; independent tasks with per-worker workspace. Includes CPU emission counts and log-likelihood; GPU probe omits those, so this comparison favors GPU.",
+  "runs": [
+    {
+      "jobs": 128,
+      "workers": 10,
+      "seconds": 0.61414116,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "128",
+        "10"
+      ],
+      "repeat": 0
+    },
+    {
+      "jobs": 128,
+      "workers": 10,
+      "seconds": 0.613359271,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "128",
+        "10"
+      ],
+      "repeat": 1
+    },
+    {
+      "jobs": 128,
+      "workers": 10,
+      "seconds": 0.611200459,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "128",
+        "10"
+      ],
+      "repeat": 2
+    },
+    {
+      "jobs": 128,
+      "workers": 10,
+      "seconds": 0.604610115,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "128",
+        "10"
+      ],
+      "repeat": 3
+    },
+    {
+      "jobs": 128,
+      "workers": 16,
+      "seconds": 0.633367106,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "128",
+        "16"
+      ],
+      "repeat": 0
+    },
+    {
+      "jobs": 128,
+      "workers": 16,
+      "seconds": 0.635332105,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "128",
+        "16"
+      ],
+      "repeat": 1
+    },
+    {
+      "jobs": 128,
+      "workers": 16,
+      "seconds": 0.627908152,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "128",
+        "16"
+      ],
+      "repeat": 2
+    },
+    {
+      "jobs": 128,
+      "workers": 16,
+      "seconds": 0.637163938,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/exhaust_resident_cpu",
+        "128",
+        "16"
+      ],
+      "repeat": 3
+    }
+  ],
+  "medians": [
+    {
+      "jobs": 128,
+      "workers": 10,
+      "seconds": 0.611200459
+    },
+    {
+      "jobs": 128,
+      "workers": 16,
+      "seconds": 0.635332105
+    }
+  ]
+}

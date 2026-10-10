@@ -42,7 +42,7 @@ For states `k,l = 0..n` and original sequence sites `u = 1..L`:
 - Counts start with zero initial-state counts and `1e-25` in every transition
   and emission cell. For `u=1..L-1`, each transition cell adds
   `(f[u,k] * ae[next,k,l]) * b[u+1,l]` and each emission cell adds
-  `(f[u,k] * b[u,k]) * s[u]`. Sites and states retain their original order;
+  `(f[u,k] * b[u,k]) * s[u]`. Within each count cell, sites retain their original order;
   therefore every cell sees the identical addend sequence. The final site's
   emission remains omitted. Initial counts retain
   `(initial[l] * emission[first,l]) * b[1,l]` and `+=` into zero.
@@ -102,3 +102,28 @@ The original isolated timing report above is historical Phase 2 evidence. For th
 new path, build `--example simd_bench`; its modes are dense/off/auto/avx. The Phase 3
 benchmark driver freezes this executable and runs off/avx sequentially. Do not
 infer a fourfold end-to-end speedup from vector width.
+
+## v0.4.1 ordered K64 kernels
+
+At 64 states with AVX, forward normalization uses independent four-lane divisions
+by the original scalar scale. The scale itself is still summed in ascending state
+order. Division is not replaced by reciprocal multiplication. Other state counts
+and forced scalar mode retain their previous normalization path.
+
+Transition counts use 16-site tiles. Each block holds two source rows by sixteen
+destinations (eight AVX accumulators), sharing loaded backward values between the
+two rows. Every accumulator starts with its prior tile's value and adds sites in
+ascending order with `(forward * ae) * next_backward`. Emission counts are then
+updated for that same tile using `(forward * backward) * scale`, preserving each
+symbol/state cell's ascending addends. Counts are initialized once per original
+record; the last site's emission remains omitted. No extra message buffers or
+sequence boundaries are introduced. The generic, scalar and dense paths remain.
+
+The safety wrappers validate every message, matrix, observation, scale and count
+shape. Direct tests cover unaligned slices, canaries, tile edges, masks, tiny
+initializers, signed zero, subnormals and nonfinite classes. The prior transition
+kernel remains test-only; the dense core remains the independent oracle.
+The complete 30-bootstrap acceptance gate measures 6.09% lower median elapsed
+time and 6.71% lower aggregate CPU time versus v0.3.3, with all three pairs faster.
+See ../../docs/optimization-exhaustion.md for full compatibility evidence, timing
+ranges, rejected alternatives and hardware/workload limitations.

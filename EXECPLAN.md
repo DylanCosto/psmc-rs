@@ -842,3 +842,121 @@ repetitions. Both selected configurations use 16 workers. The optional backend
 is functional and exact on the tested stack; it is not a whole-GPU inference
 implementation or a speedup claim. docs/cuda-report.md records all results,
 limitations, commands, repaired failures and the next possible experiment.
+
+## Remaining optimization exhaustion campaign — 2026-10-10
+
+Explicit user request: exhaust optimization opportunities before release/reliability
+work. This is a bounded, evidence-based search on the available machine, not a
+proof about every possible algorithm, compiler or future hardware.
+
+- [x] Inventory prior candidates, inspect current hotspots, and profile HG002 chr1.
+- [x] Screen additional ordered CPU count tiles and joint-source SIMD reuse.
+- [x] Probe CUDA stream-local pinned transfers, launch geometry and tile size;
+      assess independent-record overlap only if the measured bounds justify it.
+- [x] Investigate workload ordering and heterogeneous-core scheduling using all
+      30 unchanged HG001 seeds; inspect scaling/limits on the larger input.
+- [x] Revisit model/Q/compiler work only with a specific new mechanism or evidence.
+- [x] Confirm promising combined candidates on complete workloads and held-out
+      inputs, then run exact internal/C regressions for any production change.
+- [x] Publish the opportunity ledger, reproducible outcomes, limitations, optimized
+      deliverable or measured no-change decision, and commit before completion.
+
+Decision before new timings: candidate screens use fixed repetitions (one warmup
+and three measured rotations for complete single fits). Promotion requires all
+exactness gates, >=2% lower median full 30-bootstrap wall time, lower median CPU
+time, and >=2/3 faster alternating pairs following one warmup per configuration.
+No optional repetitions to rescue a failed result. GPU promotion additionally
+requires >=5% wall improvement versus the recommended CPU. Retain rejected
+prototypes and failed tests in separate evidence. Large HG002 timings are a
+held-out control; do not claim whole-genome results. Per-cell arithmetic and
+per-fit record aggregation remain ordered. No approximate mode is authorized.
+
+Progress: six initial CPU variants pass release differential units and 56 full
+C-output screens. Best initial HG001 median is 9.6429s (joint two-source,
+16-destination, 16-site counts) versus 10.0942s current-source CPU control.
+Two exact HG002 profiles attribute ~44.5% to transition counts, ~25.2% forward,
+~21.5% backward, ~4.1% other counts, and ~3.3% model/Q. Larger count tiles and
+joint-source refinements are being measured with a fixed local search.
+
+The additional full-fit screen passes 48 C comparisons. Explicit AVX forward
+normalization improves K64 timing (9.6718s vs 10.1560s control); smaller-state
+results do not justify extending the dispatch, so combined candidates will use
+this only for K64. Native target codegen does not improve the main workload.
+Full-model/Q memoization regresses K23 by 8–10% and adds memory; reject it for
+production. Retained C traces have only 0.8–3.4% repeated parameter evaluations,
+with no immediately repeated callbacks in the inspected traces.
+
+Four CUDA pinned/stream-local variants pass all five hardware unit tests each,
+including concurrency, tile boundaries, signed-zero/subnormal/nonfinite and PTX
+checks. Their full-fit and complete-batch performance remains pending. Production
+numerical source and published binaries remain unchanged during the screens.
+
+Progress: retain the existing 16-worker CPU policy. Both complete 30-fit scheduling
+rotations favor all 16 logical CPUs (49.34/49.88s); P-core-only and physical-only
+controls are slower. All 300 outputs match C with original bootstrap draws.
+The refined CPU tile gain is only ~0.8%, substantially below the initial screen.
+Combined K64 normalization/joint-source/emission-tile fusion is the provisional
+CPU candidate: full-fit median 9.7719s vs 10.0563s control; all screened outputs
+and the new direct IEEE/tile/missing/final-site-omission tests pass. Manual source
+unrolling regresses performance and is rejected. Provisional v0.4.1 source is
+staged in the working tree for final gates; installed binaries remain unchanged.
+
+GPU resident-message batching is exact for 1/8/16/32 records, but GPU kernels alone
+remain ~0.62s; the matching 32-record CPU control is ~0.22s including emission
+counts. A higher-occupancy 128-record control will bound that design further.
+Stream-local pinned transfers fail the single-fit speed screen. Complete GPU
+batches now test those variants, larger tiles, record lookahead, and CPU wait
+policies. Yielding/blocking is a newly identified mechanism because default CUDA
+synchronization may actively spin on a CPU core. Mixed CPU/GPU job allocation is
+also tested explicitly; no backend switch is a failure fallback.
+
+Search boundary: no new candidate families after the already prepared two/four-cell
+CUDA kernels, 128-record occupancy control, and mixed-device batches. These close
+the identified CPU/GPU mechanisms. Only a clearly promising measured combination
+may receive one fixed follow-up screen before the predeclared acceptance gate.
+This is an engineering exhaustion criterion for current hardware/strict arithmetic,
+not a proof about every possible future algorithm or parameter combination.
+
+Current GPU batch screens: CPU 48.95s, original CUDA 70.41s, pinned/stream variants
+65.51–66.95s, large original tile 64.90s, record lookahead 71.07s or 62.83s with a
+large tile, yielding waits 71.89s. All outputs remain exact. No GPU speed promotion
+is justified by these screens. Blocking-wait and mixed-device results are pending.
+
+One combined-device follow-up is predeclared before examining mixed-batch results:
+blocking waits cut aggregate CUDA CPU use from 531.5s to 365.85s, despite remaining
+slower in wall time (67.05s). Combine that CPU-resource saving with large-tile record
+lookahead and the provisional CPU kernel, and screen fixed GPU job counts 0/8/15/30
+once each. This explicitly tests whether CPU work can use the freed capacity.
+No further combination families will be added. Any promotion still requires fresh
+complete paired measurements against the fastest accepted CPU configuration.
+
+Final search outcomes: the frozen v0.4.1 CPU candidate passes all three measured
+30-bootstrap pairs: median 47.0875s vs 50.1408s, 6.09% less elapsed time and 6.71%
+less aggregate CPU time, essentially unchanged RSS. All 240 outputs/draws match
+C. Broader compatibility gates are running before installation.
+
+The remaining GPU screens are rejected for speed. Two/four cells per thread take
+66.45/67.23s vs CPU 48.90s. At 128 independent records, resident GPU messages take
+0.908s in kernels alone vs CPU 0.611/0.635s with 10/16 workers. The combined
+blocking/large-tile/lookahead prototype with 0/8/15/30 GPU jobs takes
+46.41/45.70/53.38/61.60s. The best difference is 1.53%, below the 5% promotion
+threshold; larger GPU shares save CPU consumption but increase elapsed time.
+No more candidate families or optional timing repetitions will be added.
+
+Completion: v0.4.1 passes 39 debug and 43 release unit tests (including all hardware
+CUDA tests in release), 340 C regressions, ten ordered internal traces, 66 extended
+fixtures, eight full human C-output controls, 60 synthetic scheduler fits and two
+optional-CUDA full human controls. HG001/HG002 continuous-input two-pair means
+improve 4.62%/8.40%; the primary 30-bootstrap gate remains the release decision.
+The final audit rechecks 204 single-fit screen outputs and 1,230 full human batch
+outputs/draws across 41 batches. No numerical mismatches occur.
+
+Installed the frozen CPU v0.4.1 as bin/psmc-rs and bin/psmc-rs-v0.4.1; retained
+v0.3.3. Updated the optional CUDA executable only for shared CPU normalization
+and version text, preserving the original v0.4.0 binary; no experimental GPU
+optimization is promoted. Full provenance is in bench/exhaust-audit.json and
+bench/exhaust-install.json. docs/optimization-exhaustion.md closes the ledger.
+All credible identified opportunities are implemented, measured/rejected or
+bounded by explicit exactness/hardware/data constraints. Source, derivations,
+tests and timings are committed together. Broader input validation/reliability
+is the next permitted milestone; no new optimization family is left pending.

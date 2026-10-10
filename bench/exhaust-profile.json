@@ -1,0 +1,267 @@
+{
+  "status": "passed",
+  "diagnostic_provenance_sha256": "22144f5e9e159e5f2ee5d39ccf7513bf837b2103029ae9dc2bd7afd19c82174d",
+  "binary_sha256": "c6cebfbd95fa211ffbba3d9139be6ef0156b0b54b83e0e319b2ef5c22cc75683",
+  "input_sha256": "16d0f60777857fc724d46464da84c9b46c0755d3dbd7f678dfc88f1caed9bc14",
+  "oracle_sha256": "da38b103fea805cc9fe8497d88e85d1ed90e492fc7ab903823da71e55a65f3cf",
+  "runs": [
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "work/cuda/profile/source/target/release/psmc-rs",
+        "--backend",
+        "cpu",
+        "--seed",
+        "42",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/cpu-next/hg002/HG002_GRCh38_chr1.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 65.5003749729949,
+      "time_wall_seconds": 65.49,
+      "user_seconds": 64.74,
+      "system_seconds": 0.74,
+      "peak_rss_kib": 2515080,
+      "output_sha256": "7e8b8f71b347d38043209a722ebe90e3c6665c88d6abf99c1b0c0b48ce133357",
+      "output": "work/exhaust/profile/hg002-0.psmc",
+      "optimizer_evaluations": [
+        4886,
+        4354,
+        4775,
+        4007,
+        4054,
+        3735,
+        4245,
+        3777,
+        3596,
+        3965,
+        3465,
+        3530,
+        4128,
+        3718,
+        3882,
+        3147,
+        3492,
+        3540,
+        3355,
+        3713,
+        3356,
+        3706,
+        3137,
+        3307,
+        3548,
+        3022,
+        3097,
+        3282,
+        3531,
+        3227
+      ],
+      "nonfinite_records_beyond_initial_RI": [],
+      "exact": true,
+      "profile": {
+        "clock": "CLOCK_THREAD_CPUTIME_ID",
+        "sections": {
+          "expectation_inclusive": {
+            "nanoseconds": 63172211958,
+            "calls": 30
+          },
+          "prepare": {
+            "nanoseconds": 690134,
+            "calls": 30
+          },
+          "model_update": {
+            "nanoseconds": 573732236,
+            "calls": 110577
+          },
+          "q": {
+            "nanoseconds": 1621913817,
+            "calls": 110607
+          },
+          "normalizer": {
+            "nanoseconds": 579547,
+            "calls": 30
+          },
+          "workspace_setup": {
+            "nanoseconds": 694843369,
+            "calls": 30
+          },
+          "forward": {
+            "nanoseconds": 16528419140,
+            "calls": 30
+          },
+          "backward": {
+            "nanoseconds": 14047831445,
+            "calls": 30
+          },
+          "likelihood_check": {
+            "nanoseconds": 75241586,
+            "calls": 30
+          },
+          "counts": {
+            "nanoseconds": 31796583147,
+            "calls": 30
+          },
+          "fit_process_main": {
+            "nanoseconds": 65489973756,
+            "calls": 1
+          },
+          "iteration_inclusive": {
+            "nanoseconds": 65404948274,
+            "calls": 30
+          },
+          "transition_counts64": {
+            "nanoseconds": 29094589217,
+            "calls": 30
+          },
+          "emissions_and_other_counts": {
+            "nanoseconds": 2701886533,
+            "calls": 30
+          }
+        },
+        "log_calls": 0,
+        "exp_calls": 0,
+        "clock_ns_per_call": 136.4556
+      }
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "work/cuda/profile/source/target/release/psmc-rs",
+        "--backend",
+        "cpu",
+        "--seed",
+        "42",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/cpu-next/hg002/HG002_GRCh38_chr1.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 65.52646412298782,
+      "time_wall_seconds": 65.52,
+      "user_seconds": 64.77,
+      "system_seconds": 0.74,
+      "peak_rss_kib": 2514812,
+      "output_sha256": "7e8b8f71b347d38043209a722ebe90e3c6665c88d6abf99c1b0c0b48ce133357",
+      "output": "work/exhaust/profile/hg002-1.psmc",
+      "optimizer_evaluations": [
+        4886,
+        4354,
+        4775,
+        4007,
+        4054,
+        3735,
+        4245,
+        3777,
+        3596,
+        3965,
+        3465,
+        3530,
+        4128,
+        3718,
+        3882,
+        3147,
+        3492,
+        3540,
+        3355,
+        3713,
+        3356,
+        3706,
+        3137,
+        3307,
+        3548,
+        3022,
+        3097,
+        3282,
+        3531,
+        3227
+      ],
+      "nonfinite_records_beyond_initial_RI": [],
+      "exact": true,
+      "profile": {
+        "clock": "CLOCK_THREAD_CPUTIME_ID",
+        "sections": {
+          "expectation_inclusive": {
+            "nanoseconds": 63207847707,
+            "calls": 30
+          },
+          "prepare": {
+            "nanoseconds": 699492,
+            "calls": 30
+          },
+          "model_update": {
+            "nanoseconds": 563037497,
+            "calls": 110577
+          },
+          "q": {
+            "nanoseconds": 1621143439,
+            "calls": 110607
+          },
+          "normalizer": {
+            "nanoseconds": 588698,
+            "calls": 30
+          },
+          "workspace_setup": {
+            "nanoseconds": 700365210,
+            "calls": 30
+          },
+          "forward": {
+            "nanoseconds": 16473536826,
+            "calls": 30
+          },
+          "backward": {
+            "nanoseconds": 14082259191,
+            "calls": 30
+          },
+          "likelihood_check": {
+            "nanoseconds": 75819519,
+            "calls": 30
+          },
+          "counts": {
+            "nanoseconds": 31846200518,
+            "calls": 30
+          },
+          "fit_process_main": {
+            "nanoseconds": 65516374644,
+            "calls": 1
+          },
+          "iteration_inclusive": {
+            "nanoseconds": 65429734045,
+            "calls": 30
+          },
+          "transition_counts64": {
+            "nanoseconds": 29164929541,
+            "calls": 30
+          },
+          "emissions_and_other_counts": {
+            "nanoseconds": 2681148324,
+            "calls": 30
+          }
+        },
+        "log_calls": 0,
+        "exp_calls": 0,
+        "clock_ns_per_call": 132.3728
+      }
+    }
+  ]
+}

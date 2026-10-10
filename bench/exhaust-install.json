@@ -1,0 +1,13 @@
+{
+  "status": "installed",
+  "runner_sha256": "a3ca5ce548e7de4e85111b0b9ee8ba03d18082665735b7e1039fcae29b4a52de",
+  "audit_sha256": "d833a13966024b810cb612e50f6c5e801f8a2122f223d857a157d5edac09c30b",
+  "files": {
+    "bin/psmc-rs": "566883bce56317b8d1720551373959fc3e2808538977240a45ff656cf9ebff43",
+    "bin/psmc-rs-v0.4.1": "566883bce56317b8d1720551373959fc3e2808538977240a45ff656cf9ebff43",
+    "bin/psmc-rs-v0.3.3": "f0c3282e87e3eed0cc31c63a438429c19ad47cedec4c56c1150cc8520838e305",
+    "bin/psmc-rs-cuda": "4763281272d642f10dc42ac0879676b99d9f19158b0bf17bcf45de942fa6b8ff",
+    "bin/psmc-rs-cuda-v0.4.0": "60c1499386096d7c5412c822ab8cf635af716ffc1399804f7dc3bb05b893f15c"
+  },
+  "recommendation": "Use --backend cpu. Optional CUDA remains experimental; no GPU speed promotion."
+}

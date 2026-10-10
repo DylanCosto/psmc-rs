@@ -1,12 +1,18 @@
 # PSMC in Rust — SIMD, parallel bootstraps and optional CUDA
 
 This Rust workspace implements the original PSMC model, full expected counts,
-Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.4.0
-adds an optional experimental CUDA transition-count backend. See the
+Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.4.1
+adds ordered 64-state AVX normalization, joint-source transition tiles and emission
+updates within those tiles. The complete 30-bootstrap acceptance benchmark has
+6.1% lower median elapsed time and 6.7% lower aggregate CPU time than v0.3.3,
+with essentially unchanged memory. See the
+[optimization campaign](docs/optimization-exhaustion.md) for exactness gates,
+all rejected alternatives and hardware/workload limits. Version 0.4.0 introduced
+the optional experimental CUDA transition-count backend. See the
 [CUDA implementation and usage](crates/psmc-cuda/README.md) and
-[CUDA milestone report](docs/cuda-report.md). Version 0.3.3
-widens the ordered 64-state AVX message and count kernels to 32 independent
-destinations. The eight-site count tiles and bounded message capacity remain. Each fit uses one numerical
+[CUDA milestone report](docs/cuda-report.md). Version 0.3.3's ordered AVX message
+kernels remain; v0.4.1 counts use two source rows, sixteen destinations and
+sixteen-site tiles. Bounded message capacity remains. Each fit uses one numerical
 thread; independent bootstrap fits can use all available CPUs. Reusable
 buffers, exact repeated-block caching and the dense oracle remain available. Double precision, summation order,
 sequence boundaries and the statistical method are preserved.
@@ -29,12 +35,13 @@ The [Phase 1 report](docs/phase-1-report.md) and
 The CUDA backend preserves ordered double-precision counts while messages, model
 updates and optimization remain on the CPU. It requires an explicit `cuda` Cargo
 feature and `--backend cuda`; normal CPU builds require no NVIDIA installation.
-On this RTX 5060 Ti, CUDA takes 64.0 seconds versus 49.6 seconds for the optimized
-CPU on 30 human bootstraps, so CPU remains recommended. CUDA uses less aggregate
-CPU time but is experimental. The isolated GPU message prototype is retained
-only as benchmark evidence.
-The existing `bin/psmc-rs` CPU executable is preserved; the optional GPU executable
-is delivered separately as `bin/psmc-rs-cuda`.
+The original CUDA campaign measured 64.0 seconds versus CPU 49.6 seconds on 30
+human bootstraps. The v0.4.1 campaign tested transfer/stream changes, tile sizes,
+launch geometry, wait policies, record overlap, mixed-device scheduling and
+resident messages; no GPU option passed the speed-promotion threshold. CPU remains
+recommended. GPU use can reduce aggregate CPU consumption while taking longer.
+The optional GPU executable is separate as `bin/psmc-rs-cuda`; experimental
+optimization prototypes remain benchmark evidence only.
 
 ## Build and run
 
@@ -48,7 +55,10 @@ target/release/psmc-rs --backend cpu --seed 42 -p '4+5*3+4' -N 30 \
   -t 15 -r 4 -I 0 -o work/example.psmc tests/fixtures/workload.psmcfa
 ```
 
-The supplied executable is `bin/psmc-rs`; `bin/psmc-rs-v0.3.2` preserves the
+The supplied CPU executable is `bin/psmc-rs` (also `bin/psmc-rs-v0.4.1`).
+`bin/psmc-rs-v0.3.3` preserves the preceding recommended CPU build;
+`bin/psmc-rs-cuda-v0.4.0` preserves the original optional GPU build.
+`bin/psmc-rs-v0.3.2` preserves the
 previous release, and `bin/psmc-rs-v0.3.1` the earlier CPU release; `bin/psmc-rs-phase3a` preserves the earlier SIMD executable;
 `bin/psmc-rs-phase2` preserves the prior
 optimized CPU release and `bin/psmc-rs-phase1` the original dense release. Rust 1.90.0 is pinned and must already be installed for
@@ -77,7 +87,7 @@ supported. Records remain independent HMM sequences; missing sites carry transit
 | `--snapshot FILE` | Test-only JSONL matrices, messages, counts and optimizer callbacks |
 
 The original `-c` and simulation option `-S` are explicitly rejected. `-S` is
-not a seed option. Equivalent/research modes, GPU kernels, VCF/long-read input,
+not a seed option. Equivalent/research modes, VCF/long-read input,
 checkpoint/resume and new plotting commands are not implemented.
 
 ## Run independent bootstraps
@@ -92,8 +102,9 @@ bin/psmc-rs bootstrap --backend cpu --replicates 30 --workers 16 \
 ```
 
 The current full-core configuration uses **16 workers** on this tested 16-logical-CPU
-host. The v0.3.3 campaign retested 8/10/16 workers: 16 had the shortest elapsed
-time, while 10 physical-core workers used less total CPU time. Omit `--workers` to request the available CPU count on another machine;
+host. The v0.4.1 campaign retested all logical CPUs, physical cores, performance
+cores and lower worker counts: 16 had the shortest elapsed time, while physical
+cores used less total CPU time. Omit `--workers` to request the available CPU count on another machine;
 memory admission may reduce it. Single fits remain single-threaded. The parallel
 milestone validates the existing 0.3.1 queue; the slower experimental scheduling
 change was rejected. Historical SIMD measurements used one worker.
@@ -235,7 +246,8 @@ and [LICENSE.psmc.txt](reference/LICENSE.psmc.txt). No user genome was accessed
 or uploaded. The supplied execution plan is context, not proof of implementation;
 this CPU milestone follows the user's explicit optimization request.
 
-The compact `psmc-rust-phase-3-simd.zip` contains source, executable, fixtures and
-inspectable evidence. Large snapshots and build environments remain local with
-explicit omission hashes/reproduction instructions. See [PACKAGING.md](PACKAGING.md).
-The Phase 0, Phase 1 and Phase 2 archives remain unchanged.
+The current local v0.4.1 source, executables and optimization evidence are in this
+project. Older zip archives and their checksums describe their historical
+releases; they are unchanged. Large snapshots and disposable build environments
+remain local. See [PACKAGING.md](PACKAGING.md) and the
+[current campaign report](docs/optimization-exhaustion.md) for scope and reproduction.

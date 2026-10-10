@@ -86,6 +86,16 @@ impl Avx {
         unreachable!("AVX capability is never constructed on this architecture");
     }
 
+    pub(crate) fn normalize(self, out: &mut [f64], scale: f64) {
+        #[cfg(target_arch = "x86_64")]
+        // SAFETY: detected AVX capability; complete four-lane chunks and scalar tail.
+        unsafe {
+            x86::normalize(out, scale);
+        }
+        #[cfg(not(target_arch = "x86_64"))]
+        unreachable!("AVX capability unavailable");
+    }
+
     pub(crate) fn backward(self, out: &mut [f64], next: &[f64], transpose: &[f64], scale: f64) {
         let n = out.len();
         assert_eq!(next.len(), n);
@@ -106,6 +116,7 @@ impl Avx {
         unreachable!("AVX capability is never constructed on this architecture");
     }
 
+    #[cfg(test)]
     pub(crate) fn counts_sequence64(
         self,
         counts: &mut [f64],
@@ -135,6 +146,47 @@ impl Avx {
         unreachable!("AVX capability is never constructed on this architecture");
     }
 
+    pub(crate) fn counts_emissions64(
+        self,
+        counts: &mut [f64],
+        observations: &[u8],
+        forward: &[f64],
+        backward: &[f64],
+        products: &[f64],
+        emissions: &mut [f64],
+        scales: &[f64],
+    ) {
+        assert!(!observations.is_empty());
+        assert!(observations.iter().all(|&z| z <= 2));
+        let cells = observations
+            .len()
+            .checked_add(1)
+            .and_then(|r| r.checked_mul(64))
+            .expect("message size overflow");
+        assert_eq!(counts.len(), 4096);
+        assert_eq!(emissions.len(), 192);
+        assert_eq!(scales.len(), observations.len() + 1);
+        assert_eq!(products.len(), 3 * 4096);
+        assert_eq!(forward.len(), cells);
+        assert_eq!(backward.len(), cells);
+        #[cfg(target_arch = "x86_64")]
+        // SAFETY: capability checks AVX; validated exact dimensions and symbols
+        // bound every complete 4-lane load/store. Tiles never add HMM boundaries.
+        unsafe {
+            x86::counts_emissions64(
+                counts,
+                observations,
+                forward,
+                backward,
+                products,
+                emissions,
+                scales,
+            )
+        }
+        #[cfg(not(target_arch = "x86_64"))]
+        unreachable!("AVX capability is never constructed on this architecture");
+    }
+
     pub(crate) fn counts(self, counts: &mut [f64], forward: &[f64], product: &[f64], next: &[f64]) {
         let n = forward.len();
         assert_eq!(next.len(), n);
@@ -155,6 +207,20 @@ impl Avx {
 #[cfg(target_arch = "x86_64")]
 mod x86 {
     use std::arch::x86_64::*;
+    #[target_feature(enable = "avx")]
+    pub(super) unsafe fn normalize(out: &mut [f64], scale: f64) {
+        unsafe {
+            let v = _mm256_set1_pd(scale);
+            let end = out.len() / 4 * 4;
+            for k in (0..end).step_by(4) {
+                let p = out.as_mut_ptr().add(k);
+                _mm256_storeu_pd(p, _mm256_div_pd(_mm256_loadu_pd(p), v));
+            }
+            for value in &mut out[end..] {
+                *value /= scale;
+            }
+        }
+    }
 
     #[target_feature(enable = "avx")]
     pub(super) unsafe fn forward(
@@ -356,6 +422,7 @@ mod x86 {
             }
         }
     }
+    #[cfg(test)]
     #[target_feature(enable = "avx")]
     pub(super) unsafe fn counts_sequence64(
         counts: &mut [f64],
@@ -364,95 +431,158 @@ mod x86 {
         backward: &[f64],
         products: &[f64],
     ) {
-        // SAFETY: wrapper checks 64-state shapes and symbols; l+31<=63.
-        // Every cell adds sites in original order, with two unfused multiplies.
+        // Independent count cells; original ascending sites and multiply grouping.
+        // SAFETY: validated K64 shapes; k advances by 2 and l by 16,
+        // so both source rows and all four-lane destination loads stay in bounds.
         unsafe {
-            for begin in (1..observations.len()).step_by(8) {
-                let end = (begin + 8).min(observations.len());
-                for k in 0..64 {
-                    for l in (0..64).step_by(32) {
-                        let mut sum0 = _mm256_loadu_pd(counts.as_ptr().add(k * 64 + l + 0));
-                        let mut sum1 = _mm256_loadu_pd(counts.as_ptr().add(k * 64 + l + 4));
-                        let mut sum2 = _mm256_loadu_pd(counts.as_ptr().add(k * 64 + l + 8));
-                        let mut sum3 = _mm256_loadu_pd(counts.as_ptr().add(k * 64 + l + 12));
-                        let mut sum4 = _mm256_loadu_pd(counts.as_ptr().add(k * 64 + l + 16));
-                        let mut sum5 = _mm256_loadu_pd(counts.as_ptr().add(k * 64 + l + 20));
-                        let mut sum6 = _mm256_loadu_pd(counts.as_ptr().add(k * 64 + l + 24));
-                        let mut sum7 = _mm256_loadu_pd(counts.as_ptr().add(k * 64 + l + 28));
+            for begin in (1..observations.len()).step_by(16) {
+                let end = (begin + 16).min(observations.len());
+                for k in (0..64).step_by(2) {
+                    for l in (0..64).step_by(16) {
+                        let mut sum0_0 = _mm256_loadu_pd(counts.as_ptr().add((k + 0) * 64 + l + 0));
+                        let mut sum0_1 = _mm256_loadu_pd(counts.as_ptr().add((k + 0) * 64 + l + 4));
+                        let mut sum0_2 = _mm256_loadu_pd(counts.as_ptr().add((k + 0) * 64 + l + 8));
+                        let mut sum0_3 =
+                            _mm256_loadu_pd(counts.as_ptr().add((k + 0) * 64 + l + 12));
+                        let mut sum1_0 = _mm256_loadu_pd(counts.as_ptr().add((k + 1) * 64 + l + 0));
+                        let mut sum1_1 = _mm256_loadu_pd(counts.as_ptr().add((k + 1) * 64 + l + 4));
+                        let mut sum1_2 = _mm256_loadu_pd(counts.as_ptr().add((k + 1) * 64 + l + 8));
+                        let mut sum1_3 =
+                            _mm256_loadu_pd(counts.as_ptr().add((k + 1) * 64 + l + 12));
                         for u in begin..end {
-                            let f = _mm256_set1_pd(*forward.get_unchecked(u * 64 + k));
                             let row = *observations.get_unchecked(u) as usize * 4096 + k * 64 + l;
                             let next = (u + 1) * 64 + l;
-                            let first0 =
-                                _mm256_mul_pd(f, _mm256_loadu_pd(products.as_ptr().add(row + 0)));
-                            let term0 = _mm256_mul_pd(
-                                first0,
-                                _mm256_loadu_pd(backward.as_ptr().add(next + 0)),
-                            );
-                            sum0 = _mm256_add_pd(sum0, term0);
-                            let first1 =
-                                _mm256_mul_pd(f, _mm256_loadu_pd(products.as_ptr().add(row + 4)));
-                            let term1 = _mm256_mul_pd(
-                                first1,
-                                _mm256_loadu_pd(backward.as_ptr().add(next + 4)),
-                            );
-                            sum1 = _mm256_add_pd(sum1, term1);
-                            let first2 =
-                                _mm256_mul_pd(f, _mm256_loadu_pd(products.as_ptr().add(row + 8)));
-                            let term2 = _mm256_mul_pd(
-                                first2,
-                                _mm256_loadu_pd(backward.as_ptr().add(next + 8)),
-                            );
-                            sum2 = _mm256_add_pd(sum2, term2);
-                            let first3 =
-                                _mm256_mul_pd(f, _mm256_loadu_pd(products.as_ptr().add(row + 12)));
-                            let term3 = _mm256_mul_pd(
-                                first3,
-                                _mm256_loadu_pd(backward.as_ptr().add(next + 12)),
-                            );
-                            sum3 = _mm256_add_pd(sum3, term3);
-                            let first4 =
-                                _mm256_mul_pd(f, _mm256_loadu_pd(products.as_ptr().add(row + 16)));
-                            let term4 = _mm256_mul_pd(
-                                first4,
-                                _mm256_loadu_pd(backward.as_ptr().add(next + 16)),
-                            );
-                            sum4 = _mm256_add_pd(sum4, term4);
-                            let first5 =
-                                _mm256_mul_pd(f, _mm256_loadu_pd(products.as_ptr().add(row + 20)));
-                            let term5 = _mm256_mul_pd(
-                                first5,
-                                _mm256_loadu_pd(backward.as_ptr().add(next + 20)),
-                            );
-                            sum5 = _mm256_add_pd(sum5, term5);
-                            let first6 =
-                                _mm256_mul_pd(f, _mm256_loadu_pd(products.as_ptr().add(row + 24)));
-                            let term6 = _mm256_mul_pd(
-                                first6,
-                                _mm256_loadu_pd(backward.as_ptr().add(next + 24)),
-                            );
-                            sum6 = _mm256_add_pd(sum6, term6);
-                            let first7 =
-                                _mm256_mul_pd(f, _mm256_loadu_pd(products.as_ptr().add(row + 28)));
-                            let term7 = _mm256_mul_pd(
-                                first7,
-                                _mm256_loadu_pd(backward.as_ptr().add(next + 28)),
-                            );
-                            sum7 = _mm256_add_pd(sum7, term7);
+                            let f0 = _mm256_set1_pd(*forward.get_unchecked(u * 64 + k + 0));
+                            let f1 = _mm256_set1_pd(*forward.get_unchecked(u * 64 + k + 1));
+                            let b0 = _mm256_loadu_pd(backward.as_ptr().add(next + 0));
+                            let first0_0 =
+                                _mm256_mul_pd(f0, _mm256_loadu_pd(products.as_ptr().add(row + 0)));
+                            sum0_0 = _mm256_add_pd(sum0_0, _mm256_mul_pd(first0_0, b0));
+                            let first1_0 =
+                                _mm256_mul_pd(f1, _mm256_loadu_pd(products.as_ptr().add(row + 64)));
+                            sum1_0 = _mm256_add_pd(sum1_0, _mm256_mul_pd(first1_0, b0));
+                            let b1 = _mm256_loadu_pd(backward.as_ptr().add(next + 4));
+                            let first0_1 =
+                                _mm256_mul_pd(f0, _mm256_loadu_pd(products.as_ptr().add(row + 4)));
+                            sum0_1 = _mm256_add_pd(sum0_1, _mm256_mul_pd(first0_1, b1));
+                            let first1_1 =
+                                _mm256_mul_pd(f1, _mm256_loadu_pd(products.as_ptr().add(row + 68)));
+                            sum1_1 = _mm256_add_pd(sum1_1, _mm256_mul_pd(first1_1, b1));
+                            let b2 = _mm256_loadu_pd(backward.as_ptr().add(next + 8));
+                            let first0_2 =
+                                _mm256_mul_pd(f0, _mm256_loadu_pd(products.as_ptr().add(row + 8)));
+                            sum0_2 = _mm256_add_pd(sum0_2, _mm256_mul_pd(first0_2, b2));
+                            let first1_2 =
+                                _mm256_mul_pd(f1, _mm256_loadu_pd(products.as_ptr().add(row + 72)));
+                            sum1_2 = _mm256_add_pd(sum1_2, _mm256_mul_pd(first1_2, b2));
+                            let b3 = _mm256_loadu_pd(backward.as_ptr().add(next + 12));
+                            let first0_3 =
+                                _mm256_mul_pd(f0, _mm256_loadu_pd(products.as_ptr().add(row + 12)));
+                            sum0_3 = _mm256_add_pd(sum0_3, _mm256_mul_pd(first0_3, b3));
+                            let first1_3 =
+                                _mm256_mul_pd(f1, _mm256_loadu_pd(products.as_ptr().add(row + 76)));
+                            sum1_3 = _mm256_add_pd(sum1_3, _mm256_mul_pd(first1_3, b3));
                         }
-                        _mm256_storeu_pd(counts.as_mut_ptr().add(k * 64 + l + 0), sum0);
-                        _mm256_storeu_pd(counts.as_mut_ptr().add(k * 64 + l + 4), sum1);
-                        _mm256_storeu_pd(counts.as_mut_ptr().add(k * 64 + l + 8), sum2);
-                        _mm256_storeu_pd(counts.as_mut_ptr().add(k * 64 + l + 12), sum3);
-                        _mm256_storeu_pd(counts.as_mut_ptr().add(k * 64 + l + 16), sum4);
-                        _mm256_storeu_pd(counts.as_mut_ptr().add(k * 64 + l + 20), sum5);
-                        _mm256_storeu_pd(counts.as_mut_ptr().add(k * 64 + l + 24), sum6);
-                        _mm256_storeu_pd(counts.as_mut_ptr().add(k * 64 + l + 28), sum7);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 0) * 64 + l + 0), sum0_0);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 0) * 64 + l + 4), sum0_1);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 0) * 64 + l + 8), sum0_2);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 0) * 64 + l + 12), sum0_3);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 1) * 64 + l + 0), sum1_0);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 1) * 64 + l + 4), sum1_1);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 1) * 64 + l + 8), sum1_2);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 1) * 64 + l + 12), sum1_3);
                     }
                 }
             }
         }
     }
+    #[target_feature(enable = "avx")]
+    pub(super) unsafe fn counts_emissions64(
+        counts: &mut [f64],
+        observations: &[u8],
+        forward: &[f64],
+        backward: &[f64],
+        products: &[f64],
+        emissions: &mut [f64],
+        scales: &[f64],
+    ) {
+        // Independent count cells; original ascending sites and multiply grouping.
+        // SAFETY: validated K64 shapes; k advances by 2 and l by 16,
+        // so both source rows and all four-lane destination loads stay in bounds.
+        unsafe {
+            for begin in (1..observations.len()).step_by(16) {
+                let end = (begin + 16).min(observations.len());
+                for k in (0..64).step_by(2) {
+                    for l in (0..64).step_by(16) {
+                        let mut sum0_0 = _mm256_loadu_pd(counts.as_ptr().add((k + 0) * 64 + l + 0));
+                        let mut sum0_1 = _mm256_loadu_pd(counts.as_ptr().add((k + 0) * 64 + l + 4));
+                        let mut sum0_2 = _mm256_loadu_pd(counts.as_ptr().add((k + 0) * 64 + l + 8));
+                        let mut sum0_3 =
+                            _mm256_loadu_pd(counts.as_ptr().add((k + 0) * 64 + l + 12));
+                        let mut sum1_0 = _mm256_loadu_pd(counts.as_ptr().add((k + 1) * 64 + l + 0));
+                        let mut sum1_1 = _mm256_loadu_pd(counts.as_ptr().add((k + 1) * 64 + l + 4));
+                        let mut sum1_2 = _mm256_loadu_pd(counts.as_ptr().add((k + 1) * 64 + l + 8));
+                        let mut sum1_3 =
+                            _mm256_loadu_pd(counts.as_ptr().add((k + 1) * 64 + l + 12));
+                        for u in begin..end {
+                            let row = *observations.get_unchecked(u) as usize * 4096 + k * 64 + l;
+                            let next = (u + 1) * 64 + l;
+                            let f0 = _mm256_set1_pd(*forward.get_unchecked(u * 64 + k + 0));
+                            let f1 = _mm256_set1_pd(*forward.get_unchecked(u * 64 + k + 1));
+                            let b0 = _mm256_loadu_pd(backward.as_ptr().add(next + 0));
+                            let first0_0 =
+                                _mm256_mul_pd(f0, _mm256_loadu_pd(products.as_ptr().add(row + 0)));
+                            sum0_0 = _mm256_add_pd(sum0_0, _mm256_mul_pd(first0_0, b0));
+                            let first1_0 =
+                                _mm256_mul_pd(f1, _mm256_loadu_pd(products.as_ptr().add(row + 64)));
+                            sum1_0 = _mm256_add_pd(sum1_0, _mm256_mul_pd(first1_0, b0));
+                            let b1 = _mm256_loadu_pd(backward.as_ptr().add(next + 4));
+                            let first0_1 =
+                                _mm256_mul_pd(f0, _mm256_loadu_pd(products.as_ptr().add(row + 4)));
+                            sum0_1 = _mm256_add_pd(sum0_1, _mm256_mul_pd(first0_1, b1));
+                            let first1_1 =
+                                _mm256_mul_pd(f1, _mm256_loadu_pd(products.as_ptr().add(row + 68)));
+                            sum1_1 = _mm256_add_pd(sum1_1, _mm256_mul_pd(first1_1, b1));
+                            let b2 = _mm256_loadu_pd(backward.as_ptr().add(next + 8));
+                            let first0_2 =
+                                _mm256_mul_pd(f0, _mm256_loadu_pd(products.as_ptr().add(row + 8)));
+                            sum0_2 = _mm256_add_pd(sum0_2, _mm256_mul_pd(first0_2, b2));
+                            let first1_2 =
+                                _mm256_mul_pd(f1, _mm256_loadu_pd(products.as_ptr().add(row + 72)));
+                            sum1_2 = _mm256_add_pd(sum1_2, _mm256_mul_pd(first1_2, b2));
+                            let b3 = _mm256_loadu_pd(backward.as_ptr().add(next + 12));
+                            let first0_3 =
+                                _mm256_mul_pd(f0, _mm256_loadu_pd(products.as_ptr().add(row + 12)));
+                            sum0_3 = _mm256_add_pd(sum0_3, _mm256_mul_pd(first0_3, b3));
+                            let first1_3 =
+                                _mm256_mul_pd(f1, _mm256_loadu_pd(products.as_ptr().add(row + 76)));
+                            sum1_3 = _mm256_add_pd(sum1_3, _mm256_mul_pd(first1_3, b3));
+                        }
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 0) * 64 + l + 0), sum0_0);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 0) * 64 + l + 4), sum0_1);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 0) * 64 + l + 8), sum0_2);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 0) * 64 + l + 12), sum0_3);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 1) * 64 + l + 0), sum1_0);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 1) * 64 + l + 4), sum1_1);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 1) * 64 + l + 8), sum1_2);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add((k + 1) * 64 + l + 12), sum1_3);
+                    }
+                }
+                for u in begin..end {
+                    let z = *observations.get_unchecked(u - 1) as usize;
+                    let scale = _mm256_set1_pd(*scales.get_unchecked(u));
+                    for k in (0..64).step_by(4) {
+                        let f = _mm256_loadu_pd(forward.as_ptr().add(u * 64 + k));
+                        let b = _mm256_loadu_pd(backward.as_ptr().add(u * 64 + k));
+                        let p = emissions.as_mut_ptr().add(z * 64 + k);
+                        let contribution = _mm256_mul_pd(_mm256_mul_pd(f, b), scale);
+                        _mm256_storeu_pd(p, _mm256_add_pd(_mm256_loadu_pd(p), contribution));
+                    }
+                }
+            }
+        }
+    }
+
     #[target_feature(enable = "avx")]
     pub(super) unsafe fn counts(
         counts: &mut [f64],
@@ -733,6 +863,158 @@ mod sequence_tests {
                     &vec![0.0; cells],
                     &vec![0.0; cells],
                     &vec![0.0; products]
+                ))
+                .is_err()
+            );
+        }
+    }
+}
+#[cfg(test)]
+mod normalization_tests {
+    use super::*;
+    #[test]
+    fn ordered_division_matches_scalar_with_tails_and_ieee_extremes() {
+        let Some(avx) = Avx::select(SimdMode::Auto, 64).unwrap() else {
+            return;
+        };
+        let values = [
+            0.0,
+            -0.0,
+            f64::from_bits(1),
+            -f64::from_bits(1),
+            f64::MIN_POSITIVE,
+            0.1,
+            -1.0,
+            1e-300,
+            1e300,
+            f64::INFINITY,
+            f64::NEG_INFINITY,
+            f64::NAN,
+        ];
+        for n in [
+            0, 1, 2, 3, 4, 7, 8, 15, 16, 17, 23, 31, 32, 33, 63, 64, 65, 129,
+        ] {
+            for offset in 0..values.len() {
+                for &scale in &values {
+                    let input: Vec<_> = (0..n)
+                        .map(|k| values[(k + offset) % values.len()])
+                        .collect();
+                    let expected: Vec<_> = input.iter().map(|&v| v / scale).collect();
+                    let mut out = vec![123.0; n + 2];
+                    out[1..n + 1].copy_from_slice(&input);
+                    avx.normalize(&mut out[1..n + 1], scale);
+                    for (&a, &e) in out[1..n + 1].iter().zip(&expected) {
+                        if e.is_nan() {
+                            assert!(a.is_nan());
+                        } else {
+                            assert_eq!(a.to_bits(), e.to_bits());
+                        }
+                    }
+                    assert_eq!(out[0], 123.0);
+                    assert_eq!(out[n + 1], 123.0);
+                }
+            }
+        }
+    }
+}
+#[cfg(test)]
+mod fusion_tests {
+    use super::*;
+    #[test]
+    fn tiled_emissions_preserve_site_order_masks_tiny_counts_and_last_site_omission() {
+        let Some(avx) = Avx::select(SimdMode::Auto, 64).unwrap() else {
+            return;
+        };
+        let values = [
+            0.0,
+            -0.0,
+            f64::from_bits(1),
+            -f64::from_bits(1),
+            1e-300,
+            1e300,
+            0.1,
+            -1.0,
+            f64::INFINITY,
+            f64::NEG_INFINITY,
+            f64::NAN,
+        ];
+        for length in [1, 2, 3, 7, 8, 9, 15, 16, 17, 31, 32, 33, 63, 64, 65, 129] {
+            for mode in 0..3 {
+                let make = |count: usize, salt: usize| -> Vec<f64> {
+                    (0..count)
+                        .map(|i| {
+                            if mode == 0 {
+                                ((i * 17 + salt) % 103) as f64 / 107.0
+                            } else {
+                                values[(i * 7 + salt) % if mode == 1 { 8 } else { values.len() }]
+                            }
+                        })
+                        .collect()
+                };
+                let cells = (length + 1) * 64;
+                let f = make(cells + 1, 1);
+                let b = make(cells + 1, 3);
+                let p = make(12288 + 1, 7);
+                let scales = make(length + 2, 2);
+                for mask in 0..4 {
+                    let obs: Vec<u8> = (0..length)
+                        .map(|u| if mask == 3 { (u % 3) as u8 } else { mask })
+                        .collect();
+                    let mut a = vec![1e-25; 4097];
+                    let mut e = vec![1e-25; 194];
+                    let mut ra = vec![1e-25; 4096];
+                    let mut re = vec![1e-25; 192];
+                    for u in 1..length {
+                        for k in 0..64 {
+                            for l in 0..64 {
+                                ra[k * 64 + l] += (f[1 + u * 64 + k]
+                                    * p[1 + obs[u] as usize * 4096 + k * 64 + l])
+                                    * b[1 + (u + 1) * 64 + l];
+                            }
+                            re[obs[u - 1] as usize * 64 + k] +=
+                                (f[1 + u * 64 + k] * b[1 + u * 64 + k]) * scales[1 + u];
+                        }
+                    }
+                    avx.counts_emissions64(
+                        &mut a[1..],
+                        &obs,
+                        &f[1..],
+                        &b[1..],
+                        &p[1..],
+                        &mut e[1..193],
+                        &scales[1..],
+                    );
+                    for (&actual, &expected) in
+                        a[1..].iter().zip(&ra).chain(e[1..193].iter().zip(&re))
+                    {
+                        if expected.is_nan() {
+                            assert!(actual.is_nan());
+                        } else {
+                            assert_eq!(actual.to_bits(), expected.to_bits());
+                        }
+                    }
+                    assert_eq!(a[0], 1e-25);
+                    assert_eq!(e[0], 1e-25);
+                    assert_eq!(e[193], 1e-25);
+                }
+            }
+        }
+    }
+    #[test]
+    fn fused_count_shapes_reject_before_access() {
+        let Some(avx) = Avx::select(SimdMode::Auto, 64).unwrap() else {
+            return;
+        };
+        for (emissions, scales) in [(191, 3), (193, 3), (192, 2), (192, 4)] {
+            assert!(
+                std::panic::catch_unwind(|| avx.counts_emissions64(
+                    &mut vec![0.0; 4096],
+                    &[0, 1],
+                    &vec![0.0; 192],
+                    &vec![0.0; 192],
+                    &vec![0.0; 12288],
+                    &mut vec![0.0; emissions],
+                    &vec![1.0; scales]
                 ))
                 .is_err()
             );

@@ -255,8 +255,12 @@ impl Workspace {
                     sum += *target;
                 }
             }
-            for target in current {
-                *target /= sum;
+            if let Some(avx) = self.avx.filter(|_| n == 64) {
+                avx.normalize(current, sum);
+            } else {
+                for target in current {
+                    *target /= sum;
+                }
             }
             messages.scales[u] = sum;
         }
@@ -314,47 +318,52 @@ impl Workspace {
         counts.q0 = 0.0;
         let sequence_counts = self.avx.filter(|_| transitions && n == 64);
         if let Some(avx) = sequence_counts {
-            avx.counts_sequence64(
+            avx.counts_emissions64(
                 &mut counts.a,
                 observations,
                 &messages.forward,
                 &messages.backward,
                 &prepared.emission_transition,
+                &mut counts.e,
+                &messages.scales,
             );
         }
-        for u in 1..length {
-            let forward = &messages.forward[u * n..][..n];
-            let backward = &messages.backward[u * n..][..n];
-            let next_backward = &messages.backward[(u + 1) * n..][..n];
-            let scale = messages.scales[u];
-            let emission_counts = &mut counts.e[observations[u - 1] as usize * n..][..n];
-            let product =
-                &prepared.emission_transition[observations[u] as usize * square..][..square];
-            if let Some(avx) = self.avx {
-                if transitions && sequence_counts.is_none() {
-                    avx.counts(&mut counts.a, forward, product, next_backward);
-                }
-                for ((count, &f), &b) in emission_counts.iter_mut().zip(forward).zip(backward) {
-                    *count += f * b * scale;
-                }
-            } else {
-                for ((((&fuk, &buk), emission_count), transition_counts), product_row) in forward
-                    .iter()
-                    .zip(backward)
-                    .zip(emission_counts)
-                    .zip(counts.a.chunks_exact_mut(n))
-                    .zip(product.chunks_exact(n))
-                {
+        if sequence_counts.is_none() {
+            for u in 1..length {
+                let forward = &messages.forward[u * n..][..n];
+                let backward = &messages.backward[u * n..][..n];
+                let next_backward = &messages.backward[(u + 1) * n..][..n];
+                let scale = messages.scales[u];
+                let emission_counts = &mut counts.e[observations[u - 1] as usize * n..][..n];
+                let product =
+                    &prepared.emission_transition[observations[u] as usize * square..][..square];
+                if let Some(avx) = self.avx {
                     if transitions {
-                        for ((count, &ae), &next) in transition_counts
-                            .iter_mut()
-                            .zip(product_row)
-                            .zip(next_backward)
-                        {
-                            *count += fuk * ae * next;
-                        }
+                        avx.counts(&mut counts.a, forward, product, next_backward);
                     }
-                    *emission_count += fuk * buk * scale;
+                    for ((count, &f), &b) in emission_counts.iter_mut().zip(forward).zip(backward) {
+                        *count += f * b * scale;
+                    }
+                } else {
+                    for ((((&fuk, &buk), emission_count), transition_counts), product_row) in
+                        forward
+                            .iter()
+                            .zip(backward)
+                            .zip(emission_counts)
+                            .zip(counts.a.chunks_exact_mut(n))
+                            .zip(product.chunks_exact(n))
+                    {
+                        if transitions {
+                            for ((count, &ae), &next) in transition_counts
+                                .iter_mut()
+                                .zip(product_row)
+                                .zip(next_backward)
+                            {
+                                *count += fuk * ae * next;
+                            }
+                        }
+                        *emission_count += fuk * buk * scale;
+                    }
                 }
             }
         }

@@ -1,0 +1,29 @@
+{
+  "status": "passed_exactness",
+  "kernel_sha256": "d0e1c04d09bf5207de751e27ba522e1b316366ca313bb402b1e582cd7509f921",
+  "ptx_sha256": "4af2a94ad279c9344071c506cce65073ee263e6afa85f378b8c19de701ccfe6a",
+  "options": [
+    "--gpu-architecture=compute_75",
+    "--fmad=false",
+    "--ftz=false",
+    "--prec-div=true"
+  ],
+  "cases": [
+    {
+      "batch": 128,
+      "states": 64,
+      "sites": 50001,
+      "cpu_messages_and_emissions_seconds": 0.035379483,
+      "command": [
+        "work/exhaust/cpu/baseline/target/release/examples/cuda_fixture",
+        "50001",
+        "work/exhaust/resident128/50001.bin"
+      ],
+      "fixture_sha256": "61da353934dab3ed3675c333f0e3caa9021b182ecb577ba531df61b0cee8757d",
+      "gpu_kernel_seconds": 0.9083198010048363,
+      "gpu_alloc_transfer_compute_seconds": 5.348359564988641,
+      "mismatched_arrays": []
+    }
+  ],
+  "decision": "Compare batched kernels to measured independent CPU messages; synthetic repeated fixture is an occupancy probe, not an inference speed claim."
+}

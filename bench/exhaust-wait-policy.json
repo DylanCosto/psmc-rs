@@ -1,0 +1,79 @@
+{
+  "status": "built",
+  "base": "709831a",
+  "runner_sha256": "04bba2774896cbca4caf00ee5d9baa7bc7cfc71305b2f8e2c65fe9aeafb0c8e2",
+  "variants": {
+    "yield": {
+      "binary": "work/exhaust/wait-policy/yield/target/release/psmc-rs",
+      "sha256": "d73cbbdb672c644912ae14bc0883250252551e52701cce744baab5b0646143c8",
+      "flags": 2,
+      "source_sha256": "c441d64b14624b5dbc9f7cea1a6186296eb138f7467b2a8ee3442dd0842ef55a",
+      "commands": [
+        [
+          "cargo",
+          "fmt",
+          "--all"
+        ],
+        [
+          "cargo",
+          "test",
+          "--release",
+          "--locked",
+          "--offline",
+          "-p",
+          "psmc-cuda",
+          "--",
+          "--include-ignored",
+          "--test-threads=1"
+        ],
+        [
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "-p",
+          "psmc-cli",
+          "--features",
+          "cuda"
+        ]
+      ]
+    },
+    "blocking": {
+      "binary": "work/exhaust/wait-policy/blocking/target/release/psmc-rs",
+      "sha256": "13179480af51c29a9dd24d062941afe827fc1869eb5bdb0cdc307b7415f35659",
+      "flags": 4,
+      "source_sha256": "b1769f9cf50f63dfd0a350f8bd7b20d68e8f77cd38b6b93ff95fbf739d3b5fcc",
+      "commands": [
+        [
+          "cargo",
+          "fmt",
+          "--all"
+        ],
+        [
+          "cargo",
+          "test",
+          "--release",
+          "--locked",
+          "--offline",
+          "-p",
+          "psmc-cuda",
+          "--",
+          "--include-ignored",
+          "--test-threads=1"
+        ],
+        [
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "-p",
+          "psmc-cli",
+          "--features",
+          "cuda"
+        ]
+      ]
+    }
+  }
+}
