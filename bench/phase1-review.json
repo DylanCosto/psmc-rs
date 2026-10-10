@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "scope": "Independent Phase 1 CLI, output safety, parser boundary, snapshot error propagation, nonfinite diagnostics and source review. Numerical parity is covered separately.",
+  "reference_commit": "82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+  "reviewed_executable": "target/release/psmc-rs",
+  "executable_sha256": "e112ed9a8d7d98cc5e29f497e8567e1de96f3e0210a0cb324a79dc91c5e65dd0",
+  "digest_verified_before_and_after_tests": true,
+  "source_sha256": {
+    "crates/psmc-cli/src/main.rs": "06880b824a29cf755daa9173c68431d40dc4c750d5569975feed93ac39c51434",
+    "crates/psmc-cli/src/legacy.rs": "d915fe31523d62c9737c4a3705705fbe4c10f6fd7c05e4e308117810dd84bd19",
+    "crates/psmc-cli/src/snapshot.rs": "86bfbed585aa2f488f0e7d0f566e795069a307f4e9638f518363e1e7dfa26c4c",
+    "crates/psmc-core/src/em.rs": "5d6a1970ac8123a2099dd01082435d1d3a8c864592e973228ae66df828ac7041",
+    "crates/psmc-io/src/lib.rs": "a04cab9b35df7206df5ea82b2c25b7ab2f1b0681b88261b6155d01b5d2e11106",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978"
+  },
+  "rebuild_during_this_review": false,
+  "test_fixture": "ASCII synthetic record >seq, observations TKTTTKTT; nonfinite control KKKKKKKK. All scratch files removed.",
+  "test_results": [
+    {
+      "name": "input_hardlink_rejected",
+      "arguments": [
+        "-p",
+        "2+2",
+        "-N",
+        "0",
+        "-o",
+        "output-hardlink",
+        "synthetic-input.psmcfa"
+      ],
+      "environment": {},
+      "stdin_from_synthetic_file": false,
+      "returncode": 2,
+      "stderr": "psmc-rs: refusing to overwrite an input file\n",
+      "stdout_bytes": 0,
+      "input_unchanged": true,
+      "passed": true
+    },
+    {
+      "name": "new_output_snapshot_alias_rejected",
+      "arguments": [
+        "-p",
+        "2+2",
+        "-N",
+        "0",
+        "-o",
+        "both",
+        "--snapshot",
+        "./both",
+        "synthetic-input.psmcfa"
+      ],
+      "environment": {},
+      "stdin_from_synthetic_file": false,
+      "returncode": 2,
+      "stderr": "psmc-rs: legacy output, snapshot and bootstrap trace must use separate files\n",
+      "stdout_bytes": 0,
+      "input_unchanged": true,
+      "passed": true
+    },
+    {
+      "name": "trace_output_alias_rejected",
+      "arguments": [
+        "-p",
+        "2+2",
+        "-N",
+        "0",
+        "-b",
+        "-o",
+        "trace",
+        "synthetic-input.psmcfa"
+      ],
+      "environment": {
+        "PSMC_BOOTSTRAP_TRACE": "trace"
+      },
+      "stdin_from_synthetic_file": false,
+      "returncode": 2,
+      "stderr": "psmc-rs: legacy output, snapshot and bootstrap trace must use separate files\n",
+      "stdout_bytes": 0,
+      "input_unchanged": true,
+      "passed": true
+    },
+    {
+      "name": "trace_snapshot_alias_rejected",
+      "arguments": [
+        "-p",
+        "2+2",
+        "-N",
+        "0",
+        "-b",
+        "-o",
+        "report",
+        "--snapshot",
+        "snapshot",
+        "synthetic-input.psmcfa"
+      ],
+      "environment": {
+        "PSMC_BOOTSTRAP_TRACE": "./snapshot"
+      },
+      "stdin_from_synthetic_file": false,
+      "returncode": 2,
+      "stderr": "psmc-rs: legacy output, snapshot and bootstrap trace must use separate files\n",
+      "stdout_bytes": 0,
+      "input_unchanged": true,
+      "passed": true
+    },
+    {
+      "name": "dangling_output_symlink_rejected",
+      "arguments": [
+        "-p",
+        "2+2",
+        "-N",
+        "0",
+        "-o",
+        "alias",
+        "--snapshot",
+        "future",
+        "synthetic-input.psmcfa"
+      ],
+      "environment": {},
+      "stdin_from_synthetic_file": false,
+      "returncode": 2,
+      "stderr": "psmc-rs: refusing an output path that is a dangling symlink\n",
+      "stdout_bytes": 0,
+      "input_unchanged": true,
+      "passed": true
+    },
+    {
+      "name": "stdin_file_alias_rejected",
+      "arguments": [
+        "-p",
+        "2+2",
+        "-N",
+        "0",
+        "-o",
+        "/dev/stdin",
+        "-"
+      ],
+      "environment": {},
+      "stdin_from_synthetic_file": true,
+      "returncode": 2,
+      "stderr": "psmc-rs: refusing to overwrite an input file\n",
+      "stdout_bytes": 0,
+      "input_unchanged": true,
+      "passed": true
+    },
+    {
+      "name": "stdout_snapshot_alias_rejected",
+      "arguments": [
+        "-p",
+        "2+2",
+        "-N",
+        "0",
+        "--snapshot",
+        "/dev/stdout",
+        "synthetic-input.psmcfa"
+      ],
+      "environment": {},
+      "stdin_from_synthetic_file": false,
+      "returncode": 2,
+      "stderr": "psmc-rs: legacy output, snapshot and bootstrap trace must use separate files\n",
+      "stdout_bytes": 0,
+      "input_unchanged": true,
+      "passed": true
+    },
+    {
+      "name": "snapshot_flush_failure_reported",
+      "arguments": [
+        "-p",
+        "2+2",
+        "-N",
+        "0",
+        "--snapshot",
+        "/dev/full",
+        "synthetic-input.psmcfa"
+      ],
+      "environment": {},
+      "stdin_from_synthetic_file": false,
+      "returncode": 2,
+      "stderr": "psmc-rs: No space left on device (os error 28)\n",
+      "stdout_bytes": 900,
+      "input_unchanged": true,
+      "passed": true
+    },
+    {
+      "name": "nonfinite_initial_model",
+      "arguments": [
+        "-p",
+        "2+2",
+        "-N",
+        "0",
+        "synthetic-input.psmcfa"
+      ],
+      "environment": {},
+      "stdin_from_synthetic_file": false,
+      "returncode": 0,
+      "stderr": "warning: nonfinite legacy calculation at round 0; output retained for reference comparison\n",
+      "stdout_bytes": 876,
+      "input_unchanged": true,
+      "passed": true
+    },
+    {
+      "name": "finite_initial_model_no_warning",
+      "arguments": [
+        "-p",
+        "2+2",
+        "-N",
+        "0",
+        "synthetic-input.psmcfa"
+      ],
+      "environment": {},
+      "stdin_from_synthetic_file": false,
+      "returncode": 0,
+      "stderr": "",
+      "stdout_bytes": 900,
+      "input_unchanged": true,
+      "passed": true
+    },
+    {
+      "name": "ordinary_stdin_read",
+      "arguments": [
+        "-p",
+        "2+2",
+        "-N",
+        "0",
+        "-"
+      ],
+      "environment": {},
+      "stdin_from_synthetic_file": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout_bytes": 900,
+      "input_unchanged": true,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "passed_count": 11,
+  "total_count": 11,
+  "source_audit": {
+    "decode_cap": "Cap applied only after fitting; probability output takes precedence; full-decoding and segment paths match audited source loop and formatting behavior.",
+    "em": "Preserves callback order and last live callback side effects; observer errors propagate.",
+    "snapshot": "Finite numbers serialize at round-trip precision; NaN/Inf labels match instrumented-reference classification; final flush propagates errors.",
+    "input": "Rust parser retains kseq ASCII aliases, boundary behavior and ignored FASTQ qualities. Runtime safety rejects malformed/empty/non-ASCII inputs and unsupported supplied-grid/divergence combinations."
+  },
+  "resolved_findings": [
+    "Hardlinked input and new-path sink aliases could truncate data or corrupt outputs; inode and resolved-parent comparisons now reject them.",
+    "Bootstrap trace could alias report or snapshot; all active sinks now checked pairwise.",
+    "Dangling final symlink could bypass path identity; rejected before writes.",
+    "Input stdin and default stdout aliases were not represented as paths; Linux fd identities now included.",
+    "Round-zero snapshot buffered-write errors were ignored; Observer.finish now flushes and propagates failure.",
+    "Round-zero/live-model nonfinite values could go unreported; initialization and model fields now included in warnings."
+  ],
+  "remaining_material_findings": [],
+  "documented_limitations_to_preserve": [
+    "Linux/libm/system-zlib tested stack only; no CUDA or acceleration claim.",
+    "Decimal/exponent finite numeric input; C hex-float tokens excluded.",
+    "Empty, malformed and non-ASCII sequence input rejected.",
+    "At most 255 parameter groups; bootstrap raw-total restricted to legacy signed-int stopping range.",
+    "Explicit supplied-grid/divergence combinations and parameter-file -T without a final divergence value rejected.",
+    "Pre-create alias checks do not claim protection against concurrent adversarial filesystem replacement."
+  ],
+  "coordination_note": "A previous shared-release rebuild invalidated a concurrent numerical validation attempt. That interrupted attempt is not evidence for numerical parity. The numerical agent is validating an immutable executable copy separately; this targeted review performed no rebuild."
+}

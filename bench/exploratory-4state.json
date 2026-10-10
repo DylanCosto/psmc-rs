@@ -1,0 +1,252 @@
+{
+  "status": "rejected_diagnostic_fixture",
+  "command": [
+    "work/vanilla/psmc",
+    "-p",
+    "2+2",
+    "-N",
+    "30",
+    "-I",
+    "0",
+    "tests/fixtures/bootstrap/replicate-XX.psmcfa"
+  ],
+  "scope": "Exploratory reduced-state synthetic diagnostic; not a proposed compatibility speedup; no timings used",
+  "cases": [
+    {
+      "file": "bench/raw/exploratory-4state/replicate-19.psmc",
+      "nonfinite_count": 83,
+      "first_record": {
+        "round": 3,
+        "record": "QD\t-4.910024 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-06.psmc",
+      "nonfinite_count": 80,
+      "first_record": {
+        "round": 4,
+        "record": "QD\t-1.714361 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-20.psmc",
+      "nonfinite_count": 67,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-5.255741 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-03.psmc",
+      "nonfinite_count": 58,
+      "first_record": {
+        "round": 3,
+        "record": "QD\t-4.893015 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-01.psmc",
+      "nonfinite_count": 0,
+      "first_record": null
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-00.psmc",
+      "nonfinite_count": 70,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-3.432204 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-21.psmc",
+      "nonfinite_count": 54,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-8.393442 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-26.psmc",
+      "nonfinite_count": 134,
+      "first_record": {
+        "round": 3,
+        "record": "LK\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-18.psmc",
+      "nonfinite_count": 73,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-4.453643 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-08.psmc",
+      "nonfinite_count": 69,
+      "first_record": {
+        "round": 3,
+        "record": "QD\t-5.873840 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-29.psmc",
+      "nonfinite_count": 86,
+      "first_record": {
+        "round": 3,
+        "record": "QD\t-3.834154 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-12.psmc",
+      "nonfinite_count": 87,
+      "first_record": {
+        "round": 4,
+        "record": "QD\t-9.854580 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-25.psmc",
+      "nonfinite_count": 78,
+      "first_record": {
+        "round": 3,
+        "record": "QD\t-2.537139 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-24.psmc",
+      "nonfinite_count": 47,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-3.800447 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-07.psmc",
+      "nonfinite_count": 62,
+      "first_record": {
+        "round": 3,
+        "record": "QD\t-5.457454 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-16.psmc",
+      "nonfinite_count": 87,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-4.433303 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-28.psmc",
+      "nonfinite_count": 59,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-9.733615 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-10.psmc",
+      "nonfinite_count": 106,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-3.919217 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-14.psmc",
+      "nonfinite_count": 75,
+      "first_record": {
+        "round": 4,
+        "record": "QD\t-2.040416 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-22.psmc",
+      "nonfinite_count": 35,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-6.894103 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-13.psmc",
+      "nonfinite_count": 26,
+      "first_record": {
+        "round": 4,
+        "record": "QD\t-6.186567 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-02.psmc",
+      "nonfinite_count": 68,
+      "first_record": {
+        "round": 3,
+        "record": "QD\t-4.244838 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-15.psmc",
+      "nonfinite_count": 70,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-5.436831 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-17.psmc",
+      "nonfinite_count": 92,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-6.517765 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-04.psmc",
+      "nonfinite_count": 0,
+      "first_record": null
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-09.psmc",
+      "nonfinite_count": 84,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-5.672720 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-23.psmc",
+      "nonfinite_count": 70,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-4.066552 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-11.psmc",
+      "nonfinite_count": 74,
+      "first_record": {
+        "round": 4,
+        "record": "QD\t-4.271539 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-05.psmc",
+      "nonfinite_count": 72,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-7.061046 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/exploratory-4state/replicate-27.psmc",
+      "nonfinite_count": 96,
+      "first_record": {
+        "round": 2,
+        "record": "QD\t-7.229813 -> -nan"
+      }
+    }
+  ],
+  "nonfinite_fits": 28,
+  "decision": "Do not adopt; does not resolve reference instability"
+}

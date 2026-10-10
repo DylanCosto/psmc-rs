@@ -1,0 +1,73 @@
+{
+  "archive_name": "psmc-rust-phase-1.zip",
+  "archive_root": "psmc-rs",
+  "scope": "Rust source/binary, fixtures, reports and ordinary raw evidence; complete snapshots remain local",
+  "excluded_directory_names": [
+    ".git",
+    "__pycache__",
+    "target",
+    "work"
+  ],
+  "excluded_suffixes": [
+    ".pyc"
+  ],
+  "excluded_test_symlinks": [
+    "bench/raw/phase1-final-tests/safety-dangling_output_snapshot_symlink/dangling-alias.psmc"
+  ],
+  "omitted_final_snapshot_manifest": "bench/phase1-snapshot-manifest.json",
+  "omitted_final_snapshot_files": [
+    {
+      "path": "bench/raw/phase1-final-tests/K23_N1-C.jsonl.gz",
+      "sha256": "2e41cb1b3e3535664549594719c88703721fdc3458080e6534c7e099de4b9f7d",
+      "bytes": 17089735
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/K23_N1-Rust.jsonl.gz",
+      "sha256": "af6d2c0f6f1bf45f3598fc290ebdd9c7545987ef833ef80fe7a0f8144112fc15",
+      "bytes": 18846827
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/K64_N1-C.jsonl.gz",
+      "sha256": "9662fb6f90f47499a5c0c82980f9a0b5ad823ee72a416fcf9aeac0ec4367390b",
+      "bytes": 377904875
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/K64_N1-Rust.jsonl.gz",
+      "sha256": "31f40cf3fcb61e055233586d0cdc80f19bdfb93eb8db673b9ce409277c7e2aeb",
+      "bytes": 398746173
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/enumeration-C.jsonl.gz",
+      "sha256": "df813a40d67b555d48676f0ab2707d690b33583aee27272992341ed386c06c51",
+      "bytes": 16285479
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/enumeration-Rust.jsonl.gz",
+      "sha256": "a706e81899027b98b943904ebaa7fed44e335dd781f6381b1dddeb8cdcf6aaa0",
+      "bytes": 17937913
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/grid_N1-C.jsonl.gz",
+      "sha256": "3742cc725cc7a99c9727af5654ef0983b3a3ad0f0ae2cb2b1538f02646249fd3",
+      "bytes": 140887
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/grid_N1-Rust.jsonl.gz",
+      "sha256": "2a5771947457a873e7ad4d018d7b816c7d1660b52a92c6e29a966ce4e4804c90",
+      "bytes": 159123
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/tiny_N2-C.jsonl.gz",
+      "sha256": "0b279d3f9fe366b07e19878ec5e020fd4c19969bf5456bafb86ab612112bd20b",
+      "bytes": 353208
+    },
+    {
+      "path": "bench/raw/phase1-final-tests/tiny_N2-Rust.jsonl.gz",
+      "sha256": "811b4af70865de89ddfab9a1f1869208dec58e520672b12580acff2a30d0f34a",
+      "bytes": 393132
+    }
+  ],
+  "omitted_final_snapshot_bytes": 847857352,
+  "checksums": "CHECKSUMS.sha256 covers every packaged file except itself",
+  "runner": "bench/package_phase1.py"
+}

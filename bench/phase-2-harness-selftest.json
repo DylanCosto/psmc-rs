@@ -1,0 +1,33 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "bench",
+    "-p",
+    "test_phase*_*.py",
+    "-v"
+  ],
+  "returncode": 0,
+  "passed": true,
+  "log": "bench/phase-2-harness-selftest.log",
+  "tests": [
+    "Phase 1 numerical-byte mutation rejection",
+    "Phase 1 metadata exclusion boundedness",
+    "Phase 1 missing callback/event rejection",
+    "Phase 1 nonfinite class change rejection",
+    "Phase 2 underlying binary hash guard and literal argument preservation",
+    "Phase 2 worker-thread child-process RSS observation",
+    "Phase 2 negative child signal exit and empty batch rejection",
+    "Phase 2 actual admitted worker-budget comparability",
+    "Phase 2 conflicting empty-scope subset flag rejection"
+  ],
+  "test_source_sha256": {
+    "bench/test_phase1_differential.py": "82112f9d25a4a0210541158342f5548c4e51fcfa1fb046c196e78adf1481e9a5",
+    "bench/test_phase2_harness.py": "eb2a22cdc22b228ec094fc3087cddd1a398e3a13060763ce7c04d12a85c6df9f"
+  },
+  "runner_source_sha256": "c61f56f0284bf45d0cdba38c7c14f25803e0be084eb08222f2a1c88533140b72",
+  "completed_utc": "2026-10-10T05:06:43.046879+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "archive_name": "psmc-rust-phase-2.zip",
+  "archive_root": "psmc-rs",
+  "scope": "Phase 2 Rust source and executable, original Phase 1 executable, fixtures, derivations, reports and ordinary raw evidence.",
+  "excluded_directory_names": [
+    ".git",
+    "__pycache__",
+    "target",
+    "work"
+  ],
+  "excluded_suffixes": [
+    ".pyc",
+    ".jsonl.gz"
+  ],
+  "excluded_test_symlinks": [
+    "bench/phase-2-validation/20261010T045322201860Z/cpu-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/phase-2-validation/20261010T045322201860Z/dense-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/phase-2-validation/20261010T045711704482Z/cpu-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/phase-2-validation/20261010T045711704482Z/dense-raw/safety-dangling_output_snapshot_symlink/dangling-alias.psmc",
+    "bench/raw/phase1-final-tests/safety-dangling_output_snapshot_symlink/dangling-alias.psmc"
+  ],
+  "omitted_snapshot_manifest": "bench/phase2-snapshot-manifest.json",
+  "omitted_snapshot_files": 39,
+  "omitted_snapshot_bytes": 1047893175,
+  "checksums": "CHECKSUMS.sha256 covers every packaged file except itself",
+  "runner": "bench/package_phase2.py",
+  "historical_archives": "Phase 0 and Phase 1 zip files are neither read nor replaced by this runner."
+}

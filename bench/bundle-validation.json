@@ -1,0 +1,15 @@
+{
+  "status": "passed_bundle_consistency",
+  "scope": "evidence consistency, not full scientific or Phase0 acceptance",
+  "checks": {
+    "python_syntax_files": 8,
+    "json_files_parsed": 22,
+    "bootstrap_input_hashes": 30,
+    "finite_partial_smoke_outputs_and_hashes": 270,
+    "build_executable_hashes": 9,
+    "differential_report_matches_current_binaries": true,
+    "clean_rebuild_and_legacy_consumer": true,
+    "four_requested_deliverables": true
+  },
+  "unresolved_gate": "Full30 bootstrap reference nonfinite; real workload missing; no Rust or accelerated backend"
+}

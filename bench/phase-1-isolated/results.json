@@ -1,0 +1,170 @@
+{
+  "binary_sha256": {
+    "bench/phase-1-isolated/bin/model-c": "29725e4e229f3a7986b3e61ba7579115163b22711ea091c84aa070ac68ad1843",
+    "bench/phase-1-isolated/bin/model-rust": "49e50f41dba9da126937337eb3c34dda73dc6b4dbe42039c0536073d548875fd",
+    "bench/phase-1-isolated/bin/optimizer-c": "bdbc27c3e5524a742be3d35ef8ca4d0c913a9c56ae8676b4c5df6aa78c6d7d0b",
+    "bench/phase-1-isolated/bin/optimizer-rust": "1a917ffc6258482c37d3fdc98bb8536c3fb01738a66394803aaea2483d16e419"
+  },
+  "commands": [
+    [
+      "gcc",
+      "-g",
+      "-Wall",
+      "-O2",
+      "-Wno-unused-function",
+      "-ffp-contract=off",
+      "-fdebug-prefix-map=${PROJECT}=/psmc-rs",
+      "-I",
+      "work/vanilla",
+      "bench/phase-1-isolated/model-check.c",
+      "work/vanilla/core.c",
+      "work/vanilla/khmm.c",
+      "-lm",
+      "-o",
+      "bench/phase-1-isolated/bin/model-c"
+    ],
+    [
+      "rustc",
+      "--edition=2024",
+      "-C",
+      "opt-level=2",
+      "-C",
+      "codegen-units=1",
+      "--remap-path-prefix",
+      "${PROJECT}=/psmc-rs",
+      "bench/phase-1-isolated/model-check.rs",
+      "-o",
+      "bench/phase-1-isolated/bin/model-rust"
+    ],
+    [
+      "bench/phase-1-isolated/bin/model-c"
+    ],
+    [
+      "bench/phase-1-isolated/bin/model-rust"
+    ],
+    [
+      "gcc",
+      "-g",
+      "-Wall",
+      "-O2",
+      "-Wno-unused-function",
+      "-ffp-contract=off",
+      "-fdebug-prefix-map=${PROJECT}=/psmc-rs",
+      "-I",
+      "work/vanilla",
+      "bench/phase-1-isolated/optimizer-check.c",
+      "work/vanilla/kmin.c",
+      "-lm",
+      "-o",
+      "bench/phase-1-isolated/bin/optimizer-c"
+    ],
+    [
+      "rustc",
+      "--edition=2024",
+      "-C",
+      "opt-level=2",
+      "-C",
+      "codegen-units=1",
+      "--remap-path-prefix",
+      "${PROJECT}=/psmc-rs",
+      "bench/phase-1-isolated/optimizer-check.rs",
+      "-o",
+      "bench/phase-1-isolated/bin/optimizer-rust"
+    ],
+    [
+      "bench/phase-1-isolated/bin/optimizer-c"
+    ],
+    [
+      "bench/phase-1-isolated/bin/optimizer-rust"
+    ]
+  ],
+  "compiler_diagnostics": {
+    "bench/phase-1-isolated/bin/model-c": "work/vanilla/khmm.c: In function 'hmm_forward':\nwork/vanilla/khmm.c:149:16: warning: variable 'm' set but not used [-Wunused-but-set-variable]\n  149 |         int n, m, L;\n      |                ^\nwork/vanilla/khmm.c: In function 'hmm_backward':\nwork/vanilla/khmm.c:214:13: warning: variable 'm' set but not used [-Wunused-but-set-variable]\n  214 |         int m, n, L;\n      |             ^\nwork/vanilla/khmm.c: In function 'hmm_new_par':\nwork/vanilla/khmm.c:21:39: warning: '*<unknown>' may be used uninitialized [-Wmaybe-uninitialized]\n   21 |         for (i = 0; i != n; ++i) hp->e[m][i] = 1.0;\n      |                                  ~~~~~^~~\nwork/vanilla/khmm.c: In function 'hmm_Viterbi':\nwork/vanilla/khmm.c:102:40: warning: '*<unknown>' may be used uninitialized [-Wmaybe-uninitialized]\n  102 |         for (k = 0; k != hp->n; ++k) le[hp->m][k] = 0.0;\n      |                                      ~~^~~~~~~\nwork/vanilla/khmm.c:105:29: warning: '*<unknown>' may be used uninitialized [-Wmaybe-uninitialized]\n  105 |                 preV[k] = le[(int)hd->seq[1]][k] + log(hp->a0[k]);\n      |                           ~~^~~~~~~~~~~~~~~~~\nwork/vanilla/khmm.c:106:21: warning: '((int **)p)[1]' may be used uninitialized [-Wmaybe-uninitialized]\n  106 |                 Vmax[1][k] = 0;\n      |                 ~~~~^~~\nwork/vanilla/khmm.c:110:30: warning: '*<unknown>' may be used uninitialized [-Wmaybe-uninitialized]\n  110 |                 FLOAT *tmp, *leu = le[(int)hd->seq[u]];\n      |                              ^~~\n",
+    "bench/phase-1-isolated/bin/model-rust": "warning: method `cap_transition` is never used\n   --> bench/phase-1-isolated/../../crates/psmc-core/src/model.rs:228:12\n    |\n 53 | impl Model {\n    | ---------- method in this implementation\n...\n228 |     pub fn cap_transition(&mut self, cap: usize) {\n    |            ^^^^^^^^^^^^^^\n    |\n    = note: `#[warn(dead_code)]` on by default\n\nwarning: 1 warning emitted\n\n"
+  },
+  "compilers": {
+    "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)\nbinary: rustc\ncommit-hash: 1159e78c4747b02ef996e55082b704c09b970588\ncommit-date: 2025-09-14\nhost: x86_64-unknown-linux-gnu\nrelease: 1.90.0\nLLVM version: 20.1.8"
+  },
+  "libraries": {
+    "ld-linux-x86-64.so.2": {
+      "path": "/lib64/ld-linux-x86-64.so.2",
+      "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da"
+    },
+    "libc.so.6": {
+      "path": "/lib/x86_64-linux-gnu/libc.so.6",
+      "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf"
+    },
+    "libm.so.6": {
+      "path": "/lib/x86_64-linux-gnu/libm.so.6",
+      "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0"
+    }
+  },
+  "limitations": [
+    "Synthetic fixtures only; no biological-validation claim.",
+    "No timing or peak-memory benchmark in this isolated gate.",
+    "No CUDA, optimized CPU, or cross-platform compatibility claim.",
+    "Native-endian binary streams are interpretable using the recorded byte order.",
+    "Public Model fields and Settings shape are copied into this isolated harness; integration is validated separately."
+  ],
+  "passed": true,
+  "platform": {
+    "byte_order": "little",
+    "double_bytes": 8,
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "raw_output_sha256": {
+    "bench/phase-1-isolated/raw/model-c.bin": "4c5d93772476ff98db56f27d618c43688e935d0be0002dd0b6afc35af03ae0a0",
+    "bench/phase-1-isolated/raw/model-rust.bin": "4c5d93772476ff98db56f27d618c43688e935d0be0002dd0b6afc35af03ae0a0",
+    "bench/phase-1-isolated/raw/optimizer-c.bin": "5b077469f7f898a7b56a6302d907dc961ef1e842f8215ece8f077a4002f2d2fc",
+    "bench/phase-1-isolated/raw/optimizer-rust.bin": "5b077469f7f898a7b56a6302d907dc961ef1e842f8215ece8f077a4002f2d2fc"
+  },
+  "reference_archive_sha256": "f7125256136352b671f18c49181d9612a31b47395aac00581c23b6829ff8c454",
+  "reference_license": "reference/LICENSE.psmc.txt",
+  "reference_source": "https://github.com/lh3/psmc/tree/82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+  "reference_source_verification": "archive SHA-256 verified against build-vanilla.json; all compiled C sources and project headers byte-match archive members",
+  "results": {
+    "model": {
+      "byte_exact": true,
+      "byte_mismatches": 0,
+      "cases": 60,
+      "f64_values": 64446,
+      "finite_pairs": 64446,
+      "first_mismatches": [],
+      "nan_pairs": 0,
+      "passed": true
+    },
+    "optimizer": {
+      "byte_exact": true,
+      "byte_mismatches": 0,
+      "cases": 16,
+      "f64_values": 5962,
+      "finite_pairs": 5962,
+      "first_mismatches": [],
+      "nan_pairs": 0,
+      "passed": true
+    }
+  },
+  "scope": "isolated literal scalar model and Hooke-Jeeves; not a full-EM or performance gate",
+  "source_commit": "82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+  "source_sha256": {
+    "bench/check_phase1_isolated.py": "9c6d82f063916edf2a872bcfa7b7fb3e1a321ea9414943c85747aa394c3e4670",
+    "bench/phase-1-isolated/model-check.c": "56cb194944af3f375455018e25dfaf073f6f2ae3910e991b02c96e4944cde354",
+    "bench/phase-1-isolated/model-check.rs": "2ee4c5bc2d361d2e08ccc3206dba9e4ae01ded9ce2520d4213cfe11a69d5d887",
+    "bench/phase-1-isolated/optimizer-check.c": "7a8815de63540f433fe90777f1fe580d6d443301ba7b2871299f118a7f46494e",
+    "bench/phase-1-isolated/optimizer-check.rs": "6f58190d0f8a84658ad1deca89cd677557763cfa7c320ebdb9156c469982940f",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "reference/build-vanilla.json": "a155343e3427f6cd6ef3b52ab794ad3f82711479ab6bc7d39b6aa1f95a779a2b",
+    "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b",
+    "work/vanilla/core.c": "aadc2135695e5139017f6636bf1001261e6702435800434de7e8db1a1b7969ae",
+    "work/vanilla/khmm.c": "0306856c1e22e885c81d78a259d53b6dea39a0f4d670ffb2d1b330fa97eeeb2c",
+    "work/vanilla/khmm.h": "761701fdb50ce26abc0de1a0e8110c00536d8fe526f2a7b86018760987788d7d",
+    "work/vanilla/kmin.c": "37d0fe7d646743ed6a6044919841b4de0e8cca974864a898f83a8b22ffb0073e",
+    "work/vanilla/kmin.h": "d1df4234beeaa7883046e8e5050fd1f48f4f2c76f008ce31312cd4b608e1ca4d",
+    "work/vanilla/psmc.h": "37f5aed1070e2233787daeee8657afd70156b20ee9838fb02a52df50af024dd4"
+  }
+}

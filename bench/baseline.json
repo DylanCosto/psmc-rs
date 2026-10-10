@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "scope": "five-iteration partial-trajectory synthetic smoke; full30 bootstrap reference FAILED; no accelerated engine exists",
+  "status": "partial_trajectory_smoke_passed_full_gate_failed",
+  "source_commit": "82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+  "build_record": "reference/build-vanilla.json",
+  "executable_sha256": "da1743512f1925da6277d5a2e5350c70c61c9771d11749df0918605f795ff32b",
+  "workload_manifest_sha256": "b584d86a9969765656b687cc466c55034a9075739af9105199c1769a3cc45059",
+  "protocol": {
+    "replicates_per_batch": 30,
+    "measured_batches": 9,
+    "iterations_per_fit": 5,
+    "workers": [
+      1,
+      2,
+      4
+    ],
+    "repetitions_per_worker_count": 3,
+    "worker_order": [
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        4,
+        1,
+        2
+      ],
+      [
+        2,
+        4,
+        1
+      ]
+    ],
+    "warmups": 1,
+    "clock": "Python time.perf_counter with blocking waitpid and separate deadline watchdog; /usr/bin/time for child elapsed, CPU and peak RSS",
+    "scope": "launch through inference exit on identical materialized inputs; includes process startup and file I/O; excludes bootstrap materialization and plotting",
+    "process_parallelism": "bounded independent vanilla processes",
+    "affinity": "unconstrained within existing affinity mask",
+    "reduction_changes": "none",
+    "machine_isolation": "not exclusive; existing user processes may affect measurements",
+    "bootstrap_materialization": "outside fit timer; inputs identical by digest in every run",
+    "memory": "per-process peak RSS measured; concurrent peak not sampled; worker*max individual RSS is a conservative bound excluding Python scheduler",
+    "raw_runs": "bench/raw/baseline/progress.json"
+  },
+  "summaries": [
+    {
+      "workers": 1,
+      "batch_wall_seconds": [
+        2.006343476008624,
+        2.0325671790051274,
+        2.02378847298678
+      ],
+      "median_batch_wall_seconds": 2.02378847298678,
+      "min_batch_wall_seconds": 2.006343476008624,
+      "max_batch_wall_seconds": 2.0325671790051274,
+      "max_individual_peak_rss_kib": 3052,
+      "ordinary_parallelism_ratio_to_serial": 1.0
+    },
+    {
+      "workers": 2,
+      "batch_wall_seconds": [
+        1.043176560982829,
+        1.0193029759975616,
+        1.0450077640125528
+      ],
+      "median_batch_wall_seconds": 1.043176560982829,
+      "min_batch_wall_seconds": 1.0193029759975616,
+      "max_batch_wall_seconds": 1.0450077640125528,
+      "max_individual_peak_rss_kib": 3052,
+      "ordinary_parallelism_ratio_to_serial": 1.940024870842638
+    },
+    {
+      "workers": 4,
+      "batch_wall_seconds": [
+        0.541335543995956,
+        0.5557250560086686,
+        0.5503515650052577
+      ],
+      "median_batch_wall_seconds": 0.5503515650052577,
+      "min_batch_wall_seconds": 0.541335543995956,
+      "max_batch_wall_seconds": 0.5557250560086686,
+      "max_individual_peak_rss_kib": 3052,
+      "ordinary_parallelism_ratio_to_serial": 3.677264864264438
+    }
+  ],
+  "single_fit": {
+    "runs": [
+      {
+        "command": [
+          "work/vanilla/psmc",
+          "-p",
+          "4+5*3+4",
+          "-N",
+          "5",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/workload.psmcfa"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 0.06981177101260982,
+        "time_wall_seconds": 0.06,
+        "user_seconds": 0.06,
+        "system_seconds": 0.0,
+        "peak_rss_kib": 4800,
+        "output_sha256": "4c80e53f559186e309e52015eebd74a5e85a92c5803ccc6174b1258ffcaa2e2e",
+        "output": "bench/raw/baseline/single-fit-0.psmc",
+        "optimizer_evaluations": [
+          1944,
+          1698,
+          1850,
+          1549,
+          1926
+        ],
+        "nonfinite_records_beyond_initial_RI": []
+      },
+      {
+        "command": [
+          "work/vanilla/psmc",
+          "-p",
+          "4+5*3+4",
+          "-N",
+          "5",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/workload.psmcfa"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 0.0666236839897465,
+        "time_wall_seconds": 0.06,
+        "user_seconds": 0.06,
+        "system_seconds": 0.0,
+        "peak_rss_kib": 4676,
+        "output_sha256": "4c80e53f559186e309e52015eebd74a5e85a92c5803ccc6174b1258ffcaa2e2e",
+        "output": "bench/raw/baseline/single-fit-1.psmc",
+        "optimizer_evaluations": [
+          1944,
+          1698,
+          1850,
+          1549,
+          1926
+        ],
+        "nonfinite_records_beyond_initial_RI": []
+      },
+      {
+        "command": [
+          "work/vanilla/psmc",
+          "-p",
+          "4+5*3+4",
+          "-N",
+          "5",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/workload.psmcfa"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 0.06772405400988646,
+        "time_wall_seconds": 0.06,
+        "user_seconds": 0.06,
+        "system_seconds": 0.0,
+        "peak_rss_kib": 4588,
+        "output_sha256": "4c80e53f559186e309e52015eebd74a5e85a92c5803ccc6174b1258ffcaa2e2e",
+        "output": "bench/raw/baseline/single-fit-2.psmc",
+        "optimizer_evaluations": [
+          1944,
+          1698,
+          1850,
+          1549,
+          1926
+        ],
+        "nonfinite_records_beyond_initial_RI": []
+      }
+    ],
+    "median_wall_seconds": 0.06772405400988646
+  },
+  "determinism": {
+    "all_270_output_hashes_match_their_replicate": true,
+    "expected_iterations_per_fit": 5,
+    "all_fits_executed_expected_iterations": true,
+    "all_fits_finite_beyond_expected_initial_RI": true
+  },
+  "real_workload": {
+    "status": "not_run",
+    "bootstrap_processes_already_parallel": true,
+    "missing": [
+      "exact command and p/N/t/r/i/I settings",
+      "worker count and scheduling policy",
+      "authorized input location and hash",
+      "bin size",
+      "record boundaries",
+      "splitfa command",
+      "assembly and mask provenance",
+      "original workflow hardware",
+      "whether preprocessing and plotting are timed"
+    ]
+  },
+  "accelerated_cpu": {
+    "status": "not_run",
+    "reason": "Phase 1+ not started"
+  },
+  "legacy_cuda": {
+    "status": "not_run",
+    "reason": "No legacy CUDA backend; physical GPU available"
+  },
+  "phlash": {
+    "record": "bench/phlash.json",
+    "output_equivalent": false
+  },
+  "performance_claim": null,
+  "target_10x": "unproven",
+  "prior_failed_fixture": "bench/failed-23state.json",
+  "full_30_iteration_bootstrap_gate": {
+    "status": "failed",
+    "record": "bench/failed-23state.json",
+    "reason": "Three vanilla reference replicates develop nonfinite values; shortened smoke does not resolve this"
+  },
+  "limitations": [
+    "Five-iteration partial trajectory; prior30-iteration23-state reference failed with nonfinite values and is separately retained",
+    "Synthetic data much smaller than a genome",
+    "User's original concurrency and arguments unknown",
+    "No claim of optimal original concurrency",
+    "Serial ratio measures ordinary scheduling only; user's workflow already parallel",
+    "No predictive real-workload or GPU speedup"
+  ]
+}

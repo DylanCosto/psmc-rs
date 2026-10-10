@@ -1,0 +1,139 @@
+{
+  "status": "passed",
+  "created_utc": "2026-10-10T05:05:25.595224+00:00",
+  "measured_report": "bench/phase-2-benchmark/20261010T050118702033Z/measured-report.json",
+  "measured_report_sha256": "1f048be69979302835eea0b415fde047a6aecea2db7b638f9f0404a06fb9cc33",
+  "measured_runner": "bench/phase-2-benchmark/20261010T050118702033Z/measured-runner.py",
+  "measured_runner_sha256": "88ac0ee6929784055d30381fb6faba9b19f310b1549c5703d3ec742529e66783",
+  "runner_unchanged_through_completion": true,
+  "single_runs_checked": 48,
+  "batch_runs_checked": 24,
+  "vanilla_child_return_codes_checked": 360,
+  "all_vanilla_children_exit_zero": true,
+  "cpu_manifest_checks": [
+    {
+      "manifest": "bench/phase-2-benchmark/20261010T050118702033Z/batch-w1-warmup-0-cpu-outputs/manifest.json",
+      "sha256": "8db1497b1cb0695dc6915729bfb7e08fd7a93b0c595837b6e62306428e0cdeb8",
+      "requested_workers": 1,
+      "actual_workers": 1,
+      "failed_replicates": 0,
+      "nonfinite_replicates": 3
+    },
+    {
+      "manifest": "bench/phase-2-benchmark/20261010T050118702033Z/batch-w1-measured-1-cpu-outputs/manifest.json",
+      "sha256": "8db1497b1cb0695dc6915729bfb7e08fd7a93b0c595837b6e62306428e0cdeb8",
+      "requested_workers": 1,
+      "actual_workers": 1,
+      "failed_replicates": 0,
+      "nonfinite_replicates": 3
+    },
+    {
+      "manifest": "bench/phase-2-benchmark/20261010T050118702033Z/batch-w1-measured-2-cpu-outputs/manifest.json",
+      "sha256": "8db1497b1cb0695dc6915729bfb7e08fd7a93b0c595837b6e62306428e0cdeb8",
+      "requested_workers": 1,
+      "actual_workers": 1,
+      "failed_replicates": 0,
+      "nonfinite_replicates": 3
+    },
+    {
+      "manifest": "bench/phase-2-benchmark/20261010T050118702033Z/batch-w1-measured-3-cpu-outputs/manifest.json",
+      "sha256": "8db1497b1cb0695dc6915729bfb7e08fd7a93b0c595837b6e62306428e0cdeb8",
+      "requested_workers": 1,
+      "actual_workers": 1,
+      "failed_replicates": 0,
+      "nonfinite_replicates": 3
+    },
+    {
+      "manifest": "bench/phase-2-benchmark/20261010T050118702033Z/batch-w2-warmup-0-cpu-outputs/manifest.json",
+      "sha256": "3ba76642e141ff11f4d4e30d77eee1efe784d479acf301070cb4662808711bd9",
+      "requested_workers": 2,
+      "actual_workers": 2,
+      "failed_replicates": 0,
+      "nonfinite_replicates": 3
+    },
+    {
+      "manifest": "bench/phase-2-benchmark/20261010T050118702033Z/batch-w2-measured-1-cpu-outputs/manifest.json",
+      "sha256": "3ba76642e141ff11f4d4e30d77eee1efe784d479acf301070cb4662808711bd9",
+      "requested_workers": 2,
+      "actual_workers": 2,
+      "failed_replicates": 0,
+      "nonfinite_replicates": 3
+    },
+    {
+      "manifest": "bench/phase-2-benchmark/20261010T050118702033Z/batch-w2-measured-2-cpu-outputs/manifest.json",
+      "sha256": "3ba76642e141ff11f4d4e30d77eee1efe784d479acf301070cb4662808711bd9",
+      "requested_workers": 2,
+      "actual_workers": 2,
+      "failed_replicates": 0,
+      "nonfinite_replicates": 3
+    },
+    {
+      "manifest": "bench/phase-2-benchmark/20261010T050118702033Z/batch-w2-measured-3-cpu-outputs/manifest.json",
+      "sha256": "3ba76642e141ff11f4d4e30d77eee1efe784d479acf301070cb4662808711bd9",
+      "requested_workers": 2,
+      "actual_workers": 2,
+      "failed_replicates": 0,
+      "nonfinite_replicates": 3
+    },
+    {
+      "manifest": "bench/phase-2-benchmark/20261010T050118702033Z/batch-w4-warmup-0-cpu-outputs/manifest.json",
+      "sha256": "7bae231e14803ebdd4d9c7141f274e6a39d79edbc958d46938514754276f7e1f",
+      "requested_workers": 4,
+      "actual_workers": 4,
+      "failed_replicates": 0,
+      "nonfinite_replicates": 3
+    },
+    {
+      "manifest": "bench/phase-2-benchmark/20261010T050118702033Z/batch-w4-measured-1-cpu-outputs/manifest.json",
+      "sha256": "7bae231e14803ebdd4d9c7141f274e6a39d79edbc958d46938514754276f7e1f",
+      "requested_workers": 4,
+      "actual_workers": 4,
+      "failed_replicates": 0,
+      "nonfinite_replicates": 3
+    },
+    {
+      "manifest": "bench/phase-2-benchmark/20261010T050118702033Z/batch-w4-measured-2-cpu-outputs/manifest.json",
+      "sha256": "7bae231e14803ebdd4d9c7141f274e6a39d79edbc958d46938514754276f7e1f",
+      "requested_workers": 4,
+      "actual_workers": 4,
+      "failed_replicates": 0,
+      "nonfinite_replicates": 3
+    },
+    {
+      "manifest": "bench/phase-2-benchmark/20261010T050118702033Z/batch-w4-measured-3-cpu-outputs/manifest.json",
+      "sha256": "7bae231e14803ebdd4d9c7141f274e6a39d79edbc958d46938514754276f7e1f",
+      "requested_workers": 4,
+      "actual_workers": 4,
+      "failed_replicates": 0,
+      "nonfinite_replicates": 3
+    }
+  ],
+  "subset_flags_used": false,
+  "review_findings": [
+    {
+      "finding": "Admission policy could reduce workers, but equal-worker label was not enforced by the original runner.",
+      "active_run_resolution": "All 12 actual CPU manifests admit exactly the corresponding 1/2/4 requested workers; equal-worker ratios are valid."
+    },
+    {
+      "finding": "max(child exit codes) could conceal a negative signal exit.",
+      "active_run_resolution": "All 360 actual C child return codes are zero; no abnormal exit was concealed."
+    },
+    {
+      "finding": "Both subset flags could produce an empty passing timing run.",
+      "active_run_resolution": "Neither subset flag was used, and this audit verifies all 48 single and 24 batch runs were present."
+    }
+  ],
+  "remeasurement_required": false,
+  "reproducer_corrections": {
+    "file": "bench/phase2_benchmark.py",
+    "sha256": "c61f56f0284bf45d0cdba38c7c14f25803e0be084eb08222f2a1c88533140b72",
+    "applied_after_measurement": true,
+    "changes": [
+      "Require actual admitted worker count to equal the comparable C worker budget before publishing an equal-worker ratio.",
+      "Fail a batch on every nonzero child exit code, including negative signals and empty child lists.",
+      "Make --single-only and --batch-only mutually exclusive."
+    ],
+    "regression_tests": "bench/phase-2-harness-selftest.json",
+    "regression_tests_passed": 9
+  }
+}

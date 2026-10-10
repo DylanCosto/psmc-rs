@@ -1,0 +1,508 @@
+{
+  "allocation_probe": {
+    "dense_allocations": 6000,
+    "iterations": 1000,
+    "workspace_allocations": 0
+  },
+  "binary_sha256": {
+    "allocations": "9f868356d83e4532fb314e1eb5e78319b4e99260152391ea29b012a25462e4dc",
+    "check": "97fdaef40e782386d2f8647d019eaea171efc117ba5824db54fe79917bb76369",
+    "tests": "188d43b85c0c8be5e1ebbe88ab292163445f2c2dcd142b7134967464df54a4f1"
+  },
+  "cases": 60,
+  "commands": [
+    [
+      "rustc",
+      "--edition=2024",
+      "-C",
+      "opt-level=2",
+      "-C",
+      "codegen-units=1",
+      "bench/phase-2-model-workspace/check.rs",
+      "-o",
+      "work/phase2-model-workspace/check"
+    ],
+    [
+      "rustc",
+      "--edition=2024",
+      "-C",
+      "opt-level=2",
+      "-C",
+      "codegen-units=1",
+      "--cfg",
+      "allocation_probe",
+      "bench/phase-2-model-workspace/check.rs",
+      "-o",
+      "work/phase2-model-workspace/allocations"
+    ],
+    [
+      "rustc",
+      "--edition=2024",
+      "-C",
+      "opt-level=2",
+      "-C",
+      "codegen-units=1",
+      "--test",
+      "bench/phase-2-model-workspace/check.rs",
+      "-o",
+      "work/phase2-model-workspace/tests"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "dense"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "workspace"
+    ],
+    [
+      "work/phase2-model-workspace/allocations",
+      "allocations"
+    ],
+    [
+      "work/phase2-model-workspace/tests"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "4",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "23",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "64",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "64",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "64",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "64",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "64",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "64",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "64",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "64",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "64",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "64",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "64",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "64",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "dense",
+      "64",
+      "50000"
+    ],
+    [
+      "work/phase2-model-workspace/check",
+      "benchmark",
+      "workspace",
+      "64",
+      "50000"
+    ]
+  ],
+  "comparisons": {
+    "dense_vs_workspace": {
+      "byte_exact": true,
+      "finite_pairs": 64446,
+      "infinity_pairs": 0,
+      "mismatches": 0,
+      "nan_pairs": 0,
+      "passed": true,
+      "values": 64446
+    },
+    "retained_pinned_c_vs_workspace": {
+      "byte_exact": true,
+      "finite_pairs": 64446,
+      "infinity_pairs": 0,
+      "mismatches": 0,
+      "nan_pairs": 0,
+      "passed": true,
+      "values": 64446
+    }
+  },
+  "compiler_diagnostics": {
+    "allocations": "warning: method `cap_transition` is never used\n   --> bench/phase-2-model-workspace/../../crates/psmc-core/src/model.rs:228:12\n    |\n 53 | impl Model {\n    | ---------- method in this implementation\n...\n228 |     pub fn cap_transition(&mut self, cap: usize) {\n    |            ^^^^^^^^^^^^^^\n    |\n    = note: `#[warn(dead_code)]` on by default\n\nwarning: 1 warning emitted\n\n",
+    "check": "warning: method `cap_transition` is never used\n   --> bench/phase-2-model-workspace/../../crates/psmc-core/src/model.rs:228:12\n    |\n 53 | impl Model {\n    | ---------- method in this implementation\n...\n228 |     pub fn cap_transition(&mut self, cap: usize) {\n    |            ^^^^^^^^^^^^^^\n    |\n    = note: `#[warn(dead_code)]` on by default\n\nwarning: 1 warning emitted\n\n",
+    "tests": "warning: method `cap_transition` is never used\n   --> bench/phase-2-model-workspace/../../crates/psmc-core/src/model.rs:228:12\n    |\n 53 | impl Model {\n    | ---------- method in this implementation\n...\n228 |     pub fn cap_transition(&mut self, cap: usize) {\n    |            ^^^^^^^^^^^^^^\n    |\n    = note: `#[warn(dead_code)]` on by default\n\nwarning: 1 warning emitted\n\n"
+  },
+  "limitations": [
+    "Synthetic model fixtures only.",
+    "No full inference/scheduling gate in this check.",
+    "No performance claim from allocation counts alone.",
+    "No CUDA or cross-platform gate."
+  ],
+  "machine": "x86_64",
+  "output_sha256": {
+    "dense": "4c5d93772476ff98db56f27d618c43688e935d0be0002dd0b6afc35af03ae0a0",
+    "workspace": "4c5d93772476ff98db56f27d618c43688e935d0be0002dd0b6afc35af03ae0a0"
+  },
+  "passed": true,
+  "reference_evidence_sha256": "54d3044331819dcc0f16d3a0420b66a496746b4b388b3bba3fe502d072b1e52d",
+  "reference_source_commit": "82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+  "retained_c_output_sha256": "4c5d93772476ff98db56f27d618c43688e935d0be0002dd0b6afc35af03ae0a0",
+  "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)\nbinary: rustc\ncommit-hash: 1159e78c4747b02ef996e55082b704c09b970588\ncommit-date: 2025-09-14\nhost: x86_64-unknown-linux-gnu\nrelease: 1.90.0\nLLVM version: 20.1.8",
+  "scope": "Phase 2 scratch lifetime change; arithmetic and loop order are unchanged",
+  "source_sha256": {
+    "bench/phase-2-model-workspace/check.py": "6f40a24a953d3102bc08f12946b70497e3da284690202d50bd1fc9661ea4f328",
+    "bench/phase-2-model-workspace/check.rs": "bc66520f5b6188cb947b1879341d86b585b2a1be3c6f0a2a0b9cb67456b65899",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-core/src/model_workspace.rs": "b93cef96fcbe19ad1931b8633e3700317ec313a810d6a1712178b391c46b4321",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767"
+  },
+  "timing": {
+    "allocator": "default system allocator; no allocation counter",
+    "cases": [
+      {
+        "dense_over_workspace": 1.2741464514206033,
+        "median_seconds": {
+          "dense": 0.011451999,
+          "workspace": 0.008987977
+        },
+        "seconds": {
+          "dense": [
+            0.011067945,
+            0.011451999,
+            0.011287045,
+            0.012543654,
+            0.01351348,
+            0.010959581,
+            0.013201386
+          ],
+          "workspace": [
+            0.007103336,
+            0.010634471,
+            0.008987977,
+            0.010111389,
+            0.007848418,
+            0.007160375,
+            0.009536699
+          ]
+        },
+        "states": 4
+      },
+      {
+        "dense_over_workspace": 0.8599483181830503,
+        "median_seconds": {
+          "dense": 0.062566362,
+          "workspace": 0.072755956
+        },
+        "seconds": {
+          "dense": [
+            0.062489982,
+            0.062566362,
+            0.065659212,
+            0.062333349,
+            0.070678332,
+            0.067027362,
+            0.062196657
+          ],
+          "workspace": [
+            0.074150514,
+            0.071545085,
+            0.071279681,
+            0.072755956,
+            0.079646152,
+            0.072061919,
+            0.073174491
+          ]
+        },
+        "states": 23
+      },
+      {
+        "dense_over_workspace": 0.7839842887478309,
+        "median_seconds": {
+          "dense": 0.26985353,
+          "workspace": 0.344207829
+        },
+        "seconds": {
+          "dense": [
+            0.265221351,
+            0.269973051,
+            0.270378906,
+            0.26985353,
+            0.26413791,
+            0.269728374,
+            0.27055712
+          ],
+          "workspace": [
+            0.343477088,
+            0.359806935,
+            0.341857841,
+            0.344207829,
+            0.361248057,
+            0.344152942,
+            0.346441984
+          ]
+        },
+        "states": 64
+      }
+    ],
+    "iterations_per_sample": 50000,
+    "repetitions": 7,
+    "scope": "model update only; not full inference",
+    "status": "completed"
+  },
+  "unit_tests": {
+    "output": "\nrunning 2 tests\ntest model_workspace::tests::rejects_different_model_shape - should panic ... ok\ntest model_workspace::tests::repeated_candidates_reuse_buffers_and_overwrite_poison ... ok\n\ntest result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "passed": true,
+    "repeated_candidate_cases": 360
+  }
+}

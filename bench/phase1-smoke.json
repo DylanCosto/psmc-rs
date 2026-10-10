@@ -1,0 +1,831 @@
+{
+  "schema_version": 1,
+  "scope": "Phase1 dense Rust vs pinned C; synthetic inputs only",
+  "status": "passed",
+  "complete_suite": false,
+  "selection": "^(strict_tiny|snapshot_exact_tiny_N2|reject_.*)$",
+  "available_tests": 106,
+  "selected_tests": 20,
+  "source_commit": "82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+  "binaries": {
+    "candidate": {
+      "path": "target/release/psmc-rs",
+      "sha256": "e300708cd083005a34d2e042e142342530d32c595ae6a0053221f22ca5b39199"
+    },
+    "oracle": {
+      "path": "work/vanilla/psmc",
+      "sha256": "da1743512f1925da6277d5a2e5350c70c61c9771d11749df0918605f795ff32b"
+    },
+    "snapshot_oracle": {
+      "path": "work/instrumented/psmc",
+      "sha256": "2b4bd7dd369ee8fc226270b30bd414a031314fd70445bd5d7a83d4e5d2f2ed55"
+    }
+  },
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+  "harness_sha256": "0d31154a8e19349c2de33c697d8f5d87da3fa7c8f35d031faef774e1c8c1d472",
+  "strict_metadata_allowlist": [
+    "Exactly one line beginning MM\\tVersion: ; all remaining stdout bytes compared"
+  ],
+  "snapshot_comparison": "Every JSON event/field in order; exact finite numeric equality and signed-zero check; NaN/Inf class equality",
+  "independent_diagnostic_tolerances": {
+    "relative": 1e-10,
+    "absolute": 1e-12,
+    "source": "Unchanged Phase0 path/count/Q diagnostic; not a production equivalent-mode contract"
+  },
+  "passed": 20,
+  "failed": 0,
+  "full_30_round_bootstraps_completed": 0,
+  "full_30_round_bootstrap_reference_pathologies": [],
+  "run_numerical_diagnostics": {
+    "tiny-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "tiny-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "tiny_N2-snapshot-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "tiny_N2-vanilla-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "tiny_N2-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "rejected-simulation": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-cpg": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-equivalent_mode": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-research_mode": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-cuda_backend": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-unknown_flag": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-negative_iterations": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-zero_width_pattern": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-malformed_pattern": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-malformed_number": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-nonfinite_number": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-zero_ratio": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-empty_input": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-empty_record": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-no_header": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-truncated_fastq": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-missing-input": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    },
+    "rejected-missing-option-value": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 0,
+      "classification": "finite_reference_output"
+    }
+  },
+  "commands": [
+    {
+      "name": "tiny-oracle",
+      "command": [
+        "work/vanilla/psmc",
+        "-p",
+        "2+2",
+        "-N",
+        "2",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 0,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "04ff488fee921833b6630a8e5307b3685280b330c1802c9f4616fe1e8d6e1a6e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "tiny-candidate",
+      "command": [
+        "target/release/psmc-rs",
+        "-p",
+        "2+2",
+        "-N",
+        "2",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 0,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "f92ca1923d1ff0495733454f205335184431b435c4c79b99f99bc618990c74e8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "tiny_N2-snapshot-oracle",
+      "command": [
+        "work/instrumented/psmc",
+        "-p",
+        "2+2",
+        "-N",
+        "2",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {
+        "PSMC_SEED": "7",
+        "PSMC_SNAPSHOT": "/home/dyl/Documents/Codex/2026-10-09/le/outputs/psmc-rs/bench/raw/phase1-smoke/tiny_N2-C.jsonl"
+      },
+      "returncode": 0,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "04ff488fee921833b6630a8e5307b3685280b330c1802c9f4616fe1e8d6e1a6e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "tiny_N2-vanilla-oracle",
+      "command": [
+        "work/vanilla/psmc",
+        "-p",
+        "2+2",
+        "-N",
+        "2",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 0,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "04ff488fee921833b6630a8e5307b3685280b330c1802c9f4616fe1e8d6e1a6e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "tiny_N2-candidate",
+      "command": [
+        "target/release/psmc-rs",
+        "-p",
+        "2+2",
+        "-N",
+        "2",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {
+        "PSMC_SEED": "7",
+        "PSMC_SNAPSHOT": "/home/dyl/Documents/Codex/2026-10-09/le/outputs/psmc-rs/bench/raw/phase1-smoke/tiny_N2-Rust.jsonl"
+      },
+      "returncode": 0,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "f92ca1923d1ff0495733454f205335184431b435c4c79b99f99bc618990c74e8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "rejected-simulation",
+      "command": [
+        "target/release/psmc-rs",
+        "-S",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "5bbdd16bb81b9cc9e223d12795983157a1c626f409fa1a30c78d6761ee16a83c"
+    },
+    {
+      "name": "rejected-cpg",
+      "command": [
+        "target/release/psmc-rs",
+        "-c",
+        "unused.bin",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "278fb943b84d7e8045c79e18a1eb0e9f608a37e96ff6790156b51d60de60429a"
+    },
+    {
+      "name": "rejected-equivalent_mode",
+      "command": [
+        "target/release/psmc-rs",
+        "--mode",
+        "equivalent",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "6c121353f8483ae1e77d93b2453317bd763f0eda0336c21edca9053816e947ac"
+    },
+    {
+      "name": "rejected-research_mode",
+      "command": [
+        "target/release/psmc-rs",
+        "--mode",
+        "research",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "381c8b5de864899c0095be10f105c3f5ee3fd5afc81724c64c2fe08a1928b329"
+    },
+    {
+      "name": "rejected-cuda_backend",
+      "command": [
+        "target/release/psmc-rs",
+        "--backend",
+        "cuda",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "d84d089b15c73da36318ae446e734df27ddd224043dfc57751f539ab9aad2783"
+    },
+    {
+      "name": "rejected-unknown_flag",
+      "command": [
+        "target/release/psmc-rs",
+        "--not-a-psmc-option",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "953d29c477af6fb79e461cffd195d57a9c53a4776c6b6a3518a8e96636fa6c01"
+    },
+    {
+      "name": "rejected-negative_iterations",
+      "command": [
+        "target/release/psmc-rs",
+        "-N",
+        "-1",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "431586da388ba612c0679afc9057f0b2cc5b373b4fdff6df9b411ab42b3b64a1"
+    },
+    {
+      "name": "rejected-zero_width_pattern",
+      "command": [
+        "target/release/psmc-rs",
+        "-p",
+        "0+2",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "9bcaebc7e05f8484c12e7431dd0e885bf341d80cde2f06be3cae81dc5acfe371"
+    },
+    {
+      "name": "rejected-malformed_pattern",
+      "command": [
+        "target/release/psmc-rs",
+        "-p",
+        "2++2",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e539346c7e24df1f32ba8d2c497a9977d4fc904231aa36ee135e21465909fc80"
+    },
+    {
+      "name": "rejected-malformed_number",
+      "command": [
+        "target/release/psmc-rs",
+        "-r",
+        "abc",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1bbb3e2c614cbb1b684a8b87626ee10ee7ed65997220f0103d51f7f6ff3a303d"
+    },
+    {
+      "name": "rejected-nonfinite_number",
+      "command": [
+        "target/release/psmc-rs",
+        "-t",
+        "NaN",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "5cbbc8c4a9f061cb1fb034bf1a483974ac35e05c2a6097f56178383cd6dc9146"
+    },
+    {
+      "name": "rejected-zero_ratio",
+      "command": [
+        "target/release/psmc-rs",
+        "-r",
+        "0",
+        "tests/fixtures/tiny.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "21c9d10257efbe2fc64f1e764e85040c93f94188e7a5e574c045f67c26e9696e",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "8827995de8a6663d0bcacc6088bbc7a242cf8eb73ad509a1d666fdfe602aff64"
+    },
+    {
+      "name": "rejected-empty_input",
+      "command": [
+        "target/release/psmc-rs",
+        "bench/raw/phase1-smoke/invalid-empty_input.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ab7e2947f4ae64da4cfb7bbea2cc75028121f0708b24877910fe6647005ca9aa"
+    },
+    {
+      "name": "rejected-empty_record",
+      "command": [
+        "target/release/psmc-rs",
+        "bench/raw/phase1-smoke/invalid-empty_record.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "fbb5d90b2f96e8df5e849aed066b203e2205460da3fd971e4abeec471adbdf25",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "04e7e89da6033ab5102ef687bf1110801c55eb820cdb18e447304dc0c96f80e7"
+    },
+    {
+      "name": "rejected-no_header",
+      "command": [
+        "target/release/psmc-rs",
+        "bench/raw/phase1-smoke/invalid-no_header.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "e99e6c7dc68677002a150374086ce95c121dcd7033695b3ffb97cda6a0918b3c",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ab7e2947f4ae64da4cfb7bbea2cc75028121f0708b24877910fe6647005ca9aa"
+    },
+    {
+      "name": "rejected-truncated_fastq",
+      "command": [
+        "target/release/psmc-rs",
+        "bench/raw/phase1-smoke/invalid-truncated_fastq.psmcfa"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": "9cb3c975c7855e2b2e5372d17d19bdbbf5778d61766ad62c618e9c2293cc0675",
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1d84125af38361f6000f187bbec3d13f9d4caae19e8923bc3fa0eb7959f5b84d"
+    },
+    {
+      "name": "rejected-missing-input",
+      "command": [
+        "target/release/psmc-rs"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": null,
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "06d9132d0dbd117ab7d5b09fba1ecf7ed38265afe44b4410ede8ee36fd26ebf0"
+    },
+    {
+      "name": "rejected-missing-option-value",
+      "command": [
+        "target/release/psmc-rs",
+        "-N"
+      ],
+      "controls": {},
+      "returncode": 2,
+      "input_sha256": null,
+      "stdin_sha256": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "70983321b03ba5b46ddcd5f8abdaed4abd8b86478c9e88d49021b14b3b3ca48d"
+    }
+  ],
+  "cases": [
+    {
+      "name": "strict_tiny",
+      "status": "passed",
+      "details": {
+        "compared_sha256": "29b309a55dd96a9d3d727a05c4ea29ecb36eb52b13b66ac9c0eb72e6d332b563",
+        "compared_bytes": 1663,
+        "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+        "excluded_candidate_version": "MM\tVersion: psmc-rs 0.1.0 (dense f64; reference 82fa2ada83ee)",
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/tiny.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "snapshot_exact_tiny_N2",
+      "status": "passed",
+      "details": {
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/tiny.psmcfa"
+        ],
+        "seed": 7,
+        "events": 2399,
+        "event_types": {
+          "model": 1196,
+          "sequence": 4,
+          "aggregate": 2,
+          "objective": 1195,
+          "em_end": 2
+        },
+        "finite_numeric_values": 83790,
+        "nonfinite_classes": {
+          "nan": 1208
+        },
+        "non_numeric_values": 2403,
+        "mismatches": 0,
+        "first_mismatches": [],
+        "finite_tolerance": 0,
+        "negative_zero_checked": true,
+        "event_order_checked": true,
+        "compared_sha256": "29b309a55dd96a9d3d727a05c4ea29ecb36eb52b13b66ac9c0eb72e6d332b563",
+        "compared_bytes": 1663,
+        "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+        "excluded_candidate_version": "MM\tVersion: psmc-rs 0.1.0 (dense f64; reference 82fa2ada83ee)",
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "reject_simulation",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: -S is explicitly unsupported in Phase1; use the retained original PSMC executable",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_cpg",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: -c is explicitly unsupported in Phase1; use the retained original PSMC executable",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_equivalent_mode",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: mode 'equivalent' is unavailable; only the dense strict reference is implemented",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_research_mode",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: mode 'research' is unavailable; only the dense strict reference is implemented",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_cuda_backend",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: backend 'cuda' is unavailable; only dense CPU is implemented",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_unknown_flag",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: unsupported option: --not-a-psmc-option",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_negative_iterations",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: -N must be nonnegative; negative legacy values can loop indefinitely",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_zero_width_pattern",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: pattern integers must be positive",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_malformed_pattern",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: invalid pattern integer: \"\"",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_malformed_number",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: -r: invalid number 'abc'",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_nonfinite_number",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: -t: finite value required",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_zero_ratio",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: positive grid alpha and theta/rho are required",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_empty_input",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: input contains no nonempty FASTA/FASTQ records",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_empty_record",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: record \"empty\" is empty",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_no_header",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: input contains no nonempty FASTA/FASTQ records",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_truncated_fastq",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: record \"record\" has truncated FASTQ qualities (3 for 4 observations)",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_missing_input",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: psmc-rs 0.1.0 \u2014 dense scalar Rust reference\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n\nLegacy fitting options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETER_FILE -o OUTPUT\n  -b bootstrap input records; -d posterior segments; -D full posterior\n  -s forward scale output; -T divergence; -C decoding transition cap\nNew options: --seed INTEGER --snapshot FILE --mode strict --backend dense\n  --help --version\n\nInput '-' reads stdin. Fitting, model construction and dense numerics run in Rust.\nStrict parity is scoped to the tested Linux/libm stack and supported inputs.\nNo accelerated/equivalent/research backend is available. -c and -S are unsupported.",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    },
+    {
+      "name": "reject_missing_option_value",
+      "status": "passed",
+      "details": {
+        "returncode": 2,
+        "diagnostic": "psmc-rs: missing value for -N",
+        "scope": "Explicit runtime safety/unsupported-feature rejection; C crash behavior is not reproduced"
+      }
+    }
+  ],
+  "not_validated": [
+    "Real genome input or current user settings",
+    "CUDA",
+    "Accelerated CPU or equivalent backend",
+    "Cross-platform bitwise parity",
+    "Simulation and CpG binary input",
+    "Performance or10x speedup"
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "status": "failed_reference_nonfinite_output",
+  "workload": "bench/failed-workload-23states.json",
+  "source_commit": "82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+  "completed_batches": 8,
+  "last_batch": "interrupted after nonfinite values discovered; partial raw outputs retained",
+  "scope": "synthetic23states30iterations; NOT production genome failure evidence",
+  "failed_outputs": [
+    {
+      "file": "bench/raw/failed-23state/round-2-workers-4/replicate-16.psmc",
+      "count": 53,
+      "first_record": {
+        "round": 28,
+        "record": "QD\t-1.206123 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-2-workers-4/replicate-26.psmc",
+      "count": 79,
+      "first_record": {
+        "round": 26,
+        "record": "LK\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-2-workers-4/replicate-28.psmc",
+      "count": 8,
+      "first_record": {
+        "round": 23,
+        "record": "RI\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-1-workers-4/replicate-16.psmc",
+      "count": 53,
+      "first_record": {
+        "round": 28,
+        "record": "QD\t-1.206123 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-1-workers-4/replicate-26.psmc",
+      "count": 79,
+      "first_record": {
+        "round": 26,
+        "record": "LK\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-1-workers-4/replicate-28.psmc",
+      "count": 8,
+      "first_record": {
+        "round": 23,
+        "record": "RI\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-1-workers-1/replicate-16.psmc",
+      "count": 53,
+      "first_record": {
+        "round": 28,
+        "record": "QD\t-1.206123 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-1-workers-1/replicate-26.psmc",
+      "count": 79,
+      "first_record": {
+        "round": 26,
+        "record": "LK\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-1-workers-1/replicate-28.psmc",
+      "count": 8,
+      "first_record": {
+        "round": 23,
+        "record": "RI\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-0-workers-2/replicate-16.psmc",
+      "count": 53,
+      "first_record": {
+        "round": 28,
+        "record": "QD\t-1.206123 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-0-workers-2/replicate-26.psmc",
+      "count": 79,
+      "first_record": {
+        "round": 26,
+        "record": "LK\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-0-workers-2/replicate-28.psmc",
+      "count": 8,
+      "first_record": {
+        "round": 23,
+        "record": "RI\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-0-workers-1/replicate-16.psmc",
+      "count": 53,
+      "first_record": {
+        "round": 28,
+        "record": "QD\t-1.206123 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-0-workers-1/replicate-26.psmc",
+      "count": 79,
+      "first_record": {
+        "round": 26,
+        "record": "LK\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-0-workers-1/replicate-28.psmc",
+      "count": 8,
+      "first_record": {
+        "round": 23,
+        "record": "RI\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-0-workers-4/replicate-16.psmc",
+      "count": 53,
+      "first_record": {
+        "round": 28,
+        "record": "QD\t-1.206123 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-0-workers-4/replicate-26.psmc",
+      "count": 79,
+      "first_record": {
+        "round": 26,
+        "record": "LK\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-0-workers-4/replicate-28.psmc",
+      "count": 8,
+      "first_record": {
+        "round": 23,
+        "record": "RI\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-1-workers-2/replicate-16.psmc",
+      "count": 53,
+      "first_record": {
+        "round": 28,
+        "record": "QD\t-1.206123 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-1-workers-2/replicate-26.psmc",
+      "count": 79,
+      "first_record": {
+        "round": 26,
+        "record": "LK\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-1-workers-2/replicate-28.psmc",
+      "count": 8,
+      "first_record": {
+        "round": 23,
+        "record": "RI\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-2-workers-2/replicate-16.psmc",
+      "count": 53,
+      "first_record": {
+        "round": 28,
+        "record": "QD\t-1.206123 -> -nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-2-workers-2/replicate-26.psmc",
+      "count": 79,
+      "first_record": {
+        "round": 26,
+        "record": "LK\t-nan"
+      }
+    },
+    {
+      "file": "bench/raw/failed-23state/round-2-workers-2/replicate-28.psmc",
+      "count": 8,
+      "first_record": {
+        "round": 23,
+        "record": "RI\t-nan"
+      }
+    }
+  ],
+  "raw_results": "bench/raw/failed-23state/progress.json",
+  "performance_claim": null,
+  "decision": "Exclude failed and interrupted inference times from performance conclusions. Keep numerical regression fixtures. Separate K23 N5 partial-trajectory smoke tests only the harness and does not resolve30-iteration failures."
+}

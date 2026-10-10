@@ -1,0 +1,73 @@
+{
+  "source_url": "https://github.com/lh3/psmc.git",
+  "source_commit": "82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+  "source_archive_sha256": "f7125256136352b671f18c49181d9612a31b47395aac00581c23b6829ff8c454",
+  "mode": "gprof",
+  "source_numerical_algorithm_modified": false,
+  "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "compiler_target": "x86_64-linux-gnu",
+  "cflags": "-g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${BUILD_DIR}=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include",
+  "link_flags": "-g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${BUILD_DIR}=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include",
+  "linked_libraries": {
+    "libm.so.6": {
+      "path": "/lib/x86_64-linux-gnu/libm.so.6",
+      "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0"
+    },
+    "libz.so.1": {
+      "path": "/lib/x86_64-linux-gnu/libz.so.1",
+      "sha256": "86200da370f20476a2507e9097a789b5ef97269b4ca8d5e164ad82dab9d99892"
+    },
+    "libc.so.6": {
+      "path": "/lib/x86_64-linux-gnu/libc.so.6",
+      "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf"
+    }
+  },
+  "libc": "ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39",
+  "os": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+  "architecture": "x86_64",
+  "commands": [
+    [
+      "make",
+      "-j2",
+      "CC=gcc",
+      "CFLAGS=-g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${BUILD_DIR}=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include",
+      "CCFLAGS=-g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${BUILD_DIR}=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include",
+      "LIBS=-lm -l:libz.so.1"
+    ],
+    [
+      "make",
+      "-C",
+      "utils",
+      "-j2",
+      "CC=gcc",
+      "CFLAGS=-g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${BUILD_DIR}=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include",
+      "LIBS=-lm -l:libz.so.1",
+      "splitfa",
+      "fq2psmcfa"
+    ]
+  ],
+  "executables": {
+    "psmc": {
+      "path": "work/gprof/psmc",
+      "sha256": "60d18fb4a326e9476109cb21de2e0dfd5103bdf8eb52a3559ae4bc97e2e6fce4"
+    },
+    "utils/splitfa": {
+      "path": "work/gprof/utils/splitfa",
+      "sha256": "bb1775481d9d7d9582ae3624707d77585fff63b70d8fd5dab9d1b862543d7453"
+    },
+    "utils/fq2psmcfa": {
+      "path": "work/gprof/utils/fq2psmcfa",
+      "sha256": "4cd13fd3a6478082fd9cb031e8c098234f9ba3ea025d1e4e56f2d7bdf3d66db2"
+    }
+  },
+  "notes": [
+    "No fast-math or reduced precision; upstream O2 retained.",
+    "Floating-point contraction explicitly disabled on the pinned x86-64 baseline target.",
+    "Debug paths remapped for portable executable digests.",
+    "Instrumented and gprof builds must not be used for headline timings."
+  ],
+  "zlib_headers_sha256": {
+    "zlib.h": "6f1c7ebe0ac0f0794852b770c20efae041a451f833c91f60f837b599ea81679e",
+    "zconf.h": "1800d30368be262886ccaa0b4e0a82240f4b7cd65704f480c988f1ccbf74e14e"
+  }
+}

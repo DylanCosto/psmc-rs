@@ -1,0 +1,26 @@
+{
+  "created_utc": "2026-10-10T05:04:02.598838+00:00",
+  "scope": "Dense numerical oracle source retained unchanged; comparison against pre-optimization local source backup and Phase 1 recorded hashes.",
+  "phase1_build_report": "bench/phase-1-build.json",
+  "checks": [
+    {
+      "file": "crates/psmc-core/src/hmm.rs",
+      "phase1_sha256": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+      "phase2_sha256": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+      "byte_identical": true
+    },
+    {
+      "file": "crates/psmc-core/src/model.rs",
+      "phase1_sha256": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+      "phase2_sha256": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+      "byte_identical": true
+    },
+    {
+      "file": "crates/psmc-core/src/optimizer.rs",
+      "phase1_sha256": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+      "phase2_sha256": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+      "byte_identical": true
+    }
+  ],
+  "passed": true
+}

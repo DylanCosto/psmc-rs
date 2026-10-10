@@ -1,0 +1,17 @@
+work/
+__pycache__/
+*.pyc
+target/
+
+# Rebuildable executables and raw evidence remain local and in the evidence zip.
+/bin/
+/CHECKSUMS.sha256
+/bench/raw/
+/bench/phase-1-benchmark/
+/bench/phase-1-isolated/bin/
+/bench/phase-1-isolated/raw/
+/bench/phase-2-validation/
+/bench/phase-2-scheduler/
+/bench/phase-2-benchmark/
+/bench/phase-2-profile/
+*.jsonl.gz

@@ -1,0 +1,490 @@
+{
+  "checks": [
+    {
+      "evidence": {
+        "output_after": "",
+        "returncode": 2,
+        "snapshot_after": ""
+      },
+      "name": "all_missing_preserves_existing_output_and_snapshot",
+      "passed": false
+    },
+    {
+      "evidence": {
+        "output_after": "",
+        "returncode": 2,
+        "snapshot_after": "",
+        "trace_after": "{\"event\":\"bootstrap_draw\",\"draw\":0,\"source_index\":0,\"length\":8,\"accepted\":true,\"before_length\":0,\"after_length\":8,\"target_length\":16,\"stop\":false}\n{\"event\":\"bootstrap_draw\",\"draw\":1,\"source_index\":0,\"length\":8,\"accepted\":true,\"before_length\":8,\"after_length\":16,\"target_length\":16,\"stop\":true}\n{\"event\":\"bootstrap_end\",\"accepted_sequences\":2,\"length\":16,\"target_length\":16}\n"
+      },
+      "name": "all_missing_sample_preserves_trace_output_snapshot",
+      "passed": false
+    },
+    {
+      "evidence": {
+        "input_preserved": true,
+        "returncode": 2
+      },
+      "name": "stats_hardlink_input_rejected",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "returncode": 2
+      },
+      "name": "stats_legacy_output_alias_rejected",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "directory_exists": false,
+        "returncode": 2
+      },
+      "name": "all_missing_batch_rejected_before_directory_creation",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "directory_exists": false,
+        "returncode": 2
+      },
+      "name": "too_small_memory_budget_rejected_before_directory_creation",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "returncode": 2
+      },
+      "name": "existing_batch_directory_rejected",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "returncode": 0,
+        "seeds": [
+          42,
+          43,
+          44,
+          45
+        ],
+        "workers": 1
+      },
+      "name": "batch_forward_bounded_workers_and_ordered_manifest",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "returncode": 0,
+        "seeds": [
+          42,
+          43,
+          44,
+          45
+        ],
+        "workers": 3
+      },
+      "name": "batch_reverse_bounded_workers_and_ordered_manifest",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "replicates_compared": 4
+      },
+      "name": "worker_count_and_reverse_task_order_preserve_outputs",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "replicates_equal": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "name": "batch_rng_replay_matches_independent_bootstrap_and_random_initialization",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "failed_replicates": 2,
+        "recorded_failures": [
+          {
+            "error": "all-missing input requires explicit valid initial parameters (-i)",
+            "index": 3,
+            "seed": 45
+          },
+          {
+            "error": "all-missing input requires explicit valid initial parameters (-i)",
+            "index": 4,
+            "seed": 46
+          }
+        ],
+        "returncode": 2,
+        "successful_replicates": 6
+      },
+      "name": "partial_failure_is_reported_and_remaining_jobs_complete",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "directory_exists": false,
+        "returncode": 2
+      },
+      "name": "reject_workers",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "directory_exists": false,
+        "returncode": 2
+      },
+      "name": "reject_replicates",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "directory_exists": false,
+        "returncode": 2
+      },
+      "name": "reject_task-order",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "directory_exists": false,
+        "returncode": 2
+      },
+      "name": "reject_memory-mib",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "directory_exists": false,
+        "returncode": 2
+      },
+      "name": "seed_range_overflow_rejected_before_directory_creation",
+      "passed": true
+    }
+  ],
+  "commands": [
+    {
+      "arguments": [
+        "--backend",
+        "cpu",
+        "-N",
+        "0",
+        "-o",
+        "${PROJECT}/work/phase2-review-vp2p29l5/existing.psmc",
+        "--snapshot",
+        "${PROJECT}/work/phase2-review-vp2p29l5/existing.jsonl",
+        "${PROJECT}/work/phase2-review-vp2p29l5/missing.psmcfa"
+      ],
+      "returncode": 2,
+      "stderr": "psmc-rs: all-missing input requires explicit valid initial parameters (-i)\n"
+    },
+    {
+      "arguments": [
+        "--backend",
+        "cpu",
+        "-N",
+        "0",
+        "-b",
+        "--seed",
+        "45",
+        "-o",
+        "${PROJECT}/work/phase2-review-vp2p29l5/existing.psmc",
+        "--snapshot",
+        "${PROJECT}/work/phase2-review-vp2p29l5/existing.jsonl",
+        "${PROJECT}/work/phase2-review-vp2p29l5/mixed.psmcfa"
+      ],
+      "returncode": 2,
+      "stderr": "psmc-rs: all-missing input requires explicit valid initial parameters (-i)\n"
+    },
+    {
+      "arguments": [
+        "-N",
+        "0",
+        "--stats",
+        "${PROJECT}/work/phase2-review-vp2p29l5/alias.stats",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 2,
+      "stderr": "psmc-rs: refusing to overwrite an input file\n"
+    },
+    {
+      "arguments": [
+        "-N",
+        "0",
+        "-o",
+        "${PROJECT}/work/phase2-review-vp2p29l5/existing.psmc",
+        "--stats",
+        "${PROJECT}/work/phase2-review-vp2p29l5/existing.psmc",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 2,
+      "stderr": "psmc-rs: legacy output, snapshot, statistics and bootstrap trace must use separate files\n"
+    },
+    {
+      "arguments": [
+        "bootstrap",
+        "-N",
+        "0",
+        "--output-dir",
+        "${PROJECT}/work/phase2-review-vp2p29l5/all-missing-batch",
+        "${PROJECT}/work/phase2-review-vp2p29l5/missing.psmcfa"
+      ],
+      "returncode": 2,
+      "stderr": "psmc-rs: all-missing input requires explicit valid initial parameters (-i)\n"
+    },
+    {
+      "arguments": [
+        "bootstrap",
+        "-N",
+        "0",
+        "--memory-mib",
+        "1",
+        "--output-dir",
+        "${PROJECT}/work/phase2-review-vp2p29l5/budget-batch",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 2,
+      "stderr": "psmc-rs: memory budget cannot admit one worker: input 187 bytes plus estimated worker 16917328 bytes; increase --memory-mib\n"
+    },
+    {
+      "arguments": [
+        "bootstrap",
+        "-N",
+        "0",
+        "--output-dir",
+        "${PROJECT}/work/phase2-review-vp2p29l5",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 2,
+      "stderr": "psmc-rs: bootstrap output directory must not already exist\n"
+    },
+    {
+      "arguments": [
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "-N",
+        "0",
+        "-I",
+        "0.1",
+        "--seed",
+        "42",
+        "--replicates",
+        "4",
+        "--workers",
+        "1",
+        "--task-order",
+        "forward",
+        "--output-dir",
+        "${PROJECT}/work/phase2-review-vp2p29l5/batch-forward",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 0,
+      "stderr": "completed 4 bootstrap fits using 1 workers; 0 contain nonfinite legacy output\n"
+    },
+    {
+      "arguments": [
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "-N",
+        "0",
+        "-I",
+        "0.1",
+        "--seed",
+        "42",
+        "--replicates",
+        "4",
+        "--workers",
+        "3",
+        "--task-order",
+        "reverse",
+        "--output-dir",
+        "${PROJECT}/work/phase2-review-vp2p29l5/batch-reverse",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 0,
+      "stderr": "completed 4 bootstrap fits using 3 workers; 0 contain nonfinite legacy output\n"
+    },
+    {
+      "arguments": [
+        "--backend",
+        "cpu",
+        "-N",
+        "0",
+        "-I",
+        "0.1",
+        "-b",
+        "--seed",
+        "42",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "--backend",
+        "cpu",
+        "-N",
+        "0",
+        "-I",
+        "0.1",
+        "-b",
+        "--seed",
+        "43",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "--backend",
+        "cpu",
+        "-N",
+        "0",
+        "-I",
+        "0.1",
+        "-b",
+        "--seed",
+        "44",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "--backend",
+        "cpu",
+        "-N",
+        "0",
+        "-I",
+        "0.1",
+        "-b",
+        "--seed",
+        "45",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "-N",
+        "0",
+        "--seed",
+        "42",
+        "--replicates",
+        "8",
+        "--workers",
+        "3",
+        "--output-dir",
+        "${PROJECT}/work/phase2-review-vp2p29l5/mixed-batch",
+        "${PROJECT}/work/phase2-review-vp2p29l5/mixed.psmcfa"
+      ],
+      "returncode": 2,
+      "stderr": "psmc-rs: 2 bootstrap fits failed; manifest and partial outputs retained in ${PROJECT}/work/phase2-review-vp2p29l5/mixed-batch\n"
+    },
+    {
+      "arguments": [
+        "bootstrap",
+        "-N",
+        "0",
+        "--workers",
+        "0",
+        "--output-dir",
+        "${PROJECT}/work/phase2-review-vp2p29l5/invalid-workers",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 2,
+      "stderr": "psmc-rs: --workers requires a positive integer\n"
+    },
+    {
+      "arguments": [
+        "bootstrap",
+        "-N",
+        "0",
+        "--replicates",
+        "0",
+        "--output-dir",
+        "${PROJECT}/work/phase2-review-vp2p29l5/invalid-replicates",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 2,
+      "stderr": "psmc-rs: --replicates requires a positive integer\n"
+    },
+    {
+      "arguments": [
+        "bootstrap",
+        "-N",
+        "0",
+        "--task-order",
+        "random",
+        "--output-dir",
+        "${PROJECT}/work/phase2-review-vp2p29l5/invalid-task-order",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 2,
+      "stderr": "psmc-rs: --task-order must be forward or reverse\n"
+    },
+    {
+      "arguments": [
+        "bootstrap",
+        "-N",
+        "0",
+        "--memory-mib",
+        "18446744073709551615",
+        "--output-dir",
+        "${PROJECT}/work/phase2-review-vp2p29l5/invalid-memory-mib",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 2,
+      "stderr": "psmc-rs: memory budget overflow\n"
+    },
+    {
+      "arguments": [
+        "bootstrap",
+        "-N",
+        "0",
+        "--seed",
+        "9223372036854775807",
+        "--replicates",
+        "2",
+        "--output-dir",
+        "${PROJECT}/work/phase2-review-vp2p29l5/seed-overflow",
+        "${PROJECT}/work/phase2-review-vp2p29l5/good.psmcfa"
+      ],
+      "returncode": 2,
+      "stderr": "psmc-rs: bootstrap seed range overflow\n"
+    }
+  ],
+  "executable_sha256": "28bb94161d898ebd3bc676a10df0fb24a26580e37fe6c3a48412d48e7f9ac948",
+  "passed": false,
+  "raw_directory": "work/phase2-review-vp2p29l5",
+  "scope": "small independent CLI and scheduler controls; no performance claim",
+  "source_sha256": {
+    "crates/psmc-cli/src/batch.rs": "cc5b367f1de2cd9fba875eeea0be43a11a8027f0e851b9f8d5752978dc1511d0",
+    "crates/psmc-cli/src/main.rs": "79581374aae688279ed599e08c966d53946cbf8022108c769bbe849def7f6c0d"
+  }
+}

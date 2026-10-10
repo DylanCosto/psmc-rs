@@ -1,0 +1,28 @@
+{
+  "created_utc": "2026-10-10T05:09:22.415751+00:00",
+  "status": "passed",
+  "scope": "Delivered binary matches build, differential, scheduler, review and timed frozen executables; production source matches final build/test hashes; new documentation links resolve.",
+  "binary": "bin/psmc-rs",
+  "sha256": "fd866573a007003d2388137270ec24f14acb436c42c7084ab8dac076fdabb59a",
+  "checks": {
+    "differential_controls": 226,
+    "scheduler_fits": 180,
+    "cli_review_controls": 17,
+    "harness_regression_tests": 9,
+    "debug_release_unit_tests_each": 27,
+    "source_hashes_unchanged": true,
+    "historical_phase1_binary_unchanged": true,
+    "local_document_links_resolve": true
+  },
+  "evidence_sha256": {
+    "bench/phase-2-build.json": "fb11ed01f1a590b363ea95d303343c0628b9cc073caae25b74f8bd67df4366eb",
+    "bench/phase-2-validation.json": "dea9a1d36bfeecb02b1ba152a0689fa803c96312c5abb53e60eb4bc680415fda",
+    "bench/phase-2-scheduler.json": "25ced2f2aa61849f6483822d0752845cd75b799ee202bbfc630e13e5a0959a00",
+    "bench/phase-2-benchmark.json": "af6d5c94723a059fe36693688a6e8df2e0f49dc88b49b4e7bd24ea9c04728d94",
+    "bench/phase-2-benchmark-audit.json": "7845dec98d97543e3dfe3c81b25720ae7090e045ca4178bdb0159c8850cae020",
+    "bench/phase2-review.json": "88bcbe07ebb66b2cf99727eb0cd2e77dcf6f2be330c1fc7845ba0bbf531903b1",
+    "bench/phase-2-cargo-checks.json": "42c81c780b27e26026a5a8cc41a821f9ade07da5ba510057b98f134cbe3a6a09",
+    "bench/phase-2-harness-selftest.json": "85a1de4467278ff7095ab412ad8e8ebf03e95ef779079aa8250a8f63422d060d"
+  },
+  "runner_sha256": "d0571b44aacb213cc92b8f13dae2edf31a6db8376bddded275a5a0c9e882a271"
+}

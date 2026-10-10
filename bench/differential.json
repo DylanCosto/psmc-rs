@@ -1,0 +1,2671 @@
+{
+  "scope": "Phase 0 C versus instrumented C, plus independent path enumeration using C model matrices",
+  "status": "passed",
+  "candidate": "work/instrumented/psmc",
+  "candidate_sha256": "2b4bd7dd369ee8fc226270b30bd414a031314fd70445bd5d7a83d4e5d2f2ed55",
+  "oracle": "work/vanilla/psmc",
+  "oracle_sha256": "da1743512f1925da6277d5a2e5350c70c61c9771d11749df0918605f795ff32b",
+  "strict_metadata_allowlist": [],
+  "run_numerical_diagnostics": {
+    "tiny-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "tiny-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "gzip-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "gzip-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "aliases-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "aliases-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "repeated-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 8,
+      "nonfinite_first_records": [
+        {
+          "line": 33,
+          "round": 1,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 46,
+          "round": 2,
+          "tag": "LK",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan",
+            "-nan"
+          ]
+        },
+        {
+          "line": 48,
+          "round": 2,
+          "tag": "RI",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 52,
+          "round": 2,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 53,
+          "round": 2,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 54,
+          "round": 2,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 55,
+          "round": 2,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "repeated-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 8,
+      "nonfinite_first_records": [
+        {
+          "line": 33,
+          "round": 1,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 46,
+          "round": 2,
+          "tag": "LK",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan",
+            "-nan"
+          ]
+        },
+        {
+          "line": 48,
+          "round": 2,
+          "tag": "RI",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 52,
+          "round": 2,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 53,
+          "round": 2,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 54,
+          "round": 2,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 55,
+          "round": 2,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "fixed-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "fixed-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "grid-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "grid-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "missing-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "missing-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "single-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "single-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "64_states-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "64_states-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "30_iterations-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 39,
+      "nonfinite_first_records": [
+        {
+          "line": 61,
+          "round": 3,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 75,
+          "round": 4,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 102,
+          "round": 6,
+          "tag": "LK",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 103,
+          "round": 6,
+          "tag": "QD",
+          "values": [
+            "-nan",
+            "-nan"
+          ]
+        },
+        {
+          "line": 104,
+          "round": 6,
+          "tag": "RI",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 108,
+          "round": 6,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 109,
+          "round": 6,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 110,
+          "round": 6,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 111,
+          "round": 6,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 159,
+          "round": 10,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 173,
+          "round": 11,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 228,
+          "round": 15,
+          "tag": "LK",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 229,
+          "round": 15,
+          "tag": "QD",
+          "values": [
+            "-nan",
+            "-nan"
+          ]
+        },
+        {
+          "line": 230,
+          "round": 15,
+          "tag": "RI",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 234,
+          "round": 15,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 235,
+          "round": 15,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 236,
+          "round": 15,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 237,
+          "round": 15,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 243,
+          "round": 16,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 257,
+          "round": 17,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "30_iterations-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 39,
+      "nonfinite_first_records": [
+        {
+          "line": 61,
+          "round": 3,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 75,
+          "round": 4,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 102,
+          "round": 6,
+          "tag": "LK",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 103,
+          "round": 6,
+          "tag": "QD",
+          "values": [
+            "-nan",
+            "-nan"
+          ]
+        },
+        {
+          "line": 104,
+          "round": 6,
+          "tag": "RI",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 108,
+          "round": 6,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 109,
+          "round": 6,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 110,
+          "round": 6,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 111,
+          "round": 6,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 159,
+          "round": 10,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 173,
+          "round": 11,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 228,
+          "round": 15,
+          "tag": "LK",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 229,
+          "round": 15,
+          "tag": "QD",
+          "values": [
+            "-nan",
+            "-nan"
+          ]
+        },
+        {
+          "line": 230,
+          "round": 15,
+          "tag": "RI",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 234,
+          "round": 15,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 235,
+          "round": 15,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 236,
+          "round": 15,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 237,
+          "round": 15,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 243,
+          "round": 16,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 257,
+          "round": 17,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "finite_workload_30_iterations-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "finite_workload_30_iterations-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "decoding-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "decoding-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "full_posterior-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "full_posterior-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "probability-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "probability-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "divergence-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "divergence-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "alpha-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "alpha-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "cap-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "cap-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "alias-source": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "alias-canonical": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "boundaries-original": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "boundaries-joined": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 8,
+      "nonfinite_first_records": [
+        {
+          "line": 33,
+          "round": 1,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 46,
+          "round": 2,
+          "tag": "LK",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan",
+            "-nan"
+          ]
+        },
+        {
+          "line": 48,
+          "round": 2,
+          "tag": "RI",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 52,
+          "round": 2,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 53,
+          "round": 2,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 54,
+          "round": 2,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        },
+        {
+          "line": 55,
+          "round": 2,
+          "tag": "RS",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-00-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-00-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-01-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-01-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-02-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-02-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-03-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-03-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-04-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-04-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-05-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-05-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-06-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-06-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-07-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-07-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-08-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-08-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-09-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-09-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-10-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-10-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-11-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-11-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-12-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-12-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-13-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-13-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-14-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-14-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-15-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-15-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-16-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-16-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-17-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-17-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-18-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-18-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-19-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-19-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-20-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-20-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-21-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-21-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-22-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-22-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-23-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-23-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-24-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-24-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-25-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-25-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-26-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-26-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-27-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-27-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-28-candidate": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-28-oracle": {
+      "finite_outside_initial_RI": false,
+      "nonfinite_record_count": 1,
+      "nonfinite_first_records": [
+        {
+          "line": 47,
+          "round": 2,
+          "tag": "QD",
+          "values": [
+            "-nan"
+          ]
+        }
+      ],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "legacy_nonfinite_pathology_parity_only"
+    },
+    "bootstrap-29-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "bootstrap-29-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "snapshot-candidate": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "snapshot-oracle": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "random-one": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    },
+    "random-two": {
+      "finite_outside_initial_RI": true,
+      "nonfinite_record_count": 0,
+      "nonfinite_first_records": [],
+      "expected_initial_RI_nonfinite_records": 1,
+      "classification": "finite_reference_output"
+    }
+  },
+  "cases": [
+    {
+      "name": "strict_tiny",
+      "status": "passed",
+      "details": {
+        "output_sha256": "04ff488fee921833b6630a8e5307b3685280b330c1802c9f4616fe1e8d6e1a6e",
+        "bytes": 1691,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/tiny.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "strict_gzip",
+      "status": "passed",
+      "details": {
+        "output_sha256": "04ff488fee921833b6630a8e5307b3685280b330c1802c9f4616fe1e8d6e1a6e",
+        "bytes": 1691,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/tiny.psmcfa.gz"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "strict_aliases",
+      "status": "passed",
+      "details": {
+        "output_sha256": "faff07bd7c31b71c4276fcdfd4ddc7cdcaf72c6f1f5f9b7d1376ac345f84071f",
+        "bytes": 2892,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/aliases.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "strict_repeated",
+      "status": "passed",
+      "details": {
+        "output_sha256": "f95630fc7ee9be6b1d55ac62d84f978963790e00bc67bcb265cd4cf8f6f7f00b",
+        "bytes": 1647,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/repeated.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": false,
+          "nonfinite_record_count": 8,
+          "nonfinite_first_records": [
+            {
+              "line": 33,
+              "round": 1,
+              "tag": "QD",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 46,
+              "round": 2,
+              "tag": "LK",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 47,
+              "round": 2,
+              "tag": "QD",
+              "values": [
+                "-nan",
+                "-nan"
+              ]
+            },
+            {
+              "line": 48,
+              "round": 2,
+              "tag": "RI",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 52,
+              "round": 2,
+              "tag": "RS",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 53,
+              "round": 2,
+              "tag": "RS",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 54,
+              "round": 2,
+              "tag": "RS",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 55,
+              "round": 2,
+              "tag": "RS",
+              "values": [
+                "-nan"
+              ]
+            }
+          ],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "legacy_nonfinite_pathology_parity_only"
+        }
+      }
+    },
+    {
+      "name": "strict_fixed",
+      "status": "passed",
+      "details": {
+        "output_sha256": "0a18a881177ae228137ed76fc0ea617ddc043bc971d9ac01519f79698d003b99",
+        "bytes": 1685,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "-i",
+          "tests/fixtures/fixed.par",
+          "tests/fixtures/tiny.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": false,
+          "nonfinite_record_count": 1,
+          "nonfinite_first_records": [
+            {
+              "line": 47,
+              "round": 2,
+              "tag": "QD",
+              "values": [
+                "-nan"
+              ]
+            }
+          ],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "legacy_nonfinite_pathology_parity_only"
+        }
+      }
+    },
+    {
+      "name": "strict_grid",
+      "status": "passed",
+      "details": {
+        "output_sha256": "db4b723412157463973d805ce31235310324ee4e1c87f9e2b9b3cb411a9887f2",
+        "bytes": 1834,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "-i",
+          "tests/fixtures/grid.par",
+          "tests/fixtures/tiny.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "strict_missing",
+      "status": "passed",
+      "details": {
+        "output_sha256": "af709008a43ce1a15dad2cf884085e40882d2197d216f177aa3be931b23f75f6",
+        "bytes": 1276,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "-i",
+          "tests/fixtures/fixed.par",
+          "-N",
+          "1",
+          "tests/fixtures/missing.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "strict_single",
+      "status": "passed",
+      "details": {
+        "output_sha256": "f1fa7ce0af9c6461082f170c6a4cbbb78abae75fa676c261335de38d17f80e1c",
+        "bytes": 1275,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "-i",
+          "tests/fixtures/fixed.par",
+          "-N",
+          "1",
+          "tests/fixtures/single.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "strict_64_states",
+      "status": "passed",
+      "details": {
+        "output_sha256": "d84b1f65c8fbeedeb0bc0de8117eed0f748d36cf92daad702f0fcf3bf3358119",
+        "bytes": 11826,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "-p",
+          "4+25*2+4+6",
+          "tests/fixtures/tiny.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "strict_30_iterations",
+      "status": "passed",
+      "details": {
+        "output_sha256": "c7456ceff6aab695316c6b69e6feca15197c82ead0a45fc99c57bc18231628aa",
+        "bytes": 13011,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "-N",
+          "30",
+          "tests/fixtures/tiny.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": false,
+          "nonfinite_record_count": 39,
+          "nonfinite_first_records": [
+            {
+              "line": 61,
+              "round": 3,
+              "tag": "QD",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 75,
+              "round": 4,
+              "tag": "QD",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 102,
+              "round": 6,
+              "tag": "LK",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 103,
+              "round": 6,
+              "tag": "QD",
+              "values": [
+                "-nan",
+                "-nan"
+              ]
+            },
+            {
+              "line": 104,
+              "round": 6,
+              "tag": "RI",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 108,
+              "round": 6,
+              "tag": "RS",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 109,
+              "round": 6,
+              "tag": "RS",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 110,
+              "round": 6,
+              "tag": "RS",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 111,
+              "round": 6,
+              "tag": "RS",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 159,
+              "round": 10,
+              "tag": "QD",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 173,
+              "round": 11,
+              "tag": "QD",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 228,
+              "round": 15,
+              "tag": "LK",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 229,
+              "round": 15,
+              "tag": "QD",
+              "values": [
+                "-nan",
+                "-nan"
+              ]
+            },
+            {
+              "line": 230,
+              "round": 15,
+              "tag": "RI",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 234,
+              "round": 15,
+              "tag": "RS",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 235,
+              "round": 15,
+              "tag": "RS",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 236,
+              "round": 15,
+              "tag": "RS",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 237,
+              "round": 15,
+              "tag": "RS",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 243,
+              "round": 16,
+              "tag": "QD",
+              "values": [
+                "-nan"
+              ]
+            },
+            {
+              "line": 257,
+              "round": 17,
+              "tag": "QD",
+              "values": [
+                "-nan"
+              ]
+            }
+          ],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "legacy_nonfinite_pathology_parity_only"
+        }
+      }
+    },
+    {
+      "name": "strict_finite_workload_30_iterations",
+      "status": "passed",
+      "details": {
+        "output_sha256": "1c7a5edbe3397e5311a58a79146a94e72c08dba6a2b40c9906884356b565062a",
+        "bytes": 45913,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "-p",
+          "4+5*3+4",
+          "-N",
+          "30",
+          "tests/fixtures/workload.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "strict_decoding",
+      "status": "passed",
+      "details": {
+        "output_sha256": "905fb0644fdf5edda4a2f09aef3e8a577dd405dc903e6ee79f9427125b16d3e1",
+        "bytes": 1879,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "-d",
+          "tests/fixtures/tiny.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "strict_full_posterior",
+      "status": "passed",
+      "details": {
+        "output_sha256": "072cfce65efda021df1f47cba275a38745aae78674aaddae879f14d0a75c6ea1",
+        "bytes": 3953,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "-D",
+          "tests/fixtures/tiny.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "strict_probability",
+      "status": "passed",
+      "details": {
+        "output_sha256": "2cfa17d2a30ee90af5898d3f279f97a51c3ddb19e2effd6d19888655754648ff",
+        "bytes": 2149,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "-s",
+          "tests/fixtures/tiny.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "strict_divergence",
+      "status": "passed",
+      "details": {
+        "output_sha256": "7313565aa8609e3ceddcc40c0d5b9f0acf92b3ba1295c43effca9d46e1a7b1d3",
+        "bytes": 1771,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "-T",
+          "0.2",
+          "tests/fixtures/tiny.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "strict_alpha",
+      "status": "passed",
+      "details": {
+        "output_sha256": "338116ac82aafe5d8e144e2b42557e56d6c8bc9c1180637f1640374c66065848",
+        "bytes": 1682,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "-l",
+          "0.2",
+          "tests/fixtures/tiny.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": false,
+          "nonfinite_record_count": 1,
+          "nonfinite_first_records": [
+            {
+              "line": 47,
+              "round": 2,
+              "tag": "QD",
+              "values": [
+                "-nan"
+              ]
+            }
+          ],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "legacy_nonfinite_pathology_parity_only"
+        }
+      }
+    },
+    {
+      "name": "strict_cap",
+      "status": "passed",
+      "details": {
+        "output_sha256": "fdf94c17b85627063a771cd81b551491f0002175eb31dc4da8b23ba977c10ed6",
+        "bytes": 1879,
+        "arguments": [
+          "-p",
+          "2+2",
+          "-N",
+          "2",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "-d",
+          "-C",
+          "1",
+          "tests/fixtures/tiny.psmcfa"
+        ],
+        "numerical_output": {
+          "finite_outside_initial_RI": true,
+          "nonfinite_record_count": 0,
+          "nonfinite_first_records": [],
+          "expected_initial_RI_nonfinite_records": 1,
+          "classification": "finite_reference_output"
+        }
+      }
+    },
+    {
+      "name": "encoding_alias_equivalence",
+      "status": "passed",
+      "details": null
+    },
+    {
+      "name": "sequence_boundaries_negative_control",
+      "status": "passed",
+      "details": {
+        "note": "Joining independent records changes likelihood; harness detects it"
+      }
+    },
+    {
+      "name": "glibc_rng_replay",
+      "status": "passed",
+      "details": {
+        "exact_double_draw_comparisons": 400
+      }
+    },
+    {
+      "name": "bootstrap_replay_00",
+      "status": "passed",
+      "details": {
+        "seed": 20261009,
+        "draws": 14,
+        "accepted": 13,
+        "raw_length_bins": 13000
+      }
+    },
+    {
+      "name": "bootstrap_replay_01",
+      "status": "passed",
+      "details": {
+        "seed": 20261010,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13373
+      }
+    },
+    {
+      "name": "bootstrap_replay_02",
+      "status": "passed",
+      "details": {
+        "seed": 20261011,
+        "draws": 14,
+        "accepted": 14,
+        "raw_length_bins": 13654
+      }
+    },
+    {
+      "name": "bootstrap_replay_03",
+      "status": "passed",
+      "details": {
+        "seed": 20261012,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13546
+      }
+    },
+    {
+      "name": "bootstrap_replay_04",
+      "status": "passed",
+      "details": {
+        "seed": 20261013,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13254
+      }
+    },
+    {
+      "name": "bootstrap_replay_05",
+      "status": "passed",
+      "details": {
+        "seed": 20261014,
+        "draws": 14,
+        "accepted": 13,
+        "raw_length_bins": 13000
+      }
+    },
+    {
+      "name": "bootstrap_replay_06",
+      "status": "passed",
+      "details": {
+        "seed": 20261015,
+        "draws": 14,
+        "accepted": 13,
+        "raw_length_bins": 13027
+      }
+    },
+    {
+      "name": "bootstrap_replay_07",
+      "status": "passed",
+      "details": {
+        "seed": 20261016,
+        "draws": 14,
+        "accepted": 13,
+        "raw_length_bins": 13000
+      }
+    },
+    {
+      "name": "bootstrap_replay_08",
+      "status": "passed",
+      "details": {
+        "seed": 20261017,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13573
+      }
+    },
+    {
+      "name": "bootstrap_replay_09",
+      "status": "passed",
+      "details": {
+        "seed": 20261018,
+        "draws": 14,
+        "accepted": 14,
+        "raw_length_bins": 13654
+      }
+    },
+    {
+      "name": "bootstrap_replay_10",
+      "status": "passed",
+      "details": {
+        "seed": 20261019,
+        "draws": 14,
+        "accepted": 13,
+        "raw_length_bins": 13173
+      }
+    },
+    {
+      "name": "bootstrap_replay_11",
+      "status": "passed",
+      "details": {
+        "seed": 20261020,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13400
+      }
+    },
+    {
+      "name": "bootstrap_replay_12",
+      "status": "passed",
+      "details": {
+        "seed": 20261021,
+        "draws": 14,
+        "accepted": 13,
+        "raw_length_bins": 13054
+      }
+    },
+    {
+      "name": "bootstrap_replay_13",
+      "status": "passed",
+      "details": {
+        "seed": 20261022,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13573
+      }
+    },
+    {
+      "name": "bootstrap_replay_14",
+      "status": "passed",
+      "details": {
+        "seed": 20261023,
+        "draws": 14,
+        "accepted": 13,
+        "raw_length_bins": 12854
+      }
+    },
+    {
+      "name": "bootstrap_replay_15",
+      "status": "passed",
+      "details": {
+        "seed": 20261024,
+        "draws": 14,
+        "accepted": 13,
+        "raw_length_bins": 13173
+      }
+    },
+    {
+      "name": "bootstrap_replay_16",
+      "status": "passed",
+      "details": {
+        "seed": 20261025,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13519
+      }
+    },
+    {
+      "name": "bootstrap_replay_17",
+      "status": "passed",
+      "details": {
+        "seed": 20261026,
+        "draws": 14,
+        "accepted": 13,
+        "raw_length_bins": 13000
+      }
+    },
+    {
+      "name": "bootstrap_replay_18",
+      "status": "passed",
+      "details": {
+        "seed": 20261027,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13546
+      }
+    },
+    {
+      "name": "bootstrap_replay_19",
+      "status": "passed",
+      "details": {
+        "seed": 20261028,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13200
+      }
+    },
+    {
+      "name": "bootstrap_replay_20",
+      "status": "passed",
+      "details": {
+        "seed": 20261029,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13200
+      }
+    },
+    {
+      "name": "bootstrap_replay_21",
+      "status": "passed",
+      "details": {
+        "seed": 20261030,
+        "draws": 14,
+        "accepted": 13,
+        "raw_length_bins": 12827
+      }
+    },
+    {
+      "name": "bootstrap_replay_22",
+      "status": "passed",
+      "details": {
+        "seed": 20261031,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13200
+      }
+    },
+    {
+      "name": "bootstrap_replay_23",
+      "status": "passed",
+      "details": {
+        "seed": 20261032,
+        "draws": 14,
+        "accepted": 13,
+        "raw_length_bins": 13173
+      }
+    },
+    {
+      "name": "bootstrap_replay_24",
+      "status": "passed",
+      "details": {
+        "seed": 20261033,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13373
+      }
+    },
+    {
+      "name": "bootstrap_replay_25",
+      "status": "passed",
+      "details": {
+        "seed": 20261034,
+        "draws": 14,
+        "accepted": 13,
+        "raw_length_bins": 12827
+      }
+    },
+    {
+      "name": "bootstrap_replay_26",
+      "status": "passed",
+      "details": {
+        "seed": 20261035,
+        "draws": 13,
+        "accepted": 12,
+        "raw_length_bins": 12919
+      }
+    },
+    {
+      "name": "bootstrap_replay_27",
+      "status": "passed",
+      "details": {
+        "seed": 20261036,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13573
+      }
+    },
+    {
+      "name": "bootstrap_replay_28",
+      "status": "passed",
+      "details": {
+        "seed": 20261037,
+        "draws": 13,
+        "accepted": 13,
+        "raw_length_bins": 13573
+      }
+    },
+    {
+      "name": "bootstrap_replay_29",
+      "status": "passed",
+      "details": {
+        "seed": 20261038,
+        "draws": 14,
+        "accepted": 13,
+        "raw_length_bins": 13027
+      }
+    },
+    {
+      "name": "independent_path_enumeration_and_Q",
+      "status": "passed",
+      "details": {
+        "sequences": 3,
+        "max_absolute_difference": 1.7319479184152442e-14,
+        "exact_tiny_cell_checks": 36,
+        "relative_tolerance": 1e-10,
+        "absolute_tolerance": 1e-12,
+        "ordered_aggregate_exact": true,
+        "independent_Q0": -2.297476339935959,
+        "stored_Q0": -2.297476339935959,
+        "Q0_absolute_difference": 0.0,
+        "candidate_Q_checks": 49968,
+        "candidate_Q_max_absolute_difference": 0.0,
+        "objective_events": 50008,
+        "invalid_candidate_categories": {
+          "nonpositive_probability": 31,
+          "nonfinite_model": 9,
+          "nonfinite_objective": 0
+        },
+        "snapshot": "bench/raw/tests/enumeration-snapshot.jsonl.gz",
+        "events": 100022
+      }
+    },
+    {
+      "name": "random_initialization_replay",
+      "status": "passed",
+      "details": {
+        "scope": "instrumented replay only; unmodified C has no seed flag"
+      }
+    }
+  ],
+  "passed": 52,
+  "failed": 0,
+  "not_validated": [
+    "Rust implementation",
+    "accelerated CPU or CUDA backend",
+    "independent PSMC parameter-to-matrix derivation",
+    "real genome EM or bootstraps",
+    "future equivalent-mode tolerance contract",
+    "simulation and CpG binary input"
+  ]
+}

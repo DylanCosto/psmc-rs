@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "scope": "two clean builds at the same path with same compiler/headers/flags; not cross-machine reproducibility",
+  "executable_sha256_equal": {
+    "psmc": true,
+    "utils/splitfa": true,
+    "utils/fq2psmcfa": true
+  }
+}

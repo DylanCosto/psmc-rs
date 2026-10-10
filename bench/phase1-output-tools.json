@@ -1,0 +1,162 @@
+{
+  "source_commit": "82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+  "fixture": "tests/fixtures/workload.psmcfa",
+  "iterations": 30,
+  "plot_rendering": "not_run",
+  "plot_rendering_note": "Data and parameter generation are checked independently of gnuplot rendering.",
+  "upstream_scripts": {
+    "psmc2history.pl": {
+      "path": "work/vanilla/utils/psmc2history.pl",
+      "sha256": "3d1673b5a23485cf63f6ece17948654864551b96a1371091e26c651fd7476100"
+    },
+    "psmc_plot.pl": {
+      "path": "work/vanilla/utils/psmc_plot.pl",
+      "sha256": "558267c063446a3f0b111bb40095674e1ecbc97601c4289ffec858564f227d86"
+    }
+  },
+  "runs": {
+    "vanilla": {
+      "binary_sha256": "da1743512f1925da6277d5a2e5350c70c61c9771d11749df0918605f795ff32b",
+      "fit": {
+        "command": [
+          "work/vanilla/psmc",
+          "-p",
+          "4+5*3+4",
+          "-N",
+          "30",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/workload.psmcfa"
+        ],
+        "exit_code": 0,
+        "stdout": "bench/raw/phase1-output-tools/vanilla.stdout",
+        "stdout_sha256": "1c7a5edbe3397e5311a58a79146a94e72c08dba6a2b40c9906884356b565062a",
+        "stderr": "bench/raw/phase1-output-tools/vanilla.stderr",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "history": {
+        "command": [
+          "perl",
+          "work/vanilla/utils/psmc2history.pl",
+          "-n",
+          "30",
+          "bench/raw/phase1-output-tools/vanilla.stdout"
+        ],
+        "exit_code": 0,
+        "stdout": "bench/raw/phase1-output-tools/vanilla-history.stdout",
+        "stdout_sha256": "5f104f6664960b7afaa061a96f77fe1a3b42278a7c6fbf8d943fbe295e1c2617",
+        "stderr": "bench/raw/phase1-output-tools/vanilla-history.stderr",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "plot_script": {
+        "command": [
+          "perl",
+          "work/vanilla/utils/psmc_plot.pl",
+          "-R",
+          "-n",
+          "30",
+          "bench/raw/phase1-output-tools/vanilla-plot",
+          "bench/raw/phase1-output-tools/vanilla.stdout"
+        ],
+        "exit_code": 0,
+        "stdout": "bench/raw/phase1-output-tools/vanilla-plot-script.stdout",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "bench/raw/phase1-output-tools/vanilla-plot-script.stderr",
+        "stderr_sha256": "cd6f796538c71eeda0406c595e1bb8f375d14bac177df3690aeb980adf95c9a2"
+      },
+      "plot_data": {
+        ".0.txt": {
+          "path": "bench/raw/phase1-output-tools/vanilla-plot.0.txt",
+          "sha256": "e03b67810f09501eb1265c820049eaa2a65ca1360b7ecaffbf7d867e40ab702e",
+          "bytes": 1025
+        },
+        ".par": {
+          "path": "bench/raw/phase1-output-tools/vanilla-plot.par",
+          "sha256": "3601dfa0eff3bb31c6e9d0f0bd5792a6273eb6ccf24e6dde0458ea68f10d054b",
+          "bytes": 133
+        }
+      }
+    },
+    "rust": {
+      "binary_sha256": "e112ed9a8d7d98cc5e29f497e8567e1de96f3e0210a0cb324a79dc91c5e65dd0",
+      "fit": {
+        "command": [
+          "target/release/psmc-rs",
+          "-p",
+          "4+5*3+4",
+          "-N",
+          "30",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/workload.psmcfa"
+        ],
+        "exit_code": 0,
+        "stdout": "bench/raw/phase1-output-tools/rust.stdout",
+        "stdout_sha256": "29000aeecb8d0cb6a00874197445a39b68b8bcb0182c545713679d7cc9863225",
+        "stderr": "bench/raw/phase1-output-tools/rust.stderr",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "history": {
+        "command": [
+          "perl",
+          "work/vanilla/utils/psmc2history.pl",
+          "-n",
+          "30",
+          "bench/raw/phase1-output-tools/rust.stdout"
+        ],
+        "exit_code": 0,
+        "stdout": "bench/raw/phase1-output-tools/rust-history.stdout",
+        "stdout_sha256": "5f104f6664960b7afaa061a96f77fe1a3b42278a7c6fbf8d943fbe295e1c2617",
+        "stderr": "bench/raw/phase1-output-tools/rust-history.stderr",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "plot_script": {
+        "command": [
+          "perl",
+          "work/vanilla/utils/psmc_plot.pl",
+          "-R",
+          "-n",
+          "30",
+          "bench/raw/phase1-output-tools/rust-plot",
+          "bench/raw/phase1-output-tools/rust.stdout"
+        ],
+        "exit_code": 0,
+        "stdout": "bench/raw/phase1-output-tools/rust-plot-script.stdout",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "bench/raw/phase1-output-tools/rust-plot-script.stderr",
+        "stderr_sha256": "cd6f796538c71eeda0406c595e1bb8f375d14bac177df3690aeb980adf95c9a2"
+      },
+      "plot_data": {
+        ".0.txt": {
+          "path": "bench/raw/phase1-output-tools/rust-plot.0.txt",
+          "sha256": "e03b67810f09501eb1265c820049eaa2a65ca1360b7ecaffbf7d867e40ab702e",
+          "bytes": 1025
+        },
+        ".par": {
+          "path": "bench/raw/phase1-output-tools/rust-plot.par",
+          "sha256": "3601dfa0eff3bb31c6e9d0f0bd5792a6273eb6ccf24e6dde0458ea68f10d054b",
+          "bytes": 133
+        }
+      }
+    }
+  },
+  "checks": {
+    "legacy_output": {
+      "compared_sha256": "2eeb37a0c4d871f363ddad8b4ae50f9be00761f6987f6b84dd33b067fd77d74e",
+      "compared_bytes": 45885,
+      "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+      "excluded_candidate_version": "MM\tVersion: psmc-rs 0.1.0 (dense f64; reference 82fa2ada83ee)"
+    },
+    "history_bytes_equal": true,
+    "plot_data_bytes_equal": true
+  },
+  "passed": true
+}

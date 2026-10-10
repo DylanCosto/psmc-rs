@@ -1,0 +1,249 @@
+# Execution plan: accelerated, legacy-compatible PSMC
+
+Status: User explicitly approved building Rust on 2026-10-10. Phase 1 dense scalar Rust is implemented and passes its supported synthetic gate; see docs/phase-1-report.md. Real-workload baseline and reference-pathology investigation remain recorded limitations, not blockers to the newly authorized port. The user subsequently authorized optimization; Phase 2 CPU engineering and deterministic scheduling now pass the local synthetic gate; see docs/phase-2-report.md. The validated dense oracle remains unchanged. The original research/design completion checkboxes below were supplied with the plan and are not independent verification of the four missing companion documents.
+
+## 1. Product definition and decision gates
+
+The first product is a local command-line executable and reusable Rust library that accept existing `.psmcfa` data and reproduce the numerical meaning of the original PSMC output. It should reduce both single-fit latency and throughput time for 30 bootstrap replicates, without changing the scientific calculation to obtain that speedup.
+
+A second product layer may convert modern VCF/gVCF/BCF and phased-assembly data into carefully validated PSMC inputs. A third, independently approved research track may exploit long-read phasing with multi-haplotype or genealogical methods. The three products have different compatibility claims and must not be conflated.
+
+PHLASH is a required alternative-method comparator. It already supplies GPU acceleration and Bayesian uncertainty. Its existence does not eliminate a legacy-compatible performance project, but it changes the novelty and prevents a defensible claim of being the first GPU PSMC-like tool. Gamma-SMC is another useful technical comparator for decoding, not an output-equivalent substitute for PSMC fitting. [S11–S13]
+
+## 2. Compatibility modes
+
+Define and expose the modes before optimization:
+
+| Mode | Contract | Permitted implementation |
+|---|---|---|
+| `strict` | Matching numerical records at the original printed precision on a pinned execution stack; byte-comparison after a small explicit metadata allowlist | Dense scalar path and only individually demonstrated parity-preserving optimizations |
+| `equivalent` | Same model, preprocessing, EM procedure, iteration count, bootstrap samples, and output fields; prespecified numerical tolerances | Validated CPU/GPU transformations, deterministic reductions, full-count EM |
+| `research` | Explicitly different numerical or statistical procedure | Augmented EM, alternate optimizers, posterior inference, different emissions or long-read models |
+
+Do not promise universal cross-architecture bitwise equality. A pure Rust port still may differ from C through libm, code generation, arithmetic contraction, or optimizer branch decisions. If strict mode cannot meet its own contract, label it unsupported on that stack and retain the pinned original executable as the external reproducibility oracle. The normal release cannot silently downgrade `strict` to `equivalent`. [S19, S20]
+
+Initially make only the proven strict CPU path available. Promote a faster equivalent backend after validation and human approval of its numerical contract. Store mode, backend, numeric settings, and provenance outside or in explicitly additive metadata, without changing legacy field meanings.
+
+## 3. Proposed architecture
+
+Use a small Cargo workspace rather than a large general-purpose framework:
+
+```text
+psmc-rs/
+  AGENTS.md
+  EXECPLAN.md
+  Cargo.toml
+  Cargo.lock
+  rust-toolchain.toml
+  crates/
+    psmc-core/       # model, parameters, legacy EM, backend interface
+    psmc-io/         # psmcfa, bootstrap manifests, legacy output
+    psmc-cpu/        # scalar oracle, structured F/B, count kernels, checkpointing
+    psmc-cuda/       # optional CUDA kernels and cuBLAS bridge
+    psmc-cli/        # fit, bootstrap, inspect, compare, provenance
+    psmc-input/      # later: VCF/gVCF/BCF + callable-mask adapters
+  reference/        # pin record, fetch/build scripts, minimal instrumentation patches
+  tests/fixtures/   # synthetic and authorized small public fixtures
+  experiments/      # algebra prototypes, not the production oracle
+  bench/            # manifests, scripts, raw results, comparison reports
+  docs/             # contracts, derivations, decisions, limitations
+```
+
+Proposed interfaces, to refine after source audit:
+
+- `EncodedDataset`: immutable sequence observations, stable IDs, original boundaries, lengths, content digests, metadata. Store byte observations initially; pack to two bits only after profiling proves it useful.
+- `LegacyParameters`: exact original parameter order and grouping map, including the maximum-time parameter and supplied time-grid behavior.
+- `ModelSnapshot`: initial distribution, emissions, dense transition matrix, and validated structured factors for a specific parameter vector.
+- `SequenceStats`: log likelihood, full expected transition counts, emission counts, initial-state counts, and required diagnostics. Initial-state counts are retained even where the original objective does not use them.
+- `ExpectationBackend`: consumes a snapshot, an existing independent sequence, and reusable workspace; returns sequence statistics without changing parameter optimization.
+- `BootstrapManifest`: ordered source block IDs for each replicate, RNG specification/state, input hash, splitting provenance, and expected lengths. It can materialize original-compatible input files for paired reference runs.
+- `ExecutionPolicy`: total CPU worker budget, memory budget, backend, precision, deterministic-reduction policy, checkpoint size, and GPU batch configuration.
+
+Keep the M-step CPU-based initially. Transfer one small parameter snapshot to an accelerator and return compact statistics, not the entire genome at every EM iteration. Keep observations resident when memory permits. CPU model construction also reduces opportunities for GPU transcendental-function differences.
+
+Use Rayon for bounded CPU tasks and consider cudarc for CUDA/cuBLAS access. Use a mature format library such as noodles only in the later input module. Lock the actual tested versions; these are dependency candidates, not a guarantee that a specific version combination already works. [S21, S22]
+
+## 4. Phase 0 — baseline, reference contract, and build-versus-use decision
+
+### Tasks
+
+Obtain the real workload description: exact commands and `-p/-N/-t/-r/-i/-I` settings; whether bootstrap processes already run concurrently; input type and hash; bin size; sequence lengths and boundaries; `splitfa` command; reference assembly; mask provenance; CPU/RAM/GPU; local or VM configuration; and whether preprocessing or plotting is included in the reported hours. Do not block all work on missing information: build small synthetic fixtures, but keep the real benchmark pending.
+
+Fetch and pin a concrete `lh3/psmc` commit. Record compiler, flags, libm/libc, OS, architecture, and executable digest. Build one normal reference and, separately, a minimally instrumented test reference for internal-array snapshots and deterministic seeds. Instrumentation must not change the numerical algorithm. Keep the unmodified build for timing.
+
+Audit `cli.c`, `core.c`, `khmm.c/.h`, `em.c`, `kmin.c/.h`, `aux.c`, `main.c`, `psmc.tex`, and preprocessing utilities. Read implementation behavior instead of assuming comments are accurate. Record every supported flag and every deliberate scope exclusion. Preserve upstream notices. [S01–S09]
+
+Profile a representative fit and at least one bootstrap with a sampling profiler. Measure forward, backward, expectation accumulation, model construction, M-step objective evaluations, allocations, I/O, peak RSS, and total time. Save the number of optimizer evaluations per iteration, not just iteration count. Establish original serial and original bounded-parallel 30-replicate baselines.
+
+Run a small, separately labeled PHLASH feasibility benchmark where suitable hardware/data are available. Record its posterior settings and runtime, not an artificial '30 bootstrap equivalent'. Evaluate whether the actual scientific need can be met without preserving legacy output. Inspect PHLASH's structured matvec/GPU approach for prior art; do not assume its parameterization and preprocessing match original PSMC. [S11, S12]
+
+### Deliverables and gate
+
+Produce `docs/reference-contract.md`, `bench/workload.json`, `bench/baseline.json`, and `docs/phase-0-decision.md`.
+
+The decision must say whether to proceed with the compatibility engine, adopt an existing method, or prioritize input/QC tooling. The user's request to preserve outputs favors the compatibility engine, but the tradeoff must be explicit. **Human review before Phase 1.** No hypothetical 10x result may be recorded as measured.
+
+## 5. Phase 1 — scalar Rust numerical oracle
+
+Port the original calculation as literally as reasonably possible into flat, contiguous f64 arrays. Preserve loop direction and arithmetic grouping in this first version. Implement parsing, parameter grouping and initialization, transition/emission construction, scaled forward/backward, full expectation counts, the actual Hooke–Jeeves behavior, and output records.
+
+Do not 'fix' scientific or numerical quirks during the port. In particular, use the observed endpoint rules, HMM_TINY initialization, objective normalization, optimizer callbacks and side effects, and iteration reporting order. Test supplied parameters and the optimized maximum-time parameter. Separate runtime safety improvements, such as rejecting malformed/empty input, from changed answers on inputs that the reference successfully processes.
+
+Add small deterministic C-versus-Rust snapshot fixtures. Retain the generic structured-HMM algebra experiment as a check of identities, not as the reference for PSMC model construction. The production oracle must come from the pinned C source.
+
+### Gate
+
+All supported small fixtures pass parsing, matrix, likelihood, count, objective, first-M-step, and full-run comparisons. The legacy plotting/conversion scripts can consume the generated files. Any unsupported flag is rejected explicitly, not ignored. No CUDA work is permitted before this gate.
+
+## 6. Phase 2 — CPU engineering and reproducible bootstrap scheduling
+
+Eliminate repeated sequence copies and per-position heap allocations. Allocate reusable workspaces per worker. Precompute transition transposes and transition/emission products once per parameter snapshot. Use contiguous buffers and stable indices.
+
+Parallelize independent bootstrap replicates and existing independent sequence records. Prefer one global, memory-aware work queue to nested pools. A run with many bootstrap replicates may use one or a few workers per replicate; a single fit may distribute chromosomes across the budget. Coordinate BLAS threads with Rayon; do not create `replicates × workers × BLAS threads` runnable threads.
+
+For each replicate, compute sequence statistics in any scheduling order but merge them in recorded input order. An indexed collection followed by a deterministic merge is safer than an unconstrained parallel floating-point `reduce`. Bound in-flight results so long chromosomes do not exhaust RAM.
+
+Represent bootstrap replicates as ordered block references, not copies of complete genomes. Preserve the actual `psmc_resamp` sampling and total-length stopping behavior; it is not necessarily 'draw exactly the original number of blocks'. Preserve splitting units and unequal terminal chunks. [S06, S09]
+
+Cache a repeated block's statistics within the same parameter snapshot and add its contribution for every sampled occurrence. Include pseudocount contributions at the same multiplicity. Strict mode must preserve repeated-addition order rather than substituting a multiplication by the repeat count. Do not reuse cached statistics between replicates that have different parameter vectors, even if both are on the same EM iteration.
+
+### Gate
+
+Results are stable across worker counts and task order. Real or synthetic repeated-block and unequal-length bootstrap fixtures match the reference. Publish both serial and parallel speedups, peak memory, and cache hit rates. Speedup from ordinary bootstrap parallelism must be reported separately from kernel acceleration.
+
+## 7. Phase 3 — exact-algebra CPU acceleration with full legacy statistics
+
+Derive and implement the original transition matrix's lower-triangular rank-one, upper-triangular rank-one, and diagonal structure. Use exclusive prefix/suffix recurrences for matrix-vector products. This reduces forward and backward work from O(LK²) to O(LK) without a change to the real-arithmetic matrix. Derive factors from the audited original equations, preserve the diagonal separately, and test their positivity and reconstruction error over valid parameter ranges. [S02, S10]
+
+Keep the full K×K expected transition-count matrix for the compatibility engine. Compute it with an optimized, tiled outer-product kernel or the matrix-product identity in `MATH_AND_COMPATIBILITY.md`. Benchmark both; a BLAS call for every genomic bin is not acceptable. The full-count step remains O(LK²) in arithmetic complexity, but is regular, vectorizable work that can be much better organized.
+
+After full counts are available, compute the legacy entropy normalizer once and derive triangular count margins. Benchmark the factored O(K) candidate objective and model-factor construction during repeated M-step evaluations, without replacing the optimizer or dropping the normalizer. Preserve invalid-candidate handling and keep the dense objective as the strict reference. This optimization can matter if the M-step becomes the bottleneck; the algebra and numerical caveats are in `MATH_AND_COMPATIBILITY.md`.
+
+Fuse backward traversal with expectation accumulation where it saves memory. Benchmark auto-vectorized loops before hand-written intrinsics. For multiple independent sequences sharing parameters, also test SIMD across sequences; this can avoid some across-state summation-order changes. Handle lengths and masked observations explicitly.
+
+Implement checkpoint/recompute for long sequences: store selected forward messages, regenerate local forward/scaling arrays while moving backward, and carry exact boundaries between computational tiles. The output sequence must remain the same HMM sequence. Choose tile sizes by a measured time/memory sweep; do not encode one hardware-specific magic constant as universally optimal.
+
+### Gate
+
+Pass fixed-parameter numerical tests, full-count/objective comparisons, full EM trajectories, all user-requested bootstraps, and memory limits. Profile again. If full counts or the M-step now dominate, record the new bottleneck and apply Amdahl's law before writing GPU kernels.
+
+## 8. Phase 4 — CUDA, but only for measured remaining bottlenecks
+
+Build the optional GPU backend against the same `ExpectationBackend` contract. Start with genuine FP64 arithmetic. No implicit lower-precision tensor math or FP64 emulation should enter the compatibility baseline. Record math and cuBLAS modes explicitly. [S19–S21]
+
+Prototype two mappings instead of assuming one is optimal:
+
+- Thread-per-independent-sequence, with serial state scans, as a low-synchronization candidate. Measure register/local-memory pressure.
+- Warp/cooperative-block-per-independent-sequence, with parallel state work and exclusive state scans. Benchmark both 64-state specialization and generic K. Measure synchronization overhead and occupancy.
+
+Here 'sequence' means an original independent chromosome/record or a bootstrap block already defined by the reference input. Do not break a chromosome into new statistical sequences to obtain more GPU work. Computational tiles may be scheduled after their required messages are available.
+
+Batch sequence/replicate tasks and bucket by length and K to reduce padding. Terminated/padded lanes must be exact no-ops, not artificial observations or added transitions. Different replicate parameter vectors are separate snapshots; never accidentally share one transition matrix across all bootstraps.
+
+Keep observations and reusable buffers resident. Build parameters on CPU initially. Accumulate per-task compact statistics and transfer these back for the existing CPU M-step. Use bounded tile workspaces, explicit stream ownership, deterministic reduction order, and reproducible cuBLAS configuration. Avoid one host kernel launch per bin and avoid floating-point atomic summation into one global count matrix.
+
+For full transition counts, test CUDA tiled outer products against cuBLAS DGEMM on time tiles. Include packing, device transfers, synchronization, checkpoint recomputation, and reduction cost. Do not benchmark only the GEMM. Use Nsight Systems/Compute to inspect spills, launch gaps, bandwidth, compute saturation, and CPU M-step idle periods. Optimize those measured issues, not theoretical peak TFLOPS.
+
+Treat FP32/mixed precision as a later research feature requiring explicit approval; it is not the route to the initial 10x claim. FP64 hardware throughput varies substantially, so the GPU may not beat the optimized CPU on the available machine. [S19, S20]
+
+### Gate
+
+CUDA must pass the same numerical/EM/bootstrap suite and beat the optimized CPU end-to-end on a declared target workload. Otherwise retain CPU as default. Missing accelerator access blocks promotion of the CUDA backend, not the rest of the project. Add an explicit memory-budgeted fallback that is visible in provenance and included in timings.
+
+## 9. Phase 5 — release and reproducibility
+
+Implement legacy-compatible command aliases only for supported flags. Add explicit modern commands such as `inspect`, `bootstrap`, and `compare`; mark them as new interfaces. Use atomic checkpoint/output replacement and fail-safe resume. A checkpoint includes input and model hashes, bootstrap manifest, current parameters, iteration/optimizer state needed for the chosen resume granularity, backend, numeric mode, and tool versions. Initially resume only between EM iterations, not halfway through the optimizer.
+
+Bundle small synthetic regression fixtures, source-pin records, benchmark scripts, the exact tolerance policy, and documented limitations. Record whether the final decoded results are available or were intentionally not requested. Use existing plotting scripts for compatibility validation before adding new plotting functionality.
+
+Release only after the complete benchmark matrix and failures are reviewed. A worthwhile CPU-only release is preferable to an unverified GPU claim. Separate software compatibility validation from population-genetic interpretation and any future clinical/commercial validation.
+
+## 10. Phase 6 — long-read input layer; separate approval for a new method
+
+Implement the input and QC roadmap in `LONG_READ_ROADMAP.md`. Preserve original `.psmcfa` compatibility as a stable baseline. Do not change the core emissions to accept structural variants, repeats, or uncertain genotypes without naming and validating a new model.
+
+A phase-aware demographic/ARG extension requires a new research plan, simulation study, and comparisons to existing methods. It must not delay completion of Phases 0–5.
+
+## 11. Performance definitions and stopping conditions
+
+Primary target: 10x faster end-to-end completion of the same 30 materialized bootstrap replicates versus the user's recorded workflow. Report separately the ratio against optimally bounded parallel original PSMC. Also report single-replicate single-core speed, all-core speed, GPU-versus-optimized-CPU speed, and peak host/device memory.
+
+A speedup that requires fewer iterations, different bootstrap draws, smaller masks, fewer states, or different uncertainty estimation is not this project's compatibility speedup. Original reference compilation must be reasonably optimized and must not be deliberately disadvantaged.
+
+Stop and investigate on a numerical-gate failure, inconsistent random replay, changed sequence boundaries, apparent speedup caused by skipped work, unexplained optimizer branching, or results dominated by fallback. Redirect effort when profiling shows that the proposed optimization cannot deliver a meaningful end-to-end improvement.
+
+## Progress
+
+- [x] Primary-source review and design prepared.
+- [x] Independent algebra experiment prepared; see its result JSON.
+- [x] Phase 0 reference: pinned vanilla C build, instrumentation, source contract, synthetic manifests, differential harness, sampling profiles, PHLASH feasibility audit.
+- [x] Phase 0 evidence: 52 mechanics/parity checks; finite unsplit30-iteration fit; bounded five-iteration smoke; full30 bootstrap failures retained.
+- [ ] Phase 0 acceptance: actual-workload baseline, numerical failure investigation, missing companion documents, and decision review.
+- [x] Phase 1: dense Rust oracle; 115 exact differential checks, 30 full bootstrap trajectories, isolated and internal snapshot gates, conversion, review and measured baseline complete on the pinned Linux stack.
+- [x] Phase 2: strict CPU workspaces, exact repeated-block cache and bounded bootstrap queue; 226 differential checks, 180 schedule-invariant fits, 17 review controls and equal-worker measurements complete on the pinned synthetic stack.
+- [ ] Phase 3: structured CPU/full-count acceleration.
+- [ ] Phase 4: optional CUDA promotion.
+- [ ] Phase 5: validation and release.
+- [ ] Phase 6: long-read input layer.
+
+## Decisions and surprises
+
+Initial: preserve legacy EM rather than silently adopting augmented EM. Preserve full counts because the original objective includes a full-count entropy normalizer. PHLASH is pre-existing GPU prior art. Long-read assembly support already exists through the original documented dipcall route. Subsequent changes must be appended with evidence and date.
+
+
+## Session decisions — Phase 0
+
+- The direct user clarification establishes that 30 bootstrap processes already run in parallel. Original bounded-parallel throughput is the required eventual comparator; serial scheduling gains are not a project acceleration claim.
+- The user delegated the output recommendation. Prefer the same legacy statistical calculation with a reviewed equivalent numerical contract, retaining pinned vanilla for strict reproduction. This is provisional, not approval of Phase 1 or proof that a new engine is preferable.
+- Source pinned to `82fa2ada83ee463fe1251b562ae3d60e82d7ad6a`; GCC13.3, O2, explicit no contraction, glibc2.39. See `reference/build-vanilla.json`.
+- All work is in a new local Phase 0 project; no intended existing repository or real input was supplied. Synthetic fixtures and exact input hashes are recorded.
+- Shortened five-iteration runs test the harness only. They do not resolve30-iteration failures or contribute a compatibility speedup claim. See `docs/phase-0-decision.md`.
+
+## Session surprises and unresolved issues
+
+- Actual C excludes the last site's emission count, initializes per-sequence counts with1e-25, keeps the full-count Q normalizer, and leaves final live parameters at the last optimizer callback. The source contract records these behaviors without correcting them.
+- Original K23/N30 synthetic bootstrap replicates16,26,28 produced nonfinite output, reproduced in eight completed measurement batches. The ninth was interrupted. A smaller-state exploratory probe also failed and was rejected; all failures remain in the evidence bundle.
+- The finite K23/N30 unsplit fixture and52 passing harness checks do not supersede those failures. The current harness explicitly separates pathologic output parity from finite trajectories.
+- Kernel sampling through perf is blocked by host policy. GNU gprof sampling and separate monotonic phase timers work; no privileges or machine settings were changed.
+- A subprocess timeout polling delay affected the first tiny-smoke wall-time measurement. The final harness uses blocking waitpid plus a deadline watchdog. Superseded measurements are retained and excluded from current conclusions.
+- PHLASH CPU and hybrid custom-CUDA smoke tests execute on the RTX5060Ti; they are not output-equivalent or converged inference. The inspected pin can omit trailing observations under particular chunk geometries; resolve this before scientific adoption.
+- Four referenced companion documents, exact real command/input/worker budget, and real preprocessing/mask provenance remain unavailable. Tenfold speedup, independent Rust compatibility, legacy GPU execution, and real-data inference are untested.
+
+
+## Phase1 authorization and working decision —2026-10-10
+
+The user said, "Great, let's go ahead and build with rust." This is the review/authorization to begin the dense Rust milestone despite the outstanding real-workload and reference-pathology evidence. Do not request the same approval again. Preserve those limitations and all previous evidence; do not infer approval of acceleration or CUDA.
+
+The original missing math/validation companion files were not recovered. New explicitly labeled `MATH_AND_COMPATIBILITY.md` and `VALIDATION_AND_BENCHMARKS.md` document a literal source-backed port and exact comparison policy before Rust results are inspected. The missing long-read roadmap and source bibliography remain deferred; no long-read code is being built.
+
+Workspace initially consists of core numerical library, input library and CLI. Rust1.90.0 is pinned because it is installed and verified locally; no registry dependencies are introduced. Platform libm supplies log/exp and libc supplies legacy float formatting. Input gzip support uses a small audited zlib boundary. Inference, model construction, EM, optimizer and parsing are Rust code.
+
+## Phase 1 completion — 2026-10-10
+
+- The delivered final executable e112ed9a…e65dd0 passes all 115 differential checks, 17 unit tests in each of debug/release, 76 isolated model/optimizer cases (70,408 exact binary64 values), and 11 CLI review controls. Five complete internal snapshot pairs compare 122,725 events and 42,642,569 finite numeric fields exactly. Only the honest program/version output record is excluded.
+- All 30 materialized K23/N30 bootstrap outputs match vanilla. Twenty-seven are finite; 16, 26 and 28 reproduce the original recorded nonfinite cases and are not scientific-validity successes. Nonfinite optimizer trials are retained. Runtime warnings are supplemental: RI-only NaNs can occur without a warning.
+- Upstream history and plotting-data scripts consume Rust output and generate identical data. Rendering is not_run without gnuplot. Clippy is not_run because the pinned component is absent.
+- Single-fit median times: C/Rust 0.383/0.485 seconds (K23/N30) and 1.563/2.072 seconds (K64/N5). Rust is slower; the 10× target remains unproven. No scheduling/CPU-algebra/CUDA acceleration was implemented. Exact raw time/RSS/provenance is in bench/phase-1-benchmark.json.
+- Review fixes protect input/output aliases, propagate final snapshot flush errors and warn on nonfinite initial/live model arrays. A shared rebuild invalidated an early concurrent test attempt; executable hash guards blocked mixed evidence. The final complete suite ran successfully against an immutable copy. Interrupted/superseded evidence is preserved and excluded from passing counts.
+- Full final snapshots remain local; the compact package includes their hashes and reproducer, ordinary raw output, source, Linux binary and reports. Phase 0 archive/evidence remains retained.
+- Next milestone: CPU workspace/memory engineering and deterministic scheduling while retaining the dense oracle. Real command/input/splitting/worker budget and reference-pathology interpretation are still outstanding. Later method changes and GPU promotion keep their own gates.
+
+## Phase 2 authorization and working decision — 2026-10-10
+
+The user said, "Great, let's start optimizing." This authorizes the next CPU engineering milestone. Retain the original dense HMM/model/optimizer and Phase 1 executable as oracles. Add a separate strict CPU backend with reusable message/model scratch, per-snapshot repeated-record caching, ordered reductions and a bounded independent-bootstrap runner. Do not change the model, optimizer, full-count Q, summation order, precision, observation boundaries or number of iterations. No CUDA or Phase 3 algebra in this milestone.
+
+Parallelism across bootstrap fits is measured separately because the user's existing workflow already parallelizes. New external numerical dependencies are unnecessary. Use standard-library scoped threads, no nested pools. Add explicit estimated memory admission, seeds, ordered block indices and run statistics. Snapshots require all messages and therefore visibly bypass count-only caching while still running CPU workspace kernels.
+
+The original Phase 1 math/validation sections remain historical; this authorization extends their exact comparison and finite/pathology policy to the new CPU backend. No tolerance is loosened. Performance promotion requires before/after measurements and all supported gates.
+
+## Phase 2 completion — 2026-10-10
+
+- Final Rust 0.2 executable fd866573…abb59a retains the unchanged dense HMM/model/optimizer and Phase 1 binary. Reusable HMM/model buffers, per-expectation exact-byte caching, borrowed bootstrap records and one bounded independent-fit pool preserve binary64 operation and contribution order. The optimized path is explicit `--backend cpu`; dense remains default.
+- Both backends pass 113 inherited checks each. Six complete internal snapshot pairs compare 15,086 events and 4,371,374 finite numeric values exactly; 27 unit tests pass in debug and release. All 180 full fits across workers 1/2/4 and forward/reverse task order match C outputs and samples. Cache on/off and message-snapshot bypass, post-bootstrap random initialization and all 17 independent review controls pass.
+- Cache totals: 11,730 visits, 7,740 evaluations and 3,990 hits per 30-fit batch (34.02%). No repeated statistical contribution is dropped. The same three reference pathologies remain classified separately; RI-only printed nonfinite diagnostics are now covered.
+- Median complete-fit C/Phase1/CPU times are 0.385/0.486/0.306 seconds for K23/N30 and 1.581/2.106/1.391 seconds for K64/N5. CPU is 1.51–1.59× faster than Phase 1 and 1.14–1.26× faster than vanilla on these fixtures. K64/N5 is explicitly a partial trajectory.
+- Equal-worker C/CPU 30-fit batch medians are 12.027/8.132, 6.088/4.003 and 3.124/2.081 seconds at 1/2/4 workers: 1.48–1.52×. These batches include 27 finite and three pathological outputs and describe execution mechanics. Ordinary concurrency is reported separately. Full-genome/real-workload/10× claims remain unsupported.
+- Model scratch initially regressed; exact-length safe slices resolved it. Independent review fixed validation-before-truncation and expanded admission to include worst-case sampled indices and all retained metadata. Admission remains an estimate, not an OS memory cap, and follows input loading. Initial failures and exploratory timings are retained.
+- Harness review added explicit checks for admitted workers, every C process exit and mutually exclusive benchmark selectors. Post-run audit confirms the measured invocation was unaffected: all 360 C child exits zero, all 12 Rust manifests use requested workers. Immutable measured runner/report retained. No production source changed after the final gate.
+- Separate section timing puts M-step work at about 44–48% of optimized timed sections; HMM speed alone cannot establish 10×. Next permitted milestone: Phase 3 structured CPU/full-count algebra with independent numerical gates. CUDA, new input methods, checkpointing and production validation remain later work.
+- Source, isolated derivations/tests/timings, final build and exact comparison evidence are delivered together in the Phase 2 archive. Phase 0 and Phase 1 archives remain unchanged; large full snapshots remain local with explicit omission hashes.

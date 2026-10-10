@@ -1,0 +1,20 @@
+{
+  "scope": "Independent harness negative controls, not PSMC inference tests",
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "bench",
+    "-p",
+    "test_phase1_differential.py"
+  ],
+  "returncode": 0,
+  "status": "passed",
+  "tests": 4,
+  "stdout": "",
+  "stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.002s\n\nOK\n",
+  "test_source_sha256": "82112f9d25a4a0210541158342f5548c4e51fcfa1fb046c196e78adf1481e9a5",
+  "authoring_note": "The missing-callback control initially expected a mismatch-count return; changed to expect the comparator rejection exception. Comparator acceptance behavior was not weakened."
+}

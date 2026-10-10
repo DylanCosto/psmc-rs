@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "scope": "independent generic semiseparable HMM algebra only",
+  "seed": 20261009,
+  "python_version": "3.13.5",
+  "numpy_version": "2.3.5",
+  "floating_point": "float64",
+  "relative_tolerance": 1e-10,
+  "absolute_tolerance": 1e-12,
+  "structured_hmm_cases": 48,
+  "independent_path_enumeration_cases": 2,
+  "max_absolute_differences": {
+    "transition_row_sum": 4.440892098500626e-16,
+    "forward": 2.220446049250313e-16,
+    "backward": 2.1316282072803006e-14,
+    "scales": 4.440892098500626e-16,
+    "posterior": 1.3322676295501878e-15,
+    "counts": 7.105427357601002e-14,
+    "emission_counts": 4.263256414560601e-14,
+    "log_likelihood": 7.105427357601002e-15,
+    "full_counts_gemm_identity": 2.1316282072803006e-14,
+    "posterior_normalization": 1.1102230246251565e-15,
+    "transition_count_total": 5.684341886080802e-14,
+    "factored_objective": 5.684341886080802e-14,
+    "all_missing_log_likelihood": 2.55351295663786e-15,
+    "enumerated_log_likelihood": 4.440892098500626e-16,
+    "enumerated_posterior": 3.885780586188048e-16,
+    "counterexample_identical_margins": 0.0
+  },
+  "entropy_counterexample": {
+    "same_triangular_margins_and_diagonal": true,
+    "first_transition_entropy": -22.18070977791825,
+    "second_transition_entropy": -22.054374008310397,
+    "difference": 0.1263357696078522
+  },
+  "not_performed": [
+    "original PSMC parameter-to-matrix validation",
+    "comparison against an original PSMC binary",
+    "Rust implementation or CUDA execution",
+    "full EM optimizer-trajectory comparison",
+    "whole-genome or 30-bootstrap timing",
+    "biological validation"
+  ]
+}

@@ -1,0 +1,18 @@
+[package]
+name = "psmc-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "psmc-rs"
+path = "src/main.rs"
+
+[dependencies]
+psmc-core = { path = "../psmc-core" }
+psmc-io = { path = "../psmc-io" }
+psmc-cpu = { path = "../psmc-cpu" }
+
+[lints]
+workspace = true

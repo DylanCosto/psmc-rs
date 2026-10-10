@@ -1,0 +1,14 @@
+test_exact_finite_difference_is_detected (test_phase1_differential.ComparatorControls.test_exact_finite_difference_is_detected) ... ok
+test_missing_callback_and_id_change_are_detected (test_phase1_differential.ComparatorControls.test_missing_callback_and_id_change_are_detected) ... ok
+test_nonfinite_class_changes_are_detected (test_phase1_differential.ComparatorControls.test_nonfinite_class_changes_are_detected) ... ok
+test_only_one_version_line_is_excluded (test_phase1_differential.ComparatorControls.test_only_one_version_line_is_excluded) ... ok
+test_batch_exit_status_rejects_signals_and_empty_batches (test_phase2_harness.Phase2HarnessTests.test_batch_exit_status_rejects_signals_and_empty_batches) ... ok
+test_empty_scope_from_conflicting_subset_flags_is_rejected (test_phase2_harness.Phase2HarnessTests.test_empty_scope_from_conflicting_subset_flags_is_rejected) ... ok
+test_memory_sampler_observes_children_started_by_worker_threads (test_phase2_harness.Phase2HarnessTests.test_memory_sampler_observes_children_started_by_worker_threads) ... ok
+test_worker_budget_reduction_rejects_equal_worker_label (test_phase2_harness.Phase2HarnessTests.test_worker_budget_reduction_rejects_equal_worker_label) ... ok
+test_wrapper_preserves_arguments_and_guards_actual_binary (test_phase2_harness.Phase2HarnessTests.test_wrapper_preserves_arguments_and_guards_actual_binary) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.356s
+
+OK

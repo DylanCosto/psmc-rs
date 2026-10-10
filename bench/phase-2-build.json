@@ -1,0 +1,213 @@
+{
+  "build_log": "bench/phase-2-build.log",
+  "build_log_sha256": "871024f926ea43f4d7dbaa67e0575529a1a45d9aa2e8a4338eafcade426b61b4",
+  "cargo": "cargo 1.90.0 (840b83a10 2025-07-30)\nrelease: 1.90.0\ncommit-hash: 840b83a10fb0e039a83f4d70ad032892c287570a\ncommit-date: 2025-07-30\nhost: x86_64-unknown-linux-gnu\nlibgit2: 1.9.1 (sys:0.20.2 vendored)\nlibcurl: 8.14.1-DEV (sys:0.4.82+curl-8.14.1 vendored ssl:OpenSSL/3.5.0)\nssl: OpenSSL 3.5.0 8 Apr 2025\nos: Linux Mint 22.3.0 (zena) [64-bit]",
+  "cargo_lock_sha256": "9b824a05195aee94a8826142c2dad6592d1e6278f07b2f7b5957f54fe82b22c2",
+  "cargo_packages": [
+    {
+      "name": "psmc-core",
+      "source": null,
+      "version": "0.2.0"
+    },
+    {
+      "name": "psmc-io",
+      "source": null,
+      "version": "0.2.0"
+    },
+    {
+      "name": "psmc-cli",
+      "source": null,
+      "version": "0.2.0"
+    },
+    {
+      "name": "psmc-cpu",
+      "source": null,
+      "version": "0.2.0"
+    }
+  ],
+  "commands": [
+    [
+      "cargo",
+      "build",
+      "--release",
+      "--locked",
+      "--offline",
+      "--verbose"
+    ],
+    [
+      "rustc",
+      "--version",
+      "--verbose"
+    ],
+    [
+      "cargo",
+      "--version",
+      "--verbose"
+    ],
+    [
+      "cargo",
+      "metadata",
+      "--offline",
+      "--locked",
+      "--no-deps",
+      "--format-version",
+      "1"
+    ]
+  ],
+  "created_utc": "2026-10-10T05:00:38.274506+00:00",
+  "environment_contract": {
+    "CARGO_NET_OFFLINE": "true",
+    "LC_ALL": "C",
+    "custom_rustflags": null,
+    "profile_overrides": null
+  },
+  "external_registry_packages": 0,
+  "implementation": "Rust dense scalar oracle and optimized CPU f64 backend, same system libm; deterministic bootstrap scheduler",
+  "network_dependency_resolution": "disabled (--offline --locked)",
+  "reference_binary": {
+    "build_record": "reference/build-vanilla.json",
+    "file": "work/vanilla/psmc",
+    "linked_files": {
+      "ld-linux-x86-64.so.2": {
+        "path": "/lib64/ld-linux-x86-64.so.2",
+        "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da"
+      },
+      "libc.so.6": {
+        "path": "/lib/x86_64-linux-gnu/libc.so.6",
+        "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf"
+      },
+      "libm.so.6": {
+        "path": "/lib/x86_64-linux-gnu/libm.so.6",
+        "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0"
+      },
+      "libz.so.1": {
+        "path": "/lib/x86_64-linux-gnu/libz.so.1",
+        "sha256": "86200da370f20476a2507e9097a789b5ef97269b4ca8d5e164ad82dab9d99892"
+      }
+    },
+    "sha256": "da1743512f1925da6277d5a2e5350c70c61c9771d11749df0918605f795ff32b",
+    "versions": {
+      "libc": "2.39",
+      "libm": "glibc 2.39",
+      "zlib": "1.3"
+    }
+  },
+  "release_profile": {
+    "codegen-units": 1,
+    "debug": 1,
+    "lto": false,
+    "opt-level": 2
+  },
+  "runner": {
+    "file": "bench/phase2_build.py",
+    "sha256": "511ca0ed765254fa060eb5aec93174dea842b9cb18025be2da54a288c363a09c"
+  },
+  "rust_binary": {
+    "file": "target/release/psmc-rs",
+    "linked_files": {
+      "ld-linux-x86-64.so.2": {
+        "path": "/lib64/ld-linux-x86-64.so.2",
+        "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da"
+      },
+      "libc.so.6": {
+        "path": "/lib/x86_64-linux-gnu/libc.so.6",
+        "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf"
+      },
+      "libgcc_s.so.1": {
+        "path": "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+        "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb"
+      },
+      "libm.so.6": {
+        "path": "/lib/x86_64-linux-gnu/libm.so.6",
+        "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0"
+      },
+      "libz.so.1": {
+        "path": "/lib/x86_64-linux-gnu/libz.so.1",
+        "sha256": "86200da370f20476a2507e9097a789b5ef97269b4ca8d5e164ad82dab9d99892"
+      }
+    },
+    "sha256": "fd866573a007003d2388137270ec24f14acb436c42c7084ab8dac076fdabb59a",
+    "versions": {
+      "libc": "2.39",
+      "libm": "glibc 2.39",
+      "zlib": "1.3"
+    }
+  },
+  "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)\nbinary: rustc\ncommit-hash: 1159e78c4747b02ef996e55082b704c09b970588\ncommit-date: 2025-09-14\nhost: x86_64-unknown-linux-gnu\nrelease: 1.90.0\nLLVM version: 20.1.8",
+  "schema_version": 1,
+  "source_commit_reference": "82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+  "source_sha256": {
+    "Cargo.lock": "9b824a05195aee94a8826142c2dad6592d1e6278f07b2f7b5957f54fe82b22c2",
+    "Cargo.toml": "477ebdf8da1746717f8c4dc6221c4bb493af7636c90810f21e5381b5c254baf8",
+    "crates/psmc-cli/Cargo.toml": "a3ccb5f9dbd0d20548dd2a4db8fe68708aae5dea79b9a13399d284044b857077",
+    "crates/psmc-cli/src/batch.rs": "ef27669f8bf349afc8b848a2fb17ed09121fa345f25b568838ba53f83b015ea8",
+    "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+    "crates/psmc-cli/src/legacy.rs": "0a8f962bbf1c10a4e7a2f5f7ce3b14a0093739879227968304d2f3383ed8e66b",
+    "crates/psmc-cli/src/main.rs": "d297fa5dc5092e7e2afa48727d5612090bcf247190edb7d3cb7c522b7c8caadb",
+    "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+    "crates/psmc-core/Cargo.toml": "554c9f223b12aa93e03a5f897c334c6adcb53febe0d40dff3c372a08b1d50039",
+    "crates/psmc-core/src/em.rs": "fd667334b4d470049dad57358bdd23ce0fd23006e347f13704079026c7f1c52f",
+    "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+    "crates/psmc-core/src/lib.rs": "b0b6804c719504d3d7b2f44290a21f45babd590fe9e59e913c0c6dcafb41b01b",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-cpu/Cargo.toml": "fd6caeebb5ea1318c13b3817dc16e16c36bcdbeba1fbc9a02f05d49186d9ef91",
+    "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+    "crates/psmc-cpu/src/engine.rs": "718f64a4e64ce1997626a483e7a24c58eedcb33c64f2866c269f5b1c50f0ecef",
+    "crates/psmc-cpu/src/lib.rs": "b5d4dd6092659e4820f34ff6d7912bbf294280fe7b0c7f6e4e11cbfba4340475",
+    "crates/psmc-cpu/src/tests.rs": "e5fbdeb768d4aafa7d63ede40945c91618e721e97c825904f2cf6f3895af6b6e",
+    "crates/psmc-io/Cargo.toml": "409bcf90d4bdfd0ba961ec986245e6d884efd1daf4b478a13d3ebc8801e7fe8c",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+    "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+    "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b"
+  },
+  "status": "built",
+  "system": {
+    "architecture": "x86_64",
+    "byte_order": "little",
+    "cpu": {
+      "cpu family": "6",
+      "flags": "fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb intel_pt sha_ni xsaveopt xsavec xgetbv1 xsaves split_lock_detect user_shstk avx_vnni dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp hwp_pkg_req hfi vnmi umip pku ospke waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize pconfig arch_lbr ibt flush_l1d arch_capabilities",
+      "model": "151",
+      "model name": "12th Gen Intel(R) Core(TM) i5-12600K",
+      "stepping": "2",
+      "vendor_id": "GenuineIntel"
+    },
+    "kernel": "7.0.0-34-generic",
+    "logical_cpu_count": 16,
+    "memory": {
+      "MemTotal": "32591928 kB",
+      "SwapTotal": "33554428 kB"
+    },
+    "os_release": {
+      "ID": "linuxmint",
+      "NAME": "Linux Mint",
+      "PRETTY_NAME": "Linux Mint 22.3",
+      "VERSION": "22.3 (Zena)",
+      "VERSION_ID": "22.3"
+    },
+    "process_cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "system": "Linux"
+  },
+  "validation": "Build success is not a compatibility or performance result; see separate reports."
+}

@@ -1,0 +1,71 @@
+gcc -c -g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${PROJECT}/work/gprof=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include  khmm.c -o khmm.o
+gcc -c -g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${PROJECT}/work/gprof=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include  kmin.c -o kmin.o
+gcc -c -g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${PROJECT}/work/gprof=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include  cli.c -o cli.o
+gcc -c -g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${PROJECT}/work/gprof=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include  core.c -o core.o
+gcc -c -g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${PROJECT}/work/gprof=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include  em.c -o em.o
+gcc -c -g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${PROJECT}/work/gprof=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include  aux.c -o aux.o
+gcc -c -g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${PROJECT}/work/gprof=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include  main.c -o main.o
+gcc -g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${PROJECT}/work/gprof=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include  khmm.o kmin.o cli.o core.o em.o aux.o main.o -o psmc -lm -l:libz.so.1
+
+khmm.c: In function ‘hmm_forward’:
+khmm.c:149:16: warning: variable ‘m’ set but not used [-Wunused-but-set-variable]
+  149 |         int n, m, L;
+      |                ^
+khmm.c: In function ‘hmm_backward’:
+khmm.c:214:13: warning: variable ‘m’ set but not used [-Wunused-but-set-variable]
+  214 |         int m, n, L;
+      |             ^
+khmm.c: In function ‘hmm_new_par’:
+khmm.c:21:39: warning: ‘*<unknown>’ may be used uninitialized [-Wmaybe-uninitialized]
+   21 |         for (i = 0; i != n; ++i) hp->e[m][i] = 1.0;
+      |                                  ~~~~~^~~
+khmm.c: In function ‘hmm_Viterbi’:
+khmm.c:102:40: warning: ‘*<unknown>’ may be used uninitialized [-Wmaybe-uninitialized]
+  102 |         for (k = 0; k != hp->n; ++k) le[hp->m][k] = 0.0;
+      |                                      ~~^~~~~~~
+khmm.c:105:29: warning: ‘*<unknown>’ may be used uninitialized [-Wmaybe-uninitialized]
+  105 |                 preV[k] = le[(int)hd->seq[1]][k] + log(hp->a0[k]);
+      |                           ~~^~~~~~~~~~~~~~~~~
+khmm.c:106:21: warning: ‘((int **)p)[1]’ may be used uninitialized [-Wmaybe-uninitialized]
+  106 |                 Vmax[1][k] = 0;
+      |                 ~~~~^~~
+khmm.c:110:30: warning: ‘*<unknown>’ may be used uninitialized [-Wmaybe-uninitialized]
+  110 |                 FLOAT *tmp, *leu = le[(int)hd->seq[u]];
+      |                              ^~~
+In file included from aux.c:2:
+aux.c: In function ‘psmc_read_param’:
+aux.c:90:16: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   90 |         assert(fp = fopen(pp->pre_fn, "r"));
+      |                ^~
+aux.c: In function ‘psmc_decode’:
+aux.c:166:33: warning: variable ‘kl’ set but not used [-Wunused-but-set-variable]
+  166 |                         int *x, kl;
+      |                                 ^~
+aux.c: In function ‘psmc_read_param’:
+aux.c:91:9: warning: ignoring return value of ‘fscanf’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   91 |         fscanf(fp, "%s", str);
+      |         ^~~~~~~~~~~~~~~~~~~~~
+aux.c:100:17: warning: ignoring return value of ‘fscanf’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  100 |                 fscanf(fp, "%lf", &pp->inp_pa[k]);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+aux.c:104:25: warning: ignoring return value of ‘fscanf’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  104 |                         fscanf(fp, "%lf", &pp->inp_ti[k]);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+aux.c: In function ‘psmc_decode’:
+aux.c:145:17: warning: ignoring return value of ‘fread’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  145 |                 fread(&n_cnt, 4, 1, pp->fpcnt); // read the number of counts per base
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+aux.c:205:25: warning: ignoring return value of ‘fread’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  205 |                         fread(&l, 4, 1, pp->fpcnt);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+aux.c:209:25: warning: ignoring return value of ‘fread’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  209 |                         fread(cnt1, n_cnt * l, 4, pp->fpcnt);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+make: Entering directory '${PROJECT}/work/gprof/utils'
+gcc -c -I.. -g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${PROJECT}/work/gprof=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include  splitfa.c -o splitfa.o
+gcc -c -I.. -g -Wall -O2 -Wno-unused-function -ffp-contract=off -fdebug-prefix-map=${PROJECT}/work/gprof=/psmc -pg -I${PROJECT}/work/deps/zlib/usr/include  fq2psmcfa.c -o fq2psmcfa.o
+gcc splitfa.o -o splitfa -lm -l:libz.so.1
+gcc fq2psmcfa.o -o fq2psmcfa -lm -l:libz.so.1
+make: Leaving directory '${PROJECT}/work/gprof/utils'
+

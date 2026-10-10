@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "command": [
+    "perl",
+    "work/vanilla/utils/psmc2history.pl",
+    "-n",
+    "30",
+    "bench/raw/tests/finite_workload_30_iterations-oracle.psmc"
+  ],
+  "exit_code": 0,
+  "output": "bench/raw/tests/finite-history.txt",
+  "gnuplot_render": {
+    "status": "not_run",
+    "reason": "gnuplot not installed; no claim of rendered plotting validation"
+  }
+}

@@ -1,0 +1,275 @@
+{
+  "status": "passed",
+  "created_utc": "2026-10-10T05:01:07.745470+00:00",
+  "provenance": {
+    "binaries": {
+      "candidate": {
+        "path": "bench/phase-2-validation/20261010T045711704482Z/binaries/candidate",
+        "sha256": "fd866573a007003d2388137270ec24f14acb436c42c7084ab8dac076fdabb59a",
+        "copied_from": "target/release/psmc-rs"
+      },
+      "phase1": {
+        "path": "bench/phase-2-validation/20261010T045711704482Z/binaries/phase1",
+        "sha256": "e112ed9a8d7d98cc5e29f497e8567e1de96f3e0210a0cb324a79dc91c5e65dd0",
+        "copied_from": "bin/psmc-rs-phase1"
+      },
+      "vanilla": {
+        "path": "bench/phase-2-validation/20261010T045711704482Z/binaries/vanilla",
+        "sha256": "da1743512f1925da6277d5a2e5350c70c61c9771d11749df0918605f795ff32b",
+        "copied_from": "work/vanilla/psmc"
+      },
+      "instrumented": {
+        "path": "bench/phase-2-validation/20261010T045711704482Z/binaries/instrumented",
+        "sha256": "2b4bd7dd369ee8fc226270b30bd414a031314fd70445bd5d7a83d4e5d2f2ed55",
+        "copied_from": "work/instrumented/psmc"
+      }
+    },
+    "source_sha256_at_freeze": {
+      "crates/psmc-cli/src/batch.rs": "ef27669f8bf349afc8b848a2fb17ed09121fa345f25b568838ba53f83b015ea8",
+      "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+      "crates/psmc-cli/src/legacy.rs": "0a8f962bbf1c10a4e7a2f5f7ce3b14a0093739879227968304d2f3383ed8e66b",
+      "crates/psmc-cli/src/main.rs": "d297fa5dc5092e7e2afa48727d5612090bcf247190edb7d3cb7c522b7c8caadb",
+      "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+      "crates/psmc-core/src/em.rs": "fd667334b4d470049dad57358bdd23ce0fd23006e347f13704079026c7f1c52f",
+      "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+      "crates/psmc-core/src/lib.rs": "b0b6804c719504d3d7b2f44290a21f45babd590fe9e59e913c0c6dcafb41b01b",
+      "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+      "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+      "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+      "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+      "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+      "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+      "crates/psmc-cpu/src/engine.rs": "718f64a4e64ce1997626a483e7a24c58eedcb33c64f2866c269f5b1c50f0ecef",
+      "crates/psmc-cpu/src/lib.rs": "b5d4dd6092659e4820f34ff6d7912bbf294280fe7b0c7f6e4e11cbfba4340475",
+      "crates/psmc-cpu/src/tests.rs": "e5fbdeb768d4aafa7d63ede40945c91618e721e97c825904f2cf6f3895af6b6e",
+      "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+      "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+      "Cargo.toml": "477ebdf8da1746717f8c4dc6221c4bb493af7636c90810f21e5381b5c254baf8",
+      "Cargo.lock": "9b824a05195aee94a8826142c2dad6592d1e6278f07b2f7b5957f54fe82b22c2",
+      "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b"
+    },
+    "created_utc": "2026-10-10T04:57:11.729165+00:00"
+  },
+  "raw_directory": "bench/phase-2-profile/20261010T050103Z",
+  "cases": [
+    {
+      "id": "k23-n30",
+      "input": "tests/fixtures/workload.psmcfa",
+      "arguments": [
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0"
+      ],
+      "input_sha256": "7c0e0a0cf3b929ac01fc1de203a7a08ade75bbd42e3e8004fcb4514c0ad1df9b",
+      "runs": [
+        {
+          "backend": "dense",
+          "command": [
+            "bench/phase-2-validation/20261010T045711704482Z/binaries/candidate",
+            "--backend",
+            "dense",
+            "--seed",
+            "42",
+            "--stats",
+            "bench/phase-2-profile/20261010T050103Z/k23-n30-dense.stats.json",
+            "-o",
+            "bench/phase-2-profile/20261010T050103Z/k23-n30-dense.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "stats": {
+            "backend": "dense",
+            "seed": 42,
+            "sequence_visits": 90,
+            "sequence_evaluations": 90,
+            "cache_hits": 0,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 47152,
+            "profile_enabled": true,
+            "expectation_seconds": 0.3341944199999999,
+            "mstep_seconds": 0.16522717899999995,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true
+          },
+          "output_sha256": "3ce295706041d328ac218cd4502f4d877c878da3c3da74c8cbdaf0b5fe9cc497",
+          "expectation_fraction_of_timed_sections": 0.6691629290146099,
+          "mstep_fraction_of_timed_sections": 0.33083707098539006
+        },
+        {
+          "backend": "cpu",
+          "command": [
+            "bench/phase-2-validation/20261010T045711704482Z/binaries/candidate",
+            "--backend",
+            "cpu",
+            "--seed",
+            "42",
+            "--stats",
+            "bench/phase-2-profile/20261010T050103Z/k23-n30-cpu.stats.json",
+            "-o",
+            "bench/phase-2-profile/20261010T050103Z/k23-n30-cpu.psmc",
+            "-p",
+            "4+5*3+4",
+            "-N",
+            "30",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/workload.psmcfa"
+          ],
+          "stats": {
+            "backend": "cpu",
+            "seed": 42,
+            "sequence_visits": 90,
+            "sequence_evaluations": 90,
+            "cache_hits": 0,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 47152,
+            "profile_enabled": true,
+            "expectation_seconds": 0.157716675,
+            "mstep_seconds": 0.14812309,
+            "nonfinite_output": false,
+            "iterations": 30,
+            "cache_enabled": true
+          },
+          "output_sha256": "3ce295706041d328ac218cd4502f4d877c878da3c3da74c8cbdaf0b5fe9cc497",
+          "expectation_fraction_of_timed_sections": 0.5156840053156594,
+          "mstep_fraction_of_timed_sections": 0.4843159946843407
+        }
+      ],
+      "strict_output_match": true
+    },
+    {
+      "id": "k64-n5",
+      "input": "tests/fixtures/profile.psmcfa",
+      "arguments": [
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "5",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0"
+      ],
+      "input_sha256": "564b68c18437ce6fbb29a59a8f31a1f781037c7b9c7e4298815b53caa259efe7",
+      "runs": [
+        {
+          "backend": "dense",
+          "command": [
+            "bench/phase-2-validation/20261010T045711704482Z/binaries/candidate",
+            "--backend",
+            "dense",
+            "--seed",
+            "42",
+            "--stats",
+            "bench/phase-2-profile/20261010T050103Z/k64-n5-dense.stats.json",
+            "-o",
+            "bench/phase-2-profile/20261010T050103Z/k64-n5-dense.psmc",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "5",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/profile.psmcfa"
+          ],
+          "stats": {
+            "backend": "dense",
+            "seed": 42,
+            "sequence_visits": 15,
+            "sequence_evaluations": 15,
+            "cache_hits": 0,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 29909,
+            "profile_enabled": true,
+            "expectation_seconds": 1.429615739,
+            "mstep_seconds": 0.628410323,
+            "nonfinite_output": false,
+            "iterations": 5,
+            "cache_enabled": true
+          },
+          "output_sha256": "348a17be521bb297d7f047a544c814862eb6c1c8a2585f6fa0ddb23a3931ba27",
+          "expectation_fraction_of_timed_sections": 0.6946538556517076,
+          "mstep_fraction_of_timed_sections": 0.30534614434829255
+        },
+        {
+          "backend": "cpu",
+          "command": [
+            "bench/phase-2-validation/20261010T045711704482Z/binaries/candidate",
+            "--backend",
+            "cpu",
+            "--seed",
+            "42",
+            "--stats",
+            "bench/phase-2-profile/20261010T050103Z/k64-n5-cpu.stats.json",
+            "-o",
+            "bench/phase-2-profile/20261010T050103Z/k64-n5-cpu.psmc",
+            "-p",
+            "4+25*2+4+6",
+            "-N",
+            "5",
+            "-t",
+            "15",
+            "-r",
+            "4",
+            "-I",
+            "0",
+            "tests/fixtures/profile.psmcfa"
+          ],
+          "stats": {
+            "backend": "cpu",
+            "seed": 42,
+            "sequence_visits": 15,
+            "sequence_evaluations": 15,
+            "cache_hits": 0,
+            "snapshot_cache_bypass": 0,
+            "model_updates": 29909,
+            "profile_enabled": true,
+            "expectation_seconds": 0.7779763199999999,
+            "mstep_seconds": 0.614728509,
+            "nonfinite_output": false,
+            "iterations": 5,
+            "cache_enabled": true
+          },
+          "output_sha256": "348a17be521bb297d7f047a544c814862eb6c1c8a2585f6fa0ddb23a3931ba27",
+          "expectation_fraction_of_timed_sections": 0.5586081873203586,
+          "mstep_fraction_of_timed_sections": 0.4413918126796414
+        }
+      ],
+      "strict_output_match": true
+    }
+  ],
+  "limitations": [
+    "One diagnostic run per case and backend; use the repeated uninstrumented benchmark for speed claims.",
+    "E includes per-model preparation, sequence evaluation/cache and the aggregate normalizer; M includes Q0 and optimizer callbacks/model updates.",
+    "Other initialization, parsing, I/O, decoding and reporting costs are outside these sections.",
+    "No sampling-profiler attribution within the M-step is claimed."
+  ],
+  "runner_sha256": "a648c6620a8a4492b80ee88f11b9c4f08ac3412292d15baaaeb0094862562306"
+}

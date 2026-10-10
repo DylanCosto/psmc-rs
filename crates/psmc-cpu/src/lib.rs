@@ -1,0 +1,272 @@
+//! Reusable, strict CPU HMM workspace. The scalar dense oracle remains in core.
+//!
+//! This is the same dense arithmetic with row slices and reusable storage, not a
+//! structured transition algorithm. See README.md for the operation-order proof.
+
+/*
+The MIT License
+
+Copyright (c) 2007-2009 Genome Research Ltd (GRL)
+              2009-2015 Broad Institute
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+use psmc_core::{
+    hmm::{Counts, Messages},
+    math::ln,
+    model::Model,
+};
+
+const TINY: f64 = 1e-25;
+
+/// Arrays derived once from one immutable parameter snapshot. The borrow prevents
+/// updating the model while these products are in use or silently reusing them
+/// after a parameter change. No statistical observations are cached here.
+pub struct PreparedModel<'a> {
+    model: &'a Model,
+    transpose: Vec<f64>,
+    emission_transition: Vec<f64>,
+}
+
+impl<'a> PreparedModel<'a> {
+    pub fn new(model: &'a Model) -> Self {
+        let n = model.n;
+        assert!(n > 0, "HMM must have at least one state");
+        let square = n.checked_mul(n).expect("HMM state count is too large");
+        let emission_len = n.checked_mul(3).expect("HMM state count is too large");
+        assert_eq!(model.initial.len(), n);
+        assert_eq!(model.transition.len(), square);
+        assert_eq!(model.emission.len(), emission_len);
+        let mut transpose = vec![0.0; square];
+        for (k, row) in transpose.chunks_exact_mut(n).enumerate() {
+            for (l, target) in row.iter_mut().enumerate() {
+                *target = model.transition[l * n + k];
+            }
+        }
+        let mut emission_transition = vec![0.0; square.checked_mul(3).expect("HMM is too large")];
+        for (emission, product) in model
+            .emission
+            .chunks_exact(n)
+            .zip(emission_transition.chunks_exact_mut(square))
+        {
+            for (transition, target) in model
+                .transition
+                .chunks_exact(n)
+                .zip(product.chunks_exact_mut(n))
+            {
+                for ((target, &e), &a) in target.iter_mut().zip(emission).zip(transition) {
+                    *target = e * a;
+                }
+            }
+        }
+        Self {
+            model,
+            transpose,
+            emission_transition,
+        }
+    }
+
+    pub fn states(&self) -> usize {
+        self.model.n
+    }
+}
+
+/// One independent worker's messages and counts. Capacity is retained across
+/// records and iterations; lengths always match the current record so snapshots
+/// cannot include stale data. Every used cell is overwritten before reading it.
+pub struct Workspace {
+    messages: Messages,
+    counts: Counts,
+}
+
+impl Workspace {
+    pub fn new(n: usize) -> Self {
+        assert!(n > 0, "HMM must have at least one state");
+        Self {
+            messages: Messages {
+                length: 0,
+                n,
+                forward: Vec::new(),
+                backward: Vec::new(),
+                scales: Vec::new(),
+                log_likelihood: 0.0,
+                backward_check: 0.0,
+            },
+            counts: Counts::zero(n),
+        }
+    }
+
+    /// Evaluate one existing sequence with exactly the dense oracle's binary64
+    /// expression grouping and ascending per-cell accumulation order. The two
+    /// borrowed outputs remain valid until the next mutable workspace operation.
+    pub fn evaluate(
+        &mut self,
+        prepared: &PreparedModel<'_>,
+        observations: &[u8],
+    ) -> (&Messages, &Counts) {
+        assert!(!observations.is_empty(), "HMM sequence must be nonempty");
+        assert!(
+            observations.iter().all(|&symbol| symbol <= 2),
+            "HMM observations must be encoded as 0, 1, or 2"
+        );
+        let model = prepared.model;
+        let n = model.n;
+        assert_eq!(self.messages.n, n, "workspace state count changed");
+        let length = observations.len();
+        let rows = length.checked_add(1).expect("HMM sequence is too long");
+        let cells = rows.checked_mul(n).expect("HMM messages are too large");
+        let square = n * n; // PreparedModel already checked this product.
+        let messages = &mut self.messages;
+        messages.length = length;
+        messages.forward.resize(cells, 0.0);
+        messages.backward.resize(cells, 0.0);
+        messages.scales.resize(rows, 0.0);
+        messages.forward[..n].fill(0.0);
+        messages.backward[..n].fill(0.0);
+        messages.scales[0] = 1.0;
+
+        let first_emission = &model.emission[observations[0] as usize * n..][..n];
+        let first = &mut messages.forward[n..2 * n];
+        let mut sum = 0.0;
+        for ((target, &initial), &emission) in
+            first.iter_mut().zip(&model.initial).zip(first_emission)
+        {
+            *target = initial * emission;
+            sum += *target;
+        }
+        for target in first {
+            *target /= sum;
+        }
+        messages.scales[1] = sum;
+
+        for u in 2..=length {
+            let (earlier, later) = messages.forward.split_at_mut(u * n);
+            let previous = &earlier[(u - 1) * n..];
+            let current = &mut later[..n];
+            let emission = &model.emission[observations[u - 1] as usize * n..][..n];
+            sum = 0.0;
+            for ((target, &emission), transition) in current
+                .iter_mut()
+                .zip(emission)
+                .zip(prepared.transpose.chunks_exact(n))
+            {
+                let mut tmp = 0.0;
+                for (&forward, &a) in previous.iter().zip(transition) {
+                    tmp += forward * a;
+                }
+                *target = emission * tmp;
+                sum += *target;
+            }
+            for target in current {
+                *target /= sum;
+            }
+            messages.scales[u] = sum;
+        }
+
+        for target in &mut messages.backward[length * n..] {
+            *target = 1.0 / messages.scales[length];
+        }
+        for u in (1..length).rev() {
+            let (earlier, later) = messages.backward.split_at_mut((u + 1) * n);
+            let current = &mut earlier[u * n..];
+            let next = &later[..n];
+            let product =
+                &prepared.emission_transition[observations[u] as usize * square..][..square];
+            for (target, product_row) in current.iter_mut().zip(product.chunks_exact(n)) {
+                let mut tmp = 0.0;
+                for (&ae, &backward) in product_row.iter().zip(next) {
+                    tmp += ae * backward;
+                }
+                *target = tmp / messages.scales[u];
+            }
+        }
+        let mut backward_check = 0.0;
+        for ((&initial, &backward), &emission) in model
+            .initial
+            .iter()
+            .zip(&messages.backward[n..2 * n])
+            .zip(first_emission)
+        {
+            backward_check += initial * backward * emission;
+        }
+        messages.backward_check = backward_check;
+
+        let mut log_likelihood = 0.0;
+        let mut product = 1.0;
+        for &scale in &messages.scales[1..] {
+            product *= scale;
+            if product < TINY || product >= 1.0 / TINY {
+                log_likelihood += ln(product);
+                product = 1.0;
+            }
+        }
+        log_likelihood += ln(product);
+        messages.log_likelihood = log_likelihood;
+
+        let counts = &mut self.counts;
+        counts.a0.fill(0.0);
+        counts.a.fill(TINY);
+        counts.e.fill(TINY);
+        counts.q0 = 0.0;
+        for u in 1..length {
+            let forward = &messages.forward[u * n..][..n];
+            let backward = &messages.backward[u * n..][..n];
+            let next_backward = &messages.backward[(u + 1) * n..][..n];
+            let scale = messages.scales[u];
+            let emission_counts = &mut counts.e[observations[u - 1] as usize * n..][..n];
+            let product =
+                &prepared.emission_transition[observations[u] as usize * square..][..square];
+            for ((((&fuk, &buk), emission_count), transition_counts), product_row) in forward
+                .iter()
+                .zip(backward)
+                .zip(emission_counts)
+                .zip(counts.a.chunks_exact_mut(n))
+                .zip(product.chunks_exact(n))
+            {
+                for ((count, &ae), &next) in transition_counts
+                    .iter_mut()
+                    .zip(product_row)
+                    .zip(next_backward)
+                {
+                    *count += fuk * ae * next;
+                }
+                *emission_count += fuk * buk * scale;
+            }
+        }
+        for (((count, &initial), &emission), &backward) in counts
+            .a0
+            .iter_mut()
+            .zip(&model.initial)
+            .zip(first_emission)
+            .zip(&messages.backward[n..2 * n])
+        {
+            *count += initial * emission * backward;
+        }
+        (messages, counts)
+    }
+}
+
+#[cfg(test)]
+mod tests;
+
+pub mod engine;
+pub use engine::CpuBackend;

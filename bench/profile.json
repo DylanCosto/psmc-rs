@@ -1,0 +1,997 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-10T04:10:52.199137+00:00",
+  "scope": "synthetic attribution only; no real-workload or speedup claim",
+  "source_commit": "82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+  "states": 64,
+  "iterations": 5,
+  "arguments": [
+    "-p",
+    "4+25*2+4+6",
+    "-N",
+    "5",
+    "-t",
+    "15",
+    "-r",
+    "4",
+    "-I",
+    "0"
+  ],
+  "fixture": {
+    "file": "tests/fixtures/profile.psmcfa",
+    "sha256": "564b68c18437ce6fbb29a59a8f31a1f781037c7b9c7e4298815b53caa259efe7",
+    "source": "tests/fixtures/workload.psmcfa",
+    "source_sha256": "7c0e0a0cf3b929ac01fc1de203a7a08ade75bbd42e3e8004fcb4514c0ad1df9b",
+    "repeat_within_each_record": 4,
+    "records": [
+      {
+        "id": "synthetic_1_profile",
+        "length_bins": 12800
+      },
+      {
+        "id": "synthetic_2_profile",
+        "length_bins": 16692
+      },
+      {
+        "id": "synthetic_3_profile",
+        "length_bins": 23308
+      }
+    ],
+    "total_length_bins": 52800,
+    "provenance": "generated synthetic observations; no biological coordinate scale"
+  },
+  "bootstrap": {
+    "split_command": [
+      "work/vanilla/utils/splitfa",
+      "tests/fixtures/profile.psmcfa",
+      "1000"
+    ],
+    "blocks_sha256": "45d84f0b7c7d41a1f60e68195e1ef6a19a8fc99fb69dcdbfedd678896cda134c",
+    "manifest": "bench/raw/profile/bootstrap-manifest.json",
+    "input": "bench/raw/profile/profile-bootstrap.psmcfa",
+    "input_sha256": "5dfcc082f76b3349ad49d00e5459c3f779120fde20f44c1f16d60b47301eb35c",
+    "seed": 42,
+    "ordered_block_indices": [
+      39,
+      18,
+      5,
+      22,
+      4,
+      45,
+      26,
+      25,
+      36,
+      44,
+      24,
+      30,
+      28,
+      1,
+      40,
+      31,
+      48,
+      25,
+      28,
+      26,
+      23,
+      18,
+      48,
+      3,
+      45,
+      51,
+      44,
+      13,
+      10,
+      5,
+      15,
+      38,
+      2,
+      14,
+      15,
+      29,
+      45,
+      11,
+      42,
+      43,
+      11,
+      4,
+      29,
+      27,
+      45,
+      49,
+      7,
+      28,
+      27,
+      15,
+      16,
+      24,
+      10
+    ],
+    "length_bins": 52384
+  },
+  "binaries": {
+    "vanilla": {
+      "file": "work/vanilla/psmc",
+      "sha256": "da1743512f1925da6277d5a2e5350c70c61c9771d11749df0918605f795ff32b",
+      "build_record": "reference/build-vanilla.json"
+    },
+    "gprof": {
+      "file": "work/gprof/psmc",
+      "sha256": "60d18fb4a326e9476109cb21de2e0dfd5103bdf8eb52a3559ae4bc97e2e6fce4",
+      "build_record": "reference/build-gprof.json"
+    },
+    "instrumented": {
+      "file": "work/instrumented/psmc",
+      "sha256": "2b4bd7dd369ee8fc226270b30bd414a031314fd70445bd5d7a83d4e5d2f2ed55",
+      "build_record": "reference/build-instrumented.json"
+    }
+  },
+  "runs": {
+    "fit": {
+      "vanilla": {
+        "command": [
+          "work/vanilla/psmc",
+          "-p",
+          "4+25*2+4+6",
+          "-N",
+          "5",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/profile.psmcfa"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 1.5080954339937307,
+        "time_wall_seconds": 1.5,
+        "user_seconds": 1.49,
+        "system_seconds": 0.0,
+        "peak_rss_kib": 27308,
+        "output_sha256": "d33a17238b84cbfe52536e8a432d8b1812ddf1c252734228e388c3faa047da60",
+        "output": "bench/raw/profile/fit-vanilla.psmc",
+        "optimizer_evaluations": [
+          8396,
+          6609,
+          4815,
+          5355,
+          4734
+        ],
+        "nonfinite_records_beyond_initial_RI": [],
+        "numerical_output_check": {
+          "status": "passed",
+          "allowed_initial_RI": [
+            {
+              "line": 20,
+              "round": 0,
+              "record": "RI\tinf"
+            }
+          ],
+          "failures": []
+        }
+      },
+      "gprof": {
+        "command": [
+          "work/gprof/psmc",
+          "-p",
+          "4+25*2+4+6",
+          "-N",
+          "5",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/profile.psmcfa"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 1.5006178630283102,
+        "time_wall_seconds": 1.49,
+        "user_seconds": 1.49,
+        "system_seconds": 0.0,
+        "peak_rss_kib": 27184,
+        "output_sha256": "d33a17238b84cbfe52536e8a432d8b1812ddf1c252734228e388c3faa047da60",
+        "output": "bench/raw/profile/fit-gprof.psmc",
+        "optimizer_evaluations": [
+          8396,
+          6609,
+          4815,
+          5355,
+          4734
+        ],
+        "nonfinite_records_beyond_initial_RI": [],
+        "numerical_output_check": {
+          "status": "passed",
+          "allowed_initial_RI": [
+            {
+              "line": 20,
+              "round": 0,
+              "record": "RI\tinf"
+            }
+          ],
+          "failures": []
+        },
+        "sampling": {
+          "sample_period_seconds": 0.01,
+          "self_seconds_sum": 1.2,
+          "estimated_samples_from_rounded_self_seconds": 120,
+          "functions": [
+            {
+              "function": "hmm_expect",
+              "self_percent": 35.0,
+              "cumulative_seconds": 0.42,
+              "self_seconds": 0.42,
+              "calls": 15
+            },
+            {
+              "function": "hmm_forward",
+              "self_percent": 22.5,
+              "cumulative_seconds": 0.69,
+              "self_seconds": 0.27,
+              "calls": 15
+            },
+            {
+              "function": "hmm_backward",
+              "self_percent": 21.67,
+              "cumulative_seconds": 0.95,
+              "self_seconds": 0.26,
+              "calls": 15
+            },
+            {
+              "function": "hmm_Q",
+              "self_percent": 14.17,
+              "cumulative_seconds": 1.12,
+              "self_seconds": 0.17,
+              "calls": 29914
+            },
+            {
+              "function": "psmc_update_hmm",
+              "self_percent": 5.0,
+              "cumulative_seconds": 1.18,
+              "self_seconds": 0.06,
+              "calls": 29910
+            },
+            {
+              "function": "_init",
+              "self_percent": 1.67,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.02
+            },
+            {
+              "function": "psmc_update_intv",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 29910
+            },
+            {
+              "function": "func",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 29909
+            },
+            {
+              "function": "__kmin_hj_aux",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 524
+            },
+            {
+              "function": "hmm_delete_exp",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 20
+            },
+            {
+              "function": "hmm_new_exp",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 20
+            },
+            {
+              "function": "hmm_add_expect",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 15
+            },
+            {
+              "function": "hmm_delete_data",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 15
+            },
+            {
+              "function": "hmm_lk",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 15
+            },
+            {
+              "function": "hmm_new_data",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 15
+            },
+            {
+              "function": "kmin_hj",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 6
+            },
+            {
+              "function": "psmc_print_data",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 6
+            },
+            {
+              "function": "hmm_Q0",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 5
+            },
+            {
+              "function": "hmm_pre_backward",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 5
+            },
+            {
+              "function": "psmc_em",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 5
+            },
+            {
+              "function": "usage",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 3
+            },
+            {
+              "function": "hmm_delete_par",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "hmm_new_par",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "psmc_delete_data",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "psmc_delete_par",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "psmc_new_data",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "psmc_parse_cli",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "psmc_parse_pattern",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "psmc_read_seq",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.2,
+              "self_seconds": 0.0,
+              "calls": 1
+            }
+          ],
+          "command": [
+            "gprof",
+            "-b",
+            "-p",
+            "work/gprof/psmc",
+            "bench/raw/profile/fit.gmon.out"
+          ]
+        },
+        "gmon_file": "bench/raw/profile/fit.gmon.out"
+      },
+      "instrumented": {
+        "command": [
+          "work/instrumented/psmc",
+          "-p",
+          "4+25*2+4+6",
+          "-N",
+          "5",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "tests/fixtures/profile.psmcfa"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 1.5797869229863863,
+        "time_wall_seconds": 1.57,
+        "user_seconds": 1.56,
+        "system_seconds": 0.01,
+        "peak_rss_kib": 27196,
+        "output_sha256": "d33a17238b84cbfe52536e8a432d8b1812ddf1c252734228e388c3faa047da60",
+        "output": "bench/raw/profile/fit-instrumented.psmc",
+        "optimizer_evaluations": [
+          8396,
+          6609,
+          4815,
+          5355,
+          4734
+        ],
+        "nonfinite_records_beyond_initial_RI": [],
+        "numerical_output_check": {
+          "status": "passed",
+          "allowed_initial_RI": [
+            {
+              "line": 20,
+              "round": 0,
+              "record": "RI\tinf"
+            }
+          ],
+          "failures": []
+        },
+        "profile_file": "bench/raw/profile/fit-phases.jsonl",
+        "phase_totals_seconds": {
+          "total_seconds": 1.57607298498624,
+          "forward_seconds": 0.3136527539463714,
+          "backward_seconds": 0.3779470259905793,
+          "expectation_seconds": 0.3713222829683218,
+          "expectation_merge_seconds": 3.281206591054797e-05,
+          "model_seconds": 0.11603418298182078,
+          "q_seconds": 0.38244925389881246,
+          "m_step_seconds": 0.5003260899684392,
+          "allocation_setup_seconds": 7.418094901368022e-05,
+          "likelihood_seconds": 0.00029076504870317876,
+          "pre_backward_seconds": 3.425701288506389e-05,
+          "q_normalizer_seconds": 9.303400292992592e-05,
+          "free_seconds": 0.012383012159261853
+        },
+        "startup_events": [
+          {
+            "event": "startup",
+            "phase": "cli_input_bootstrap",
+            "seconds": 0.00038905898691155016
+          },
+          {
+            "event": "startup",
+            "phase": "initial_model",
+            "seconds": 5.0090980948880315e-05
+          }
+        ],
+        "profile_optimizer_evaluations": [
+          8396,
+          6609,
+          4815,
+          5355,
+          4734
+        ]
+      }
+    },
+    "bootstrap": {
+      "vanilla": {
+        "command": [
+          "work/vanilla/psmc",
+          "-p",
+          "4+25*2+4+6",
+          "-N",
+          "5",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "bench/raw/profile/profile-bootstrap.psmcfa"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 1.4540169700048864,
+        "time_wall_seconds": 1.45,
+        "user_seconds": 1.45,
+        "system_seconds": 0.0,
+        "peak_rss_kib": 3728,
+        "output_sha256": "d6469de5f53f84d6da4a2504b0e08c6bc4f990c669d34850e14c455f5f058894",
+        "output": "bench/raw/profile/bootstrap-vanilla.psmc",
+        "optimizer_evaluations": [
+          6263,
+          5374,
+          5208,
+          5620,
+          5078
+        ],
+        "nonfinite_records_beyond_initial_RI": [],
+        "numerical_output_check": {
+          "status": "passed",
+          "allowed_initial_RI": [
+            {
+              "line": 20,
+              "round": 0,
+              "record": "RI\tinf"
+            }
+          ],
+          "failures": []
+        }
+      },
+      "gprof": {
+        "command": [
+          "work/gprof/psmc",
+          "-p",
+          "4+25*2+4+6",
+          "-N",
+          "5",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "bench/raw/profile/profile-bootstrap.psmcfa"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 1.4860978279903065,
+        "time_wall_seconds": 1.48,
+        "user_seconds": 1.48,
+        "system_seconds": 0.0,
+        "peak_rss_kib": 3620,
+        "output_sha256": "d6469de5f53f84d6da4a2504b0e08c6bc4f990c669d34850e14c455f5f058894",
+        "output": "bench/raw/profile/bootstrap-gprof.psmc",
+        "optimizer_evaluations": [
+          6263,
+          5374,
+          5208,
+          5620,
+          5078
+        ],
+        "nonfinite_records_beyond_initial_RI": [],
+        "numerical_output_check": {
+          "status": "passed",
+          "allowed_initial_RI": [
+            {
+              "line": 20,
+              "round": 0,
+              "record": "RI\tinf"
+            }
+          ],
+          "failures": []
+        },
+        "sampling": {
+          "sample_period_seconds": 0.01,
+          "self_seconds_sum": 1.19,
+          "estimated_samples_from_rounded_self_seconds": 119,
+          "functions": [
+            {
+              "function": "hmm_expect",
+              "self_percent": 39.5,
+              "cumulative_seconds": 0.47,
+              "self_seconds": 0.47,
+              "calls": 265
+            },
+            {
+              "function": "hmm_forward",
+              "self_percent": 23.53,
+              "cumulative_seconds": 0.75,
+              "self_seconds": 0.28,
+              "calls": 265
+            },
+            {
+              "function": "hmm_backward",
+              "self_percent": 21.01,
+              "cumulative_seconds": 1.0,
+              "self_seconds": 0.25,
+              "calls": 265
+            },
+            {
+              "function": "psmc_update_hmm",
+              "self_percent": 7.56,
+              "cumulative_seconds": 1.09,
+              "self_seconds": 0.09,
+              "calls": 27544
+            },
+            {
+              "function": "hmm_Q",
+              "self_percent": 5.04,
+              "cumulative_seconds": 1.15,
+              "self_seconds": 0.06,
+              "calls": 27548
+            },
+            {
+              "function": "_init",
+              "self_percent": 3.36,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.04
+            },
+            {
+              "function": "psmc_update_intv",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 27544
+            },
+            {
+              "function": "func",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 27543
+            },
+            {
+              "function": "__kmin_hj_aux",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 480
+            },
+            {
+              "function": "hmm_delete_exp",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 270
+            },
+            {
+              "function": "hmm_new_exp",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 270
+            },
+            {
+              "function": "hmm_add_expect",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 265
+            },
+            {
+              "function": "hmm_delete_data",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 265
+            },
+            {
+              "function": "hmm_lk",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 265
+            },
+            {
+              "function": "hmm_new_data",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 265
+            },
+            {
+              "function": "usage",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 53
+            },
+            {
+              "function": "kmin_hj",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 6
+            },
+            {
+              "function": "psmc_print_data",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 6
+            },
+            {
+              "function": "hmm_Q0",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 5
+            },
+            {
+              "function": "hmm_pre_backward",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 5
+            },
+            {
+              "function": "psmc_em",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 5
+            },
+            {
+              "function": "hmm_delete_par",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "hmm_new_par",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "psmc_delete_data",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "psmc_delete_par",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "psmc_new_data",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "psmc_parse_cli",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "psmc_parse_pattern",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 1
+            },
+            {
+              "function": "psmc_read_seq",
+              "self_percent": 0.0,
+              "cumulative_seconds": 1.19,
+              "self_seconds": 0.0,
+              "calls": 1
+            }
+          ],
+          "command": [
+            "gprof",
+            "-b",
+            "-p",
+            "work/gprof/psmc",
+            "bench/raw/profile/bootstrap.gmon.out"
+          ]
+        },
+        "gmon_file": "bench/raw/profile/bootstrap.gmon.out"
+      },
+      "instrumented": {
+        "command": [
+          "work/instrumented/psmc",
+          "-p",
+          "4+25*2+4+6",
+          "-N",
+          "5",
+          "-t",
+          "15",
+          "-r",
+          "4",
+          "-I",
+          "0",
+          "bench/raw/profile/profile-bootstrap.psmcfa"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 1.6227150649938267,
+        "time_wall_seconds": 1.62,
+        "user_seconds": 1.61,
+        "system_seconds": 0.0,
+        "peak_rss_kib": 3680,
+        "output_sha256": "d6469de5f53f84d6da4a2504b0e08c6bc4f990c669d34850e14c455f5f058894",
+        "output": "bench/raw/profile/bootstrap-instrumented.psmc",
+        "optimizer_evaluations": [
+          6263,
+          5374,
+          5208,
+          5620,
+          5078
+        ],
+        "nonfinite_records_beyond_initial_RI": [],
+        "numerical_output_check": {
+          "status": "passed",
+          "allowed_initial_RI": [
+            {
+              "line": 20,
+              "round": 0,
+              "record": "RI\tinf"
+            }
+          ],
+          "failures": []
+        },
+        "profile_file": "bench/raw/profile/bootstrap-phases.jsonl",
+        "phase_totals_seconds": {
+          "total_seconds": 1.6198110339755658,
+          "forward_seconds": 0.36371320122270845,
+          "backward_seconds": 0.416476484737359,
+          "expectation_seconds": 0.371588366717333,
+          "expectation_merge_seconds": 0.00041953116306103766,
+          "model_seconds": 0.10699254903011024,
+          "q_seconds": 0.3531856107292697,
+          "m_step_seconds": 0.461946397961583,
+          "allocation_setup_seconds": 0.00013787124771624804,
+          "likelihood_seconds": 0.0002759838826023042,
+          "pre_backward_seconds": 3.374303923919797e-05,
+          "q_normalizer_seconds": 8.327898103743792e-05,
+          "free_seconds": 0.005175710539333522
+        },
+        "startup_events": [
+          {
+            "event": "startup",
+            "phase": "cli_input_bootstrap",
+            "seconds": 0.000386172003345564
+          },
+          {
+            "event": "startup",
+            "phase": "initial_model",
+            "seconds": 8.756402530707419e-05
+          }
+        ],
+        "profile_optimizer_evaluations": [
+          6263,
+          5374,
+          5208,
+          5620,
+          5078
+        ]
+      }
+    },
+    "seeded_bootstrap_replay": {
+      "command": [
+        "work/instrumented/psmc",
+        "-b",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "5",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "-I",
+        "0",
+        "bench/raw/profile/profile-blocks.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 1.6926238640153315,
+      "time_wall_seconds": 1.69,
+      "user_seconds": 1.68,
+      "system_seconds": 0.0,
+      "peak_rss_kib": 3640,
+      "output_sha256": "d6469de5f53f84d6da4a2504b0e08c6bc4f990c669d34850e14c455f5f058894",
+      "output": "bench/raw/profile/bootstrap-replay.psmc",
+      "optimizer_evaluations": [
+        6263,
+        5374,
+        5208,
+        5620,
+        5078
+      ],
+      "nonfinite_records_beyond_initial_RI": [],
+      "numerical_output_check": {
+        "status": "passed",
+        "allowed_initial_RI": [
+          {
+            "line": 20,
+            "round": 0,
+            "record": "RI\tinf"
+          }
+        ],
+        "failures": []
+      }
+    }
+  },
+  "checks": {
+    "fit_complete_stdout_byte_parity": {
+      "gprof": true,
+      "instrumented": true
+    },
+    "fit_numerical_output_finite_after_initial_RI": true,
+    "bootstrap_complete_stdout_byte_parity": {
+      "gprof": true,
+      "instrumented": true
+    },
+    "bootstrap_numerical_output_finite_after_initial_RI": true,
+    "bootstrap_trace_matches_independent_lcg_and_stop_rule": true,
+    "seeded_bootstrap_complete_stdout_matches_materialized_vanilla": true,
+    "phase_evaluation_counts_match_output_IT": true
+  },
+  "limitations": [
+    "One diagnostic run per variant and workload; these do not estimate benchmark variance.",
+    "Only vanilla wall/RSS measurements use an unmodified executable; gprof and timers perturb execution.",
+    "gprof samples the profiled executable; shared-library allocator/libm time is not separately resolved.",
+    "gprof call counts reflect optimized compiled code and may omit inlined functions.",
+    "Profile allocation_setup_seconds covers sequence/count setup only; HMM/model allocations remain inclusive in those phases.",
+    "m_step_seconds overlaps model, Q and normalizer times; phase values must not all be added.",
+    "CLI startup includes input reading, parsing and bootstrap where applicable; output I/O is not isolated.",
+    "Materialized-bootstrap inference timings exclude resampling; the seeded -b replay additionally checks in-process sampling.",
+    "Synthetic record repetition changes the profiling fixture, not any user input or scientific workload.",
+    "GPU profiling and real-workload attribution are not_run."
+  ],
+  "perf_probe": {
+    "command": [
+      "/usr/bin/perf",
+      "record",
+      "-e",
+      "cpu-clock",
+      "-o",
+      "bench/raw/profile/perf.data",
+      "--",
+      "work/vanilla/psmc",
+      "-p",
+      "2+2",
+      "-N",
+      "0",
+      "-I",
+      "0",
+      "tests/fixtures/tiny.psmcfa"
+    ],
+    "exit_code": 255,
+    "status": "unavailable",
+    "stderr_file": "bench/raw/profile/perf.stderr",
+    "perf_event_paranoid": "4",
+    "settings_or_privileges_changed": false
+  },
+  "sampling_fallback": "GNU gprof -pg, actual execution samples plus call instrumentation",
+  "tool_versions": {
+    "gprof": "GNU gprof (GNU Binutils for Ubuntu) 2.42",
+    "perf": "perf version 7.0.14"
+  },
+  "status": "passed_synthetic_profile_and_parity_checks"
+}

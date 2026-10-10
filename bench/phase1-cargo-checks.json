@@ -1,0 +1,40 @@
+{
+  "checks": [
+    {
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "log": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 8 tests\ntest hmm::tests::impossible_observations_propagate_nonfinite_reference_behavior ... ok\ntest hmm::tests::one_position_and_repeated_records_preserve_tiny_counts ... ok\ntest hmm::tests::messages_and_legacy_counts_agree_with_enumerated_paths ... ok\ntest hmm::tests::q_preserves_sentinel_nan_and_ignored_count_semantics ... ok\ntest hmm::tests::rejects_empty_sequence - should panic ... ok\ntest hmm::tests::rejects_invalid_observation_encoding - should panic ... ok\ntest optimizer::tests::flat_objective_preserves_last_callback_and_radius_boundary ... ok\ntest optimizer::tests::nominal_limit_does_not_interrupt_coordinate_exploration ... ok\n\ntest result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 9 tests\ntest tests::bootstrap_exact_length_stops_without_extra_draw ... ok\ntest tests::bootstrap_nearest_total_and_duplicate_multiplicity ... ok\ntest tests::fasta_aliases_whitespace_names_and_boundaries ... ok\ntest tests::fastq_qualities_ignored_and_kseq_delimiters_preserved ... ok\ntest tests::malformed_sequence_input_fails_explicitly ... ok\ntest tests::pattern_group_mapping_and_legacy_limit ... ok\ntest tests::rng_matches_pinned_libc_reference_draws ... ok\ntest tests::supplied_parameter_formats_and_atomic_errors ... ok\ntest tests::system_zlib_plain_gzip_and_corruption ... ok\n\ntest result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n   Compiling psmc-cli v0.1.0 (${PROJECT}/crates/psmc-cli)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s\n     Running unittests src/main.rs (target/debug/deps/psmc_rs-cc49aef57a95b85f)\n     Running unittests src/lib.rs (target/debug/deps/psmc_core-d65ff2a1b60e282d)\n     Running unittests src/lib.rs (target/debug/deps/psmc_io-4bdef05123977343)\n   Doc-tests psmc_core\n   Doc-tests psmc_io\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--release",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "log": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 8 tests\ntest hmm::tests::impossible_observations_propagate_nonfinite_reference_behavior ... ok\ntest hmm::tests::messages_and_legacy_counts_agree_with_enumerated_paths ... ok\ntest hmm::tests::q_preserves_sentinel_nan_and_ignored_count_semantics ... ok\ntest hmm::tests::one_position_and_repeated_records_preserve_tiny_counts ... ok\ntest hmm::tests::rejects_empty_sequence - should panic ... ok\ntest hmm::tests::rejects_invalid_observation_encoding - should panic ... ok\ntest optimizer::tests::flat_objective_preserves_last_callback_and_radius_boundary ... ok\ntest optimizer::tests::nominal_limit_does_not_interrupt_coordinate_exploration ... ok\n\ntest result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 9 tests\ntest tests::bootstrap_exact_length_stops_without_extra_draw ... ok\ntest tests::bootstrap_nearest_total_and_duplicate_multiplicity ... ok\ntest tests::fasta_aliases_whitespace_names_and_boundaries ... ok\ntest tests::fastq_qualities_ignored_and_kseq_delimiters_preserved ... ok\ntest tests::malformed_sequence_input_fails_explicitly ... ok\ntest tests::pattern_group_mapping_and_legacy_limit ... ok\ntest tests::rng_matches_pinned_libc_reference_draws ... ok\ntest tests::supplied_parameter_formats_and_atomic_errors ... ok\ntest tests::system_zlib_plain_gzip_and_corruption ... ok\n\ntest result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n   Compiling psmc-cli v0.1.0 (${PROJECT}/crates/psmc-cli)\n   Compiling psmc-io v0.1.0 (${PROJECT}/crates/psmc-io)\n   Compiling psmc-core v0.1.0 (${PROJECT}/crates/psmc-core)\n    Finished `release` profile [optimized + debuginfo] target(s) in 0.54s\n     Running unittests src/main.rs (target/release/deps/psmc_rs-b2ccba2c82003a3a)\n     Running unittests src/lib.rs (target/release/deps/psmc_core-869f995c345aa399)\n     Running unittests src/lib.rs (target/release/deps/psmc_io-0b12cf1185569d22)\n   Doc-tests psmc_core\n   Doc-tests psmc_io\n"
+    }
+  ],
+  "passed": true,
+  "unit_tests_per_profile": 17,
+  "clippy": "not_run: component absent on pinned toolchain"
+}
