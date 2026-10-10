@@ -184,6 +184,11 @@ impl Workspace {
         }
         let messages = &mut self.messages;
         messages.length = length;
+        // Avoid amortized doubling when a later bootstrap block is slightly larger.
+        // reserve_exact changes capacity only; resize and all arithmetic stay ordered.
+        reserve_messages(&mut messages.forward, cells);
+        reserve_messages(&mut messages.backward, cells);
+        reserve_messages(&mut messages.scales, rows);
         messages.forward.resize(cells, 0.0);
         messages.backward.resize(cells, 0.0);
         messages.scales.resize(rows, 0.0);
@@ -288,6 +293,16 @@ impl Workspace {
         counts.a.fill(TINY);
         counts.e.fill(TINY);
         counts.q0 = 0.0;
+        let sequence_counts = self.avx.filter(|_| n == 64);
+        if let Some(avx) = sequence_counts {
+            avx.counts_sequence64(
+                &mut counts.a,
+                observations,
+                &messages.forward,
+                &messages.backward,
+                &prepared.emission_transition,
+            );
+        }
         for u in 1..length {
             let forward = &messages.forward[u * n..][..n];
             let backward = &messages.backward[u * n..][..n];
@@ -297,7 +312,9 @@ impl Workspace {
             let product =
                 &prepared.emission_transition[observations[u] as usize * square..][..square];
             if let Some(avx) = self.avx {
-                avx.counts(&mut counts.a, forward, product, next_backward);
+                if sequence_counts.is_none() {
+                    avx.counts(&mut counts.a, forward, product, next_backward);
+                }
                 for ((count, &f), &b) in emission_counts.iter_mut().zip(forward).zip(backward) {
                     *count += f * b * scale;
                 }
@@ -338,3 +355,9 @@ mod tests;
 
 pub mod engine;
 pub use engine::CpuBackend;
+
+fn reserve_messages(buffer: &mut Vec<f64>, needed: usize) {
+    if needed > buffer.capacity() {
+        buffer.reserve_exact(needed - buffer.len());
+    }
+}

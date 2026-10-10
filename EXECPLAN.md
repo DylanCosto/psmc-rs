@@ -580,3 +580,70 @@ ignored work/hg-input; ordinary raw results remain under ignored bench/hg. No
 previous archive is replaced and no production source or executable is changed.
 This completes the public human chromosome milestone; whole-genome and actual
 user-workload claims remain untested.
+
+## Ordered-count and workspace campaign — 2026-10-10 (in progress)
+
+User authorized continued optimization after the HG001 chromosome milestone.
+One gated milestone: retain exact f64 site order while reducing transition-count
+memory traffic, and prevent amortized message-buffer growth on unequal blocks.
+Freeze v0.3.1 before experiments; retain all previous runners/results unchanged.
+
+- [x] Build isolated memory-only, fixed K64, and register-blocked site-tile candidates.
+- [x] Run isolated exactness tests and rotated complete human fit screens.
+- [x] Measure any survivor against frozen v0.3.1 in complete 30-bootstrap batches.
+- [x] Pass existing internal/C, pathological fixture, scalar/dense and scheduler gates.
+- [x] Record derivation, timings, memory, source/binary hashes and limitations together.
+
+Decision: each transition cell starts with its original tiny initializer and adds
+sites in ascending order using exactly (f * ae) * b, then count + contribution.
+Register tiles change traversal of independent cells only, never HMM boundaries,
+model parameters, repeated-record weights, masking or optimizer behavior. Emission
+counts and initial counts remain independent ordered operations. Allocation changes
+preserve lengths, initialized values and lifetime of borrowed results.
+
+Screen decision: all four candidate debug/release suites pass. All 20 full human
+K64/N30 screen outputs are finite and exact versus retained C. Eight-site tiling
+has the best repeated median and advances to complete gates; fixed K64 and
+32-site tiling remain rejected screen candidates. The memory change is included
+but its batch RSS benefit remains unproven until concurrent measurements.
+
+
+Completion: v0.3.2 accepts the eight-site, sixteen-destination ordered K64 AVX
+count kernel, plus exact-capacity growth. Human 30-bootstrap/16-worker matched
+medians are 69.149560 s baseline and 50.154561 s candidate (27.469% less wall
+time; 1.378729x throughput), with ranges 65.676700–69.909035 and
+50.131555–52.940902 s. CPU medians fall from 905.708411 to 669.227921 s.
+All three workloads have one warmup and three alternating measured pairs.
+
+Surprise: lower Vec capacity did not lower sampled resident memory materially:
+human RSS medians are 1,316,428 and 1,316,132 KiB. The standalone capacity replay
+shows 51,201,024 versus 29,791,232 bytes per growing K64 message buffer, but this
+is a capacity observation, not physical-memory usage. Exact reservation is kept
+for its tighter capacity bound; no RSS or isolated CPU benefit is claimed. Growing
+record lengths may require more reallocations; whole-genome behavior is untested.
+K23 original/model-based batch wall medians are respectively 1.54%/3.37% slower,
+with overlapping ranges and little change in CPU medians. No K23 speedup is claimed.
+
+Acceptance: 35 debug and 35 release unit tests, 340 full dense/CPU/scalar cases
+including exact internal snapshots, 66 extended cases (39 finite/27 pathological),
+forward/reverse scheduler and cache controls, 38 CLI/dispatch checks, and no FMA
+or horizontal reductions in assembly. All 720 timed batch outputs and two unsplit
+human controls match retained C (version-only exclusion). All 240 human batch
+outputs are finite; synthetic pathologies are retained. Every batch draw trace
+matches independent original-sampler replay. bench/counts-delivery-check.json
+rechecks all 722 outputs, current source/build hashes and published binaries.
+
+Decision: promote the complete measured candidate as v0.3.2. bin/psmc-rs and
+target/release/psmc-rs have SHA256
+24d47084c2914aa44109040b7f5593efb7353621cb0d36ccdb28cd1a060f4c83.
+bin/psmc-rs-v0.3.1 preserves the previous release; all previous archives and
+reports remain unchanged. Source, isolated generator/tests, derivation, rejected
+screens and before/after timings are committed together. The accepted source is
+identified by complete build hashes in bench/counts-build.json and this milestone's
+commit; the baseline is bdd1a4309502251f78ced5085f5d7aa498a200de. Raw evidence stays
+locally under ignored work/counts-* and the existing validation directories.
+
+Next permitted work: profile the accepted kernel on a larger documented public
+workload before generalizing to whole-genome performance. The 10x target remains
+unproven. ARM/NEON, GPU and the actual user's genome remain not_run. C output is
+reused as an exact oracle; C timing is not repeated or newly claimed here.

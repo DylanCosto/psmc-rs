@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "commands": [
+    [
+      "rustc",
+      "--edition=2024",
+      "-O",
+      "bench/counts_capacity.rs",
+      "-o",
+      "work/counts-campaign/capacity-probe"
+    ],
+    [
+      "work/counts-campaign/capacity-probe"
+    ]
+  ],
+  "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)\nbinary: rustc\ncommit-hash: 1159e78c4747b02ef996e55082b704c09b970588\ncommit-date: 2025-09-14\nhost: x86_64-unknown-linux-gnu\nrelease: 1.90.0\nLLVM version: 20.1.8\n",
+  "runner_sha256": "81f7ef62a620d31095b69351a54b13bfcc5af5fe7251cb96157dd200a91f876a",
+  "source_sha256": "5a43439548b9b0b89492dffbaae34efe4ce13b199dc4008df1006e1f95667a6d",
+  "binary_sha256": "3f722546e7a11a430f364c82d1a07d692cefbaf28c1bad5183f501a57dfe01ab",
+  "rows": [
+    {
+      "bins": 50000,
+      "length_cells": 3200064,
+      "old_capacity_cells": 3200064,
+      "new_capacity_cells": 3200064,
+      "old_capacity_bytes": 25600512,
+      "new_capacity_bytes": 25600512
+    },
+    {
+      "bins": 58185,
+      "length_cells": 3723904,
+      "old_capacity_cells": 6400128,
+      "new_capacity_cells": 3723904,
+      "old_capacity_bytes": 51201024,
+      "new_capacity_bytes": 29791232
+    },
+    {
+      "bins": 50000,
+      "length_cells": 3200064,
+      "old_capacity_cells": 6400128,
+      "new_capacity_cells": 3723904,
+      "old_capacity_bytes": 51201024,
+      "new_capacity_bytes": 29791232
+    }
+  ],
+  "scope": "One standard Vec<f64> replaying old/new message allocation at HG K64 block lengths; capacity only, not live-workspace instrumentation, RSS, timing or allocator physical reservation."
+}

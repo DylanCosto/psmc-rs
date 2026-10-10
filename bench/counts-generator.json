@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "baseline_commit": "bdd1a4309502251f78ced5085f5d7aa498a200de",
+  "runner_sha256": "0b453262652482eb552f955212f169ef612d1e47c6b4b8860ef3c0b52dad61a5",
+  "screen_report_sha256": "edc8ad3e085256f2704f05f57771acbc3895c6da5e19cfd705657387e730caec",
+  "checks": [
+    {
+      "label": "memory",
+      "all_source_hashes_match": true
+    },
+    {
+      "label": "fixed64",
+      "all_source_hashes_match": true
+    },
+    {
+      "label": "tile8",
+      "all_source_hashes_match": true
+    },
+    {
+      "label": "tile32",
+      "all_source_hashes_match": true
+    }
+  ]
+}

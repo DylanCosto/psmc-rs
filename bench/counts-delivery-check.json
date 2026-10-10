@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "binary_sha256": "24d47084c2914aa44109040b7f5593efb7353621cb0d36ccdb28cd1a060f4c83",
+  "source_matches_build": true,
+  "outputs_rechecked": 722,
+  "unit_tests": [
+    35,
+    35
+  ],
+  "regression_cases": 340,
+  "effects": {
+    "human": {
+      "speedup": 1.3787292472085289,
+      "wall_reduction_percent": 27.469443182940413,
+      "rss_reduction_percent": 0.022485088436285938
+    },
+    "original": {
+      "speedup": 0.9848765195512929,
+      "wall_reduction_percent": -1.5355712262890897,
+      "rss_reduction_percent": 1.1603919546157804
+    },
+    "model-based": {
+      "speedup": 0.9674302708723983,
+      "wall_reduction_percent": -3.3666229089804434,
+      "rss_reduction_percent": 1.3615221987315018
+    }
+  },
+  "reports": {
+    "screen": "edc8ad3e085256f2704f05f57771acbc3895c6da5e19cfd705657387e730caec",
+    "generator": "c290077edb05df38246993a38ccf3964edd535061eef06e71f76ee64c122886e",
+    "gates": "1ac991a19b1cf4b55bbdbba165953b0f8bbeef1c8eec0fa77cd35e899acce8a6",
+    "validation": "d24397285e1a82bb3e6acebd00609820ce5addba520a08e28c1f5ffeb2a856c4",
+    "extended": "dd04010b2811b57b7c7c01075d6f55d58db6980ba47767e47fcc6d596e637f41",
+    "scheduler": "4cc6f5691d0a5293d8a2660931c66f7a5effc9b2d73df81ac6274c5c4940b4a5",
+    "review": "e5ed2ade206a580ff69bd48430380c692e4a2581f2da42a71a75ceaa790c62c4",
+    "batches": "87bdf7326df00683552f17fb250cb3f1f586d56dae8293dd742b28def185bb17",
+    "build": "289a4fb4dd0aa7ed0bd4ad769b5a4aa130fc507da555e5dd1d66ccf95e65f1ef",
+    "capacity": "117a62a46dbfe0359c1a438ad9b247325f57cc340f133baef0c45f00ab1119db"
+  },
+  "report_sha256": "53c529b65bb6f4e8bdd44ad863e175c43d96fb933e1fe0d5b49032fb09e30040",
+  "runner_sha256": "dc4476b177a7f13926046bfc6b15824239fa8fc95fb754d6cfa3f3e753cae7f0"
+}

@@ -281,3 +281,22 @@ fn every_short_pattern_exercises_four_actual_lanes() {
     let prepared = workspace.prepare(&model);
     compare(&mut workspace, &prepared, &[0, 1, 2, 0]);
 }
+
+#[test]
+fn message_capacity_growth_preserves_values_and_reuses_storage() {
+    let mut buffer = vec![0.0, -0.0, f64::from_bits(1)];
+    reserve_messages(&mut buffer, 4);
+    assert_eq!(buffer.len(), 3);
+    same_slice(&buffer, &[0.0, -0.0, f64::from_bits(1)]);
+    buffer.resize(4, 0.0);
+    let capacity = buffer.capacity();
+    let pointer = buffer.as_ptr();
+    buffer.truncate(1);
+    reserve_messages(&mut buffer, capacity);
+    assert_eq!(buffer.as_ptr(), pointer);
+    assert_eq!(buffer.capacity(), capacity);
+    reserve_messages(&mut buffer, capacity + 1);
+    assert!(buffer.capacity() >= capacity + 1);
+    assert_eq!(buffer.len(), 1);
+    same_float(buffer[0], 0.0);
+}

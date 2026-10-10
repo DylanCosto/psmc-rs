@@ -106,6 +106,35 @@ impl Avx {
         unreachable!("AVX capability is never constructed on this architecture");
     }
 
+    pub(crate) fn counts_sequence64(
+        self,
+        counts: &mut [f64],
+        observations: &[u8],
+        forward: &[f64],
+        backward: &[f64],
+        products: &[f64],
+    ) {
+        assert!(!observations.is_empty());
+        assert!(observations.iter().all(|&z| z <= 2));
+        let cells = observations
+            .len()
+            .checked_add(1)
+            .and_then(|r| r.checked_mul(64))
+            .expect("message size overflow");
+        assert_eq!(counts.len(), 4096);
+        assert_eq!(products.len(), 3 * 4096);
+        assert_eq!(forward.len(), cells);
+        assert_eq!(backward.len(), cells);
+        #[cfg(target_arch = "x86_64")]
+        // SAFETY: capability checks AVX; validated exact dimensions and symbols
+        // bound every complete 4-lane load/store. Tiles never add HMM boundaries.
+        unsafe {
+            x86::counts_sequence64(counts, observations, forward, backward, products)
+        }
+        #[cfg(not(target_arch = "x86_64"))]
+        unreachable!("AVX capability is never constructed on this architecture");
+    }
+
     pub(crate) fn counts(self, counts: &mut [f64], forward: &[f64], product: &[f64], next: &[f64]) {
         let n = forward.len();
         assert_eq!(next.len(), n);
@@ -271,6 +300,69 @@ mod x86 {
                     out.as_mut_ptr().add(k + 12),
                     _mm256_div_pd(sum3, _mm256_set1_pd(scale)),
                 );
+            }
+        }
+    }
+
+    #[target_feature(enable = "avx")]
+    pub(super) unsafe fn counts_sequence64(
+        counts: &mut [f64],
+        observations: &[u8],
+        forward: &[f64],
+        backward: &[f64],
+        products: &[f64],
+    ) {
+        // Each lane carries its existing count through ascending sites. There is
+        // no partial sum or horizontal reduction; (f * ae) * b remains unfused.
+        // SAFETY: the capability wrapper validates dimensions and symbols.
+        unsafe {
+            for begin in (1..observations.len()).step_by(8) {
+                let end = (begin + 8).min(observations.len());
+                for k in 0..64 {
+                    for l in (0..64).step_by(16) {
+                        let mut sum0 = _mm256_loadu_pd(counts.as_ptr().add(k * 64 + l + 0));
+                        let mut sum1 = _mm256_loadu_pd(counts.as_ptr().add(k * 64 + l + 4));
+                        let mut sum2 = _mm256_loadu_pd(counts.as_ptr().add(k * 64 + l + 8));
+                        let mut sum3 = _mm256_loadu_pd(counts.as_ptr().add(k * 64 + l + 12));
+                        for u in begin..end {
+                            let f = _mm256_set1_pd(*forward.get_unchecked(u * 64 + k));
+                            let row = *observations.get_unchecked(u) as usize * 4096 + k * 64 + l;
+                            let next = (u + 1) * 64 + l;
+                            let first0 =
+                                _mm256_mul_pd(f, _mm256_loadu_pd(products.as_ptr().add(row + 0)));
+                            let term0 = _mm256_mul_pd(
+                                first0,
+                                _mm256_loadu_pd(backward.as_ptr().add(next + 0)),
+                            );
+                            sum0 = _mm256_add_pd(sum0, term0);
+                            let first1 =
+                                _mm256_mul_pd(f, _mm256_loadu_pd(products.as_ptr().add(row + 4)));
+                            let term1 = _mm256_mul_pd(
+                                first1,
+                                _mm256_loadu_pd(backward.as_ptr().add(next + 4)),
+                            );
+                            sum1 = _mm256_add_pd(sum1, term1);
+                            let first2 =
+                                _mm256_mul_pd(f, _mm256_loadu_pd(products.as_ptr().add(row + 8)));
+                            let term2 = _mm256_mul_pd(
+                                first2,
+                                _mm256_loadu_pd(backward.as_ptr().add(next + 8)),
+                            );
+                            sum2 = _mm256_add_pd(sum2, term2);
+                            let first3 =
+                                _mm256_mul_pd(f, _mm256_loadu_pd(products.as_ptr().add(row + 12)));
+                            let term3 = _mm256_mul_pd(
+                                first3,
+                                _mm256_loadu_pd(backward.as_ptr().add(next + 12)),
+                            );
+                            sum3 = _mm256_add_pd(sum3, term3);
+                        }
+                        _mm256_storeu_pd(counts.as_mut_ptr().add(k * 64 + l + 0), sum0);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add(k * 64 + l + 4), sum1);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add(k * 64 + l + 8), sum2);
+                        _mm256_storeu_pd(counts.as_mut_ptr().add(k * 64 + l + 12), sum3);
+                    }
+                }
             }
         }
     }
@@ -471,5 +563,93 @@ mod lane_tests {
             ))
             .is_err()
         );
+    }
+}
+
+#[cfg(test)]
+mod sequence_tests {
+    use super::*;
+    #[test]
+    fn ordered_counts64_match_scalar_at_tile_boundaries_and_extremes() {
+        let Some(avx) = Avx::select(SimdMode::Auto, 64).unwrap() else {
+            return;
+        };
+        let values = [
+            0.0,
+            -0.0,
+            f64::from_bits(1),
+            -f64::from_bits(1),
+            1e-300,
+            1e300,
+            0.1,
+            -1.0,
+            f64::INFINITY,
+            f64::NEG_INFINITY,
+            f64::NAN,
+        ];
+        for length in [1, 2, 7, 8, 9, 15, 16, 17, 31, 32, 33, 63, 64, 65, 129] {
+            for extreme in [false, true] {
+                let cells = (length + 1) * 64;
+                let make = |count: usize, salt: usize| -> Vec<f64> {
+                    (0..count)
+                        .map(|i| {
+                            if extreme {
+                                values[(i * 7 + salt) % values.len()]
+                            } else {
+                                ((i * 17 + salt) % 103) as f64 / 107.0
+                            }
+                        })
+                        .collect()
+                };
+                // Offset all arrays to exercise unaligned vector loads/stores.
+                let f = make(cells + 1, 1);
+                let b = make(cells + 1, 3);
+                let products = make(3 * 4096 + 1, 7);
+                let obs: Vec<u8> = (0..length).map(|u| (u % 3) as u8).collect();
+                let mut expected = vec![1e-25; 4096];
+                for u in 1..length {
+                    for k in 0..64 {
+                        for l in 0..64 {
+                            expected[k * 64 + l] += (f[1 + u * 64 + k]
+                                * products[1 + obs[u] as usize * 4096 + k * 64 + l])
+                                * b[1 + (u + 1) * 64 + l];
+                        }
+                    }
+                }
+                let mut actual = vec![1e-25; 4097];
+                avx.counts_sequence64(&mut actual[1..], &obs, &f[1..], &b[1..], &products[1..]);
+                for (a, e) in actual[1..].iter().zip(expected) {
+                    if e.is_nan() {
+                        assert!(a.is_nan());
+                    } else {
+                        assert_eq!(a.to_bits(), e.to_bits());
+                    }
+                }
+            }
+        }
+    }
+    #[test]
+    fn sequence_shape_and_symbol_errors_are_rejected() {
+        let Some(avx) = Avx::select(SimdMode::Auto, 64).unwrap() else {
+            return;
+        };
+        for (obs, cells, products, counts) in [
+            (vec![], 64, 12288, 4096),
+            (vec![3], 128, 12288, 4096),
+            (vec![0], 127, 12288, 4096),
+            (vec![0], 128, 12287, 4096),
+            (vec![0], 128, 12288, 4095),
+        ] {
+            assert!(
+                std::panic::catch_unwind(|| avx.counts_sequence64(
+                    &mut vec![0.0; counts],
+                    &obs,
+                    &vec![0.0; cells],
+                    &vec![0.0; cells],
+                    &vec![0.0; products]
+                ))
+                .is_err()
+            );
+        }
     }
 }

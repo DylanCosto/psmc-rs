@@ -1,8 +1,9 @@
 # PSMC in Rust — SIMD and parallel bootstraps
 
 This Rust workspace implements the original PSMC model, full expected counts,
-Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.3.1
-adds separately scheduled 64-state AVX message kernels to the existing CPU backend. Each fit uses one numerical
+Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.3.2
+adds an ordered, register-tiled 64-state AVX count kernel and avoids excess
+message-buffer capacity growth. Each fit uses one numerical
 thread; independent bootstrap fits can use all available CPUs. Reusable
 buffers, exact repeated-block caching and the dense oracle remain available. Double precision, summation order,
 sequence boundaries and the statistical method are preserved.
@@ -11,8 +12,9 @@ Use `--backend cpu` for the optimized path. The default remains `dense`, the
 retained scalar oracle. The [parallel report](docs/parallel-report.md) validates
 16-worker synthetic batches against already-parallel vanilla. The
 [human-input report](docs/hg-benchmark-report.md) adds a public HG001/NA12878
-chromosome 22 test with full 64-state, 30-iteration fits. Read the [CPU campaign report](docs/cpu-campaign-report.md) for current
-measurements, exact comparisons and limitations. The [Phase 3a report](docs/phase-3-simd-report.md)
+chromosome 22 test with full 64-state, 30-iteration fits. The [count-kernel report](docs/counts-optimization.md) records the latest matched
+measurements, exact comparisons and limitations. The [CPU campaign report](docs/cpu-campaign-report.md)
+retains the previous kernel campaign evidence. The [Phase 3a report](docs/phase-3-simd-report.md)
 retains the previous SIMD release evidence. The pinned external reference is
 [`lh3/psmc` at 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a](https://github.com/lh3/psmc/tree/82fa2ada83ee463fe1251b562ae3d60e82d7ad6a).
 The [Phase 1 report](docs/phase-1-report.md) and
@@ -30,7 +32,8 @@ target/release/psmc-rs --backend cpu --seed 42 -p '4+5*3+4' -N 30 \
   -t 15 -r 4 -I 0 -o work/example.psmc tests/fixtures/workload.psmcfa
 ```
 
-The supplied executable is `bin/psmc-rs`; `bin/psmc-rs-phase3a` preserves the previous SIMD executable;
+The supplied executable is `bin/psmc-rs`; `bin/psmc-rs-v0.3.1` preserves the
+previous CPU release; `bin/psmc-rs-phase3a` preserves the earlier SIMD executable;
 `bin/psmc-rs-phase2` preserves the prior
 optimized CPU release and `bin/psmc-rs-phase1` the original dense release. Rust 1.90.0 is pinned and must already be installed for
 an offline build. There are no registry dependencies. The tested stack is

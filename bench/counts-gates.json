@@ -1,0 +1,153 @@
+{
+  "status": "passed",
+  "runner_sha256": "8576867047902bca1dfd958e1d93c99b0ecb1fcc0bda28e0d5cb5ab557f09213",
+  "steps": [
+    {
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "returncode": 0,
+      "log": "work/counts-gates/step-0.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--locked",
+        "--offline"
+      ],
+      "returncode": 0,
+      "log": "work/counts-gates/step-1.log",
+      "sha256": "0035380c3ec0c6c1a6d1f52a50df5170dbc1f520de76688521913c5d55cffad3"
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--release",
+        "--locked",
+        "--offline"
+      ],
+      "returncode": 0,
+      "log": "work/counts-gates/step-2.log",
+      "sha256": "8955ec1f8fe0db250e460c52d533d50180c5d8cad6c0817def0bb9ffbca297b2"
+    },
+    {
+      "command": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-W",
+        "clippy::almost_swapped"
+      ],
+      "returncode": 0,
+      "log": "work/counts-gates/step-3.log",
+      "sha256": "bd2a5b5897adb2ae2b2282a2628e75903c52f7c9116124785b3c530d5de10949"
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--release",
+        "--bins",
+        "--examples",
+        "--locked",
+        "--offline"
+      ],
+      "returncode": 0,
+      "log": "work/counts-gates/step-4.log",
+      "sha256": "a97e0bdf5e9410cd0c4b41fb90357db7305bbc467cf0ddceefd6cff6567db9b0"
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "python3",
+        "bench/counts_build.py"
+      ],
+      "returncode": 0,
+      "log": "work/counts-gates/step-5.log",
+      "sha256": "2288789f45bfd886043d1c21d551e9ddf16f315b7a128a90660bab5e408bfd3d"
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "python3",
+        "bench/phase3_validate.py",
+        "--run",
+        "--report",
+        "bench/counts-validation.json"
+      ],
+      "returncode": 0,
+      "log": "work/counts-gates/step-6.log",
+      "sha256": "a6700944fbc5291a43ec337e3954681d58c6aa33120fd2453f8a2afdd20f0d1d"
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "python3",
+        "bench/counts_extended_gate.py"
+      ],
+      "returncode": 0,
+      "log": "work/counts-gates/step-7.log",
+      "sha256": "80ac0e08ad39b36ff3b020e9e1e902d75c9c380668954a8b09a6eadbbd9b3b4f"
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "python3",
+        "bench/phase3_scheduler.py",
+        "--run",
+        "--validation",
+        "bench/counts-validation.json",
+        "--report",
+        "bench/counts-scheduler.json"
+      ],
+      "returncode": 0,
+      "log": "work/counts-gates/step-8.log",
+      "sha256": "2d4b5751f602bedc43cfd5f6b388f0f7d0e775590bfa5125db6fc57513777446"
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "python3",
+        "bench/counts_review.py"
+      ],
+      "returncode": 0,
+      "log": "work/counts-gates/step-9.log",
+      "sha256": "afb0a1908f00c9e2ebe3651534f30b9f45e353288093145cbbe38262c093f675"
+    }
+  ],
+  "policy": "Build and unit tests use available CPUs; legacy exactness harnesses retain their own one-CPU policy. All steps sequential; no overlapping timed workloads.",
+  "assembly": {
+    "binary_sha256": "24d47084c2914aa44109040b7f5593efb7353621cb0d36ccdb28cd1a060f4c83",
+    "command": [
+      "objdump",
+      "-d",
+      "-C",
+      "target/release/psmc-rs"
+    ],
+    "fma_ops": 0,
+    "horizontal_ops": 0,
+    "packed_avx_ops": 63
+  }
+}
