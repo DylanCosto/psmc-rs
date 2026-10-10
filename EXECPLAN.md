@@ -464,3 +464,47 @@ attribution, and any alternative numerical contract. Future work starts with a
 representative workload or such hardware/contract authorization; no 10x or
 universal CPU optimum is asserted. Everything in this campaign used one allowed
 CPU at reduced priority, one build/test/bootstrap worker and no subagents.
+
+## Multicore bootstrap milestone — newly authorized 2026-10-10
+
+The user now authorizes full-core parallel optimization, superseding the prior
+one-CPU execution restriction for this milestone. Historical reports retain their
+original one-CPU scope. Use the currently allowed CPU set, a bounded memory budget,
+and independent replicate workers; no nested numerical pools or subagents.
+
+- [x] Freeze 0.3.1 and compare worker scaling through all 16 allowed logical CPUs,
+  including the 10-physical-core topology and matched parallel vanilla workloads.
+- [x] Test deterministic heavy-first queue ordering based on bootstrap input work;
+  preserve seed/index identity, original occurrence order and callback order.
+  Keep rejected scheduling experiments out of the default release.
+- [x] Validate all 30 original and 30 model-based bootstraps against pinned C at
+  multiple worker counts/orderings, including cache-off/random-initialization and
+  memory-admission controls. Preserve finite/pathology classifications.
+- [x] Record wall/CPU time, sampled aggregate process RSS, actual worker admission,
+  source/input hashes and shared-host variability. Distinguish scaling over serial
+  Rust from advantage over already-parallel vanilla.
+- [ ] Commit source, proof/tests and timing evidence together; provide a measured
+  full-core run configuration and verified package while preserving old artifacts.
+
+Real user inputs remain unavailable. No scientific model changes, within-sequence
+parallel reductions, tolerance changes, GPU work or hardware-affinity defaults
+are implied by the new authorization.
+
+### Progress, decisions and surprises
+
+Scaling and paired vanilla comparisons complete: 16 workers were fastest observed,
+with 7.29x/7.12x scaling over one-worker Rust and 1.73x/2.77x advantage over already
+parallel vanilla on the original/model-based synthetic batches. All 3,600 timed
+fit comparisons passed; all 60 distinct fits retain their C finite/pathology
+classification (56 finite, four pathological).
+
+The heavy-first candidate passes 300 additional seeded C comparisons, 33 debug
+and 33 release unit tests, draw-order and memory controls. It is slower in all
+four paired timing medians, so it is rejected and kept only as experimental
+evidence. No production source or binary changes. Estimated unique input work
+was not a useful queue priority on these workloads; the reason is not proven.
+
+See docs/parallel-report.md for commands, hashes, CPU/wall/RSS ranges, validation,
+limits and the 16-worker example. Full K64 parallel timings and production data
+remain future work. The next gate is delivery integrity and the separate package;
+old releases must remain intact.

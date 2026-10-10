@@ -1,14 +1,15 @@
-# PSMC in Rust — strict single-thread SIMD
+# PSMC in Rust — SIMD and parallel bootstraps
 
 This Rust workspace implements the original PSMC model, full expected counts,
 Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.3.1
 adds separately scheduled 64-state AVX message kernels to the existing CPU backend. Each fit uses one numerical
-thread; the existing bootstrap queue can be limited to one worker. Reusable
+thread; independent bootstrap fits can use all available CPUs. Reusable
 buffers, exact repeated-block caching and the dense oracle remain available. Double precision, summation order,
 sequence boundaries and the statistical method are preserved.
 
 Use `--backend cpu` for the optimized path. The default remains `dense`, the
-retained scalar oracle. Read the [CPU campaign report](docs/cpu-campaign-report.md) for current
+retained scalar oracle. The [parallel report](docs/parallel-report.md) validates
+16-worker batches against already-parallel vanilla. Read the [CPU campaign report](docs/cpu-campaign-report.md) for current
 measurements, exact comparisons and limitations. The [Phase 3a report](docs/phase-3-simd-report.md)
 retains the previous SIMD release evidence. The pinned external reference is
 [`lh3/psmc` at 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a](https://github.com/lh3/psmc/tree/82fa2ada83ee463fe1251b562ae3d60e82d7ad6a).
@@ -64,14 +65,16 @@ Supply blocks already split by your established preprocessing procedure. This
 runner does not introduce new HMM boundaries or perform splitting.
 
 ```bash
-bin/psmc-rs bootstrap --backend cpu --replicates 30 --workers 1 \
+bin/psmc-rs bootstrap --backend cpu --replicates 30 --workers 16 \
   --memory-mib 2048 --seed 20261009 --output-dir work/bootstrap-example \
   -p '4+5*3+4' -N 30 -t 15 -r 4 -I 0 tests/fixtures/blocks.psmcfa
 ```
 
-The current user-requested workflow uses **one worker**. Single fits are already
-single-threaded. The existing queue still supports explicit multiworker operation,
-but no multiworker jobs were run for this SIMD milestone.
+The current full-core configuration uses **16 workers** on this tested 16-logical-CPU
+host. Omit `--workers` to request the available CPU count on another machine;
+memory admission may reduce it. Single fits remain single-threaded. The parallel
+milestone validates the existing 0.3.1 queue; the slower experimental scheduling
+change was rejected. Historical SIMD measurements used one worker.
 
 The destination must not exist. Replicate `i` uses seed `base + i`, consumes the
 same ordered bootstrap draws and then the same initialization RNG stream as an

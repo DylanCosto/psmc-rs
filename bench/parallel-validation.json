@@ -1,0 +1,2327 @@
+{
+  "status": "passed",
+  "binary": {
+    "path": "bench/parallel/candidate",
+    "sha256": "7a06233688c5f43407e137faa655d6b28509b9a75c9a85f647b156ea772fe04a"
+  },
+  "oracle": {
+    "path": "work/instrumented/psmc",
+    "sha256": "2b4bd7dd369ee8fc226270b30bd414a031314fd70445bd5d7a83d4e5d2f2ed55"
+  },
+  "allowed_cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "source_sha256": {
+    "crates/psmc-cli/src/batch.rs": "ef27669f8bf349afc8b848a2fb17ed09121fa345f25b568838ba53f83b015ea8",
+    "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+    "crates/psmc-cli/src/legacy.rs": "0fccdd8b0f0e24d00c9ae956d6eb1b93140ae062657b62f5038883961e48229e",
+    "crates/psmc-cli/src/main.rs": "b38261c409b41c2faa9685f4f8dd6275bebdc69c75607fffbef653ca46975b67",
+    "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+    "crates/psmc-core/src/em.rs": "fd667334b4d470049dad57358bdd23ce0fd23006e347f13704079026c7f1c52f",
+    "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+    "crates/psmc-core/src/lib.rs": "b0b6804c719504d3d7b2f44290a21f45babd590fe9e59e913c0c6dcafb41b01b",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+    "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+    "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179",
+    "crates/psmc-cpu/src/lib.rs": "dd5111f7b243bb5164858ff8c9f885b3eaf2eaee6e2aa4265546d9ff612e3893",
+    "crates/psmc-cpu/src/simd.rs": "03ce372bcd47f72abe50660c6a833b55bd2651b44ff134eaa93b23c518912509",
+    "crates/psmc-cpu/src/tests.rs": "9252b373e04da0ff705f440c19db2d05c74c4238113ec9ab6e7e80df4ef0cf3b",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+    "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+    "Cargo.toml": "23a9556dadeed968306d4a0c3e8beea088d40c2d2f069ff9efbc1c675ad3e244",
+    "Cargo.lock": "16ae96bf5dc0e2a4be9266c9640aba030ccd721a6448651296e61dc1af6e6c10",
+    "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b"
+  },
+  "runner_sha256": "2a7e814ca6625e1ebb3612b72b46d5b7be9dad78d8a4879f52f659bd715ee3b3",
+  "raw_directory": "bench/parallel/validation-20261010T142227183932Z",
+  "checks": [
+    {
+      "name": "k23-w1-balanced-cpu",
+      "command": [
+        "bench/parallel/candidate",
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "--simd",
+        "auto",
+        "--cache",
+        "on",
+        "--workers",
+        "1",
+        "--task-order",
+        "balanced",
+        "--seed",
+        "20261009",
+        "--replicates",
+        "30",
+        "--memory-mib",
+        "2048",
+        "--output-dir",
+        "bench/parallel/validation-20261010T142227183932Z/k23-w1-balanced-cpu",
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "2",
+        "-I",
+        "0.1",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "manifest_sha256": "26494ab4796776f63446b849db4e7fb023cde7e796d29c40baea1fc429ef3ac5",
+      "comparisons": [
+        {
+          "compared_sha256": "f72a4d3a741400b385648ce0321796f1c2d1ab000b63a363e2a4835d9b27c2e8",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "8a7372226ddba6c849039855a3e484b175250c5283bab78f32bc46f2443ae60e",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d2b5b024b1fe12ce9ae14186aaaa355258774609174dbedcd33b2c128123001f",
+          "compared_bytes": 4791,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f539da7523f764a8383d29816f19deff2a50c6b0f5df237bf816300ec03a6168",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b937cc2026117cd5af00f9d4b75fa2a195346429ef6900069d17ebab22f19586",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "cc9308d03345fb65a8538bcc979564edb1d5ea31f182504b31df55d87a13272c",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a115f68cb16e691d902d3c3f52eaac166e0342df16c0d64a093a43ba372ce86a",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "c0974d1fabedeedc46f40626fddc6ebc753d06e02536721eaff4c89617968e8a",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d90562aff94187bf608f65e4d7d2c6e1653f4ae64086cf29cde53d03944b69fa",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "fee9582e78d1c62eafb430ad2d5e96210a6e9775a753b606b954b3f4137d35db",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "9e107c0ecf8a3e683bc41a1284a6b6b8f68607b413e9ef711ec5aeb9bca560e1",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "35fac86a388131203175efccf2302925ba8f529f51e59491e4b39c36931ed737",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f9f199fa2a33f83b56ee7fb4913f719c29070550a47058bba4b93c6af83a3af1",
+          "compared_bytes": 4782,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "897fbf0df0db77db7a534999a17e78e374f0638f3b6923094fb1a1beb5ac58aa",
+          "compared_bytes": 4783,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "846da565c3dfbb7171dc62bb049594637af404f277a747530e4f0c8bff6e66f8",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "701ab2e7a86cb92f3a7b28d8368073fa55e16176da044fea82a477544be8f726",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6eb4009ea40c48c0db6aaf032857449b6d67d8ae676e394bc3affe05dd70731e",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "aea2a15e0636c550c51e78cca909b9bcdf1a91d107dca7b3467e9db229ba2e51",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "649b49aa8aa5c97a571db80e5950fa6074fbad1d8c9c1e2da40e1bc9f40eab69",
+          "compared_bytes": 4791,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "22664f934e96afc24253f7839b9261ad6cd58dc8736e1b2302f444c254bd63ae",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4e662e06b0877d069ca75ea517f77bcc1c4f025ea4a915a8be174caaf9fc6536",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "dcf4af2d20fc50e6153f8ead97deaaa8d5578287391b821f62996858958a4467",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b964e14211264d2d8823aececfe799e5f8de469f2f448646e20a150bb62d2ec0",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f75f8fb6b7ce269c2b5c97d8d03ba1df86aadca889b633e1f86fafff2bc64d0c",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "e46c6b2e9361f21d1b1928480d1674881523f220df0a97749674c7a4943ef2b6",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d88beb952514869be5bec6c932c8a099cf362734469a5ab32fe8ca8e306e7984",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "ca60647b601e292bedf94e22f006e1fe1bdfd11a25091f968b8c5a1a6f6850cb",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "9c4f965d335e93aa611b3620825246ed94e57aae8b90267b78ef99a9f6fade3f",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "00c60169487602fe493e808c1997b46bdd958124d399fa45a77de059921a4ae1",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "c36ff085e421bae8a28f748cd16ba4c4d16504e661aec0d762f2cbf317f73ed8",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        }
+      ],
+      "all_draws_equal": true,
+      "actual_workers": 1
+    },
+    {
+      "name": "k23-w4-balanced-cpu",
+      "command": [
+        "bench/parallel/candidate",
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "--simd",
+        "auto",
+        "--cache",
+        "on",
+        "--workers",
+        "4",
+        "--task-order",
+        "balanced",
+        "--seed",
+        "20261009",
+        "--replicates",
+        "30",
+        "--memory-mib",
+        "2048",
+        "--output-dir",
+        "bench/parallel/validation-20261010T142227183932Z/k23-w4-balanced-cpu",
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "2",
+        "-I",
+        "0.1",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "manifest_sha256": "20d88217ba1b28ed8e513bd3b24aabd4a4fe3b761c0fd538c6a9451ca52f686b",
+      "comparisons": [
+        {
+          "compared_sha256": "f72a4d3a741400b385648ce0321796f1c2d1ab000b63a363e2a4835d9b27c2e8",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "8a7372226ddba6c849039855a3e484b175250c5283bab78f32bc46f2443ae60e",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d2b5b024b1fe12ce9ae14186aaaa355258774609174dbedcd33b2c128123001f",
+          "compared_bytes": 4791,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f539da7523f764a8383d29816f19deff2a50c6b0f5df237bf816300ec03a6168",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b937cc2026117cd5af00f9d4b75fa2a195346429ef6900069d17ebab22f19586",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "cc9308d03345fb65a8538bcc979564edb1d5ea31f182504b31df55d87a13272c",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a115f68cb16e691d902d3c3f52eaac166e0342df16c0d64a093a43ba372ce86a",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "c0974d1fabedeedc46f40626fddc6ebc753d06e02536721eaff4c89617968e8a",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d90562aff94187bf608f65e4d7d2c6e1653f4ae64086cf29cde53d03944b69fa",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "fee9582e78d1c62eafb430ad2d5e96210a6e9775a753b606b954b3f4137d35db",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "9e107c0ecf8a3e683bc41a1284a6b6b8f68607b413e9ef711ec5aeb9bca560e1",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "35fac86a388131203175efccf2302925ba8f529f51e59491e4b39c36931ed737",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f9f199fa2a33f83b56ee7fb4913f719c29070550a47058bba4b93c6af83a3af1",
+          "compared_bytes": 4782,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "897fbf0df0db77db7a534999a17e78e374f0638f3b6923094fb1a1beb5ac58aa",
+          "compared_bytes": 4783,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "846da565c3dfbb7171dc62bb049594637af404f277a747530e4f0c8bff6e66f8",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "701ab2e7a86cb92f3a7b28d8368073fa55e16176da044fea82a477544be8f726",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6eb4009ea40c48c0db6aaf032857449b6d67d8ae676e394bc3affe05dd70731e",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "aea2a15e0636c550c51e78cca909b9bcdf1a91d107dca7b3467e9db229ba2e51",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "649b49aa8aa5c97a571db80e5950fa6074fbad1d8c9c1e2da40e1bc9f40eab69",
+          "compared_bytes": 4791,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "22664f934e96afc24253f7839b9261ad6cd58dc8736e1b2302f444c254bd63ae",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4e662e06b0877d069ca75ea517f77bcc1c4f025ea4a915a8be174caaf9fc6536",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "dcf4af2d20fc50e6153f8ead97deaaa8d5578287391b821f62996858958a4467",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b964e14211264d2d8823aececfe799e5f8de469f2f448646e20a150bb62d2ec0",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f75f8fb6b7ce269c2b5c97d8d03ba1df86aadca889b633e1f86fafff2bc64d0c",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "e46c6b2e9361f21d1b1928480d1674881523f220df0a97749674c7a4943ef2b6",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d88beb952514869be5bec6c932c8a099cf362734469a5ab32fe8ca8e306e7984",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "ca60647b601e292bedf94e22f006e1fe1bdfd11a25091f968b8c5a1a6f6850cb",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "9c4f965d335e93aa611b3620825246ed94e57aae8b90267b78ef99a9f6fade3f",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "00c60169487602fe493e808c1997b46bdd958124d399fa45a77de059921a4ae1",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "c36ff085e421bae8a28f748cd16ba4c4d16504e661aec0d762f2cbf317f73ed8",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        }
+      ],
+      "all_draws_equal": true,
+      "actual_workers": 4
+    },
+    {
+      "name": "k23-w16-balanced-cpu",
+      "command": [
+        "bench/parallel/candidate",
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "--simd",
+        "auto",
+        "--cache",
+        "on",
+        "--workers",
+        "16",
+        "--task-order",
+        "balanced",
+        "--seed",
+        "20261009",
+        "--replicates",
+        "30",
+        "--memory-mib",
+        "2048",
+        "--output-dir",
+        "bench/parallel/validation-20261010T142227183932Z/k23-w16-balanced-cpu",
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "2",
+        "-I",
+        "0.1",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "manifest_sha256": "a292493b85338a950dd470cc4f33c879f8d42288ceac5596134b65c828e24b6a",
+      "comparisons": [
+        {
+          "compared_sha256": "f72a4d3a741400b385648ce0321796f1c2d1ab000b63a363e2a4835d9b27c2e8",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "8a7372226ddba6c849039855a3e484b175250c5283bab78f32bc46f2443ae60e",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d2b5b024b1fe12ce9ae14186aaaa355258774609174dbedcd33b2c128123001f",
+          "compared_bytes": 4791,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f539da7523f764a8383d29816f19deff2a50c6b0f5df237bf816300ec03a6168",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b937cc2026117cd5af00f9d4b75fa2a195346429ef6900069d17ebab22f19586",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "cc9308d03345fb65a8538bcc979564edb1d5ea31f182504b31df55d87a13272c",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a115f68cb16e691d902d3c3f52eaac166e0342df16c0d64a093a43ba372ce86a",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "c0974d1fabedeedc46f40626fddc6ebc753d06e02536721eaff4c89617968e8a",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d90562aff94187bf608f65e4d7d2c6e1653f4ae64086cf29cde53d03944b69fa",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "fee9582e78d1c62eafb430ad2d5e96210a6e9775a753b606b954b3f4137d35db",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "9e107c0ecf8a3e683bc41a1284a6b6b8f68607b413e9ef711ec5aeb9bca560e1",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "35fac86a388131203175efccf2302925ba8f529f51e59491e4b39c36931ed737",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f9f199fa2a33f83b56ee7fb4913f719c29070550a47058bba4b93c6af83a3af1",
+          "compared_bytes": 4782,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "897fbf0df0db77db7a534999a17e78e374f0638f3b6923094fb1a1beb5ac58aa",
+          "compared_bytes": 4783,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "846da565c3dfbb7171dc62bb049594637af404f277a747530e4f0c8bff6e66f8",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "701ab2e7a86cb92f3a7b28d8368073fa55e16176da044fea82a477544be8f726",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6eb4009ea40c48c0db6aaf032857449b6d67d8ae676e394bc3affe05dd70731e",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "aea2a15e0636c550c51e78cca909b9bcdf1a91d107dca7b3467e9db229ba2e51",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "649b49aa8aa5c97a571db80e5950fa6074fbad1d8c9c1e2da40e1bc9f40eab69",
+          "compared_bytes": 4791,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "22664f934e96afc24253f7839b9261ad6cd58dc8736e1b2302f444c254bd63ae",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4e662e06b0877d069ca75ea517f77bcc1c4f025ea4a915a8be174caaf9fc6536",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "dcf4af2d20fc50e6153f8ead97deaaa8d5578287391b821f62996858958a4467",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b964e14211264d2d8823aececfe799e5f8de469f2f448646e20a150bb62d2ec0",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f75f8fb6b7ce269c2b5c97d8d03ba1df86aadca889b633e1f86fafff2bc64d0c",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "e46c6b2e9361f21d1b1928480d1674881523f220df0a97749674c7a4943ef2b6",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d88beb952514869be5bec6c932c8a099cf362734469a5ab32fe8ca8e306e7984",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "ca60647b601e292bedf94e22f006e1fe1bdfd11a25091f968b8c5a1a6f6850cb",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "9c4f965d335e93aa611b3620825246ed94e57aae8b90267b78ef99a9f6fade3f",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "00c60169487602fe493e808c1997b46bdd958124d399fa45a77de059921a4ae1",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "c36ff085e421bae8a28f748cd16ba4c4d16504e661aec0d762f2cbf317f73ed8",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        }
+      ],
+      "all_draws_equal": true,
+      "actual_workers": 16
+    },
+    {
+      "name": "k23-w16-reverse-cpu",
+      "command": [
+        "bench/parallel/candidate",
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "--simd",
+        "off",
+        "--cache",
+        "off",
+        "--workers",
+        "16",
+        "--task-order",
+        "reverse",
+        "--seed",
+        "20261009",
+        "--replicates",
+        "30",
+        "--memory-mib",
+        "2048",
+        "--output-dir",
+        "bench/parallel/validation-20261010T142227183932Z/k23-w16-reverse-cpu",
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "2",
+        "-I",
+        "0.1",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "manifest_sha256": "2082e8bc485e576d80a8ae1cc57a65bef8f1f352eb626f1e426b5d11d535b5cb",
+      "comparisons": [
+        {
+          "compared_sha256": "f72a4d3a741400b385648ce0321796f1c2d1ab000b63a363e2a4835d9b27c2e8",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "8a7372226ddba6c849039855a3e484b175250c5283bab78f32bc46f2443ae60e",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d2b5b024b1fe12ce9ae14186aaaa355258774609174dbedcd33b2c128123001f",
+          "compared_bytes": 4791,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f539da7523f764a8383d29816f19deff2a50c6b0f5df237bf816300ec03a6168",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b937cc2026117cd5af00f9d4b75fa2a195346429ef6900069d17ebab22f19586",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "cc9308d03345fb65a8538bcc979564edb1d5ea31f182504b31df55d87a13272c",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a115f68cb16e691d902d3c3f52eaac166e0342df16c0d64a093a43ba372ce86a",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "c0974d1fabedeedc46f40626fddc6ebc753d06e02536721eaff4c89617968e8a",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d90562aff94187bf608f65e4d7d2c6e1653f4ae64086cf29cde53d03944b69fa",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "fee9582e78d1c62eafb430ad2d5e96210a6e9775a753b606b954b3f4137d35db",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "9e107c0ecf8a3e683bc41a1284a6b6b8f68607b413e9ef711ec5aeb9bca560e1",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "35fac86a388131203175efccf2302925ba8f529f51e59491e4b39c36931ed737",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f9f199fa2a33f83b56ee7fb4913f719c29070550a47058bba4b93c6af83a3af1",
+          "compared_bytes": 4782,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "897fbf0df0db77db7a534999a17e78e374f0638f3b6923094fb1a1beb5ac58aa",
+          "compared_bytes": 4783,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "846da565c3dfbb7171dc62bb049594637af404f277a747530e4f0c8bff6e66f8",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "701ab2e7a86cb92f3a7b28d8368073fa55e16176da044fea82a477544be8f726",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6eb4009ea40c48c0db6aaf032857449b6d67d8ae676e394bc3affe05dd70731e",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "aea2a15e0636c550c51e78cca909b9bcdf1a91d107dca7b3467e9db229ba2e51",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "649b49aa8aa5c97a571db80e5950fa6074fbad1d8c9c1e2da40e1bc9f40eab69",
+          "compared_bytes": 4791,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "22664f934e96afc24253f7839b9261ad6cd58dc8736e1b2302f444c254bd63ae",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4e662e06b0877d069ca75ea517f77bcc1c4f025ea4a915a8be174caaf9fc6536",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "dcf4af2d20fc50e6153f8ead97deaaa8d5578287391b821f62996858958a4467",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b964e14211264d2d8823aececfe799e5f8de469f2f448646e20a150bb62d2ec0",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f75f8fb6b7ce269c2b5c97d8d03ba1df86aadca889b633e1f86fafff2bc64d0c",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "e46c6b2e9361f21d1b1928480d1674881523f220df0a97749674c7a4943ef2b6",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d88beb952514869be5bec6c932c8a099cf362734469a5ab32fe8ca8e306e7984",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "ca60647b601e292bedf94e22f006e1fe1bdfd11a25091f968b8c5a1a6f6850cb",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "9c4f965d335e93aa611b3620825246ed94e57aae8b90267b78ef99a9f6fade3f",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "00c60169487602fe493e808c1997b46bdd958124d399fa45a77de059921a4ae1",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "c36ff085e421bae8a28f748cd16ba4c4d16504e661aec0d762f2cbf317f73ed8",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        }
+      ],
+      "all_draws_equal": true,
+      "actual_workers": 16
+    },
+    {
+      "name": "k23-w16-forward-dense",
+      "command": [
+        "bench/parallel/candidate",
+        "bootstrap",
+        "--backend",
+        "dense",
+        "--simd",
+        "off",
+        "--cache",
+        "off",
+        "--workers",
+        "16",
+        "--task-order",
+        "forward",
+        "--seed",
+        "20261009",
+        "--replicates",
+        "30",
+        "--memory-mib",
+        "2048",
+        "--output-dir",
+        "bench/parallel/validation-20261010T142227183932Z/k23-w16-forward-dense",
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "2",
+        "-I",
+        "0.1",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "manifest_sha256": "d48bfc786821ca4dc474e6ed3cb39e997b260063ce2041316a8e5619e7888c97",
+      "comparisons": [
+        {
+          "compared_sha256": "f72a4d3a741400b385648ce0321796f1c2d1ab000b63a363e2a4835d9b27c2e8",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "8a7372226ddba6c849039855a3e484b175250c5283bab78f32bc46f2443ae60e",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d2b5b024b1fe12ce9ae14186aaaa355258774609174dbedcd33b2c128123001f",
+          "compared_bytes": 4791,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f539da7523f764a8383d29816f19deff2a50c6b0f5df237bf816300ec03a6168",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b937cc2026117cd5af00f9d4b75fa2a195346429ef6900069d17ebab22f19586",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "cc9308d03345fb65a8538bcc979564edb1d5ea31f182504b31df55d87a13272c",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a115f68cb16e691d902d3c3f52eaac166e0342df16c0d64a093a43ba372ce86a",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "c0974d1fabedeedc46f40626fddc6ebc753d06e02536721eaff4c89617968e8a",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d90562aff94187bf608f65e4d7d2c6e1653f4ae64086cf29cde53d03944b69fa",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "fee9582e78d1c62eafb430ad2d5e96210a6e9775a753b606b954b3f4137d35db",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "9e107c0ecf8a3e683bc41a1284a6b6b8f68607b413e9ef711ec5aeb9bca560e1",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "35fac86a388131203175efccf2302925ba8f529f51e59491e4b39c36931ed737",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f9f199fa2a33f83b56ee7fb4913f719c29070550a47058bba4b93c6af83a3af1",
+          "compared_bytes": 4782,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "897fbf0df0db77db7a534999a17e78e374f0638f3b6923094fb1a1beb5ac58aa",
+          "compared_bytes": 4783,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "846da565c3dfbb7171dc62bb049594637af404f277a747530e4f0c8bff6e66f8",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "701ab2e7a86cb92f3a7b28d8368073fa55e16176da044fea82a477544be8f726",
+          "compared_bytes": 4786,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6eb4009ea40c48c0db6aaf032857449b6d67d8ae676e394bc3affe05dd70731e",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "aea2a15e0636c550c51e78cca909b9bcdf1a91d107dca7b3467e9db229ba2e51",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "649b49aa8aa5c97a571db80e5950fa6074fbad1d8c9c1e2da40e1bc9f40eab69",
+          "compared_bytes": 4791,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "22664f934e96afc24253f7839b9261ad6cd58dc8736e1b2302f444c254bd63ae",
+          "compared_bytes": 4789,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4e662e06b0877d069ca75ea517f77bcc1c4f025ea4a915a8be174caaf9fc6536",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "dcf4af2d20fc50e6153f8ead97deaaa8d5578287391b821f62996858958a4467",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b964e14211264d2d8823aececfe799e5f8de469f2f448646e20a150bb62d2ec0",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "f75f8fb6b7ce269c2b5c97d8d03ba1df86aadca889b633e1f86fafff2bc64d0c",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "e46c6b2e9361f21d1b1928480d1674881523f220df0a97749674c7a4943ef2b6",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d88beb952514869be5bec6c932c8a099cf362734469a5ab32fe8ca8e306e7984",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "ca60647b601e292bedf94e22f006e1fe1bdfd11a25091f968b8c5a1a6f6850cb",
+          "compared_bytes": 4792,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "9c4f965d335e93aa611b3620825246ed94e57aae8b90267b78ef99a9f6fade3f",
+          "compared_bytes": 4788,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "00c60169487602fe493e808c1997b46bdd958124d399fa45a77de059921a4ae1",
+          "compared_bytes": 4790,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "c36ff085e421bae8a28f748cd16ba4c4d16504e661aec0d762f2cbf317f73ed8",
+          "compared_bytes": 4787,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        }
+      ],
+      "all_draws_equal": true,
+      "actual_workers": 16
+    },
+    {
+      "name": "k64-w1-balanced-cpu",
+      "command": [
+        "bench/parallel/candidate",
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "--simd",
+        "auto",
+        "--cache",
+        "on",
+        "--workers",
+        "1",
+        "--task-order",
+        "balanced",
+        "--seed",
+        "20261009",
+        "--replicates",
+        "30",
+        "--memory-mib",
+        "2048",
+        "--output-dir",
+        "bench/parallel/validation-20261010T142227183932Z/k64-w1-balanced-cpu",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "2",
+        "-I",
+        "0.1",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "manifest_sha256": "1b4ab78a332843c7150e5f8ffddebb2f6c4d98240376c1a2e20183bc24700a89",
+      "comparisons": [
+        {
+          "compared_sha256": "0713b5897bfbe732037ebb807fcade5adf954d430c8e23af747418f5b2804adc",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "5020b494e98dcdac95d13772a3b23106b9b7117b37bc71373186b66a0a2d0c25",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "34a3b3a702d2734381b1ff6081c298de2afdb35676bebc963b9bf732461386d3",
+          "compared_bytes": 11814,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4c8c3d82a416c12319bded6a3a93bd52b3ea1e6589deac29f82a5c18f7b998ea",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b798bd9c60af60241b2b29de47fbbe97a6be8eeed2f1d29d269c25738091e40f",
+          "compared_bytes": 11836,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "ff2ac99b4227310d04bce7d9dc38b5cffead4b02896e4cf598fe751068f59b2c",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "8b447d3fdd3563bd5be9cbc91bb2ed5b0bf266f523376ba5fbec2720daa98f1b",
+          "compared_bytes": 11808,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d3ab8f31b46141305d3b88b7de1ede0473b1b408af2aad503a23b5e56e42f9ca",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "088e85cf041a0c16ee3dc44bb5075d1cf5b9071d6787b7d788aa20baa157acc7",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a856da71532c4cfe6fe5327cb8d868e23ba4f67df223d4b1076add6bdc56b71e",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a850e7e0d364229da20974a00f9e4d6192b8b3ef5788110975cc6e9f200e2010",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a8adb4c8e32c10275e74287ea0e7a42152e2a154a9088fd8c5cf8030b123da3a",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "5ab6b4c82263fbf228d5b34ac68080d75c373ad2186a02f669dd31ad71cf2736",
+          "compared_bytes": 11820,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "96b26b73d275c81d4954aa9c7faa4eb08d89a01fdf79f9c7b46c5c4b40058181",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "42d4e9025246686f3319d844dd836272805e56b29b32d2be0e1c11c94c295192",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6f389ab69d3b57f2238551a866c173bcbad9d4779a2c377c8d2ecf1ec6eb48e7",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6365974cb281b0ca6e3a3ade8b02c79b736781768898807c01284746089cb89f",
+          "compared_bytes": 11809,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "55207c8527efd5587b7b49dbaa8abfe6d2f57bfb9e3a5afc5656140ecaf1115b",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "207a714d428b3d615ad04dc9c1778a24cbe040c0da073557922c1e7f66e7bb33",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "73a225473a7692f96fd826c0c242bccc611c3c7739cc72601677a668f0734941",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "65a1c4f6ec2dcba7db21cc890f22fd618b5dc5dcf046b378ab968db6b878c0d8",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "1e753ccde5532db28d0fd43b0384ee02b043f0a8d8f2f0bb22350862e72b25f0",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "207fffa1e3e994914e218f538941c6f97d62cce51d85a1fb43504b654a28a270",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d3cb198a7c41767576386bad14c5c491db20c8650d554a4e405bca892bf6c4f5",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b5343242fe789221a9b84f35d67035b9be110233e0651e9171d5125832656316",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "0c3171c7894711431e2671b52faef960a0226f11a29f8b1368ff1e5babae79be",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "163a247bbe5255038fec37d5d58d181d7da04e8cb17342950ab45ea0a78e6931",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "bf9b8b2d07d96ee06895f7d038179a18abc181b602b87ca652f98747c637dd83",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4618e3a5023fb37ac1bd319ca9a84ca8c0a4b67c301283455f7106dcb178d289",
+          "compared_bytes": 11820,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "aa694cc78b2ee443fb20313db61f461200440a76138a1ca237fc042910cdbdf6",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        }
+      ],
+      "all_draws_equal": true,
+      "actual_workers": 1
+    },
+    {
+      "name": "k64-w4-balanced-cpu",
+      "command": [
+        "bench/parallel/candidate",
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "--simd",
+        "auto",
+        "--cache",
+        "on",
+        "--workers",
+        "4",
+        "--task-order",
+        "balanced",
+        "--seed",
+        "20261009",
+        "--replicates",
+        "30",
+        "--memory-mib",
+        "2048",
+        "--output-dir",
+        "bench/parallel/validation-20261010T142227183932Z/k64-w4-balanced-cpu",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "2",
+        "-I",
+        "0.1",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "manifest_sha256": "b18bdb394bc8d64b6b04eb14093b3539e1855dc0a96f79351340297416ccd7ee",
+      "comparisons": [
+        {
+          "compared_sha256": "0713b5897bfbe732037ebb807fcade5adf954d430c8e23af747418f5b2804adc",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "5020b494e98dcdac95d13772a3b23106b9b7117b37bc71373186b66a0a2d0c25",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "34a3b3a702d2734381b1ff6081c298de2afdb35676bebc963b9bf732461386d3",
+          "compared_bytes": 11814,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4c8c3d82a416c12319bded6a3a93bd52b3ea1e6589deac29f82a5c18f7b998ea",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b798bd9c60af60241b2b29de47fbbe97a6be8eeed2f1d29d269c25738091e40f",
+          "compared_bytes": 11836,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "ff2ac99b4227310d04bce7d9dc38b5cffead4b02896e4cf598fe751068f59b2c",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "8b447d3fdd3563bd5be9cbc91bb2ed5b0bf266f523376ba5fbec2720daa98f1b",
+          "compared_bytes": 11808,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d3ab8f31b46141305d3b88b7de1ede0473b1b408af2aad503a23b5e56e42f9ca",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "088e85cf041a0c16ee3dc44bb5075d1cf5b9071d6787b7d788aa20baa157acc7",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a856da71532c4cfe6fe5327cb8d868e23ba4f67df223d4b1076add6bdc56b71e",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a850e7e0d364229da20974a00f9e4d6192b8b3ef5788110975cc6e9f200e2010",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a8adb4c8e32c10275e74287ea0e7a42152e2a154a9088fd8c5cf8030b123da3a",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "5ab6b4c82263fbf228d5b34ac68080d75c373ad2186a02f669dd31ad71cf2736",
+          "compared_bytes": 11820,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "96b26b73d275c81d4954aa9c7faa4eb08d89a01fdf79f9c7b46c5c4b40058181",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "42d4e9025246686f3319d844dd836272805e56b29b32d2be0e1c11c94c295192",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6f389ab69d3b57f2238551a866c173bcbad9d4779a2c377c8d2ecf1ec6eb48e7",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6365974cb281b0ca6e3a3ade8b02c79b736781768898807c01284746089cb89f",
+          "compared_bytes": 11809,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "55207c8527efd5587b7b49dbaa8abfe6d2f57bfb9e3a5afc5656140ecaf1115b",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "207a714d428b3d615ad04dc9c1778a24cbe040c0da073557922c1e7f66e7bb33",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "73a225473a7692f96fd826c0c242bccc611c3c7739cc72601677a668f0734941",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "65a1c4f6ec2dcba7db21cc890f22fd618b5dc5dcf046b378ab968db6b878c0d8",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "1e753ccde5532db28d0fd43b0384ee02b043f0a8d8f2f0bb22350862e72b25f0",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "207fffa1e3e994914e218f538941c6f97d62cce51d85a1fb43504b654a28a270",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d3cb198a7c41767576386bad14c5c491db20c8650d554a4e405bca892bf6c4f5",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b5343242fe789221a9b84f35d67035b9be110233e0651e9171d5125832656316",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "0c3171c7894711431e2671b52faef960a0226f11a29f8b1368ff1e5babae79be",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "163a247bbe5255038fec37d5d58d181d7da04e8cb17342950ab45ea0a78e6931",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "bf9b8b2d07d96ee06895f7d038179a18abc181b602b87ca652f98747c637dd83",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4618e3a5023fb37ac1bd319ca9a84ca8c0a4b67c301283455f7106dcb178d289",
+          "compared_bytes": 11820,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "aa694cc78b2ee443fb20313db61f461200440a76138a1ca237fc042910cdbdf6",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        }
+      ],
+      "all_draws_equal": true,
+      "actual_workers": 4
+    },
+    {
+      "name": "k64-w16-balanced-cpu",
+      "command": [
+        "bench/parallel/candidate",
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "--simd",
+        "auto",
+        "--cache",
+        "on",
+        "--workers",
+        "16",
+        "--task-order",
+        "balanced",
+        "--seed",
+        "20261009",
+        "--replicates",
+        "30",
+        "--memory-mib",
+        "2048",
+        "--output-dir",
+        "bench/parallel/validation-20261010T142227183932Z/k64-w16-balanced-cpu",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "2",
+        "-I",
+        "0.1",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "manifest_sha256": "19737a8687b90770de5c83a3b840cbc9a4bde671cfe509d20fef1bca7af464bf",
+      "comparisons": [
+        {
+          "compared_sha256": "0713b5897bfbe732037ebb807fcade5adf954d430c8e23af747418f5b2804adc",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "5020b494e98dcdac95d13772a3b23106b9b7117b37bc71373186b66a0a2d0c25",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "34a3b3a702d2734381b1ff6081c298de2afdb35676bebc963b9bf732461386d3",
+          "compared_bytes": 11814,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4c8c3d82a416c12319bded6a3a93bd52b3ea1e6589deac29f82a5c18f7b998ea",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b798bd9c60af60241b2b29de47fbbe97a6be8eeed2f1d29d269c25738091e40f",
+          "compared_bytes": 11836,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "ff2ac99b4227310d04bce7d9dc38b5cffead4b02896e4cf598fe751068f59b2c",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "8b447d3fdd3563bd5be9cbc91bb2ed5b0bf266f523376ba5fbec2720daa98f1b",
+          "compared_bytes": 11808,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d3ab8f31b46141305d3b88b7de1ede0473b1b408af2aad503a23b5e56e42f9ca",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "088e85cf041a0c16ee3dc44bb5075d1cf5b9071d6787b7d788aa20baa157acc7",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a856da71532c4cfe6fe5327cb8d868e23ba4f67df223d4b1076add6bdc56b71e",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a850e7e0d364229da20974a00f9e4d6192b8b3ef5788110975cc6e9f200e2010",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a8adb4c8e32c10275e74287ea0e7a42152e2a154a9088fd8c5cf8030b123da3a",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "5ab6b4c82263fbf228d5b34ac68080d75c373ad2186a02f669dd31ad71cf2736",
+          "compared_bytes": 11820,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "96b26b73d275c81d4954aa9c7faa4eb08d89a01fdf79f9c7b46c5c4b40058181",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "42d4e9025246686f3319d844dd836272805e56b29b32d2be0e1c11c94c295192",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6f389ab69d3b57f2238551a866c173bcbad9d4779a2c377c8d2ecf1ec6eb48e7",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6365974cb281b0ca6e3a3ade8b02c79b736781768898807c01284746089cb89f",
+          "compared_bytes": 11809,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "55207c8527efd5587b7b49dbaa8abfe6d2f57bfb9e3a5afc5656140ecaf1115b",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "207a714d428b3d615ad04dc9c1778a24cbe040c0da073557922c1e7f66e7bb33",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "73a225473a7692f96fd826c0c242bccc611c3c7739cc72601677a668f0734941",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "65a1c4f6ec2dcba7db21cc890f22fd618b5dc5dcf046b378ab968db6b878c0d8",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "1e753ccde5532db28d0fd43b0384ee02b043f0a8d8f2f0bb22350862e72b25f0",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "207fffa1e3e994914e218f538941c6f97d62cce51d85a1fb43504b654a28a270",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d3cb198a7c41767576386bad14c5c491db20c8650d554a4e405bca892bf6c4f5",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b5343242fe789221a9b84f35d67035b9be110233e0651e9171d5125832656316",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "0c3171c7894711431e2671b52faef960a0226f11a29f8b1368ff1e5babae79be",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "163a247bbe5255038fec37d5d58d181d7da04e8cb17342950ab45ea0a78e6931",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "bf9b8b2d07d96ee06895f7d038179a18abc181b602b87ca652f98747c637dd83",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4618e3a5023fb37ac1bd319ca9a84ca8c0a4b67c301283455f7106dcb178d289",
+          "compared_bytes": 11820,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "aa694cc78b2ee443fb20313db61f461200440a76138a1ca237fc042910cdbdf6",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        }
+      ],
+      "all_draws_equal": true,
+      "actual_workers": 16
+    },
+    {
+      "name": "k64-w16-reverse-cpu",
+      "command": [
+        "bench/parallel/candidate",
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "--simd",
+        "off",
+        "--cache",
+        "off",
+        "--workers",
+        "16",
+        "--task-order",
+        "reverse",
+        "--seed",
+        "20261009",
+        "--replicates",
+        "30",
+        "--memory-mib",
+        "2048",
+        "--output-dir",
+        "bench/parallel/validation-20261010T142227183932Z/k64-w16-reverse-cpu",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "2",
+        "-I",
+        "0.1",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "manifest_sha256": "c9331e408db83c916e1d7ad4fe8f74c7eee62f22dd69ad2b996b58f88c2650fc",
+      "comparisons": [
+        {
+          "compared_sha256": "0713b5897bfbe732037ebb807fcade5adf954d430c8e23af747418f5b2804adc",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "5020b494e98dcdac95d13772a3b23106b9b7117b37bc71373186b66a0a2d0c25",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "34a3b3a702d2734381b1ff6081c298de2afdb35676bebc963b9bf732461386d3",
+          "compared_bytes": 11814,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4c8c3d82a416c12319bded6a3a93bd52b3ea1e6589deac29f82a5c18f7b998ea",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b798bd9c60af60241b2b29de47fbbe97a6be8eeed2f1d29d269c25738091e40f",
+          "compared_bytes": 11836,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "ff2ac99b4227310d04bce7d9dc38b5cffead4b02896e4cf598fe751068f59b2c",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "8b447d3fdd3563bd5be9cbc91bb2ed5b0bf266f523376ba5fbec2720daa98f1b",
+          "compared_bytes": 11808,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d3ab8f31b46141305d3b88b7de1ede0473b1b408af2aad503a23b5e56e42f9ca",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "088e85cf041a0c16ee3dc44bb5075d1cf5b9071d6787b7d788aa20baa157acc7",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a856da71532c4cfe6fe5327cb8d868e23ba4f67df223d4b1076add6bdc56b71e",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a850e7e0d364229da20974a00f9e4d6192b8b3ef5788110975cc6e9f200e2010",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a8adb4c8e32c10275e74287ea0e7a42152e2a154a9088fd8c5cf8030b123da3a",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "5ab6b4c82263fbf228d5b34ac68080d75c373ad2186a02f669dd31ad71cf2736",
+          "compared_bytes": 11820,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "96b26b73d275c81d4954aa9c7faa4eb08d89a01fdf79f9c7b46c5c4b40058181",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "42d4e9025246686f3319d844dd836272805e56b29b32d2be0e1c11c94c295192",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6f389ab69d3b57f2238551a866c173bcbad9d4779a2c377c8d2ecf1ec6eb48e7",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6365974cb281b0ca6e3a3ade8b02c79b736781768898807c01284746089cb89f",
+          "compared_bytes": 11809,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "55207c8527efd5587b7b49dbaa8abfe6d2f57bfb9e3a5afc5656140ecaf1115b",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "207a714d428b3d615ad04dc9c1778a24cbe040c0da073557922c1e7f66e7bb33",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "73a225473a7692f96fd826c0c242bccc611c3c7739cc72601677a668f0734941",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "65a1c4f6ec2dcba7db21cc890f22fd618b5dc5dcf046b378ab968db6b878c0d8",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "1e753ccde5532db28d0fd43b0384ee02b043f0a8d8f2f0bb22350862e72b25f0",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "207fffa1e3e994914e218f538941c6f97d62cce51d85a1fb43504b654a28a270",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d3cb198a7c41767576386bad14c5c491db20c8650d554a4e405bca892bf6c4f5",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b5343242fe789221a9b84f35d67035b9be110233e0651e9171d5125832656316",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "0c3171c7894711431e2671b52faef960a0226f11a29f8b1368ff1e5babae79be",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "163a247bbe5255038fec37d5d58d181d7da04e8cb17342950ab45ea0a78e6931",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "bf9b8b2d07d96ee06895f7d038179a18abc181b602b87ca652f98747c637dd83",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4618e3a5023fb37ac1bd319ca9a84ca8c0a4b67c301283455f7106dcb178d289",
+          "compared_bytes": 11820,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "aa694cc78b2ee443fb20313db61f461200440a76138a1ca237fc042910cdbdf6",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        }
+      ],
+      "all_draws_equal": true,
+      "actual_workers": 16
+    },
+    {
+      "name": "k64-w16-forward-dense",
+      "command": [
+        "bench/parallel/candidate",
+        "bootstrap",
+        "--backend",
+        "dense",
+        "--simd",
+        "off",
+        "--cache",
+        "off",
+        "--workers",
+        "16",
+        "--task-order",
+        "forward",
+        "--seed",
+        "20261009",
+        "--replicates",
+        "30",
+        "--memory-mib",
+        "2048",
+        "--output-dir",
+        "bench/parallel/validation-20261010T142227183932Z/k64-w16-forward-dense",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "2",
+        "-I",
+        "0.1",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "manifest_sha256": "9c6db5d0e70c3117f99749263eea700b98a3e39fa26a26b787944d589bf754bb",
+      "comparisons": [
+        {
+          "compared_sha256": "0713b5897bfbe732037ebb807fcade5adf954d430c8e23af747418f5b2804adc",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "5020b494e98dcdac95d13772a3b23106b9b7117b37bc71373186b66a0a2d0c25",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "34a3b3a702d2734381b1ff6081c298de2afdb35676bebc963b9bf732461386d3",
+          "compared_bytes": 11814,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4c8c3d82a416c12319bded6a3a93bd52b3ea1e6589deac29f82a5c18f7b998ea",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b798bd9c60af60241b2b29de47fbbe97a6be8eeed2f1d29d269c25738091e40f",
+          "compared_bytes": 11836,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "ff2ac99b4227310d04bce7d9dc38b5cffead4b02896e4cf598fe751068f59b2c",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "8b447d3fdd3563bd5be9cbc91bb2ed5b0bf266f523376ba5fbec2720daa98f1b",
+          "compared_bytes": 11808,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d3ab8f31b46141305d3b88b7de1ede0473b1b408af2aad503a23b5e56e42f9ca",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "088e85cf041a0c16ee3dc44bb5075d1cf5b9071d6787b7d788aa20baa157acc7",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a856da71532c4cfe6fe5327cb8d868e23ba4f67df223d4b1076add6bdc56b71e",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a850e7e0d364229da20974a00f9e4d6192b8b3ef5788110975cc6e9f200e2010",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "a8adb4c8e32c10275e74287ea0e7a42152e2a154a9088fd8c5cf8030b123da3a",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "5ab6b4c82263fbf228d5b34ac68080d75c373ad2186a02f669dd31ad71cf2736",
+          "compared_bytes": 11820,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "96b26b73d275c81d4954aa9c7faa4eb08d89a01fdf79f9c7b46c5c4b40058181",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "42d4e9025246686f3319d844dd836272805e56b29b32d2be0e1c11c94c295192",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6f389ab69d3b57f2238551a866c173bcbad9d4779a2c377c8d2ecf1ec6eb48e7",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "6365974cb281b0ca6e3a3ade8b02c79b736781768898807c01284746089cb89f",
+          "compared_bytes": 11809,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "55207c8527efd5587b7b49dbaa8abfe6d2f57bfb9e3a5afc5656140ecaf1115b",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "207a714d428b3d615ad04dc9c1778a24cbe040c0da073557922c1e7f66e7bb33",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "73a225473a7692f96fd826c0c242bccc611c3c7739cc72601677a668f0734941",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "65a1c4f6ec2dcba7db21cc890f22fd618b5dc5dcf046b378ab968db6b878c0d8",
+          "compared_bytes": 11816,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "1e753ccde5532db28d0fd43b0384ee02b043f0a8d8f2f0bb22350862e72b25f0",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "207fffa1e3e994914e218f538941c6f97d62cce51d85a1fb43504b654a28a270",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "d3cb198a7c41767576386bad14c5c491db20c8650d554a4e405bca892bf6c4f5",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "b5343242fe789221a9b84f35d67035b9be110233e0651e9171d5125832656316",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "0c3171c7894711431e2671b52faef960a0226f11a29f8b1368ff1e5babae79be",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "163a247bbe5255038fec37d5d58d181d7da04e8cb17342950ab45ea0a78e6931",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "bf9b8b2d07d96ee06895f7d038179a18abc181b602b87ca652f98747c637dd83",
+          "compared_bytes": 11817,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "4618e3a5023fb37ac1bd319ca9a84ca8c0a4b67c301283455f7106dcb178d289",
+          "compared_bytes": 11820,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        },
+        {
+          "compared_sha256": "aa694cc78b2ee443fb20313db61f461200440a76138a1ca237fc042910cdbdf6",
+          "compared_bytes": 11813,
+          "excluded_oracle_version": "MM\tVersion: 0.6.5-r74-dirty",
+          "excluded_candidate_version": "MM\tVersion: psmc-rs 0.3.1 (strict f64; reference 82fa2ada83ee)"
+        }
+      ],
+      "all_draws_equal": true,
+      "actual_workers": 16
+    },
+    {
+      "name": "memory-1",
+      "command": [
+        "bench/parallel/candidate",
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "--task-order",
+        "balanced",
+        "--seed",
+        "42",
+        "--workers",
+        "999",
+        "--replicates",
+        "2",
+        "-N",
+        "0",
+        "-I",
+        "0",
+        "--memory-mib",
+        "1",
+        "--output-dir",
+        "bench/parallel/validation-20261010T142227183932Z/memory-1",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "returncode": 2,
+      "passed": true
+    },
+    {
+      "name": "memory-21",
+      "command": [
+        "bench/parallel/candidate",
+        "bootstrap",
+        "--backend",
+        "cpu",
+        "--task-order",
+        "balanced",
+        "--seed",
+        "42",
+        "--workers",
+        "999",
+        "--replicates",
+        "2",
+        "-N",
+        "0",
+        "-I",
+        "0",
+        "--memory-mib",
+        "21",
+        "--output-dir",
+        "bench/parallel/validation-20261010T142227183932Z/memory-21",
+        "tests/fixtures/blocks.psmcfa"
+      ],
+      "returncode": 0,
+      "passed": true
+    }
+  ],
+  "source_hash_scope": "source_sha256 records the unchanged baseline workspace. Actual candidate source digests and generated CLI files are recorded by bench/parallel-candidate-build.json.",
+  "candidate_build_report": "bench/parallel-candidate-build.json"
+}

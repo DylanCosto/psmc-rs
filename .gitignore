@@ -30,3 +30,5 @@ target/
 /bench/cpu-campaign-review/
 /bench/cpu-campaign-benchmark/
 /bench/cpu-campaign-final/
+
+/bench/parallel/

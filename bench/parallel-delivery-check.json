@@ -1,0 +1,16 @@
+{
+  "scaling_report_sha256": "2aa6c2805e734b25e8eb97cade07230721fcfed3131e76cd626c8fc15a75cf9c",
+  "candidate_report_sha256": "b2ddff557e0340ac97ae2e562598ae98008b6f07bcb96ad309c17a73b9515605",
+  "validation_report_sha256": "9998d9f760088352ee89a5a8ed48ef0a0bd8f304f3d15d4726c5593f3b9e2e07",
+  "candidate-build_report_sha256": "de71bd59a39600810ee0d9601aa163adfaa11c95e506a14032ad1ce3dd65736b",
+  "production_sha256": "b0fc39d7c31637221de1152fc0d502bb65c90d0a5b9d6672250fe3117f75bfa4",
+  "candidate_unit_tests_per_profile": [
+    33,
+    33
+  ],
+  "timing_fit_comparisons": 3600,
+  "seeded_fit_comparisons": 300,
+  "candidate_decision": "rejected: slower median wall time in all four comparisons",
+  "production_source_unchanged": true,
+  "status": "passed"
+}

@@ -1,3 +1,12 @@
+# Parallel milestone package contents
+
+`../psmc-rust-parallel.zip` adds the full-core benchmark and correctness evidence
+to the retained Rust 0.3.1 release. `bin/psmc-rs` is unchanged; the rejected
+experimental scheduler under `bench/parallel/` is evidence only.
+`bench/package_parallel.py` creates and verifies CRCs and every member SHA-256.
+See `bench/parallel-package-manifest.json` for scope and exclusions and the sibling
+`.zip.sha256` for the archive digest. All earlier archives remain untouched.
+
 # CPU campaign package contents
 
 `../psmc-rust-cpu-campaign.zip` is the local Rust 0.3.1 source-and-evidence package.

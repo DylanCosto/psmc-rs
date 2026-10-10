@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "steps": [
+    {
+      "command": [
+        "cargo",
+        "fmt",
+        "--all"
+      ],
+      "returncode": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--workspace",
+        "--jobs",
+        "16",
+        "--",
+        "--test-threads=16"
+      ],
+      "returncode": 0,
+      "output": "\nrunning 1 test\ntest batch::scheduling_tests::independent_dispatch_preserves_all_seed_indices_and_tie_order ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 10 tests\ntest hmm::tests::impossible_observations_propagate_nonfinite_reference_behavior ... ok\ntest hmm::tests::one_position_and_repeated_records_preserve_tiny_counts ... ok\ntest hmm::tests::messages_and_legacy_counts_agree_with_enumerated_paths ... ok\ntest hmm::tests::q_preserves_sentinel_nan_and_ignored_count_semantics ... ok\ntest hmm::tests::rejects_empty_sequence - should panic ... ok\ntest hmm::tests::rejects_invalid_observation_encoding - should panic ... ok\ntest model_workspace::tests::rejects_different_model_shape - should panic ... ok\ntest optimizer::tests::flat_objective_preserves_last_callback_and_radius_boundary ... ok\ntest optimizer::tests::nominal_limit_does_not_interrupt_coordinate_exploration ... ok\ntest model_workspace::tests::repeated_candidates_reuse_buffers_and_overwrite_poison ... ok\n\ntest result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s\n\n\nrunning 13 tests\ntest simd::tests::dispatch_and_small_shapes_are_explicit ... ok\ntest simd::lane_tests::safe_wrappers_reject_bad_shapes_before_vector_access ... ok\ntest tests::every_repeated_record_retains_its_tiny_count_contribution ... ok\ntest tests::impossible_and_nonfinite_models_preserve_dense_classification ... ok\ntest tests::rejects_bad_observation - should panic ... ok\ntest tests::rejects_empty_sequence - should panic ... ok\ntest engine::tests::cache_preserves_multiplicity_order_and_parameter_invalidation ... ok\ntest tests::shorter_records_retain_allocations_but_expose_only_their_own_cells ... ok\ntest tests::every_short_observation_pattern_matches_dense_exactly ... ok\ntest simd::lane_tests::lanes_preserve_extremes_subnormals_and_unaligned_tails ... ok\ntest tests::every_short_pattern_exercises_four_actual_lanes ... ok\ntest tests::simd_modes_tails_and_poisoned_buffers_are_exact ... ok\ntest tests::original_models_and_reused_different_length_buffers_match_dense_exactly ... ok\n\ntest result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.05s\n\n\nrunning 9 tests\ntest tests::bootstrap_exact_length_stops_without_extra_draw ... ok\ntest tests::malformed_sequence_input_fails_explicitly ... ok\ntest tests::fastq_qualities_ignored_and_kseq_delimiters_preserved ... ok\ntest tests::bootstrap_nearest_total_and_duplicate_multiplicity ... ok\ntest tests::fasta_aliases_whitespace_names_and_boundaries ... ok\ntest tests::pattern_group_mapping_and_legacy_limit ... ok\ntest tests::rng_matches_pinned_libc_reference_draws ... ok\ntest tests::supplied_parameter_formats_and_atomic_errors ... ok\ntest tests::system_zlib_plain_gzip_and_corruption ... ok\n\ntest result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n   Compiling psmc-core v0.3.1 (${PROJECT}/work/parallel-candidate-v2/crates/psmc-core)\n   Compiling psmc-cpu v0.3.1 (${PROJECT}/work/parallel-candidate-v2/crates/psmc-cpu)\n   Compiling psmc-io v0.3.1 (${PROJECT}/work/parallel-candidate-v2/crates/psmc-io)\n   Compiling psmc-cli v0.3.1 (${PROJECT}/work/parallel-candidate-v2/crates/psmc-cli)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.78s\n     Running unittests src/main.rs (target/debug/deps/psmc_rs-444c2ee6492199cd)\n     Running unittests src/lib.rs (target/debug/deps/psmc_core-b5ae9392a1f6477c)\n     Running unittests src/lib.rs (target/debug/deps/psmc_cpu-4c93739030584a4d)\n     Running unittests src/lib.rs (target/debug/deps/psmc_io-bca12ed7e46b9154)\n   Doc-tests psmc_core\n   Doc-tests psmc_cpu\n   Doc-tests psmc_io\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--release",
+        "--locked",
+        "--offline",
+        "--workspace",
+        "--jobs",
+        "16",
+        "--",
+        "--test-threads=16"
+      ],
+      "returncode": 0,
+      "output": "\nrunning 1 test\ntest batch::scheduling_tests::independent_dispatch_preserves_all_seed_indices_and_tie_order ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 10 tests\ntest hmm::tests::impossible_observations_propagate_nonfinite_reference_behavior ... ok\ntest hmm::tests::messages_and_legacy_counts_agree_with_enumerated_paths ... ok\ntest hmm::tests::one_position_and_repeated_records_preserve_tiny_counts ... ok\ntest hmm::tests::q_preserves_sentinel_nan_and_ignored_count_semantics ... ok\ntest hmm::tests::rejects_empty_sequence - should panic ... ok\ntest hmm::tests::rejects_invalid_observation_encoding - should panic ... ok\ntest optimizer::tests::flat_objective_preserves_last_callback_and_radius_boundary ... ok\ntest model_workspace::tests::rejects_different_model_shape - should panic ... ok\ntest optimizer::tests::nominal_limit_does_not_interrupt_coordinate_exploration ... ok\ntest model_workspace::tests::repeated_candidates_reuse_buffers_and_overwrite_poison ... ok\n\ntest result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 13 tests\ntest engine::tests::cache_preserves_multiplicity_order_and_parameter_invalidation ... ok\ntest simd::tests::dispatch_and_small_shapes_are_explicit ... ok\ntest tests::every_repeated_record_retains_its_tiny_count_contribution ... ok\ntest simd::lane_tests::safe_wrappers_reject_bad_shapes_before_vector_access ... ok\ntest tests::impossible_and_nonfinite_models_preserve_dense_classification ... ok\ntest tests::rejects_bad_observation - should panic ... ok\ntest tests::rejects_empty_sequence - should panic ... ok\ntest tests::shorter_records_retain_allocations_but_expose_only_their_own_cells ... ok\ntest tests::every_short_observation_pattern_matches_dense_exactly ... ok\ntest tests::every_short_pattern_exercises_four_actual_lanes ... ok\ntest simd::lane_tests::lanes_preserve_extremes_subnormals_and_unaligned_tails ... ok\ntest tests::simd_modes_tails_and_poisoned_buffers_are_exact ... ok\ntest tests::original_models_and_reused_different_length_buffers_match_dense_exactly ... ok\n\ntest result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s\n\n\nrunning 9 tests\ntest tests::bootstrap_exact_length_stops_without_extra_draw ... ok\ntest tests::bootstrap_nearest_total_and_duplicate_multiplicity ... ok\ntest tests::malformed_sequence_input_fails_explicitly ... ok\ntest tests::fasta_aliases_whitespace_names_and_boundaries ... ok\ntest tests::fastq_qualities_ignored_and_kseq_delimiters_preserved ... ok\ntest tests::pattern_group_mapping_and_legacy_limit ... ok\ntest tests::rng_matches_pinned_libc_reference_draws ... ok\ntest tests::supplied_parameter_formats_and_atomic_errors ... ok\ntest tests::system_zlib_plain_gzip_and_corruption ... ok\n\ntest result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n   Compiling psmc-core v0.3.1 (${PROJECT}/work/parallel-candidate-v2/crates/psmc-core)\n   Compiling psmc-cpu v0.3.1 (${PROJECT}/work/parallel-candidate-v2/crates/psmc-cpu)\n   Compiling psmc-io v0.3.1 (${PROJECT}/work/parallel-candidate-v2/crates/psmc-io)\n   Compiling psmc-cli v0.3.1 (${PROJECT}/work/parallel-candidate-v2/crates/psmc-cli)\n    Finished `release` profile [optimized + debuginfo] target(s) in 1.37s\n     Running unittests src/main.rs (target/release/deps/psmc_rs-7be726e87b6776b1)\n     Running unittests src/lib.rs (target/release/deps/psmc_core-8bdfcd4519dbd33b)\n     Running unittests src/lib.rs (target/release/deps/psmc_cpu-bcc1b1eba6c1f497)\n     Running unittests src/lib.rs (target/release/deps/psmc_io-a651af072e8cc2d7)\n   Doc-tests psmc_core\n   Doc-tests psmc_cpu\n   Doc-tests psmc_io\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--release",
+        "--locked",
+        "--offline",
+        "--jobs",
+        "16"
+      ],
+      "returncode": 0,
+      "output": "   Compiling psmc-cli v0.3.1 (${PROJECT}/work/parallel-candidate-v2/crates/psmc-cli)\n    Finished `release` profile [optimized + debuginfo] target(s) in 1.41s\n"
+    }
+  ],
+  "source_sha256": {
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/em.rs": "fd667334b4d470049dad57358bdd23ce0fd23006e347f13704079026c7f1c52f",
+    "crates/psmc-core/src/lib.rs": "b0b6804c719504d3d7b2f44290a21f45babd590fe9e59e913c0c6dcafb41b01b",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+    "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+    "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+    "crates/psmc-cli/src/main.rs": "18f652ccec7eab24dc7c7b09f5344ca67f7b16afceed580f252ccff7a94433f4",
+    "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+    "crates/psmc-cli/src/batch.rs": "79b759b6f6210a0f645500875988ac75fd663c5ff44caf8c1c0b46371965e70a",
+    "crates/psmc-cli/src/legacy.rs": "0fccdd8b0f0e24d00c9ae956d6eb1b93140ae062657b62f5038883961e48229e",
+    "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+    "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+    "crates/psmc-cpu/src/tests.rs": "9252b373e04da0ff705f440c19db2d05c74c4238113ec9ab6e7e80df4ef0cf3b",
+    "crates/psmc-cpu/src/simd.rs": "03ce372bcd47f72abe50660c6a833b55bd2651b44ff134eaa93b23c518912509",
+    "crates/psmc-cpu/src/lib.rs": "dd5111f7b243bb5164858ff8c9f885b3eaf2eaee6e2aa4265546d9ff612e3893",
+    "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179",
+    "crates/psmc-core/Cargo.toml": "554c9f223b12aa93e03a5f897c334c6adcb53febe0d40dff3c372a08b1d50039",
+    "crates/psmc-io/Cargo.toml": "409bcf90d4bdfd0ba961ec986245e6d884efd1daf4b478a13d3ebc8801e7fe8c",
+    "crates/psmc-cli/Cargo.toml": "a3ccb5f9dbd0d20548dd2a4db8fe68708aae5dea79b9a13399d284044b857077",
+    "crates/psmc-cpu/Cargo.toml": "fd6caeebb5ea1318c13b3817dc16e16c36bcdbeba1fbc9a02f05d49186d9ef91",
+    "Cargo.toml": "23a9556dadeed968306d4a0c3e8beea088d40c2d2f069ff9efbc1c675ad3e244",
+    "Cargo.lock": "16ae96bf5dc0e2a4be9266c9640aba030ccd721a6448651296e61dc1af6e6c10",
+    "rust-toolchain.toml": "9cbde07377abdce69bc9580adb0315d52e2a09d6494a2005550a7e6733d9688b"
+  },
+  "candidate_sha256": "7a06233688c5f43407e137faa655d6b28509b9a75c9a85f647b156ea772fe04a",
+  "baseline_source_commit": "e8a1cc176c809d163735fc55df94f4a7510b419a",
+  "generator_sha256": "b88d0faa43bfa85e110f6348f8217f0648531f21c38a099c3096789fe261f868",
+  "generated_sources": "bench/parallel/candidate-build",
+  "scope": "Disposable candidate, not production source. Generated CLI files are retained alongside the build evidence. All other numerical sources are identical to baseline."
+}
