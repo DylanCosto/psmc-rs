@@ -1415,3 +1415,19 @@ heterozygous bin locations and encoding hashes as chromosomes finish, and is
 also included in the final audit. Three added boundary/seed/tamper tests pass;
 14 Python checks total. No completed chromosome yet, so this is verifier testing,
 not scientific evidence. Frozen runner/protocol/binaries remain unchanged.
+
+## User-directed switch to real HG001 whole genome — 2026-10-11
+
+User explicitly cancelled the slow simulations and requested public HG001 with
+vanilla C/strict/equivalent, keeping memory/disk bounded. Verified the original
+harness and both simulator processes stopped after SIGTERM. Logs, partials and
+user-stop.json retained; zero chromosomes/fits completed, so no simulation pass.
+The paused historical simulation goal is superseded by this request, not achieved.
+
+Acquired official GIAB HG001 v4.2.1 GRCh38 VCF and confidence BED (about 142 MB),
+plus source README/index. The README explicitly supports confident homozygous
+reference calls with VCF+BED. New prospective protocol: docs/hg001-genome-protocol.md.
+Use all 22 autosomes with whole chromosome boundaries/missing regions; one process
+at a time, hard address-space/output limits, strict admission and resource guards.
+No raw-read download, no inference arithmetic changes, no new simulation. Validate
+input conversion, freeze provenance, run/audit/report all three engines.
