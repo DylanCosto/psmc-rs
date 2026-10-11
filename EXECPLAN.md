@@ -1521,3 +1521,16 @@ updates in every fit (including warmups), and strict recorded zero. All fallback
 counts remain visible. The new auditor initially needed a parser correction for
 the existing QD/QU `before -> after` format; this was an audit parser issue, with
 no fitting failure, output modification or acceptance-threshold change.
+
+## Equivalent-default release — 2026-10-11 (active)
+
+User authorizes candidate and compatibility checks, then actual default promotion.
+Prospective docs/default-transition-protocol.md defines candidate/final gates.
+Ordinary CPU fits/bootstrap will default to equivalent; omitted mode with snapshots
+or dense/CUDA remains strict. Explicit strict remains supported and exact-C tested.
+Extend equivalent single-fit admission to account for checkpoint workers, serial
+dense fallback and decoding rather than silently ignoring --memory-mib. Strict
+and batch memory estimates are preserved. No inference arithmetic changes.
+Candidate 0.7.0-rc.1 must pass before final 0.7.0 installation. Work is not complete
+until release tests, downstream checks, bounded resource check, whole-HG001 output
+parity, documentation and final installed binary verification are recorded.
