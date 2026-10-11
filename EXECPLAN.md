@@ -1437,3 +1437,17 @@ binning with masking and final partial-bin behavior, actual process memory/outpu
 limits and stage reuse, and fail-closed RAM monitoring. Source hashes verified.
 Preparation streams one chromosome, retains gzip state evidence, and compares every
 encoded bin with the independent Python rule before any whole-genome fit starts.
+
+Whole-autosome preparation completed in 47.01 s: 2,875,001,522 bases, 28,750,027
+bins in 22 records; N=3,175,977, T=23,832,991, K=1,741,059. Every bin matches
+the pinned upstream converter and independent rule. Input SHA256
+9d8633f04981b2b24114cad540368f46c508bf4290a976c430a182afcd55a112.
+The live sequential runner is session 77709; work/hg001-genome/run.lock contains
+its verified process ID. Frozen source commit 76d81f9. Vanilla C has started;
+strict/equivalent and any required diagnostic follow automatically. A separate
+existing-job finisher (session 98158) waits for this exact runner, then audits all
+input/results/resources and writes docs/hg001-genome-report.md plus compact bench
+JSON evidence. It fails if the run stops without a report. No final comparison
+has passed yet. Active supervision stays paused at the user's preference; the
+pipeline's built-in safety monitor remains running. Check the actual processes
+and work/hg001-genome/run.log / audit.log before any resume or status claim.
