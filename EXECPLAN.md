@@ -1721,3 +1721,34 @@ Upgraded the pinned artifact action after CI reported its Node 20 deprecation.
 No numerical code or installed baseline changed. No public release/tag yet.
 Milestone 2 may now implement the tutorial, input/export tools, progress and safe
 bootstrap resume. Final assets will be rebuilt and requalified from the release tag.
+
+### Adoption milestone 2 — first-use workflow (2026-10-11)
+
+Progress: implemented Rust `inspect`, upstream-compatible `split` (canonical T/K/N),
+unit-explicit CSV `export`, opt-in stderr `--progress`, and Linux bootstrap `--resume`.
+Resume binds executable/encoded-input SHA-256 and fit settings; checks every completed
+artifact before preserving/restarting incomplete fits. Kernel locking prevents concurrent
+writers. Completion markers retain nonfinite status rather than declaring numerical success.
+Added tutorial, resume contract and optional Matplotlib plotter to release archive allowlist.
+
+Validation on source based on ceb0eba: workspace release/offline tests passed, including
+three new executable workflow tests. Actual SIGKILL/resume in both modes reproduced all
+outputs and draw traces byte for byte against uninterrupted batches, including changed
+worker count/order. Tampered input/settings/completed output and a concurrent writer were
+rejected. Strict C goldens still pass. SHA-256 matches four published vectors including
+one million `a` bytes. Split output equals pinned C splitfa bytes on canonical fixture.
+Synthetic tutorial completed in 4.006 seconds with dependencies already installed;
+installation/download time excluded. Plot visually checked. Compact commands, timing,
+binary/artifact hashes: bench/adoption-workflow.json. Raw outputs: work/adoption-tutorial.
+No numerical model or old scientific gate changed; GPU and whole-genome resume not run.
+
+Decisions: resume is per completed fit, not mid-iteration; same executable/runtime required.
+Worker/memory/scheduling changes are permitted. No new Cargo dependencies. Plotting is
+optional Python/Matplotlib and requires explicit units/display limits. Five-iteration,
+three-replicate tutorial is illustrative only. Population inference remains unchanged.
+
+Surprises: stripping debug sections alone left Rust panic source paths in executable
+strings. Packaging now also remaps source/home prefixes at compile time and asserts their
+absence before release. This changes build provenance only and requires another native
+package verification. Original foundation artifacts remain evidence, not public releases.
+Next permitted milestone: finish packaged tutorial/native checks, then numerical investigation.

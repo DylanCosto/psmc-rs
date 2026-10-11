@@ -1,0 +1,197 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "source_base": "ceb0eba6ea816f487a41a2229c0bb0b7df4bcaa4",
+  "source_dirty": true,
+  "binary_sha256": "f307252213a14eb26a1d38e24fb2bb02111d1002f0383d67e3c77097b4650027",
+  "tutorial_seconds": 4.005569377004576,
+  "dependency_install_included": false,
+  "scope": "synthetic workflow demonstration, not scientific qualification",
+  "splitfa_exact_bytes": true,
+  "commands": [
+    {
+      "command": [
+        "target/release/psmc-rs",
+        "inspect",
+        "tests/fixtures/workload.psmcfa"
+      ],
+      "seconds": 0.0036050439957762137,
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "target/release/psmc-rs",
+        "--seed",
+        "42",
+        "-N",
+        "5",
+        "--record-workers",
+        "2",
+        "--memory-mib",
+        "256",
+        "--progress",
+        "-o",
+        "work/adoption-tutorial/main.psmc",
+        "tests/fixtures/workload.psmcfa"
+      ],
+      "seconds": 0.043133172002853826,
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "target/release/psmc-rs",
+        "split",
+        "--block-bins",
+        "1000",
+        "--output",
+        "work/adoption-tutorial/blocks.psmcfa",
+        "tests/fixtures/workload.psmcfa"
+      ],
+      "seconds": 0.0046593990045948885,
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "work/vanilla/utils/splitfa",
+        "tests/fixtures/workload.psmcfa",
+        "1000"
+      ],
+      "seconds": 0.0038722179961041547,
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "target/release/psmc-rs",
+        "bootstrap",
+        "--seed",
+        "42",
+        "-N",
+        "5",
+        "--replicates",
+        "3",
+        "--workers",
+        "2",
+        "--memory-mib",
+        "256",
+        "--progress",
+        "--output-dir",
+        "work/adoption-tutorial/bootstrap",
+        "work/adoption-tutorial/blocks.psmcfa"
+      ],
+      "seconds": 0.20382439099921612,
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "target/release/psmc-rs",
+        "export",
+        "--mutation-rate",
+        "1.25e-8",
+        "--generation-years",
+        "25",
+        "--bin-bp",
+        "100",
+        "--output",
+        "work/adoption-tutorial/main.csv",
+        "work/adoption-tutorial/main.psmc"
+      ],
+      "seconds": 0.030003837004187517,
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "target/release/psmc-rs",
+        "export",
+        "--mutation-rate",
+        "1.25e-8",
+        "--generation-years",
+        "25",
+        "--bin-bp",
+        "100",
+        "--output",
+        "work/adoption-tutorial/bootstrap/replicate-00.csv",
+        "work/adoption-tutorial/bootstrap/replicate-00.psmc"
+      ],
+      "seconds": 0.004627433998393826,
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "target/release/psmc-rs",
+        "export",
+        "--mutation-rate",
+        "1.25e-8",
+        "--generation-years",
+        "25",
+        "--bin-bp",
+        "100",
+        "--output",
+        "work/adoption-tutorial/bootstrap/replicate-01.csv",
+        "work/adoption-tutorial/bootstrap/replicate-01.psmc"
+      ],
+      "seconds": 0.0044096589990658686,
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "target/release/psmc-rs",
+        "export",
+        "--mutation-rate",
+        "1.25e-8",
+        "--generation-years",
+        "25",
+        "--bin-bp",
+        "100",
+        "--output",
+        "work/adoption-tutorial/bootstrap/replicate-02.csv",
+        "work/adoption-tutorial/bootstrap/replicate-02.psmc"
+      ],
+      "seconds": 0.0032492899990756996,
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "work/adoption-venv/bin/python",
+        "scripts/plot_curve.py",
+        "work/adoption-tutorial/main.csv",
+        "--bootstrap",
+        "work/adoption-tutorial/bootstrap/replicate-00.csv",
+        "work/adoption-tutorial/bootstrap/replicate-01.csv",
+        "work/adoption-tutorial/bootstrap/replicate-02.csv",
+        "--min-years",
+        "100",
+        "--max-years",
+        "10000000",
+        "--title",
+        "Synthetic workflow demonstration",
+        "--output",
+        "work/adoption-tutorial/curve.png"
+      ],
+      "seconds": 3.702341477997834,
+      "exit_code": 0
+    }
+  ],
+  "artifacts": {
+    "work/adoption-tutorial/main.psmc": "f13c475dbd1c098b60efcdfa43014713e2400b65c6631ebfee9fb1ba20a9ad87",
+    "work/adoption-tutorial/bootstrap/replicate-00.psmc": "1500ce923f69fa9bb4a2651a4fd1233815d3c4a69398b3cb90d3cf370cd3ed2b",
+    "work/adoption-tutorial/bootstrap/replicate-01.psmc": "b76ca1417fa841e3d2b86c5b54db4d5d521fac0f1c5e8395d4ef5dbdf555d0ef",
+    "work/adoption-tutorial/bootstrap/replicate-02.psmc": "df190719ba660dbfc5659e25756c7e958b54fbd598d4ce8181f15866c1996291",
+    "work/adoption-tutorial/main.csv": "d118614351236ae44e984fd98d4e081b61fdeea2fdccf362ff2f2e970fea70bb",
+    "work/adoption-tutorial/bootstrap/replicate-00.csv": "5544d5fb137a194bc1c4ea365250531c42941b7ba7deb0be3a721eec52242c1a",
+    "work/adoption-tutorial/bootstrap/replicate-01.csv": "db091584e824b773cd525fd46b7031a1c777310b25b481998c3e832a45138b09",
+    "work/adoption-tutorial/bootstrap/replicate-02.csv": "044d6b85fad25d877f7d6cb67d37216ea9b1a273ce34515a3fb745bb5d5fa6d6",
+    "work/adoption-tutorial/curve.png": "c030676750a109808bc472762968f239f55e004553dbc916dd67d59a759b7d5a"
+  },
+  "validation": {
+    "cargo_test_workspace_release_offline": "passed",
+    "cli_workflow_integration_tests": 3,
+    "actual_sigkill_resume_modes": [
+      "strict",
+      "equivalent"
+    ],
+    "tampered_input_settings_outputs": "rejected",
+    "concurrent_writer": "rejected",
+    "plot_visual_review": "passed; three distinct synthetic bootstrap curves; units and labels visible",
+    "source_note": "Feature diff based on source_base; exact committed source recorded in EXECPLAN."
+  }
+}

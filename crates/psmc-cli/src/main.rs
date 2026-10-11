@@ -1,9 +1,12 @@
 mod batch;
+mod checkpoint;
+mod digest;
 mod format;
 mod legacy;
 mod memory;
 mod snapshot;
 mod topology;
+mod workflow;
 
 use psmc_core::{
     Settings,
@@ -22,7 +25,7 @@ use std::{
 const HELP: &str = concat!(
     "psmc-rs ",
     env!("CARGO_PKG_VERSION"),
-    " — double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend cpu|dense|cuda --mode strict|equivalent --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nCUDA: --cuda-tile-sites COUNT (16384) --cuda-memory-mib MIB (1024)\nSingle fit: --record-workers COUNT (available CPUs); independent records only.\n  CPU single fit: --memory-mib MIB (half available memory; limits record workers).\nBootstrap runner: --scheduler fit|shared (shared) --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nEquivalent is the default for CPU fits/bootstrap; --mode strict retains C compatibility.\nAn omitted mode selects strict for dense/CUDA backends or snapshots.\nCPU (default) reuses buffers and repeated-record counts; dense is the scalar oracle.\nInput '-' reads stdin for a single fit. CUDA counts are experimental and require a cuda-feature build.\n-c and -S are unsupported; -S is not the seed flag.\n"
+    " — double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nWorkflow: inspect, split, export (COMMAND --help for usage).\nNew options: --progress --backend cpu|dense|cuda --mode strict|equivalent --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nCUDA: --cuda-tile-sites COUNT (16384) --cuda-memory-mib MIB (1024)\nSingle fit: --record-workers COUNT (available CPUs); independent records only.\n  CPU single fit: --memory-mib MIB (half available memory; limits record workers).\nBootstrap runner: --scheduler fit|shared (shared) --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new, or use --resume with the original --seed.\n\nEquivalent is the default for CPU fits/bootstrap; --mode strict retains C compatibility.\nAn omitted mode selects strict for dense/CUDA backends or snapshots.\nCPU (default) reuses buffers and repeated-record counts; dense is the scalar oracle.\nInput '-' reads stdin for a single fit. CUDA counts are experimental and require a cuda-feature build.\n-c and -S are unsupported; -S is not the seed flag.\n"
 );
 
 #[derive(Clone)]
@@ -51,6 +54,7 @@ struct Options {
     record_workers: usize,
     memory_mib: Option<usize>,
     admission: Option<memory::Admission>,
+    progress: bool,
 }
 
 fn number(value: &str, flag: &str) -> Result<f64, String> {
@@ -108,6 +112,7 @@ fn parse() -> Result<Option<Options>, String> {
         record_workers: 1,
         memory_mib: None,
         admission: None,
+        progress: false,
     };
     let mut record_workers_explicit = false;
     let mut mode_explicit = false;
@@ -124,6 +129,20 @@ fn parse() -> Result<Option<Options>, String> {
             let (flag, inline) = arg
                 .split_once('=')
                 .map_or((arg.as_str(), None), |(f, v)| (f, Some(v.to_owned())));
+            if flag == "--resume" && inline.is_none() {
+                options
+                    .batch
+                    .as_mut()
+                    .ok_or("--resume requires bootstrap")?
+                    .resume = true;
+                i += 1;
+                continue;
+            }
+            if flag == "--progress" && inline.is_none() {
+                options.progress = true;
+                i += 1;
+                continue;
+            }
             if flag == "--help" {
                 print!("{HELP}");
                 return Ok(None);
@@ -790,6 +809,12 @@ fn fit(
             round,
             &options.mode,
         )?;
+        if options.progress {
+            eprintln!(
+                "completed iteration {round}/{} ({})",
+                options.iterations, options.mode
+            );
+        }
         if !warned && (nonfinite_state(&state) || nonfinite_output) {
             eprintln!(
                 "warning: nonfinite legacy calculation at round {round}; output retained for reference comparison"
@@ -829,6 +854,17 @@ fn fit(
 }
 
 fn main() {
+    let args: Vec<String> = env::args().skip(1).collect();
+    if args
+        .first()
+        .is_some_and(|arg| matches!(arg.as_str(), "inspect" | "split" | "export"))
+    {
+        if let Err(error) = workflow::run(&args) {
+            eprintln!("psmc-rs: {error}");
+            std::process::exit(2);
+        }
+        return;
+    }
     let result = parse()
         .map_err(|e| -> Box<dyn std::error::Error> { e.into() })
         .and_then(|options| {

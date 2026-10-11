@@ -50,7 +50,9 @@ def main():
     build_dir = ROOT/'work'/'release-build'/target
     env = os.environ.copy()
     # A generic ISA with runtime SIMD selection, not the build host's native ISA.
-    env.update(CARGO_TARGET_DIR=str(build_dir), RUSTFLAGS='', CARGO_ENCODED_RUSTFLAGS='',
+    remap_flags = [f'--remap-path-prefix={Path.home()}=/build-home',
+                   f'--remap-path-prefix={ROOT}=psmc-rs']
+    env.update(CARGO_TARGET_DIR=str(build_dir), RUSTFLAGS='', CARGO_ENCODED_RUSTFLAGS='\x1f'.join(remap_flags),
                CARGO_BUILD_JOBS='2')
     command = ['cargo', '+1.90.0', 'build', '--release', '--locked', '--offline', '--target', target]
     subprocess.run(command, cwd=ROOT, env=env, check=True)
@@ -68,15 +70,18 @@ def main():
         shutil.copyfile(binary, stripped)
         subprocess.run(['strip', '--strip-debug', str(stripped)], check=True)
         binary_bytes = stripped.read_bytes()
+    assert str(ROOT).encode() not in binary_bytes
+    assert str(Path.home()).encode() not in binary_bytes
     provenance = dict(version=version, version_banner=version_banner, source_commit=source, target=target,
                       rustc=run(['rustc', '+1.90.0', '-Vv']), build_command=command,
                       generic_cpu=True, runtime_simd=True, cuda=False,
                       required_glibc=glibc[-1] if glibc else None,
                       shared_libraries=libraries, binary_sha256=digest(binary_bytes), debug_symbols=False,
-                      precision='f64', strict_scope='Pinned-build comparisons; not universal cross-libm bit equality')
+                      source_paths_remapped=True, precision='f64', strict_scope='Pinned-build comparisons; not universal cross-libm bit equality')
     files = {'psmc-rs': binary_bytes}
     for path in ['LICENSE', 'NOTICE.md', 'CITATION.cff', 'README.md',
-                 'docs/binary-install.md', 'reference/LICENSE.psmc.txt',
+                 'docs/binary-install.md', 'docs/tutorial.md', 'docs/bootstrap-resume.md',
+                 'scripts/plot_curve.py', 'reference/LICENSE.psmc.txt',
                  'reference/LICENSE.phlash.txt']:
         files[path] = (ROOT/path).read_bytes()
     files['examples/synthetic.psmcfa'] = (ROOT/'tests/fixtures/workload.psmcfa').read_bytes()

@@ -39,6 +39,9 @@ exact C reproduction is restricted to the tested toolchain/build. Version and mo
 are recorded in the output. Release notes distinguish smoke tests, full platform
 qualification and scientific validation.
 
+For inspection, splitting, bootstrap resume and plotting, follow the
+[five-minute tutorial](tutorial.md).
+
 ## Build from source
 
 Install the pinned Rust toolchain and your system C linker/zlib, then run:

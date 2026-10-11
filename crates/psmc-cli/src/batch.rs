@@ -4,7 +4,7 @@ use crate::{Options, default_seed, fit, snapshot::string, write_trace};
 use psmc_core::{Sequence, em::NoObserver, rng::LegacyRng};
 use psmc_io::{read_sequences, resample_indices};
 use std::{
-    fs::{self, File, OpenOptions},
+    fs::{self, OpenOptions},
     io::BufWriter,
     path::PathBuf,
     sync::{
@@ -21,6 +21,7 @@ pub struct BatchOptions {
     output_dir: Option<String>,
     reverse: bool,
     shared: bool,
+    pub resume: bool,
 }
 impl Default for BatchOptions {
     fn default() -> Self {
@@ -31,6 +32,7 @@ impl Default for BatchOptions {
             output_dir: None,
             reverse: false,
             shared: true,
+            resume: false,
         }
     }
 }
@@ -171,6 +173,8 @@ fn job(
     let mut stats = open("stats.json")?;
     stats.write_all(report.json(options, seed).as_bytes())?;
     stats.flush()?;
+    output.flush()?;
+    crate::checkpoint::complete(directory, index, report.nonfinite_output)?;
     Ok(JobReport {
         index,
         seed,
@@ -205,8 +209,18 @@ pub fn run(mut options: Options) -> Result<(), Box<dyn std::error::Error>> {
     );
     // Check before reading/allocating; create_dir below also prevents races with
     // an existing directory/symlink without replacing any user content.
-    if fs::symlink_metadata(&directory).is_ok() {
+    if !config.resume && fs::symlink_metadata(&directory).is_ok() {
         return Err("bootstrap output directory must not already exist".into());
+    }
+    if config.resume {
+        if options.seed.is_none() {
+            return Err(
+                "--resume requires the original --seed (recorded in resume-contract.txt)".into(),
+            );
+        }
+        if !fs::symlink_metadata(&directory)?.is_dir() {
+            return Err("resume directory must be a real directory, not a symlink".into());
+        }
     }
     let budget = config
         .memory_mib
@@ -311,7 +325,46 @@ pub fn run(mut options: Options) -> Result<(), Box<dyn std::error::Error>> {
         .try_reserve_exact(config.replicates)
         .map_err(|_| "too many bootstrap replicates to allocate")?;
     results.resize_with(config.replicates, || None);
-    fs::create_dir(&directory)?;
+    if !config.resume {
+        fs::create_dir(&directory)?;
+    }
+    let _lock = crate::checkpoint::lock(&directory)?;
+    let identity = crate::checkpoint::identity(&options, &sequences, seed, config.replicates)?;
+    crate::checkpoint::contract(&directory, &identity, config.resume)?;
+    let mut pending = Vec::new();
+    for (index, slot) in results.iter_mut().enumerate() {
+        if let Some(nonfinite) = crate::checkpoint::verify(&directory, index)? {
+            let mut rng = LegacyRng::new(seed + index as i64);
+            let (indices, _) = resample_indices(&sequences, &mut rng)?;
+            let length = indices
+                .iter()
+                .map(|&i| sequences[i].observations.len())
+                .sum();
+            *slot = Some(Ok(JobReport {
+                index,
+                seed: seed + index as i64,
+                indices,
+                length,
+                nonfinite,
+            }));
+        } else {
+            pending.push(index);
+        }
+    }
+    // Verify every completed result before moving any interrupted output.
+    for &index in &pending {
+        crate::checkpoint::preserve_partial(&directory, index)?;
+    }
+    if config.reverse {
+        pending.reverse();
+    }
+    if options.progress || config.resume {
+        eprintln!(
+            "bootstrap: {} verified completed, {} pending",
+            config.replicates - pending.len(),
+            pending.len()
+        );
+    }
     let results = Mutex::new(results);
     let next = AtomicUsize::new(0);
     let pool = std::sync::Arc::new(psmc_cpu::record_pool::RecordPool::default());
@@ -325,7 +378,10 @@ pub fn run(mut options: Options) -> Result<(), Box<dyn std::error::Error>> {
         Vec::new()
     };
     let fast_workers = topology.iter().take(workers).filter(|c| c.fast).count();
-    let remaining = AtomicUsize::new(config.replicates);
+    let remaining = AtomicUsize::new(pending.len());
+    if pending.is_empty() {
+        pool.stop();
+    }
     let worker_affinity = Mutex::new(vec![None; workers]);
     std::thread::scope(|scope| {
         for worker in 0..workers {
@@ -337,7 +393,7 @@ pub fn run(mut options: Options) -> Result<(), Box<dyn std::error::Error>> {
             let sequences = &sequences;
             let directory = &directory;
             let results = &results;
-            let config = &config;
+            let pending = &pending;
             let worker_affinity = &worker_affinity;
             scope.spawn(move || {
                 let pinned = topology
@@ -359,25 +415,29 @@ pub fn run(mut options: Options) -> Result<(), Box<dyn std::error::Error>> {
                     // Near the tail, lower-frequency CPUs help existing record
                     // jobs rather than owning one of the final long-lived fits.
                     let position = next.fetch_update(Ordering::Relaxed, Ordering::Relaxed, |p| {
-                        if p >= config.replicates
-                            || (slower && config.replicates - p <= fast_workers)
-                        {
+                        if p >= pending.len() || (slower && pending.len() - p <= fast_workers) {
                             None
                         } else {
                             Some(p + 1)
                         }
                     });
                     let Ok(position) = position else { break };
-                    let index = if config.reverse {
-                        config.replicates - 1 - position
-                    } else {
-                        position
-                    };
+                    let index = pending[position];
                     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
                         job(options, sequences, directory, index, seed + index as i64)
                             .map_err(|e| e.to_string())
                     }))
                     .unwrap_or_else(|_| Err("fit worker panicked; partial output retained".into()));
+                    if options.progress {
+                        eprintln!(
+                            "bootstrap replicate {index}: {}",
+                            if result.is_ok() {
+                                "completed"
+                            } else {
+                                "failed"
+                            }
+                        );
+                    }
                     results.lock().expect("result lock")[index] = Some(result);
                     if remaining.fetch_sub(1, Ordering::AcqRel) == 1 {
                         pool.stop();
@@ -453,7 +513,22 @@ pub fn run(mut options: Options) -> Result<(), Box<dyn std::error::Error>> {
         items.join(",")
     );
     use std::io::Write;
-    let mut file = File::create(directory.join("manifest.json"))?;
+    let manifest_path = directory.join("manifest.json");
+    if manifest_path.exists() {
+        let mut n = 0;
+        loop {
+            let previous = directory.join(format!("manifest.previous-{n}.json"));
+            if !previous.exists() {
+                fs::rename(&manifest_path, previous)?;
+                break;
+            }
+            n += 1;
+        }
+    }
+    let mut file = OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .open(manifest_path)?;
     file.write_all(manifest.as_bytes())?;
     file.flush()?;
     if failed > 0 {
