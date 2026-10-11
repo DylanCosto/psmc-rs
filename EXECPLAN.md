@@ -1451,3 +1451,23 @@ JSON evidence. It fails if the run stops without a report. No final comparison
 has passed yet. Active supervision stays paused at the user's preference; the
 pipeline's built-in safety monitor remains running. Check the actual processes
 and work/hg001-genome/run.log / audit.log before any resume or status claim.
+
+## Controlled HG001 speed comparison queued — 2026-10-11
+
+User requested single-core C/strict/equivalent followed by full-core Rust after
+the active comparison finishes. Prospective docs/hg001-speed-protocol.md fixes
+the same binaries/input/N30 options, CPU 0 for all single-core runs, then allowed
+CPUs 0–15 for Rust. One warmup and three measured repetitions per configuration;
+single-core order rotates, full-core order alternates. All fits are sequential.
+Strict keeps its 8192 MiB budget; report actual admitted workers and explicitly
+label full-affinity strict memory-limited rather than claim 16 active workers.
+
+bench/hg001_speed.py waits for the current runner and independent finisher to
+exit, requires the integrity audit and strict parity, freezes provenance, and
+uses the existing process/resource guards. Every output must match its audited
+engine output. GNU time supplies elapsed/CPU/RSS; retain load/pressure samples,
+all repeats, fallback counts and median/range. Scientific screening is separate
+and any failure is retained. No production code, input or existing protocol
+changed. Eight targeted Python tests passed, including real affinity enforcement,
+resource limits, audit dependency rejection, order and output mismatch checks.
+Speed measurements remain pending. Do not resume the cancelled simulations.
