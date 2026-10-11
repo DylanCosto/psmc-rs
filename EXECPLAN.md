@@ -1985,3 +1985,39 @@ frozen qualification artifact changed. Regenerate archives before publication;
 retain the original archive/replay evidence and verify executable identity.
 The audit also checks annotated tag identities and commit/tag credential patterns.
 The owner email decision remains pending; no public release or history rewrite.
+
+### Publication-ready private draft — remaining owner decision
+
+Native CI38163968928 passed on8cffa32 for Linux x86-64 and ARM64. Corrected
+archives include40 files each, including the pinned Rust runtime notices. Both
+executables are byte-identical to6b29df6 native binaries; the whole-genome replay
+therefore applies without rerunning inference. Archive hashes:
+- x86-64:1b55e1f59ce2a432e1452b94aed3a5e452a92224c4c97843ce6448f9f6ff7941
+- ARM64:98b9b6ff8c736cb0cd8c617b7c3e59072a7095e955f0343a7e5f5c147f8b031d
+Evidence: bench/release-licensed-archives.json.
+
+The unpublished tag was moved from6b29df6 to8cffa32 using an exact remote lease;
+its original object/history are preserved in ignored work/pre-runtime-notices-v0.8.0.bundle.
+No commit history was rewritten. Replaced only our private draft assets with the
+corrected archives. Downloaded all eight uploaded assets and verified global,
+external and internal SHA256 manifests, equality with native artifacts, x86 strict
+C golden bytes, equivalent completion and both CSV exports. Evidence:
+bench/release-upload-verification.json. Draft release remains PRIVATE, unpublished.
+
+The updated container passed strict golden, equivalent, export and completed
+bootstrap resume checks under one CPU/1GiB/no network/read-only root/non-root user.
+All runtime notices and executable hash were independently verified in the image.
+Evidence: bench/container-licensed-smoke.json. No container registry publish.
+Installed the downloaded x86 executable as bin/psmc-rs-v0.8.0 and atomically
+updated bin/psmc-rs; verified and preserved the original0.7.0 baseline hash.
+
+All independent launch preparation is done. Pending: required owner choice about
+public exposure of the existing personal commit/tag email. Do not interpret an
+unanswered or preselected option as consent; do not expose history or rewrite it.
+After the choice, address metadata with original evidence preserved, rerun the
+publication audit, publish the authorized repo/release and verify anonymous
+access/downloads. Until then, no routine monitoring or further campaigns are
+needed. External-lab materials are prepared, but no recipients are authorized
+and no invitations/announcements or independent-feedback claims have been made.
+Goal remains incomplete solely because public publication is not yet authorized
+for the specific metadata discovered by the final audit.

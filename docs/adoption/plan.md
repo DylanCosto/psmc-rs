@@ -60,8 +60,10 @@ reports remain immutable except clearly labeled current status/link corrections.
 - [x] Tutorial and workflow features verified (2092668; native CI 38154388521).
 - [x] Stable-model investigation concluded; candidate isolated, adoption deferred.
 - [x] Broader qualification completed and independently audited; all declared screens passed.
-- [ ] Public release/assets independently verified.
-- [ ] Onboarding/outreach materials delivered; external participation recorded.
+- [x] Native archives, uploaded private-draft assets and local container independently verified.
+- [ ] Public publication and anonymous download verified; owner metadata decision pending.
+- [x] Onboarding checklist, feedback form, methods note and announcement draft prepared.
+- [ ] External participation: no recipients authorized or feedback received; owner-led follow-up.
 
 ## Decisions and open inputs
 
@@ -70,3 +72,21 @@ ORCID, affiliation, DOI or coauthor. Preserve Heng Li/GRL/Broad notices and cite
 Li & Durbin's original PSMC paper. New feature release version is selected only
 when scope freezes; do not tag an unfinished candidate. The current private repo
 remains private while release preparation and the publication audit are underway.
+
+### Release candidate ready for the publication decision
+
+Private draft `v0.8.0` points to `8cffa32df97d7d7c980863bd8c965b88c98748fd`.
+Native Linux x86-64 and ARM64 CI38163968928 passed. All eight uploaded draft
+assets were downloaded and checked against the native build artifacts; all40
+packaged files per architecture passed their checksums. Downloaded x86 execution
+passed strict golden, equivalent completion and both provenance exports. Runtime
+notices are bundled. Executables are unchanged from the whole-genome replay.
+Container workflow and completed-bootstrap resume passed; no registry image is
+published. Verified0.8.0 is installed in project-local bin/, retaining0.7.0.
+
+The audit found one personal email identity in existing commit/tag metadata.
+The owner has been asked whether to publish it unchanged or use a no-reply
+publication history while retaining original evidence privately. Until answered,
+the repository stays private and the release stays draft. No history rewrite or
+public announcement has been performed. Draft downloads do not prove anonymous
+public access; that final check follows the publication decision.

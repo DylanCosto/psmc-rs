@@ -1,0 +1,174 @@
+{
+  "image_id": "sha256:7c3c7ba440f0ba11e81c0788fb675a5032f501631788aef322e6d4cc57d8bc48",
+  "source_commit": "8cffa32df97d7d7c980863bd8c965b88c98748fd",
+  "archive_sha256": "1b55e1f59ce2a432e1452b94aed3a5e452a92224c4c97843ce6448f9f6ff7941",
+  "native_ci": "https://github.com/DylanCosto/psmc-rs/actions/runs/38163968928",
+  "dockerfile_sha256": "d575c3b269fa26db1084dcf4677b8397e00c8bb2abfa2438fb36699e224a6c9b",
+  "cpus": 1,
+  "memory_limit": "1g",
+  "network": "none",
+  "read_only_root": true,
+  "non_root_user": true,
+  "runs": [
+    {
+      "mode": "strict",
+      "output_sha256": "1234471d7e4dc87f290f391ef2c601c5eb2e6c787d855d5c35085909c6e6f66b",
+      "export_sha256": "b8f154e905622a4c8e7a7098db46fe296221d3035e0b0d1116a8d83a4c01a7e9",
+      "strict_c_exact": true,
+      "export_provenance": true
+    },
+    {
+      "mode": "equivalent",
+      "output_sha256": "d40ba3d8f33fe04224776ff4bfb469b4af81f6d44ca9ce4a86db735b076749f7",
+      "export_sha256": "fa51c6d84639e2fb3a0f7251820e731411088085a6fd8b8ceb481fa5a8291642",
+      "strict_c_exact": null,
+      "export_provenance": true
+    }
+  ],
+  "commands": [
+    {
+      "args": [
+        "--mode",
+        "strict",
+        "--record-workers",
+        "1",
+        "--memory-mib",
+        "256",
+        "--seed",
+        "42",
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "10",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "/data/synthetic.psmcfa"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "export",
+        "--mutation-rate",
+        "1.25e-8",
+        "--generation-years",
+        "25",
+        "--bin-bp",
+        "100",
+        "--output",
+        "/data/strict.csv",
+        "/data/strict.psmc"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "--mode",
+        "equivalent",
+        "--record-workers",
+        "1",
+        "--memory-mib",
+        "256",
+        "--seed",
+        "42",
+        "-p",
+        "4+5*3+4",
+        "-N",
+        "10",
+        "-t",
+        "15",
+        "-r",
+        "4",
+        "/data/synthetic.psmcfa"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "export",
+        "--mutation-rate",
+        "1.25e-8",
+        "--generation-years",
+        "25",
+        "--bin-bp",
+        "100",
+        "--output",
+        "/data/equivalent.csv",
+        "/data/equivalent.psmc"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "bootstrap",
+        "--seed",
+        "42",
+        "--replicates",
+        "3",
+        "--workers",
+        "2",
+        "--memory-mib",
+        "256",
+        "-N",
+        "5",
+        "-I",
+        "0",
+        "--output-dir",
+        "/data/bootstrap",
+        "/data/synthetic.psmcfa"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "bootstrap",
+        "--resume",
+        "--seed",
+        "42",
+        "--replicates",
+        "3",
+        "--workers",
+        "2",
+        "--memory-mib",
+        "256",
+        "-N",
+        "5",
+        "-I",
+        "0",
+        "--output-dir",
+        "/data/bootstrap",
+        "/data/synthetic.psmcfa"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "completed_bootstrap_resume_artifacts_exact": true,
+  "bootstrap_hashes": {
+    "replicate-00.stats.json": "21807dc576c053c2198ab667d6729b7637ba54383ae4478d8e5cbac8eb4a1c9b",
+    "replicate-00.draws.jsonl": "88cff83b7b269fa913edd8a481a0df9459bfe22161869b51ada72ea17deb4d50",
+    "replicate-02.stats.json": "fceead95eca931e0405a792be4d58be0165329e75b447f60c0749da2df195b33",
+    "replicate-01.stats.json": "2e30be9a6106de910a94d36aab194d7ecbdc8f5708f140bd3d6d561431c8be57",
+    "replicate-00.psmc": "3249d13daa3a6862158bbebcf707eea83c8fdf9a890c8bfd258940918c69b4a9",
+    "replicate-02.complete": "f426e179abb3f3eeea7648c8ce85f02a0c72fac3aade3e5cb2e2972eb1bddde2",
+    "replicate-02.draws.jsonl": "239c1468d6d5b95210e86aed9e806eb94f8037d6846ad57680f47c037c900c58",
+    "replicate-02.psmc": "8162bfcaa5a2bcf7c71b95409a6166942c20c45044e5843bfdca46e130d1c185",
+    "replicate-01.psmc": "ebc3314625cf8dc1826278010034995c6c278addb54fae4d69d6ceee71893af3",
+    "replicate-00.complete": "d533a072e33db460417b4679ea69e3b14b68cad93dd968d664102e6b6dda1e41",
+    "replicate-01.draws.jsonl": "51400fe332a0c56dad7906d0a803d1afed1573ba25a87f0f60728d1e0ec3caf5",
+    "replicate-01.complete": "52c93667181feab4ecf8edbad9192669a897eaf10530370b1a581d9b7f05f2c7"
+  },
+  "scope": "Local x86-64 Debian container only; no ARM-container, whole-genome container or performance claim",
+  "runtime_notices_verified": {
+    "README.md": "278e74d09d5432c0f4c324961982216393f839a99427b1c59a85115d1451c173",
+    "LICENSE-compiler-builtins.txt": "ab6eec6caf0fa5775e411c7a8bc6a45c4ef2956b0980b157ab74fc5cd62a928b",
+    "LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "BSD-2-Clause.txt": "f32fb3b417a194167cfad068223fc975ba96c5960513a10f66a3c28720aec1df",
+    "inventory.json": "dca0752eea0ee3851a68aa93b036034805c51f8ef35d6ca09fe19050129c240c",
+    "COPYRIGHT-library.html": "025c0dd1236493fcd5b6386b68453852e6528722bd5f8dce5949e94d225e7a60",
+    "LICENSE-MIT": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1",
+    "Unicode-3.0.txt": "f5062c9a188d81dfe66b56db4182dcf9e4b17c0d9b0d311a8e20b3a1b075c443"
+  },
+  "binary_sha256": "e27d7bbf7250b8a121fdd985690cc47de18ffa952105c0cf00bdfcce9d6230f5"
+}
