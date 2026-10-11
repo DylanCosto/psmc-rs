@@ -1902,3 +1902,16 @@ Next actions when report.json exists and continuation status is completed:
    repository/tagged release/binaries only after remaining gates. Download and
    test uploaded assets. Preserve0.7.0 baseline and original inputs.
 No external invitations/announcements have been sent. Goal remains active.
+
+2026-10-11 follow-up: verified controller598391 is live in/proc, waiting for
+the unchanged14GiB RAM floor before hg001-chr22-8+8+8+8-c-fma. Do not restart.
+Independently checked all60 completed bootstrap output/stat/trace hashes, all
+rounds, sampling/RNG replay, memory admission and finite status. All30 pairs
+pass the predeclared numerical screen; maximum primary-band difference is
+0.000873245 of strict bootstrap SD (0.0873%, versus10% descriptive bound),
+with no undefined ratios. Compact checkpoint evidence is in
+bench/adoption-bootstrap-checkpoint-audit.json; complete campaign audit is still
+pending additional patterns and is not replaced by this checkpoint.
+Completed HG00123-state control: strict/C-O2 bytes exact; C-FMA/C-O2 and
+equivalent/strict both pass the fixed screen. Hosted strict CI38159589496
+passed on9ea9c88, including live C goldens and diagnostic tests.
