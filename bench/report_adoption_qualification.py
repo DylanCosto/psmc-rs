@@ -125,11 +125,16 @@ def main():
     lines += ['', '## Resources and fallback behavior', '',
               'Stages were sequential, low priority, under a 12 GiB address-space ceiling and',
               '512 MiB per-file limit. Bootstrap admission was 8192 MiB with up to 16 workers;',
-              'additional Rust fits used at most four record workers and 4096 MiB admission.',
+              'both manifests admitted 16 pool workers (fit/helper roles are distinct).',
+              'Additional Rust fits used at most four record workers and 4096 MiB admission.',
               'C additional-pattern fits had single-CPU affinity. Shared-host runtimes below',
               'are resource evidence, not a new speed comparison.', '',
               '| Stage | Elapsed seconds | Peak RSS MiB |', '|---|---:|---:|']
-    for name,run in results['runs'].items():
+    stage_order = ['split', 'bootstrap-strict', 'bootstrap-equivalent'] + [
+        f'{dataset}-{pattern}-{mode}' for dataset in ['hg001-chr22', 'hg002-chr1']
+        for pattern in ['4+5x3+4', '8+8+8+8'] for mode in ['c-o2', 'c-fma', 'strict', 'equivalent']]
+    for name in stage_order:
+        run = results['runs'][name]
         lines.append(f"| {name} | {run['wall_seconds']:.2f} | {run['timing']['peak_rss_kib']/1024:.2f} |")
     if audit.get('preserved_preflight_pause'):
         lines += ['', 'The initial runner stopped after all 30 strict fits when available RAM failed',
@@ -143,6 +148,8 @@ def main():
               'against all resource samples; 14 GiB available RAM was required before stages.', '']
     for mode,counters in audit['stats_totals'].items():
         lines.append(f"- Bootstrap {mode}: {counters['structured_fallbacks']} structured fallbacks / {counters['model_updates']} model updates.")
+    equivalent = audit['stats_totals']['equivalent']
+    lines += ['', f"Equivalent bootstrap fallbacks represent {100*equivalent['structured_fallbacks']/equivalent['model_updates']:.4f}% of model updates."]
     lines += ['', 'Additional-pattern per-fit counters, exact commands, output/timing hashes and',
               'source/binary identities are retained in the [results](../bench/adoption-qualification-results.json),',
               '[independent audit](../bench/adoption-qualification-audit.json) and',

@@ -59,7 +59,7 @@ reports remain immutable except clearly labeled current status/link corrections.
 - [x] Foundations and packaged binary verified (native x86-64/ARM64 CI; CFF validated).
 - [x] Tutorial and workflow features verified (2092668; native CI 38154388521).
 - [x] Stable-model investigation concluded; candidate isolated, adoption deferred.
-- [ ] Broader qualification completed and limitations documented.
+- [x] Broader qualification completed and independently audited; all declared screens passed.
 - [ ] Public release/assets independently verified.
 - [ ] Onboarding/outreach materials delivered; external participation recorded.
 

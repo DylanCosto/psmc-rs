@@ -1941,3 +1941,28 @@ root, a non-root user, one CPU and1GiB ceiling. The image executable hash matche
 the verified native archive. Evidence: bench/container-workflow-smoke.json; local
 image psmc-rs:workflow-62460c6. No registry image, ARM-container or whole-genome
 container qualification is claimed. Original container evidence/images retained.
+
+### Adoption milestone4 — complete and independently audited
+
+All19 frozen stages completed, including the explicit resource-pause continuation.
+All4 additional-pattern strict trajectories match C-O2 bytes (including line
+endings, excluding only the version header). All4 C-FMA/C-O2 controls and all4
+equivalent comparisons pass the unchanged screens. All30 matched whole-genome
+bootstrap pairs pass; the largest primary difference is0.0873% of bootstrap SD,
+with zero undefined ratios. No pair triggers the predeclared fresh-LL rule.
+
+The audit verifies hashes, original split boundaries, independent RNG replay,
+completion/statistics/trace markers, admission budgets, timing records, observed
+resource floors, curves/scalars, screens and bootstrap SD. Sourcee0867ad and all
+frozen inputs/binaries/protocols remain unchanged. Raw-report SHA256:
+f3ff22d3b945018f77a6af1b12dac652a8a07c3d674a432888372fbf5bf5de32.
+Evidence: bench/adoption-qualification-{results,audit,summary}.json and
+docs/adoption-qualification-report.md. Original failed pilot screens remain.
+
+Equivalent recorded1890 structured fallbacks /3335544 model updates; these are
+retained, not excluded. Strict/equivalent batch peak RSS1396.99/633.96MiB; runtimes
+are shared-host resource observations, not a new speed benchmark. Minimum
+observed available RAM7.752GiB and disk70.313GiB respected runtime floors.
+Publication metadata choice remains unresolved. Final native asset packaging and
+whole-genome binary continuity checks are next; the checker now waits for the
+unchanged14GiB preflight instead of starting a stage below its resource floor.

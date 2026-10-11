@@ -1,6 +1,6 @@
 # PSMC-rs 0.8.0 — native binaries and reproducible workflows
 
-Release candidate: unpublished; broader qualification is still running.
+Published assets and release status are listed on [GitHub Releases](https://github.com/DylanCosto/psmc-rs/releases).
 
 **Use `--mode strict` for exact C reproduction on the pinned, tested build.**
 CPU fits still default to equivalent f64 mode, with QU rather than QD. This release
@@ -36,9 +36,15 @@ source/input/output tamper rejection, splitfa differential and extracted-archive
 checks are required. The local x86-64 container also passed strict golden and
 equivalent smoke checks with networking disabled.
 
-The broader production campaign is in progress under its frozen protocol: 30 matched public HG001 whole-genome bootstrap pairs and additional patterns
-on HG001 chr22/HG002 chr1, including C compiler controls. Its results, failures and scope will be recorded separately; this release note
-does not claim that the pending campaign passed.
+The [broader production campaign](adoption-qualification-report.md) passed the
+predeclared screens on all 30 matched HG001 whole-genome bootstrap pairs. The
+largest primary-band difference was 0.0873% of the strict bootstrap SD, below the
+10% descriptive bound. All four additional 23/32-state HG001/HG002 comparisons
+passed, with strict/C byte parity and passing C compiler controls. No pair
+triggered the prospectively declared likelihood-diagnostic rule. The original
+resource stop and subsequent guarded continuation are retained in the evidence.
+These results cover the tested inputs/settings; they are not a universal accuracy
+claim or a measured whole-genome distribution of C compiler noise.
 Historical speed results remain labeled v0.6.3, not advertised as fresh v0.8.0 timings.
 
 ## Numerical investigation and remaining limits

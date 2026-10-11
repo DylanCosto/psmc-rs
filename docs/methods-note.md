@@ -61,8 +61,12 @@ pilot fits retained improving directions, so stationary ridges and full converge
 were not established. A stable-formula prototype remains isolated from production:
 component accuracy alone did not establish safe optimizer behavior.
 
-The additional-pattern and whole-genome bootstrap campaign is in progress under
-the [release qualification protocol](adoption-qualification-protocol.md). The prepared public inputs have ascertainment limitations and
+Thirty matched whole-genome bootstrap pairs passed the predeclared screens and
+uncertainty bound; the largest primary-band difference was 0.0873% of strict
+bootstrap SD. Four additional 23/32-state public-input comparisons passed, with
+strict/C byte parity and passing compiler controls. See the
+[release qualification report](adoption-qualification-report.md) and its frozen
+protocol for exact configurations and limitations. The prepared public inputs have ascertainment limitations and
 are implementation fixtures, not recommended demographic analysis pipelines. No
 clinical validity, universal history recovery, or accuracy for arbitrary data is claimed.
 

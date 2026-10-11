@@ -96,7 +96,9 @@ a fresh v0.8.0 speed benchmark. [Full results and ranges](docs/hg001-speed-repor
 Strict has pinned-C byte regressions. Equivalent has component tests, public-data
 comparisons and known-truth panels. Linux x86-64 and ARM64 binaries pass native
 regression and extraction tests; whole-genome scientific evidence is from x86-64.
-The [validation overview](docs/validation-overview.md) distinguishes each scope.
+The broader release panel passed its fixed screens on 30 matched whole-genome
+bootstrap pairs and four additional 23/32-state public-input comparisons. The
+[validation overview](docs/validation-overview.md) distinguishes each scope.
 
 The original 20 Mb pilot's four outliers remain visible: their between-mode
 likelihood paths are shallow, but all four have improving directions. Numerical

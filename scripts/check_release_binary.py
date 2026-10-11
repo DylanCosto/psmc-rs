@@ -4,6 +4,8 @@ import argparse
 import hashlib
 import json
 import os
+import signal
+import time
 from pathlib import Path
 import subprocess
 import sys
@@ -34,8 +36,17 @@ def main():
     output=ROOT/'work/release-binary-check';output.mkdir(exist_ok=False)
     guard.OUT=output  # Separate process/directory; frozen runner source and campaign are untouched.
     records={}
+    status=dict(pid=os.getpid(), status='starting', release_source_commit=build['source_commit'])
+    deadline=time.monotonic()+12*3600
+    def interrupted(*_): raise RuntimeError('binary check interrupted while waiting')
     try:
         for mode in ['strict','equivalent']:
+            signal.signal(signal.SIGTERM, interrupted); signal.signal(signal.SIGINT, interrupted)
+            status.update(status='waiting_for_resources', mode=mode);save(output/'status.json',status)
+            while guard.available()<14*guard.GIB:
+                if time.monotonic()>deadline:raise RuntimeError('12-hour resource wait deadline')
+                time.sleep(15)
+            status.update(status='running', mode=mode);save(output/'status.json',status)
             trace=output/(mode+'.draws.jsonl')
             os.environ['PSMC_BOOTSTRAP_TRACE']=str(trace)
             run=guard.stage(mode,[binary,'--mode',mode,'-b','--seed','20261011',
@@ -58,8 +69,10 @@ def main():
             if isinstance(x,dict):return {k:relative(v) for k,v in x.items()}
             return x
         save(ROOT/'bench/release-binary-check.json',relative(result))
+        status.update(status='completed');save(output/'status.json',status)
         print('Both released-binary whole-genome bootstrap outputs and draw traces match frozen fits exactly')
     except BaseException as error:
+        status.update(status='failed',error=repr(error));save(output/'status.json',status)
         save(output/'failure.json',dict(error=repr(error)));raise
     finally:os.environ.pop('PSMC_BOOTSTRAP_TRACE',None)
 

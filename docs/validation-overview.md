@@ -10,7 +10,7 @@ one does not imply the others.
 | Native Linux CI | x86-64 and ARM64 builds, Rust/component tests, live C golden comparison, archive extraction and short fits |
 | Bootstrap resume | Real process interruption, verified completed-result reuse, exact output/draw parity, tamper and concurrent-writer rejection on synthetic batches |
 | Public HG001 whole autosomes | Same-input C/strict/equivalent comparison; no demographic ground truth |
-| Broader production campaign | In progress: thirty whole-genome bootstrap pairs; additional 23/32-state public-input fits and C compiler controls; no completed result claimed yet |
+| Broader production campaign | Thirty whole-genome pairs passed the fixed screens/uncertainty bound; four 23/32-state public-input comparisons passed, with strict/C byte parity and passing C compiler controls |
 | Known-truth 200 Mb panel | Prospective primary-band/event criteria across 30 simulated datasets, with strict/C parity |
 | Initial 20 Mb pilot | Failed screens retained; weak recent-time recovery and four outliers investigated, not erased |
 | Stable-model prototype | Diagnostic-only component/fixed-parameter accuracy and synthetic refits; not production arithmetic |
@@ -19,7 +19,7 @@ one does not imply the others.
 ## Reports and protocols
 
 - [Whole-autosome numerical comparison](hg001-genome-report.md)
-- [Broader release qualification protocol](adoption-qualification-protocol.md) (campaign in progress)
+- [Broader release qualification](adoption-qualification-report.md) and [prospective protocol](adoption-qualification-protocol.md)
 - [200 Mb known-truth panel](known-truth-200mb-report.md)
 - [Original pilot report](qualification-report.md) and [outlier diagnostics](pilot-ridge-report.md)
 - [Stable-model investigation](stable-model-report.md)
