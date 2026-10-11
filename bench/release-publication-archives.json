@@ -1,0 +1,85 @@
+[
+  {
+    "archive": "work/release-publication-artifacts/native-aarch64-unknown-linux-gnu/psmc-rs-0.8.0-aarch64-unknown-linux-gnu.tar.gz",
+    "archive_sha256": "66eae15cc4ce08000e8d5c1efd54093bed701a7724a3e44207a1bf93dd694ac2",
+    "files_verified": 42,
+    "build": {
+      "version": "0.8.0",
+      "version_banner": "psmc-rs 0.8.0; equivalent-default f64 CPU; strict available; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+      "source_commit": "d91ab61f78bc7a399d30f53e01f7d54b8f03717b",
+      "target": "aarch64-unknown-linux-gnu",
+      "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)\nbinary: rustc\ncommit-hash: 1159e78c4747b02ef996e55082b704c09b970588\ncommit-date: 2025-09-14\nhost: aarch64-unknown-linux-gnu\nrelease: 1.90.0\nLLVM version: 20.1.8",
+      "build_command": [
+        "cargo",
+        "+1.90.0",
+        "build",
+        "--release",
+        "--locked",
+        "--offline",
+        "--target",
+        "aarch64-unknown-linux-gnu"
+      ],
+      "generic_cpu": true,
+      "runtime_simd": true,
+      "cuda": false,
+      "required_glibc": "2.34",
+      "shared_libraries": [
+        "libz.so.1",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "binary_sha256": "4b247fe217cea3a539671cbe927b1310bfe87bae3cc9bb719cdcb24581a1afa8",
+      "debug_symbols": false,
+      "source_paths_remapped": true,
+      "precision": "f64",
+      "strict_scope": "Pinned-build comparisons; not universal cross-libm bit equality"
+    },
+    "native_ci": "https://github.com/DylanCosto/psmc-rs/actions/runs/38170017723",
+    "extracted_dir": "work/release-publication-extracted/psmc-rs-0.8.0-aarch64-unknown-linux-gnu",
+    "executable_identical_to_previous_verified_archive": true,
+    "rust_runtime_notices_verified": true
+  },
+  {
+    "archive": "work/release-publication-artifacts/native-x86_64-unknown-linux-gnu/psmc-rs-0.8.0-x86_64-unknown-linux-gnu.tar.gz",
+    "archive_sha256": "d0e21eb43a762ccd1b563e9c801c95fe8c758f4c893723e3e0d9afd1d7ca372e",
+    "files_verified": 42,
+    "build": {
+      "version": "0.8.0",
+      "version_banner": "psmc-rs 0.8.0; equivalent-default f64 CPU; strict available; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+      "source_commit": "d91ab61f78bc7a399d30f53e01f7d54b8f03717b",
+      "target": "x86_64-unknown-linux-gnu",
+      "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)\nbinary: rustc\ncommit-hash: 1159e78c4747b02ef996e55082b704c09b970588\ncommit-date: 2025-09-14\nhost: x86_64-unknown-linux-gnu\nrelease: 1.90.0\nLLVM version: 20.1.8",
+      "build_command": [
+        "cargo",
+        "+1.90.0",
+        "build",
+        "--release",
+        "--locked",
+        "--offline",
+        "--target",
+        "x86_64-unknown-linux-gnu"
+      ],
+      "generic_cpu": true,
+      "runtime_simd": true,
+      "cuda": false,
+      "required_glibc": "2.34",
+      "shared_libraries": [
+        "libz.so.1",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "binary_sha256": "e27d7bbf7250b8a121fdd985690cc47de18ffa952105c0cf00bdfcce9d6230f5",
+      "debug_symbols": false,
+      "source_paths_remapped": true,
+      "precision": "f64",
+      "strict_scope": "Pinned-build comparisons; not universal cross-libm bit equality"
+    },
+    "native_ci": "https://github.com/DylanCosto/psmc-rs/actions/runs/38170017723",
+    "extracted_dir": "work/release-publication-extracted/psmc-rs-0.8.0-x86_64-unknown-linux-gnu",
+    "executable_identical_to_previous_verified_archive": true,
+    "rust_runtime_notices_verified": true
+  }
+]

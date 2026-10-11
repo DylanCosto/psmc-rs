@@ -61,19 +61,20 @@ reports remain immutable except clearly labeled current status/link corrections.
 - [x] Stable-model investigation concluded; candidate isolated, adoption deferred.
 - [x] Broader qualification completed and independently audited; all declared screens passed.
 - [x] Native archives, uploaded private-draft assets and local container independently verified.
-- [ ] Public publication and anonymous download verified; final sanitized build pending.
+- [x] Public publication and anonymous download verified; release0.8.0 published.
 - [x] Onboarding checklist, feedback form, methods note and announcement draft prepared.
-- [ ] External participation: no recipients authorized or feedback received; owner-led follow-up.
+External participation remains owner-led follow-up: no recipients authorized or feedback received.
 
-## Decisions and open inputs
+## Decisions and follow-up
 
 Default citation author: Dylan Costo unless corrected by the owner; no invented
 ORCID, affiliation, DOI or coauthor. Preserve Heng Li/GRL/Broad notices and cite
-Li & Durbin's original PSMC paper. New feature release version is selected only
-when scope freezes; do not tag an unfinished candidate. The current private repo
-remains private while release preparation and the publication audit are underway.
+Li & Durbin's original PSMC paper. Release0.8.0 is now public following the owner-approved privacy rewrite and final
+publication audit. Original evidence remains private. External pilot recipients,
+preprint author details and any additional registry integration remain owner-led
+follow-up rather than claimed completed actions.
 
-### Release candidate ready for the publication decision
+### Historical preparation: release candidate before the publication decision
 
 Private draft `v0.8.0` points to `8cffa32df97d7d7c980863bd8c965b88c98748fd`.
 Native Linux x86-64 and ARM64 CI38163968928 passed. All eight uploaded draft
@@ -97,3 +98,12 @@ preserved in a private archived repository and verified local bundle. A separate
 publication repository contains sanitized history; all64 source trees are exact.
 The remaining steps are native publication rebuilds, final audit, public release
 and anonymous download verification. See publication-provenance.md and its mapping.
+
+
+### Completion
+
+Release0.8.0 is public with both Linux archives. Native build38170017723 passed;
+anonymous downloads, all manifests, extracted x86 fits/exports and public-history
+privacy checks passed. The original private archive remains preserved. The
+[completion audit](completion.md) links requirement-by-requirement evidence and
+states limits. No external invitations or announcement messages were sent.

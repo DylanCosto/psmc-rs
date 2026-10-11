@@ -2035,3 +2035,28 @@ docs/publication-history-map.json. Frozen reports and raw private evidence remai
 intact. The map resolves their original source IDs; original hosted runs stay
 private and are not claimed as public CI. Public native build/release verification
 is next. This decision resolves the prior publication blocker.
+
+### Public0.8.0 release — completion evidence
+
+Published the separate sanitized repository (ID1414719384) and releasev0.8.0 at
+source d91ab61f78bc7a399d30f53e01f7d54b8f03717b. Original repository ID1414485371
+remains PRIVATE and archived. Public native CI38170017723 passed x86-64 and ARM64.
+Both publication executable hashes equal the previously validated binaries, so
+existing final whole-genome replay evidence applies without a redundant campaign.
+
+All eight release assets were downloaded anonymously. Verified native artifact
+identity, global/external/internal checksums, all42 files per archive and x86 strict
+C golden/equivalent completion/CSV provenance. Anonymous clone1419 reachable Git
+objects contains no owner personal email. Original private-repository and two
+old email-bearing source URLs are inaccessible through checked anonymous requests.
+Private vulnerability reporting is enabled. Evidence:
+bench/release-publication-archives.json, bench/public-release-verification.json,
+bench/publication-history-audit.json, bench/publication-access-verification.json.
+
+The completion audit is docs/adoption/completion.md. All authorized implementation,
+validation, release, presentation and preparation deliverables are complete.
+External recipient selection/recruitment, announcement sending, the user's own
+workload, registry submissions and manuscript authorship details are not claimed;
+no authorization/input for those follow-ups was supplied. Historical scientific
+failures and hardware/scope limits remain explicit. No new speed claim was made.
+Original frozen sources/protocols/data/binaries and0.7.0 baseline remain intact.

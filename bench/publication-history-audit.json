@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "source_commit": "d91ab61f78bc7a399d30f53e01f7d54b8f03717b",
+  "owner_decision": "GitHub no-reply publication",
+  "no_reply": "99520325+DylanCosto@users.noreply.github.com",
+  "rewritten_commit_trees_verified": 64,
+  "history_mapping_sha256": "fe24790048c4dda706c50e3c81b50504b7a3e304d9b28eb0d0494bca60df91a0",
+  "personal_email_absent_from_all_reachable_objects": true,
+  "original_bundle_sha256": "78c7666f3f488cd9f2f703a4d5f7694a2fc521a15901b158013502b1dfcb38bb",
+  "original_repository": {
+    "id": 1414485371,
+    "name": "DylanCosto/psmc-rs-private-evidence",
+    "private": true,
+    "archived": true
+  },
+  "publication_repository": {
+    "id": 1414719384,
+    "name": "DylanCosto/psmc-rs",
+    "fork": false
+  },
+  "audit_summary": {
+    "head": "d91ab61f78bc7a399d30f53e01f7d54b8f03717b",
+    "scope": "Reachable Git objects and tracked path inventory; known credential patterns only, commit/tag identity exposure; manual review still required",
+    "blob_count": 1022,
+    "blob_bytes": 37952916,
+    "tracked_files": 759,
+    "tracked_bytes": 30307559,
+    "credential_like_findings": [],
+    "tracked_private_work_trees": [],
+    "absolute_home_path_files": [
+      "bench/cuda-environment.json",
+      "bench/cuda-final-validation.json",
+      "bench/cuda-validation.json",
+      "bench/phase1-differential.json",
+      "bench/phase1-numerical-before-safety.json",
+      "bench/phase1-pre-final-partial.json",
+      "bench/phase1-smoke.json",
+      "bench/phase2-kernel-benchmark.json",
+      "bench/phlash.json"
+    ],
+    "historical_input_like_objects": 109,
+    "input_objects_outside_fixture_tree": [],
+    "non_noreply_commit_or_tag_identity_count": 0,
+    "author_metadata_publication_accepted": false,
+    "automated_blockers": false,
+    "manual_review": "Required for fixture provenance and historical build/test path context before making repository public"
+  },
+  "manual_review": "Historical home paths are build/compiler/test paths in the nine recorded reports. All 109 input-like historical objects remain under synthetic test fixtures, with preserved generator provenance. No raw human data, private work tree or credential-pattern finding. Known-pattern scan is not a guarantee of secret absence."
+}
