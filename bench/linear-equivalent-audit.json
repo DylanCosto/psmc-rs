@@ -1,0 +1,144 @@
+{
+  "status": "completed",
+  "passed": true,
+  "base_commit": "9aff5a5",
+  "binary_sha256": "f9038bf475c99b73558a3bc50ce4ac269f556ba6a4556d8db84add1f601ff399",
+  "protocol_sha256": "a334c96fe05f3cf4141a1fd1bb85e9368b89309c8e6715b675d7e5327c46aa25",
+  "reference_commit": "82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+  "datasets": {
+    "hg001": {
+      "fits": 31,
+      "max_bootstrap_sd_fraction": 0.026556574079137894,
+      "distribution": {
+        "curve_max_log": {
+          "median": 5.977523821765196e-05,
+          "p90": 0.0073292914325922
+        },
+        "theta_relative": {
+          "median": 5.394026029757242e-06,
+          "p90": 1.1060172628841739e-05
+        },
+        "rho_relative": {
+          "median": 5.333747720512523e-06,
+          "p90": 1.1640050102657605e-05
+        },
+        "ll_per_bin": {
+          "median": 4.199999966658652e-11,
+          "p90": 1.1232256924910164e-10
+        }
+      },
+      "ridge_diagnostics": [
+        {
+          "index": 13,
+          "deltas_per_bin": {
+            "ll_delta": 5.847977590747178e-10,
+            "q_on_strict_counts_delta": 4.45782789029181e-10,
+            "q_on_equivalent_counts_delta": 4.2355956975370644e-10
+          },
+          "max_lambda_slice_ll_change": 1.8988794181495905e-06
+        }
+      ],
+      "optimizer_callbacks": 3648446,
+      "structured_fallbacks": 2072
+    },
+    "hg002": {
+      "fits": 31,
+      "max_bootstrap_sd_fraction": 0.000610893345686138,
+      "distribution": {
+        "curve_max_log": {
+          "median": 4.681766319925007e-05,
+          "p90": 0.0002752347648029563
+        },
+        "theta_relative": {
+          "median": 3.3473160037400995e-06,
+          "p90": 1.2245925911690298e-05
+        },
+        "rho_relative": {
+          "median": 3.4551619963148593e-06,
+          "p90": 1.2515597838348841e-05
+        },
+        "ll_per_bin": {
+          "median": 1.6400008462369442e-11,
+          "p90": 2.6912326571954367e-11
+        }
+      },
+      "ridge_diagnostics": [],
+      "optimizer_callbacks": 3376873,
+      "structured_fallbacks": 1890
+    }
+  },
+  "tests": {
+    "release-tests": {
+      "passed": 49,
+      "failed": 0,
+      "ignored": 4,
+      "log_sha256": "bf0e802344ddfeae6757f848d8cfcc1b0c71e3da405249778eff0c4fb236f63e"
+    },
+    "debug-tests": {
+      "passed": 26,
+      "failed": 0,
+      "ignored": 0,
+      "log_sha256": "736d5adbd91f635d894abeed44dc88f7b85bb255b731342ea92e08d7e5c1ce8d"
+    }
+  },
+  "performance": {
+    "baseline": {
+      "wall_seconds": 35.030792465026025,
+      "cpu_seconds": 404.83,
+      "peak_rss_kib": 1078652
+    },
+    "candidate": {
+      "wall_seconds": 11.310168351046741,
+      "cpu_seconds": 138.4,
+      "peak_rss_kib": 33956
+    }
+  },
+  "wall_reduction": 0.6771363833022457,
+  "not_run": [
+    "CUDA hardware (four ignored tests)",
+    "ARM/NEON hardware",
+    "hosted CI"
+  ],
+  "limits": "Two public chromosome panels and two C compiler builds. Engineering acceptance, not general scientific equivalence. Performance comparison is to v0.5.1 equivalent; historical C timing is not a contemporaneous paired baseline. Scheduling is a separate milestone.",
+  "sources": {
+    "crates/psmc-cuda/src/tests.rs": "753fa30d7727174bc5fab8c0246a6e6b5ef71686d4313208ea2f6c8129f9dd48",
+    "crates/psmc-cuda/src/lib.rs": "362d860fee1b34ebf8a336373efbad7f51f24ff663f474dff4a43f6c0e3e9dae",
+    "crates/psmc-cuda/src/driver.rs": "c6f3c0a2fde681394206d5757c4a8b9162c071443ad001209e5b961b8203642f",
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/structured.rs": "bde4a8a509bbc0be21e960cd5b160177bf1bb4b993d8390af70575d0ab377e75",
+    "crates/psmc-core/src/em.rs": "8c239274958a4b7ac3a9a056e0be291dbdfac4351f6782b80bfce5692a5cb772",
+    "crates/psmc-core/src/lib.rs": "57902b19bdd8d420667fce43842771440094f7357d95d34b94553a5863c92cd0",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-core/src/hmm.rs": "c4e23cd96df10a6aa82ccff93688d4eadf9f470fd9bc81976f2749758efdde4f",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+    "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+    "crates/psmc-cli/tests/equivalent.rs": "209382c54e2e133dd5645b022d2c7b4760522979f13e62f561d417b3b7895431",
+    "crates/psmc-cli/tests/golden.rs": "60d75a67cf486d7ef6fed1cb769282946e7143e2e747e50ef0187e9de9f1cd40",
+    "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+    "crates/psmc-cli/src/main.rs": "f91475a1fac08473e3cdec2f6f6515eb497c4809a90c9e5aa92887cec71737a5",
+    "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+    "crates/psmc-cli/src/batch.rs": "60769949af0d273a075589de08770304a3727cbdbf631865162a0d477c93066c",
+    "crates/psmc-cli/src/legacy.rs": "48088171acee9b54d0cd23a233246e0ff2871fd34bed9c3cb55c5078b15d8efa",
+    "crates/psmc-cpu/examples/equivalent_components.rs": "5514baf8d3e4d4143558b7b6e576807ee8fcbf9363affe51b3bb4354485a6e44",
+    "crates/psmc-cpu/examples/equivalent_ridge.rs": "bc8328c605dae1f145e84c844ca15e95da166fc8e586f762c73a32531f5dfcce",
+    "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+    "crates/psmc-cpu/examples/cuda_fixture.rs": "11db2adbb88fc00f23ed2f3fe4c4092399e400cb1903bce55d2888f23886aa33",
+    "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+    "crates/psmc-cpu/src/tests.rs": "ea2a8ac0c418eca0a6f3da42aa4d0e7bfae87ec364a7a0b6372318173cbcbccb",
+    "crates/psmc-cpu/src/equivalent.rs": "3b07be1c769c1058c83b7be2d228e6b5b04142cc7c4159eef869697e5faef68a",
+    "crates/psmc-cpu/src/lockstep.rs": "64719c91189816cafb43dd1aa7c0b379a2df3d9bc474c93091ac87366fe28c7f",
+    "crates/psmc-cpu/src/simd.rs": "2373e1011971183f203597557d5211997cd20db7edc292c7c0aefe4efca39842",
+    "crates/psmc-cpu/src/lib.rs": "cffbc7c39092de78b18dc4efe3c9a4279236bad7073b4242b9dc96dc20170394",
+    "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179",
+    "crates/psmc-cpu/src/linear.rs": "a87bd35ed032f18eba2e995ce5a16cc037625d6ea8ee819bf41c9e531737b0f7"
+  },
+  "reports": {
+    "bench/linear-equivalent-ridge-hg001-13.json": "eb3842d5c3d482bb14d63ec23b49b6f8dcfa0a357d7e88cae948bc9a907471e4",
+    "bench/linear-equivalent-performance.json": "c211602e60d23d9eddcb216f6a31a7520990aaf8b38ea79e45416576dababd86",
+    "bench/linear-equivalent-validation.json": "6f84353978c9a40e51b245bfdf594595806df57f629f58eee9e4e20b2be79968",
+    "bench/linear-equivalent-controls.json": "de392b5ba760e98344b29b904fe67a274b3d64d194d97792a2668fc1e85c1c6a"
+  }
+}

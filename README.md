@@ -1,12 +1,12 @@
 # PSMC-rs — PSMC in Rust
 
-This Rust workspace implements the original PSMC model, full expected counts,
-Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.5.1
-adds bounded four-record AVX processing to opt-in structured mode: 7.7% less
-elapsed time and 18.2% lower peak memory than v0.5.0 equivalent mode on the tested
-30-HG001-bootstrap workload, with identical numerical output. Strict arithmetic
-remains the default. See the [numerical review and SIMD results](docs/equivalent-followup.md)
-and the [original structured-mode milestone](docs/equivalent-mode-report.md).
+This Rust workspace implements the original PSMC model and Hooke–Jeeves optimizer.
+Version 0.6.0 introduces an opt-in linear equivalent E-step with segmented AVX
+state scans, checkpointed messages and triangle-margin counts. It prints `QU`
+(unnormalized Q) instead of `QD`. Strict arithmetic and `QD` remain the default.
+See the [prospective protocol and derivation](docs/linear-equivalent.md).
+Earlier [v0.5.1 results](docs/equivalent-followup.md) and the
+[original structured milestone](docs/equivalent-mode-report.md) remain historical.
 
 Version 0.4.1
 adds ordered 64-state AVX normalization, joint-source transition tiles and emission
@@ -34,20 +34,19 @@ cargo build --release --locked --offline
 ./target/release/psmc-rs --mode equivalent -p '4+25*2+4+6' -N 30 input.psmcfa > result.psmc
 ```
 
-Equivalent mode supports the CPU backend and uses the same bootstrap command and
-worker controls. It changes floating-point grouping and optimizer trajectories.
-Median curve differences are similar in scale to variation between two vanilla C
-builds. One HG001 bootstrap changes an early lambda by about 22%; a fresh
-likelihood slice supports weak identification in that direction. The original
-curve screen also rejects four vanilla-C fits, so its failure is not by itself
-evidence of a structured-code defect. See the [numerical review](docs/equivalent-followup.md).
-Equivalent mode remains experimental; strict mode reproduces the tested reference
-exactly. Both modes preserve full transition counts and the Q entropy normalizer;
-transition counting still costs quadratic work per site. `--snapshot` is rejected
-in this experimental mode. Output headers, per-fit statistics and batch manifests
-identify the selected mode. `model_updates` counts optimizer callbacks;
-`structured_fallbacks` counts those callbacks whose factors fail eligibility and
-therefore use the literal calculation. E-step factor refresh is excluded.
+Equivalent mode supports the CPU backend and the same bootstrap controls. It
+changes floating-point grouping and optimizer trajectories. Segmented state
+scans operate on every record length; checkpoint boundaries retain HMM messages.
+Only triangle margins, diagonal counts and emission counts are accumulated in
+its normal E-step. `QU` omits the entropy constant from every optimizer objective;
+compare its before/after values only within a round. Valid ineligible models
+use full counts reconstructed lazily from that round's frozen posterior.
+
+Equivalent mode remains experimental; strict reproduces the tested reference
+exactly and retains full transition counts and the entropy normalizer. Equivalent
+`--snapshot` is rejected. Headers, statistics and manifests identify the mode.
+`model_updates` counts optimizer callbacks, and `structured_fallbacks` counts
+callbacks that use the literal calculation. E-step refreshes are excluded.
 
 The optimized `--backend cpu` path is the default; `--backend dense`
 selects the retained scalar oracle. `cargo test` byte-compares both against

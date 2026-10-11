@@ -1,0 +1,182 @@
+{
+  "binary_sha256": "57fe40ac810647f4154b241e0cb4dca82d677f275937a5cafe46e2a71219a7ac",
+  "inputs": {
+    "work/equivalent/c-baseline/hg001-sample-13.psmcfa": "fbb1f6daca9066418f2b4ff16d1a26b365d49efba294898a6578f2d048313ac0",
+    "work/equivalent/validation/hg001-strict-batch/replicate-13.psmc": "d512fbf41d50dd8de959996a89eeba26e33b47389f5ce824f95ecfc9a4be0490",
+    "work/linear-equivalent/validation/hg001-batch/replicate-13.psmc": "4fb3bb0b48f08f4172baa210c2b9ff8d834ab6da20ccf5b899090724e1bacf09"
+  },
+  "rows": [
+    {
+      "kind": "endpoints",
+      "strict_ll": -122983.81211845466,
+      "equivalent_ll": -122983.81241085354,
+      "ll_delta": -0.0002923988795373589,
+      "q_on_strict_counts_delta": -0.0002228913945145905,
+      "q_on_equivalent_counts_delta": -0.00021177978487685323,
+      "strict_lambda0": 845981.020820268,
+      "equivalent_lambda0": 775500.761907261
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "strict",
+      "fraction": 0,
+      "lambda0": 845981.0208202673,
+      "ll_delta_from_base": 0.0,
+      "q_strict_counts_delta": 0.0,
+      "q_equivalent_counts_delta": 0.0
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "strict",
+      "fraction": 0.125,
+      "lambda0": 836832.0810118344,
+      "ll_delta_from_base": -9.28761437535286e-07,
+      "q_strict_counts_delta": -1.2489908840507269e-06,
+      "q_equivalent_counts_delta": -1.330947270616889e-06
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "strict",
+      "fraction": 0.25,
+      "lambda0": 827782.0832571308,
+      "ll_delta_from_base": 4.844332579523325e-08,
+      "q_strict_counts_delta": 4.0279701352119446e-08,
+      "q_equivalent_counts_delta": 1.1356314644217491e-07
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "strict",
+      "fraction": 0.375,
+      "lambda0": 818829.9575381927,
+      "ll_delta_from_base": -1.4370743883773685e-06,
+      "q_strict_counts_delta": -1.53979635797441e-06,
+      "q_equivalent_counts_delta": -1.4330726116895676e-06
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "strict",
+      "fraction": 0.5,
+      "lambda0": 809974.6454088544,
+      "ll_delta_from_base": -8.818315109238029e-07,
+      "q_strict_counts_delta": -1.0907824616879225e-06,
+      "q_equivalent_counts_delta": -1.0802177712321281e-06
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "strict",
+      "fraction": 0.625,
+      "lambda0": 801215.0998696195,
+      "ll_delta_from_base": -1.2990640243515372e-06,
+      "q_strict_counts_delta": -1.5154946595430374e-06,
+      "q_equivalent_counts_delta": -1.1515221558511257e-06
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "strict",
+      "fraction": 0.75,
+      "lambda0": 792550.2852438644,
+      "ll_delta_from_base": -1.023727236315608e-06,
+      "q_strict_counts_delta": -1.3252429198473692e-06,
+      "q_equivalent_counts_delta": -1.075852196663618e-06
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "strict",
+      "fraction": 0.875,
+      "lambda0": 783979.1770553803,
+      "ll_delta_from_base": -1.7935526557266712e-06,
+      "q_strict_counts_delta": -2.845190465450287e-06,
+      "q_equivalent_counts_delta": -2.105371095240116e-06
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "strict",
+      "fraction": 1,
+      "lambda0": 775500.7619072606,
+      "ll_delta_from_base": -1.8988794181495905e-06,
+      "q_strict_counts_delta": -2.2838939912617207e-06,
+      "q_equivalent_counts_delta": -1.8937280401587486e-06
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "equivalent",
+      "fraction": 0,
+      "lambda0": 845981.0208202673,
+      "ll_delta_from_base": -3.92465153709054e-07,
+      "q_strict_counts_delta": -5.443289410322905e-07,
+      "q_equivalent_counts_delta": -7.108028512448072e-07
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "equivalent",
+      "fraction": 0.125,
+      "lambda0": 836832.0810118344,
+      "ll_delta_from_base": -3.2974639907479286e-07,
+      "q_strict_counts_delta": -2.7776695787906647e-07,
+      "q_equivalent_counts_delta": -5.284673534333706e-07
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "equivalent",
+      "fraction": 0.25,
+      "lambda0": 827782.0832571308,
+      "ll_delta_from_base": 7.162161637097597e-07,
+      "q_strict_counts_delta": 5.67000824958086e-07,
+      "q_equivalent_counts_delta": 6.21977960690856e-07
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "equivalent",
+      "fraction": 0.375,
+      "lambda0": 818829.9575381927,
+      "ll_delta_from_base": 1.7842103261500597e-07,
+      "q_strict_counts_delta": 1.213338691741228e-07,
+      "q_equivalent_counts_delta": 1.7462298274040222e-09
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "equivalent",
+      "fraction": 0.5,
+      "lambda0": 809974.6454088544,
+      "ll_delta_from_base": -1.1423253454267979e-07,
+      "q_strict_counts_delta": -5.689798854291439e-08,
+      "q_equivalent_counts_delta": -2.3373286239802837e-07
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "equivalent",
+      "fraction": 0.625,
+      "lambda0": 801215.0998696195,
+      "ll_delta_from_base": 5.876063369214535e-08,
+      "q_strict_counts_delta": -3.67872416973114e-08,
+      "q_equivalent_counts_delta": -2.270098775625229e-07
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "equivalent",
+      "fraction": 0.75,
+      "lambda0": 792550.2852438644,
+      "ll_delta_from_base": 7.200287654995918e-08,
+      "q_strict_counts_delta": 7.057678885757923e-08,
+      "q_equivalent_counts_delta": 1.1961674317717552e-08
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "equivalent",
+      "fraction": 0.875,
+      "lambda0": 783979.1770553803,
+      "ll_delta_from_base": -5.980691639706492e-07,
+      "q_strict_counts_delta": -1.0608055163174868e-06,
+      "q_equivalent_counts_delta": -7.82747520133853e-07
+    },
+    {
+      "kind": "lambda_slice",
+      "base": "equivalent",
+      "fraction": 1,
+      "lambda0": 775500.7619072606,
+      "ll_delta_from_base": 0.0,
+      "q_strict_counts_delta": 0.0,
+      "q_equivalent_counts_delta": 0.0
+    }
+  ]
+}

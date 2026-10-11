@@ -1,4 +1,4 @@
-//! Experimental structured engine with full transition counts and Q normalizer. Cached counts exist only during one expectation call;
+//! Experimental structured engine with triangle margins and unnormalized Q. Cached counts exist only during one expectation call;
 //! the immutable model and encoded bytes therefore define their entire lifetime.
 use crate::{SimdMode, Workspace};
 use psmc_core::{
@@ -9,15 +9,12 @@ use psmc_core::{
     model_workspace::ModelWorkspace,
     structured::{Margins, StructuredModel},
 };
-use std::{
-    collections::{BTreeMap, HashMap, HashSet},
-    io,
-};
+use std::{collections::HashMap, io, sync::OnceLock};
 
 pub struct EquivalentBackend {
     workspace: Workspace,
-    lockstep: crate::lockstep::Lockstep,
-    pub lockstep_enabled: bool,
+    frozen: Option<(Model, Vec<Vec<u8>>)>,
+    dense_fallback: OnceLock<Counts>,
     settings: Settings,
     factors: StructuredModel,
     margins: Margins,
@@ -34,6 +31,7 @@ struct Cached {
     counts: Counts,
     likelihood: f64,
     backward_check: f64,
+    margins: Margins,
 }
 
 impl EquivalentBackend {
@@ -47,8 +45,8 @@ impl EquivalentBackend {
             #[cfg(debug_assertions)]
             factor_params: Vec::new(),
             workspace: Workspace::with_simd(states, mode)?,
-            lockstep: crate::lockstep::Lockstep::default(),
-            lockstep_enabled: true,
+            frozen: None,
+            dense_fallback: OnceLock::new(),
             model_workspace: ModelWorkspace::new(states),
             profile: false,
             cache_enabled: true,
@@ -89,15 +87,20 @@ impl ExpectationBackend for EquivalentBackend {
         iteration: usize,
         observer: &mut dyn Observer,
     ) -> io::Result<(Counts, f64)> {
-        // Reconstruct from exactly the current parameters, including the initial model.
         let mut current = model.clone();
         self.refresh(&mut current, &self.settings.clone());
         self.materialize_model(&mut current);
-        let prepared = self.workspace.prepare(&current);
+        let linear = self.eligible && !observer.needs_sequence_messages();
+        self.dense_fallback = OnceLock::new();
+        self.frozen = linear.then(|| {
+            (
+                current.clone(),
+                sequences.iter().map(|s| s.observations.clone()).collect(),
+            )
+        });
         let mut aggregate = Counts::zero(model.n);
+        self.margins = Margins::new(model.n);
         let mut likelihood = 0.0;
-        // Only duplicated byte strings warrant a saved count matrix. HashMap
-        // iteration order never participates in arithmetic or output order.
         let cache_enabled = self.cache_enabled && !observer.needs_sequence_messages();
         let mut occurrences = HashMap::<&[u8], usize>::new();
         if cache_enabled {
@@ -105,47 +108,8 @@ impl ExpectationBackend for EquivalentBackend {
                 *occurrences.entry(&sequence.observations).or_default() += 1;
             }
         }
-        // Evaluate independent equal-length unique records together, then add
-        // their saved counts in original input order below. Length grouping is
-        // only an execution schedule; records retain their own HMM boundaries.
-        let mut batched = HashMap::<usize, Cached>::new();
-        if self.lockstep_enabled
-            && self.eligible
-            && self.workspace.avx.is_some()
-            && !observer.needs_sequence_messages()
-        {
-            let mut seen = HashSet::<&[u8]>::new();
-            let mut groups = BTreeMap::<usize, Vec<usize>>::new();
-            for (i, sequence) in sequences.iter().enumerate() {
-                let obs = sequence.observations.as_slice();
-                if !cache_enabled || seen.insert(obs) {
-                    groups.entry(obs.len()).or_default().push(i);
-                }
-            }
-            for indices in groups.values() {
-                for group in indices.chunks_exact(4) {
-                    let records =
-                        std::array::from_fn(|lane| sequences[group[lane]].observations.as_slice());
-                    let results = self.lockstep.evaluate(
-                        &mut self.workspace,
-                        &prepared,
-                        records,
-                        &self.factors,
-                    );
-                    for (lane, result) in results.into_iter().enumerate() {
-                        batched.insert(
-                            group[lane],
-                            Cached {
-                                counts: result.counts,
-                                likelihood: result.likelihood,
-                                backward_check: result.backward_check,
-                            },
-                        );
-                    }
-                }
-            }
-        }
         let mut cache = HashMap::<&[u8], Cached>::new();
+        let prepared = (!linear).then(|| self.workspace.prepare(&current));
         for (index, sequence) in sequences.iter().enumerate() {
             self.counters.sequence_visits += 1;
             if self.cache_enabled && observer.needs_sequence_messages() {
@@ -155,50 +119,59 @@ impl ExpectationBackend for EquivalentBackend {
             if let Some(cached) = cache.get(observations) {
                 warn(cached.backward_check);
                 likelihood += cached.likelihood;
-                aggregate.add(&cached.counts); // one repeated addition, including tiny counts, per occurrence
+                aggregate.add(&cached.counts);
+                self.margins.add(&cached.margins);
                 self.counters.cache_hits += 1;
                 continue;
             }
-            if let Some(result) = batched.remove(&index) {
-                warn(result.backward_check);
-                likelihood += result.likelihood;
-                aggregate.add(&result.counts);
-                self.counters.sequence_evaluations += 1;
-                if occurrences
-                    .get(observations)
-                    .is_some_and(|&count| count > 1)
-                {
-                    cache.insert(observations, result);
+            let result = if linear {
+                let r = crate::linear::evaluate(
+                    &current,
+                    observations,
+                    &self.factors,
+                    self.workspace.avx.is_some(),
+                    false,
+                );
+                Cached {
+                    counts: r.counts,
+                    margins: r.margins,
+                    likelihood: r.likelihood,
+                    backward_check: r.backward_check,
                 }
-                continue;
-            }
-            let (messages, counts) = if self.eligible {
-                self.workspace
-                    .evaluate_structured(&prepared, observations, &self.factors)
             } else {
-                self.workspace.evaluate(&prepared, observations)
+                let prepared = prepared.as_ref().unwrap();
+                let (messages, counts) = if self.eligible {
+                    self.workspace
+                        .evaluate_structured(prepared, observations, &self.factors)
+                } else {
+                    self.workspace.evaluate(prepared, observations)
+                };
+                observer.sequence(iteration, index, sequence, messages, counts)?;
+                let mut margins = Margins::new(model.n);
+                margins.update(counts);
+                Cached {
+                    counts: counts.clone(),
+                    margins,
+                    likelihood: messages.log_likelihood,
+                    backward_check: messages.backward_check,
+                }
             };
-            warn(messages.backward_check);
-            likelihood += messages.log_likelihood;
-            observer.sequence(iteration, index, sequence, messages, counts)?;
-            aggregate.add(counts);
+            warn(result.backward_check);
+            likelihood += result.likelihood;
+            aggregate.add(&result.counts);
+            self.margins.add(&result.margins);
             self.counters.sequence_evaluations += 1;
             if occurrences
                 .get(observations)
                 .is_some_and(|&count| count > 1)
             {
-                cache.insert(
-                    observations,
-                    Cached {
-                        counts: counts.clone(),
-                        likelihood: messages.log_likelihood,
-                        backward_check: messages.backward_check,
-                    },
-                );
+                cache.insert(observations, result);
             }
         }
-        self.margins.update(&aggregate);
         Ok((aggregate, likelihood))
+    }
+    fn normalize_counts(&self, counts: &mut Counts) {
+        counts.q0 = 0.0;
     }
     fn update_model(&mut self, model: &mut Model, settings: &Settings) {
         if self.refresh(model, settings) {
@@ -222,6 +195,40 @@ impl ExpectationBackend for EquivalentBackend {
         );
         if self.eligible {
             self.factors.q(counts, model, &self.margins)
+        } else if let Some((frozen, records)) = &self.frozen {
+            // Invalid probabilities have the same sentinel/NaN outcome without
+            // reconstructing counts. Never clip factors or silently approximate
+            // a valid literal transition matrix with margins.
+            if model.emission[..2 * model.n]
+                .iter()
+                .chain(&model.transition)
+                .any(|x| x.is_nan() || *x <= 0.0)
+            {
+                return counts.q(model);
+            }
+            let dense = self.dense_fallback.get_or_init(|| {
+                let mut factors = StructuredModel::new(model.n);
+                let mut m = frozen.clone();
+                factors.update(&mut m, &self.settings);
+                factors.materialize(&mut m);
+                let mut sum = Counts::zero(model.n);
+                let mut cache = HashMap::<&[u8], Counts>::new();
+                for obs in records {
+                    let c = cache.entry(obs).or_insert_with(|| {
+                        crate::linear::evaluate(
+                            &m,
+                            obs,
+                            &factors,
+                            self.workspace.avx.is_some(),
+                            true,
+                        )
+                        .counts
+                    });
+                    sum.add(c);
+                }
+                sum
+            });
+            dense.q(model)
         } else {
             counts.q(model)
         }
@@ -373,7 +380,9 @@ mod tests {
         let (da, dl) = dense
             .expectation(&initial, &sequences, 1, &mut NoObserver)
             .unwrap();
-        close(&da.a, &ca.a, 1e-24);
+        let mut dm = Margins::new(initial.n);
+        dm.update(&da);
+        close(&dm.lower_row, &cached.margins.lower_row, 1e-24);
         close(&[dl], &[cl], 1e-14);
         for invalid in [0.0, f64::NAN, f64::INFINITY] {
             let mut model = initial.clone();
@@ -394,7 +403,7 @@ mod tests {
         assert_eq!(cached.stats().structured_fallbacks, 3);
     }
     #[test]
-    fn lockstep_aggregation_preserves_duplicates_tails_and_cache_disabled() {
+    fn linear_aggregation_preserves_duplicates_tails_and_cache_disabled() {
         if !crate::avx_available() {
             return;
         }
@@ -421,7 +430,7 @@ mod tests {
             .map(|&j| &sequences[j])
             .collect();
         let mut baseline = EquivalentBackend::with_simd(&settings, SimdMode::Auto).unwrap();
-        baseline.lockstep_enabled = false;
+        baseline.cache_enabled = false;
         let (want, ll) = baseline
             .expectation(&model, &refs, 1, &mut NoObserver)
             .unwrap();
@@ -461,10 +470,61 @@ mod tests {
             .expectation(&model, &refs, 1, &mut watcher)
             .unwrap();
         assert_eq!(watcher.0, refs.len());
-        assert_eq!(got.a, want.a);
-        assert_eq!(got.e, want.e);
-        assert_eq!(actual_ll, ll);
+        close(&got.e, &want.e, 1e-24);
+        close(&[actual_ll], &[ll], 1e-14);
         assert_eq!(observed.stats().snapshot_cache_bypass, refs.len() as u64);
+    }
+
+    #[test]
+    fn valid_literal_fallback_reconstructs_frozen_posterior_once() {
+        let settings = settings(23);
+        let model = Model::new(&settings, 20, 10000, &mut LegacyRng::new(42));
+        let sequence = Sequence {
+            name: "fallback".into(),
+            observations: (0..513)
+                .map(|i| {
+                    if i % 29 == 0 {
+                        1
+                    } else if i % 11 == 0 {
+                        2
+                    } else {
+                        0
+                    }
+                })
+                .collect(),
+        };
+        let refs = [&sequence, &sequence];
+        let mut backend = EquivalentBackend::with_simd(&settings, SimdMode::Auto).unwrap();
+        let (counts, _) = backend
+            .expectation(&model, &refs, 1, &mut NoObserver)
+            .unwrap();
+        let mut frozen = model.clone();
+        let mut factors = StructuredModel::new(model.n);
+        factors.update(&mut frozen, &settings);
+        factors.materialize(&mut frozen);
+        let record = crate::linear::evaluate(
+            &frozen,
+            &sequence.observations,
+            &factors,
+            backend.workspace.avx.is_some(),
+            true,
+        );
+        let mut dense = Counts::zero(model.n);
+        dense.add(&record.counts);
+        dense.add(&record.counts);
+        let mut candidate = model.clone();
+        candidate.params[0] *= 1.1;
+        backend.update_model(&mut candidate, &settings);
+        candidate.update(&settings);
+        backend.eligible = false; // exercise a valid literal fallback without changing its objective
+        assert!(backend.dense_fallback.get().is_none());
+        assert_eq!(backend.q(&counts, &candidate), dense.q(&candidate));
+        assert!(backend.dense_fallback.get().is_some());
+        assert_eq!(backend.q(&counts, &candidate), dense.q(&candidate));
+        backend
+            .expectation(&model, &refs, 2, &mut NoObserver)
+            .unwrap();
+        assert!(backend.dense_fallback.get().is_none());
     }
 
     #[test]

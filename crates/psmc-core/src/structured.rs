@@ -307,11 +307,12 @@ impl StructuredModel {
     }
 }
 
+#[derive(Clone, Debug)]
 pub struct Margins {
-    lower_row: Vec<f64>,
-    lower_col: Vec<f64>,
-    upper_row: Vec<f64>,
-    upper_col: Vec<f64>,
+    pub lower_row: Vec<f64>,
+    pub lower_col: Vec<f64>,
+    pub upper_row: Vec<f64>,
+    pub upper_col: Vec<f64>,
 }
 impl Margins {
     pub fn new(n: usize) -> Self {
@@ -320,6 +321,34 @@ impl Margins {
             lower_col: vec![0.0; n],
             upper_row: vec![0.0; n],
             upper_col: vec![0.0; n],
+        }
+    }
+    pub fn tiny(&mut self) {
+        let n = self.lower_row.len();
+        for k in 0..n {
+            self.lower_row[k] = k as f64 * 1e-25;
+            self.upper_col[k] = k as f64 * 1e-25;
+            self.upper_row[k] = (n - 1 - k) as f64 * 1e-25;
+            self.lower_col[k] = (n - 1 - k) as f64 * 1e-25;
+        }
+    }
+    pub fn add(&mut self, other: &Self) {
+        for (a, b) in self
+            .lower_row
+            .iter_mut()
+            .chain(&mut self.lower_col)
+            .chain(&mut self.upper_row)
+            .chain(&mut self.upper_col)
+            .zip(
+                other
+                    .lower_row
+                    .iter()
+                    .chain(&other.lower_col)
+                    .chain(&other.upper_row)
+                    .chain(&other.upper_col),
+            )
+        {
+            *a += b;
         }
     }
     pub fn update(&mut self, counts: &crate::hmm::Counts) {

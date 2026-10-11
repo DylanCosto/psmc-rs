@@ -1221,3 +1221,23 @@ correct the interpretation of the original numerical screens. No retrospective
 scientific-equivalence threshold is adopted. Next milestone is margins-only
 counts with an explicit objective-diagnostic contract and invalid-factor fallback.
 No further optimization candidate or inference job is pending for this follow-up.
+
+## Linear E-step milestone (in progress)
+
+User-authorized priorities: segmented within-record SIMD and margins-only counts
+with QU together, then deterministic shared record scheduling separately. No GPU,
+reduced precision, changed observation boundaries or reduced iteration budget.
+
+Decisions: predeclared C-calibrated distribution limits and 10% bootstrap-SD
+budget in docs/linear-equivalent.md before running candidate fits. Both existing
+C compiler panels pass. Strict remains the default. Valid literal fallbacks
+reconstruct full counts lazily from the same frozen E-step posterior; invalid
+candidates retain literal sentinel/NaN behavior. QU consistently omits the entropy
+constant, including fallback. Observer diagnostics retain full-count evaluation.
+
+Surprises: the first scalar surrounding loops hid nearly all scan gains; explicit
+AVX normalization, emission and margin updates reduced the HG001 five-round
+E-step screen from 1.90s to 0.52s. This screen is not the paired batch acceptance.
+The supplied scratchpad prototype was not present in the available workspace or
+Downloads; the implementation was independently derived and tested against the
+retained dense/structured paths. Numerical validation and paired timing ongoing.

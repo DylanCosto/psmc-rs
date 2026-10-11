@@ -1,4 +1,12 @@
-# Current local v0.5.1 CPU deliverable
+# Current local v0.6.0 CPU deliverable
+
+`bin/psmc-rs` and `bin/psmc-rs-v0.6.0` contain the tested linear equivalent E-step.
+Strict remains default. Equivalent prints QU and has a new numerical contract.
+See [results](docs/linear-equivalent-report.md), [audit](bench/linear-equivalent-audit.json),
+and [installation](bench/linear-equivalent-install.json). Earlier binaries and
+archives remain unchanged. No new portable archive is generated.
+
+# Historical local v0.5.1 CPU deliverable
 
 `bin/psmc-rs` and `bin/psmc-rs-v0.5.1` provide strict mode by default and optional
 structured CPU mode. Bounded four-record AVX reduces measured equivalent-mode

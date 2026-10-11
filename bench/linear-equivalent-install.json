@@ -1,0 +1,9 @@
+{
+  "version": "0.6.0",
+  "binaries": {
+    "bin/psmc-rs": "f9038bf475c99b73558a3bc50ce4ac269f556ba6a4556d8db84add1f601ff399",
+    "bin/psmc-rs-v0.6.0": "f9038bf475c99b73558a3bc50ce4ac269f556ba6a4556d8db84add1f601ff399",
+    "bin/psmc-rs-v0.5.1": "f46ab0c67d7cac6e9dcb9f341131f544589469ba6715d6ac15bcbd8cc34588eb"
+  },
+  "audit_sha256": "6fe6bcedf5f9b75f8e6bbaef3f4c3a30572a276f5aba68de1f4b6d1c57a1b723"
+}

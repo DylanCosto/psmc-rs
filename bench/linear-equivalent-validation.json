@@ -1,0 +1,1491 @@
+{
+  "status": "completed",
+  "binary_sha256": "f9038bf475c99b73558a3bc50ce4ac269f556ba6a4556d8db84add1f601ff399",
+  "protocol_sha256": "a334c96fe05f3cf4141a1fd1bb85e9368b89309c8e6715b675d7e5327c46aa25",
+  "runner_sha256": "1574eaea3f0144072bc40192d8b2b81df7eed56de42d59bce668ba77ac805fb8",
+  "runs": [
+    {
+      "command": [
+        "work/linear-equivalent/linear-tested",
+        "--mode",
+        "equivalent",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/NA12878_chr22.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 3.6794110909686424,
+      "time_wall_seconds": 3.67,
+      "user_seconds": 3.66,
+      "system_seconds": 0.01,
+      "peak_rss_kib": 10156,
+      "output_sha256": "2d9d107063caa828fc291df39ba512490e1117862237b47a5f0f302dfc4a9d04",
+      "output": "work/linear-equivalent/validation/hg001-original.psmc",
+      "optimizer_evaluations": [
+        4422,
+        4491,
+        3721,
+        4523,
+        4568,
+        4171,
+        4004,
+        3643,
+        3880,
+        4086,
+        3741,
+        4549,
+        4318,
+        3982,
+        4008,
+        3268,
+        3686,
+        4132,
+        3624,
+        3474,
+        4208,
+        3557,
+        3836,
+        3673,
+        3696,
+        3885,
+        3615,
+        3833,
+        3720,
+        3673
+      ],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "hg001-original",
+      "cpu_seconds": 3.67
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/linear-equivalent/linear-tested",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/linear-equivalent/validation/hg001-batch",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 10.335055424948223,
+      "time_wall_seconds": 10.33,
+      "user_seconds": 133.71,
+      "system_seconds": 0.23,
+      "peak_rss_kib": 33904,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/linear-equivalent/validation/hg001-batch-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "hg001-batch-time",
+      "cpu_seconds": 133.94,
+      "output_dir": "work/linear-equivalent/validation/hg001-batch"
+    },
+    {
+      "command": [
+        "work/linear-equivalent/linear-tested",
+        "--mode",
+        "strict",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/NA12878_chr22.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 15.601149256981444,
+      "time_wall_seconds": 15.6,
+      "user_seconds": 15.3,
+      "system_seconds": 0.16,
+      "peak_rss_kib": 516052,
+      "output_sha256": "1c450f5e13ed7ede7a479d14975d0aed472767b1f0777d16ed96dd5009c4a976",
+      "output": "work/linear-equivalent/validation/hg001-strict.psmc",
+      "optimizer_evaluations": [
+        4226,
+        4536,
+        3862,
+        4230,
+        4816,
+        4105,
+        4135,
+        3816,
+        3830,
+        3895,
+        3504,
+        4315,
+        4474,
+        3447,
+        3451,
+        3458,
+        3848,
+        3944,
+        3632,
+        3703,
+        3910,
+        3595,
+        3845,
+        3504,
+        3472,
+        3233,
+        4026,
+        4197,
+        3213,
+        4011
+      ],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "hg001-strict",
+      "cpu_seconds": 15.46
+    },
+    {
+      "command": [
+        "work/linear-equivalent/linear-tested",
+        "--mode",
+        "equivalent",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/cpu-next/hg002/HG002_GRCh38_chr1.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 15.996195835003164,
+      "time_wall_seconds": 15.99,
+      "user_seconds": 15.96,
+      "system_seconds": 0.02,
+      "peak_rss_kib": 37184,
+      "output_sha256": "d8ff1df249c59cfd33c7235cb173c84c536154ebc5d28847f0b867a8eddbaaff",
+      "output": "work/linear-equivalent/validation/hg002-original.psmc",
+      "optimizer_evaluations": [
+        4668,
+        4622,
+        5077,
+        3755,
+        4426,
+        3484,
+        4071,
+        3876,
+        4352,
+        3909,
+        3572,
+        3639,
+        4254,
+        3345,
+        3968,
+        2954,
+        4277,
+        3714,
+        3533,
+        3881,
+        3256,
+        3842,
+        3404,
+        3057,
+        3804,
+        3536,
+        3140,
+        3538,
+        3385,
+        3227
+      ],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "hg002-original",
+      "cpu_seconds": 15.98
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/linear-equivalent/linear-tested",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261101",
+        "--output-dir",
+        "work/linear-equivalent/validation/hg002-batch",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/cpu-next/large/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 40.8139846510021,
+      "time_wall_seconds": 40.81,
+      "user_seconds": 530.56,
+      "system_seconds": 0.86,
+      "peak_rss_kib": 89464,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/linear-equivalent/validation/hg002-batch-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "hg002-batch-time",
+      "cpu_seconds": 531.42,
+      "output_dir": "work/linear-equivalent/validation/hg002-batch"
+    },
+    {
+      "command": [
+        "work/linear-equivalent/linear-tested",
+        "--mode",
+        "strict",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/cpu-next/hg002/HG002_GRCh38_chr1.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 62.920944670040626,
+      "time_wall_seconds": 62.92,
+      "user_seconds": 62.21,
+      "system_seconds": 0.69,
+      "peak_rss_kib": 2515088,
+      "output_sha256": "4684d53f6a88a7cd98c90a4adb4271bcb07be8dc59b313fe1703fab2457652a2",
+      "output": "work/linear-equivalent/validation/hg002-strict.psmc",
+      "optimizer_evaluations": [
+        4886,
+        4354,
+        4775,
+        4007,
+        4054,
+        3735,
+        4245,
+        3777,
+        3596,
+        3965,
+        3465,
+        3530,
+        4128,
+        3718,
+        3882,
+        3147,
+        3492,
+        3540,
+        3355,
+        3713,
+        3356,
+        3706,
+        3137,
+        3307,
+        3548,
+        3022,
+        3097,
+        3282,
+        3531,
+        3227
+      ],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "hg002-strict",
+      "cpu_seconds": 62.9
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/linear-equivalent/linear-tested",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/linear-equivalent/validation/hg001-strict",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 42.830362543987576,
+      "time_wall_seconds": 42.82,
+      "user_seconds": 587.61,
+      "system_seconds": 2.06,
+      "peak_rss_kib": 1298620,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/linear-equivalent/validation/hg001-strict-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "hg001-strict-time",
+      "cpu_seconds": 589.67,
+      "output_dir": "work/linear-equivalent/validation/hg001-strict"
+    }
+  ],
+  "datasets": {
+    "hg001": {
+      "rows": [
+        {
+          "index": null,
+          "path": "work/linear-equivalent/validation/hg001-original.psmc",
+          "sha256": "2d9d107063caa828fc291df39ba512490e1117862237b47a5f0f302dfc4a9d04",
+          "difference": {
+            "curve_max_log": 1.9508750198959923e-05,
+            "curve_rms_log": 8.966936433408106e-06,
+            "interval_max_log": 1.950875019894275e-05,
+            "theta_relative": 7.65876112331703e-06,
+            "rho_relative": 6.6924401606817485e-06,
+            "ll_absolute": 1.8999999156221747e-05,
+            "ll_per_bin": 3.7387957449003313e-11,
+            "endpoint_relative": 1.261622038425114e-05
+          },
+          "sd_fraction": 0.0001515540972333769,
+          "ridge_required": false
+        },
+        {
+          "index": 0,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-00.psmc",
+          "sha256": "e81b222d518be642a9e7522d69a1c482900b1b2cee9df73b00b0d72e77235e4a",
+          "difference": {
+            "curve_max_log": 8.031507444528074e-05,
+            "curve_rms_log": 3.6093900580102064e-05,
+            "interval_max_log": 8.031507444561881e-05,
+            "theta_relative": 4.731119348829443e-06,
+            "rho_relative": 4.2198719254553765e-06,
+            "ll_absolute": 9.99998883344233e-06,
+            "ll_per_bin": 1.999997766688466e-11,
+            "endpoint_relative": 6.715684357088956e-06
+          },
+          "sd_fraction": 9.086653893632388e-05,
+          "ridge_required": false
+        },
+        {
+          "index": 1,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-01.psmc",
+          "sha256": "d3dbfcfb5484beb6f0a540b673ba4200c762aa8afe9c2b49755e2a6702da7d51",
+          "difference": {
+            "curve_max_log": 2.603515956545177e-05,
+            "curve_rms_log": 1.5534418954992474e-05,
+            "interval_max_log": 2.6035159565489833e-05,
+            "theta_relative": 3.792418264199772e-06,
+            "rho_relative": 4.314206673203042e-06,
+            "ll_absolute": 5.800000508315861e-05,
+            "ll_per_bin": 1.1232256924910164e-10,
+            "endpoint_relative": 5.386232761151702e-06
+          },
+          "sd_fraction": 0.00017137550403791563,
+          "ridge_required": false
+        },
+        {
+          "index": 2,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-02.psmc",
+          "sha256": "172180f486cd76e91cd7a01f907c36a9b83f1ad5882f1a18be6d29379a141a17",
+          "difference": {
+            "curve_max_log": 0.003074831331538519,
+            "curve_rms_log": 0.0013452924999708322,
+            "interval_max_log": 0.0030748313315383533,
+            "theta_relative": 5.575698807693285e-06,
+            "rho_relative": 6.038494261562929e-06,
+            "ll_absolute": 1.200000406242907e-05,
+            "ll_per_bin": 2.323915808902351e-11,
+            "endpoint_relative": 8.552122888538626e-06
+          },
+          "sd_fraction": 0.000632235555163613,
+          "ridge_required": false
+        },
+        {
+          "index": 3,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-03.psmc",
+          "sha256": "bb713aad47cb3ea80c246fbbc1a7a8a174e781fd561df1ea3ed11707d6004755",
+          "difference": {
+            "curve_max_log": 0.12915595361561927,
+            "curve_rms_log": 0.0565060103824348,
+            "interval_max_log": 0.12915595361561996,
+            "theta_relative": 0.00016768521194635434,
+            "rho_relative": 0.00016829558216639986,
+            "ll_absolute": 0.00012999997125007212,
+            "ll_per_bin": 2.5581229522727377e-10,
+            "endpoint_relative": 0.0002822965285519063
+          },
+          "sd_fraction": 0.026556574079137894,
+          "ridge_required": false
+        },
+        {
+          "index": 4,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-04.psmc",
+          "sha256": "3067557da9d39cfdcad01ee7cf3928ead7d32d23c8174ef30f3af1c4bbf1a5d8",
+          "difference": {
+            "curve_max_log": 0.0037156700782423613,
+            "curve_rms_log": 0.001608953950777264,
+            "interval_max_log": 0.0037156700782418543,
+            "theta_relative": 1.549014606113808e-06,
+            "rho_relative": 1.3989620632834363e-06,
+            "ll_absolute": 2.5000001187436283e-05,
+            "ll_per_bin": 5.0000002374872563e-11,
+            "endpoint_relative": 2.6279872576579895e-06
+          },
+          "sd_fraction": 0.0007640024708434828,
+          "ridge_required": false
+        },
+        {
+          "index": 5,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-05.psmc",
+          "sha256": "e67967d225a1640e1a7857c10f9bd7643a2835cd4c1f404b595c4c1018982629",
+          "difference": {
+            "curve_max_log": 0.0015829151150015264,
+            "curve_rms_log": 0.0006926424837085793,
+            "interval_max_log": 0.0015829151150022738,
+            "theta_relative": 6.783676617092464e-06,
+            "rho_relative": 7.22886357489073e-06,
+            "ll_absolute": 2.8999987989664078e-05,
+            "ll_per_bin": 5.7999975979328155e-11,
+            "endpoint_relative": 1.1515756947409823e-05
+          },
+          "sd_fraction": 0.00032547320766668447,
+          "ridge_required": false
+        },
+        {
+          "index": 6,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-06.psmc",
+          "sha256": "9a6161606636ca49ab33c64049efe825805ab8e37dd509ff567e8c33014510de",
+          "difference": {
+            "curve_max_log": 4.456656643353485e-05,
+            "curve_rms_log": 1.5681244984829838e-05,
+            "interval_max_log": 4.4566566433525945e-05,
+            "theta_relative": 5.394026029757242e-06,
+            "rho_relative": 5.28522884935878e-06,
+            "ll_absolute": 1.8999999156221747e-05,
+            "ll_per_bin": 3.7387957449003313e-11,
+            "endpoint_relative": 9.296876292545881e-06
+          },
+          "sd_fraction": 0.00019795696805908493,
+          "ridge_required": false
+        },
+        {
+          "index": 7,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-07.psmc",
+          "sha256": "b30d77a4179f503fe1f7657b4e991e408366795de2959a1c0bc0ec93c27a1eae",
+          "difference": {
+            "curve_max_log": 2.4197306942350116e-05,
+            "curve_rms_log": 9.07091856693123e-06,
+            "interval_max_log": 2.419730694234543e-05,
+            "theta_relative": 1.8745484900886796e-06,
+            "rho_relative": 2.2023379074690738e-06,
+            "ll_absolute": 1.7999991541728377e-05,
+            "ll_per_bin": 3.542015514375351e-11,
+            "endpoint_relative": 2.89797837025018e-06
+          },
+          "sd_fraction": 0.00011578296410320555,
+          "ridge_required": false
+        },
+        {
+          "index": 8,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-08.psmc",
+          "sha256": "b7a932460b67e7d0729be01927236b7848b425d68a32182ec06a65bb3eeea8d1",
+          "difference": {
+            "curve_max_log": 3.973684077895889e-05,
+            "curve_rms_log": 2.0191325634690504e-05,
+            "interval_max_log": 3.9736840778916385e-05,
+            "theta_relative": 3.098859496717658e-06,
+            "rho_relative": 3.2699706076886334e-06,
+            "ll_absolute": 6.000002031214535e-06,
+            "ll_per_bin": 1.200000406242907e-11,
+            "endpoint_relative": 4.9980742714481245e-06
+          },
+          "sd_fraction": 0.0001047532169481961,
+          "ridge_required": false
+        },
+        {
+          "index": 9,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-09.psmc",
+          "sha256": "09f6ae5e94952f83c0b6419bf41b55a67860dc8399954969d230446abe030617",
+          "difference": {
+            "curve_max_log": 0.0073292914325922,
+            "curve_rms_log": 0.0032391335034893626,
+            "interval_max_log": 0.007329291432593456,
+            "theta_relative": 2.8595249001322583e-06,
+            "rho_relative": 2.7670130829410644e-06,
+            "ll_absolute": 5.0000089686363935e-06,
+            "ll_per_bin": 9.531906032039335e-12,
+            "endpoint_relative": 5.2062146229779725e-06
+          },
+          "sd_fraction": 0.0027066250603819324,
+          "ridge_required": false
+        },
+        {
+          "index": 10,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-10.psmc",
+          "sha256": "4411f63d893d274781834ae30a028d553f30328ed1e9568465cae53d54d0c3d1",
+          "difference": {
+            "curve_max_log": 0.004462028217394831,
+            "curve_rms_log": 0.0019521815999214683,
+            "interval_max_log": 0.004462028217395178,
+            "theta_relative": 7.65214959882673e-06,
+            "rho_relative": 7.178757656068785e-06,
+            "ll_absolute": 1.8999999156221747e-05,
+            "ll_per_bin": 3.7387957449003313e-11,
+            "endpoint_relative": 1.3107152176272741e-05
+          },
+          "sd_fraction": 0.0009174658974769809,
+          "ridge_required": false
+        },
+        {
+          "index": 11,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-11.psmc",
+          "sha256": "96955244f8594e26ff0474a7cc2a62eb9ef32301d13dd1aebbd30842907edbe4",
+          "difference": {
+            "curve_max_log": 6.618325030258165e-05,
+            "curve_rms_log": 2.648105083752036e-05,
+            "interval_max_log": 6.618325030258446e-05,
+            "theta_relative": 1.4949542567143737e-05,
+            "rho_relative": 1.4602693581020015e-05,
+            "ll_absolute": 3.499999002087861e-05,
+            "ll_per_bin": 6.88725366173315e-11,
+            "endpoint_relative": 2.3370779514269033e-05
+          },
+          "sd_fraction": 0.0002314728020421122,
+          "ridge_required": false
+        },
+        {
+          "index": 12,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-12.psmc",
+          "sha256": "1736068a91c7895b8740f629e2cf6ef91b2d739aaa1aa31c83456e03a4c00872",
+          "difference": {
+            "curve_max_log": 0.0001853220673702083,
+            "curve_rms_log": 8.198114549074787e-05,
+            "interval_max_log": 0.00018532206737057236,
+            "theta_relative": 6.971106506199809e-06,
+            "rho_relative": 7.120903558754148e-06,
+            "ll_absolute": 9.999930625781417e-07,
+            "ll_per_bin": 1.9999861251562834e-12,
+            "endpoint_relative": 1.2259420707010227e-05
+          },
+          "sd_fraction": 0.0001599659344367849,
+          "ridge_required": false
+        },
+        {
+          "index": 13,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-13.psmc",
+          "sha256": "4fb3bb0b48f08f4172baa210c2b9ff8d834ab6da20ccf5b899090724e1bacf09",
+          "difference": {
+            "curve_max_log": 0.08698796024757982,
+            "curve_rms_log": 0.03805729510826832,
+            "interval_max_log": 0.08698796024758024,
+            "theta_relative": 7.028929517903598e-05,
+            "rho_relative": 7.106263000073594e-05,
+            "ll_absolute": 2.099999983329326e-05,
+            "ll_per_bin": 4.199999966658652e-11,
+            "endpoint_relative": 0.00011687251159628675
+          },
+          "sd_fraction": 0.01788614574580933,
+          "ridge_required": true
+        },
+        {
+          "index": 14,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-14.psmc",
+          "sha256": "5a088bddaa723b821736665d0f56ec5b970156154b0d736ab95d88969b5be6bb",
+          "difference": {
+            "curve_max_log": 3.3387836025244866e-05,
+            "curve_rms_log": 1.1720606168119042e-05,
+            "interval_max_log": 3.3387836025242453e-05,
+            "theta_relative": 5.902961221112842e-07,
+            "rho_relative": 7.27746371070205e-07,
+            "ll_absolute": 1.8999999156221747e-05,
+            "ll_per_bin": 3.7387957449003313e-11,
+            "endpoint_relative": 6.657708941746286e-07
+          },
+          "sd_fraction": 0.00012581709500601515,
+          "ridge_required": false
+        },
+        {
+          "index": 15,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-15.psmc",
+          "sha256": "f06caaa0e35ca5ce10b152a8cdf29375123beccd984f7705ade2b25c8e3a39cf",
+          "difference": {
+            "curve_max_log": 7.14496855322988e-05,
+            "curve_rms_log": 2.0020101670211778e-05,
+            "interval_max_log": 7.144968553238506e-05,
+            "theta_relative": 5.330462871680904e-06,
+            "rho_relative": 5.531656420640509e-06,
+            "ll_absolute": 3.700000524986535e-05,
+            "ll_per_bin": 7.280814122783112e-11,
+            "endpoint_relative": 8.20949912025808e-06
+          },
+          "sd_fraction": 0.00012130015853559435,
+          "ridge_required": false
+        },
+        {
+          "index": 16,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-16.psmc",
+          "sha256": "2069aa338881e05b38b4ec707f183f4e143b6daf5001994252b61f3a62769428",
+          "difference": {
+            "curve_max_log": 5.5680520742451556e-05,
+            "curve_rms_log": 2.3199145525030177e-05,
+            "interval_max_log": 5.5680520742408154e-05,
+            "theta_relative": 5.885881691266257e-06,
+            "rho_relative": 6.544651351367938e-06,
+            "ll_absolute": 1.4000004739500582e-05,
+            "ll_per_bin": 2.8000009479001163e-11,
+            "endpoint_relative": 1.0508512686905714e-05
+          },
+          "sd_fraction": 0.00016665930446960178,
+          "ridge_required": false
+        },
+        {
+          "index": 17,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-17.psmc",
+          "sha256": "567857a5cd8dce368a08a5e853fc3b50637d5aae5b55f7c69866094592c4a50d",
+          "difference": {
+            "curve_max_log": 5.918147967581833e-05,
+            "curve_rms_log": 1.900753313645358e-05,
+            "interval_max_log": 5.918147967579131e-05,
+            "theta_relative": 5.493184713046429e-06,
+            "rho_relative": 5.214664052527338e-06,
+            "ll_absolute": 5.60000044060871e-05,
+            "ll_per_bin": 1.1019609867683442e-10,
+            "endpoint_relative": 8.427176889989538e-06
+          },
+          "sd_fraction": 0.0001710845021858172,
+          "ridge_required": false
+        },
+        {
+          "index": 18,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-18.psmc",
+          "sha256": "a69cac77c0b4c02f01e5c78f7a9c597168047a3cc1c099039c0508f423c85b3c",
+          "difference": {
+            "curve_max_log": 4.452102648189182e-05,
+            "curve_rms_log": 1.69846315509982e-05,
+            "interval_max_log": 4.452102648195045e-05,
+            "theta_relative": 1.1060172628841739e-05,
+            "rho_relative": 1.1640050102657605e-05,
+            "ll_absolute": 4.600000102072954e-05,
+            "ll_per_bin": 9.200000204145909e-11,
+            "endpoint_relative": 1.8580185280885112e-05
+          },
+          "sd_fraction": 0.0002332440657436462,
+          "ridge_required": false
+        },
+        {
+          "index": 19,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-19.psmc",
+          "sha256": "71169c76f72f87ea5c756ee4db2ccd470a412b593e465b7407d5821b478504db",
+          "difference": {
+            "curve_max_log": 2.1851729505917294e-05,
+            "curve_rms_log": 1.027553015369259e-05,
+            "interval_max_log": 2.185172950591977e-05,
+            "theta_relative": 4.87973052108172e-06,
+            "rho_relative": 4.712050041996198e-06,
+            "ll_absolute": 4.099999205209315e-05,
+            "ll_per_bin": 7.940041453239566e-11,
+            "endpoint_relative": 7.539379764208425e-06
+          },
+          "sd_fraction": 0.00011074519873338386,
+          "ridge_required": false
+        },
+        {
+          "index": 20,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-20.psmc",
+          "sha256": "9aaf8a6eeb656d8a6b23352fcdd02ba9c5aede0fa0d2ba34de3466a49147cfce",
+          "difference": {
+            "curve_max_log": 5.977523821765196e-05,
+            "curve_rms_log": 1.8946358528526296e-05,
+            "interval_max_log": 5.977523821761258e-05,
+            "theta_relative": 2.8075533780546807e-06,
+            "rho_relative": 3.2050724758842294e-06,
+            "ll_absolute": 6.299999949987978e-05,
+            "ll_per_bin": 1.2599999899975956e-10,
+            "endpoint_relative": 4.805477223985208e-06
+          },
+          "sd_fraction": 0.00011413951682010348,
+          "ridge_required": false
+        },
+        {
+          "index": 21,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-21.psmc",
+          "sha256": "28ea3bf9b5fcda257a54a317e34bff4d726a4b8ac65c6712dd48f52e04ec18dd",
+          "difference": {
+            "curve_max_log": 1.4423004687347252e-05,
+            "curve_rms_log": 7.627811700404536e-06,
+            "interval_max_log": 1.442300468733631e-05,
+            "theta_relative": 2.4468211439134853e-07,
+            "rho_relative": 8.485614757108986e-08,
+            "ll_absolute": 1.00000761449337e-06,
+            "ll_per_bin": 2.0000152289867402e-12,
+            "endpoint_relative": 6.151072129105411e-07
+          },
+          "sd_fraction": 9.324278733520296e-05,
+          "ridge_required": false
+        },
+        {
+          "index": 22,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-22.psmc",
+          "sha256": "00d51f7c08fe88fa843286826020fb0503cee9aad9c235f8e198e9c18007e40f",
+          "difference": {
+            "curve_max_log": 3.512084927542736e-05,
+            "curve_rms_log": 1.7414849455989246e-05,
+            "interval_max_log": 3.5120849275400354e-05,
+            "theta_relative": 5.33598882719696e-06,
+            "rho_relative": 5.945498330162181e-06,
+            "ll_absolute": 4.600000102072954e-05,
+            "ll_per_bin": 9.051821879970787e-11,
+            "endpoint_relative": 8.435646493086285e-06
+          },
+          "sd_fraction": 0.0002019458754854783,
+          "ridge_required": false
+        },
+        {
+          "index": 23,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-23.psmc",
+          "sha256": "7de290e0d5e9ed7c628c534e27b1177c10d315c6d98c57af5ea3546c19b45413",
+          "difference": {
+            "curve_max_log": 5.204718409546061e-05,
+            "curve_rms_log": 2.3156970138858837e-05,
+            "interval_max_log": 5.204718409558294e-05,
+            "theta_relative": 3.275259666382668e-07,
+            "rho_relative": 3.577247474841e-07,
+            "ll_absolute": 2.7000001864507794e-05,
+            "ll_per_bin": 5.3130261350704557e-11,
+            "endpoint_relative": 5.091190864988961e-07
+          },
+          "sd_fraction": 9.938296561649744e-05,
+          "ridge_required": false
+        },
+        {
+          "index": 24,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-24.psmc",
+          "sha256": "a7fecbabdb83bbd6c98dd1e4b8220133b9957db029ed52626dea9c45b0face1f",
+          "difference": {
+            "curve_max_log": 1.5285042567647622e-05,
+            "curve_rms_log": 8.834150795612363e-06,
+            "interval_max_log": 1.5285042567425293e-05,
+            "theta_relative": 5.683708592295224e-06,
+            "rho_relative": 5.876695757255214e-06,
+            "ll_absolute": 6.900000153109431e-05,
+            "ll_per_bin": 1.357773281995618e-10,
+            "endpoint_relative": 9.053890277728062e-06
+          },
+          "sd_fraction": 0.00011437016847753954,
+          "ridge_required": false
+        },
+        {
+          "index": 25,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-25.psmc",
+          "sha256": "684bc378f1ebb5c2be9017da910ebefa60dee0e3f3b16ede8a085c414df74212",
+          "difference": {
+            "curve_max_log": 4.809898147128955e-05,
+            "curve_rms_log": 1.713457508124185e-05,
+            "interval_max_log": 4.809898147126922e-05,
+            "theta_relative": 6.091102123935299e-06,
+            "rho_relative": 5.333747720512523e-06,
+            "ll_absolute": 5.499999679159373e-05,
+            "ll_per_bin": 1.0651276563625642e-10,
+            "endpoint_relative": 9.013433436069139e-06
+          },
+          "sd_fraction": 0.0001572237766667554,
+          "ridge_required": false
+        },
+        {
+          "index": 26,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-26.psmc",
+          "sha256": "fcff8881082c26f9e66057bc993980fb88742867324af1572bf331e7de20bc22",
+          "difference": {
+            "curve_max_log": 0.001066190054419991,
+            "curve_rms_log": 0.00046650207542612497,
+            "interval_max_log": 0.001066190054420645,
+            "theta_relative": 4.329838764475248e-06,
+            "rho_relative": 4.1237156589265175e-06,
+            "ll_absolute": 1.6000005416572094e-05,
+            "ll_per_bin": 3.0985544118698015e-11,
+            "endpoint_relative": 7.92452918868286e-06
+          },
+          "sd_fraction": 0.0002192260934940006,
+          "ridge_required": false
+        },
+        {
+          "index": 27,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-27.psmc",
+          "sha256": "779333ea3b9a4862090587b09756fcd2c7381d3918bb1d2bec596410861b77d9",
+          "difference": {
+            "curve_max_log": 0.0019111951228545365,
+            "curve_rms_log": 0.0008362102255491118,
+            "interval_max_log": 0.001911195122854251,
+            "theta_relative": 4.191924257865295e-06,
+            "rho_relative": 4.2347536328147636e-06,
+            "ll_absolute": 1.200000406242907e-05,
+            "ll_per_bin": 2.3613455852551868e-11,
+            "endpoint_relative": 7.1497123675266055e-06
+          },
+          "sd_fraction": 0.00039297294037892187,
+          "ridge_required": false
+        },
+        {
+          "index": 28,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-28.psmc",
+          "sha256": "01aff9c07975ac6b7886f54ef97869c8e587605133b43b09e4d4c55223bab410",
+          "difference": {
+            "curve_max_log": 0.012087151699267551,
+            "curve_rms_log": 0.005341845246714841,
+            "interval_max_log": 0.01208715169926801,
+            "theta_relative": 8.68506000492923e-06,
+            "rho_relative": 8.47098582224571e-06,
+            "ll_absolute": 4.999994416721165e-06,
+            "ll_per_bin": 9.682968446503795e-12,
+            "endpoint_relative": 1.4315369010848798e-05
+          },
+          "sd_fraction": 0.004463649453533183,
+          "ridge_required": false
+        },
+        {
+          "index": 29,
+          "path": "work/linear-equivalent/validation/hg001-batch/replicate-29.psmc",
+          "sha256": "6413a5ec8aa3be7edfb9c29e86c732baaaddeb1471d00c3f8e4cd154970f3da6",
+          "difference": {
+            "curve_max_log": 7.308487411106235e-05,
+            "curve_rms_log": 2.9985005569515537e-05,
+            "interval_max_log": 7.308487411108512e-05,
+            "theta_relative": 9.689654053984334e-06,
+            "rho_relative": 1.0253295207614842e-05,
+            "ll_absolute": 3.500000457279384e-05,
+            "ll_per_bin": 6.778086366906257e-11,
+            "endpoint_relative": 1.5535974923537167e-05
+          },
+          "sd_fraction": 0.00015967619323751424,
+          "ridge_required": false
+        }
+      ],
+      "distribution": {
+        "curve_max_log": {
+          "median": 5.977523821765196e-05,
+          "p90": 0.0073292914325922
+        },
+        "theta_relative": {
+          "median": 5.394026029757242e-06,
+          "p90": 1.1060172628841739e-05
+        },
+        "rho_relative": {
+          "median": 5.333747720512523e-06,
+          "p90": 1.1640050102657605e-05
+        },
+        "ll_per_bin": {
+          "median": 4.199999966658652e-11,
+          "p90": 1.1232256924910164e-10
+        }
+      },
+      "distribution_and_sd_passed": true,
+      "max_sd_fraction": 0.026556574079137894
+    },
+    "hg002": {
+      "rows": [
+        {
+          "index": null,
+          "path": "work/linear-equivalent/validation/hg002-original.psmc",
+          "sha256": "d8ff1df249c59cfd33c7235cb173c84c536154ebc5d28847f0b867a8eddbaaff",
+          "difference": {
+            "curve_max_log": 7.478838680896605e-05,
+            "curve_rms_log": 3.906569599913391e-05,
+            "interval_max_log": 7.478838680890511e-05,
+            "theta_relative": 2.055349688473292e-05,
+            "rho_relative": 2.003095098193004e-05,
+            "ll_absolute": 2.600002335384488e-05,
+            "ll_per_bin": 1.04436009318274e-11,
+            "endpoint_relative": 3.2279614140991406e-05
+          },
+          "sd_fraction": 0.0004842230000799594,
+          "ridge_required": false
+        },
+        {
+          "index": 0,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-00.psmc",
+          "sha256": "95589a5aabac00cf284e9245eef61b9057243e71bf6d0c25abb345e2d87e88a8",
+          "difference": {
+            "curve_max_log": 3.109294986969324e-05,
+            "curve_rms_log": 1.1068949884113052e-05,
+            "interval_max_log": 3.1092949869558246e-05,
+            "theta_relative": 2.971140685007907e-08,
+            "rho_relative": 6.693991539927848e-07,
+            "ll_absolute": 8.999952115118504e-06,
+            "ll_per_bin": 3.5999808460474013e-12,
+            "endpoint_relative": 3.2430253484130906e-07
+          },
+          "sd_fraction": 0.00020322227022882616,
+          "ridge_required": false
+        },
+        {
+          "index": 1,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-01.psmc",
+          "sha256": "76dd73b310777ce7b0ab7f64fbf9fbd18f05fe1912fd5538a631c0ef45f3e446",
+          "difference": {
+            "curve_max_log": 3.603393674422861e-05,
+            "curve_rms_log": 2.0367424333593074e-05,
+            "interval_max_log": 3.6033936744269344e-05,
+            "theta_relative": 3.505484138441807e-06,
+            "rho_relative": 3.868763400590133e-06,
+            "ll_absolute": 2.600002335384488e-05,
+            "ll_per_bin": 1.04436009318274e-11,
+            "endpoint_relative": 4.841138606101694e-06
+          },
+          "sd_fraction": 0.00031121967364347434,
+          "ridge_required": false
+        },
+        {
+          "index": 2,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-02.psmc",
+          "sha256": "46eeafc2fedaaddf916a7a85bea63d155ca848c9b62791f446d407069d41f431",
+          "difference": {
+            "curve_max_log": 0.00010820818281076505,
+            "curve_rms_log": 4.914670321069589e-05,
+            "interval_max_log": 0.00010820818281066667,
+            "theta_relative": 3.3327601309896556e-06,
+            "rho_relative": 3.1099555898715173e-06,
+            "ll_absolute": 3.9000005926936865e-05,
+            "ll_per_bin": 1.5600002370774747e-11,
+            "endpoint_relative": 5.488918631162039e-06
+          },
+          "sd_fraction": 0.00017047375907672607,
+          "ridge_required": false
+        },
+        {
+          "index": 3,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-03.psmc",
+          "sha256": "1a990e67bb6978383871f9c831314281b57574337ecae2d3cd33d7703d283468",
+          "difference": {
+            "curve_max_log": 5.9071695099222055e-05,
+            "curve_rms_log": 2.8935555267508307e-05,
+            "interval_max_log": 5.907169509928337e-05,
+            "theta_relative": 9.592581607963985e-06,
+            "rho_relative": 1.0046319061103079e-05,
+            "ll_absolute": 6.399996345862746e-05,
+            "ll_per_bin": 2.5599985383450984e-11,
+            "endpoint_relative": 1.5177018316389853e-05
+          },
+          "sd_fraction": 0.0002554161093055472,
+          "ridge_required": false
+        },
+        {
+          "index": 4,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-04.psmc",
+          "sha256": "178da9280806155960925b52cf616edf5f18f41fc91f5c7dc21a493ebffd2349",
+          "difference": {
+            "curve_max_log": 3.1193335828128e-05,
+            "curve_rms_log": 1.1505351188664134e-05,
+            "interval_max_log": 3.119333582800155e-05,
+            "theta_relative": 7.122992809025148e-06,
+            "rho_relative": 7.142446002124772e-06,
+            "ll_absolute": 4.2000028770416975e-05,
+            "ll_per_bin": 1.6870428677466535e-11,
+            "endpoint_relative": 1.0793593309677743e-05
+          },
+          "sd_fraction": 0.00020244633311568663,
+          "ridge_required": false
+        },
+        {
+          "index": 5,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-05.psmc",
+          "sha256": "8c0884478d8292ab1501574928a2cd8fe0e774b0e1bf9db416651e2913c7b33b",
+          "difference": {
+            "curve_max_log": 0.0002768333795386546,
+            "curve_rms_log": 0.0001232406090405946,
+            "interval_max_log": 0.0002768333795385547,
+            "theta_relative": 1.4732593994352734e-05,
+            "rho_relative": 1.5035870314297844e-05,
+            "ll_absolute": 4.499999340623617e-05,
+            "ll_per_bin": 1.8151526304080937e-11,
+            "endpoint_relative": 2.3508106083337003e-05
+          },
+          "sd_fraction": 0.0004201029414151465,
+          "ridge_required": false
+        },
+        {
+          "index": 6,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-06.psmc",
+          "sha256": "88854658bf4a323780b57f50c5a9d6499d4acca4dabab3c3676ff8c36338fa67",
+          "difference": {
+            "curve_max_log": 4.681766319925007e-05,
+            "curve_rms_log": 2.36122856309995e-05,
+            "interval_max_log": 4.681766319926043e-05,
+            "theta_relative": 4.105621243861074e-06,
+            "rho_relative": 2.754775695058254e-06,
+            "ll_absolute": 4.600000102072954e-05,
+            "ll_per_bin": 1.8400000408291816e-11,
+            "endpoint_relative": 6.714984948868829e-06
+          },
+          "sd_fraction": 0.00022284777039451598,
+          "ridge_required": false
+        },
+        {
+          "index": 7,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-07.psmc",
+          "sha256": "7a765b36bb7fea040f63f80f73c47100cad1c1b4300705ab4473476354f02f7e",
+          "difference": {
+            "curve_max_log": 2.025332792388035e-05,
+            "curve_rms_log": 9.693055359411938e-06,
+            "interval_max_log": 2.0253327923786738e-05,
+            "theta_relative": 2.8524467143690733e-06,
+            "rho_relative": 2.949476934827063e-06,
+            "ll_absolute": 2.700003096833825e-05,
+            "ll_per_bin": 1.0800012387335301e-11,
+            "endpoint_relative": 4.130614889332127e-06
+          },
+          "sd_fraction": 0.0001235234286424725,
+          "ridge_required": false
+        },
+        {
+          "index": 8,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-08.psmc",
+          "sha256": "9f3c7a04686c82b0ecfdd8ed32c540b951fa6853bc81ad794583583feb2b269c",
+          "difference": {
+            "curve_max_log": 4.544701094644221e-05,
+            "curve_rms_log": 1.262228066263427e-05,
+            "interval_max_log": 4.544701094649624e-05,
+            "theta_relative": 1.9471136302244168e-06,
+            "rho_relative": 2.601664461744126e-06,
+            "ll_absolute": 4.39999857917428e-05,
+            "ll_per_bin": 1.759999431669712e-11,
+            "endpoint_relative": 4.454610739529762e-06
+          },
+          "sd_fraction": 0.00029703983630876445,
+          "ridge_required": false
+        },
+        {
+          "index": 9,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-09.psmc",
+          "sha256": "2faad983aed83756a290d75b66bf11f0f091d91d34890542abc61d3e845836b8",
+          "difference": {
+            "curve_max_log": 3.320808134676945e-05,
+            "curve_rms_log": 1.654624451112849e-05,
+            "interval_max_log": 3.3208081346726174e-05,
+            "theta_relative": 9.406863650063949e-07,
+            "rho_relative": 3.7259486517974303e-07,
+            "ll_absolute": 1.1000025551766157e-05,
+            "ll_per_bin": 4.4000102207064626e-12,
+            "endpoint_relative": 1.3188626260490294e-06
+          },
+          "sd_fraction": 0.00024196395905721492,
+          "ridge_required": false
+        },
+        {
+          "index": 10,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-10.psmc",
+          "sha256": "cc14d61842d521658a93ece4384b19b3eae63831d62f33504a305f98b09a3077",
+          "difference": {
+            "curve_max_log": 5.716239104941456e-05,
+            "curve_rms_log": 2.7900574949958595e-05,
+            "interval_max_log": 5.716239104951465e-05,
+            "theta_relative": 5.606105263486604e-06,
+            "rho_relative": 5.837264124952114e-06,
+            "ll_absolute": 7.000000914558768e-05,
+            "ll_per_bin": 2.8235715410481774e-11,
+            "endpoint_relative": 9.332084490574852e-06
+          },
+          "sd_fraction": 0.00025664954291564497,
+          "ridge_required": false
+        },
+        {
+          "index": 11,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-11.psmc",
+          "sha256": "ccc6af8f35a8ac7a72fd0dcd25a46c768b1c29956bebe5cc41a51e326684432a",
+          "difference": {
+            "curve_max_log": 0.0002752347648029563,
+            "curve_rms_log": 0.0001231808614292813,
+            "interval_max_log": 0.0002752347648029393,
+            "theta_relative": 3.574014682110057e-07,
+            "rho_relative": 8.755661765785609e-07,
+            "ll_absolute": 6.699998630210757e-05,
+            "ll_per_bin": 2.6912326571954367e-11,
+            "endpoint_relative": 1.4436289368301568e-06
+          },
+          "sd_fraction": 0.00023811635844591544,
+          "ridge_required": false
+        },
+        {
+          "index": 12,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-12.psmc",
+          "sha256": "b0688e4e4ae807cab8b1e07091dd6993cecf196bcab337ce100f0b57158a0a8c",
+          "difference": {
+            "curve_max_log": 3.0461396121173046e-05,
+            "curve_rms_log": 1.5976883592730803e-05,
+            "interval_max_log": 3.0461396121122488e-05,
+            "theta_relative": 1.3383576585300915e-06,
+            "rho_relative": 1.0361105240355732e-06,
+            "ll_absolute": 1.9000028260052204e-05,
+            "ll_per_bin": 7.663990295003571e-12,
+            "endpoint_relative": 2.6030657868474284e-06
+          },
+          "sd_fraction": 0.00018082433733928783,
+          "ridge_required": false
+        },
+        {
+          "index": 13,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-13.psmc",
+          "sha256": "bb550d1e559364f3c99df1e5a70b293016ede9eb3741bf431618fb52e100970f",
+          "difference": {
+            "curve_max_log": 0.0004960116167866957,
+            "curve_rms_log": 0.00022145814085101318,
+            "interval_max_log": 0.00049601161678646,
+            "theta_relative": 1.0135645829933896e-06,
+            "rho_relative": 1.243187052540134e-06,
+            "ll_absolute": 8.000002708286047e-06,
+            "ll_per_bin": 3.2134138728195676e-12,
+            "endpoint_relative": 2.3344585931801795e-06
+          },
+          "sd_fraction": 0.0003256447307170522,
+          "ridge_required": false
+        },
+        {
+          "index": 14,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-14.psmc",
+          "sha256": "894b8cf6fea9cb236d8b4af1d56a2a14e34c7fd74bf32615901ce497094e49ac",
+          "difference": {
+            "curve_max_log": 0.0001728081779865942,
+            "curve_rms_log": 7.968871735478164e-05,
+            "interval_max_log": 0.0001728081779866553,
+            "theta_relative": 2.317867512292686e-05,
+            "rho_relative": 2.346459177107733e-05,
+            "ll_absolute": 3.6999990697950125e-05,
+            "ll_per_bin": 1.479999627918005e-11,
+            "endpoint_relative": 3.732436425821859e-05
+          },
+          "sd_fraction": 0.000610893345686138,
+          "ridge_required": false
+        },
+        {
+          "index": 15,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-15.psmc",
+          "sha256": "ef80c30565a65a007de585c348c19fde0ee0434594d91c61cff205505e7990e4",
+          "difference": {
+            "curve_max_log": 5.2303065172676355e-05,
+            "curve_rms_log": 2.1343330498598645e-05,
+            "interval_max_log": 5.230306517269943e-05,
+            "theta_relative": 8.568712340652527e-06,
+            "rho_relative": 7.903390534905384e-06,
+            "ll_absolute": 2.9999646358191967e-06,
+            "ll_per_bin": 1.2152026215547877e-12,
+            "endpoint_relative": 1.461226224791183e-05
+          },
+          "sd_fraction": 0.00036037493636222143,
+          "ridge_required": false
+        },
+        {
+          "index": 16,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-16.psmc",
+          "sha256": "8ce31663c6582bb149ef514db63e8e95d438f044377ec91a5f55791cba4c58ac",
+          "difference": {
+            "curve_max_log": 6.679772389250882e-05,
+            "curve_rms_log": 3.042704088962639e-05,
+            "interval_max_log": 6.679772389245477e-05,
+            "theta_relative": 3.2805301064218643e-06,
+            "rho_relative": 3.704360732308194e-06,
+            "ll_absolute": 1.8000020645558834e-05,
+            "ll_per_bin": 7.2606199132594235e-12,
+            "endpoint_relative": 4.7873595834266045e-06
+          },
+          "sd_fraction": 0.00016924272035323328,
+          "ridge_required": false
+        },
+        {
+          "index": 17,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-17.psmc",
+          "sha256": "af5fdc05ffe55e3fff501f94ae2d4d06667cc2b0f54ba86198655672666a40c3",
+          "difference": {
+            "curve_max_log": 5.2799647263901406e-05,
+            "curve_rms_log": 2.5203347608979066e-05,
+            "interval_max_log": 5.2799647263856615e-05,
+            "theta_relative": 3.3473160037400995e-06,
+            "rho_relative": 2.9540710528862644e-06,
+            "ll_absolute": 2.400000812485814e-05,
+            "ll_per_bin": 9.600003249943257e-12,
+            "endpoint_relative": 5.506611832487282e-06
+          },
+          "sd_fraction": 0.00014494558593458438,
+          "ridge_required": false
+        },
+        {
+          "index": 18,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-18.psmc",
+          "sha256": "1f790a11c9c8952820c10b08c58fb3943de1c2c8c6791863e55f5d8d63e456bf",
+          "difference": {
+            "curve_max_log": 3.553149719912746e-05,
+            "curve_rms_log": 2.1581876706691167e-05,
+            "interval_max_log": 3.553149719907669e-05,
+            "theta_relative": 1.2245925911690298e-05,
+            "rho_relative": 1.2515597838348841e-05,
+            "ll_absolute": 5.099998088553548e-05,
+            "ll_per_bin": 2.0658680349551273e-11,
+            "endpoint_relative": 2.0939980984493812e-05
+          },
+          "sd_fraction": 0.00036967036350578765,
+          "ridge_required": false
+        },
+        {
+          "index": 19,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-19.psmc",
+          "sha256": "1f5d7db5862e1b5f42edd8ae609bfc6312488f7a1ded8a2fabf4f8e792b85a09",
+          "difference": {
+            "curve_max_log": 2.367999774396945e-05,
+            "curve_rms_log": 1.4509680883841197e-05,
+            "interval_max_log": 2.3679997743917703e-05,
+            "theta_relative": 7.617775382890471e-06,
+            "rho_relative": 8.727149413877261e-06,
+            "ll_absolute": 2.9999995604157448e-05,
+            "ll_per_bin": 1.2101017536053958e-11,
+            "endpoint_relative": 1.2551371974504893e-05
+          },
+          "sd_fraction": 0.00023037628605959538,
+          "ridge_required": false
+        },
+        {
+          "index": 20,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-20.psmc",
+          "sha256": "9faba08716dc22d25dead831fd22ee778158f4933ab0b0f8b79236573862a451",
+          "difference": {
+            "curve_max_log": 1.9376890563194138e-05,
+            "curve_rms_log": 1.181081346111074e-05,
+            "interval_max_log": 1.937689056319998e-05,
+            "theta_relative": 2.8026534298304042e-06,
+            "rho_relative": 3.4551619963148593e-06,
+            "ll_absolute": 5.7999975979328156e-05,
+            "ll_per_bin": 2.3123590050205383e-11,
+            "endpoint_relative": 4.849095138337021e-06
+          },
+          "sd_fraction": 0.00018371868454543561,
+          "ridge_required": false
+        },
+        {
+          "index": 21,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-21.psmc",
+          "sha256": "5ba575084c58a745d5f91048fb82b49250b8eec5b92f05b430c25d942b3864fe",
+          "difference": {
+            "curve_max_log": 5.283816138257347e-05,
+            "curve_rms_log": 1.8703957895829148e-05,
+            "interval_max_log": 5.283816138246305e-05,
+            "theta_relative": 2.3340270148153107e-06,
+            "rho_relative": 1.4910740580597225e-06,
+            "ll_absolute": 0.00013699999544769526,
+            "ll_per_bin": 5.502969211396178e-11,
+            "endpoint_relative": 4.147714800496417e-06
+          },
+          "sd_fraction": 0.00022324797122359502,
+          "ridge_required": false
+        },
+        {
+          "index": 22,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-22.psmc",
+          "sha256": "690cc2dc6eb6e474cb944dcc93878ea8b7fcf8016baf42b264295013cb530c88",
+          "difference": {
+            "curve_max_log": 3.0029754771287998e-05,
+            "curve_rms_log": 1.6325537361831814e-05,
+            "interval_max_log": 3.0029754771422747e-05,
+            "theta_relative": 4.782851689301541e-06,
+            "rho_relative": 5.200601474969781e-06,
+            "ll_absolute": 3.600004129111767e-05,
+            "ll_per_bin": 1.4400016516447068e-11,
+            "endpoint_relative": 7.875100496940991e-06
+          },
+          "sd_fraction": 0.00034289218020093194,
+          "ridge_required": false
+        },
+        {
+          "index": 23,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-23.psmc",
+          "sha256": "f0ab4d27627aceb58fc88e095c00cf9abf7dd34a46327511b4e5fde541b70ed9",
+          "difference": {
+            "curve_max_log": 8.347702938360513e-05,
+            "curve_rms_log": 3.794975073547843e-05,
+            "interval_max_log": 8.347702938342947e-05,
+            "theta_relative": 1.586056999320624e-06,
+            "rho_relative": 2.207298432380815e-06,
+            "ll_absolute": 4.999997327104211e-05,
+            "ll_per_bin": 1.9999989308416843e-11,
+            "endpoint_relative": 3.1010993607611007e-06
+          },
+          "sd_fraction": 0.00015295473257698696,
+          "ridge_required": false
+        },
+        {
+          "index": 24,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-24.psmc",
+          "sha256": "e89ac51a761c7084ce775234f6d5b09b2fa71710bb5e2ed4081ec3effdc7f411",
+          "difference": {
+            "curve_max_log": 5.78710548268524e-05,
+            "curve_rms_log": 2.7945854523563442e-05,
+            "interval_max_log": 5.787105482693433e-05,
+            "theta_relative": 2.3986584781333183e-06,
+            "rho_relative": 1.6167739840399736e-06,
+            "ll_absolute": 4.1000021155923605e-05,
+            "ll_per_bin": 1.6468749020782187e-11,
+            "endpoint_relative": 4.625978946760105e-06
+          },
+          "sd_fraction": 0.00019528597722848573,
+          "ridge_required": false
+        },
+        {
+          "index": 25,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-25.psmc",
+          "sha256": "f4eeacd03089b7c879310fa4e4a360f87dbe02dfe66b78c5a79ebe290d5d6de7",
+          "difference": {
+            "curve_max_log": 3.352321303506933e-05,
+            "curve_rms_log": 1.2114225148126693e-05,
+            "interval_max_log": 3.35232130349452e-05,
+            "theta_relative": 6.993659944701678e-06,
+            "rho_relative": 7.462327770763291e-06,
+            "ll_absolute": 7.800001185387373e-05,
+            "ll_per_bin": 3.146265498536734e-11,
+            "endpoint_relative": 1.1031734542789901e-05
+          },
+          "sd_fraction": 0.00028613924994685193,
+          "ridge_required": false
+        },
+        {
+          "index": 26,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-26.psmc",
+          "sha256": "31b881e8fbe34f4824190af62ebb2d3ab861eb43517a7fcd556b0759fc7a63d3",
+          "difference": {
+            "curve_max_log": 4.196727319527582e-05,
+            "curve_rms_log": 2.0747502052662806e-05,
+            "interval_max_log": 4.1967273195175825e-05,
+            "theta_relative": 2.474956217970774e-06,
+            "rho_relative": 1.9013385898894632e-06,
+            "ll_absolute": 4.999997327104211e-05,
+            "ll_per_bin": 2.0168354733734054e-11,
+            "endpoint_relative": 4.574324892585474e-06
+          },
+          "sd_fraction": 0.0002279909114231188,
+          "ridge_required": false
+        },
+        {
+          "index": 27,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-27.psmc",
+          "sha256": "d410c2e38e6d6e5c312d110e33b278cdadc3463cac4ed2fa556aeecfcc6a0b11",
+          "difference": {
+            "curve_max_log": 0.0003015438549782701,
+            "curve_rms_log": 0.00013476661844557554,
+            "interval_max_log": 0.00030154385497819033,
+            "theta_relative": 5.2282588475850566e-06,
+            "rho_relative": 5.237870651736812e-06,
+            "ll_absolute": 3.6999990697950125e-05,
+            "ll_per_bin": 1.498767190679696e-11,
+            "endpoint_relative": 8.662983212951288e-06
+          },
+          "sd_fraction": 0.00022234872787641255,
+          "ridge_required": false
+        },
+        {
+          "index": 28,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-28.psmc",
+          "sha256": "29798abb509ddc373cbe8393814da2052d0f55b5e777bb34666794ad7502a859",
+          "difference": {
+            "curve_max_log": 2.957076442400286e-05,
+            "curve_rms_log": 1.1397336763247413e-05,
+            "interval_max_log": 2.957076442403553e-05,
+            "theta_relative": 7.609153948778794e-06,
+            "rho_relative": 9.036811900045229e-06,
+            "ll_absolute": 4.499999340623617e-05,
+            "ll_per_bin": 1.799999736249447e-11,
+            "endpoint_relative": 1.2303278040820616e-05
+          },
+          "sd_fraction": 0.0002514452801290655,
+          "ridge_required": false
+        },
+        {
+          "index": 29,
+          "path": "work/linear-equivalent/validation/hg002-batch/replicate-29.psmc",
+          "sha256": "0fd1a01c7ba5200dde3c9da237ff7da0cf35223b95a7f8537e8a2aaee5a2c5f0",
+          "difference": {
+            "curve_max_log": 3.2505217270592524e-05,
+            "curve_rms_log": 1.814090361580818e-05,
+            "interval_max_log": 3.250521727060014e-05,
+            "theta_relative": 1.122210917070594e-06,
+            "rho_relative": 6.801353106882257e-07,
+            "ll_absolute": 4.1000021155923605e-05,
+            "ll_per_bin": 1.6400008462369442e-11,
+            "endpoint_relative": 2.098864396595358e-06
+          },
+          "sd_fraction": 0.0002898879022244319,
+          "ridge_required": false
+        }
+      ],
+      "distribution": {
+        "curve_max_log": {
+          "median": 4.681766319925007e-05,
+          "p90": 0.0002752347648029563
+        },
+        "theta_relative": {
+          "median": 3.3473160037400995e-06,
+          "p90": 1.2245925911690298e-05
+        },
+        "rho_relative": {
+          "median": 3.4551619963148593e-06,
+          "p90": 1.2515597838348841e-05
+        },
+        "ll_per_bin": {
+          "median": 1.6400008462369442e-11,
+          "p90": 2.6912326571954367e-11
+        }
+      },
+      "distribution_and_sd_passed": true,
+      "max_sd_fraction": 0.000610893345686138
+    }
+  }
+}

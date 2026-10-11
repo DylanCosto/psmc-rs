@@ -107,6 +107,9 @@ pub trait ExpectationBackend {
         model.update(settings);
     }
     fn materialize_model(&mut self, _model: &mut Model) {}
+    fn normalize_counts(&self, counts: &mut Counts) {
+        counts.normalizer();
+    }
     fn q(&self, counts: &Counts, model: &Model) -> f64 {
         counts.q(model)
     }
@@ -213,7 +216,7 @@ impl FitState {
         let started = backend.profiling().then(Instant::now);
         let (mut aggregate, likelihood) =
             backend.expectation(&self.model, sequences, iteration, observer)?;
-        aggregate.normalizer();
+        backend.normalize_counts(&mut aggregate);
         if let Some(started) = started {
             self.expectation_seconds += started.elapsed().as_secs_f64();
         }

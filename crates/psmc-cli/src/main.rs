@@ -623,8 +623,14 @@ fn fit(
     )?;
     let mut state = FitState::new_ordered(&options.settings, sequences, rng);
     observer.model(0, &options.settings, &state.model)?;
-    let mut nonfinite_output =
-        legacy::round(output, &options.settings, &state, effective_length, 0)?;
+    let mut nonfinite_output = legacy::round(
+        output,
+        &options.settings,
+        &state,
+        effective_length,
+        0,
+        &options.mode,
+    )?;
     let mut warned = nonfinite_state(&state) || nonfinite_output;
     if warned {
         eprintln!(
@@ -640,8 +646,14 @@ fn fit(
             backend.as_mut(),
         )?;
         writeln!(output, "IT\t{evaluations}")?;
-        nonfinite_output |=
-            legacy::round(output, &options.settings, &state, effective_length, round)?;
+        nonfinite_output |= legacy::round(
+            output,
+            &options.settings,
+            &state,
+            effective_length,
+            round,
+            &options.mode,
+        )?;
         if !warned && (nonfinite_state(&state) || nonfinite_output) {
             eprintln!(
                 "warning: nonfinite legacy calculation at round {round}; output retained for reference comparison"

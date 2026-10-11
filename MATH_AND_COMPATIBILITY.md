@@ -83,3 +83,14 @@ counts and QD remain. This follow-up must reproduce v0.5.0 equivalent output
 exactly; it does not introduce a new approximate numerical contract. The separate
 common-count-Q/likelihood diagnostic and numerical-gate interpretation are in
 `docs/equivalent-followup.md`. Strict contracts are unchanged.
+
+## Linear equivalent extension — user-authorized after v0.5.1
+
+The v0.5.0/v0.5.1 equivalent contracts above describe those historical releases.
+The current equivalent engine uses segmented f64 state scans, triangle margins,
+diagonal/emission counts and 256-site checkpoints. It removes the entropy
+constant consistently from its optimizer objective and prints QU instead of QD.
+Reverse site accumulation and reciprocal normalization are authorized only here.
+See `docs/linear-equivalent.md` for derivation, fallback semantics and the
+prospective controls. Strict still uses full counts, the original normalizer and
+QD with identical arithmetic. Dense remains the independent scalar oracle.

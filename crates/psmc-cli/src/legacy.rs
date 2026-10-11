@@ -15,6 +15,12 @@ pub fn header(
         out,
         "CC\nCC\tBrief Description of the file format:\nCC\t  CC  comments\nCC\t  MM  useful-messages\nCC\t  RD  round-of-iterations\nCC\t  LL  \\log[P(sequence)]\nCC\t  QD  Q-before-opt Q-after-opt\nCC\t  TR  \\theta_0 \\rho_0\nCC\t  RS  k t_k \\lambda_k \\pi_k \\sum_{{l\\not=k}}A_{{kl}} A_{{kk}}\nCC\t  DC  begin end best-k t_k+\\Delta_k max-prob\nCC\n"
     )?;
+    if mode == "equivalent" {
+        writeln!(
+            out,
+            "CC\t  QU  unnormalized Q-before-opt Q-after-opt; entropy constant omitted; compare only within one round"
+        )?;
+    }
     writeln!(
         out,
         "MM\tVersion: psmc-rs {} ({mode} f64; reference 82fa2ada83ee)",
@@ -56,13 +62,15 @@ pub fn round(
     s: &FitState,
     effective_length: usize,
     round: usize,
+    mode: &str,
 ) -> io::Result<bool> {
     let m = &s.model;
     let n_recomb = effective_length as f64 / m.c_sigma;
     writeln!(
         out,
-        "RD\t{round}\nLK\t{}\nQD\t{} -> {}",
+        "RD\t{round}\nLK\t{}\n{}\t{} -> {}",
         f(s.lk),
+        if mode == "equivalent" { "QU" } else { "QD" },
         f(s.q0),
         f(s.q1)
     )?;

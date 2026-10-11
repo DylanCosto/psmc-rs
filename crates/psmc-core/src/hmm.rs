@@ -54,7 +54,9 @@ pub struct Messages {
 pub struct Counts {
     pub n: usize,
     pub a0: Vec<f64>,
-    /// Transition counts, source-major.
+    /// Transition counts, source-major. EquivalentBackend returns only the
+    /// diagonal here and owns triangle margins internally; use that backend
+    /// for normalization/Q rather than calling Counts methods directly.
     pub a: Vec<f64>,
     /// Emission counts, symbol-major, including the missing-observation row.
     pub e: Vec<f64>,

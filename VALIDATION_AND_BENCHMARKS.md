@@ -102,3 +102,12 @@ complete paired human fits; and unchanged strict regression. Performance admissi
 uses the complete 30-HG001-fit workload, 16 workers, a screen followed by one
 warmup and three alternating measured pairs, >=5% less median wall time and at
 least two faster pairs. Retain rejected memory-layout evidence separately.
+
+## Linear equivalent prospective gate
+
+The user's subsequent explicit review authorizes replacing the old equivalent
+per-fit envelope with C-calibrated distribution checks, a bootstrap-SD budget,
+and common-count-Q/fresh-likelihood ridge diagnostics. The exact prospective
+thresholds are in `docs/linear-equivalent.md`, hashed before candidate fits in
+`bench/linear-equivalent-controls.json`. Both C control datasets pass. Historical
+failures are retained. No change to strict tolerances or reference semantics.

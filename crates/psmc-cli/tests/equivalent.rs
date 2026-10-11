@@ -36,5 +36,17 @@ fn equivalent_mode_is_explicit_and_incompatible_backends_are_rejected() {
         let text = String::from_utf8(out.stdout).unwrap();
         assert!(text.contains(&format!("({mode} f64;")));
         assert!(text.contains("RD\t2\n"));
+        assert!(text.lines().any(|l| l.starts_with(if mode == "equivalent" {
+            "QU\t"
+        } else {
+            "QD\t"
+        })));
+        assert!(
+            !text.lines().any(|l| l.starts_with(if mode == "equivalent" {
+                "QD\t"
+            } else {
+                "QU\t"
+            }))
+        );
     }
 }

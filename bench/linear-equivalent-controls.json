@@ -1,0 +1,1207 @@
+{
+  "protocol_sha256": "a334c96fe05f3cf4141a1fd1bb85e9368b89309c8e6715b675d7e5327c46aa25",
+  "baseline_sha256": "aacd86d1b140058326ec3fac68f69c6267debeb24d4f724d9e25faa38e7d7e9a",
+  "datasets": {
+    "hg001": {
+      "distribution": {
+        "curve_max_log": {
+          "median": 0.0001054222438783281,
+          "p90": 0.010558265978296788
+        },
+        "theta_relative": {
+          "median": 3.9149138295467035e-06,
+          "p90": 1.478726206260994e-05
+        },
+        "rho_relative": {
+          "median": 3.6488143474704893e-06,
+          "p90": 1.5004780346555566e-05
+        },
+        "ll_per_bin": {
+          "median": 5.1162459045454756e-11,
+          "p90": 1.1400002404116094e-10
+        }
+      },
+      "limits": {
+        "curve_max_log": {
+          "median": 0.0004216889755133124,
+          "p90": 0.04223306391318715
+        },
+        "theta_relative": {
+          "median": 1.5659655318186814e-05,
+          "p90": 5.914904825043976e-05
+        },
+        "rho_relative": {
+          "median": 1.4595257389881957e-05,
+          "p90": 6.0019121386222264e-05
+        },
+        "ll_per_bin": {
+          "median": 2.0464983618181902e-10,
+          "p90": 4.5600009616464377e-10
+        }
+      },
+      "max_sd_fraction": 0.016650668034515936,
+      "passed": true,
+      "rows": [
+        {
+          "kind": "original",
+          "index": null,
+          "bins": 508185,
+          "difference": {
+            "curve_max_log": 0.00013313212579058042,
+            "curve_rms_log": 4.116242249989294e-05,
+            "interval_max_log": 0.00013313212579069774,
+            "theta_relative": 2.133600119753979e-06,
+            "rho_relative": 2.2798422525147014e-06,
+            "ll_absolute": 1.0000003385357559e-05,
+            "ll_per_bin": 1.9677879877126557e-11,
+            "endpoint_relative": 3.284978137750403e-06
+          },
+          "sd_fraction": 0.00025421289758210833,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-original.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-original.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 0,
+          "bins": 500000,
+          "difference": {
+            "curve_max_log": 0.000304865277121813,
+            "curve_rms_log": 0.0001335333537890695,
+            "interval_max_log": 0.0003048652771212844,
+            "theta_relative": 2.0181697921847706e-06,
+            "rho_relative": 8.439743851398774e-07,
+            "ll_absolute": 1.2999997125007212e-05,
+            "ll_per_bin": 2.5999994250014423e-11,
+            "endpoint_relative": 1.987842569689169e-06
+          },
+          "sd_fraction": 7.97986995001113e-05,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-00.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-00.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 1,
+          "bins": 516370,
+          "difference": {
+            "curve_max_log": 0.0002490495594442699,
+            "curve_rms_log": 6.554888635980453e-05,
+            "interval_max_log": 0.00024904955944401503,
+            "theta_relative": 8.02377382737886e-06,
+            "rho_relative": 7.690542330499454e-06,
+            "ll_absolute": 0.00013100000796839595,
+            "ll_per_bin": 2.536940720188933e-10,
+            "endpoint_relative": 1.185670718187375e-05
+          },
+          "sd_fraction": 0.0003347387250471917,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-01.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-01.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 2,
+          "bins": 516370,
+          "difference": {
+            "curve_max_log": 0.004514738543549335,
+            "curve_rms_log": 0.0019752261096492537,
+            "interval_max_log": 0.004514738543549253,
+            "theta_relative": 2.5381912482632038e-06,
+            "rho_relative": 2.6774455687875586e-06,
+            "ll_absolute": 1.8999999156221747e-05,
+            "ll_per_bin": 3.679531955036456e-11,
+            "endpoint_relative": 3.7889152036636618e-06
+          },
+          "sd_fraction": 0.0009283040016608852,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-02.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-02.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 3,
+          "bins": 508185,
+          "difference": {
+            "curve_max_log": 0.03484587480450152,
+            "curve_rms_log": 0.015245096746738122,
+            "interval_max_log": 0.0348458748045018,
+            "theta_relative": 2.7343387855963677e-05,
+            "rho_relative": 2.768137189846196e-05,
+            "ll_absolute": 2.4999986635521054e-05,
+            "ll_per_bin": 4.9194656740204955e-11,
+            "endpoint_relative": 4.7154848933169336e-05
+          },
+          "sd_fraction": 0.0071648811355003545,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-03.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-03.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 4,
+          "bins": 500000,
+          "difference": {
+            "curve_max_log": 0.003676554690748901,
+            "curve_rms_log": 0.0015920498421750195,
+            "interval_max_log": 0.003676554690748467,
+            "theta_relative": 6.4480065828745305e-06,
+            "rho_relative": 6.645069801354702e-06,
+            "ll_absolute": 2.400000812485814e-05,
+            "ll_per_bin": 4.800001624971628e-11,
+            "endpoint_relative": 1.0878644926544404e-05
+          },
+          "sd_fraction": 0.0007559597081482705,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-04.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-04.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 5,
+          "bins": 500000,
+          "difference": {
+            "curve_max_log": 0.010876104687286059,
+            "curve_rms_log": 0.0047583164363544355,
+            "interval_max_log": 0.010876104687285247,
+            "theta_relative": 3.301789503803632e-06,
+            "rho_relative": 1.965127962175957e-06,
+            "ll_absolute": 4.39999857917428e-05,
+            "ll_per_bin": 8.79999715834856e-11,
+            "endpoint_relative": 5.301808891662363e-06
+          },
+          "sd_fraction": 0.0022363048062032324,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-05.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-05.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 6,
+          "bins": 508185,
+          "difference": {
+            "curve_max_log": 5.1204787369973914e-05,
+            "curve_rms_log": 2.7891219580799227e-05,
+            "interval_max_log": 5.120478737001368e-05,
+            "theta_relative": 5.469116879320746e-06,
+            "rho_relative": 5.632941273717431e-06,
+            "ll_absolute": 4.499999340623617e-05,
+            "ll_per_bin": 8.855041649445807e-11,
+            "endpoint_relative": 7.532853611290178e-06
+          },
+          "sd_fraction": 0.00021316132306323083,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-06.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-06.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 7,
+          "bins": 508185,
+          "difference": {
+            "curve_max_log": 4.262484702810543e-05,
+            "curve_rms_log": 1.6463954412527706e-05,
+            "interval_max_log": 4.2624847028053095e-05,
+            "theta_relative": 3.573358059160412e-06,
+            "rho_relative": 3.303506861340055e-06,
+            "ll_absolute": 2.300000051036477e-05,
+            "ll_per_bin": 4.5259109399853935e-11,
+            "endpoint_relative": 5.995817317789599e-06
+          },
+          "sd_fraction": 0.00025873465250822404,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-07.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-07.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 8,
+          "bins": 500000,
+          "difference": {
+            "curve_max_log": 8.709824355923601e-05,
+            "curve_rms_log": 2.3931937858332334e-05,
+            "interval_max_log": 8.709824355932409e-05,
+            "theta_relative": 4.450812904706853e-06,
+            "rho_relative": 4.7853228405806915e-06,
+            "ll_absolute": 4.8999994760379195e-05,
+            "ll_per_bin": 9.799998952075839e-11,
+            "endpoint_relative": 6.300093619451109e-06
+          },
+          "sd_fraction": 0.00013819486183161067,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-08.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-08.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 9,
+          "bins": 524555,
+          "difference": {
+            "curve_max_log": 0.0018372341959622673,
+            "curve_rms_log": 0.0008120249737467377,
+            "interval_max_log": 0.0018372341959627962,
+            "theta_relative": 8.916230777285117e-06,
+            "rho_relative": 7.712313061063347e-06,
+            "ll_absolute": 8.000002708286047e-06,
+            "ll_per_bin": 1.525102745810458e-11,
+            "endpoint_relative": 1.4658274181463375e-05
+          },
+          "sd_fraction": 0.0006784699670242739,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-09.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-09.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 10,
+          "bins": 508185,
+          "difference": {
+            "curve_max_log": 0.0005839550661281834,
+            "curve_rms_log": 0.00025652856324954174,
+            "interval_max_log": 0.0005839550661269461,
+            "theta_relative": 1.478726206260994e-05,
+            "rho_relative": 1.5004780346555566e-05,
+            "ll_absolute": 2.19999928958714e-05,
+            "ll_per_bin": 4.3291307094604134e-11,
+            "endpoint_relative": 2.4949579142683244e-05
+          },
+          "sd_fraction": 0.0003975851647979047,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-10.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-10.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 11,
+          "bins": 508185,
+          "difference": {
+            "curve_max_log": 0.001990103388715525,
+            "curve_rms_log": 0.0008798673110925391,
+            "interval_max_log": 0.001990103388715728,
+            "theta_relative": 1.8245318010246563e-05,
+            "rho_relative": 1.813225458869838e-05,
+            "ll_absolute": 1.00000761449337e-06,
+            "ll_per_bin": 1.967802305249801e-12,
+            "endpoint_relative": 2.8264660694692338e-05
+          },
+          "sd_fraction": 0.0007349228440686222,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-11.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-11.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 12,
+          "bins": 500000,
+          "difference": {
+            "curve_max_log": 0.0001807864055498598,
+            "curve_rms_log": 7.950008271210006e-05,
+            "interval_max_log": 0.00018078640554989567,
+            "theta_relative": 2.0314574164131172e-07,
+            "rho_relative": 5.989545049775428e-07,
+            "ll_absolute": 1.999999221879989e-05,
+            "ll_per_bin": 3.999998443759978e-11,
+            "endpoint_relative": 9.996952507012015e-07
+          },
+          "sd_fraction": 0.00010049125741694697,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-12.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-12.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 13,
+          "bins": 500000,
+          "difference": {
+            "curve_max_log": 0.0036902708551842522,
+            "curve_rms_log": 0.0016166009064343399,
+            "interval_max_log": 0.0036902708551830106,
+            "theta_relative": 8.351513642420654e-05,
+            "rho_relative": 8.481229595869315e-05,
+            "ll_absolute": 0.00010400000610388815,
+            "ll_per_bin": 2.080000122077763e-10,
+            "endpoint_relative": 0.00013938005662558463
+          },
+          "sd_fraction": 0.0015279275603481235,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-13.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-13.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 14,
+          "bins": 508185,
+          "difference": {
+            "curve_max_log": 0.0001054222438783281,
+            "curve_rms_log": 3.3323011291364666e-05,
+            "interval_max_log": 0.00010542224387828997,
+            "theta_relative": 1.4086612003489696e-06,
+            "rho_relative": 1.2371688308067241e-06,
+            "ll_absolute": 4.999994416721165e-06,
+            "ll_per_bin": 9.838925621026133e-12,
+            "endpoint_relative": 1.7753890510797807e-06
+          },
+          "sd_fraction": 0.0001690185869015916,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-14.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-14.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 15,
+          "bins": 508185,
+          "difference": {
+            "curve_max_log": 3.652787514607514e-05,
+            "curve_rms_log": 1.3352812809067146e-05,
+            "interval_max_log": 3.652787514601071e-05,
+            "theta_relative": 9.609848556304763e-07,
+            "rho_relative": 1.5167445024012356e-06,
+            "ll_absolute": 4.8000001697801054e-05,
+            "ll_per_bin": 9.445379477513318e-11,
+            "endpoint_relative": 1.4926362035895487e-06
+          },
+          "sd_fraction": 0.00024586070535090706,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-15.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-15.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 16,
+          "bins": 500000,
+          "difference": {
+            "curve_max_log": 7.152713309144243e-05,
+            "curve_rms_log": 3.641991063879384e-05,
+            "interval_max_log": 7.152713309136239e-05,
+            "theta_relative": 8.707529964236537e-06,
+            "rho_relative": 7.695359281163622e-06,
+            "ll_absolute": 2.9999995604157448e-05,
+            "ll_per_bin": 5.999999120831489e-11,
+            "endpoint_relative": 1.372344579213098e-05
+          },
+          "sd_fraction": 0.00015633540767498433,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-16.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-16.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 17,
+          "bins": 508185,
+          "difference": {
+            "curve_max_log": 5.892619046285463e-05,
+            "curve_rms_log": 2.1772693514857237e-05,
+            "interval_max_log": 5.89261904628233e-05,
+            "theta_relative": 1.3528862562863288e-05,
+            "rho_relative": 1.243496812516115e-05,
+            "ll_absolute": 5.700001202058047e-05,
+            "ll_per_bin": 1.1216390098208422e-10,
+            "endpoint_relative": 2.1697558889122975e-05
+          },
+          "sd_fraction": 0.0002821171547617539,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-17.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-17.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 18,
+          "bins": 500000,
+          "difference": {
+            "curve_max_log": 3.060281151223698e-05,
+            "curve_rms_log": 1.463701652147935e-05,
+            "interval_max_log": 3.060281151240151e-05,
+            "theta_relative": 1.0196779706241273e-05,
+            "rho_relative": 1.037787599519181e-05,
+            "ll_absolute": 5.700001202058047e-05,
+            "ll_per_bin": 1.1400002404116094e-10,
+            "endpoint_relative": 1.6400387007693195e-05
+          },
+          "sd_fraction": 0.00017837745664471178,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-18.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-18.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 19,
+          "bins": 516370,
+          "difference": {
+            "curve_max_log": 0.00010197654561444613,
+            "curve_rms_log": 3.0159212995431128e-05,
+            "interval_max_log": 0.00010197654561446896,
+            "theta_relative": 2.9691482009236015e-07,
+            "rho_relative": 7.600080708856823e-08,
+            "ll_absolute": 4.199999966658652e-05,
+            "ll_per_bin": 8.133702513040362e-11,
+            "endpoint_relative": 4.4611714627068434e-08
+          },
+          "sd_fraction": 0.00019472199510162553,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-19.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-19.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 20,
+          "bins": 500000,
+          "difference": {
+            "curve_max_log": 5.5125694390589786e-05,
+            "curve_rms_log": 1.679725231394452e-05,
+            "interval_max_log": 5.512569439058972e-05,
+            "theta_relative": 1.943690800203836e-06,
+            "rho_relative": 2.5640579807629825e-06,
+            "ll_absolute": 3.600001218728721e-05,
+            "ll_per_bin": 7.200002437457442e-11,
+            "endpoint_relative": 3.6776611408387808e-06
+          },
+          "sd_fraction": 0.00011644226384160307,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-20.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-20.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 21,
+          "bins": 500000,
+          "difference": {
+            "curve_max_log": 2.680300919288836e-05,
+            "curve_rms_log": 1.0799472317457334e-05,
+            "interval_max_log": 2.6803009192880497e-05,
+            "theta_relative": 3.9149138295467035e-06,
+            "rho_relative": 3.6488143474704893e-06,
+            "ll_absolute": 7.999988156370819e-06,
+            "ll_per_bin": 1.5999976312741637e-11,
+            "endpoint_relative": 6.624231524001112e-06
+          },
+          "sd_fraction": 0.00014216143947041408,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-21.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-21.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 22,
+          "bins": 508185,
+          "difference": {
+            "curve_max_log": 5.0825647319618916e-05,
+            "curve_rms_log": 2.5966210939588904e-05,
+            "interval_max_log": 5.0825647319679015e-05,
+            "theta_relative": 1.0509903227483704e-05,
+            "rho_relative": 9.909163883786991e-06,
+            "ll_absolute": 6.400000711437315e-05,
+            "ll_per_bin": 1.2593840257853565e-10,
+            "endpoint_relative": 1.6825447081271922e-05
+          },
+          "sd_fraction": 0.00024614411751760075,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-22.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-22.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 23,
+          "bins": 508185,
+          "difference": {
+            "curve_max_log": 7.818473845810914e-05,
+            "curve_rms_log": 2.081730784573533e-05,
+            "interval_max_log": 7.818473845816972e-05,
+            "theta_relative": 2.462091749287464e-06,
+            "rho_relative": 2.2894383843450384e-06,
+            "ll_absolute": 3.500000457279384e-05,
+            "ll_per_bin": 6.88725652524058e-11,
+            "endpoint_relative": 3.3092740623332625e-06
+          },
+          "sd_fraction": 0.00014929205698555363,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-23.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-23.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 24,
+          "bins": 508185,
+          "difference": {
+            "curve_max_log": 4.4591229932833265e-05,
+            "curve_rms_log": 1.9707463699931892e-05,
+            "interval_max_log": 4.459122993288162e-05,
+            "theta_relative": 6.989813344675241e-06,
+            "rho_relative": 6.856145050131083e-06,
+            "ll_absolute": 2.5999994250014424e-05,
+            "ll_per_bin": 5.1162459045454756e-11,
+            "endpoint_relative": 1.1317362846977316e-05
+          },
+          "sd_fraction": 0.00023650901991593387,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-24.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-24.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 25,
+          "bins": 516370,
+          "difference": {
+            "curve_max_log": 4.7087290837008466e-05,
+            "curve_rms_log": 2.360484953894604e-05,
+            "interval_max_log": 4.708729083711293e-05,
+            "theta_relative": 5.175936533938728e-06,
+            "rho_relative": 3.980408746696482e-06,
+            "ll_absolute": 2.2999985958449543e-05,
+            "ll_per_bin": 4.45416773988604e-11,
+            "endpoint_relative": 7.484368835303581e-06
+          },
+          "sd_fraction": 0.00010230621796318268,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-25.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-25.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 26,
+          "bins": 516370,
+          "difference": {
+            "curve_max_log": 0.0809793048578662,
+            "curve_rms_log": 0.035428448601251966,
+            "interval_max_log": 0.08097930485786718,
+            "theta_relative": 3.582608907736666e-07,
+            "rho_relative": 1.8982183192172345e-06,
+            "ll_absolute": 4.300000728107989e-05,
+            "ll_per_bin": 8.327363572841158e-11,
+            "endpoint_relative": 3.8256347807970116e-07
+          },
+          "sd_fraction": 0.016650668034515936,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-26.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-26.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 27,
+          "bins": 508185,
+          "difference": {
+            "curve_max_log": 0.0007933872257268604,
+            "curve_rms_log": 0.0003473332297240622,
+            "interval_max_log": 0.0007933872257267824,
+            "theta_relative": 6.099360692604143e-07,
+            "rho_relative": 3.9090033535413467e-07,
+            "ll_absolute": 1.0000003385357559e-05,
+            "ll_per_bin": 1.9677879877126557e-11,
+            "endpoint_relative": 2.0875072609029784e-07
+          },
+          "sd_fraction": 0.000193155163524116,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-27.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-27.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 28,
+          "bins": 516370,
+          "difference": {
+            "curve_max_log": 0.010558265978296788,
+            "curve_rms_log": 0.004666146250858367,
+            "interval_max_log": 0.010558265978296687,
+            "theta_relative": 3.0606648391538794e-06,
+            "rho_relative": 2.7206085851559773e-06,
+            "ll_absolute": 2.099999983329326e-05,
+            "ll_per_bin": 4.066851256520181e-11,
+            "endpoint_relative": 5.21488442547275e-06
+          },
+          "sd_fraction": 0.0038990491173481598,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-28.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-28.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 29,
+          "bins": 516370,
+          "difference": {
+            "curve_max_log": 5.842330080796376e-05,
+            "curve_rms_log": 3.025483697351126e-05,
+            "interval_max_log": 5.842330080793513e-05,
+            "theta_relative": 2.1035883977812683e-07,
+            "rho_relative": 8.788538749892339e-07,
+            "ll_absolute": 2.9000002541579306e-05,
+            "ll_per_bin": 5.616128462455082e-11,
+            "endpoint_relative": 1.4410179639515027e-06
+          },
+          "sd_fraction": 0.000220978871010466,
+          "a_path": "work/equivalent/c-baseline/hg001-o2-29.psmc",
+          "b_path": "work/equivalent/c-baseline/hg001-fma-29.psmc"
+        }
+      ]
+    },
+    "hg002": {
+      "distribution": {
+        "curve_max_log": {
+          "median": 4.0333849083529216e-05,
+          "p90": 0.0001529473348735877
+        },
+        "theta_relative": {
+          "median": 4.9915163534934195e-06,
+          "p90": 1.0219974614582979e-05
+        },
+        "rho_relative": {
+          "median": 4.744172600891988e-06,
+          "p90": 9.866066009144934e-06
+        },
+        "ll_per_bin": {
+          "median": 2.2399984300136568e-11,
+          "p90": 4.1950214473512325e-11
+        }
+      },
+      "limits": {
+        "curve_max_log": {
+          "median": 0.00016133539633411687,
+          "p90": 0.0006117893394943508
+        },
+        "theta_relative": {
+          "median": 1.9966065413973678e-05,
+          "p90": 4.0879898458331916e-05
+        },
+        "rho_relative": {
+          "median": 1.8976690403567953e-05,
+          "p90": 3.946426403657974e-05
+        },
+        "ll_per_bin": {
+          "median": 1e-10,
+          "p90": 1.678008578940493e-10
+        }
+      },
+      "max_sd_fraction": 0.0004985943476316565,
+      "passed": true,
+      "rows": [
+        {
+          "kind": "original",
+          "index": null,
+          "bins": 2489565,
+          "difference": {
+            "curve_max_log": 3.3631880516055146e-05,
+            "curve_rms_log": 1.1312262112597748e-05,
+            "interval_max_log": 3.363188051604799e-05,
+            "theta_relative": 6.024841834834961e-06,
+            "rho_relative": 4.744172600891988e-06,
+            "ll_absolute": 1.7000013031065464e-05,
+            "ll_per_bin": 6.828507402323484e-12,
+            "endpoint_relative": 9.138764930558473e-06
+          },
+          "sd_fraction": 0.0003182875399384518,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-original.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-original.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 0,
+          "bins": 2500000,
+          "difference": {
+            "curve_max_log": 4.0333849083529216e-05,
+            "curve_rms_log": 1.3732911067452814e-05,
+            "interval_max_log": 4.033384908356634e-05,
+            "theta_relative": 4.9915163534934195e-06,
+            "rho_relative": 5.9289639354120625e-06,
+            "ll_absolute": 4.499999340623617e-05,
+            "ll_per_bin": 1.799999736249447e-11,
+            "endpoint_relative": 7.5670591429047576e-06
+          },
+          "sd_fraction": 0.00024599292263821886,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-00.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-00.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 1,
+          "bins": 2489565,
+          "difference": {
+            "curve_max_log": 5.4449549304669276e-05,
+            "curve_rms_log": 2.813320106482348e-05,
+            "interval_max_log": 5.444954930458752e-05,
+            "theta_relative": 1.9134738746173844e-06,
+            "rho_relative": 2.8506677688372968e-06,
+            "ll_absolute": 6.400002166628838e-05,
+            "ll_per_bin": 2.570731098255654e-11,
+            "endpoint_relative": 1.8795008705446743e-06
+          },
+          "sd_fraction": 0.00029581516974298323,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-01.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-01.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 2,
+          "bins": 2500000,
+          "difference": {
+            "curve_max_log": 4.654538138493258e-05,
+            "curve_rms_log": 2.6915728894237484e-05,
+            "interval_max_log": 4.654538138490453e-05,
+            "theta_relative": 8.865789086146521e-06,
+            "rho_relative": 9.866066009144934e-06,
+            "ll_absolute": 5.5999960750341415e-05,
+            "ll_per_bin": 2.2399984300136568e-11,
+            "endpoint_relative": 1.4428014687901858e-05
+          },
+          "sd_fraction": 0.00034294657466485726,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-02.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-02.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 3,
+          "bins": 2500000,
+          "difference": {
+            "curve_max_log": 3.217193714283306e-05,
+            "curve_rms_log": 1.8801650048084813e-05,
+            "interval_max_log": 3.217193714285247e-05,
+            "theta_relative": 9.154495203840886e-06,
+            "rho_relative": 9.585478736968973e-06,
+            "ll_absolute": 7.599999662488699e-05,
+            "ll_per_bin": 3.039999864995479e-11,
+            "endpoint_relative": 1.4346159649370285e-05
+          },
+          "sd_fraction": 0.00026980548564857655,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-03.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-03.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 4,
+          "bins": 2489565,
+          "difference": {
+            "curve_max_log": 2.591000033458357e-05,
+            "curve_rms_log": 1.3954115316737813e-05,
+            "interval_max_log": 2.5910000334675573e-05,
+            "theta_relative": 2.5943659154507255e-06,
+            "rho_relative": 2.1007194123574845e-06,
+            "ll_absolute": 4.999979864805937e-06,
+            "ll_per_bin": 2.0083749027665224e-12,
+            "endpoint_relative": 4.027460190300702e-06
+          },
+          "sd_fraction": 0.0001583139810012541,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-04.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-04.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 5,
+          "bins": 2479130,
+          "difference": {
+            "curve_max_log": 0.00019880601326249803,
+            "curve_rms_log": 8.855095748699464e-05,
+            "interval_max_log": 0.00019880601326215943,
+            "theta_relative": 6.951612928871355e-06,
+            "rho_relative": 7.713206200173054e-06,
+            "ll_absolute": 2.500001573935151e-05,
+            "ll_per_bin": 1.0084189106400839e-11,
+            "endpoint_relative": 1.2022410417039483e-05
+          },
+          "sd_fraction": 0.00036234289494904465,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-05.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-05.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 6,
+          "bins": 2500000,
+          "difference": {
+            "curve_max_log": 4.345208423189861e-05,
+            "curve_rms_log": 2.0660367440137333e-05,
+            "interval_max_log": 4.345208423185782e-05,
+            "theta_relative": 4.644583105920755e-06,
+            "rho_relative": 4.344069365354862e-06,
+            "ll_absolute": 0.00010499998461455107,
+            "ll_per_bin": 4.199999384582043e-11,
+            "endpoint_relative": 7.66671509914806e-06
+          },
+          "sd_fraction": 0.00035685768085645534,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-06.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-06.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 7,
+          "bins": 2500000,
+          "difference": {
+            "curve_max_log": 6.455837567986844e-05,
+            "curve_rms_log": 3.272541584203939e-05,
+            "interval_max_log": 6.455837567977817e-05,
+            "theta_relative": 1.0357279781174732e-05,
+            "rho_relative": 1.0716432863256161e-05,
+            "ll_absolute": 0.00010299996938556433,
+            "ll_per_bin": 4.119998775422573e-11,
+            "endpoint_relative": 1.5641261714526656e-05
+          },
+          "sd_fraction": 0.0002948578705330073,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-07.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-07.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 8,
+          "bins": 2500000,
+          "difference": {
+            "curve_max_log": 3.237639594899644e-05,
+            "curve_rms_log": 9.390278328322397e-06,
+            "interval_max_log": 3.237639594898087e-05,
+            "theta_relative": 4.2082778457931625e-06,
+            "rho_relative": 3.954529981822187e-06,
+            "ll_absolute": 9.300000965595245e-05,
+            "ll_per_bin": 3.720000386238098e-11,
+            "endpoint_relative": 7.232191553699019e-06
+          },
+          "sd_fraction": 0.00021161082220106959,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-08.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-08.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 9,
+          "bins": 2500000,
+          "difference": {
+            "curve_max_log": 6.206290422647309e-05,
+            "curve_rms_log": 2.9307391721916662e-05,
+            "interval_max_log": 6.206290422645217e-05,
+            "theta_relative": 6.0472694897708596e-06,
+            "rho_relative": 6.054666559615189e-06,
+            "ll_absolute": 6.3000014051795e-05,
+            "ll_per_bin": 2.5200005620718003e-11,
+            "endpoint_relative": 8.847370116599334e-06
+          },
+          "sd_fraction": 0.00026188499840037007,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-09.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-09.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 10,
+          "bins": 2479130,
+          "difference": {
+            "curve_max_log": 7.319226152513458e-05,
+            "curve_rms_log": 3.668516248098896e-05,
+            "interval_max_log": 7.319226152509227e-05,
+            "theta_relative": 3.309987681987764e-06,
+            "rho_relative": 3.6345229457321107e-06,
+            "ll_absolute": 0.00013100000796839595,
+            "ll_per_bin": 5.284112086433384e-11,
+            "endpoint_relative": 6.350235008446665e-06
+          },
+          "sd_fraction": 0.0002196465240480407,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-10.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-10.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 11,
+          "bins": 2489565,
+          "difference": {
+            "curve_max_log": 0.0003431308971255653,
+            "curve_rms_log": 0.00015366880257323794,
+            "interval_max_log": 0.00034313089712558793,
+            "theta_relative": 7.303421306395491e-06,
+            "rho_relative": 7.223420957437631e-06,
+            "ll_absolute": 1.00000761449337e-06,
+            "ll_per_bin": 4.016796566843485e-13,
+            "endpoint_relative": 1.2618386261369081e-05
+          },
+          "sd_fraction": 0.00027152096937470835,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-11.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-11.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 12,
+          "bins": 2479130,
+          "difference": {
+            "curve_max_log": 3.6885693429022925e-05,
+            "curve_rms_log": 1.903594522375702e-05,
+            "interval_max_log": 3.688569342901893e-05,
+            "theta_relative": 4.113001584814545e-06,
+            "rho_relative": 4.1444420959425855e-06,
+            "ll_absolute": 0.00010400003520771861,
+            "ll_per_bin": 4.1950214473512325e-11,
+            "endpoint_relative": 7.028277624266106e-06
+          },
+          "sd_fraction": 0.00023371878762171028,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-12.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-12.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 13,
+          "bins": 2489565,
+          "difference": {
+            "curve_max_log": 0.0001529473348735877,
+            "curve_rms_log": 6.913929807849947e-05,
+            "interval_max_log": 0.0001529473348736324,
+            "theta_relative": 2.0271291660984144e-06,
+            "rho_relative": 2.0343060858678264e-06,
+            "ll_absolute": 9.799998952075839e-05,
+            "ll_per_bin": 3.936430240654829e-11,
+            "endpoint_relative": 3.6539351892079135e-06
+          },
+          "sd_fraction": 0.0002804407498678095,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-13.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-13.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 14,
+          "bins": 2500000,
+          "difference": {
+            "curve_max_log": 3.156683326843712e-05,
+            "curve_rms_log": 9.807747549052026e-06,
+            "interval_max_log": 3.1566833268438674e-05,
+            "theta_relative": 4.414985737690363e-06,
+            "rho_relative": 4.6929183543264786e-06,
+            "ll_absolute": 0.00010000000474974513,
+            "ll_per_bin": 4.000000189989805e-11,
+            "endpoint_relative": 7.567287265670123e-06
+          },
+          "sd_fraction": 0.000303770838840001,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-14.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-14.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 15,
+          "bins": 2468695,
+          "difference": {
+            "curve_max_log": 2.8120688332911037e-05,
+            "curve_rms_log": 1.6534670506023636e-05,
+            "interval_max_log": 2.812068833292475e-05,
+            "theta_relative": 1.0219974614582979e-05,
+            "rho_relative": 9.385276260082323e-06,
+            "ll_absolute": 9.200000204145908e-05,
+            "ll_per_bin": 3.72666538561706e-11,
+            "endpoint_relative": 1.6754661600105774e-05
+          },
+          "sd_fraction": 0.0003662954270693081,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-15.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-15.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 16,
+          "bins": 2479130,
+          "difference": {
+            "curve_max_log": 2.974361741714393e-05,
+            "curve_rms_log": 1.5525535659719636e-05,
+            "interval_max_log": 2.9743617417091008e-05,
+            "theta_relative": 4.1780336260627994e-07,
+            "rho_relative": 1.1318880014741562e-06,
+            "ll_absolute": 2.300000051036477e-05,
+            "ll_per_bin": 9.277448342912542e-12,
+            "endpoint_relative": 4.255430739521792e-07
+          },
+          "sd_fraction": 0.00013691857122924113,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-16.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-16.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 17,
+          "bins": 2500000,
+          "difference": {
+            "curve_max_log": 8.228211169214461e-05,
+            "curve_rms_log": 3.787949313884347e-05,
+            "interval_max_log": 8.228211169196744e-05,
+            "theta_relative": 2.6717109388960146e-06,
+            "rho_relative": 2.42655836479896e-06,
+            "ll_absolute": 5.600001895800233e-05,
+            "ll_per_bin": 2.240000758320093e-11,
+            "endpoint_relative": 4.688798193939619e-06
+          },
+          "sd_fraction": 0.00016687505060077994,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-17.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-17.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 18,
+          "bins": 2468695,
+          "difference": {
+            "curve_max_log": 3.796974299197231e-05,
+            "curve_rms_log": 1.872113724422159e-05,
+            "interval_max_log": 3.7969742991973564e-05,
+            "theta_relative": 5.3318824704562525e-06,
+            "rho_relative": 5.708869189428961e-06,
+            "ll_absolute": 4.700000863522291e-05,
+            "ll_per_bin": 1.9038402328040894e-11,
+            "endpoint_relative": 8.8571198942149e-06
+          },
+          "sd_fraction": 0.00026325814734230344,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-18.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-18.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 19,
+          "bins": 2479130,
+          "difference": {
+            "curve_max_log": 6.638856095250723e-05,
+            "curve_rms_log": 3.52104747500834e-05,
+            "interval_max_log": 6.63885609524806e-05,
+            "theta_relative": 6.460248938648512e-06,
+            "rho_relative": 7.480413783271873e-06,
+            "ll_absolute": 4.3000036384910345e-05,
+            "ll_per_bin": 1.7344809019660263e-11,
+            "endpoint_relative": 1.12758260422603e-05
+          },
+          "sd_fraction": 0.00025746905646143966,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-19.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-19.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 20,
+          "bins": 2508260,
+          "difference": {
+            "curve_max_log": 3.4035540125820773e-05,
+            "curve_rms_log": 1.528916416609216e-05,
+            "interval_max_log": 3.4035540125818056e-05,
+            "theta_relative": 3.83351446151657e-06,
+            "rho_relative": 3.2457582390725214e-06,
+            "ll_absolute": 8.099997648969293e-05,
+            "ll_per_bin": 3.229329355397484e-11,
+            "endpoint_relative": 6.1762159131600425e-06
+          },
+          "sd_fraction": 0.0002665643705906154,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-20.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-20.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 21,
+          "bins": 2489565,
+          "difference": {
+            "curve_max_log": 4.025304729737833e-05,
+            "curve_rms_log": 1.2124748105723468e-05,
+            "interval_max_log": 4.025304729742358e-05,
+            "theta_relative": 1.0535538608580385e-06,
+            "rho_relative": 1.9170952172414185e-06,
+            "ll_absolute": 7.999996887519956e-05,
+            "ll_per_bin": 3.213411534754046e-11,
+            "endpoint_relative": 1.6484507540700901e-06
+          },
+          "sd_fraction": 0.00025532129064955377,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-21.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-21.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 22,
+          "bins": 2500000,
+          "difference": {
+            "curve_max_log": 3.742038985010687e-05,
+            "curve_rms_log": 1.9628764712799637e-05,
+            "interval_max_log": 3.742038985007766e-05,
+            "theta_relative": 3.1623460184140226e-06,
+            "rho_relative": 2.447341870563609e-06,
+            "ll_absolute": 1.0000017937272787e-05,
+            "ll_per_bin": 4.000007174909115e-12,
+            "endpoint_relative": 4.704605491839474e-06
+          },
+          "sd_fraction": 0.0002196633062165765,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-22.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-22.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 23,
+          "bins": 2500000,
+          "difference": {
+            "curve_max_log": 4.2840650368525246e-05,
+            "curve_rms_log": 2.2308642445555678e-05,
+            "interval_max_log": 4.284065036845843e-05,
+            "theta_relative": 1.3217141661196268e-06,
+            "rho_relative": 1.1036492161904074e-06,
+            "ll_absolute": 2.700003096833825e-05,
+            "ll_per_bin": 1.0800012387335301e-11,
+            "endpoint_relative": 2.733172317955771e-06
+          },
+          "sd_fraction": 0.00024710729184542775,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-23.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-23.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 24,
+          "bins": 2489565,
+          "difference": {
+            "curve_max_log": 3.1287703579629955e-05,
+            "curve_rms_log": 1.6305064101646938e-05,
+            "interval_max_log": 3.128770357957986e-05,
+            "theta_relative": 6.1085835914825374e-06,
+            "rho_relative": 7.044515215415769e-06,
+            "ll_absolute": 4.0000013541430235e-05,
+            "ll_per_bin": 1.606706936409784e-11,
+            "endpoint_relative": 9.303935185295449e-06
+          },
+          "sd_fraction": 0.00023988262620207776,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-24.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-24.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 25,
+          "bins": 2479130,
+          "difference": {
+            "curve_max_log": 3.068803845029944e-05,
+            "curve_rms_log": 1.3994189523116024e-05,
+            "interval_max_log": 3.068803845040788e-05,
+            "theta_relative": 9.38091886802582e-06,
+            "rho_relative": 9.487816737168806e-06,
+            "ll_absolute": 5.000003147870302e-05,
+            "ll_per_bin": 2.0168378212801677e-11,
+            "endpoint_relative": 1.5174656685460405e-05
+          },
+          "sd_fraction": 0.0002942569621652416,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-25.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-25.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 26,
+          "bins": 2479130,
+          "difference": {
+            "curve_max_log": 2.7672152534519157e-05,
+            "curve_rms_log": 1.6297019237341714e-05,
+            "interval_max_log": 2.7672152534598432e-05,
+            "theta_relative": 2.8499495843489063e-06,
+            "rho_relative": 2.2816063078343728e-06,
+            "ll_absolute": 0.00011399999493733048,
+            "ll_per_bin": 4.598387133281856e-11,
+            "endpoint_relative": 4.732060233876583e-06
+          },
+          "sd_fraction": 0.0003028480520838505,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-26.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-26.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 27,
+          "bins": 2468695,
+          "difference": {
+            "curve_max_log": 0.00020633036624762013,
+            "curve_rms_log": 9.309934257189637e-05,
+            "interval_max_log": 0.00020633036624768424,
+            "theta_relative": 9.245091864413602e-06,
+            "rho_relative": 8.692636400902787e-06,
+            "ll_absolute": 3.200001083314419e-05,
+            "ll_per_bin": 1.296231848533099e-11,
+            "endpoint_relative": 1.4671988909739554e-05
+          },
+          "sd_fraction": 0.00030481189076870667,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-27.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-27.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 28,
+          "bins": 2500000,
+          "difference": {
+            "curve_max_log": 4.213716477341478e-05,
+            "curve_rms_log": 2.315039554745582e-05,
+            "interval_max_log": 4.213716477340589e-05,
+            "theta_relative": 1.7982384697424457e-05,
+            "rho_relative": 1.9662513804709824e-05,
+            "ll_absolute": 4.0000013541430235e-05,
+            "ll_per_bin": 1.6000005416572095e-11,
+            "endpoint_relative": 2.9240258200695082e-05
+          },
+          "sd_fraction": 0.0004985943476316565,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-28.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-28.psmc"
+        },
+        {
+          "kind": "bootstrap",
+          "index": 29,
+          "bins": 2500000,
+          "difference": {
+            "curve_max_log": 8.044649468247345e-05,
+            "curve_rms_log": 3.969858265394164e-05,
+            "interval_max_log": 8.044649468244317e-05,
+            "theta_relative": 1.0372435190948092e-05,
+            "rho_relative": 1.1222232625765802e-05,
+            "ll_absolute": 1.3999990187585354e-05,
+            "ll_per_bin": 5.599996075034142e-12,
+            "endpoint_relative": 1.566469525274055e-05
+          },
+          "sd_fraction": 0.00037887575658136725,
+          "a_path": "work/equivalent/c-baseline/hg002-o2-29.psmc",
+          "b_path": "work/equivalent/c-baseline/hg002-fma-29.psmc"
+        }
+      ]
+    }
+  },
+  "passed": true
+}
