@@ -1,0 +1,13 @@
+name: Feature or usability request
+description: Describe a research workflow that PSMC-rs could support better.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior and alternatives

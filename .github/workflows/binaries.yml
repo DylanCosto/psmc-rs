@@ -1,0 +1,55 @@
+name: Native Linux binary qualification
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-22.04
+            target: x86_64-unknown-linux-gnu
+          - runner: ubuntu-24.04-arm
+            target: aarch64-unknown-linux-gnu
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: lh3/psmc
+          ref: 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a
+          path: work/ci-vanilla
+          persist-credentials: false
+      - name: Native toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential zlib1g-dev binutils
+          rustup toolchain install 1.90.0 --profile minimal --component rustfmt
+          rustc +1.90.0 -Vv
+          gcc --version
+          uname -a
+      - name: Preserve existing C golden gate
+        run: |
+          make -C work/ci-vanilla -j2 CFLAGS='-O2 -ffp-contract=off -Wno-unused-function' LIBS='-lm -lz'
+          python3 bench/ci_strict_reference.py --reference work/ci-vanilla/psmc
+      - name: Native Rust validation
+        run: |
+          cargo fmt --all -- --check
+          cargo test --release --locked --offline --workspace
+          python3 -m unittest discover -s bench -p 'test_known_truth*.py'
+      - name: Package and test extracted executable
+        run: python3 scripts/package_release.py --out-dir work/release-assets
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: native-${{ matrix.target }}
+          path: work/release-assets/*
+          if-no-files-found: error
+          retention-days: 14

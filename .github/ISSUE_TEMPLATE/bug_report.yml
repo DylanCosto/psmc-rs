@@ -1,0 +1,29 @@
+name: Bug report
+description: Report a reproducible failure using synthetic or non-sensitive inputs.
+body:
+  - type: markdown
+    attributes:
+      value: "Do not upload real genomes, credentials, or patient identifiers. A synthetic reproducer is preferred."
+  - type: textarea
+    id: environment
+    attributes:
+      label: Version and environment
+      description: Include version, mode, operating system, CPU, and installation method.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Command and steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Synthetic reproducer and relevant output

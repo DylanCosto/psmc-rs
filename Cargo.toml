@@ -7,6 +7,8 @@ version = "0.7.0"
 edition = "2024"
 rust-version = "1.90"
 publish = false
+license = "MIT"
+repository = "https://github.com/DylanCosto/psmc-rs"
 
 [profile.release]
 opt-level = 2

@@ -1678,3 +1678,26 @@ child and checking its actual address-space/file-size/nice limits and resume
 integrity. Separate deterministic subcases check low RAM, low disk and oversized
 panel fail closed before launch. Production resource thresholds are unchanged.
 The original failed run is retained; a new pushed CI run verifies this correction.
+
+## Adoption and binary-release goal — 2026-10-11
+
+### Progress
+
+User authorized the full adoption proposal, including binaries. Plan and gates:
+docs/adoption/plan.md. Starting tree d19ce8f is clean and its hosted CI passed.
+Milestone 1 begins with licensing, citation, contributor support and reproducible
+binary packaging; no production numerical changes yet.
+
+### Decisions
+
+Keep usability/release work separate from stable-model numerical research. Every
+published platform requires a tested executable and honest compatibility scope.
+External feedback depends on actual participating researchers; prepare materials
+without inventing feedback or sending unspecified invitations. Preserve raw-data
+privacy and resource floors. Existing installed release remains a reproducible
+baseline throughout the work.
+
+### Surprises
+
+The repository has working hosted strict CI but no root project license/citation,
+release assets or first-use workflow. It currently requires compiling from source.
