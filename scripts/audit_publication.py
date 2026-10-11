@@ -19,6 +19,8 @@ def git(*args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', required=True, type=Path)
+    parser.add_argument('--allow-author-metadata', action='store_true',
+                        help='Use only after the owner explicitly accepts publishing existing author/committer addresses')
     args = parser.parse_args()
     head = git('rev-parse', 'HEAD').decode().strip()
     objects = {}
@@ -51,10 +53,12 @@ def main():
                 inputs.append(dict(path=name, object=oid, bytes=size, sha256=hashlib.sha256(data).hexdigest()))
         reader.stdin.close()
         assert reader.wait() == 0
+    identities = set(git('log', '--all', '--format=%ae%n%ce').decode().splitlines())
+    personal_identities = {email for email in identities if email and not email.lower().endswith(('@localhost', '@users.noreply.github.com'))}
     tracked = git('ls-files', '-z').decode().split('\0')[:-1]
     private_trees = [p for p in tracked if p.startswith(('work/', 'bin/', 'target/'))]
     outside = [item for item in inputs if not item['path'].startswith('tests/fixtures/')]
-    result = dict(head=head, scope='Reachable Git blobs and tracked path inventory; known credential patterns only, manual review still required',
+    result = dict(head=head, scope='Reachable Git blobs and tracked path inventory; known credential patterns only, commit identity exposure; manual review still required',
                   blob_count=count, blob_bytes=total,
                   tracked_files=len(tracked), tracked_bytes=sum((ROOT/p).stat().st_size for p in tracked),
                   credential_like_findings=findings, tracked_private_work_trees=private_trees,
@@ -64,7 +68,9 @@ def main():
                   fixture_provenance=['bench/prepare.py', 'bench/phlash_probe.py', 'tests/fixtures/golden/README.md',
                                       'bench/cpu_campaign_fixtures.py', 'bench/cpu-campaign-fixtures.json',
                                       'bench/cpu_campaign_hmm_fixtures.py', 'bench/cpu-campaign-hmm-fixtures.json'],
-                  automated_blockers=bool(findings or private_trees or outside),
+                  non_noreply_commit_identity_count=len(personal_identities),
+                  author_metadata_publication_accepted=args.allow_author_metadata,
+                  automated_blockers=bool(findings or private_trees or outside or (personal_identities and not args.allow_author_metadata)),
                   manual_review='Required for fixture provenance and historical build/test path context before making repository public')
     args.output.write_text(json.dumps(result, indent=2)+'\n')
     print(json.dumps({k:v for k,v in result.items() if k not in ['synthetic_fixture_inventory','fixture_provenance']}, indent=2))

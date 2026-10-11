@@ -1915,3 +1915,21 @@ pending additional patterns and is not replaced by this checkpoint.
 Completed HG00123-state control: strict/C-O2 bytes exact; C-FMA/C-O2 and
 equivalent/strict both pass the fixed screen. Hosted strict CI38159589496
 passed on9ea9c88, including live C goldens and diagnostic tests.
+
+Native workflow38160201881 passed on62460c6 for x86-64 and ARM64, including
+standard-lock resume tests and finite/provenance CSV exports. Downloaded both
+archives and independently verified external hashes and all30 internal files;
+synthetic example bytes match the committed fixture. Archive hashes/provenance
+are in bench/native-62460c6-verification.json. These are candidate packages;
+final documentation, final-asset whole-genome replay and public release remain.
+
+Publication decision pending: existing Git author/committer metadata contains
+one personal non-no-reply email identity; the owner's public GitHub profile
+does not list an email. An async question asks whether to retain that metadata
+publicly or prepare a no-reply publication history with original evidence kept
+private. No answer yet; do not treat the preselected option as consent. Do not
+make the repository public or rewrite history while this decision is unresolved.
+Publication audit now inventories commit identities and blocks unacknowledged
+non-no-reply exposure. It reports counts, not the actual address. Existing source,
+protocols, binaries and historical evidence remain intact. No external invitations
+or announcement messages have been sent. Continue independent validation.
