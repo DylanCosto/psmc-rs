@@ -65,6 +65,7 @@ def main():
             assert events==[[t/(4*n0),1.,n/n0] for t,n in g.HISTORIES[name][1:]]
             command=sim['run']['command']
             # Report commands have the repository prefix removed for publication.
+            assert command[0]==str((root/'binaries/ms').relative_to(g.ROOT))
             assert command[1:]==[*[a for a in args[1:] if a!='-l'],'-p','12','-seeds',*map(str,sim['seeds'])]
             compressed=Path(str(base)+'.out.gz')
             assert g.sha(compressed)==sim['compression']['gzip_sha256']
@@ -82,9 +83,19 @@ def main():
         params={m:g.p.curve(text)[1] for m,text in texts.items()}
         assert params==case['parameters']
         for mode in texts:
+            expected=[str(root/'binaries/c'),*g.p.FIT] if mode=='c' else [
+                str(root/'binaries/rust'),'--mode',mode,'--record-workers',
+                '1' if mode=='strict' else '4','--stats',str(folder/f'{mode}.stats.json'),
+                *(['--memory-mib','4096'] if mode=='strict' else []),*g.p.FIT]
+            expected.append(str(folder/'input.psmcfa'))
+            assert case['runs'][mode]['command']==g.metrics.relative(expected)
+            assert case['runs'][mode]['ceiling_gib']==6
             assert g.sha(folder/f'{mode}.out')==case['runs'][mode]['output_sha256']
             assert case['runs'][mode]['exit_code']==0
             peak_rss[mode]=max(peak_rss[mode],rss_kib(folder/f'{mode}.time'))
+        admission=case['stats']['strict']['memory_admission']
+        assert admission['budget_bytes']==4096*1024**2 and admission['workers']==1
+        assert admission['estimated_bytes']<=admission['budget_bytes']
         for mode in ['strict','equivalent']:
             assert json.loads((folder/f'{mode}.stats.json').read_text())==case['stats'][mode]
         stats=case['stats']['equivalent'];stats_updates+=stats['model_updates'];fallbacks+=stats['structured_fallbacks']
@@ -106,6 +117,11 @@ def main():
         assert trigger==(case['ridge'] is not None)
         if trigger:
             assert case['ridge']==[json.loads(line) for line in (folder/'ridge.out').read_text().splitlines()]
+            assert len(case['ridge'])==19
+            assert case['ridge'][0]['kind']=='endpoints'
+            assert all(item['kind']=='lambda_slice' for item in case['ridge'][1:])
+            for item in case['ridge']:
+                assert all(math.isfinite(value) for value in item.values() if isinstance(value,(int,float)))
             diagnostics+=1
     # Recompute each prospective decision separately from the runner booleans.
     gates=[]
@@ -136,6 +152,10 @@ def main():
     assert (cdir/'strict-concurrent.out').read_bytes()==(cdir/'strict.out').read_bytes()
     assert cc['output_exact'] and cc['stats']['memory_admission']['workers']>=2
     assert json.loads((cdir/'strict-concurrent.stats.json').read_text())==cc['stats']
+    assert cc['ceiling_gib']==10 and cc['exit_code']==0
+    assert cc['stats']['memory_admission']['budget_bytes']==8192*1024**2
+    assert cc['stats']['memory_admission']['estimated_bytes']<=8192*1024**2
+    assert g.sha(cdir/'strict-concurrent.out')==cc['output_sha256']
     peak_rss['concurrent']=rss_kib(cdir/'strict-concurrent.time')
     minimum_disk=minimum_ram=float('inf');maximum_panel=maximum_jobs=maximum_group_rss=0;samples=0
     with (root/'resources.jsonl').open() as f:
@@ -150,6 +170,9 @@ def main():
               'max_panel_bytes':maximum_panel,'max_active_jobs':maximum_jobs,
               'max_aggregate_child_rss':maximum_group_rss,'peak_process_rss_kib':peak_rss,
               'interruptions':interruptions,'resource_stop_recorded':(root/'resource-stop.json').exists()}
+    assert all(peak_rss[m]<6*1024**2 for m in ['c','strict','equivalent','ms'])
+    assert peak_rss['concurrent']<10*1024**2
+    assert report['passed']==(all(gates) and cc['passed'])
     # Historical interruptions are retained even when a later exact resume completes.
     audit={'audit_passed':True,'scientific_passed':all(gates),'datasets':30,'primary_fits':90,
            'bases_per_dataset':3_000_000_000,'continuous_chromosomes_checked':720,
