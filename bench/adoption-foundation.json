@@ -1,0 +1,256 @@
+{
+  "milestone": "release_foundations",
+  "ci": {
+    "conclusion": "success",
+    "headSha": "ebbe38af8b79b76bb2b27a663fa54dd8327e47b1",
+    "jobs": [
+      {
+        "completedAt": "2026-10-11T15:58:35Z",
+        "conclusion": "success",
+        "databaseId": 114511419396,
+        "name": "native (ubuntu-24.04-arm, aarch64-unknown-linux-gnu)",
+        "startedAt": "2026-10-11T15:57:25Z",
+        "status": "completed",
+        "steps": [
+          {
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 3,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Native toolchain",
+            "number": 4,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Preserve existing C golden gate",
+            "number": 5,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Native Rust validation",
+            "number": 6,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Package and test extracted executable",
+            "number": 7,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+            "number": 8,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 15,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 16,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 17,
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/DylanCosto/psmc-rs/actions/runs/38153431140/job/114511419396"
+      },
+      {
+        "completedAt": "2026-10-11T15:58:35Z",
+        "conclusion": "success",
+        "databaseId": 114511419576,
+        "name": "native (ubuntu-22.04, x86_64-unknown-linux-gnu)",
+        "startedAt": "2026-10-11T15:57:22Z",
+        "status": "completed",
+        "steps": [
+          {
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 3,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Native toolchain",
+            "number": 4,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Preserve existing C golden gate",
+            "number": 5,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Native Rust validation",
+            "number": 6,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Package and test extracted executable",
+            "number": 7,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+            "number": 8,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 15,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 16,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 17,
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/DylanCosto/psmc-rs/actions/runs/38153431140/job/114511419576"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/DylanCosto/psmc-rs/actions/runs/38153431140"
+  },
+  "downloaded_archives_reverified": [
+    {
+      "archive": "psmc-rs-0.7.0-aarch64-unknown-linux-gnu.tar.gz",
+      "archive_sha256": "94d0170dad110e1d30166c1ab5d6488655c359c8c55558048143fb14948933f3",
+      "build": {
+        "version": "0.7.0",
+        "version_banner": "psmc-rs 0.7.0; equivalent-default f64 CPU; strict available; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+        "source_commit": "ebbe38af8b79b76bb2b27a663fa54dd8327e47b1",
+        "target": "aarch64-unknown-linux-gnu",
+        "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)\nbinary: rustc\ncommit-hash: 1159e78c4747b02ef996e55082b704c09b970588\ncommit-date: 2025-09-14\nhost: aarch64-unknown-linux-gnu\nrelease: 1.90.0\nLLVM version: 20.1.8",
+        "build_command": [
+          "cargo",
+          "+1.90.0",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "--target",
+          "aarch64-unknown-linux-gnu"
+        ],
+        "generic_cpu": true,
+        "runtime_simd": true,
+        "cuda": false,
+        "required_glibc": "2.34",
+        "shared_libraries": [
+          "libz.so.1",
+          "libm.so.6",
+          "libgcc_s.so.1",
+          "libc.so.6"
+        ],
+        "binary_sha256": "ef57e99c4eae7865d61cb47cd37fadd89dbdcda0664eb063fa885851b6865581",
+        "precision": "f64",
+        "strict_scope": "Pinned-build comparisons; not universal cross-libm bit equality"
+      },
+      "extracted_file_checksums_verified": true,
+      "extracted_fit_sha256": {
+        "strict": "b0d5fe766b1c6e9d45c1eeb658e0495b6c6ee8adb1411fe7f6263f52826fe850",
+        "equivalent": "b658e5e94d9279c06b1bc3999dfb3b4e694456d1e9fcdf7bbc2c62d7d6d354b3"
+      },
+      "smoke_status": "passed",
+      "host_platform": "Linux-6.17.0-1022-azure-aarch64-with-glibc2.39"
+    },
+    {
+      "archive": "psmc-rs-0.7.0-x86_64-unknown-linux-gnu.tar.gz",
+      "archive_sha256": "7922174ff44987e50aab939b2da6507bfde28130970e2bc1511c7586259567c2",
+      "build": {
+        "version": "0.7.0",
+        "version_banner": "psmc-rs 0.7.0; equivalent-default f64 CPU; strict available; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+        "source_commit": "ebbe38af8b79b76bb2b27a663fa54dd8327e47b1",
+        "target": "x86_64-unknown-linux-gnu",
+        "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)\nbinary: rustc\ncommit-hash: 1159e78c4747b02ef996e55082b704c09b970588\ncommit-date: 2025-09-14\nhost: x86_64-unknown-linux-gnu\nrelease: 1.90.0\nLLVM version: 20.1.8",
+        "build_command": [
+          "cargo",
+          "+1.90.0",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "--target",
+          "x86_64-unknown-linux-gnu"
+        ],
+        "generic_cpu": true,
+        "runtime_simd": true,
+        "cuda": false,
+        "required_glibc": "2.34",
+        "shared_libraries": [
+          "libz.so.1",
+          "libm.so.6",
+          "libgcc_s.so.1",
+          "libc.so.6",
+          "ld-linux-x86-64.so.2"
+        ],
+        "binary_sha256": "c17f113a1b9ecc91b6dcab0aa63f000734762493527e895d75a9d9bcc641edaf",
+        "precision": "f64",
+        "strict_scope": "Pinned-build comparisons; not universal cross-libm bit equality"
+      },
+      "extracted_file_checksums_verified": true,
+      "extracted_fit_sha256": {
+        "strict": "b0d5fe766b1c6e9d45c1eeb658e0495b6c6ee8adb1411fe7f6263f52826fe850",
+        "equivalent": "fb78586441625e9d6db7bf49cdcbeaf8754cb4c7b490d91228727f0f22ff795c"
+      },
+      "smoke_status": "passed",
+      "host_platform": "Linux-6.8.0-1064-azure-x86_64-with-glibc2.35"
+    }
+  ],
+  "citation_schema": "CFF 1.2.0 validated with cffconvert 2.0.0",
+  "limitations": [
+    "Foundation artifacts, not a published release.",
+    "Native ARM64 covers C golden, Rust and extraction smoke tests, not whole-genome scientific qualification.",
+    "Source commit ebbe38a; subsequent release packaging strips debug symbols."
+  ]
+}

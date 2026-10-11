@@ -1701,3 +1701,23 @@ baseline throughout the work.
 
 The repository has working hosted strict CI but no root project license/citation,
 release assets or first-use workflow. It currently requires compiling from source.
+
+
+### Milestone 1 evidence and next gate
+
+Foundations committed in 2d7396f/ebbe38a. CITATION.cff validates against CFF 1.2.0
+with cffconvert 2.0.0. Native CI run 38153431140 passed on ubuntu-22.04 x86-64
+and ubuntu-24.04 ARM64: live C matches all existing goldens, Rust workspace tests
+pass, and both extracted modes complete finite smoke fits. Downloaded both archive
+artifacts and independently verified their outer SHA256 and every internal file
+checksum. Compact evidence: bench/adoption-foundation.json. Local packaging also
+passed; its generic x86-64 ELF needs GLIBC >=2.34 according to symbol requirements.
+This is build/regression coverage, not ARM whole-genome scientific qualification.
+
+Packaging first rejected the valid extended version banner; fixed the test to
+validate its exact version token and record the complete provenance banner.
+Next packaging pass strips debug symbols to avoid build-directory debug paths.
+Upgraded the pinned artifact action after CI reported its Node 20 deprecation.
+No numerical code or installed baseline changed. No public release/tag yet.
+Milestone 2 may now implement the tutorial, input/export tools, progress and safe
+bootstrap resume. Final assets will be rebuilt and requalified from the release tag.

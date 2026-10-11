@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import platform
 import re
+import shutil
 import subprocess
 import tarfile
 import tempfile
@@ -62,13 +63,18 @@ def main():
     # Record library SONAMEs only; build-machine absolute paths are not useful.
     dynamic = run(['readelf', '-d', str(binary)])
     libraries = re.findall(r'\(NEEDED\).*?\[(.*?)\]', dynamic)
+    with tempfile.TemporaryDirectory(prefix='psmc-strip-') as temp:
+        stripped = Path(temp)/'psmc-rs'
+        shutil.copyfile(binary, stripped)
+        subprocess.run(['strip', '--strip-debug', str(stripped)], check=True)
+        binary_bytes = stripped.read_bytes()
     provenance = dict(version=version, version_banner=version_banner, source_commit=source, target=target,
                       rustc=run(['rustc', '+1.90.0', '-Vv']), build_command=command,
                       generic_cpu=True, runtime_simd=True, cuda=False,
                       required_glibc=glibc[-1] if glibc else None,
-                      shared_libraries=libraries, binary_sha256=digest(binary.read_bytes()),
+                      shared_libraries=libraries, binary_sha256=digest(binary_bytes), debug_symbols=False,
                       precision='f64', strict_scope='Pinned-build comparisons; not universal cross-libm bit equality')
-    files = {'psmc-rs': binary.read_bytes()}
+    files = {'psmc-rs': binary_bytes}
     for path in ['LICENSE', 'NOTICE.md', 'CITATION.cff', 'README.md',
                  'docs/binary-install.md', 'reference/LICENSE.psmc.txt',
                  'reference/LICENSE.phlash.txt']:
