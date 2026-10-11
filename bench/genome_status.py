@@ -3,6 +3,7 @@
 import argparse
 from collections import deque
 import json
+import shlex
 from pathlib import Path
 import time
 
@@ -15,8 +16,11 @@ def main():
     proc=Path('/proc')/str(pid)
     try:
         command=(proc/'cmdline').read_bytes().replace(b'\0',b' ').decode()
-        live='known_truth_genome.py' in command and str(a.panel) in command
-    except OSError:command=None;live=False
+        parts=shlex.split(command)
+        output=Path(parts[parts.index('--output')+1])
+        if not output.is_absolute():output=(proc/'cwd').resolve()/output
+        live='known_truth_genome.py' in command and output.resolve()==root
+    except (OSError, ValueError, IndexError):command=None;live=False
     with (root/'resources.jsonl').open() as f:
         last=json.loads(deque(f,maxlen=1)[0])
     jobs=[]
