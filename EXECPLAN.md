@@ -1398,3 +1398,13 @@ fail-closed resource monitor. Eleven Python tests pass, including actual child
 limit enforcement, exact-stage reuse, corrupt-output rejection, chromosome
 continuity/conversion, seed uniqueness and resource-floor rejection. No production
 inference changes. Ready to freeze and launch the full predefined panel.
+
+Launched under clean committed 41cff2e with frozen binaries/helpers/protocol.
+The first two full 250 Mb chromosome simulations are live; no fitting result
+exists yet. Session handle 61633 and work/qualification-genome/panel/run.lock
+identify the live harness; bench/genome_status.py verifies its current process
+and children before any resume. Resource samples are in resources.jsonl; raw
+progress is in work/qualification-genome/run.log. Initial resource use is modest.
+Prepared bench/audit_known_truth_genome.py to verify all 720 continuous chromosome
+conversions, seed/unit/source provenance, all fits/gates and resource evidence.
+The audit is not run/passed until the full report exists. Goal remains active.
