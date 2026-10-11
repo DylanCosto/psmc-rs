@@ -87,8 +87,11 @@ construction. Every evaluation process used one CPU and one record's message
 history. Maximum measured child peak RSS was 17,204 KiB (16.8 MiB); this excludes
 the Python controller/construction process. No simulations or whole-genome fits
 were restarted. All 61 workspace tests pass, plus the diagnostic Rust test and
-Python oracle test; four GPU hardware tests remain ignored. Hosted CI is pending
-first GitHub publication.
+Python oracle test; four GPU hardware tests remain ignored. The source and this evidence are published in the private
+[DylanCosto/psmc-rs repository](https://github.com/DylanCosto/psmc-rs).
+[The first hosted CI run](https://github.com/DylanCosto/psmc-rs/actions/runs/38152441190)
+checks investigation commit eecc218; its live status is separate from the local
+test results recorded here.
 
 Commands, from the repository root (use a fresh work/pilot-surface destination;
 the runner refuses to overwrite its raw outputs):

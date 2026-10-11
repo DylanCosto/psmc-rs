@@ -1649,3 +1649,19 @@ Created and verified private DylanCosto/psmc-rs through the user's authenticated
 Chrome session. Local GitHub CLI has no authenticated host; browser sign-in alone
 does not authorize a local Git push. Source/evidence are ready; publication needs
 an authenticated Git credential. No raw inputs or credentials are staged.
+
+
+### GitHub publication — 2026-10-11
+
+After the user completed GitHub email verification, pushed main to private
+https://github.com/DylanCosto/psmc-rs. Remote main was independently read through
+the GitHub API and exactly matched eecc2186047d29ae0f54b0b341b53bd3f9ec37da.
+Chrome also confirms the private repository contains the source, report and
+37-commit history. All diagnostic source and raw-output hashes were rechecked
+against the committed compact evidence. The installed binary remains unchanged.
+Raw genomic inputs, ignored work evidence and credentials were not uploaded.
+
+Hosted CI is now executing: https://github.com/DylanCosto/psmc-rs/actions/runs/38152441190
+for eecc218, replacing the earlier external blocker of no remote. This entry and
+README/report publication links are documentation updates; the run's live status
+is authoritative for hosted results, separate from already-passed local tests.
