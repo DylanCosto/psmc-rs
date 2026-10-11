@@ -1408,3 +1408,10 @@ progress is in work/qualification-genome/run.log. Initial resource use is modest
 Prepared bench/audit_known_truth_genome.py to verify all 720 continuous chromosome
 conversions, seed/unit/source provenance, all fits/gates and resource evidence.
 The audit is not run/passed until the full report exists. Goal remains active.
+
+Incremental chromosome audit added while the original simulations continue.
+It independently checks ms command/seed echoes, single-replicate continuity,
+heterozygous bin locations and encoding hashes as chromosomes finish, and is
+also included in the final audit. Three added boundary/seed/tamper tests pass;
+14 Python checks total. No completed chromosome yet, so this is verifier testing,
+not scientific evidence. Frozen runner/protocol/binaries remain unchanged.

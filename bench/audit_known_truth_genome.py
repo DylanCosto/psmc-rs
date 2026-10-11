@@ -11,6 +11,7 @@ import statistics
 import subprocess
 
 import known_truth_genome as g
+from audit_genome_chromosomes import verify_payload
 
 
 def close(a,b):
@@ -74,6 +75,7 @@ def main():
             encoded=g.p.convert_ms(raw,length=length,bin_size=100,expected=1).replace('>ms-1\n',f'>chr-{k+1}\n',1).encode()
             fasta=Path(str(base)+'.psmcfa')
             assert hashlib.sha256(encoded).hexdigest()==g.sha(fasta)==sim['fasta_sha256']
+            verify_payload(raw,fasta.read_text(),length,k,[str(root/'binaries/ms'),*command[1:]])
             combined.update(encoded)
             peak_rss['ms']=max(peak_rss['ms'],rss_kib(Path(str(base)+'.time')))
         assert combined.hexdigest()==case['input_sha256'],'concatenation changed boundaries'
