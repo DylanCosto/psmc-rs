@@ -34,7 +34,9 @@ loading happens first; this is a conservative estimate, **not an OS RSS hard
 limit** or protection from other processes consuming memory later. When memory
 availability cannot be detected, the default is 1024 MiB. Equivalent single fits
 keep their full worker default; single-fit `--memory-mib` applies to strict CPU
-fits. Bootstrap uses its separate existing admission budget.
+fits. Bootstrap uses its separate existing admission budget. When launching multiple
+fit processes yourself, divide memory budgets between them or use the bootstrap
+runner; per-process admission does not reserve RAM globally.
 Dense, CUDA and snapshot fits retain their own execution policy; automatic record
 workers do not apply to them. Strict CPU snapshots still receive memory admission.
 See [memory admission results](docs/strict-memory-admission.md).
@@ -53,7 +55,7 @@ To opt into the faster equivalent arithmetic:
 | Model, optimizer, iterations, f64 precision | Original PSMC | Same |
 | Arithmetic | Preserves tested C operation order | Structured scans and triangle margins; different rounding and optimizer paths |
 | Objective diagnostic | Original `QD`, full entropy normalizer | `QU`, unnormalized Q; compare before/after only within one round |
-| Evidence | Exact pinned-C output and internal-trace checks on the tested stack | Component checks, C-calibrated HG001/HG002 panels, and a separate known-truth qualification pilot |
+| Evidence | Exact pinned-C output and internal-trace checks on the tested stack | Component checks, C-calibrated HG001/HG002 panels, and a prospective 200 Mb known-truth panel |
 | Snapshots | Supported for testing | Rejected |
 
 Strict output equality excludes only the honest `MM Version` line. This is a
@@ -67,9 +69,11 @@ boundaries. Invalid structured candidates use the documented literal fallback.
 The [linear-mode report](docs/linear-equivalent-report.md) describes the numerical
 gates and ridge diagnostic. The [known-truth protocol](docs/known-truth-protocol.md)
 sets the separate simulation assessment; the [qualification report](docs/qualification-report.md)
-records its results and unresolved outliers. Neither these chromosome panels nor
-an idealized simulation pilot establish accuracy for every demographic history
-or qualify the user's unavailable whole-genome workflow.
+records its results and unresolved outliers. The subsequent
+[200 Mb panel](docs/known-truth-200mb-report.md) passes all prospectively declared
+primary-band and event checks across 30 datasets, with strict/C exactness on all
+fits. These panels do not establish accuracy for every demographic history or
+qualify the user's unavailable whole-genome workflow.
 
 ## Run independent bootstraps
 

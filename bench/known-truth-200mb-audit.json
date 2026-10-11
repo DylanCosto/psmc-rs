@@ -1,0 +1,221 @@
+{
+  "panel_sha256": "f5376d27f2fe63ed8095dd21bd5abd0bb7550db5862e7b0c67ab8708765dc870",
+  "protocol_sha256": "25acc1e7700b25faa6b709ea882d2dde94a2bc315f8d8582e6ad1137b4fa77e1",
+  "audit_checks_passed": true,
+  "panel_criteria_passed": true,
+  "checked_datasets": 30,
+  "checked_fits": 90,
+  "checks": [
+    {
+      "history": "bottleneck",
+      "index": 0,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "bottleneck",
+      "index": 1,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "bottleneck",
+      "index": 2,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "bottleneck",
+      "index": 3,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "bottleneck",
+      "index": 4,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "bottleneck",
+      "index": 5,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "bottleneck",
+      "index": 6,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "bottleneck",
+      "index": 7,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "bottleneck",
+      "index": 8,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "bottleneck",
+      "index": 9,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "constant",
+      "index": 0,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "constant",
+      "index": 1,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "constant",
+      "index": 2,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "constant",
+      "index": 3,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "constant",
+      "index": 4,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "constant",
+      "index": 5,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "constant",
+      "index": 6,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "constant",
+      "index": 7,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "constant",
+      "index": 8,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "constant",
+      "index": 9,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "expansion",
+      "index": 0,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "expansion",
+      "index": 1,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "expansion",
+      "index": 2,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "expansion",
+      "index": 3,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "expansion",
+      "index": 4,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "expansion",
+      "index": 5,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "expansion",
+      "index": 6,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "expansion",
+      "index": 7,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "expansion",
+      "index": 8,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    },
+    {
+      "history": "expansion",
+      "index": 9,
+      "bins": 2000000,
+      "strict_c_exact": true,
+      "ms_units_and_events": true
+    }
+  ],
+  "scope": "200 Mb idealized histories; whole-genome masks/real input/hosted CI not_run"
+}

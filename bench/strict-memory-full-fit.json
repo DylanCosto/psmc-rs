@@ -1,0 +1,14 @@
+{
+  "input_sha256": "9eb023c5104f4e5b6af54608e37dc2c3f641818054ca3bc2cad06cb78e6cf1b3",
+  "binary_sha256": "682be008483ef60aa226e448f03d2f1f073b008a87787f9fe7af78fe9bd810fb",
+  "strict_serial_exact": true,
+  "max_rss_kib": 311096.0,
+  "memory_admission": {
+    "budget_bytes": 536870912,
+    "requested_workers": 16,
+    "workers": 3,
+    "estimated_bytes": 462314683,
+    "largest_message_bytes": 103201032
+  },
+  "scope": "200 Mb, full 30-iteration fit, 64 states; memory/order screen, not a timing benchmark."
+}

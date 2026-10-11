@@ -141,3 +141,31 @@ non-Linux hardware were not qualified in this milestone.
 Next work is larger/realistic qualification and investigation of the numerical
 outliers, not another performance campaign. Keep the current scientific limits
 visible until those tests are available.
+
+
+## Follow-up: the pilot's time dependence
+
+The subsequent user review was reproduced without changing the pilot gate.
+[Post-hoc time-band calculations](../bench/pilot-time-bands.json) pool squared
+log errors across the ten datasets and original grid points in each band:
+
+| Strict truth error | 1k–5k | 5k–20k | 20k–80k | 80k–200k |
+|---|---:|---:|---:|---:|
+| Constant | 1.073 | 0.216 | 0.120 | 0.395 |
+| Bottleneck | 1.992 | 0.469 | 0.221 | 0.454 |
+| Expansion | 2.543 | 0.199 | 0.109 | 0.263 |
+
+The poor overall score is concentrated in the recent window; the original
+2k–6k bottleneck substantially overlaps that window, weakening this pilot as a
+test of event recovery. Fresh endpoint likelihood gaps in the four outliers
+range from -0.000614 to +0.004177, favoring equivalent in three. These are
+reassuring comparisons of fit quality; the earlier common-Q threshold exceedance
+alone should not be read as evidence that equivalent gives a worse scientific
+answer. The calculations do not establish a universal likelihood significance
+cutoff or a complete profile-likelihood geometry.
+
+The next [200 Mb protocol](known-truth-200mb-protocol.md) moves events into the
+5k–80k range and prespecifies time-band and event-recovery assessments. These
+new criteria do not retrospectively convert the old diagnostic windows into
+passing gates. Version 0.6.3 separately fixes strict-mode memory admission before
+larger inputs are attempted.

@@ -1,0 +1,218 @@
+{
+  "scope": "30 additional equivalent-mode instrumented replays; each matches its frozen uninstrumented primary output exactly. No performance claim.",
+  "model_updates": 3634535,
+  "structured_fallbacks": 0,
+  "fallback_fraction": 0.0,
+  "cases": [
+    {
+      "case": "bottleneck-00",
+      "model_updates": 134143,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "19b9d23c83017ccd2cacb52842d99702546ce5cad0fdf80a1d62515a6fa241f2"
+    },
+    {
+      "case": "bottleneck-01",
+      "model_updates": 129381,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "4f29584d646a265d73d31262655c773636dfdb69edeae613b77a37d92b567b59"
+    },
+    {
+      "case": "bottleneck-02",
+      "model_updates": 134295,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "6a6545f20a968461a8f62599b20e9fba7c20ba22838a3f25992d9b278d7f79f4"
+    },
+    {
+      "case": "bottleneck-03",
+      "model_updates": 134435,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "52b2db27e289654386bd04a3732919aa1227c794ed2370b6c4ada2caaee330e1"
+    },
+    {
+      "case": "bottleneck-04",
+      "model_updates": 133516,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "ddae99fe20b6651dce28f72dc75533e1bb50a8f18ac5824c8cfcb5f64137e1e4"
+    },
+    {
+      "case": "bottleneck-05",
+      "model_updates": 134414,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "0f2c0efd1d1fe4b3b946057273e5c230492ba0dfeef91dc14dd61a3d92920967"
+    },
+    {
+      "case": "bottleneck-06",
+      "model_updates": 131385,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "9002273105bb7f08f8696d4bbecf636e64347018e6f642054abfaddeb030f7c7"
+    },
+    {
+      "case": "bottleneck-07",
+      "model_updates": 133333,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "4d7b837394f15511bc04c21d0d91dce661dc4a520002c9a6d589242949593066"
+    },
+    {
+      "case": "bottleneck-08",
+      "model_updates": 133710,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "0a74ad139b078e5819d009574d8aa3631c51decd72175bd4a313a567d9a4fd05"
+    },
+    {
+      "case": "bottleneck-09",
+      "model_updates": 130811,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "7ddff420636a0b034848f4c1088a029ee54a49dc391a0db6558a0ddb35c6e775"
+    },
+    {
+      "case": "constant-00",
+      "model_updates": 111336,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "da95f2299d16f5ed7ce106f3603afb28d9886812f7a7969d12805f7e36776523"
+    },
+    {
+      "case": "constant-01",
+      "model_updates": 108096,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "7986b8cea7dffb8c50317d73ad4a841d4c49a368693101aa53d930433ff7ac68"
+    },
+    {
+      "case": "constant-02",
+      "model_updates": 113711,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "6eabfad0cec73d0280487442c3edea5e4bcbcc5946c81f2401a2d12c85425e90"
+    },
+    {
+      "case": "constant-03",
+      "model_updates": 111518,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "65cae68c8b3a8ec73f95a9e4ddc3236ede3f8fc7451c8d181e38ef943874d247"
+    },
+    {
+      "case": "constant-04",
+      "model_updates": 111387,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "2347953967fffe1211a37c135d7e60deabce190478e3f10f3d4e1e37ec837aa9"
+    },
+    {
+      "case": "constant-05",
+      "model_updates": 110577,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "f54cfaefba455e9d60792bfd76b6a489ee8b3ca384db1b477f631a19c1ef0b70"
+    },
+    {
+      "case": "constant-06",
+      "model_updates": 114292,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "39ae6525a26065b564d78fdb453f28d5e0c713299d9617a6690ca8eb12bb4c4e"
+    },
+    {
+      "case": "constant-07",
+      "model_updates": 111453,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "4f2a3a367cb9e796400efa52c7eef49085925f2ba0937c21ca662fafee512662"
+    },
+    {
+      "case": "constant-08",
+      "model_updates": 113980,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "a08cdba187a507f6a0f72d60b81cdba0d7e091d59d4cd4acf44774b05bb93d2e"
+    },
+    {
+      "case": "constant-09",
+      "model_updates": 111722,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "314d249c530dc32705cec7f651da32c2d9f96de1defcf307a3d0478acf78b829"
+    },
+    {
+      "case": "expansion-00",
+      "model_updates": 118653,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "5045339060b27499fc138a81775bee635962d780385f673f2802a20da6f1eb0a"
+    },
+    {
+      "case": "expansion-01",
+      "model_updates": 118191,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "d36e8858d757a6c60cfc4bc81eb95e0fcc70f434004783eb96486742f9e00d69"
+    },
+    {
+      "case": "expansion-02",
+      "model_updates": 116766,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "873c6291335b340a5b50aeb7662d8d57534304a03a681f23b6a1960e389b68f3"
+    },
+    {
+      "case": "expansion-03",
+      "model_updates": 119492,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "d0ebd9dda1b23febb65fe80402c1ba6d4900bc4885878e538cf4d461cd82b2eb"
+    },
+    {
+      "case": "expansion-04",
+      "model_updates": 116650,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "8d3c6adb3e21baab4584a39cab60192dcb4629a6a7159d79197f4aa4708e35f9"
+    },
+    {
+      "case": "expansion-05",
+      "model_updates": 118426,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "7f9dcdf5f3734f526c15a43a089afe0ea776f0b85601f1c6525985d819e16946"
+    },
+    {
+      "case": "expansion-06",
+      "model_updates": 117332,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "328304197edf3510afeb06d184c41440e182a107274b76067a2e7265a9c49726"
+    },
+    {
+      "case": "expansion-07",
+      "model_updates": 123185,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "ff5e2a3f4b595fbcbfdcdc8d15f5ffd2b487607dbd28affdc6559cf06695256a"
+    },
+    {
+      "case": "expansion-08",
+      "model_updates": 119281,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "c621dec8f01f1f19776ae235411ae391fb0b387d3546ebcd2a0d1a6ae44027b8"
+    },
+    {
+      "case": "expansion-09",
+      "model_updates": 119064,
+      "structured_fallbacks": 0,
+      "output_exact": true,
+      "stats_sha256": "43d5558769d7e10cdcf414e20f234511de80e0606fec3da3033c077c5b326e7d"
+    }
+  ]
+}

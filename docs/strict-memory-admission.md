@@ -30,7 +30,8 @@ error, including an explicit one-worker request. Stderr reports admission;
 `--stats` includes budget, requested/admitted workers, estimate and largest
 message allocation. Other processes can consume memory later; allocator behavior,
 platform detection and unmodeled overhead mean this is not a hard RSS limit.
-Input parsing itself precedes admission.
+Input parsing itself precedes admission. Multiple independent processes do not
+share reservations; allocate their budgets explicitly or use the batch runner.
 
 ## Measured regression
 
@@ -56,3 +57,10 @@ failure before truncating an existing output. Golden and ordered-output tests
 remain exact. Four CUDA hardware tests are ignored/not_run. No inference math,
 optimizer, observation boundary or precision changed. Source baseline: bf4d1a1.
 The source, tests and memory evidence are committed together.
+
+A full 30-iteration 200 Mb check additionally admitted three workers under a
+512 MiB budget, estimated 462,314,683 bytes and measured 311,096 KiB peak RSS
+(about 304 MiB). Its output exactly matched the serial strict fit. See
+[full-fit evidence](../bench/strict-memory-full-fit.json). This validates ordered
+reduction across a complete fit; the larger eight-record screen above tests
+allocation growth with longer individual records.

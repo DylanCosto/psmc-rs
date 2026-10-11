@@ -1,3 +1,15 @@
+# Current patch release: v0.6.3
+
+`bin/psmc-rs` and `bin/psmc-rs-v0.6.3` include strict single-fit memory admission.
+See [memory policy and measured RSS](docs/strict-memory-admission.md). The binary
+SHA-256 is recorded with the memory regression in `bench/strict-memory-rss.json`.
+Older installed binaries remain preserved. The 200 Mb truth panel follows its
+[prospective protocol](docs/known-truth-200mb-protocol.md) and
+[passed results](docs/known-truth-200mb-report.md); these do not
+change strict's numerical default or make a whole-genome qualification claim.
+
+The following notes describe historical releases.
+
 # Current patch release: v0.6.2
 
 The installed CPU executable is `bin/psmc-rs`, also preserved as

@@ -1,6 +1,6 @@
 # Execution plan: accelerated, legacy-compatible PSMC
 
-Current status: v0.6.2 adds robust Linux topology and automatic single-fit record workers. The first known-truth pilot passes its prospective relative-error budgets, with poor absolute recovery and unresolved common-Q outliers explicitly retained. Historical evidence has been verified and moved off the main drive. Strict remains the default. Remote CI and actual-workload qualification await user details. See docs/qualification-report.md.
+Current status: v0.6.3 adds memory admission for strict single CPU fits. The prospective 200 Mb panel passed all primary-band and event checks; all 30 strict fits match pinned C. Strict remains default and equivalent opt-in. Whole-genome and actual-workload qualification remain open; hosted CI awaits a remote URL. See docs/known-truth-200mb-report.md.
 
 Historical starting status: User explicitly approved building Rust on 2026-10-10. Phase 1 dense scalar Rust is implemented and passes its supported synthetic gate; see docs/phase-1-report.md. Real-workload baseline and reference-pathology investigation remain recorded limitations, not blockers to the newly authorized port. The user subsequently authorized optimization; Phase 2 CPU engineering and deterministic scheduling now pass the local synthetic gate; see docs/phase-2-report.md. The validated dense oracle remains unchanged. The original research/design completion checkboxes below were supplied with the plan and are not independent verification of the four missing companion documents.
 
@@ -1344,3 +1344,33 @@ and event-direction checks. Original 20 Mb pilot gates remain unchanged. The
 user's post-hoc band values are reproduced in bench/pilot-time-bands.json; recent
 windows dominate error. Small likelihood gaps are reassuring fit-quality evidence,
 not a universal significance threshold or proof of a particular ridge geometry.
+
+
+## 200 Mb qualification results — 2026-10-10
+
+Progress: all 30 datasets / 90 primary fits completed with no failures or
+exclusions; all strict/C outputs exact. All six primary-band relative/absolute
+checks and both event checks pass the protocol committed in 35b26e4 before
+simulation. The audit verifies hashes, physical units, seeds, inputs, complete
+outputs and summaries. Thirty additional instrumented equivalent replays match
+the primary outputs exactly, with zero fallbacks in 3,634,535 model updates.
+No band triggers the conditional 0.01 outlier screen.
+A full N30 200 Mb strict memory check admits three workers under 512 MiB, peaks
+at 304 MiB RSS and exactly reproduces serial output.
+
+Decisions: preserve the original pilot's results and post-hoc amendment; report
+all recent/ancient diagnostics. Keep equivalent opt-in and strict default. No
+new speed claim or universal scientific equivalence claim. Raw simulations and
+outputs remain in ignored work; compact results and audit are tracked.
+
+Surprises: slow-core C controls approached the process timeout, so only this
+harness and its children were restricted to allowed P-core threads. This
+resource adjustment is recorded; binaries/data/options/gates stayed fixed.
+No primary fit failed or was restarted/excluded. The 200 Mb bottleneck mean
+errors remain larger than those of the constant/expansion histories despite
+recovering the event direction; mode agreement is not exact truth recovery.
+
+Next permitted milestone: predeclare a genome-scale truth panel; run the user's
+actual input/splitting/mask/command when available; publish the existing CI after
+a remote URL is supplied. These remain not_run. See the new report for scope,
+test commands, admission limitations and retained numerical evidence.
