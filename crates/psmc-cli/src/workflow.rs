@@ -172,9 +172,13 @@ struct Round {
 }
 fn export(text: &str, mu: f64, years: f64, bp: f64) -> Result<String> {
     let mut skip = None;
+    let mut source_version = "unspecified";
     let mut current: Option<Round> = None;
     let mut last = None;
     for line in text.lines() {
+        if let Some(version) = line.strip_prefix("MM\tVersion:") {
+            source_version = version.trim();
+        }
         let words: Vec<_> = line.split_whitespace().collect();
         if words.first() == Some(&"MM") {
             for w in &words {
@@ -234,8 +238,21 @@ fn export(text: &str, mu: f64, years: f64, bp: f64) -> Result<String> {
     let r = last.ok_or("no complete PSMC round")?;
     let n0 = r.theta.unwrap()
         / (skip.ok_or("missing MM skip; cannot infer bin scaling")? * bp * 4.0 * mu);
+    let source_sha256 = crate::digest::reader(text.as_bytes())?;
+    let mode = if source_version.starts_with("psmc-rs ") && source_version.contains("(strict f64;")
+    {
+        "strict"
+    } else if source_version.starts_with("psmc-rs ") && source_version.contains("(equivalent f64;")
+    {
+        "equivalent"
+    } else {
+        "unspecified"
+    };
+    // Prefix makes this a text cell even if a foreign header starts with a
+    // spreadsheet formula character; double quotes are escaped per CSV.
+    let source_version = format!("\"Version: {}\"", source_version.replace('"', "\"\""));
     let mut out = String::from(
-        "round,state,time_generations,time_years,ne,theta,mutation_rate,bin_bp,generation_years\n",
+        "round,state,time_generations,time_years,ne,theta,mutation_rate,bin_bp,generation_years,mode,source_version,source_sha256\n",
     );
     for (i, &(t, lambda)) in r.rows.iter().enumerate() {
         let generations = 2.0 * n0 * (t + r.dt);
@@ -249,7 +266,7 @@ fn export(text: &str, mu: f64, years: f64, bp: f64) -> Result<String> {
         {
             return Err("invalid scaled curve (check units and DT)".into());
         }
-        out.push_str(&format!("{},{i},{generations:.17e},{:.17e},{ne:.17e},{:.17e},{mu:.17e},{bp:.17e},{years:.17e}\n", r.index, generations * years, r.theta.unwrap()));
+        out.push_str(&format!("{},{i},{generations:.17e},{:.17e},{ne:.17e},{:.17e},{mu:.17e},{bp:.17e},{years:.17e},{mode},{source_version},{source_sha256}\n", r.index, generations * years, r.theta.unwrap()));
     }
     Ok(out)
 }
@@ -282,6 +299,14 @@ mod tests {
         assert!((first[2].parse::<f64>().unwrap() - 200.0).abs() < 1e-10);
         assert!((first[3].parse::<f64>().unwrap() - 5000.0).abs() < 1e-9);
         assert!((first[4].parse::<f64>().unwrap() - 2000.0).abs() < 1e-9);
+        let provenance = export(
+            &format!("MM\tVersion: psmc-rs 0.8.0 (equivalent f64; reference test)\n{text}"),
+            1e-8,
+            25.0,
+            100.0,
+        )
+        .unwrap();
+        assert!(provenance.contains(",equivalent,\"Version: psmc-rs 0.8.0"));
         assert!(export(&text.replace("0.008", "NaN"), 1e-8, 25.0, 100.0).is_err());
         assert!(export(&text.replace("skip:2,", "other"), 1e-8, 25.0, 100.0).is_err());
     }

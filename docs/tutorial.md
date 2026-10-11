@@ -64,7 +64,8 @@ tutorial-run/plot-env/bin/python scripts/plot_curve.py tutorial-run/main.csv \
 Python and Matplotlib are needed only for plotting. You can also plot the CSV
 with your existing tools. Export selects the last complete round and warns if it
 ignores a trailing incomplete round. It uses printed RS precision and upstream
-scaling, including MM `skip` and DT; the CSV repeats the supplied units and round.
+scaling, including MM `skip` and DT; the CSV repeats the supplied units, round, source mode/version and source-file SHA-256.
+Foreign or missing mode headers are labeled unspecified rather than guessed.
 The figure displays individual bootstrap fits, not a confidence interval. It
 extends the final open time interval to the requested display limit. The display
 limits do not define a scientifically resolvable time range.

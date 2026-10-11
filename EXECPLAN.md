@@ -1808,3 +1808,10 @@ shared-host constraints, and was visually checked after fixing footer overlap.
 Public-history audit found no known credential patterns in929 reachable blobs;
 synthetic input provenance and historical build-path inventory are under review.
 No public release/tag/visibility change or external invitation has occurred yet.
+
+Release usability review: CSV export now carries source mode/version and SHA-256,
+so exported curves retain provenance outside the original PSMC file. Foreign/missing
+headers stay unspecified. This utility-only change is outside the frozen inference
+runner/binary; the live campaign is unchanged. Focused CLI unit/workflow tests pass,
+including interruption/resume. Final release artifact checks must exercise this
+updated exporter as well as unchanged inference.

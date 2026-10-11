@@ -34,7 +34,7 @@ final callback parameters could subsequently be evaluated. That failure is retai
 in the raw log and encoded explicitly in the JSON. It is not a successful finite-fit
 control. Both six-state paths are diagnostic, not a basis for a scientific claim.
 
-At 64 states the first fitted lambda moved from about1.57million to41.2billion,
+At 64 states the first fitted lambda moved from about 1.57 million to 41.2 billion,
 while other parameters and the optimizer path also changed. Better same-parameter
 arithmetic does not imply the same optimizer stopping point or a better demographic
 estimate. The prototype is also slower in these small full-fit observations.
@@ -44,22 +44,22 @@ before any production integration.
 
 ## Oracle correction and evidence limits
 
-The first sweep excluded83 points because Python Decimal raised on a nonpositive
+The first sweep excluded 83 points because Python Decimal raised on a nonpositive
 log argument. Actual C/Rust then take an existing mean-time fallback. The independent
 Decimal transcription omitted this branch. After documenting the correction, the
 **unchanged saved Rust matrices** were reanalyzed with the correct legacy branch:
-all83 became evaluable and passed. The first analysis is retained and hashed. No
+all 83 became evaluable and passed. The first analysis is retained and hashed. No
 component tolerance, old pilot criterion or production equation changed.
 
 A harness JSON serialization error occurred on the six-state NaN after all fits
 finished. Results were recovered from saved raw outputs without rerunning fits;
 nonfinite fields are now explicit null/status values. The runner supports
 `--analyze-existing`. Peak RSS for the initial fit processes was not captured due
-to that report failure; child address space was hard-limited to3GiB, with one CPU,
-low priority and4GiB RAM/25GiB disk preflight floors. Subsequent independent
+to that report failure; child address space was hard-limited to 3 GiB, with one CPU,
+low priority and 4 GiB RAM/25 GiB disk preflight floors. Subsequent independent
 likelihood checks have individual time/RSS records. No memory performance claim.
 
-Source base9ed359a; exact candidate/oracle/protocol/binary hashes and raw artifact
+Source base 9ed359a; exact candidate/oracle/protocol/binary hashes and raw artifact
 hashes are in the JSON. Workspace release/offline tests and strict C goldens pass;
 the corrected Decimal oracle test includes the nonpositive-log branch. This new
 candidate was tested only on local x86-64 Linux, not ARM/GPU or real whole-genome
