@@ -98,10 +98,12 @@ Qualification limits:
   have not been qualified.
 - Whole-genome bootstrap uncertainty in equivalent mode has not been measured;
   the whole-autosome result is a single-fit comparison.
-- The four outliers from the 20 Mb pilot remain incompletely explained. Small
-  endpoint likelihood differences and the time-band diagnostic are reassuring,
-  but do not establish a flat-ridge explanation for every case. The later 200 Mb
-  panel does not resolve those historical outliers.
+- The [four pilot outliers](docs/pilot-ridge-report.md) have shallow sampled
+  likelihood paths between modes, but all four retain improving directions;
+  stationary ridges have not been established. Three have a nearly flat first
+  population-size parameter. The diagnostic also found numerical cancellation
+  in legacy model construction at extreme parameters. Original pilot failures
+  remain visible; the later 200 Mb panel does not erase them.
 
 ## Run independent bootstraps
 

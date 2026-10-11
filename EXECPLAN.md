@@ -1595,3 +1595,57 @@ historical; removed the outdated experimental module-doc label. Historical
 reports and acceptance criteria stay intact. This follow-up changes documentation
 only (including one Rust doc comment); installed executable and memory safeguards
 are unchanged. Formatting, local documentation links and diff checks pass.
+
+## Pilot ridge investigation and first GitHub publication — 2026-10-11
+
+### Progress
+
+Active: inspect all four original pilot fits with dense observed likelihood,
+full parameter paths, coordinate perturbations and bounded nuisance optimization.
+Protocol: docs/pilot-ridge-protocol.md. Publication follows evidence review and
+Git history/data audit; user selected the DylanCosto GitHub account in Chrome.
+
+### Decisions
+
+This is post-hoc scientific diagnosis, not a revised acceptance gate. Keep original
+N30 fits, model, binaries and historical failures. Distinguish a shallow connecting
+path from a stationary ridge; limited nuisance optimization is not a full profile.
+
+### Surprises
+
+The prior diagnostic varied lambda0 alone, and bottleneck-01 has lambda0 near 93,
+not the million-scale values of the other three cases. Whole-vector geometry must
+therefore be checked before attributing all four cases to the same mechanism.
+
+### Diagnostic completion evidence
+
+Completed 1,296 literal screen records plus 164 independently reconstructed
+high-precision model evaluations. All input/original fit hashes match manifests;
+all eight endpoint LLs match scalar/AVX exactly. Fifty/80-digit endpoint LLs agree.
+The complete sampled between-mode paths span 0.000615–0.004178 LL with no sampled
+barrier. Three lambda0 plateaus confirmed; bottleneck-01 lambda0 reduction instead
+improves LL by 0.971. All four endpoints have improving coordinates, so none is
+shown to be a stationary ridge. Preserve this distinction and original pilot gates.
+
+Unexpected: literal model equations produce invalid probabilities near extreme
+lambda, including two interior path points with nonfinite LL. A separate Decimal
+transcription removes these failures; endpoint LL shifts remain below 4.12e-6.
+Production arithmetic and installed release remain unchanged. Report and compact
+records: docs/pilot-ridge-report.md and bench/pilot-surface-results.json.
+61 workspace tests, one diagnostic Rust test and one Python oracle test pass;
+4 CUDA hardware tests ignored. Single-worker child peak RSS <=16.8 MiB. The first
+GitHub publication remains pending; user selected private DylanCosto/psmc-rs.
+
+Publication preparation: scanned all 856 historical blobs (31,387,436 uncompressed
+bytes) for credential signatures and raw BAM/CRAM/VCF/FASTQ paths; no matches.
+Tracked PSMCFA fixtures are synthetic, backed by generators/manifests. Historical
+absolute paths point to this project's local public/synthetic work; no private
+biological input was found. work/, binaries and raw genomic evidence stay ignored.
+This heuristic scan is not a formal secret audit. Existing licenses are retained.
+
+### Publication status
+
+Created and verified private DylanCosto/psmc-rs through the user's authenticated
+Chrome session. Local GitHub CLI has no authenticated host; browser sign-in alone
+does not authorize a local Git push. Source/evidence are ready; publication needs
+an authenticated Git credential. No raw inputs or credentials are staged.

@@ -35,3 +35,7 @@ jobs:
           cargo test --release --locked --offline --workspace
       - name: Test known-truth conversion and scaling
         run: python3 -m unittest discover -s bench -p 'test_known_truth*.py'
+      - name: Test diagnostic oracles
+        run: |
+          cargo test --release --locked --offline -p psmc-cpu --example pilot_surface
+          python3 -m unittest discover -s bench -p 'test_pilot*.py'
