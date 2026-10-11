@@ -1,5 +1,13 @@
 # PSMC-rs 0.7.0 — equivalent CPU default
 
+**Breaking output change: use `--mode strict` for exact C reproduction on the
+pinned tested build** (excluding the version header). CPU commands that omit
+`--mode` now produce equivalent results, which are not byte-identical to C.
+Their objective diagnostic changes from `QD` to `QU`. Third-party scripts parsing
+`QD` must use strict or explicitly support QU's different meaning; renaming the
+tag is not a valid conversion. Upstream history/plotting utilities do not consume
+the objective diagnostic, while `psmc_trunc.pl` preserves it verbatim.
+
 Released locally on 2026-10-11 after candidate and final compatibility/resource
 checks passed. `bin/psmc-rs` and `bin/psmc-rs-v0.7.0` are the verified final build;
 earlier releases and `bin/psmc-rs-v0.7.0-rc.1` remain available. No remote release

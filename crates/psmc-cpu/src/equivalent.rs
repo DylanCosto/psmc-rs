@@ -1,4 +1,4 @@
-//! Experimental structured engine with triangle margins and unnormalized Q. Cached counts exist only during one expectation call;
+//! Structured engine with triangle margins and unnormalized Q. Cached counts exist only during one expectation call;
 //! the immutable model and encoded bytes therefore define their entire lifetime.
 use crate::{SimdMode, Workspace};
 use psmc_core::{

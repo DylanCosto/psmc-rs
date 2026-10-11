@@ -1,4 +1,22 @@
-# Phase 1 working contract — newly authored replacement
+# Mathematical and compatibility contracts
+
+## Current mode selection — v0.7.0
+
+Ordinary CPU fits and bootstrap batches default to **equivalent**. Use
+`--mode strict` for exact C reproduction on the pinned tested build, excluding
+the version header. Default equivalent output is not byte-identical to C and
+uses `QU`, not `QD`; those objectives are not interchangeable for external parsers.
+With no explicit mode, dense/CUDA backends and snapshots (including PSMC_SNAPSHOT)
+select strict. Explicit equivalent with those features is rejected. Both CPU
+modes retain memory admission. This selection change does not alter either
+mode's mathematical contract or expand its scientific qualification.
+
+The current equivalent arithmetic is defined in the linear-equivalent section
+below. Earlier sections record historical milestones and must be read in that
+context; their old defaults and full-count/QD statements are not current
+equivalent-mode behavior. See [release notes](docs/release-0.7.0.md).
+
+## Historical Phase 1 working contract — newly authored replacement
 
 The original attachment with this name was not supplied. This file is a new,
 source-backed working contract for the user's 2026-10-10 authorization to build
@@ -63,10 +81,10 @@ with no contraction, altered site order or tile partial-sum reduction. CPU model
 messages, initial/emission counts, log-likelihood, normalizer and optimizer stay
 unchanged. CUDA runtime failures are errors; no equivalent-mode substitution.
 
-## Experimental equivalent extension — explicitly authorized 2026-10-10
+## Historical experimental equivalent extension — 2026-10-10
 
-`--mode strict` retains every contract above and remains the numerical default.
-`--mode equivalent --backend cpu` opts into real-arithmetic triangular factors
+At this milestone, `--mode strict` retained every contract above and was the
+numerical default. `--mode equivalent --backend cpu` opted into triangular factors
 with different binary64 grouping. See `docs/equivalent-mode.md` for the derivation,
 predeclared component tolerances and empirical full-fit gates. Full expected
 transition counts, original entropy normalizer, model, optimizer, observations and

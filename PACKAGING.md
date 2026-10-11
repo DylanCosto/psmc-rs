@@ -1,4 +1,17 @@
-# Current patch release: v0.6.3
+# Current local release: v0.7.0
+
+`bin/psmc-rs` and `bin/psmc-rs-v0.7.0` default to equivalent for ordinary CPU fits
+and bootstraps. Use `--mode strict` for tested C-compatible output and QD. With
+mode omitted, dense/CUDA and snapshots select strict. Both CPU single-fit modes
+honor memory admission. See [release notes](docs/release-0.7.0.md) for the breaking
+output change, [README](README.md) for qualification limits, and
+[release evidence](bench/default-transition-results.json) for binary hashes.
+Prior versioned binaries remain available; no remote publication is claimed.
+
+All release descriptions below are historical; references to `bin/psmc-rs`
+describe its contents at that milestone, not the current executable.
+
+# Historical patch release: v0.6.3
 
 `bin/psmc-rs` and `bin/psmc-rs-v0.6.3` include strict single-fit memory admission.
 See [memory policy and measured RSS](docs/strict-memory-admission.md). The binary
@@ -10,7 +23,7 @@ change strict's numerical default or make a whole-genome qualification claim.
 
 The following notes describe historical releases.
 
-# Current patch release: v0.6.2
+# Historical patch release: v0.6.2
 
 The installed CPU executable is `bin/psmc-rs`, also preserved as
 `bin/psmc-rs-v0.6.2`; v0.6.1 and earlier binaries remain available.
@@ -21,7 +34,7 @@ Hosted CI and the user's real-workload qualification still need external inputs.
 
 The following packaging notes describe historical releases.
 
-# Current local v0.6.1 CPU deliverable
+# Historical local v0.6.1 CPU deliverable
 
 `bin/psmc-rs` and `bin/psmc-rs-v0.6.1` are the final tested binaries. Strict remains
 the numerical default; equivalent uses the linear E-step and QU diagnostics.

@@ -1571,3 +1571,27 @@ method or acceptance gate, no remote publication, no revived simulations. Remain
 external workload/hardware qualifications do not change the delivered local
 default. The completion audit checks actual installed selection, previous-binary
 preservation and source state before closing the user-authorized goal.
+
+## Default-switch review follow-up — 2026-10-11
+
+Verified the user's required functional changes already exist in installed 0.7.0:
+CPU default equivalent, implicit dense/CUDA/snapshot strict, explicit snapshot
+conflict directs to --mode strict, all C golden variants explicitly strict, and
+a separate default-mode integration test. Installed smoke checks passed seven
+selection/rejection cases including PSMC_SNAPSHOT and the CPU-only CUDA feature
+error; help/version and unchanged installed SHA256 also verified. No new GPU
+runtime check or repeat scientific qualification is claimed.
+
+Updated current README, release notes and mathematical-contract introduction to
+lead with non-byte-identical default output, QU/QD parser incompatibility, and
+explicit strict for pinned-build C reproduction. README now asks authors to
+report version/mode and states the single scientifically qualified 64-state
+pattern, x86-64 Linux scope, missing whole-genome bootstrap uncertainty assessment,
+and unresolved geometry of the four 20 Mb pilot outliers. Other patterns have
+component/regression coverage, not equivalent scientific qualification; the
+inherited 23-state CLI pattern default remains unchanged and is disclosed.
+Updated stale current PACKAGING heading to 0.7.0 and labeled earlier releases
+historical; removed the outdated experimental module-doc label. Historical
+reports and acceptance criteria stay intact. This follow-up changes documentation
+only (including one Rust doc comment); installed executable and memory safeguards
+are unchanged. Formatting, local documentation links and diff checks pass.

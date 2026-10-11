@@ -3,7 +3,10 @@
 A local Rust implementation of PSMC's demographic model and Hooke–Jeeves
 optimizer, with CPU acceleration and deterministic parallel record processing.
 Accepts existing `.psmcfa` inputs. **Equivalent is the default for CPU fits and bootstraps.**
-Use `--mode strict` when you need the tested C-compatible arithmetic and `QD`.
+**Use `--mode strict` for exact C reproduction on the pinned, tested build**
+(excluding the version header). Default equivalent output is not byte-identical
+to C and emits `QU` instead of `QD`; third-party scripts that require `QD` must
+use strict or explicitly support the different diagnostic contract.
 See the [0.7.0 release notes](docs/release-0.7.0.md) for the default transition.
 
 ## Build and run
@@ -65,6 +68,8 @@ An omitted mode selects **strict** for `--backend dense`, `--backend cuda`, or
 option order does not change the choice. Selected mode appears on stderr, in
 `MM Version`, and in stats/batch manifests. Existing commands without a mode now
 use equivalent on CPU, including when `--memory-mib` is supplied.
+When reporting results in a paper or methods section, include the PSMC-rs version
+and mode recorded in `MM Version`, together with the command and input preparation.
 
 Strict output equality excludes only the honest `MM Version` line. This is a
 claim about the pinned build and tested inputs, not universal bitwise equality
@@ -82,6 +87,21 @@ records its results and unresolved outliers. The subsequent
 primary-band and event checks across 30 datasets, with strict/C exactness on all
 fits. These panels do not establish accuracy for every demographic history or
 qualify the user's unavailable whole-genome workflow.
+
+Qualification limits:
+
+- Scientific qualification covered the 64-state pattern `4+25*2+4+6`. Other
+  patterns have component and regression coverage, not equivalent scientific
+  qualification. The inherited CLI pattern default remains `4+5*3+4`; specify
+  `-p '4+25*2+4+6'` to use the qualified pattern shown in the examples.
+- Testing was on x86-64 Linux. Other CPU families, ARM and non-Linux platforms
+  have not been qualified.
+- Whole-genome bootstrap uncertainty in equivalent mode has not been measured;
+  the whole-autosome result is a single-fit comparison.
+- The four outliers from the 20 Mb pilot remain incompletely explained. Small
+  endpoint likelihood differences and the time-band diagnostic are reassuring,
+  but do not establish a flat-ridge explanation for every case. The later 200 Mb
+  panel does not resolve those historical outliers.
 
 ## Run independent bootstraps
 
