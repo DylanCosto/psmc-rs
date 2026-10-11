@@ -1752,3 +1752,10 @@ strings. Packaging now also remaps source/home prefixes at compile time and asse
 absence before release. This changes build provenance only and requires another native
 package verification. Original foundation artifacts remain evidence, not public releases.
 Next permitted milestone: finish packaged tutorial/native checks, then numerical investigation.
+
+Milestone 2 gate closed: source 2092668 passed native x86-64 and ARM64 CI run
+38154388521, including workflow interruption tests, unchanged live-C goldens and
+extracted-archive fits. Local archive hash106e9d7fe52903ce10c352454d4532bc7d592f39d294322de09fd9930088eb77;
+source/home path remapping assertion passed. Packaged inspector ran successfully;
+tutorial and plotting script present. Next: diagnostic-only stable-model protocol,
+written before candidate execution in docs/stable-model-protocol.md.

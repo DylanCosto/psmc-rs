@@ -57,7 +57,7 @@ reports remain immutable except clearly labeled current status/link corrections.
 - [x] Repository and current hosted CI inspected; starting tree clean.
 - [x] Read numerical contracts and repository instructions.
 - [x] Foundations and packaged binary verified (native x86-64/ARM64 CI; CFF validated).
-- [ ] Tutorial and workflow features verified.
+- [x] Tutorial and workflow features verified (2092668; native CI 38154388521).
 - [ ] Stable-model investigation concluded with prospective evidence.
 - [ ] Broader qualification completed and limitations documented.
 - [ ] Public release/assets independently verified.
