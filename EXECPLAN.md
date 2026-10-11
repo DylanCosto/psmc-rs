@@ -1391,3 +1391,10 @@ numerical changes or speed claim. No reduced data substitute for genome scale.
 Surprises: none yet; long continuous ms simulations may dominate run time. All
 process failures or resource stops must remain visible and resumable under the
 unchanged frozen design. Existing historical evidence is not removed.
+
+Runner implemented with exclusive locking, frozen provenance, resumable hashed
+stages, separate process groups, address-space/output limits, low priority and a
+fail-closed resource monitor. Eleven Python tests pass, including actual child
+limit enforcement, exact-stage reuse, corrupt-output rejection, chromosome
+continuity/conversion, seed uniqueness and resource-floor rejection. No production
+inference changes. Ready to freeze and launch the full predefined panel.
