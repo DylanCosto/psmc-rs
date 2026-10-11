@@ -1374,3 +1374,20 @@ Next permitted milestone: predeclare a genome-scale truth panel; run the user's
 actual input/splitting/mask/command when available; publish the existing CI after
 a remote URL is supplied. These remain not_run. See the new report for scope,
 test commands, admission limitations and retained numerical evidence.
+
+## Genome-scale qualification goal — 2026-10-10
+
+Objective: qualify the existing engines on continuous genome-scale simulated
+inputs with criteria written before running and bounded memory/disk usage.
+Progress: inspected clean b413690 and the current resource state; no prior genome
+runner is active. New protocol: docs/known-truth-genome-protocol.md. Implement and
+test a resumable resource-monitored runner, freeze source/binaries/protocol, then
+execute 30 x 3 Gb datasets and all three engines. Audit/report all results and
+perform the additional strict concurrent memory/order check before completion.
+Decisions: retain the prior primary thresholds and event histories, use actual
+250/120/110 Mb continuous chromosomes, two active datasets maximum, hard process
+limits, verified compression and free-space/RAM stop thresholds. No production
+numerical changes or speed claim. No reduced data substitute for genome scale.
+Surprises: none yet; long continuous ms simulations may dominate run time. All
+process failures or resource stops must remain visible and resumable under the
+unchanged frozen design. Existing historical evidence is not removed.
