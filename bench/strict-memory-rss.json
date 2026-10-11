@@ -1,0 +1,111 @@
+{
+  "input_sha256": "b77b41f778d73f4139ba50ee71535c74fdffb9d819fb503ad22576cb8c9ec058",
+  "records": 8,
+  "bins_per_record": 1000000,
+  "runs": [
+    {
+      "name": "previous_serial",
+      "command": [
+        "bin/psmc-rs-v0.6.2",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "2",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "--seed",
+        "42",
+        "--record-workers",
+        "1",
+        "--stats",
+        "work/qualification/memory-rss-final/previous_serial.stats.json",
+        "work/qualification/memory-rss-final/eight-million-bins.psmcfa"
+      ],
+      "binary_sha256": "0fcf6323f32300a2580bea10c1003ef741f755237246ac8dde136aa41613901b",
+      "wall_seconds": 12.67,
+      "cpu_seconds": 12.659999999999998,
+      "max_rss_kib": 1019156.0,
+      "admission": null,
+      "output_exact": true
+    },
+    {
+      "name": "bounded_serial",
+      "command": [
+        "target/release/psmc-rs",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "2",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "--seed",
+        "42",
+        "--record-workers",
+        "16",
+        "--memory-mib",
+        "2048",
+        "--stats",
+        "work/qualification/memory-rss-final/bounded_serial.stats.json",
+        "work/qualification/memory-rss-final/eight-million-bins.psmcfa"
+      ],
+      "binary_sha256": "682be008483ef60aa226e448f03d2f1f073b008a87787f9fe7af78fe9bd810fb",
+      "wall_seconds": 12.45,
+      "cpu_seconds": 12.44,
+      "max_rss_kib": 1019064.0,
+      "admission": {
+        "budget_bytes": 2147483648,
+        "requested_workers": 16,
+        "workers": 1,
+        "estimated_bytes": 1086351832,
+        "largest_message_bytes": 1032001032
+      },
+      "output_exact": true
+    },
+    {
+      "name": "bounded_two",
+      "command": [
+        "target/release/psmc-rs",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "2",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "--seed",
+        "42",
+        "--record-workers",
+        "16",
+        "--memory-mib",
+        "3500",
+        "--stats",
+        "work/qualification/memory-rss-final/bounded_two.stats.json",
+        "work/qualification/memory-rss-final/eight-million-bins.psmcfa"
+      ],
+      "binary_sha256": "682be008483ef60aa226e448f03d2f1f073b008a87787f9fe7af78fe9bd810fb",
+      "wall_seconds": 7.35,
+      "cpu_seconds": 13.549999999999999,
+      "max_rss_kib": 2035176.0,
+      "admission": {
+        "budget_bytes": 3670016000,
+        "requested_workers": 16,
+        "workers": 2,
+        "estimated_bytes": 3152975336,
+        "largest_message_bytes": 1032001032
+      },
+      "output_exact": true
+    }
+  ],
+  "scope": "Two-iteration allocation/ordered-output regression; not a speedup benchmark or full-fit qualification."
+}

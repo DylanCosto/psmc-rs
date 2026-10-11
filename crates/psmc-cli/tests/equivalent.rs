@@ -82,3 +82,52 @@ fn record_helpers_preserve_full_output_for_both_modes_and_cache_policies() {
         }
     }
 }
+
+#[test]
+fn strict_memory_budget_admits_workers_and_rejects_before_output() {
+    let binary = env!("CARGO_BIN_EXE_psmc-rs");
+    let dir = std::env::temp_dir().join(format!("psmc-memory-{}", std::process::id()));
+    std::fs::create_dir_all(&dir).unwrap();
+    let output = dir.join("output.psmc");
+    let stats = dir.join("stats.json");
+    std::fs::write(&output, "preserve existing output").unwrap();
+    let rejected = Command::new(binary)
+        .args(["--memory-mib", "1", "-o"])
+        .arg(&output)
+        .arg("--stats")
+        .arg(&stats)
+        .arg(fixture())
+        .output()
+        .unwrap();
+    assert!(!rejected.status.success());
+    assert!(String::from_utf8_lossy(&rejected.stderr).contains("cannot admit one record"));
+    assert_eq!(
+        std::fs::read_to_string(&output).unwrap(),
+        "preserve existing output"
+    );
+    assert!(!stats.exists());
+    let common = ["-p", "2+2+2", "-N", "2", "-t", "5", "--seed", "42"];
+    let serial = Command::new(binary)
+        .args(common)
+        .args(["--record-workers", "1"])
+        .arg(fixture())
+        .output()
+        .unwrap();
+    let bounded = Command::new(binary)
+        .args(common)
+        .args(["--memory-mib", "35", "--record-workers", "8", "--stats"])
+        .arg(&stats)
+        .arg(fixture())
+        .output()
+        .unwrap();
+    assert!(
+        bounded.status.success(),
+        "{}",
+        String::from_utf8_lossy(&bounded.stderr)
+    );
+    assert_eq!(serial.stdout, bounded.stdout);
+    let stats = std::fs::read_to_string(&stats).unwrap();
+    assert!(stats.contains("\"budget_bytes\":36700160"));
+    assert!(stats.contains("\"workers\":1,"));
+    std::fs::remove_dir_all(dir).unwrap();
+}

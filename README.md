@@ -23,11 +23,21 @@ an independent HMM sequence. Missing bins still carry transitions.
 Single CPU fits automatically use the available CPU count to process independent
 records. `--record-workers 1` limits a fit to one worker; set another positive
 count to cap it. An unsplit single record cannot gain record parallelism.
-**Strict mode keeps full forward/backward histories per active record, so more
-record workers can use substantially more memory.** Single fits have no memory
-admission budget; choose an explicit worker cap for long records or limited RAM.
+Strict mode admits record workers against a memory estimate: by default, half of
+available memory (including detected cgroup headroom). Use `--memory-mib MIB`
+for an explicit budget, including when requesting workers manually. Admission
+reserves the largest record's message capacity for each worker, including idle
+retained buffers, the fit owner, queued inputs, counts and optional decoding.
+The chosen worker count and estimate appear on stderr and in `--stats`.
+A budget too small for one record fails before opening output files. Input
+loading happens first; this is a conservative estimate, **not an OS RSS hard
+limit** or protection from other processes consuming memory later. When memory
+availability cannot be detected, the default is 1024 MiB. Equivalent single fits
+keep their full worker default; single-fit `--memory-mib` applies to strict CPU
+fits. Bootstrap uses its separate existing admission budget.
 Dense, CUDA and snapshot fits retain their own execution policy; automatic record
-workers do not apply to them.
+workers do not apply to them. Strict CPU snapshots still receive memory admission.
+See [memory admission results](docs/strict-memory-admission.md).
 
 To opt into the faster equivalent arithmetic:
 

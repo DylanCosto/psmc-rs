@@ -1,6 +1,7 @@
 mod batch;
 mod format;
 mod legacy;
+mod memory;
 mod snapshot;
 mod topology;
 
@@ -21,7 +22,7 @@ use std::{
 const HELP: &str = concat!(
     "psmc-rs ",
     env!("CARGO_PKG_VERSION"),
-    " — double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend cpu|dense|cuda --mode strict|equivalent --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nCUDA: --cuda-tile-sites COUNT (16384) --cuda-memory-mib MIB (1024)\nSingle fit: --record-workers COUNT (available CPUs); independent records only.\nBootstrap runner: --scheduler fit|shared (shared) --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nCPU (default) reuses buffers and repeated-record counts; dense is the scalar oracle.\nInput '-' reads stdin for a single fit. CUDA counts are experimental and require a cuda-feature build.\n-c and -S are unsupported; -S is not the seed flag.\n"
+    " — double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend cpu|dense|cuda --mode strict|equivalent --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nCUDA: --cuda-tile-sites COUNT (16384) --cuda-memory-mib MIB (1024)\nSingle fit: --record-workers COUNT (available CPUs); independent records only.\n  Strict single fit: --memory-mib MIB (half available memory; limits record workers).\nBootstrap runner: --scheduler fit|shared (shared) --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nCPU (default) reuses buffers and repeated-record counts; dense is the scalar oracle.\nInput '-' reads stdin for a single fit. CUDA counts are experimental and require a cuda-feature build.\n-c and -S are unsupported; -S is not the seed flag.\n"
 );
 
 #[derive(Clone)]
@@ -48,6 +49,8 @@ struct Options {
     batch: Option<batch::BatchOptions>,
     record_pool: Option<std::sync::Arc<psmc_cpu::record_pool::RecordPool>>,
     record_workers: usize,
+    memory_mib: Option<usize>,
+    admission: Option<memory::Admission>,
 }
 
 fn number(value: &str, flag: &str) -> Result<f64, String> {
@@ -103,6 +106,8 @@ fn parse() -> Result<Option<Options>, String> {
         batch,
         record_pool: None,
         record_workers: 1,
+        memory_mib: None,
+        admission: None,
     };
     let mut record_workers_explicit = false;
     let mut i = 0;
@@ -215,6 +220,17 @@ fn parse() -> Result<Option<Options>, String> {
                         "off" => false,
                         _ => return Err("--cache must be on or off".into()),
                     };
+                }
+                "--memory-mib" if options.batch.is_none() => {
+                    let mib = value
+                        .parse::<usize>()
+                        .map_err(|_| "--memory-mib requires a positive integer")?;
+                    if mib == 0 || mib.checked_mul(1024 * 1024).is_none() {
+                        return Err(
+                            "--memory-mib requires a positive nonoverflowing integer".into()
+                        );
+                    }
+                    options.memory_mib = Some(mib);
                 }
                 "--workers" | "--replicates" | "--output-dir" | "--memory-mib" | "--task-order" => {
                     let batch = options.batch.as_mut().ok_or_else(|| {
@@ -335,6 +351,9 @@ fn parse() -> Result<Option<Options>, String> {
     {
         return Err("--record-workers requires a single CPU fit without snapshots; bootstrap uses its shared worker budget".into());
     }
+    if options.memory_mib.is_some() && (options.backend != "cpu" || options.mode != "strict") {
+        return Err("single-fit --memory-mib requires --backend cpu --mode strict; bootstrap has its own memory budget".into());
+    }
     if options.mode == "equivalent" {
         if options.backend != "cpu" {
             return Err("--mode equivalent requires --backend cpu".into());
@@ -426,7 +445,7 @@ fn nonfinite_state(state: &FitState) -> bool {
         .any(|values| values.iter().any(|v| !v.is_finite()))
 }
 
-fn run(options: Options) -> Result<(), Box<dyn std::error::Error>> {
+fn run(mut options: Options) -> Result<(), Box<dyn std::error::Error>> {
     if options.batch.is_some() {
         return batch::run(options);
     }
@@ -465,6 +484,42 @@ fn run(options: Options) -> Result<(), Box<dyn std::error::Error>> {
         && options.settings.initial_params.is_none()
     {
         return Err("all-missing input requires explicit valid initial parameters (-i)".into());
+    }
+    if options.backend == "cpu" && options.mode == "strict" {
+        let input_bytes = sequences
+            .iter()
+            .try_fold(0usize, |sum, s| {
+                sum.checked_add(s.observations.capacity())?
+                    .checked_add(s.name.capacity())?
+                    .checked_add(std::mem::size_of::<psmc_core::Sequence>())
+            })
+            .ok_or("input memory estimate overflow")?;
+        let budget = options
+            .memory_mib
+            .map_or_else(memory::default_budget, |m| m * 1024 * 1024);
+        let requested = options
+            .record_workers
+            .min(std::thread::available_parallelism().map_or(1, usize::from));
+        let admission = memory::admit(
+            options.settings.pattern.states(),
+            &ordered
+                .iter()
+                .map(|s| s.observations.len())
+                .collect::<Vec<_>>(),
+            input_bytes,
+            requested,
+            budget,
+            options.decode || options.probability,
+        )?;
+        eprintln!(
+            "strict memory admission: {} of {} record workers, estimated {} MiB within {} MiB budget (not an RSS hard limit)",
+            admission.workers,
+            admission.requested,
+            admission.estimated.div_ceil(1024 * 1024),
+            admission.budget / (1024 * 1024)
+        );
+        options.record_workers = admission.workers;
+        options.admission = Some(admission);
     }
     if let Some(path) = &trace_path {
         write_trace(File::create(path)?, &sequences, &indices, &draws)?;
@@ -570,8 +625,12 @@ struct FitReport {
 impl FitReport {
     fn json(&self, options: &Options, seed: i64) -> String {
         let c = &self.counters;
+        let admission = options.admission.as_ref().map_or_else(|| "null".into(), |a| {
+            format!("{{\"budget_bytes\":{},\"requested_workers\":{},\"workers\":{},\"estimated_bytes\":{},\"largest_message_bytes\":{}}}",
+                a.budget, a.requested, a.workers, a.estimated, a.message_bytes)
+        });
         format!(
-            "{{\"mode\":{},\"structured_fallbacks\":{},\"backend\":{},\"cuda_tile_sites\":{},\"cuda_memory_mib\":{},\"cuda_launches\":{},\"cuda_upload_bytes\":{},\"cuda_download_bytes\":{},\"cuda_count_seconds\":{},\"cuda_fallbacks\":0,\"seed\":{seed},\"sequence_visits\":{},\"sequence_evaluations\":{},\"cache_hits\":{},\"snapshot_cache_bypass\":{},\"model_updates\":{},\"profile_enabled\":{},\"expectation_seconds\":{},\"mstep_seconds\":{},\"nonfinite_output\":{},\"iterations\":{},\"cache_enabled\":{},\"simd_requested\":{},\"simd_selected\":{}}}\n",
+            "{{\"memory_admission\":{admission},\"mode\":{},\"structured_fallbacks\":{},\"backend\":{},\"cuda_tile_sites\":{},\"cuda_memory_mib\":{},\"cuda_launches\":{},\"cuda_upload_bytes\":{},\"cuda_download_bytes\":{},\"cuda_count_seconds\":{},\"cuda_fallbacks\":0,\"seed\":{seed},\"sequence_visits\":{},\"sequence_evaluations\":{},\"cache_hits\":{},\"snapshot_cache_bypass\":{},\"model_updates\":{},\"profile_enabled\":{},\"expectation_seconds\":{},\"mstep_seconds\":{},\"nonfinite_output\":{},\"iterations\":{},\"cache_enabled\":{},\"simd_requested\":{},\"simd_selected\":{}}}\n",
             snapshot::string(&options.mode),
             c.structured_fallbacks,
             snapshot::string(&options.backend),

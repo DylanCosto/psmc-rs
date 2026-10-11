@@ -1,0 +1,133 @@
+{
+  "status": "post_hoc_diagnostic_not_a_new_gate",
+  "grid": "Original 256-point pilot grid; left-inclusive bands, final endpoint retained",
+  "aggregation": "RMS across all datasets and grid points in each band",
+  "histories": {
+    "constant": [
+      {
+        "start": 1000,
+        "end": 5000,
+        "grid_points": 78,
+        "pooled_truth_rmse": {
+          "strict": 1.07299168825796,
+          "equivalent": 1.0729701623758714
+        },
+        "pooled_mode_difference": 7.053921860667356e-05
+      },
+      {
+        "start": 5000,
+        "end": 20000,
+        "grid_points": 67,
+        "pooled_truth_rmse": {
+          "strict": 0.21603073084407629,
+          "equivalent": 0.2160287843945107
+        },
+        "pooled_mode_difference": 1.0478429575915943e-05
+      },
+      {
+        "start": 20000,
+        "end": 80000,
+        "grid_points": 66,
+        "pooled_truth_rmse": {
+          "strict": 0.11998985339163175,
+          "equivalent": 0.11998938444851717
+        },
+        "pooled_mode_difference": 1.1040356895500713e-05
+      },
+      {
+        "start": 80000,
+        "end": 200000,
+        "grid_points": 45,
+        "pooled_truth_rmse": {
+          "strict": 0.3947074102429835,
+          "equivalent": 0.3947046835924033
+        },
+        "pooled_mode_difference": 2.766732276522531e-05
+      }
+    ],
+    "bottleneck": [
+      {
+        "start": 1000,
+        "end": 5000,
+        "grid_points": 78,
+        "pooled_truth_rmse": {
+          "strict": 1.991606280253166,
+          "equivalent": 1.9850345227010284
+        },
+        "pooled_mode_difference": 0.07519568806996252
+      },
+      {
+        "start": 5000,
+        "end": 20000,
+        "grid_points": 67,
+        "pooled_truth_rmse": {
+          "strict": 0.4690907503711353,
+          "equivalent": 0.47100047625045827
+        },
+        "pooled_mode_difference": 0.04333623721044328
+      },
+      {
+        "start": 20000,
+        "end": 80000,
+        "grid_points": 66,
+        "pooled_truth_rmse": {
+          "strict": 0.2206429499448027,
+          "equivalent": 0.22062721275923863
+        },
+        "pooled_mode_difference": 0.005385366688771759
+      },
+      {
+        "start": 80000,
+        "end": 200000,
+        "grid_points": 45,
+        "pooled_truth_rmse": {
+          "strict": 0.45435385013822316,
+          "equivalent": 0.4544691228767635
+        },
+        "pooled_mode_difference": 0.0007688199846995348
+      }
+    ],
+    "expansion": [
+      {
+        "start": 1000,
+        "end": 5000,
+        "grid_points": 78,
+        "pooled_truth_rmse": {
+          "strict": 2.5425877220879456,
+          "equivalent": 2.4554955525579256
+        },
+        "pooled_mode_difference": 0.10630757758351746
+      },
+      {
+        "start": 5000,
+        "end": 20000,
+        "grid_points": 67,
+        "pooled_truth_rmse": {
+          "strict": 0.19886317892117059,
+          "equivalent": 0.19895197289108513
+        },
+        "pooled_mode_difference": 0.005048864003244768
+      },
+      {
+        "start": 20000,
+        "end": 80000,
+        "grid_points": 66,
+        "pooled_truth_rmse": {
+          "strict": 0.1091854947372386,
+          "equivalent": 0.10918745456250309
+        },
+        "pooled_mode_difference": 0.00014764092736474458
+      },
+      {
+        "start": 80000,
+        "end": 200000,
+        "grid_points": 45,
+        "pooled_truth_rmse": {
+          "strict": 0.26259035081680226,
+          "equivalent": 0.26297971549072796
+        },
+        "pooled_mode_difference": 0.012760943838328853
+      }
+    ]
+  }
+}

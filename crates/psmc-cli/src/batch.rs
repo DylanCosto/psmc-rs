@@ -81,10 +81,7 @@ fn estimated_worker_bytes(
     equivalent: bool,
     sharing: bool,
 ) -> Option<usize> {
-    let messages = max_length
-        .checked_add(1)?
-        .checked_mul(states.checked_mul(2)?.checked_add(1)?)?
-        .checked_mul(8)?;
+    let messages = crate::memory::message_bytes(states, max_length)?;
     let counts = states
         .checked_mul(states)?
         .checked_add(states.checked_mul(4)?)?

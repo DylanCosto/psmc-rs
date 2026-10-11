@@ -1321,3 +1321,26 @@ Remaining external inputs: remote repository URL for the requested push/hosted
 CI, and the user's input/splitting/mask/command for real-workload qualification.
 Those steps remain not_run. Larger known-truth studies and outlier investigation
 are the next qualification work; optimization is paused by the user's direction.
+
+## Strict memory admission — user whole-genome safety review
+
+Completed v0.6.3 safety milestone: strict single CPU fits now admit workers within
+half available memory by default, with --memory-mib override and cgroup headroom
+where detectable. Reserve largest-record capacities including idle TLS and owner
+workspaces; avoid a naive active-job token scheme that ignores retained memory.
+Reuse the batch estimator's checked history formula. Equivalent worker defaults
+and strict numerical arithmetic remain unchanged.
+
+59 release tests passed. Eight distinct 1M-bin records reproduced previous serial
+output exactly with requested 16 workers reduced to one at 2048 MiB and two at
+3500 MiB; measured RSS about 995/1988 MiB. Too-small budgets reject before output
+creation/truncation. Snapshot/decoding and checked-size cases remain covered.
+Details: docs/strict-memory-admission.md and bench/strict-memory-rss.json.
+
+Next milestone: the prospective 200 Mb known-truth protocol is written before
+new simulation. Ten datasets for each of three histories, events moved into the
+5k–80k window, prespecified time bands, relative and absolute accuracy budgets,
+and event-direction checks. Original 20 Mb pilot gates remain unchanged. The
+user's post-hoc band values are reproduced in bench/pilot-time-bands.json; recent
+windows dominate error. Small likelihood gaps are reassuring fit-quality evidence,
+not a universal significance threshold or proof of a particular ridge geometry.
