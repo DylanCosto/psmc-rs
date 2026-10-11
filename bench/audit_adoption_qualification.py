@@ -145,8 +145,9 @@ def main():
     for panel in report['additional_patterns']:
         label=panel['dataset']+'-'+panel['pattern'].replace('*','x')
         texts={m:check_rounds(OUT/(label+'-'+m+'.out')) for m in ['c-o2','c-fma','strict','equivalent']}
-        remove=lambda t:'\n'.join(l for l in t.splitlines() if not l.startswith('MM\tVersion:'))
-        value=remove(texts['c-o2'])==remove(texts['strict']);assert value==panel['strict_c_exact'];exact.append(value)
+        def numerical_bytes(mode):
+            return b''.join(line for line in (OUT/(label+'-'+mode+'.out')).read_bytes().splitlines(keepends=True) if not line.startswith(b'MM\tVersion:'))
+        value=numerical_bytes('c-o2')==numerical_bytes('strict');assert value==panel['strict_c_exact'];exact.append(value)
         input_path=ROOT/('work/hg001-genome/chromosomes/chr22.psmcfa' if panel['dataset']=='hg001-chr22' else 'work/adoption-input/HG002_GRCh38_chr1.psmcfa')
         bins=sum(len(sequence) for _,sequence in sequences(input_path))
         control=independent_comparison(texts['c-o2'],texts['c-fma'],bins)
