@@ -23,8 +23,11 @@ def model(params, groups, precision=50):
             ak=alpha[k]-alpha[k+1]; lk=lam[k]
             cp=ak*(elapsed+lk)-alpha[k+1]*tau[k]; pi=cp/cpi
             sig=(ak/(cpi*rho)+pi/2)/cs
-            avg=-(1-pi/(cs*sig)).ln()/rho
-            if avg<elapsed or avg>elapsed+tau[k]: avg=elapsed+lk-tau[k]*alpha[k+1]/ak
+            remainder=1-pi/(cs*sig)
+            # C log returns NaN/-Inf here and takes the existing interval fallback.
+            # Decimal raises instead, so express that same branch explicitly.
+            avg=-remainder.ln()/rho if remainder>0 else D('NaN')
+            if avg.is_nan() or avg<elapsed or avg>elapsed+tau[k]: avg=elapsed+lk-tau[k]*alpha[k+1]/ak
             q=[]
             for j in range(n):
                 if j<k: v=ak/cp*qa[j]

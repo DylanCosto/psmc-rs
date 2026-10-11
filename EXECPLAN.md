@@ -1759,3 +1759,26 @@ extracted-archive fits. Local archive hash106e9d7fe52903ce10c352454d4532bc7d592f
 source/home path remapping assertion passed. Packaged inspector ran successfully;
 tutorial and plotting script present. Next: diagnostic-only stable-model protocol,
 written before candidate execution in docs/stable-model-protocol.md.
+
+### Adoption milestone 3 — stable model investigation (2026-10-11)
+
+Progress: diagnostic-only Rust expm1/log1p/scaled-beta candidate implemented after
+9ed359a protocol freeze. All332 model points passed declared probability,
+normalization and stationarity gates; max error1.78e-15. Eight pilot endpoint LLs
+match Decimal probabilities at printed precision. Six ten-round synthetic fits
+and independent Decimal final-vector evaluations completed; raw results retained.
+Workspace/C goldens and corrected Decimal test pass. Exact hashes/commands and
+local limitations in bench/stable-model-results.json/docs/stable-model-report.md.
+
+Decisions: do not adopt prototype in production. 64-state optimizer parameters
+changed substantially and candidate fits were slower; six-state candidate had77
+fallbacks. Strict and default equivalent engine equations remain unchanged.
+This is an investigation conclusion, not a scientific qualification pass.
+
+Surprises: Decimal oracle lacked the original nonpositive-log mean-time fallback;
+corrected after protocol amendment and reanalyzed unchanged matrices, eliminating83
+oracle exclusions. JSON initially rejected the literal six-state NaN E-step; saved
+outputs recovered without rerunning fits and report uses explicit null/status.
+Initial peak RSS was not captured; subsequent diagnostic memory records retained.
+Next permitted milestone: predeclared broader qualification of frozen production
+engine, including additional patterns/public input and30 whole-genome bootstraps.

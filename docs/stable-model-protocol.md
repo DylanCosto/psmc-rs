@@ -67,3 +67,13 @@ Resource bounds: existing local/synthetic inputs; no simulations/downloads. One
 fit/evaluation CPU, one record message history at a time, 4 GiB available RAM and
 25 GiB disk floors for larger checks. Raw evidence in work/stable-model, compact
 results in bench. Do not rerun cancelled simulations or change old reports/gates.
+
+### Diagnostic-oracle correction before reassessment
+
+The initial 332-point sweep excluded 83 synthetic points because Decimal raised
+on a nonpositive logarithm argument. Inspection of pinned C/Rust shows those
+points must take the existing mean-time fallback on NaN/out-of-interval log. The
+Decimal transcription lacked that branch. Correct the oracle, preserve the first
+analysis, and reanalyze the unchanged saved Rust matrices. Do not rerun/tune fits
+or change component tolerances. Record remaining invalid-domain points separately.
+This does not modify production arithmetic or reinterpret the original pilot gates.

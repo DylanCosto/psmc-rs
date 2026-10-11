@@ -4,7 +4,7 @@ from pilot_decimal_model import model
 
 class DecimalModelTests(unittest.TestCase):
     def test_precision_and_probability_invariants(self):
-        for groups, params in [([0,0,1,1,2,2],[.02,.004,15.,1.,2.,.5]),
+        for groups, params in [([0,0,1,1,2,2],[.01,.002,15.,1e6,1e6,1e6]),([0,0,1,1,2,2],[.02,.004,15.,1.,2.,.5]),
                                ([0]*4+[i for i in range(1,26) for _ in range(2)]+[26]*4+[27]*6,
                                 [.045,.0064,22.]+[1e7,2e6,3e6]+[1.]*25)]:
             a=model(params,groups,50);b=model(params,groups,80)
