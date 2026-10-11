@@ -1,6 +1,6 @@
 # Mathematical and compatibility contracts
 
-## Current mode selection — v0.7.0
+## Current mode selection — v0.8.0 (unchanged since v0.7.0)
 
 Ordinary CPU fits and bootstrap batches default to **equivalent**. Use
 `--mode strict` for exact C reproduction on the pinned tested build, excluding

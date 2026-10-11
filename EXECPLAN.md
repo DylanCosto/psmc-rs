@@ -1823,3 +1823,10 @@ The LK column is explicitly not a fresh final-parameter likelihood. Standard Rus
 concurrent-writer tests passed again. Focused unit/workflow checks in
 work/export-finite-tests.log and work/standard-lock-tests.log; no production
 inference change or modification of the live qualification artifacts.
+
+Release presentation prepared: usage-first README, linked mode/CLI/validation
+guides, methods note, container instructions, pilot checklist and unsent launch
+announcement. Pending broader qualification is labeled in progress, not passed;
+release remains unpublished. Author uses owner name only, with no invented
+affiliation/ORCID or external participation. Archives will bundle practical guides
+and resolve remaining evidence links to their exact source commit.
