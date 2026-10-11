@@ -111,3 +111,11 @@ and common-count-Q/fresh-likelihood ridge diagnostics. The exact prospective
 thresholds are in `docs/linear-equivalent.md`, hashed before candidate fits in
 `bench/linear-equivalent-controls.json`. Both C control datasets pass. Historical
 failures are retained. No change to strict tolerances or reference semantics.
+
+## Equivalent-default release — 2026-10-11
+
+User-authorized promotion follows docs/default-transition-protocol.md. Historical
+strict-default/opt-in policies above describe prior milestones. Ordinary CPU fits
+and bootstrap now select equivalent by default; strict exact-output tests select
+strict explicitly and retain unchanged golden data and tolerances. No inference
+arithmetic, numerical acceptance criterion or historical evidence is changed.

@@ -55,6 +55,7 @@ fn output_matches_pinned_c_reference() {
             let output = scratch.join(format!("{name}-{variant}.psmc"));
             let _ = fs::remove_file(&output);
             let status = Command::new(env!("CARGO_BIN_EXE_psmc-rs"))
+                .args(["--mode", "strict"])
                 .args(*backend)
                 .args(*args)
                 .arg("-o")

@@ -1534,3 +1534,13 @@ and batch memory estimates are preserved. No inference arithmetic changes.
 Candidate 0.7.0-rc.1 must pass before final 0.7.0 installation. Work is not complete
 until release tests, downstream checks, bounded resource check, whole-HG001 output
 parity, documentation and final installed binary verification are recorded.
+
+Candidate 0.7.0-rc.1 passes 61 Rust tests (4 CUDA hardware ignored), four live C
+goldens, 25 prior-version/downstream compatibility checks and bounded resource
+checks. Whole-HG001 implicit equivalent N30 is exact to the audited v0.6.3
+equivalent output; 16 workers admitted within 8192 MiB, peak 485.1 MiB. Strict
+2048 MiB allocation regression remains exact and admits one worker. Equivalent
+decoding fits in 3500 MiB with eight workers. CUDA feature compile-check passes;
+new GPU runtime and actual plot rendering not_run. A utility harness assertion
+was corrected to check psmc_trunc's QU passthrough rather than assume discarding.
+Original failure preserved. Candidate gates passed; final 0.7.0 promotion follows.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check a freshly built pinned C executable against the committed golden files.
 
-Cargo's golden integration test then checks default/CPU/scalar/dense Rust against
+Cargo's golden integration test then checks explicit strict CPU/scalar/dense Rust against
 these same files. Never regenerate golden files to accommodate a mismatch.
 """
 import argparse

@@ -92,9 +92,66 @@ pub fn admit(
     budget: usize,
     decoding: bool,
 ) -> Result<Admission, String> {
+    admit_impl(
+        states,
+        lengths,
+        input_bytes,
+        requested,
+        budget,
+        decoding,
+        false,
+    )
+}
+
+pub fn admit_equivalent(
+    states: usize,
+    lengths: &[usize],
+    input_bytes: usize,
+    requested: usize,
+    budget: usize,
+    decoding: bool,
+) -> Result<Admission, String> {
+    admit_impl(
+        states,
+        lengths,
+        input_bytes,
+        requested,
+        budget,
+        decoding,
+        true,
+    )
+}
+
+fn checkpoint_bytes(states: usize, length: usize) -> Option<usize> {
+    // linear::Steps pads states into four lanes. Scales, forward checkpoints,
+    // three reconstructed blocks and rolling/factor vectors; double for spare
+    // capacity/allocator conservatism. This does not alter numerical work.
+    let padded = states.checked_add(3)?.checked_div(4)?.checked_mul(4)?;
+    length
+        .checked_add(1)?
+        .checked_mul(8)?
+        .checked_add(length.div_ceil(256).checked_mul(padded)?.checked_mul(8)?)?
+        .checked_add(padded.checked_mul((3 * 258 + 32) * 8)?)?
+        .checked_mul(2)
+}
+
+fn admit_impl(
+    states: usize,
+    lengths: &[usize],
+    input_bytes: usize,
+    requested: usize,
+    budget: usize,
+    decoding: bool,
+    equivalent: bool,
+) -> Result<Admission, String> {
     let estimate = || -> Option<(usize, usize)> {
         let longest = lengths.iter().copied().max().unwrap_or(0);
-        let messages = message_bytes(states, longest)?;
+        let dense = message_bytes(states, longest)?;
+        let messages = if equivalent {
+            checkpoint_bytes(states, longest)?
+        } else {
+            dense
+        };
         let total = lengths.iter().try_fold(0usize, |a, &b| a.checked_add(b))?;
         // Loaded input, all queued observation copies (cache off included),
         // retained count results/cache/aggregate, model layouts, metadata and
@@ -104,7 +161,14 @@ pub fn admit(
             .checked_add(states.checked_mul(4)?)?
             .checked_mul(8)?;
         let fixed = input_bytes
-            .checked_add(total)?
+            .checked_add(total.checked_mul(if equivalent { 2 } else { 1 })?)?
+            // Ineligible E-steps run serially in the owner's dense workspace.
+            // It can remain allocated alongside subsequent checkpoint jobs.
+            .checked_add(if equivalent {
+                dense.checked_mul(1 + usize::from(decoding))?
+            } else {
+                0
+            })?
             .checked_add(
                 counts
                     .checked_mul(lengths.len().checked_add(1)?)?
@@ -128,7 +192,7 @@ pub fn admit(
         // With sharing, the fit's serial workspace may remain allocated after
         // startup/bypass, in addition to one TLS workspace per numerical worker.
         // Decoding holds another dense history while those buffers still exist.
-        let slots = workers + usize::from(workers > 1) + usize::from(decoding);
+        let slots = workers + usize::from(workers > 1) + usize::from(decoding && !equivalent);
         let per_worker = states
             .checked_mul(states)
             .and_then(|n| n.checked_mul(128))
@@ -150,7 +214,7 @@ pub fn admit(
         }
     }
     Err(format!(
-        "single-fit memory budget {budget} bytes cannot admit one record (largest message history {messages} bytes plus input, counts and overhead); increase --memory-mib or use equivalent mode"
+        "single-fit memory budget {budget} bytes cannot admit one record (largest worker message allocation {messages} bytes plus input, counts, fallback/decoder reserves and overhead); increase --memory-mib"
     ))
 }
 
@@ -190,5 +254,18 @@ mod tests {
         assert_eq!(limit_remaining("1000", "250"), Some(750));
         assert_eq!(limit_remaining("1000", "2000"), Some(0));
         assert_eq!(limit_remaining("max", "250"), None);
+    }
+
+    #[test]
+    fn equivalent_keeps_checkpoint_parallelism_and_dense_reserves() {
+        let lengths = [2_500_000; 22];
+        let fit = admit_equivalent(64, &lengths, 55_000_000, 16, 8192 * MIB, false).unwrap();
+        assert_eq!(fit.workers, 16);
+        assert!(fit.estimated >= message_bytes(64, lengths[0]).unwrap());
+        let decode = admit_equivalent(64, &lengths, 55_000_000, 16, 8192 * MIB, true).unwrap();
+        assert!(decode.estimated > fit.estimated + message_bytes(64, lengths[0]).unwrap());
+        assert!(admit_equivalent(64, &lengths, 55_000_000, 16, 1024 * MIB, false).is_err());
+        assert!(admit_equivalent(usize::MAX, &[10], 10, 16, usize::MAX, false).is_err());
+        assert!(checkpoint_bytes(64, usize::MAX).is_none());
     }
 }

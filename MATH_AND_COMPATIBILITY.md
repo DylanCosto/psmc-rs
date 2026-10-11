@@ -94,3 +94,11 @@ Reverse site accumulation and reciprocal normalization are authorized only here.
 See `docs/linear-equivalent.md` for derivation, fallback semantics and the
 prospective controls. Strict still uses full counts, the original normalizer and
 QD with identical arithmetic. Dense remains the independent scalar oracle.
+
+## Equivalent-default release — 2026-10-11
+
+The user authorizes changing ordinary CPU default selection after release checks.
+Earlier strict-default descriptions remain historical. The current strict and
+equivalent mathematical contracts above are unchanged; default selection does
+not make equivalent bit-identical to C. Dense/CUDA and snapshots retain strict
+when no explicit mode is supplied. See docs/default-transition-protocol.md.

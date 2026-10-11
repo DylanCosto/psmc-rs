@@ -4,7 +4,7 @@ fn fixture() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../tests/fixtures/repeated.psmcfa")
 }
 #[test]
-fn equivalent_mode_is_explicit_and_incompatible_backends_are_rejected() {
+fn explicit_modes_and_incompatible_backends_are_rejected() {
     let binary = env!("CARGO_BIN_EXE_psmc-rs");
     for extra in [
         vec!["--backend", "dense"],
@@ -92,7 +92,7 @@ fn strict_memory_budget_admits_workers_and_rejects_before_output() {
     let stats = dir.join("stats.json");
     std::fs::write(&output, "preserve existing output").unwrap();
     let rejected = Command::new(binary)
-        .args(["--memory-mib", "1", "-o"])
+        .args(["--mode", "strict", "--memory-mib", "1", "-o"])
         .arg(&output)
         .arg("--stats")
         .arg(&stats)
@@ -106,7 +106,9 @@ fn strict_memory_budget_admits_workers_and_rejects_before_output() {
         "preserve existing output"
     );
     assert!(!stats.exists());
-    let common = ["-p", "2+2+2", "-N", "2", "-t", "5", "--seed", "42"];
+    let common = [
+        "--mode", "strict", "-p", "2+2+2", "-N", "2", "-t", "5", "--seed", "42",
+    ];
     let serial = Command::new(binary)
         .args(common)
         .args(["--record-workers", "1"])
@@ -129,5 +131,55 @@ fn strict_memory_budget_admits_workers_and_rejects_before_output() {
     let stats = std::fs::read_to_string(&stats).unwrap();
     assert!(stats.contains("\"budget_bytes\":36700160"));
     assert!(stats.contains("\"workers\":1,"));
+    std::fs::remove_dir_all(dir).unwrap();
+}
+
+#[test]
+fn default_selection_and_equivalent_budget_are_explicit_in_artifacts() {
+    let binary = env!("CARGO_BIN_EXE_psmc-rs");
+    let dir = std::env::temp_dir().join(format!("psmc-default-{}", std::process::id()));
+    std::fs::create_dir_all(&dir).unwrap();
+    let run = |args: &[&str]| {
+        Command::new(binary)
+            .env_remove("PSMC_SNAPSHOT")
+            .args(["-p", "2+2+2", "-N", "2", "-t", "5", "--seed", "42"])
+            .args(args)
+            .arg(fixture())
+            .output()
+            .unwrap()
+    };
+    let default = run(&[]);
+    let explicit = run(&["--mode", "equivalent"]);
+    assert!(default.status.success());
+    assert_eq!(default.stdout, explicit.stdout);
+    assert!(String::from_utf8_lossy(&default.stdout).contains("(equivalent f64;"));
+    assert_eq!(
+        run(&["--backend", "dense"]).stdout,
+        run(&["--mode", "strict", "--backend", "dense"]).stdout
+    );
+    let snapshot = dir.join("snapshot.jsonl");
+    let snap = run(&["--snapshot", snapshot.to_str().unwrap()]);
+    assert!(snap.status.success());
+    assert!(String::from_utf8_lossy(&snap.stdout).contains("(strict f64;"));
+    let env_snap = Command::new(binary)
+        .env("PSMC_SNAPSHOT", &snapshot)
+        .args(["-p", "2+2+2", "-N", "0", "-t", "5"])
+        .arg(fixture())
+        .output()
+        .unwrap();
+    assert!(env_snap.status.success());
+    assert!(String::from_utf8_lossy(&env_snap.stdout).contains("(strict f64;"));
+    let stats = dir.join("stats.json");
+    let admitted = run(&["--memory-mib", "35", "--stats", stats.to_str().unwrap()]);
+    assert!(admitted.status.success());
+    assert_eq!(default.stdout, admitted.stdout);
+    let metadata = std::fs::read_to_string(&stats).unwrap();
+    assert!(metadata.contains("\"mode\":\"equivalent\""));
+    assert!(metadata.contains("\"budget_bytes\":36700160"));
+    let output = dir.join("preserved.psmc");
+    std::fs::write(&output, "keep").unwrap();
+    let reject = run(&["--memory-mib", "1", "-o", output.to_str().unwrap()]);
+    assert!(!reject.status.success());
+    assert_eq!(std::fs::read_to_string(&output).unwrap(), "keep");
     std::fs::remove_dir_all(dir).unwrap();
 }

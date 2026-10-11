@@ -22,7 +22,7 @@ use std::{
 const HELP: &str = concat!(
     "psmc-rs ",
     env!("CARGO_PKG_VERSION"),
-    " — double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend cpu|dense|cuda --mode strict|equivalent --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nCUDA: --cuda-tile-sites COUNT (16384) --cuda-memory-mib MIB (1024)\nSingle fit: --record-workers COUNT (available CPUs); independent records only.\n  Strict single fit: --memory-mib MIB (half available memory; limits record workers).\nBootstrap runner: --scheduler fit|shared (shared) --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nCPU (default) reuses buffers and repeated-record counts; dense is the scalar oracle.\nInput '-' reads stdin for a single fit. CUDA counts are experimental and require a cuda-feature build.\n-c and -S are unsupported; -S is not the seed flag.\n"
+    " — double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend cpu|dense|cuda --mode strict|equivalent --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nCUDA: --cuda-tile-sites COUNT (16384) --cuda-memory-mib MIB (1024)\nSingle fit: --record-workers COUNT (available CPUs); independent records only.\n  CPU single fit: --memory-mib MIB (half available memory; limits record workers).\nBootstrap runner: --scheduler fit|shared (shared) --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nEquivalent is the default for CPU fits/bootstrap; --mode strict retains C compatibility.\nAn omitted mode selects strict for dense/CUDA backends or snapshots.\nCPU (default) reuses buffers and repeated-record counts; dense is the scalar oracle.\nInput '-' reads stdin for a single fit. CUDA counts are experimental and require a cuda-feature build.\n-c and -S are unsupported; -S is not the seed flag.\n"
 );
 
 #[derive(Clone)]
@@ -110,6 +110,7 @@ fn parse() -> Result<Option<Options>, String> {
         admission: None,
     };
     let mut record_workers_explicit = false;
+    let mut mode_explicit = false;
     let mut i = 0;
     let mut positional = false;
     while i < args.len() {
@@ -129,7 +130,7 @@ fn parse() -> Result<Option<Options>, String> {
             }
             if flag == "--version" {
                 println!(
-                    "psmc-rs {}; strict f64 dense/cpu Rust; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+                    "psmc-rs {}; equivalent-default f64 CPU; strict available; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
                     env!("CARGO_PKG_VERSION")
                 );
                 return Ok(None);
@@ -239,6 +240,7 @@ fn parse() -> Result<Option<Options>, String> {
                     batch.set(flag, &value)?;
                 }
                 "--mode" => {
+                    mode_explicit = true;
                     if !matches!(value.as_str(), "strict" | "equivalent") {
                         return Err(format!(
                             "unsupported mode '{value}'; choose strict or equivalent"
@@ -339,6 +341,14 @@ fn parse() -> Result<Option<Options>, String> {
     if options.snapshot.is_none() {
         options.snapshot = env::var("PSMC_SNAPSHOT").ok().filter(|v| !v.is_empty());
     }
+    if !mode_explicit {
+        options.mode = if options.backend == "cpu" && options.snapshot.is_none() {
+            "equivalent"
+        } else {
+            "strict"
+        }
+        .into();
+    }
     if !record_workers_explicit
         && options.batch.is_none()
         && options.backend == "cpu"
@@ -351,15 +361,18 @@ fn parse() -> Result<Option<Options>, String> {
     {
         return Err("--record-workers requires a single CPU fit without snapshots; bootstrap uses its shared worker budget".into());
     }
-    if options.memory_mib.is_some() && (options.backend != "cpu" || options.mode != "strict") {
-        return Err("single-fit --memory-mib requires --backend cpu --mode strict; bootstrap has its own memory budget".into());
+    if options.memory_mib.is_some() && options.backend != "cpu" {
+        return Err(
+            "single-fit --memory-mib requires --backend cpu; bootstrap has its own memory budget"
+                .into(),
+        );
     }
     if options.mode == "equivalent" {
         if options.backend != "cpu" {
             return Err("--mode equivalent requires --backend cpu".into());
         }
         if options.snapshot.is_some() {
-            return Err("--snapshot is not supported in experimental equivalent mode".into());
+            return Err("--snapshot requires --mode strict".into());
         }
     }
     if options.backend == "cpu" || options.backend == "cuda" {
@@ -485,7 +498,7 @@ fn run(mut options: Options) -> Result<(), Box<dyn std::error::Error>> {
     {
         return Err("all-missing input requires explicit valid initial parameters (-i)".into());
     }
-    if options.backend == "cpu" && options.mode == "strict" {
+    if options.backend == "cpu" {
         let input_bytes = sequences
             .iter()
             .try_fold(0usize, |sum, s| {
@@ -500,7 +513,12 @@ fn run(mut options: Options) -> Result<(), Box<dyn std::error::Error>> {
         let requested = options
             .record_workers
             .min(std::thread::available_parallelism().map_or(1, usize::from));
-        let admission = memory::admit(
+        let admit = if options.mode == "equivalent" {
+            memory::admit_equivalent
+        } else {
+            memory::admit
+        };
+        let admission = admit(
             options.settings.pattern.states(),
             &ordered
                 .iter()
@@ -512,7 +530,8 @@ fn run(mut options: Options) -> Result<(), Box<dyn std::error::Error>> {
             options.decode || options.probability,
         )?;
         eprintln!(
-            "strict memory admission: {} of {} record workers, estimated {} MiB within {} MiB budget (not an RSS hard limit)",
+            "{} memory admission: {} of {} record workers, estimated {} MiB within {} MiB budget (not an RSS hard limit)",
+            options.mode,
             admission.workers,
             admission.requested,
             admission.estimated.div_ceil(1024 * 1024),
@@ -814,6 +833,10 @@ fn main() {
         .map_err(|e| -> Box<dyn std::error::Error> { e.into() })
         .and_then(|options| {
             if let Some(options) = options {
+                eprintln!(
+                    "selected mode: {} (backend {})",
+                    options.mode, options.backend
+                );
                 run(options)
             } else {
                 Ok(())
