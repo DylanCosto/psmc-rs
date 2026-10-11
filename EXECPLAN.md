@@ -1665,3 +1665,16 @@ Hosted CI is now executing: https://github.com/DylanCosto/psmc-rs/actions/runs/3
 for eecc218, replacing the earlier external blocker of no remote. This entry and
 README/report publication links are documentation updates; the run's live status
 is authoritative for hosted results, separate from already-passed local tests.
+
+
+### First hosted CI finding and test isolation
+
+The first GitHub run passed live pinned-C golden checks and all Rust tests, but
+failed the tiny child/resume harness test because the hosted runner had only
+12.6 GiB free disk, below the real whole-genome 25 GiB abort floor (and 30 GiB
+admission floor). This was a test-environment dependency, not an inference failure.
+The child test now mocks healthy disk/RAM telemetry while still launching a real
+child and checking its actual address-space/file-size/nice limits and resume
+integrity. Separate deterministic subcases check low RAM, low disk and oversized
+panel fail closed before launch. Production resource thresholds are unchanged.
+The original failed run is retained; a new pushed CI run verifies this correction.

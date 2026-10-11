@@ -4,6 +4,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 
 import known_truth_genome as g
@@ -36,7 +37,11 @@ class GenomeHarnessTests(unittest.TestCase):
             self.assertEqual(g.compressed_sha(str(p)+'.gz'),digest)
 
     def test_real_child_limits_resume_and_tamper(self):
-        with tempfile.TemporaryDirectory() as d:
+        # Exercise real child limits and resume integrity independently of the
+        # CI host's free space. This tiny child does not run a genome workload.
+        with tempfile.TemporaryDirectory() as d, \
+                patch.object(g, 'available', return_value=16*g.GIB), \
+                patch.object(g.shutil, 'disk_usage', return_value=SimpleNamespace(free=40*g.GIB)):
             runner = g.Runner(Path(d))
             try:
                 base = Path(d)/'limit-check'
@@ -53,14 +58,20 @@ class GenomeHarnessTests(unittest.TestCase):
             finally:runner.close()
 
     def test_resource_floor_fails_closed(self):
-        with tempfile.TemporaryDirectory() as d, patch.object(g,'available',return_value=3*g.GIB):
-            runner = g.Runner(Path(d))
-            try:
-                self.assertTrue(runner.stop.wait(5))
-                with self.assertRaises(RuntimeError):runner.stage(Path(d)/'never-launched',['/usr/bin/true'])
-                self.assertFalse(list(Path(d).glob('*.attempt-*.json')))
-                self.assertIn('resource floor',runner.reason)
-            finally:runner.close()
+        for ram, free, panel in [(3,40,0), (16,24,0), (16,40,13)]:
+            with self.subTest(ram=ram, free=free, panel=panel), \
+                    tempfile.TemporaryDirectory() as d, \
+                    patch.object(g, 'available', return_value=ram*g.GIB), \
+                    patch.object(g.shutil, 'disk_usage', return_value=SimpleNamespace(free=free*g.GIB)), \
+                    patch.object(g, 'disk_bytes', return_value=panel*g.GIB):
+                runner = g.Runner(Path(d))
+                try:
+                    self.assertTrue(runner.stop.wait(5))
+                    with self.assertRaises(RuntimeError):
+                        runner.stage(Path(d)/'never-launched',['/usr/bin/true'])
+                    self.assertFalse(list(Path(d).glob('*.attempt-*.json')))
+                    self.assertIn('resource floor',runner.reason)
+                finally:runner.close()
 
 
 if __name__=='__main__':unittest.main()

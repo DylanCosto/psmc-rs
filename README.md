@@ -210,7 +210,8 @@ python3 -m unittest discover -s bench -p test_known_truth.py
 ```
 
 The [CI workflow](.github/workflows/strict.yml) builds pinned vanilla C, checks
-committed golden outputs and runs Rust tests. Hosted execution requires a remote.
+committed golden outputs and runs Rust tests on pushes and pull requests.
+[Hosted runs](https://github.com/DylanCosto/psmc-rs/actions) record the results.
 The [reference build instructions](README_PHASE0.md) and scripts in `bench/`
 retain source hashes, commands and evidence. Historical runners belong to their
 recorded source versions; do not overwrite old reports with new executions.
