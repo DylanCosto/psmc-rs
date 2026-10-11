@@ -167,6 +167,7 @@ fn split(sequences: &[Sequence], size: usize, out: &mut dyn Write) -> Result<()>
 struct Round {
     index: usize,
     theta: Option<f64>,
+    likelihood: Option<f64>,
     dt: f64,
     rows: Vec<(f64, f64)>,
 }
@@ -197,6 +198,15 @@ fn export(text: &str, mu: f64, years: f64, bp: f64) -> Result<String> {
                     ..Round::default()
                 });
             }
+            Some("LK") if current.is_some() => {
+                let r = current.as_mut().unwrap();
+                if words.len() != 2 || r.likelihood.is_some() {
+                    return Err("invalid or duplicate LK".into());
+                }
+                r.likelihood = Some(finite(words[1]).map_err(
+                    |_| "nonfinite reported likelihood; inspect the source fit before exporting",
+                )?);
+            }
             Some("TR") if current.is_some() => {
                 let r = current.as_mut().unwrap();
                 if words.len() != 3 || r.theta.is_some() {
@@ -224,8 +234,8 @@ fn export(text: &str, mu: f64, years: f64, bp: f64) -> Result<String> {
             }
             Some("//") if current.is_some() => {
                 let r = current.take().unwrap();
-                if r.theta.is_none() || r.rows.is_empty() {
-                    return Err("complete round lacks TR/RS".into());
+                if r.theta.is_none() || r.likelihood.is_none() || r.rows.is_empty() {
+                    return Err("complete round lacks LK/TR/RS".into());
                 }
                 last = Some(r);
             }
@@ -252,7 +262,7 @@ fn export(text: &str, mu: f64, years: f64, bp: f64) -> Result<String> {
     // spreadsheet formula character; double quotes are escaped per CSV.
     let source_version = format!("\"Version: {}\"", source_version.replace('"', "\"\""));
     let mut out = String::from(
-        "round,state,time_generations,time_years,ne,theta,mutation_rate,bin_bp,generation_years,mode,source_version,source_sha256\n",
+        "round,state,time_generations,time_years,ne,theta,mutation_rate,bin_bp,generation_years,reported_lk,mode,source_version,source_sha256\n",
     );
     for (i, &(t, lambda)) in r.rows.iter().enumerate() {
         let generations = 2.0 * n0 * (t + r.dt);
@@ -266,7 +276,7 @@ fn export(text: &str, mu: f64, years: f64, bp: f64) -> Result<String> {
         {
             return Err("invalid scaled curve (check units and DT)".into());
         }
-        out.push_str(&format!("{},{i},{generations:.17e},{:.17e},{ne:.17e},{:.17e},{mu:.17e},{bp:.17e},{years:.17e},{mode},{source_version},{source_sha256}\n", r.index, generations * years, r.theta.unwrap()));
+        out.push_str(&format!("{},{i},{generations:.17e},{:.17e},{ne:.17e},{:.17e},{mu:.17e},{bp:.17e},{years:.17e},{:.17e},{mode},{source_version},{source_sha256}\n", r.index, generations * years, r.theta.unwrap(), r.likelihood.unwrap()));
     }
     Ok(out)
 }
@@ -293,7 +303,7 @@ mod tests {
     }
     #[test]
     fn export_scaling_complete_round_and_divergence() {
-        let text = "MM\tskip:2,\nRD\t0\nTR\t0.008\t0.001\nDT\t0.1\nRS\t0\t0\t2\nRS\t1\t1\t3\n//\nRD\t1\nTR\t0.1\t0.1\n";
+        let text = "MM\tskip:2,\nRD\t0\nLK\t-100\nTR\t0.008\t0.001\nDT\t0.1\nRS\t0\t0\t2\nRS\t1\t1\t3\n//\nRD\t1\nTR\t0.1\t0.1\n";
         let result = export(text, 1e-8, 25.0, 100.0).unwrap();
         let first: Vec<_> = result.lines().nth(1).unwrap().split(',').collect();
         assert!((first[2].parse::<f64>().unwrap() - 200.0).abs() < 1e-10);
@@ -307,6 +317,7 @@ mod tests {
         )
         .unwrap();
         assert!(provenance.contains(",equivalent,\"Version: psmc-rs 0.8.0"));
+        assert!(export(&text.replace("LK\t-100", "LK\tNaN"), 1e-8, 25.0, 100.0).is_err());
         assert!(export(&text.replace("0.008", "NaN"), 1e-8, 25.0, 100.0).is_err());
         assert!(export(&text.replace("skip:2,", "other"), 1e-8, 25.0, 100.0).is_err());
     }

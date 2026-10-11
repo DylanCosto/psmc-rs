@@ -19,19 +19,16 @@ pub fn lock(directory: &Path) -> Result<File> {
         .create(true)
         .truncate(false)
         .open(path)?;
-    #[cfg(target_os = "linux")]
-    {
-        use std::os::fd::AsRawFd;
-        unsafe extern "C" {
-            fn flock(fd: std::ffi::c_int, operation: std::ffi::c_int) -> std::ffi::c_int;
+    // Rust 1.90 provides the same nonblocking kernel lock without local FFI.
+    match file.try_lock() {
+        Ok(()) => {}
+        Err(fs::TryLockError::WouldBlock) => {
+            return Err("bootstrap directory is locked by another process".into());
         }
-        // SAFETY: valid owned fd; LOCK_EX|LOCK_NB. File stays open for the run.
-        if unsafe { flock(file.as_raw_fd(), 2 | 4) } != 0 {
-            return Err("bootstrap directory is locked by another process (or filesystem locking is unsupported)".into());
+        Err(fs::TryLockError::Error(error)) => {
+            return Err(format!("cannot lock bootstrap directory: {error}").into());
         }
     }
-    #[cfg(not(target_os = "linux"))]
-    return Err("resumable bootstrap currently requires Linux advisory file locks".into());
     Ok(file)
 }
 fn regular(path: &Path) -> Result<()> {

@@ -1815,3 +1815,11 @@ headers stay unspecified. This utility-only change is outside the frozen inferen
 runner/binary; the live campaign is unchanged. Focused CLI unit/workflow tests pass,
 including interruption/resume. Final release artifact checks must exercise this
 updated exporter as well as unchanged inference.
+
+Final workflow review: exported CSV includes the reported E-step LK and rejects
+nonfinite likelihood fields instead of producing a plausible-looking curve alone.
+The LK column is explicitly not a fresh final-parameter likelihood. Standard Rust
+1.90 File::try_lock replaces the Linux FFI binding; both interruption/resume and
+concurrent-writer tests passed again. Focused unit/workflow checks in
+work/export-finite-tests.log and work/standard-lock-tests.log; no production
+inference change or modification of the live qualification artifacts.

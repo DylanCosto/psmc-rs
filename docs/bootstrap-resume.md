@@ -1,7 +1,7 @@
 # Bootstrap interruption and resume
 
 New batches write a `resume-contract.txt` and per-replicate `.complete` markers.
-`--resume` is supported for these batches, on Linux filesystems supporting advisory
+`--resume` is supported for these batches, qualified on Linux filesystems supporting advisory
 `flock`; older batch directories without a contract cannot be imported implicitly.
 Resume requires an explicit original `--seed`, also recorded in the contract.
 
@@ -37,3 +37,7 @@ and replaced with a new output directory; it cannot safely be resumed.
 The memory budget is the existing conservative admission estimate, not an OS RSS
 limit. Input loading precedes admission. Resume uses the same admission checks as
 new batches, even if all fits are already complete.
+
+Implementation uses Rust's standard [File::try_lock](https://doc.rust-lang.org/std/fs/struct.File.html#method.try_lock),
+available in the pinned Rust 1.90 toolchain, rather than a custom unsafe lock binding.
+Other operating systems remain unqualified, including directory synchronization.

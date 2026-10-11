@@ -66,6 +66,8 @@ with your existing tools. Export selects the last complete round and warns if it
 ignores a trailing incomplete round. It uses printed RS precision and upstream
 scaling, including MM `skip` and DT; the CSV repeats the supplied units, round, source mode/version and source-file SHA-256.
 Foreign or missing mode headers are labeled unspecified rather than guessed.
+Export rejects nonfinite reported likelihood or curve fields. CSV `reported_lk` is
+the legacy E-step likelihood, not a fresh likelihood at the final M-step parameters.
 The figure displays individual bootstrap fits, not a confidence interval. It
 extends the final open time interval to the requested display limit. The display
 limits do not define a scientifically resolvable time range.
