@@ -13,6 +13,7 @@ use std::{collections::HashMap, io, sync::OnceLock};
 
 pub struct EquivalentBackend {
     workspace: Workspace,
+    pub record_pool: Option<std::sync::Arc<crate::record_pool::RecordPool>>,
     frozen: Option<(Model, Vec<Vec<u8>>)>,
     dense_fallback: OnceLock<Counts>,
     settings: Settings,
@@ -45,6 +46,7 @@ impl EquivalentBackend {
             #[cfg(debug_assertions)]
             factor_params: Vec::new(),
             workspace: Workspace::with_simd(states, mode)?,
+            record_pool: None,
             frozen: None,
             dense_fallback: OnceLock::new(),
             model_workspace: ModelWorkspace::new(states),
@@ -108,6 +110,40 @@ impl ExpectationBackend for EquivalentBackend {
                 *occurrences.entry(&sequence.observations).or_default() += 1;
             }
         }
+        let mut parallel = HashMap::<usize, Cached>::new();
+        if let Some(pool) = &self.record_pool {
+            if pool.has_helpers() && linear && sequences.len() > 1 {
+                let mut seen = std::collections::HashSet::<&[u8]>::new();
+                let indices: Vec<_> = sequences
+                    .iter()
+                    .enumerate()
+                    .filter_map(|(i, s)| {
+                        (!cache_enabled || seen.insert(&s.observations)).then_some(i)
+                    })
+                    .collect();
+                let records = indices
+                    .iter()
+                    .map(|&i| sequences[i].observations.clone())
+                    .collect();
+                let frozen = current.clone();
+                let settings = self.settings.clone();
+                let avx = self.workspace.avx.is_some();
+                let results = pool.map(records, move |obs| {
+                    let mut m = frozen.clone();
+                    let mut factors = StructuredModel::new(m.n);
+                    factors.update(&mut m, &settings);
+                    factors.materialize(&mut m);
+                    let r = crate::linear::evaluate(&m, &obs, &factors, avx, false);
+                    Cached {
+                        counts: r.counts,
+                        margins: r.margins,
+                        likelihood: r.likelihood,
+                        backward_check: r.backward_check,
+                    }
+                });
+                parallel.extend(indices.into_iter().zip(results));
+            }
+        }
         let mut cache = HashMap::<&[u8], Cached>::new();
         let prepared = (!linear).then(|| self.workspace.prepare(&current));
         for (index, sequence) in sequences.iter().enumerate() {
@@ -124,7 +160,9 @@ impl ExpectationBackend for EquivalentBackend {
                 self.counters.cache_hits += 1;
                 continue;
             }
-            let result = if linear {
+            let result = if let Some(result) = parallel.remove(&index) {
+                result
+            } else if linear {
                 let r = crate::linear::evaluate(
                     &current,
                     observations,

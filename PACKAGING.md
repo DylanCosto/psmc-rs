@@ -1,4 +1,15 @@
-# Current local v0.6.0 CPU deliverable
+# Current local v0.6.1 CPU deliverable
+
+`bin/psmc-rs` and `bin/psmc-rs-v0.6.1` are the final tested binaries. Strict remains
+the numerical default; equivalent uses the linear E-step and QU diagnostics.
+CPU bootstrap batches default to shared scheduling; `--scheduler fit` selects
+the prior policy. Single fits support `--record-workers N` for existing records.
+See [results](docs/shared-record-results.md), [audit](bench/shared-records-audit.json)
+and [installation hashes](bench/shared-records-install.json). All earlier versioned
+binaries and CUDA artifacts are preserved. No new portable archive is generated;
+existing zip files and CHECKSUMS.sha256 describe historical snapshots.
+
+# Historical local v0.6.0 CPU deliverable
 
 `bin/psmc-rs` and `bin/psmc-rs-v0.6.0` contain the tested linear equivalent E-step.
 Strict remains default. Equivalent prints QU and has a new numerical contract.

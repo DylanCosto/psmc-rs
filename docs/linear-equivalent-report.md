@@ -20,8 +20,10 @@ If factors are invalid, the literal model is evaluated without clipping. Invalid
 probabilities retain the reference sentinel/NaN behavior. A valid literal model
 that cannot use factors triggers one lazy full-count reconstruction for that
 E-step, using the same frozen parameters and segmented posterior. Reconstructions
-are cached only within that expectation round. The normal E-step is O(n) per
-site; the guarded fallback can still cost O(n²).
+are cached only within that expectation round. The normal scan/count loop is O(n) per
+site; the guarded fallback can still cost O(n²). The shared Counts container
+still reserves a dense array and performs O(n²) bookkeeping once per record,
+which is negligible for the measured 50,000-bin blocks but not eliminated.
 
 ## Numerical evidence
 

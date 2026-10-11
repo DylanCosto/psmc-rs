@@ -1,0 +1,388 @@
+{
+  "status": "completed",
+  "binary_sha256": "54ea8fa0f90776c2b1e653e941b5f0b6e168f8a577d30b7b919d53cfdacbcd40",
+  "runner_sha256": "66f0f49fd2588ab2d7041dab3aa5828579c39f8aae680d2d85116c837712de5c",
+  "protocol_sha256": "0724dc20287f82181d39becec9e27d3430340a2f0ecaaca135967a228bba3a3c",
+  "runs": [
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--scheduler",
+        "fit",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/pthreads-screen/equivalent-fit",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 10.202414385043085,
+      "time_wall_seconds": 10.2,
+      "user_seconds": 131.1,
+      "system_seconds": 0.17,
+      "peak_rss_kib": 34420,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/pthreads-screen/equivalent-fit-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "equivalent-fit-time",
+      "cpu_seconds": 131.26999999999998,
+      "mode": "equivalent",
+      "scheduler": "fit",
+      "dataset": "hg001",
+      "helper_jobs": 0,
+      "worker_cpu_ids": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-00.psmc",
+          "sha256": "7d117be09721e34f1f5ca2cc805e8a8b3f08346235c03d24305000c77dc03908"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-01.psmc",
+          "sha256": "38db50bf2cc274b38b8a52c828c6c8df557d7e198508ad8bcd5874ec17530a5e"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-02.psmc",
+          "sha256": "a1c54e52bcf664a97b4ade838c1c412144bb52ee0cac31c172b2010118cf2ecd"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-03.psmc",
+          "sha256": "337d5376868157186d07155621212f3f2811d8686188cce0b9b69eb82332112a"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-04.psmc",
+          "sha256": "2f8906681cebd0dc359d69ca6ea6ec6fe5c8f8a09e3c695e9b812d59fa57fb3a"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-05.psmc",
+          "sha256": "b2e486548618f0e3eb5ec10393089bc9435a3bc4c096a6df647c349434364e43"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-06.psmc",
+          "sha256": "9c7ec74ca8afd54b9084daacca53121916d778747fa671880cfb2c3dbfead4ae"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-07.psmc",
+          "sha256": "7c4a134655adcfcafa6e685119c0083484388c4b760048c246a7ad6bd07c49ab"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-08.psmc",
+          "sha256": "509f26594bd407ae1be3512fc5776f4e41b4292240ef4e41fd609bdfcf482dc2"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-09.psmc",
+          "sha256": "3c4ed774b6e737419ea4aa4f14735af70ef66ba7e3a2ab59bcdf0730fae97abb"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-10.psmc",
+          "sha256": "384bc64e4ce7c8570d50bd51e6f1d89130bcdf684ce2d15ed9184801ce3f6f75"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-11.psmc",
+          "sha256": "f044528ae7e267313e8bc028cd0b9f7da4b6459c56b34fb6c7b66a76179bb10e"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-12.psmc",
+          "sha256": "3cf7142d51f3f0e930c6a62c3556e5ea281cece9c72ae2d15f741a9bf70ada62"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-13.psmc",
+          "sha256": "ee26cd532b17fa701f2d63d3dd8006d185eb356598421064f86a151aa3e762d9"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-14.psmc",
+          "sha256": "28b282fb72200e6ce38cea42071664c03e6838e2e42153f13dfa1cf8132d98b5"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-15.psmc",
+          "sha256": "f36f122f810b50c03697ce802fdd28560143d6c34ea9799512921b90119717a2"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-16.psmc",
+          "sha256": "ca56d0fb625ffd4c8add5e871a27e2d97aedfea913f7bc22a3d46367947b7781"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-17.psmc",
+          "sha256": "ed0bc486ea505e71aab2db9f0105947b705043abf796bfde10000a6774407890"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-18.psmc",
+          "sha256": "673a061bea0034a047c2c76f69145d8172a83899a2ba6f611676d01c0282578b"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-19.psmc",
+          "sha256": "aeee48158bb037bef214d64b64094c525281f70f78a04a0b2e483b34eb6ff55e"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-20.psmc",
+          "sha256": "457313180030c12c5a350c475c8243b1a212b606850040a60aa2703c2d1ca88e"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-21.psmc",
+          "sha256": "051d444d45289decc595b6a2f1c236defe0990e37d6c40a12a865d1088364134"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-22.psmc",
+          "sha256": "6a41f879f0c034853e211c076dd29c8c3d0ba94a191b73ea5ee9cd126eaa9fbf"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-23.psmc",
+          "sha256": "205fcb17cf686db93c6976b45ffc8ec68dec1cdc77d0a693a6d216c1e463983d"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-24.psmc",
+          "sha256": "9317400eb614a4ca52203ad3f876bebdf1e477e4e3c90e17679bb015c41965c1"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-25.psmc",
+          "sha256": "bbcc9cd5b4695e63128fdcfdadf099405f1befe34ef03e150e5f17df5c3aaa7b"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-26.psmc",
+          "sha256": "40a91fa7e4d90164e419f10fd53990c0fd106b325f2e47c1230855f017376064"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-27.psmc",
+          "sha256": "5a0647f4c4fa035c43dbd9b8aa7ba2c60dea330df32a3661902474ff3188044b"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-28.psmc",
+          "sha256": "3ec956f574fd580869c0c1e2e3b5057d4589a83ad0ebae1ea9e551adaf7e45c3"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-fit/replicate-29.psmc",
+          "sha256": "a0f8060bc8fb54fc118e7b1c5f3947b228c381e6346c6d7aee49d83cfbb188d3"
+        }
+      ]
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--scheduler",
+        "shared",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/pthreads-screen/equivalent-shared",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 9.429410423967056,
+      "time_wall_seconds": 9.42,
+      "user_seconds": 139.52,
+      "system_seconds": 0.25,
+      "peak_rss_kib": 37080,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/pthreads-screen/equivalent-shared-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "equivalent-shared-time",
+      "cpu_seconds": 139.77,
+      "mode": "equivalent",
+      "scheduler": "shared",
+      "dataset": "hg001",
+      "helper_jobs": 1912,
+      "worker_cpu_ids": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-00.psmc",
+          "sha256": "7d117be09721e34f1f5ca2cc805e8a8b3f08346235c03d24305000c77dc03908"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-01.psmc",
+          "sha256": "38db50bf2cc274b38b8a52c828c6c8df557d7e198508ad8bcd5874ec17530a5e"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-02.psmc",
+          "sha256": "a1c54e52bcf664a97b4ade838c1c412144bb52ee0cac31c172b2010118cf2ecd"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-03.psmc",
+          "sha256": "337d5376868157186d07155621212f3f2811d8686188cce0b9b69eb82332112a"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-04.psmc",
+          "sha256": "2f8906681cebd0dc359d69ca6ea6ec6fe5c8f8a09e3c695e9b812d59fa57fb3a"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-05.psmc",
+          "sha256": "b2e486548618f0e3eb5ec10393089bc9435a3bc4c096a6df647c349434364e43"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-06.psmc",
+          "sha256": "9c7ec74ca8afd54b9084daacca53121916d778747fa671880cfb2c3dbfead4ae"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-07.psmc",
+          "sha256": "7c4a134655adcfcafa6e685119c0083484388c4b760048c246a7ad6bd07c49ab"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-08.psmc",
+          "sha256": "509f26594bd407ae1be3512fc5776f4e41b4292240ef4e41fd609bdfcf482dc2"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-09.psmc",
+          "sha256": "3c4ed774b6e737419ea4aa4f14735af70ef66ba7e3a2ab59bcdf0730fae97abb"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-10.psmc",
+          "sha256": "384bc64e4ce7c8570d50bd51e6f1d89130bcdf684ce2d15ed9184801ce3f6f75"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-11.psmc",
+          "sha256": "f044528ae7e267313e8bc028cd0b9f7da4b6459c56b34fb6c7b66a76179bb10e"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-12.psmc",
+          "sha256": "3cf7142d51f3f0e930c6a62c3556e5ea281cece9c72ae2d15f741a9bf70ada62"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-13.psmc",
+          "sha256": "ee26cd532b17fa701f2d63d3dd8006d185eb356598421064f86a151aa3e762d9"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-14.psmc",
+          "sha256": "28b282fb72200e6ce38cea42071664c03e6838e2e42153f13dfa1cf8132d98b5"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-15.psmc",
+          "sha256": "f36f122f810b50c03697ce802fdd28560143d6c34ea9799512921b90119717a2"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-16.psmc",
+          "sha256": "ca56d0fb625ffd4c8add5e871a27e2d97aedfea913f7bc22a3d46367947b7781"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-17.psmc",
+          "sha256": "ed0bc486ea505e71aab2db9f0105947b705043abf796bfde10000a6774407890"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-18.psmc",
+          "sha256": "673a061bea0034a047c2c76f69145d8172a83899a2ba6f611676d01c0282578b"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-19.psmc",
+          "sha256": "aeee48158bb037bef214d64b64094c525281f70f78a04a0b2e483b34eb6ff55e"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-20.psmc",
+          "sha256": "457313180030c12c5a350c475c8243b1a212b606850040a60aa2703c2d1ca88e"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-21.psmc",
+          "sha256": "051d444d45289decc595b6a2f1c236defe0990e37d6c40a12a865d1088364134"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-22.psmc",
+          "sha256": "6a41f879f0c034853e211c076dd29c8c3d0ba94a191b73ea5ee9cd126eaa9fbf"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-23.psmc",
+          "sha256": "205fcb17cf686db93c6976b45ffc8ec68dec1cdc77d0a693a6d216c1e463983d"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-24.psmc",
+          "sha256": "9317400eb614a4ca52203ad3f876bebdf1e477e4e3c90e17679bb015c41965c1"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-25.psmc",
+          "sha256": "bbcc9cd5b4695e63128fdcfdadf099405f1befe34ef03e150e5f17df5c3aaa7b"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-26.psmc",
+          "sha256": "40a91fa7e4d90164e419f10fd53990c0fd106b325f2e47c1230855f017376064"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-27.psmc",
+          "sha256": "5a0647f4c4fa035c43dbd9b8aa7ba2c60dea330df32a3661902474ff3188044b"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-28.psmc",
+          "sha256": "3ec956f574fd580869c0c1e2e3b5057d4589a83ad0ebae1ea9e551adaf7e45c3"
+        },
+        {
+          "path": "work/shared-records/pthreads-screen/equivalent-shared/replicate-29.psmc",
+          "sha256": "a0f8060bc8fb54fc118e7b1c5f3947b228c381e6346c6d7aee49d83cfbb188d3"
+        }
+      ]
+    }
+  ]
+}

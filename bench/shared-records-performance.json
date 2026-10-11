@@ -1,0 +1,3106 @@
+{
+  "status": "completed",
+  "binary_sha256": "54ea8fa0f90776c2b1e653e941b5f0b6e168f8a577d30b7b919d53cfdacbcd40",
+  "runner_sha256": "66f0f49fd2588ab2d7041dab3aa5828579c39f8aae680d2d85116c837712de5c",
+  "protocol_sha256": "0724dc20287f82181d39becec9e27d3430340a2f0ecaaca135967a228bba3a3c",
+  "runs": [
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--scheduler",
+        "fit",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/equivalent-fit-0",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 10.395736610982567,
+      "time_wall_seconds": 10.39,
+      "user_seconds": 134.08,
+      "system_seconds": 0.19,
+      "peak_rss_kib": 34400,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/equivalent-fit-0-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "equivalent-fit-0-time",
+      "cpu_seconds": 134.27,
+      "mode": "equivalent",
+      "scheduler": "fit",
+      "dataset": "hg001",
+      "helper_jobs": 0,
+      "worker_cpu_ids": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-00.psmc",
+          "sha256": "7d117be09721e34f1f5ca2cc805e8a8b3f08346235c03d24305000c77dc03908"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-01.psmc",
+          "sha256": "38db50bf2cc274b38b8a52c828c6c8df557d7e198508ad8bcd5874ec17530a5e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-02.psmc",
+          "sha256": "a1c54e52bcf664a97b4ade838c1c412144bb52ee0cac31c172b2010118cf2ecd"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-03.psmc",
+          "sha256": "337d5376868157186d07155621212f3f2811d8686188cce0b9b69eb82332112a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-04.psmc",
+          "sha256": "2f8906681cebd0dc359d69ca6ea6ec6fe5c8f8a09e3c695e9b812d59fa57fb3a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-05.psmc",
+          "sha256": "b2e486548618f0e3eb5ec10393089bc9435a3bc4c096a6df647c349434364e43"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-06.psmc",
+          "sha256": "9c7ec74ca8afd54b9084daacca53121916d778747fa671880cfb2c3dbfead4ae"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-07.psmc",
+          "sha256": "7c4a134655adcfcafa6e685119c0083484388c4b760048c246a7ad6bd07c49ab"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-08.psmc",
+          "sha256": "509f26594bd407ae1be3512fc5776f4e41b4292240ef4e41fd609bdfcf482dc2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-09.psmc",
+          "sha256": "3c4ed774b6e737419ea4aa4f14735af70ef66ba7e3a2ab59bcdf0730fae97abb"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-10.psmc",
+          "sha256": "384bc64e4ce7c8570d50bd51e6f1d89130bcdf684ce2d15ed9184801ce3f6f75"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-11.psmc",
+          "sha256": "f044528ae7e267313e8bc028cd0b9f7da4b6459c56b34fb6c7b66a76179bb10e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-12.psmc",
+          "sha256": "3cf7142d51f3f0e930c6a62c3556e5ea281cece9c72ae2d15f741a9bf70ada62"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-13.psmc",
+          "sha256": "ee26cd532b17fa701f2d63d3dd8006d185eb356598421064f86a151aa3e762d9"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-14.psmc",
+          "sha256": "28b282fb72200e6ce38cea42071664c03e6838e2e42153f13dfa1cf8132d98b5"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-15.psmc",
+          "sha256": "f36f122f810b50c03697ce802fdd28560143d6c34ea9799512921b90119717a2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-16.psmc",
+          "sha256": "ca56d0fb625ffd4c8add5e871a27e2d97aedfea913f7bc22a3d46367947b7781"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-17.psmc",
+          "sha256": "ed0bc486ea505e71aab2db9f0105947b705043abf796bfde10000a6774407890"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-18.psmc",
+          "sha256": "673a061bea0034a047c2c76f69145d8172a83899a2ba6f611676d01c0282578b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-19.psmc",
+          "sha256": "aeee48158bb037bef214d64b64094c525281f70f78a04a0b2e483b34eb6ff55e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-20.psmc",
+          "sha256": "457313180030c12c5a350c475c8243b1a212b606850040a60aa2703c2d1ca88e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-21.psmc",
+          "sha256": "051d444d45289decc595b6a2f1c236defe0990e37d6c40a12a865d1088364134"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-22.psmc",
+          "sha256": "6a41f879f0c034853e211c076dd29c8c3d0ba94a191b73ea5ee9cd126eaa9fbf"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-23.psmc",
+          "sha256": "205fcb17cf686db93c6976b45ffc8ec68dec1cdc77d0a693a6d216c1e463983d"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-24.psmc",
+          "sha256": "9317400eb614a4ca52203ad3f876bebdf1e477e4e3c90e17679bb015c41965c1"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-25.psmc",
+          "sha256": "bbcc9cd5b4695e63128fdcfdadf099405f1befe34ef03e150e5f17df5c3aaa7b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-26.psmc",
+          "sha256": "40a91fa7e4d90164e419f10fd53990c0fd106b325f2e47c1230855f017376064"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-27.psmc",
+          "sha256": "5a0647f4c4fa035c43dbd9b8aa7ba2c60dea330df32a3661902474ff3188044b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-28.psmc",
+          "sha256": "3ec956f574fd580869c0c1e2e3b5057d4589a83ad0ebae1ea9e551adaf7e45c3"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-0/replicate-29.psmc",
+          "sha256": "a0f8060bc8fb54fc118e7b1c5f3947b228c381e6346c6d7aee49d83cfbb188d3"
+        }
+      ],
+      "repeat": 0
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--scheduler",
+        "shared",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/equivalent-shared-0",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 9.678860743006226,
+      "time_wall_seconds": 9.67,
+      "user_seconds": 141.67,
+      "system_seconds": 0.25,
+      "peak_rss_kib": 37704,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/equivalent-shared-0-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "equivalent-shared-0-time",
+      "cpu_seconds": 141.92,
+      "mode": "equivalent",
+      "scheduler": "shared",
+      "dataset": "hg001",
+      "helper_jobs": 1933,
+      "worker_cpu_ids": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-00.psmc",
+          "sha256": "7d117be09721e34f1f5ca2cc805e8a8b3f08346235c03d24305000c77dc03908"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-01.psmc",
+          "sha256": "38db50bf2cc274b38b8a52c828c6c8df557d7e198508ad8bcd5874ec17530a5e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-02.psmc",
+          "sha256": "a1c54e52bcf664a97b4ade838c1c412144bb52ee0cac31c172b2010118cf2ecd"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-03.psmc",
+          "sha256": "337d5376868157186d07155621212f3f2811d8686188cce0b9b69eb82332112a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-04.psmc",
+          "sha256": "2f8906681cebd0dc359d69ca6ea6ec6fe5c8f8a09e3c695e9b812d59fa57fb3a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-05.psmc",
+          "sha256": "b2e486548618f0e3eb5ec10393089bc9435a3bc4c096a6df647c349434364e43"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-06.psmc",
+          "sha256": "9c7ec74ca8afd54b9084daacca53121916d778747fa671880cfb2c3dbfead4ae"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-07.psmc",
+          "sha256": "7c4a134655adcfcafa6e685119c0083484388c4b760048c246a7ad6bd07c49ab"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-08.psmc",
+          "sha256": "509f26594bd407ae1be3512fc5776f4e41b4292240ef4e41fd609bdfcf482dc2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-09.psmc",
+          "sha256": "3c4ed774b6e737419ea4aa4f14735af70ef66ba7e3a2ab59bcdf0730fae97abb"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-10.psmc",
+          "sha256": "384bc64e4ce7c8570d50bd51e6f1d89130bcdf684ce2d15ed9184801ce3f6f75"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-11.psmc",
+          "sha256": "f044528ae7e267313e8bc028cd0b9f7da4b6459c56b34fb6c7b66a76179bb10e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-12.psmc",
+          "sha256": "3cf7142d51f3f0e930c6a62c3556e5ea281cece9c72ae2d15f741a9bf70ada62"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-13.psmc",
+          "sha256": "ee26cd532b17fa701f2d63d3dd8006d185eb356598421064f86a151aa3e762d9"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-14.psmc",
+          "sha256": "28b282fb72200e6ce38cea42071664c03e6838e2e42153f13dfa1cf8132d98b5"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-15.psmc",
+          "sha256": "f36f122f810b50c03697ce802fdd28560143d6c34ea9799512921b90119717a2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-16.psmc",
+          "sha256": "ca56d0fb625ffd4c8add5e871a27e2d97aedfea913f7bc22a3d46367947b7781"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-17.psmc",
+          "sha256": "ed0bc486ea505e71aab2db9f0105947b705043abf796bfde10000a6774407890"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-18.psmc",
+          "sha256": "673a061bea0034a047c2c76f69145d8172a83899a2ba6f611676d01c0282578b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-19.psmc",
+          "sha256": "aeee48158bb037bef214d64b64094c525281f70f78a04a0b2e483b34eb6ff55e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-20.psmc",
+          "sha256": "457313180030c12c5a350c475c8243b1a212b606850040a60aa2703c2d1ca88e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-21.psmc",
+          "sha256": "051d444d45289decc595b6a2f1c236defe0990e37d6c40a12a865d1088364134"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-22.psmc",
+          "sha256": "6a41f879f0c034853e211c076dd29c8c3d0ba94a191b73ea5ee9cd126eaa9fbf"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-23.psmc",
+          "sha256": "205fcb17cf686db93c6976b45ffc8ec68dec1cdc77d0a693a6d216c1e463983d"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-24.psmc",
+          "sha256": "9317400eb614a4ca52203ad3f876bebdf1e477e4e3c90e17679bb015c41965c1"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-25.psmc",
+          "sha256": "bbcc9cd5b4695e63128fdcfdadf099405f1befe34ef03e150e5f17df5c3aaa7b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-26.psmc",
+          "sha256": "40a91fa7e4d90164e419f10fd53990c0fd106b325f2e47c1230855f017376064"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-27.psmc",
+          "sha256": "5a0647f4c4fa035c43dbd9b8aa7ba2c60dea330df32a3661902474ff3188044b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-28.psmc",
+          "sha256": "3ec956f574fd580869c0c1e2e3b5057d4589a83ad0ebae1ea9e551adaf7e45c3"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-0/replicate-29.psmc",
+          "sha256": "a0f8060bc8fb54fc118e7b1c5f3947b228c381e6346c6d7aee49d83cfbb188d3"
+        }
+      ],
+      "repeat": 0
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--scheduler",
+        "shared",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/equivalent-shared-1",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 9.6872896309942,
+      "time_wall_seconds": 9.68,
+      "user_seconds": 142.98,
+      "system_seconds": 0.24,
+      "peak_rss_kib": 36304,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/equivalent-shared-1-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "equivalent-shared-1-time",
+      "cpu_seconds": 143.22,
+      "mode": "equivalent",
+      "scheduler": "shared",
+      "dataset": "hg001",
+      "helper_jobs": 1897,
+      "worker_cpu_ids": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-00.psmc",
+          "sha256": "7d117be09721e34f1f5ca2cc805e8a8b3f08346235c03d24305000c77dc03908"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-01.psmc",
+          "sha256": "38db50bf2cc274b38b8a52c828c6c8df557d7e198508ad8bcd5874ec17530a5e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-02.psmc",
+          "sha256": "a1c54e52bcf664a97b4ade838c1c412144bb52ee0cac31c172b2010118cf2ecd"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-03.psmc",
+          "sha256": "337d5376868157186d07155621212f3f2811d8686188cce0b9b69eb82332112a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-04.psmc",
+          "sha256": "2f8906681cebd0dc359d69ca6ea6ec6fe5c8f8a09e3c695e9b812d59fa57fb3a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-05.psmc",
+          "sha256": "b2e486548618f0e3eb5ec10393089bc9435a3bc4c096a6df647c349434364e43"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-06.psmc",
+          "sha256": "9c7ec74ca8afd54b9084daacca53121916d778747fa671880cfb2c3dbfead4ae"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-07.psmc",
+          "sha256": "7c4a134655adcfcafa6e685119c0083484388c4b760048c246a7ad6bd07c49ab"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-08.psmc",
+          "sha256": "509f26594bd407ae1be3512fc5776f4e41b4292240ef4e41fd609bdfcf482dc2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-09.psmc",
+          "sha256": "3c4ed774b6e737419ea4aa4f14735af70ef66ba7e3a2ab59bcdf0730fae97abb"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-10.psmc",
+          "sha256": "384bc64e4ce7c8570d50bd51e6f1d89130bcdf684ce2d15ed9184801ce3f6f75"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-11.psmc",
+          "sha256": "f044528ae7e267313e8bc028cd0b9f7da4b6459c56b34fb6c7b66a76179bb10e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-12.psmc",
+          "sha256": "3cf7142d51f3f0e930c6a62c3556e5ea281cece9c72ae2d15f741a9bf70ada62"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-13.psmc",
+          "sha256": "ee26cd532b17fa701f2d63d3dd8006d185eb356598421064f86a151aa3e762d9"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-14.psmc",
+          "sha256": "28b282fb72200e6ce38cea42071664c03e6838e2e42153f13dfa1cf8132d98b5"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-15.psmc",
+          "sha256": "f36f122f810b50c03697ce802fdd28560143d6c34ea9799512921b90119717a2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-16.psmc",
+          "sha256": "ca56d0fb625ffd4c8add5e871a27e2d97aedfea913f7bc22a3d46367947b7781"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-17.psmc",
+          "sha256": "ed0bc486ea505e71aab2db9f0105947b705043abf796bfde10000a6774407890"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-18.psmc",
+          "sha256": "673a061bea0034a047c2c76f69145d8172a83899a2ba6f611676d01c0282578b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-19.psmc",
+          "sha256": "aeee48158bb037bef214d64b64094c525281f70f78a04a0b2e483b34eb6ff55e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-20.psmc",
+          "sha256": "457313180030c12c5a350c475c8243b1a212b606850040a60aa2703c2d1ca88e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-21.psmc",
+          "sha256": "051d444d45289decc595b6a2f1c236defe0990e37d6c40a12a865d1088364134"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-22.psmc",
+          "sha256": "6a41f879f0c034853e211c076dd29c8c3d0ba94a191b73ea5ee9cd126eaa9fbf"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-23.psmc",
+          "sha256": "205fcb17cf686db93c6976b45ffc8ec68dec1cdc77d0a693a6d216c1e463983d"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-24.psmc",
+          "sha256": "9317400eb614a4ca52203ad3f876bebdf1e477e4e3c90e17679bb015c41965c1"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-25.psmc",
+          "sha256": "bbcc9cd5b4695e63128fdcfdadf099405f1befe34ef03e150e5f17df5c3aaa7b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-26.psmc",
+          "sha256": "40a91fa7e4d90164e419f10fd53990c0fd106b325f2e47c1230855f017376064"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-27.psmc",
+          "sha256": "5a0647f4c4fa035c43dbd9b8aa7ba2c60dea330df32a3661902474ff3188044b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-28.psmc",
+          "sha256": "3ec956f574fd580869c0c1e2e3b5057d4589a83ad0ebae1ea9e551adaf7e45c3"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-1/replicate-29.psmc",
+          "sha256": "a0f8060bc8fb54fc118e7b1c5f3947b228c381e6346c6d7aee49d83cfbb188d3"
+        }
+      ],
+      "repeat": 1
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--scheduler",
+        "fit",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/equivalent-fit-1",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 10.57936835102737,
+      "time_wall_seconds": 10.57,
+      "user_seconds": 136.39,
+      "system_seconds": 0.19,
+      "peak_rss_kib": 34544,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/equivalent-fit-1-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "equivalent-fit-1-time",
+      "cpu_seconds": 136.57999999999998,
+      "mode": "equivalent",
+      "scheduler": "fit",
+      "dataset": "hg001",
+      "helper_jobs": 0,
+      "worker_cpu_ids": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-00.psmc",
+          "sha256": "7d117be09721e34f1f5ca2cc805e8a8b3f08346235c03d24305000c77dc03908"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-01.psmc",
+          "sha256": "38db50bf2cc274b38b8a52c828c6c8df557d7e198508ad8bcd5874ec17530a5e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-02.psmc",
+          "sha256": "a1c54e52bcf664a97b4ade838c1c412144bb52ee0cac31c172b2010118cf2ecd"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-03.psmc",
+          "sha256": "337d5376868157186d07155621212f3f2811d8686188cce0b9b69eb82332112a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-04.psmc",
+          "sha256": "2f8906681cebd0dc359d69ca6ea6ec6fe5c8f8a09e3c695e9b812d59fa57fb3a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-05.psmc",
+          "sha256": "b2e486548618f0e3eb5ec10393089bc9435a3bc4c096a6df647c349434364e43"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-06.psmc",
+          "sha256": "9c7ec74ca8afd54b9084daacca53121916d778747fa671880cfb2c3dbfead4ae"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-07.psmc",
+          "sha256": "7c4a134655adcfcafa6e685119c0083484388c4b760048c246a7ad6bd07c49ab"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-08.psmc",
+          "sha256": "509f26594bd407ae1be3512fc5776f4e41b4292240ef4e41fd609bdfcf482dc2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-09.psmc",
+          "sha256": "3c4ed774b6e737419ea4aa4f14735af70ef66ba7e3a2ab59bcdf0730fae97abb"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-10.psmc",
+          "sha256": "384bc64e4ce7c8570d50bd51e6f1d89130bcdf684ce2d15ed9184801ce3f6f75"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-11.psmc",
+          "sha256": "f044528ae7e267313e8bc028cd0b9f7da4b6459c56b34fb6c7b66a76179bb10e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-12.psmc",
+          "sha256": "3cf7142d51f3f0e930c6a62c3556e5ea281cece9c72ae2d15f741a9bf70ada62"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-13.psmc",
+          "sha256": "ee26cd532b17fa701f2d63d3dd8006d185eb356598421064f86a151aa3e762d9"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-14.psmc",
+          "sha256": "28b282fb72200e6ce38cea42071664c03e6838e2e42153f13dfa1cf8132d98b5"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-15.psmc",
+          "sha256": "f36f122f810b50c03697ce802fdd28560143d6c34ea9799512921b90119717a2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-16.psmc",
+          "sha256": "ca56d0fb625ffd4c8add5e871a27e2d97aedfea913f7bc22a3d46367947b7781"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-17.psmc",
+          "sha256": "ed0bc486ea505e71aab2db9f0105947b705043abf796bfde10000a6774407890"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-18.psmc",
+          "sha256": "673a061bea0034a047c2c76f69145d8172a83899a2ba6f611676d01c0282578b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-19.psmc",
+          "sha256": "aeee48158bb037bef214d64b64094c525281f70f78a04a0b2e483b34eb6ff55e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-20.psmc",
+          "sha256": "457313180030c12c5a350c475c8243b1a212b606850040a60aa2703c2d1ca88e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-21.psmc",
+          "sha256": "051d444d45289decc595b6a2f1c236defe0990e37d6c40a12a865d1088364134"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-22.psmc",
+          "sha256": "6a41f879f0c034853e211c076dd29c8c3d0ba94a191b73ea5ee9cd126eaa9fbf"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-23.psmc",
+          "sha256": "205fcb17cf686db93c6976b45ffc8ec68dec1cdc77d0a693a6d216c1e463983d"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-24.psmc",
+          "sha256": "9317400eb614a4ca52203ad3f876bebdf1e477e4e3c90e17679bb015c41965c1"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-25.psmc",
+          "sha256": "bbcc9cd5b4695e63128fdcfdadf099405f1befe34ef03e150e5f17df5c3aaa7b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-26.psmc",
+          "sha256": "40a91fa7e4d90164e419f10fd53990c0fd106b325f2e47c1230855f017376064"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-27.psmc",
+          "sha256": "5a0647f4c4fa035c43dbd9b8aa7ba2c60dea330df32a3661902474ff3188044b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-28.psmc",
+          "sha256": "3ec956f574fd580869c0c1e2e3b5057d4589a83ad0ebae1ea9e551adaf7e45c3"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-1/replicate-29.psmc",
+          "sha256": "a0f8060bc8fb54fc118e7b1c5f3947b228c381e6346c6d7aee49d83cfbb188d3"
+        }
+      ],
+      "repeat": 1
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--scheduler",
+        "fit",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/equivalent-fit-2",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 10.149522842024453,
+      "time_wall_seconds": 10.14,
+      "user_seconds": 136.26,
+      "system_seconds": 0.18,
+      "peak_rss_kib": 34076,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/equivalent-fit-2-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "equivalent-fit-2-time",
+      "cpu_seconds": 136.44,
+      "mode": "equivalent",
+      "scheduler": "fit",
+      "dataset": "hg001",
+      "helper_jobs": 0,
+      "worker_cpu_ids": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-00.psmc",
+          "sha256": "7d117be09721e34f1f5ca2cc805e8a8b3f08346235c03d24305000c77dc03908"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-01.psmc",
+          "sha256": "38db50bf2cc274b38b8a52c828c6c8df557d7e198508ad8bcd5874ec17530a5e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-02.psmc",
+          "sha256": "a1c54e52bcf664a97b4ade838c1c412144bb52ee0cac31c172b2010118cf2ecd"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-03.psmc",
+          "sha256": "337d5376868157186d07155621212f3f2811d8686188cce0b9b69eb82332112a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-04.psmc",
+          "sha256": "2f8906681cebd0dc359d69ca6ea6ec6fe5c8f8a09e3c695e9b812d59fa57fb3a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-05.psmc",
+          "sha256": "b2e486548618f0e3eb5ec10393089bc9435a3bc4c096a6df647c349434364e43"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-06.psmc",
+          "sha256": "9c7ec74ca8afd54b9084daacca53121916d778747fa671880cfb2c3dbfead4ae"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-07.psmc",
+          "sha256": "7c4a134655adcfcafa6e685119c0083484388c4b760048c246a7ad6bd07c49ab"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-08.psmc",
+          "sha256": "509f26594bd407ae1be3512fc5776f4e41b4292240ef4e41fd609bdfcf482dc2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-09.psmc",
+          "sha256": "3c4ed774b6e737419ea4aa4f14735af70ef66ba7e3a2ab59bcdf0730fae97abb"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-10.psmc",
+          "sha256": "384bc64e4ce7c8570d50bd51e6f1d89130bcdf684ce2d15ed9184801ce3f6f75"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-11.psmc",
+          "sha256": "f044528ae7e267313e8bc028cd0b9f7da4b6459c56b34fb6c7b66a76179bb10e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-12.psmc",
+          "sha256": "3cf7142d51f3f0e930c6a62c3556e5ea281cece9c72ae2d15f741a9bf70ada62"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-13.psmc",
+          "sha256": "ee26cd532b17fa701f2d63d3dd8006d185eb356598421064f86a151aa3e762d9"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-14.psmc",
+          "sha256": "28b282fb72200e6ce38cea42071664c03e6838e2e42153f13dfa1cf8132d98b5"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-15.psmc",
+          "sha256": "f36f122f810b50c03697ce802fdd28560143d6c34ea9799512921b90119717a2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-16.psmc",
+          "sha256": "ca56d0fb625ffd4c8add5e871a27e2d97aedfea913f7bc22a3d46367947b7781"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-17.psmc",
+          "sha256": "ed0bc486ea505e71aab2db9f0105947b705043abf796bfde10000a6774407890"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-18.psmc",
+          "sha256": "673a061bea0034a047c2c76f69145d8172a83899a2ba6f611676d01c0282578b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-19.psmc",
+          "sha256": "aeee48158bb037bef214d64b64094c525281f70f78a04a0b2e483b34eb6ff55e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-20.psmc",
+          "sha256": "457313180030c12c5a350c475c8243b1a212b606850040a60aa2703c2d1ca88e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-21.psmc",
+          "sha256": "051d444d45289decc595b6a2f1c236defe0990e37d6c40a12a865d1088364134"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-22.psmc",
+          "sha256": "6a41f879f0c034853e211c076dd29c8c3d0ba94a191b73ea5ee9cd126eaa9fbf"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-23.psmc",
+          "sha256": "205fcb17cf686db93c6976b45ffc8ec68dec1cdc77d0a693a6d216c1e463983d"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-24.psmc",
+          "sha256": "9317400eb614a4ca52203ad3f876bebdf1e477e4e3c90e17679bb015c41965c1"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-25.psmc",
+          "sha256": "bbcc9cd5b4695e63128fdcfdadf099405f1befe34ef03e150e5f17df5c3aaa7b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-26.psmc",
+          "sha256": "40a91fa7e4d90164e419f10fd53990c0fd106b325f2e47c1230855f017376064"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-27.psmc",
+          "sha256": "5a0647f4c4fa035c43dbd9b8aa7ba2c60dea330df32a3661902474ff3188044b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-28.psmc",
+          "sha256": "3ec956f574fd580869c0c1e2e3b5057d4589a83ad0ebae1ea9e551adaf7e45c3"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-2/replicate-29.psmc",
+          "sha256": "a0f8060bc8fb54fc118e7b1c5f3947b228c381e6346c6d7aee49d83cfbb188d3"
+        }
+      ],
+      "repeat": 2
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--scheduler",
+        "shared",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/equivalent-shared-2",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 9.730378384003416,
+      "time_wall_seconds": 9.72,
+      "user_seconds": 143.21,
+      "system_seconds": 0.28,
+      "peak_rss_kib": 36536,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/equivalent-shared-2-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "equivalent-shared-2-time",
+      "cpu_seconds": 143.49,
+      "mode": "equivalent",
+      "scheduler": "shared",
+      "dataset": "hg001",
+      "helper_jobs": 1847,
+      "worker_cpu_ids": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-00.psmc",
+          "sha256": "7d117be09721e34f1f5ca2cc805e8a8b3f08346235c03d24305000c77dc03908"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-01.psmc",
+          "sha256": "38db50bf2cc274b38b8a52c828c6c8df557d7e198508ad8bcd5874ec17530a5e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-02.psmc",
+          "sha256": "a1c54e52bcf664a97b4ade838c1c412144bb52ee0cac31c172b2010118cf2ecd"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-03.psmc",
+          "sha256": "337d5376868157186d07155621212f3f2811d8686188cce0b9b69eb82332112a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-04.psmc",
+          "sha256": "2f8906681cebd0dc359d69ca6ea6ec6fe5c8f8a09e3c695e9b812d59fa57fb3a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-05.psmc",
+          "sha256": "b2e486548618f0e3eb5ec10393089bc9435a3bc4c096a6df647c349434364e43"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-06.psmc",
+          "sha256": "9c7ec74ca8afd54b9084daacca53121916d778747fa671880cfb2c3dbfead4ae"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-07.psmc",
+          "sha256": "7c4a134655adcfcafa6e685119c0083484388c4b760048c246a7ad6bd07c49ab"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-08.psmc",
+          "sha256": "509f26594bd407ae1be3512fc5776f4e41b4292240ef4e41fd609bdfcf482dc2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-09.psmc",
+          "sha256": "3c4ed774b6e737419ea4aa4f14735af70ef66ba7e3a2ab59bcdf0730fae97abb"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-10.psmc",
+          "sha256": "384bc64e4ce7c8570d50bd51e6f1d89130bcdf684ce2d15ed9184801ce3f6f75"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-11.psmc",
+          "sha256": "f044528ae7e267313e8bc028cd0b9f7da4b6459c56b34fb6c7b66a76179bb10e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-12.psmc",
+          "sha256": "3cf7142d51f3f0e930c6a62c3556e5ea281cece9c72ae2d15f741a9bf70ada62"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-13.psmc",
+          "sha256": "ee26cd532b17fa701f2d63d3dd8006d185eb356598421064f86a151aa3e762d9"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-14.psmc",
+          "sha256": "28b282fb72200e6ce38cea42071664c03e6838e2e42153f13dfa1cf8132d98b5"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-15.psmc",
+          "sha256": "f36f122f810b50c03697ce802fdd28560143d6c34ea9799512921b90119717a2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-16.psmc",
+          "sha256": "ca56d0fb625ffd4c8add5e871a27e2d97aedfea913f7bc22a3d46367947b7781"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-17.psmc",
+          "sha256": "ed0bc486ea505e71aab2db9f0105947b705043abf796bfde10000a6774407890"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-18.psmc",
+          "sha256": "673a061bea0034a047c2c76f69145d8172a83899a2ba6f611676d01c0282578b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-19.psmc",
+          "sha256": "aeee48158bb037bef214d64b64094c525281f70f78a04a0b2e483b34eb6ff55e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-20.psmc",
+          "sha256": "457313180030c12c5a350c475c8243b1a212b606850040a60aa2703c2d1ca88e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-21.psmc",
+          "sha256": "051d444d45289decc595b6a2f1c236defe0990e37d6c40a12a865d1088364134"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-22.psmc",
+          "sha256": "6a41f879f0c034853e211c076dd29c8c3d0ba94a191b73ea5ee9cd126eaa9fbf"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-23.psmc",
+          "sha256": "205fcb17cf686db93c6976b45ffc8ec68dec1cdc77d0a693a6d216c1e463983d"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-24.psmc",
+          "sha256": "9317400eb614a4ca52203ad3f876bebdf1e477e4e3c90e17679bb015c41965c1"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-25.psmc",
+          "sha256": "bbcc9cd5b4695e63128fdcfdadf099405f1befe34ef03e150e5f17df5c3aaa7b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-26.psmc",
+          "sha256": "40a91fa7e4d90164e419f10fd53990c0fd106b325f2e47c1230855f017376064"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-27.psmc",
+          "sha256": "5a0647f4c4fa035c43dbd9b8aa7ba2c60dea330df32a3661902474ff3188044b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-28.psmc",
+          "sha256": "3ec956f574fd580869c0c1e2e3b5057d4589a83ad0ebae1ea9e551adaf7e45c3"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-2/replicate-29.psmc",
+          "sha256": "a0f8060bc8fb54fc118e7b1c5f3947b228c381e6346c6d7aee49d83cfbb188d3"
+        }
+      ],
+      "repeat": 2
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--scheduler",
+        "shared",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/equivalent-shared-3",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 9.615903947036713,
+      "time_wall_seconds": 9.61,
+      "user_seconds": 141.83,
+      "system_seconds": 0.24,
+      "peak_rss_kib": 36360,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/equivalent-shared-3-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "equivalent-shared-3-time",
+      "cpu_seconds": 142.07000000000002,
+      "mode": "equivalent",
+      "scheduler": "shared",
+      "dataset": "hg001",
+      "helper_jobs": 1844,
+      "worker_cpu_ids": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-00.psmc",
+          "sha256": "7d117be09721e34f1f5ca2cc805e8a8b3f08346235c03d24305000c77dc03908"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-01.psmc",
+          "sha256": "38db50bf2cc274b38b8a52c828c6c8df557d7e198508ad8bcd5874ec17530a5e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-02.psmc",
+          "sha256": "a1c54e52bcf664a97b4ade838c1c412144bb52ee0cac31c172b2010118cf2ecd"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-03.psmc",
+          "sha256": "337d5376868157186d07155621212f3f2811d8686188cce0b9b69eb82332112a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-04.psmc",
+          "sha256": "2f8906681cebd0dc359d69ca6ea6ec6fe5c8f8a09e3c695e9b812d59fa57fb3a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-05.psmc",
+          "sha256": "b2e486548618f0e3eb5ec10393089bc9435a3bc4c096a6df647c349434364e43"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-06.psmc",
+          "sha256": "9c7ec74ca8afd54b9084daacca53121916d778747fa671880cfb2c3dbfead4ae"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-07.psmc",
+          "sha256": "7c4a134655adcfcafa6e685119c0083484388c4b760048c246a7ad6bd07c49ab"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-08.psmc",
+          "sha256": "509f26594bd407ae1be3512fc5776f4e41b4292240ef4e41fd609bdfcf482dc2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-09.psmc",
+          "sha256": "3c4ed774b6e737419ea4aa4f14735af70ef66ba7e3a2ab59bcdf0730fae97abb"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-10.psmc",
+          "sha256": "384bc64e4ce7c8570d50bd51e6f1d89130bcdf684ce2d15ed9184801ce3f6f75"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-11.psmc",
+          "sha256": "f044528ae7e267313e8bc028cd0b9f7da4b6459c56b34fb6c7b66a76179bb10e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-12.psmc",
+          "sha256": "3cf7142d51f3f0e930c6a62c3556e5ea281cece9c72ae2d15f741a9bf70ada62"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-13.psmc",
+          "sha256": "ee26cd532b17fa701f2d63d3dd8006d185eb356598421064f86a151aa3e762d9"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-14.psmc",
+          "sha256": "28b282fb72200e6ce38cea42071664c03e6838e2e42153f13dfa1cf8132d98b5"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-15.psmc",
+          "sha256": "f36f122f810b50c03697ce802fdd28560143d6c34ea9799512921b90119717a2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-16.psmc",
+          "sha256": "ca56d0fb625ffd4c8add5e871a27e2d97aedfea913f7bc22a3d46367947b7781"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-17.psmc",
+          "sha256": "ed0bc486ea505e71aab2db9f0105947b705043abf796bfde10000a6774407890"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-18.psmc",
+          "sha256": "673a061bea0034a047c2c76f69145d8172a83899a2ba6f611676d01c0282578b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-19.psmc",
+          "sha256": "aeee48158bb037bef214d64b64094c525281f70f78a04a0b2e483b34eb6ff55e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-20.psmc",
+          "sha256": "457313180030c12c5a350c475c8243b1a212b606850040a60aa2703c2d1ca88e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-21.psmc",
+          "sha256": "051d444d45289decc595b6a2f1c236defe0990e37d6c40a12a865d1088364134"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-22.psmc",
+          "sha256": "6a41f879f0c034853e211c076dd29c8c3d0ba94a191b73ea5ee9cd126eaa9fbf"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-23.psmc",
+          "sha256": "205fcb17cf686db93c6976b45ffc8ec68dec1cdc77d0a693a6d216c1e463983d"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-24.psmc",
+          "sha256": "9317400eb614a4ca52203ad3f876bebdf1e477e4e3c90e17679bb015c41965c1"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-25.psmc",
+          "sha256": "bbcc9cd5b4695e63128fdcfdadf099405f1befe34ef03e150e5f17df5c3aaa7b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-26.psmc",
+          "sha256": "40a91fa7e4d90164e419f10fd53990c0fd106b325f2e47c1230855f017376064"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-27.psmc",
+          "sha256": "5a0647f4c4fa035c43dbd9b8aa7ba2c60dea330df32a3661902474ff3188044b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-28.psmc",
+          "sha256": "3ec956f574fd580869c0c1e2e3b5057d4589a83ad0ebae1ea9e551adaf7e45c3"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-shared-3/replicate-29.psmc",
+          "sha256": "a0f8060bc8fb54fc118e7b1c5f3947b228c381e6346c6d7aee49d83cfbb188d3"
+        }
+      ],
+      "repeat": 3
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--scheduler",
+        "fit",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/equivalent-fit-3",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 10.034690585976932,
+      "time_wall_seconds": 10.03,
+      "user_seconds": 134.57,
+      "system_seconds": 0.18,
+      "peak_rss_kib": 33752,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/equivalent-fit-3-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "equivalent-fit-3-time",
+      "cpu_seconds": 134.75,
+      "mode": "equivalent",
+      "scheduler": "fit",
+      "dataset": "hg001",
+      "helper_jobs": 0,
+      "worker_cpu_ids": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-00.psmc",
+          "sha256": "7d117be09721e34f1f5ca2cc805e8a8b3f08346235c03d24305000c77dc03908"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-01.psmc",
+          "sha256": "38db50bf2cc274b38b8a52c828c6c8df557d7e198508ad8bcd5874ec17530a5e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-02.psmc",
+          "sha256": "a1c54e52bcf664a97b4ade838c1c412144bb52ee0cac31c172b2010118cf2ecd"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-03.psmc",
+          "sha256": "337d5376868157186d07155621212f3f2811d8686188cce0b9b69eb82332112a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-04.psmc",
+          "sha256": "2f8906681cebd0dc359d69ca6ea6ec6fe5c8f8a09e3c695e9b812d59fa57fb3a"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-05.psmc",
+          "sha256": "b2e486548618f0e3eb5ec10393089bc9435a3bc4c096a6df647c349434364e43"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-06.psmc",
+          "sha256": "9c7ec74ca8afd54b9084daacca53121916d778747fa671880cfb2c3dbfead4ae"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-07.psmc",
+          "sha256": "7c4a134655adcfcafa6e685119c0083484388c4b760048c246a7ad6bd07c49ab"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-08.psmc",
+          "sha256": "509f26594bd407ae1be3512fc5776f4e41b4292240ef4e41fd609bdfcf482dc2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-09.psmc",
+          "sha256": "3c4ed774b6e737419ea4aa4f14735af70ef66ba7e3a2ab59bcdf0730fae97abb"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-10.psmc",
+          "sha256": "384bc64e4ce7c8570d50bd51e6f1d89130bcdf684ce2d15ed9184801ce3f6f75"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-11.psmc",
+          "sha256": "f044528ae7e267313e8bc028cd0b9f7da4b6459c56b34fb6c7b66a76179bb10e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-12.psmc",
+          "sha256": "3cf7142d51f3f0e930c6a62c3556e5ea281cece9c72ae2d15f741a9bf70ada62"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-13.psmc",
+          "sha256": "ee26cd532b17fa701f2d63d3dd8006d185eb356598421064f86a151aa3e762d9"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-14.psmc",
+          "sha256": "28b282fb72200e6ce38cea42071664c03e6838e2e42153f13dfa1cf8132d98b5"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-15.psmc",
+          "sha256": "f36f122f810b50c03697ce802fdd28560143d6c34ea9799512921b90119717a2"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-16.psmc",
+          "sha256": "ca56d0fb625ffd4c8add5e871a27e2d97aedfea913f7bc22a3d46367947b7781"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-17.psmc",
+          "sha256": "ed0bc486ea505e71aab2db9f0105947b705043abf796bfde10000a6774407890"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-18.psmc",
+          "sha256": "673a061bea0034a047c2c76f69145d8172a83899a2ba6f611676d01c0282578b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-19.psmc",
+          "sha256": "aeee48158bb037bef214d64b64094c525281f70f78a04a0b2e483b34eb6ff55e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-20.psmc",
+          "sha256": "457313180030c12c5a350c475c8243b1a212b606850040a60aa2703c2d1ca88e"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-21.psmc",
+          "sha256": "051d444d45289decc595b6a2f1c236defe0990e37d6c40a12a865d1088364134"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-22.psmc",
+          "sha256": "6a41f879f0c034853e211c076dd29c8c3d0ba94a191b73ea5ee9cd126eaa9fbf"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-23.psmc",
+          "sha256": "205fcb17cf686db93c6976b45ffc8ec68dec1cdc77d0a693a6d216c1e463983d"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-24.psmc",
+          "sha256": "9317400eb614a4ca52203ad3f876bebdf1e477e4e3c90e17679bb015c41965c1"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-25.psmc",
+          "sha256": "bbcc9cd5b4695e63128fdcfdadf099405f1befe34ef03e150e5f17df5c3aaa7b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-26.psmc",
+          "sha256": "40a91fa7e4d90164e419f10fd53990c0fd106b325f2e47c1230855f017376064"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-27.psmc",
+          "sha256": "5a0647f4c4fa035c43dbd9b8aa7ba2c60dea330df32a3661902474ff3188044b"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-28.psmc",
+          "sha256": "3ec956f574fd580869c0c1e2e3b5057d4589a83ad0ebae1ea9e551adaf7e45c3"
+        },
+        {
+          "path": "work/shared-records/performance/equivalent-fit-3/replicate-29.psmc",
+          "sha256": "a0f8060bc8fb54fc118e7b1c5f3947b228c381e6346c6d7aee49d83cfbb188d3"
+        }
+      ],
+      "repeat": 3
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--scheduler",
+        "fit",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/strict-fit-0",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 47.14452995097963,
+      "time_wall_seconds": 47.14,
+      "user_seconds": 629.49,
+      "system_seconds": 1.99,
+      "peak_rss_kib": 1307248,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/strict-fit-0-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "strict-fit-0-time",
+      "cpu_seconds": 631.48,
+      "mode": "strict",
+      "scheduler": "fit",
+      "dataset": "hg001",
+      "helper_jobs": 0,
+      "worker_cpu_ids": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-00.psmc",
+          "sha256": "a669d86d2f064520f21f3c6f12aad635bc04da4978162ebb904d51c0d122b821"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-01.psmc",
+          "sha256": "8390a73544fdd8c16303f7761140978b3700caf5a3279a6b20d77d2cb6264bf6"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-02.psmc",
+          "sha256": "2ccc86d72511ec1c7f2fa6410ff2776c5e8dc5f1367082a4ccc7addb04370bdf"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-03.psmc",
+          "sha256": "b5a138854a2c4991cdeaf25816e403e8acb0a581b86a50a888ecd427f9231856"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-04.psmc",
+          "sha256": "715bf00e795f53f2a71687f7b2f4ec5dc9bc65d19942952308d6fc14de1c536f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-05.psmc",
+          "sha256": "8fad12689f072dd1e90e77274bd5aea1b9d87de848c9876b18cca45adb5c2be1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-06.psmc",
+          "sha256": "ea5f65c37b0156cb3342cf295081c24590ccc2d9c0cdd82584d9b5060779c9eb"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-07.psmc",
+          "sha256": "686ef09728e9668e9a9be217605fffb1a90e5bba435b92e265c0c4f26fb95be4"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-08.psmc",
+          "sha256": "e03a8b53fc9a7a1dfd8315e895d6e68366da0316dc7e5fee06604295cca6b4a5"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-09.psmc",
+          "sha256": "b59931bfe92b32711e3e3b0074cd9cbdec2644df152c97b3d411bf330387a0e1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-10.psmc",
+          "sha256": "f0fcbd5c1058348da9275bc46829f09a312d9e98f817800bf115570fb4d05e2e"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-11.psmc",
+          "sha256": "7eafb63271db9e72dc75b329c9036e8ea3f5567ba99a40cac1b3aea18c6f3450"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-12.psmc",
+          "sha256": "2c34685e0e4c7e0ec75611fdaedaa55bf5510f8cdf95a2aaad5b23356d571202"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-13.psmc",
+          "sha256": "36a03f34ec2f10fc5b34c93d3d695eec8226f6b34d2dd2a979c541cbeb4b2d62"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-14.psmc",
+          "sha256": "1cce046be01a5d43811d9323b9fddd5d3c0ea5942a2b57fb590c95819fb4a0ca"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-15.psmc",
+          "sha256": "b2dcb97a60644378ea20a7b84946f45a0c5facbb3f821e2e097b939fc17af872"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-16.psmc",
+          "sha256": "654e38f7bc394ef16c79cc9ad6dad67b0bd30becc8f5617246278fce8f4ea681"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-17.psmc",
+          "sha256": "494733f6ac4c9f73c4bf11136167b83e1d5c487f6097debdaa7c86b9675b70f7"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-18.psmc",
+          "sha256": "37eb66d49e7b92819f10acabbf8005600a2ad301b827abbc32bcc26c52f3dd9f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-19.psmc",
+          "sha256": "de48f85319149d7d452f5f5991291ffab8a8afe571a89d722382596a5bd6b62c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-20.psmc",
+          "sha256": "0c1f52df9f9dc897bde8e281081e8e0cf2a0ab13c15ed9f14bb375dd8dda5f5b"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-21.psmc",
+          "sha256": "754e26208866d156d768b926173ed2b8acc22a09ee3f6df7188d6b798636118c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-22.psmc",
+          "sha256": "02e9545621a4fd3cc4f6060558793c5bb2135841df95f5213e8d7ac83eb7154a"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-23.psmc",
+          "sha256": "497f6394a020930650ac25145a15a5f07f40afe34df827b256ec4118e421a3fd"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-24.psmc",
+          "sha256": "c2c0c307277d659ce999f051a437f6745e6b331bec0be84f6d1f5c126d22163d"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-25.psmc",
+          "sha256": "7d5994f48a5aee03b37a02fc5c53bfabd3804e5a6e836a9020eb8ebe3bfd4ddc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-26.psmc",
+          "sha256": "32c58f81f9ce119bd0234c540f49e5c37b334e7a7ee5047246e1a8af568693fc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-27.psmc",
+          "sha256": "2b5db5f3b701401572ef07416222f27d81c1aab9d1099b9d84ac946ec0290e05"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-28.psmc",
+          "sha256": "16a7e8dd3989b9c59cb99be5f569b527f3a2a43df7ce5cbf0f0bec63e51af529"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-0/replicate-29.psmc",
+          "sha256": "009cdba6cf02f962eb2bab8319c90352326b274f65f2a71f2b2f5cd0bc79ad3b"
+        }
+      ],
+      "repeat": 0
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--scheduler",
+        "shared",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/strict-shared-0",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 43.10238539200509,
+      "time_wall_seconds": 43.1,
+      "user_seconds": 629.29,
+      "system_seconds": 1.5,
+      "peak_rss_kib": 960976,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/strict-shared-0-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "strict-shared-0-time",
+      "cpu_seconds": 630.79,
+      "mode": "strict",
+      "scheduler": "shared",
+      "dataset": "hg001",
+      "helper_jobs": 1700,
+      "worker_cpu_ids": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-00.psmc",
+          "sha256": "a669d86d2f064520f21f3c6f12aad635bc04da4978162ebb904d51c0d122b821"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-01.psmc",
+          "sha256": "8390a73544fdd8c16303f7761140978b3700caf5a3279a6b20d77d2cb6264bf6"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-02.psmc",
+          "sha256": "2ccc86d72511ec1c7f2fa6410ff2776c5e8dc5f1367082a4ccc7addb04370bdf"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-03.psmc",
+          "sha256": "b5a138854a2c4991cdeaf25816e403e8acb0a581b86a50a888ecd427f9231856"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-04.psmc",
+          "sha256": "715bf00e795f53f2a71687f7b2f4ec5dc9bc65d19942952308d6fc14de1c536f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-05.psmc",
+          "sha256": "8fad12689f072dd1e90e77274bd5aea1b9d87de848c9876b18cca45adb5c2be1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-06.psmc",
+          "sha256": "ea5f65c37b0156cb3342cf295081c24590ccc2d9c0cdd82584d9b5060779c9eb"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-07.psmc",
+          "sha256": "686ef09728e9668e9a9be217605fffb1a90e5bba435b92e265c0c4f26fb95be4"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-08.psmc",
+          "sha256": "e03a8b53fc9a7a1dfd8315e895d6e68366da0316dc7e5fee06604295cca6b4a5"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-09.psmc",
+          "sha256": "b59931bfe92b32711e3e3b0074cd9cbdec2644df152c97b3d411bf330387a0e1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-10.psmc",
+          "sha256": "f0fcbd5c1058348da9275bc46829f09a312d9e98f817800bf115570fb4d05e2e"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-11.psmc",
+          "sha256": "7eafb63271db9e72dc75b329c9036e8ea3f5567ba99a40cac1b3aea18c6f3450"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-12.psmc",
+          "sha256": "2c34685e0e4c7e0ec75611fdaedaa55bf5510f8cdf95a2aaad5b23356d571202"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-13.psmc",
+          "sha256": "36a03f34ec2f10fc5b34c93d3d695eec8226f6b34d2dd2a979c541cbeb4b2d62"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-14.psmc",
+          "sha256": "1cce046be01a5d43811d9323b9fddd5d3c0ea5942a2b57fb590c95819fb4a0ca"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-15.psmc",
+          "sha256": "b2dcb97a60644378ea20a7b84946f45a0c5facbb3f821e2e097b939fc17af872"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-16.psmc",
+          "sha256": "654e38f7bc394ef16c79cc9ad6dad67b0bd30becc8f5617246278fce8f4ea681"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-17.psmc",
+          "sha256": "494733f6ac4c9f73c4bf11136167b83e1d5c487f6097debdaa7c86b9675b70f7"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-18.psmc",
+          "sha256": "37eb66d49e7b92819f10acabbf8005600a2ad301b827abbc32bcc26c52f3dd9f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-19.psmc",
+          "sha256": "de48f85319149d7d452f5f5991291ffab8a8afe571a89d722382596a5bd6b62c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-20.psmc",
+          "sha256": "0c1f52df9f9dc897bde8e281081e8e0cf2a0ab13c15ed9f14bb375dd8dda5f5b"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-21.psmc",
+          "sha256": "754e26208866d156d768b926173ed2b8acc22a09ee3f6df7188d6b798636118c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-22.psmc",
+          "sha256": "02e9545621a4fd3cc4f6060558793c5bb2135841df95f5213e8d7ac83eb7154a"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-23.psmc",
+          "sha256": "497f6394a020930650ac25145a15a5f07f40afe34df827b256ec4118e421a3fd"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-24.psmc",
+          "sha256": "c2c0c307277d659ce999f051a437f6745e6b331bec0be84f6d1f5c126d22163d"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-25.psmc",
+          "sha256": "7d5994f48a5aee03b37a02fc5c53bfabd3804e5a6e836a9020eb8ebe3bfd4ddc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-26.psmc",
+          "sha256": "32c58f81f9ce119bd0234c540f49e5c37b334e7a7ee5047246e1a8af568693fc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-27.psmc",
+          "sha256": "2b5db5f3b701401572ef07416222f27d81c1aab9d1099b9d84ac946ec0290e05"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-28.psmc",
+          "sha256": "16a7e8dd3989b9c59cb99be5f569b527f3a2a43df7ce5cbf0f0bec63e51af529"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-0/replicate-29.psmc",
+          "sha256": "009cdba6cf02f962eb2bab8319c90352326b274f65f2a71f2b2f5cd0bc79ad3b"
+        }
+      ],
+      "repeat": 0
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--scheduler",
+        "shared",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/strict-shared-1",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 43.86273126699962,
+      "time_wall_seconds": 43.86,
+      "user_seconds": 638.75,
+      "system_seconds": 1.56,
+      "peak_rss_kib": 1186656,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/strict-shared-1-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "strict-shared-1-time",
+      "cpu_seconds": 640.31,
+      "mode": "strict",
+      "scheduler": "shared",
+      "dataset": "hg001",
+      "helper_jobs": 1722,
+      "worker_cpu_ids": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-00.psmc",
+          "sha256": "a669d86d2f064520f21f3c6f12aad635bc04da4978162ebb904d51c0d122b821"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-01.psmc",
+          "sha256": "8390a73544fdd8c16303f7761140978b3700caf5a3279a6b20d77d2cb6264bf6"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-02.psmc",
+          "sha256": "2ccc86d72511ec1c7f2fa6410ff2776c5e8dc5f1367082a4ccc7addb04370bdf"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-03.psmc",
+          "sha256": "b5a138854a2c4991cdeaf25816e403e8acb0a581b86a50a888ecd427f9231856"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-04.psmc",
+          "sha256": "715bf00e795f53f2a71687f7b2f4ec5dc9bc65d19942952308d6fc14de1c536f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-05.psmc",
+          "sha256": "8fad12689f072dd1e90e77274bd5aea1b9d87de848c9876b18cca45adb5c2be1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-06.psmc",
+          "sha256": "ea5f65c37b0156cb3342cf295081c24590ccc2d9c0cdd82584d9b5060779c9eb"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-07.psmc",
+          "sha256": "686ef09728e9668e9a9be217605fffb1a90e5bba435b92e265c0c4f26fb95be4"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-08.psmc",
+          "sha256": "e03a8b53fc9a7a1dfd8315e895d6e68366da0316dc7e5fee06604295cca6b4a5"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-09.psmc",
+          "sha256": "b59931bfe92b32711e3e3b0074cd9cbdec2644df152c97b3d411bf330387a0e1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-10.psmc",
+          "sha256": "f0fcbd5c1058348da9275bc46829f09a312d9e98f817800bf115570fb4d05e2e"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-11.psmc",
+          "sha256": "7eafb63271db9e72dc75b329c9036e8ea3f5567ba99a40cac1b3aea18c6f3450"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-12.psmc",
+          "sha256": "2c34685e0e4c7e0ec75611fdaedaa55bf5510f8cdf95a2aaad5b23356d571202"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-13.psmc",
+          "sha256": "36a03f34ec2f10fc5b34c93d3d695eec8226f6b34d2dd2a979c541cbeb4b2d62"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-14.psmc",
+          "sha256": "1cce046be01a5d43811d9323b9fddd5d3c0ea5942a2b57fb590c95819fb4a0ca"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-15.psmc",
+          "sha256": "b2dcb97a60644378ea20a7b84946f45a0c5facbb3f821e2e097b939fc17af872"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-16.psmc",
+          "sha256": "654e38f7bc394ef16c79cc9ad6dad67b0bd30becc8f5617246278fce8f4ea681"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-17.psmc",
+          "sha256": "494733f6ac4c9f73c4bf11136167b83e1d5c487f6097debdaa7c86b9675b70f7"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-18.psmc",
+          "sha256": "37eb66d49e7b92819f10acabbf8005600a2ad301b827abbc32bcc26c52f3dd9f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-19.psmc",
+          "sha256": "de48f85319149d7d452f5f5991291ffab8a8afe571a89d722382596a5bd6b62c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-20.psmc",
+          "sha256": "0c1f52df9f9dc897bde8e281081e8e0cf2a0ab13c15ed9f14bb375dd8dda5f5b"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-21.psmc",
+          "sha256": "754e26208866d156d768b926173ed2b8acc22a09ee3f6df7188d6b798636118c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-22.psmc",
+          "sha256": "02e9545621a4fd3cc4f6060558793c5bb2135841df95f5213e8d7ac83eb7154a"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-23.psmc",
+          "sha256": "497f6394a020930650ac25145a15a5f07f40afe34df827b256ec4118e421a3fd"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-24.psmc",
+          "sha256": "c2c0c307277d659ce999f051a437f6745e6b331bec0be84f6d1f5c126d22163d"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-25.psmc",
+          "sha256": "7d5994f48a5aee03b37a02fc5c53bfabd3804e5a6e836a9020eb8ebe3bfd4ddc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-26.psmc",
+          "sha256": "32c58f81f9ce119bd0234c540f49e5c37b334e7a7ee5047246e1a8af568693fc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-27.psmc",
+          "sha256": "2b5db5f3b701401572ef07416222f27d81c1aab9d1099b9d84ac946ec0290e05"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-28.psmc",
+          "sha256": "16a7e8dd3989b9c59cb99be5f569b527f3a2a43df7ce5cbf0f0bec63e51af529"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-1/replicate-29.psmc",
+          "sha256": "009cdba6cf02f962eb2bab8319c90352326b274f65f2a71f2b2f5cd0bc79ad3b"
+        }
+      ],
+      "repeat": 1
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--scheduler",
+        "fit",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/strict-fit-1",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 47.2028835460078,
+      "time_wall_seconds": 47.2,
+      "user_seconds": 596.57,
+      "system_seconds": 1.87,
+      "peak_rss_kib": 1315756,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/strict-fit-1-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "strict-fit-1-time",
+      "cpu_seconds": 598.44,
+      "mode": "strict",
+      "scheduler": "fit",
+      "dataset": "hg001",
+      "helper_jobs": 0,
+      "worker_cpu_ids": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-00.psmc",
+          "sha256": "a669d86d2f064520f21f3c6f12aad635bc04da4978162ebb904d51c0d122b821"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-01.psmc",
+          "sha256": "8390a73544fdd8c16303f7761140978b3700caf5a3279a6b20d77d2cb6264bf6"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-02.psmc",
+          "sha256": "2ccc86d72511ec1c7f2fa6410ff2776c5e8dc5f1367082a4ccc7addb04370bdf"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-03.psmc",
+          "sha256": "b5a138854a2c4991cdeaf25816e403e8acb0a581b86a50a888ecd427f9231856"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-04.psmc",
+          "sha256": "715bf00e795f53f2a71687f7b2f4ec5dc9bc65d19942952308d6fc14de1c536f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-05.psmc",
+          "sha256": "8fad12689f072dd1e90e77274bd5aea1b9d87de848c9876b18cca45adb5c2be1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-06.psmc",
+          "sha256": "ea5f65c37b0156cb3342cf295081c24590ccc2d9c0cdd82584d9b5060779c9eb"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-07.psmc",
+          "sha256": "686ef09728e9668e9a9be217605fffb1a90e5bba435b92e265c0c4f26fb95be4"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-08.psmc",
+          "sha256": "e03a8b53fc9a7a1dfd8315e895d6e68366da0316dc7e5fee06604295cca6b4a5"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-09.psmc",
+          "sha256": "b59931bfe92b32711e3e3b0074cd9cbdec2644df152c97b3d411bf330387a0e1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-10.psmc",
+          "sha256": "f0fcbd5c1058348da9275bc46829f09a312d9e98f817800bf115570fb4d05e2e"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-11.psmc",
+          "sha256": "7eafb63271db9e72dc75b329c9036e8ea3f5567ba99a40cac1b3aea18c6f3450"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-12.psmc",
+          "sha256": "2c34685e0e4c7e0ec75611fdaedaa55bf5510f8cdf95a2aaad5b23356d571202"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-13.psmc",
+          "sha256": "36a03f34ec2f10fc5b34c93d3d695eec8226f6b34d2dd2a979c541cbeb4b2d62"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-14.psmc",
+          "sha256": "1cce046be01a5d43811d9323b9fddd5d3c0ea5942a2b57fb590c95819fb4a0ca"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-15.psmc",
+          "sha256": "b2dcb97a60644378ea20a7b84946f45a0c5facbb3f821e2e097b939fc17af872"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-16.psmc",
+          "sha256": "654e38f7bc394ef16c79cc9ad6dad67b0bd30becc8f5617246278fce8f4ea681"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-17.psmc",
+          "sha256": "494733f6ac4c9f73c4bf11136167b83e1d5c487f6097debdaa7c86b9675b70f7"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-18.psmc",
+          "sha256": "37eb66d49e7b92819f10acabbf8005600a2ad301b827abbc32bcc26c52f3dd9f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-19.psmc",
+          "sha256": "de48f85319149d7d452f5f5991291ffab8a8afe571a89d722382596a5bd6b62c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-20.psmc",
+          "sha256": "0c1f52df9f9dc897bde8e281081e8e0cf2a0ab13c15ed9f14bb375dd8dda5f5b"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-21.psmc",
+          "sha256": "754e26208866d156d768b926173ed2b8acc22a09ee3f6df7188d6b798636118c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-22.psmc",
+          "sha256": "02e9545621a4fd3cc4f6060558793c5bb2135841df95f5213e8d7ac83eb7154a"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-23.psmc",
+          "sha256": "497f6394a020930650ac25145a15a5f07f40afe34df827b256ec4118e421a3fd"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-24.psmc",
+          "sha256": "c2c0c307277d659ce999f051a437f6745e6b331bec0be84f6d1f5c126d22163d"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-25.psmc",
+          "sha256": "7d5994f48a5aee03b37a02fc5c53bfabd3804e5a6e836a9020eb8ebe3bfd4ddc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-26.psmc",
+          "sha256": "32c58f81f9ce119bd0234c540f49e5c37b334e7a7ee5047246e1a8af568693fc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-27.psmc",
+          "sha256": "2b5db5f3b701401572ef07416222f27d81c1aab9d1099b9d84ac946ec0290e05"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-28.psmc",
+          "sha256": "16a7e8dd3989b9c59cb99be5f569b527f3a2a43df7ce5cbf0f0bec63e51af529"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-1/replicate-29.psmc",
+          "sha256": "009cdba6cf02f962eb2bab8319c90352326b274f65f2a71f2b2f5cd0bc79ad3b"
+        }
+      ],
+      "repeat": 1
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--scheduler",
+        "fit",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/strict-fit-2",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 45.98339746700367,
+      "time_wall_seconds": 45.98,
+      "user_seconds": 591.04,
+      "system_seconds": 1.75,
+      "peak_rss_kib": 1307136,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/strict-fit-2-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "strict-fit-2-time",
+      "cpu_seconds": 592.79,
+      "mode": "strict",
+      "scheduler": "fit",
+      "dataset": "hg001",
+      "helper_jobs": 0,
+      "worker_cpu_ids": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-00.psmc",
+          "sha256": "a669d86d2f064520f21f3c6f12aad635bc04da4978162ebb904d51c0d122b821"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-01.psmc",
+          "sha256": "8390a73544fdd8c16303f7761140978b3700caf5a3279a6b20d77d2cb6264bf6"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-02.psmc",
+          "sha256": "2ccc86d72511ec1c7f2fa6410ff2776c5e8dc5f1367082a4ccc7addb04370bdf"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-03.psmc",
+          "sha256": "b5a138854a2c4991cdeaf25816e403e8acb0a581b86a50a888ecd427f9231856"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-04.psmc",
+          "sha256": "715bf00e795f53f2a71687f7b2f4ec5dc9bc65d19942952308d6fc14de1c536f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-05.psmc",
+          "sha256": "8fad12689f072dd1e90e77274bd5aea1b9d87de848c9876b18cca45adb5c2be1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-06.psmc",
+          "sha256": "ea5f65c37b0156cb3342cf295081c24590ccc2d9c0cdd82584d9b5060779c9eb"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-07.psmc",
+          "sha256": "686ef09728e9668e9a9be217605fffb1a90e5bba435b92e265c0c4f26fb95be4"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-08.psmc",
+          "sha256": "e03a8b53fc9a7a1dfd8315e895d6e68366da0316dc7e5fee06604295cca6b4a5"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-09.psmc",
+          "sha256": "b59931bfe92b32711e3e3b0074cd9cbdec2644df152c97b3d411bf330387a0e1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-10.psmc",
+          "sha256": "f0fcbd5c1058348da9275bc46829f09a312d9e98f817800bf115570fb4d05e2e"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-11.psmc",
+          "sha256": "7eafb63271db9e72dc75b329c9036e8ea3f5567ba99a40cac1b3aea18c6f3450"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-12.psmc",
+          "sha256": "2c34685e0e4c7e0ec75611fdaedaa55bf5510f8cdf95a2aaad5b23356d571202"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-13.psmc",
+          "sha256": "36a03f34ec2f10fc5b34c93d3d695eec8226f6b34d2dd2a979c541cbeb4b2d62"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-14.psmc",
+          "sha256": "1cce046be01a5d43811d9323b9fddd5d3c0ea5942a2b57fb590c95819fb4a0ca"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-15.psmc",
+          "sha256": "b2dcb97a60644378ea20a7b84946f45a0c5facbb3f821e2e097b939fc17af872"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-16.psmc",
+          "sha256": "654e38f7bc394ef16c79cc9ad6dad67b0bd30becc8f5617246278fce8f4ea681"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-17.psmc",
+          "sha256": "494733f6ac4c9f73c4bf11136167b83e1d5c487f6097debdaa7c86b9675b70f7"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-18.psmc",
+          "sha256": "37eb66d49e7b92819f10acabbf8005600a2ad301b827abbc32bcc26c52f3dd9f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-19.psmc",
+          "sha256": "de48f85319149d7d452f5f5991291ffab8a8afe571a89d722382596a5bd6b62c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-20.psmc",
+          "sha256": "0c1f52df9f9dc897bde8e281081e8e0cf2a0ab13c15ed9f14bb375dd8dda5f5b"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-21.psmc",
+          "sha256": "754e26208866d156d768b926173ed2b8acc22a09ee3f6df7188d6b798636118c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-22.psmc",
+          "sha256": "02e9545621a4fd3cc4f6060558793c5bb2135841df95f5213e8d7ac83eb7154a"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-23.psmc",
+          "sha256": "497f6394a020930650ac25145a15a5f07f40afe34df827b256ec4118e421a3fd"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-24.psmc",
+          "sha256": "c2c0c307277d659ce999f051a437f6745e6b331bec0be84f6d1f5c126d22163d"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-25.psmc",
+          "sha256": "7d5994f48a5aee03b37a02fc5c53bfabd3804e5a6e836a9020eb8ebe3bfd4ddc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-26.psmc",
+          "sha256": "32c58f81f9ce119bd0234c540f49e5c37b334e7a7ee5047246e1a8af568693fc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-27.psmc",
+          "sha256": "2b5db5f3b701401572ef07416222f27d81c1aab9d1099b9d84ac946ec0290e05"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-28.psmc",
+          "sha256": "16a7e8dd3989b9c59cb99be5f569b527f3a2a43df7ce5cbf0f0bec63e51af529"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-2/replicate-29.psmc",
+          "sha256": "009cdba6cf02f962eb2bab8319c90352326b274f65f2a71f2b2f5cd0bc79ad3b"
+        }
+      ],
+      "repeat": 2
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--scheduler",
+        "shared",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/strict-shared-2",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 43.209155405987985,
+      "time_wall_seconds": 43.2,
+      "user_seconds": 630.26,
+      "system_seconds": 1.74,
+      "peak_rss_kib": 1237780,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/strict-shared-2-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "strict-shared-2-time",
+      "cpu_seconds": 632.0,
+      "mode": "strict",
+      "scheduler": "shared",
+      "dataset": "hg001",
+      "helper_jobs": 1701,
+      "worker_cpu_ids": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-00.psmc",
+          "sha256": "a669d86d2f064520f21f3c6f12aad635bc04da4978162ebb904d51c0d122b821"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-01.psmc",
+          "sha256": "8390a73544fdd8c16303f7761140978b3700caf5a3279a6b20d77d2cb6264bf6"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-02.psmc",
+          "sha256": "2ccc86d72511ec1c7f2fa6410ff2776c5e8dc5f1367082a4ccc7addb04370bdf"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-03.psmc",
+          "sha256": "b5a138854a2c4991cdeaf25816e403e8acb0a581b86a50a888ecd427f9231856"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-04.psmc",
+          "sha256": "715bf00e795f53f2a71687f7b2f4ec5dc9bc65d19942952308d6fc14de1c536f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-05.psmc",
+          "sha256": "8fad12689f072dd1e90e77274bd5aea1b9d87de848c9876b18cca45adb5c2be1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-06.psmc",
+          "sha256": "ea5f65c37b0156cb3342cf295081c24590ccc2d9c0cdd82584d9b5060779c9eb"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-07.psmc",
+          "sha256": "686ef09728e9668e9a9be217605fffb1a90e5bba435b92e265c0c4f26fb95be4"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-08.psmc",
+          "sha256": "e03a8b53fc9a7a1dfd8315e895d6e68366da0316dc7e5fee06604295cca6b4a5"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-09.psmc",
+          "sha256": "b59931bfe92b32711e3e3b0074cd9cbdec2644df152c97b3d411bf330387a0e1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-10.psmc",
+          "sha256": "f0fcbd5c1058348da9275bc46829f09a312d9e98f817800bf115570fb4d05e2e"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-11.psmc",
+          "sha256": "7eafb63271db9e72dc75b329c9036e8ea3f5567ba99a40cac1b3aea18c6f3450"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-12.psmc",
+          "sha256": "2c34685e0e4c7e0ec75611fdaedaa55bf5510f8cdf95a2aaad5b23356d571202"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-13.psmc",
+          "sha256": "36a03f34ec2f10fc5b34c93d3d695eec8226f6b34d2dd2a979c541cbeb4b2d62"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-14.psmc",
+          "sha256": "1cce046be01a5d43811d9323b9fddd5d3c0ea5942a2b57fb590c95819fb4a0ca"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-15.psmc",
+          "sha256": "b2dcb97a60644378ea20a7b84946f45a0c5facbb3f821e2e097b939fc17af872"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-16.psmc",
+          "sha256": "654e38f7bc394ef16c79cc9ad6dad67b0bd30becc8f5617246278fce8f4ea681"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-17.psmc",
+          "sha256": "494733f6ac4c9f73c4bf11136167b83e1d5c487f6097debdaa7c86b9675b70f7"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-18.psmc",
+          "sha256": "37eb66d49e7b92819f10acabbf8005600a2ad301b827abbc32bcc26c52f3dd9f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-19.psmc",
+          "sha256": "de48f85319149d7d452f5f5991291ffab8a8afe571a89d722382596a5bd6b62c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-20.psmc",
+          "sha256": "0c1f52df9f9dc897bde8e281081e8e0cf2a0ab13c15ed9f14bb375dd8dda5f5b"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-21.psmc",
+          "sha256": "754e26208866d156d768b926173ed2b8acc22a09ee3f6df7188d6b798636118c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-22.psmc",
+          "sha256": "02e9545621a4fd3cc4f6060558793c5bb2135841df95f5213e8d7ac83eb7154a"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-23.psmc",
+          "sha256": "497f6394a020930650ac25145a15a5f07f40afe34df827b256ec4118e421a3fd"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-24.psmc",
+          "sha256": "c2c0c307277d659ce999f051a437f6745e6b331bec0be84f6d1f5c126d22163d"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-25.psmc",
+          "sha256": "7d5994f48a5aee03b37a02fc5c53bfabd3804e5a6e836a9020eb8ebe3bfd4ddc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-26.psmc",
+          "sha256": "32c58f81f9ce119bd0234c540f49e5c37b334e7a7ee5047246e1a8af568693fc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-27.psmc",
+          "sha256": "2b5db5f3b701401572ef07416222f27d81c1aab9d1099b9d84ac946ec0290e05"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-28.psmc",
+          "sha256": "16a7e8dd3989b9c59cb99be5f569b527f3a2a43df7ce5cbf0f0bec63e51af529"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-2/replicate-29.psmc",
+          "sha256": "009cdba6cf02f962eb2bab8319c90352326b274f65f2a71f2b2f5cd0bc79ad3b"
+        }
+      ],
+      "repeat": 2
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--scheduler",
+        "shared",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/strict-shared-3",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 43.58045333903283,
+      "time_wall_seconds": 43.57,
+      "user_seconds": 632.7,
+      "system_seconds": 1.79,
+      "peak_rss_kib": 1572300,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/strict-shared-3-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "strict-shared-3-time",
+      "cpu_seconds": 634.49,
+      "mode": "strict",
+      "scheduler": "shared",
+      "dataset": "hg001",
+      "helper_jobs": 1693,
+      "worker_cpu_ids": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-00.psmc",
+          "sha256": "a669d86d2f064520f21f3c6f12aad635bc04da4978162ebb904d51c0d122b821"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-01.psmc",
+          "sha256": "8390a73544fdd8c16303f7761140978b3700caf5a3279a6b20d77d2cb6264bf6"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-02.psmc",
+          "sha256": "2ccc86d72511ec1c7f2fa6410ff2776c5e8dc5f1367082a4ccc7addb04370bdf"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-03.psmc",
+          "sha256": "b5a138854a2c4991cdeaf25816e403e8acb0a581b86a50a888ecd427f9231856"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-04.psmc",
+          "sha256": "715bf00e795f53f2a71687f7b2f4ec5dc9bc65d19942952308d6fc14de1c536f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-05.psmc",
+          "sha256": "8fad12689f072dd1e90e77274bd5aea1b9d87de848c9876b18cca45adb5c2be1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-06.psmc",
+          "sha256": "ea5f65c37b0156cb3342cf295081c24590ccc2d9c0cdd82584d9b5060779c9eb"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-07.psmc",
+          "sha256": "686ef09728e9668e9a9be217605fffb1a90e5bba435b92e265c0c4f26fb95be4"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-08.psmc",
+          "sha256": "e03a8b53fc9a7a1dfd8315e895d6e68366da0316dc7e5fee06604295cca6b4a5"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-09.psmc",
+          "sha256": "b59931bfe92b32711e3e3b0074cd9cbdec2644df152c97b3d411bf330387a0e1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-10.psmc",
+          "sha256": "f0fcbd5c1058348da9275bc46829f09a312d9e98f817800bf115570fb4d05e2e"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-11.psmc",
+          "sha256": "7eafb63271db9e72dc75b329c9036e8ea3f5567ba99a40cac1b3aea18c6f3450"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-12.psmc",
+          "sha256": "2c34685e0e4c7e0ec75611fdaedaa55bf5510f8cdf95a2aaad5b23356d571202"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-13.psmc",
+          "sha256": "36a03f34ec2f10fc5b34c93d3d695eec8226f6b34d2dd2a979c541cbeb4b2d62"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-14.psmc",
+          "sha256": "1cce046be01a5d43811d9323b9fddd5d3c0ea5942a2b57fb590c95819fb4a0ca"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-15.psmc",
+          "sha256": "b2dcb97a60644378ea20a7b84946f45a0c5facbb3f821e2e097b939fc17af872"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-16.psmc",
+          "sha256": "654e38f7bc394ef16c79cc9ad6dad67b0bd30becc8f5617246278fce8f4ea681"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-17.psmc",
+          "sha256": "494733f6ac4c9f73c4bf11136167b83e1d5c487f6097debdaa7c86b9675b70f7"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-18.psmc",
+          "sha256": "37eb66d49e7b92819f10acabbf8005600a2ad301b827abbc32bcc26c52f3dd9f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-19.psmc",
+          "sha256": "de48f85319149d7d452f5f5991291ffab8a8afe571a89d722382596a5bd6b62c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-20.psmc",
+          "sha256": "0c1f52df9f9dc897bde8e281081e8e0cf2a0ab13c15ed9f14bb375dd8dda5f5b"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-21.psmc",
+          "sha256": "754e26208866d156d768b926173ed2b8acc22a09ee3f6df7188d6b798636118c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-22.psmc",
+          "sha256": "02e9545621a4fd3cc4f6060558793c5bb2135841df95f5213e8d7ac83eb7154a"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-23.psmc",
+          "sha256": "497f6394a020930650ac25145a15a5f07f40afe34df827b256ec4118e421a3fd"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-24.psmc",
+          "sha256": "c2c0c307277d659ce999f051a437f6745e6b331bec0be84f6d1f5c126d22163d"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-25.psmc",
+          "sha256": "7d5994f48a5aee03b37a02fc5c53bfabd3804e5a6e836a9020eb8ebe3bfd4ddc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-26.psmc",
+          "sha256": "32c58f81f9ce119bd0234c540f49e5c37b334e7a7ee5047246e1a8af568693fc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-27.psmc",
+          "sha256": "2b5db5f3b701401572ef07416222f27d81c1aab9d1099b9d84ac946ec0290e05"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-28.psmc",
+          "sha256": "16a7e8dd3989b9c59cb99be5f569b527f3a2a43df7ce5cbf0f0bec63e51af529"
+        },
+        {
+          "path": "work/shared-records/performance/strict-shared-3/replicate-29.psmc",
+          "sha256": "009cdba6cf02f962eb2bab8319c90352326b274f65f2a71f2b2f5cd0bc79ad3b"
+        }
+      ],
+      "repeat": 3
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "work/shared-records/candidate",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--scheduler",
+        "fit",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/shared-records/performance/strict-fit-3",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 49.63485132402275,
+      "time_wall_seconds": 49.63,
+      "user_seconds": 626.79,
+      "system_seconds": 1.97,
+      "peak_rss_kib": 1315496,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/shared-records/performance/strict-fit-3-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "tag": "strict-fit-3-time",
+      "cpu_seconds": 628.76,
+      "mode": "strict",
+      "scheduler": "fit",
+      "dataset": "hg001",
+      "helper_jobs": 0,
+      "worker_cpu_ids": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "outputs": [
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-00.psmc",
+          "sha256": "a669d86d2f064520f21f3c6f12aad635bc04da4978162ebb904d51c0d122b821"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-01.psmc",
+          "sha256": "8390a73544fdd8c16303f7761140978b3700caf5a3279a6b20d77d2cb6264bf6"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-02.psmc",
+          "sha256": "2ccc86d72511ec1c7f2fa6410ff2776c5e8dc5f1367082a4ccc7addb04370bdf"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-03.psmc",
+          "sha256": "b5a138854a2c4991cdeaf25816e403e8acb0a581b86a50a888ecd427f9231856"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-04.psmc",
+          "sha256": "715bf00e795f53f2a71687f7b2f4ec5dc9bc65d19942952308d6fc14de1c536f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-05.psmc",
+          "sha256": "8fad12689f072dd1e90e77274bd5aea1b9d87de848c9876b18cca45adb5c2be1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-06.psmc",
+          "sha256": "ea5f65c37b0156cb3342cf295081c24590ccc2d9c0cdd82584d9b5060779c9eb"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-07.psmc",
+          "sha256": "686ef09728e9668e9a9be217605fffb1a90e5bba435b92e265c0c4f26fb95be4"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-08.psmc",
+          "sha256": "e03a8b53fc9a7a1dfd8315e895d6e68366da0316dc7e5fee06604295cca6b4a5"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-09.psmc",
+          "sha256": "b59931bfe92b32711e3e3b0074cd9cbdec2644df152c97b3d411bf330387a0e1"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-10.psmc",
+          "sha256": "f0fcbd5c1058348da9275bc46829f09a312d9e98f817800bf115570fb4d05e2e"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-11.psmc",
+          "sha256": "7eafb63271db9e72dc75b329c9036e8ea3f5567ba99a40cac1b3aea18c6f3450"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-12.psmc",
+          "sha256": "2c34685e0e4c7e0ec75611fdaedaa55bf5510f8cdf95a2aaad5b23356d571202"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-13.psmc",
+          "sha256": "36a03f34ec2f10fc5b34c93d3d695eec8226f6b34d2dd2a979c541cbeb4b2d62"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-14.psmc",
+          "sha256": "1cce046be01a5d43811d9323b9fddd5d3c0ea5942a2b57fb590c95819fb4a0ca"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-15.psmc",
+          "sha256": "b2dcb97a60644378ea20a7b84946f45a0c5facbb3f821e2e097b939fc17af872"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-16.psmc",
+          "sha256": "654e38f7bc394ef16c79cc9ad6dad67b0bd30becc8f5617246278fce8f4ea681"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-17.psmc",
+          "sha256": "494733f6ac4c9f73c4bf11136167b83e1d5c487f6097debdaa7c86b9675b70f7"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-18.psmc",
+          "sha256": "37eb66d49e7b92819f10acabbf8005600a2ad301b827abbc32bcc26c52f3dd9f"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-19.psmc",
+          "sha256": "de48f85319149d7d452f5f5991291ffab8a8afe571a89d722382596a5bd6b62c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-20.psmc",
+          "sha256": "0c1f52df9f9dc897bde8e281081e8e0cf2a0ab13c15ed9f14bb375dd8dda5f5b"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-21.psmc",
+          "sha256": "754e26208866d156d768b926173ed2b8acc22a09ee3f6df7188d6b798636118c"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-22.psmc",
+          "sha256": "02e9545621a4fd3cc4f6060558793c5bb2135841df95f5213e8d7ac83eb7154a"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-23.psmc",
+          "sha256": "497f6394a020930650ac25145a15a5f07f40afe34df827b256ec4118e421a3fd"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-24.psmc",
+          "sha256": "c2c0c307277d659ce999f051a437f6745e6b331bec0be84f6d1f5c126d22163d"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-25.psmc",
+          "sha256": "7d5994f48a5aee03b37a02fc5c53bfabd3804e5a6e836a9020eb8ebe3bfd4ddc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-26.psmc",
+          "sha256": "32c58f81f9ce119bd0234c540f49e5c37b334e7a7ee5047246e1a8af568693fc"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-27.psmc",
+          "sha256": "2b5db5f3b701401572ef07416222f27d81c1aab9d1099b9d84ac946ec0290e05"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-28.psmc",
+          "sha256": "16a7e8dd3989b9c59cb99be5f569b527f3a2a43df7ce5cbf0f0bec63e51af529"
+        },
+        {
+          "path": "work/shared-records/performance/strict-fit-3/replicate-29.psmc",
+          "sha256": "009cdba6cf02f962eb2bab8319c90352326b274f65f2a71f2b2f5cd0bc79ad3b"
+        }
+      ],
+      "repeat": 3
+    }
+  ],
+  "summary": {
+    "equivalent": {
+      "medians": {
+        "fit": {
+          "wall_seconds": 10.149522842024453,
+          "cpu_seconds": 136.44,
+          "peak_rss_kib": 34076,
+          "helper_jobs": 0
+        },
+        "shared": {
+          "wall_seconds": 9.6872896309942,
+          "cpu_seconds": 143.22,
+          "peak_rss_kib": 36360,
+          "helper_jobs": 1847
+        }
+      },
+      "wall_reduction": 0.0455423588108359,
+      "faster_pairs": 3,
+      "improvement_gate": false,
+      "nonregression_gate": true
+    },
+    "strict": {
+      "medians": {
+        "fit": {
+          "wall_seconds": 47.2028835460078,
+          "cpu_seconds": 598.44,
+          "peak_rss_kib": 1315496,
+          "helper_jobs": 0
+        },
+        "shared": {
+          "wall_seconds": 43.58045333903283,
+          "cpu_seconds": 634.49,
+          "peak_rss_kib": 1237780,
+          "helper_jobs": 1701
+        }
+      },
+      "wall_reduction": 0.07674171437946686,
+      "faster_pairs": 3,
+      "improvement_gate": true,
+      "nonregression_gate": true
+    }
+  }
+}

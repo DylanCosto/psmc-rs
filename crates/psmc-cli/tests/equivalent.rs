@@ -50,3 +50,41 @@ fn equivalent_mode_is_explicit_and_incompatible_backends_are_rejected() {
         );
     }
 }
+
+#[test]
+fn record_helpers_preserve_full_output_for_both_modes_and_cache_policies() {
+    let binary = env!("CARGO_BIN_EXE_psmc-rs");
+    for mode in ["strict", "equivalent"] {
+        for cache in ["on", "off"] {
+            let run = |workers: &str| {
+                let out = Command::new(binary)
+                    .args([
+                        "--mode",
+                        mode,
+                        "--cache",
+                        cache,
+                        "--record-workers",
+                        workers,
+                        "--seed",
+                        "42",
+                        "-p",
+                        "4+5*3+4",
+                        "-N",
+                        "3",
+                        "-I",
+                        "0",
+                    ])
+                    .arg(fixture())
+                    .output()
+                    .unwrap();
+                assert!(
+                    out.status.success(),
+                    "{}",
+                    String::from_utf8_lossy(&out.stderr)
+                );
+                out.stdout
+            };
+            assert_eq!(run("1"), run("4"), "{mode}/{cache}");
+        }
+    }
+}

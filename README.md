@@ -1,10 +1,14 @@
 # PSMC-rs — PSMC in Rust
 
 This Rust workspace implements the original PSMC model and Hooke–Jeeves optimizer.
-Version 0.6.0 introduces an opt-in linear equivalent E-step with segmented AVX
+Version 0.6.1 includes an opt-in linear equivalent E-step with segmented AVX
 state scans, checkpointed messages and triangle-margin counts. It prints `QU`
 (unnormalized Q) instead of `QD`. Strict arithmetic and `QD` remain the default.
-See the [prospective protocol and derivation](docs/linear-equivalent.md).
+The default CPU bootstrap scheduler now shares records across workers and
+prefers faster cores for fit ownership. Final HG001 30-bootstrap medians are
+9.48s in equivalent mode and 44.02s in strict mode. See
+[linear E-step results](docs/linear-equivalent-report.md) and
+[shared-record validation and benchmarks](docs/shared-record-results.md).
 Earlier [v0.5.1 results](docs/equivalent-followup.md) and the
 [original structured milestone](docs/equivalent-mode-report.md) remain historical.
 
@@ -22,8 +26,9 @@ the optional experimental CUDA transition-count backend. See the
 [CUDA implementation and usage](crates/psmc-cuda/README.md) and
 [CUDA milestone report](docs/cuda-report.md). Version 0.3.3's ordered AVX message
 kernels remain; v0.4.1 counts use two source rows, sixteen destinations and
-sixteen-site tiles. Bounded message capacity remains. Each fit uses one numerical
-thread; independent bootstrap fits can use all available CPUs. Reusable
+sixteen-site tiles. Bounded message capacity remains. Single fits default to one numerical thread; `--record-workers N` can share
+existing independent records. Bootstrap fits and their records use one fixed
+worker budget. `--scheduler fit` retains the previous fit-only policy. Reusable
 buffers, exact repeated-block caching and the dense oracle remain available. Double precision, summation order,
 sequence boundaries and the statistical method are preserved in strict mode.
 
@@ -34,7 +39,10 @@ cargo build --release --locked --offline
 ./target/release/psmc-rs --mode equivalent -p '4+25*2+4+6' -N 30 input.psmcfa > result.psmc
 ```
 
-Equivalent mode supports the CPU backend and the same bootstrap controls. It
+Equivalent mode supports the CPU backend and the same bootstrap controls.
+Use `--workers 16 --memory-mib 16384` for the measured full-core batch setup;
+actual worker admission is reported in the manifest. Single-fit record workers
+help only when the input contains multiple independent records. It
 changes floating-point grouping and optimizer trajectories. Segmented state
 scans operate on every record length; checkpoint boundaries retain HMM messages.
 Only triangle margins, diagonal counts and emission counts are accumulated in

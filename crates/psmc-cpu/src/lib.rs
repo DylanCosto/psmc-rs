@@ -39,6 +39,7 @@ use psmc_core::{
 mod linear;
 #[cfg(test)]
 mod lockstep;
+pub mod record_pool;
 mod simd;
 pub use simd::{SimdMode, avx_available};
 

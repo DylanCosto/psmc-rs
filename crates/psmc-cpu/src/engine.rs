@@ -12,6 +12,8 @@ use std::{collections::HashMap, io};
 
 pub struct CpuBackend {
     workspace: Workspace,
+    mode: SimdMode,
+    pub record_pool: Option<std::sync::Arc<crate::record_pool::RecordPool>>,
     model_workspace: ModelWorkspace,
     pub profile: bool,
     pub cache_enabled: bool,
@@ -31,6 +33,8 @@ impl CpuBackend {
     pub fn with_simd(states: usize, mode: SimdMode) -> Result<Self, String> {
         Ok(Self {
             workspace: Workspace::with_simd(states, mode)?,
+            mode,
+            record_pool: None,
             model_workspace: ModelWorkspace::new(states),
             profile: false,
             cache_enabled: true,
@@ -68,6 +72,36 @@ impl ExpectationBackend for CpuBackend {
                 *occurrences.entry(&sequence.observations).or_default() += 1;
             }
         }
+        let mut parallel = HashMap::<usize, Cached>::new();
+        if let Some(pool) = &self.record_pool {
+            if pool.has_helpers() && !observer.needs_sequence_messages() && sequences.len() > 1 {
+                let mut seen = std::collections::HashSet::<&[u8]>::new();
+                let indices: Vec<_> = sequences
+                    .iter()
+                    .enumerate()
+                    .filter_map(|(i, s)| {
+                        (!cache_enabled || seen.insert(&s.observations)).then_some(i)
+                    })
+                    .collect();
+                let records = indices
+                    .iter()
+                    .map(|&i| sequences[i].observations.clone())
+                    .collect();
+                let frozen = model.clone();
+
+                let mode = self.mode;
+                let results = pool.map(records, move |obs| {
+                    let (counts, likelihood, backward_check) =
+                        crate::record_pool::dense_record(&frozen, mode, &obs);
+                    Cached {
+                        counts,
+                        likelihood,
+                        backward_check,
+                    }
+                });
+                parallel.extend(indices.into_iter().zip(results));
+            }
+        }
         let mut cache = HashMap::<&[u8], Cached>::new();
         for (index, sequence) in sequences.iter().enumerate() {
             self.counters.sequence_visits += 1;
@@ -80,6 +114,19 @@ impl ExpectationBackend for CpuBackend {
                 likelihood += cached.likelihood;
                 aggregate.add(&cached.counts); // one repeated addition, including tiny counts, per occurrence
                 self.counters.cache_hits += 1;
+                continue;
+            }
+            if let Some(result) = parallel.remove(&index) {
+                warn(result.backward_check);
+                likelihood += result.likelihood;
+                aggregate.add(&result.counts);
+                self.counters.sequence_evaluations += 1;
+                if occurrences
+                    .get(observations)
+                    .is_some_and(|&count| count > 1)
+                {
+                    cache.insert(observations, result);
+                }
                 continue;
             }
             let (messages, counts) = self.workspace.evaluate(&prepared, observations);

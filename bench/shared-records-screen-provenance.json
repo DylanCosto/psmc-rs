@@ -1,0 +1,26 @@
+{
+  "screen": {
+    "report": "bench/shared-records-screen.json",
+    "report_sha256": "650b75b30d894450901f60da37d922a684ea73950a3dc04fc4dfd8c38c961250",
+    "binary": "work/shared-records/candidate-initial",
+    "binary_sha256": "2cb5ec44d002fb012f6417f219f6254cfef6df6078b3c63a83436ef3c78c8671",
+    "protocol": "work/shared-records/initial-protocol.md",
+    "protocol_sha256": "9d43722899382b0ccbe66d1fdf362c5567557781a3ea8ee67543cb70928677e4"
+  },
+  "refined-screen": {
+    "report": "bench/shared-records-refined-screen.json",
+    "report_sha256": "908aaccf8ed1c635ac8baae2c1b1b3ec8b6e29db3d7c50680559af11b5dc4d3c",
+    "binary": "work/shared-records/candidate-physical",
+    "binary_sha256": "63a910a7e84af69c18a69082fb3c210551998d1de33c1b1a7aefa1ddd663f2fd",
+    "protocol": "work/shared-records/physical-protocol.md",
+    "protocol_sha256": "623a9274b57872cd005c2c1c48659dca064f9200efdb7fa5717b0e33cf6c981d"
+  },
+  "pthreads-screen": {
+    "report": "bench/shared-records-pthreads-screen.json",
+    "report_sha256": "4e7e7040cca5829ccfa574abddbee65111f4877ae296800487dcf4111518287a",
+    "binary": "work/shared-records/candidate-before-memory-guard",
+    "binary_sha256": "54ea8fa0f90776c2b1e653e941b5f0b6e168f8a577d30b7b919d53cfdacbcd40",
+    "protocol": "work/shared-records/pthreads-protocol.md",
+    "protocol_sha256": "0724dc20287f82181d39becec9e27d3430340a2f0ecaaca135967a228bba3a3c"
+  }
+}

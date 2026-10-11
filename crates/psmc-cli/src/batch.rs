@@ -1,5 +1,5 @@
-//! A single bounded queue of independent bootstrap fits. No nested numerical
-//! pools: each worker reduces each fit's records in original occurrence order.
+//! Bounded fit workers can help independent records through one cooperative
+//! queue. Fit owners reduce results in original occurrence order.
 use crate::{Options, default_seed, fit, snapshot::string, write_trace};
 use psmc_core::{Sequence, em::NoObserver, rng::LegacyRng};
 use psmc_io::{read_sequences, resample_indices};
@@ -20,6 +20,7 @@ pub struct BatchOptions {
     memory_mib: usize,
     output_dir: Option<String>,
     reverse: bool,
+    shared: bool,
 }
 impl Default for BatchOptions {
     fn default() -> Self {
@@ -29,6 +30,7 @@ impl Default for BatchOptions {
             memory_mib: 2048,
             output_dir: None,
             reverse: false,
+            shared: true,
         }
     }
 }
@@ -44,6 +46,13 @@ impl BatchOptions {
             Ok(n)
         }
         match flag {
+            "--scheduler" => {
+                self.shared = match value {
+                    "fit" => false,
+                    "shared" => true,
+                    _ => return Err("--scheduler must be fit or shared".into()),
+                }
+            }
             "--replicates" => self.replicates = positive(value, flag)?,
             "--workers" => self.workers = positive(value, flag)?,
             "--memory-mib" => self.memory_mib = positive(value, flag)?,
@@ -68,7 +77,9 @@ fn estimated_worker_bytes(
     max_length: usize,
     records: usize,
     maximum_draws: usize,
+    total_length: usize,
     equivalent: bool,
+    sharing: bool,
 ) -> Option<usize> {
     let messages = max_length
         .checked_add(1)?
@@ -78,7 +89,7 @@ fn estimated_worker_bytes(
         .checked_mul(states)?
         .checked_add(states.checked_mul(4)?)?
         .checked_mul(8)?;
-    let cached = counts.checked_mul(if equivalent {
+    let cached = counts.checked_mul(if equivalent || sharing {
         records.max(maximum_draws)
     } else {
         records
@@ -86,6 +97,12 @@ fn estimated_worker_bytes(
     let sampled = maximum_draws.checked_mul(
         3 * std::mem::size_of::<usize>() + 2 * std::mem::size_of::<psmc_io::BootstrapDraw>(),
     )?;
+    // Bootstrap stops at the nearest total length. total + longest record is
+    // a conservative upper bound, including the final accepted overshoot.
+    // Equivalent retains a frozen posterior input; queued jobs own another copy.
+    let owned_observations = total_length
+        .checked_add(max_length)?
+        .checked_mul(usize::from(equivalent) + usize::from(sharing))?;
     let lockstep = if equivalent {
         // Four scale lanes, two sets of state checkpoints per 256 sites,
         // two bounded message blocks, emissions and rolling-vector scratch.
@@ -104,6 +121,7 @@ fn estimated_worker_bytes(
         .checked_add(cached.checked_mul(4)?)?
         .checked_add(states.checked_mul(states)?.checked_mul(16 * 8)?)?
         .checked_add(sampled)?
+        .checked_add(owned_observations)?
         .checked_add(16 * 1024 * 1024)
 }
 
@@ -165,8 +183,8 @@ fn job(
     })
 }
 
-pub fn run(options: Options) -> Result<(), Box<dyn std::error::Error>> {
-    let config = options.batch.as_ref().expect("batch configuration");
+pub fn run(mut options: Options) -> Result<(), Box<dyn std::error::Error>> {
+    let config = options.batch.clone().expect("batch configuration");
     if options.bootstrap
         || options.output.is_some()
         || options.snapshot.is_some()
@@ -245,7 +263,9 @@ pub fn run(options: Options) -> Result<(), Box<dyn std::error::Error>> {
         max_length,
         sequences.len(),
         maximum_draws,
+        total_length,
         options.mode == "equivalent",
+        config.shared && options.backend == "cpu",
     )
     .ok_or("worker memory estimate overflow")?;
     // Completed indices and JSON construction are retained for deterministic
@@ -297,29 +317,89 @@ pub fn run(options: Options) -> Result<(), Box<dyn std::error::Error>> {
     fs::create_dir(&directory)?;
     let results = Mutex::new(results);
     let next = AtomicUsize::new(0);
+    let pool = std::sync::Arc::new(psmc_cpu::record_pool::RecordPool::default());
+    let sharing = config.shared && options.backend == "cpu";
+    if sharing {
+        options.record_pool = Some(pool.clone());
+    }
+    let topology = if sharing {
+        crate::topology::discover()
+    } else {
+        Vec::new()
+    };
+    let fast_workers = topology.iter().take(workers).filter(|c| c.fast).count();
+    let remaining = AtomicUsize::new(config.replicates);
+    let worker_affinity = Mutex::new(vec![None; workers]);
     std::thread::scope(|scope| {
-        for _ in 0..workers {
-            scope.spawn(|| {
+        for worker in 0..workers {
+            let pool = &pool;
+            let options = &options;
+            let topology = &topology;
+            let next = &next;
+            let remaining = &remaining;
+            let sequences = &sequences;
+            let directory = &directory;
+            let results = &results;
+            let config = &config;
+            let worker_affinity = &worker_affinity;
+            scope.spawn(move || {
+                let pinned = topology
+                    .get(worker)
+                    .is_some_and(|cpu| crate::topology::pin(cpu.id));
+                if pinned {
+                    worker_affinity.lock().expect("affinity report")[worker] =
+                        Some(topology[worker].id);
+                }
+                let slower = pinned && topology.get(worker).is_some_and(|cpu| !cpu.fast);
+                let helper_only = pinned
+                    && topology.get(worker).is_some_and(|cpu| !cpu.fast)
+                    && topology.iter().take(workers).any(|cpu| cpu.fast);
+                if helper_only {
+                    pool.help_with_reserve(if slower { fast_workers } else { 0 });
+                    return;
+                }
                 loop {
-                    let position = next.fetch_add(1, Ordering::Relaxed);
-                    if position >= config.replicates {
-                        break;
-                    }
+                    // Near the tail, lower-frequency CPUs help existing record
+                    // jobs rather than owning one of the final long-lived fits.
+                    let position = next.fetch_update(Ordering::Relaxed, Ordering::Relaxed, |p| {
+                        if p >= config.replicates
+                            || (slower && config.replicates - p <= fast_workers)
+                        {
+                            None
+                        } else {
+                            Some(p + 1)
+                        }
+                    });
+                    let Ok(position) = position else { break };
                     let index = if config.reverse {
                         config.replicates - 1 - position
                     } else {
                         position
                     };
                     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-                        job(&options, &sequences, &directory, index, seed + index as i64)
+                        job(options, sequences, directory, index, seed + index as i64)
                             .map_err(|e| e.to_string())
                     }))
                     .unwrap_or_else(|_| Err("fit worker panicked; partial output retained".into()));
                     results.lock().expect("result lock")[index] = Some(result);
+                    if remaining.fetch_sub(1, Ordering::AcqRel) == 1 {
+                        pool.stop();
+                    }
+                }
+                if sharing {
+                    pool.help_until_stopped();
                 }
             });
         }
     });
+    let helper_jobs = pool.helper_jobs();
+    let affinity_json = worker_affinity
+        .into_inner()
+        .expect("affinity report")
+        .iter()
+        .map(|cpu| cpu.map_or("null".into(), |id| id.to_string()))
+        .collect::<Vec<_>>()
+        .join(",");
     let results = results
         .into_inner()
         .map_err(|_| "bootstrap result lock poisoned")?;
@@ -361,7 +441,8 @@ pub fn run(options: Options) -> Result<(), Box<dyn std::error::Error>> {
         .collect::<Vec<_>>()
         .join(",");
     let manifest = format!(
-        "{{\"mode\":{},\"version\":1,\"cuda_buffer_budget_mib\":{},\"cuda_worker_buffer_bytes\":{device_worker_bytes},\"backend\":{},\"seed\":{seed},\"input\":{},\"input_fingerprint_fnv1a64\":{},\"requested_workers\":{},\"workers\":{workers},\"memory_mib\":{},\"input_bytes\":{input_bytes},\"estimated_metadata_bytes\":{metadata_bytes},\"estimated_worker_bytes\":{estimate},\"memory_policy\":\"conservative admission estimate, not an OS RSS hard limit; input loading precedes admission\",\"task_order\":{},\"iterations\":{},\"states\":{},\"source_records\":[{records}],\"replicates\":[{}],\"failed_replicates\":{failed},\"nonfinite_replicates\":{nonfinite}}}\n",
+        "{{\"worker_cpu_ids\":[{affinity_json}],\"scheduler\":{},\"record_helper_jobs\":{helper_jobs},\"mode\":{},\"version\":1,\"cuda_buffer_budget_mib\":{},\"cuda_worker_buffer_bytes\":{device_worker_bytes},\"backend\":{},\"seed\":{seed},\"input\":{},\"input_fingerprint_fnv1a64\":{},\"requested_workers\":{},\"workers\":{workers},\"memory_mib\":{},\"input_bytes\":{input_bytes},\"estimated_metadata_bytes\":{metadata_bytes},\"estimated_worker_bytes\":{estimate},\"memory_policy\":\"conservative admission estimate, not an OS RSS hard limit; input loading precedes admission\",\"task_order\":{},\"iterations\":{},\"states\":{},\"source_records\":[{records}],\"replicates\":[{}],\"failed_replicates\":{failed},\"nonfinite_replicates\":{nonfinite}}}\n",
+        string(if sharing { "shared" } else { "fit" }),
         string(&options.mode),
         options.cuda_memory_mib,
         string(&options.backend),
@@ -390,4 +471,22 @@ pub fn run(options: Options) -> Result<(), Box<dyn std::error::Error>> {
         config.replicates
     );
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn admission_covers_owned_records_and_uncached_result_slots() {
+        // Many long records can dominate input copies even with only two states.
+        let serial =
+            estimated_worker_bytes(2, 100_000, 100, 101, 10_000_000, false, false).unwrap();
+        let shared = estimated_worker_bytes(2, 100_000, 100, 101, 10_000_000, false, true).unwrap();
+        assert!(shared >= serial + 10_100_000);
+        // With cache off, repeated short records may produce more result matrices
+        // than the number of distinct source records. Reserve every draw slot.
+        let bytes = estimated_worker_bytes(64, 100, 1000, 100_001, 100_000, false, true).unwrap();
+        assert!(bytes >= 100_001 * (64 * 64 + 4 * 64) * 8);
+        assert!(estimated_worker_bytes(64, usize::MAX, 1, 1, usize::MAX, true, true).is_none());
+    }
 }

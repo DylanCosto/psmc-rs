@@ -2,6 +2,7 @@ mod batch;
 mod format;
 mod legacy;
 mod snapshot;
+mod topology;
 
 use psmc_core::{
     Settings,
@@ -20,7 +21,7 @@ use std::{
 const HELP: &str = concat!(
     "psmc-rs ",
     env!("CARGO_PKG_VERSION"),
-    " — double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend cpu|dense|cuda --mode strict|equivalent --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nCUDA: --cuda-tile-sites COUNT (16384) --cuda-memory-mib MIB (1024)\nBootstrap runner: --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nCPU (default) reuses buffers and repeated-record counts; dense is the scalar oracle.\nInput '-' reads stdin for a single fit. CUDA counts are experimental and require a cuda-feature build.\n-c and -S are unsupported; -S is not the seed flag.\n"
+    " — double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend cpu|dense|cuda --mode strict|equivalent --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nCUDA: --cuda-tile-sites COUNT (16384) --cuda-memory-mib MIB (1024)\nSingle fit: --record-workers COUNT (1); independent records only.\nBootstrap runner: --scheduler fit|shared (shared) --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nCPU (default) reuses buffers and repeated-record counts; dense is the scalar oracle.\nInput '-' reads stdin for a single fit. CUDA counts are experimental and require a cuda-feature build.\n-c and -S are unsupported; -S is not the seed flag.\n"
 );
 
 #[derive(Clone)]
@@ -45,6 +46,8 @@ struct Options {
     cuda_memory_mib: usize,
     simd: psmc_cpu::SimdMode,
     batch: Option<batch::BatchOptions>,
+    record_pool: Option<std::sync::Arc<psmc_cpu::record_pool::RecordPool>>,
+    record_workers: usize,
 }
 
 fn number(value: &str, flag: &str) -> Result<f64, String> {
@@ -98,6 +101,8 @@ fn parse() -> Result<Option<Options>, String> {
         cuda_memory_mib: 1024,
         simd: psmc_cpu::SimdMode::Auto,
         batch,
+        record_pool: None,
+        record_workers: 1,
     };
     let mut i = 0;
     let mut positional = false;
@@ -134,6 +139,8 @@ fn parse() -> Result<Option<Options>, String> {
                     | "--cuda-tile-sites"
                     | "--cuda-memory-mib"
                     | "--simd"
+                    | "--record-workers"
+                    | "--scheduler"
                     | "--workers"
                     | "--replicates"
                     | "--output-dir"
@@ -158,6 +165,19 @@ fn parse() -> Result<Option<Options>, String> {
                             .map_err(|_| "--seed requires a signed64-bit integer")?,
                     )
                 }
+                "--record-workers" => {
+                    options.record_workers = value
+                        .parse()
+                        .map_err(|_| "--record-workers requires a positive integer")?;
+                    if options.record_workers == 0 {
+                        return Err("--record-workers requires a positive integer".into());
+                    }
+                }
+                "--scheduler" => options
+                    .batch
+                    .as_mut()
+                    .ok_or("--scheduler requires bootstrap")?
+                    .set(flag, &value)?,
                 "--snapshot" => options.snapshot = Some(value),
                 "--stats" => options.stats = Some(value),
                 "--backend" => {
@@ -300,6 +320,11 @@ fn parse() -> Result<Option<Options>, String> {
     }
     if options.snapshot.is_none() {
         options.snapshot = env::var("PSMC_SNAPSHOT").ok().filter(|v| !v.is_empty());
+    }
+    if options.record_workers > 1
+        && (options.batch.is_some() || options.backend != "cpu" || options.snapshot.is_some())
+    {
+        return Err("--record-workers requires a single CPU fit without snapshots; bootstrap uses its shared worker budget".into());
     }
     if options.mode == "equivalent" {
         if options.backend != "cpu" {
@@ -571,6 +596,28 @@ fn fit(
     output: &mut dyn Write,
     observer: &mut dyn Observer,
 ) -> Result<FitReport, Box<dyn std::error::Error>> {
+    if options.record_pool.is_none() && options.record_workers > 1 {
+        let pool = std::sync::Arc::new(psmc_cpu::record_pool::RecordPool::default());
+        let mut nested = options.clone();
+        nested.record_pool = Some(pool.clone());
+        let workers = options
+            .record_workers
+            .min(std::thread::available_parallelism().map_or(1, usize::from));
+        return std::thread::scope(|scope| {
+            struct Stop(std::sync::Arc<psmc_cpu::record_pool::RecordPool>);
+            impl Drop for Stop {
+                fn drop(&mut self) {
+                    self.0.stop();
+                }
+            }
+            let _stop = Stop(pool.clone());
+            for _ in 1..workers {
+                let pool = pool.clone();
+                scope.spawn(move || pool.help_until_stopped());
+            }
+            fit(&nested, sequences, rng, output, observer)
+        });
+    }
     let effective_length = sequences.iter().map(|s| s.effective_length()).sum();
     if effective_length == 0 && options.settings.initial_params.is_none() {
         return Err("all-missing input requires explicit valid initial parameters (-i)".into());
@@ -581,6 +628,7 @@ fn fit(
         simd_kernel = engine.simd_kernel();
         engine.profile = options.stats.is_some();
         engine.cache_enabled = options.cache;
+        engine.record_pool = options.record_pool.clone();
         Box::new(engine)
     } else if options.backend == "cpu" {
         let mut engine =
@@ -588,6 +636,7 @@ fn fit(
         simd_kernel = engine.simd_kernel();
         engine.profile = options.stats.is_some();
         engine.cache_enabled = options.cache;
+        engine.record_pool = options.record_pool.clone();
         Box::new(engine)
     } else if options.backend == "cuda" {
         #[cfg(feature = "cuda")]

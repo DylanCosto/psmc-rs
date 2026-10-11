@@ -1,0 +1,18 @@
+{
+  "version": "0.6.1",
+  "binaries": {
+    "bin/psmc-rs": "ea3f384df72a53754991725e394cd5010e116f60031ed17267b0c3e78fd2f966",
+    "bin/psmc-rs-v0.6.1": "ea3f384df72a53754991725e394cd5010e116f60031ed17267b0c3e78fd2f966",
+    "bin/psmc-rs-v0.6.0": "f9038bf475c99b73558a3bc50ce4ac269f556ba6a4556d8db84add1f601ff399",
+    "bin/psmc-rs-v0.5.1": "f46ab0c67d7cac6e9dcb9f341131f544589469ba6715d6ac15bcbd8cc34588eb",
+    "bin/psmc-rs-cuda": "4763281272d642f10dc42ac0879676b99d9f19158b0bf17bcf45de942fa6b8ff"
+  },
+  "tested_binary_sha256": "ea3f384df72a53754991725e394cd5010e116f60031ed17267b0c3e78fd2f966",
+  "audit_sha256": "78d3e03fb3325baf4835f7bfa70be680caa0bff64662f45c6e01538e609d9872",
+  "default_smoke": {
+    "exact_outputs": 8,
+    "mode": "strict",
+    "scheduler": "shared",
+    "manifest_sha256": "1dbd85f5dd8a1d6634c7f7b8254f6827b74138391359b6859d3d3b15b83772a5"
+  }
+}

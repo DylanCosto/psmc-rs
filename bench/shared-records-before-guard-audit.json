@@ -1,0 +1,119 @@
+{
+  "status": "completed",
+  "base_commit": "9d1e89c",
+  "binary_sha256": "54ea8fa0f90776c2b1e653e941b5f0b6e168f8a577d30b7b919d53cfdacbcd40",
+  "protocol_sha256": "0724dc20287f82181d39becec9e27d3430340a2f0ecaaca135967a228bba3a3c",
+  "checked_bootstrap_outputs": 570,
+  "synthetic_comparisons": 32,
+  "single_fit_comparisons": 2,
+  "helper_jobs": 26109,
+  "tests": {
+    "release-tests-final": {
+      "passed": 51,
+      "failed": 0,
+      "ignored": 4,
+      "sha256": "036e08663adcb18c74f95c0580dec79b559b2c296d8553c4b2ee6c2a5e6a3323"
+    },
+    "debug-tests-final": {
+      "passed": 27,
+      "failed": 0,
+      "ignored": 0,
+      "sha256": "dee45bd5c1f9346084edf1c86f4a12be38d4cee50e272ddd888fc8112a9ccd76"
+    }
+  },
+  "performance": {
+    "equivalent": {
+      "medians": {
+        "fit": {
+          "wall_seconds": 10.149522842024453,
+          "cpu_seconds": 136.44,
+          "peak_rss_kib": 34076,
+          "helper_jobs": 0
+        },
+        "shared": {
+          "wall_seconds": 9.6872896309942,
+          "cpu_seconds": 143.22,
+          "peak_rss_kib": 36360,
+          "helper_jobs": 1847
+        }
+      },
+      "wall_reduction": 0.0455423588108359,
+      "faster_pairs": 3,
+      "improvement_gate": false,
+      "nonregression_gate": true
+    },
+    "strict": {
+      "medians": {
+        "fit": {
+          "wall_seconds": 47.2028835460078,
+          "cpu_seconds": 598.44,
+          "peak_rss_kib": 1315496,
+          "helper_jobs": 0
+        },
+        "shared": {
+          "wall_seconds": 43.58045333903283,
+          "cpu_seconds": 634.49,
+          "peak_rss_kib": 1237780,
+          "helper_jobs": 1701
+        }
+      },
+      "wall_reduction": 0.07674171437946686,
+      "faster_pairs": 3,
+      "improvement_gate": true,
+      "nonregression_gate": true
+    }
+  },
+  "default_promotion": true,
+  "sources": {
+    "crates/psmc-cuda/src/tests.rs": "753fa30d7727174bc5fab8c0246a6e6b5ef71686d4313208ea2f6c8129f9dd48",
+    "crates/psmc-cuda/src/lib.rs": "362d860fee1b34ebf8a336373efbad7f51f24ff663f474dff4a43f6c0e3e9dae",
+    "crates/psmc-cuda/src/driver.rs": "c6f3c0a2fde681394206d5757c4a8b9162c071443ad001209e5b961b8203642f",
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/structured.rs": "bde4a8a509bbc0be21e960cd5b160177bf1bb4b993d8390af70575d0ab377e75",
+    "crates/psmc-core/src/em.rs": "8c239274958a4b7ac3a9a056e0be291dbdfac4351f6782b80bfce5692a5cb772",
+    "crates/psmc-core/src/lib.rs": "57902b19bdd8d420667fce43842771440094f7357d95d34b94553a5863c92cd0",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-core/src/hmm.rs": "c4e23cd96df10a6aa82ccff93688d4eadf9f470fd9bc81976f2749758efdde4f",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+    "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+    "crates/psmc-cli/tests/equivalent.rs": "d0185df6d23990dd8b5a49b8c0cbaa9a8250e521c7ee0a3015c00d17a89e5afe",
+    "crates/psmc-cli/tests/golden.rs": "60d75a67cf486d7ef6fed1cb769282946e7143e2e747e50ef0187e9de9f1cd40",
+    "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+    "crates/psmc-cli/src/main.rs": "b33e87f6926e79820a02427488bbe6bd91ca96db043e25ca6f8ee8a16ff5cc6f",
+    "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+    "crates/psmc-cli/src/batch.rs": "7d5428ebb47b9f0bd6cfc489bd46cdb4c42364f4ababfa4f5f6edcb2d144b536",
+    "crates/psmc-cli/src/legacy.rs": "48088171acee9b54d0cd23a233246e0ff2871fd34bed9c3cb55c5078b15d8efa",
+    "crates/psmc-cli/src/topology.rs": "21bebab6ef909dbaa16f233705947e4f4bfd5d8d532aeeacbb16532b88f2f0d5",
+    "crates/psmc-cpu/examples/equivalent_components.rs": "5514baf8d3e4d4143558b7b6e576807ee8fcbf9363affe51b3bb4354485a6e44",
+    "crates/psmc-cpu/examples/equivalent_ridge.rs": "bc8328c605dae1f145e84c844ca15e95da166fc8e586f762c73a32531f5dfcce",
+    "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+    "crates/psmc-cpu/examples/cuda_fixture.rs": "11db2adbb88fc00f23ed2f3fe4c4092399e400cb1903bce55d2888f23886aa33",
+    "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+    "crates/psmc-cpu/src/record_pool.rs": "dcea52287d70d46e7013346232ad6296778c480e8d61bc0a41a59c72245e0d4a",
+    "crates/psmc-cpu/src/tests.rs": "ea2a8ac0c418eca0a6f3da42aa4d0e7bfae87ec364a7a0b6372318173cbcbccb",
+    "crates/psmc-cpu/src/equivalent.rs": "f971ea6f40d7ad143eb60fe2735713b7d70d4e336f7504a7b8115cebedd9e47b",
+    "crates/psmc-cpu/src/lockstep.rs": "64719c91189816cafb43dd1aa7c0b379a2df3d9bc474c93091ac87366fe28c7f",
+    "crates/psmc-cpu/src/simd.rs": "2373e1011971183f203597557d5211997cd20db7edc292c7c0aefe4efca39842",
+    "crates/psmc-cpu/src/lib.rs": "14aeb0a7b81a617e6d3e328f90583fbf8009f1d3da59e6795c36944137c83168",
+    "crates/psmc-cpu/src/engine.rs": "1d545070c7802aaaecaa093a624769d5be650a6ffea6c0e44a57645d313882dd",
+    "crates/psmc-cpu/src/linear.rs": "a87bd35ed032f18eba2e995ce5a16cc037625d6ea8ee819bf41c9e531737b0f7"
+  },
+  "reports": {
+    "bench/shared-records-performance.json": "28fb622e9078fad1c7441fc11e0fd1d1a499c7df3b7a7afbe6b76908e82751c9",
+    "bench/shared-records-validation.json": "e8208a8d183ace67a96383b676fea6c8eea9235eff74597a255674b2052a6be3",
+    "bench/shared-records-screen.json": "650b75b30d894450901f60da37d922a684ea73950a3dc04fc4dfd8c38c961250",
+    "bench/shared-records-screen-provenance.json": "f8878c6d3eda6646c83d2c3771568d56bbd1a41e2df12084f73932c0182549e2",
+    "bench/shared-records-pthreads-screen.json": "4e7e7040cca5829ccfa574abddbee65111f4877ae296800487dcf4111518287a",
+    "bench/shared-records-refined-screen.json": "908aaccf8ed1c635ac8baae2c1b1b3ec8b6e29db3d7c50680559af11b5dc4d3c"
+  },
+  "not_run": [
+    "non-Linux affinity/hardware",
+    "ARM/NEON",
+    "CUDA hardware (four ignored tests)",
+    "hosted CI"
+  ],
+  "limits": "Frequency is a core-performance heuristic on this host; portable fallback remains. Scheduler output matches each mode exactly, not equivalent vs strict. Single-fit timings are screens. Historical vanilla-C timings are not a new paired comparison."
+}

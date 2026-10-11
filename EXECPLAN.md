@@ -1,6 +1,8 @@
 # Execution plan: accelerated, legacy-compatible PSMC
 
-Status: User explicitly approved building Rust on 2026-10-10. Phase 1 dense scalar Rust is implemented and passes its supported synthetic gate; see docs/phase-1-report.md. Real-workload baseline and reference-pathology investigation remain recorded limitations, not blockers to the newly authorized port. The user subsequently authorized optimization; Phase 2 CPU engineering and deterministic scheduling now pass the local synthetic gate; see docs/phase-2-report.md. The validated dense oracle remains unchanged. The original research/design completion checkboxes below were supplied with the plan and are not independent verification of the four missing companion documents.
+Current status: v0.6.1 linear equivalent mode and deterministic shared-record scheduling pass their acceptance gates and are installed. Strict remains the default numerical mode. See the milestone sections at the end for current evidence.
+
+Historical starting status: User explicitly approved building Rust on 2026-10-10. Phase 1 dense scalar Rust is implemented and passes its supported synthetic gate; see docs/phase-1-report.md. Real-workload baseline and reference-pathology investigation remain recorded limitations, not blockers to the newly authorized port. The user subsequently authorized optimization; Phase 2 CPU engineering and deterministic scheduling now pass the local synthetic gate; see docs/phase-2-report.md. The validated dense oracle remains unchanged. The original research/design completion checkboxes below were supplied with the plan and are not independent verification of the four missing companion documents.
 
 ## 1. Product definition and decision gates
 
@@ -17,7 +19,7 @@ Define and expose the modes before optimization:
 | Mode | Contract | Permitted implementation |
 |---|---|---|
 | `strict` | Matching numerical records at the original printed precision on a pinned execution stack; byte-comparison after a small explicit metadata allowlist | Dense scalar path and only individually demonstrated parity-preserving optimizations |
-| `equivalent` | Same model, preprocessing, EM procedure, iteration count, bootstrap samples, and output fields; prespecified numerical tolerances | Validated CPU/GPU transformations, deterministic reductions, full-count EM |
+| `equivalent` | Same model, preprocessing, EM procedure, iteration count and bootstrap samples; prospectively validated arithmetic; QU replaces QD under the later explicit user contract | Structured CPU scans, deterministic triangle margins and checkpointed messages; strict retains full-count EM |
 | `research` | Explicitly different numerical or statistical procedure | Augmented EM, alternate optimizers, posterior inference, different emissions or long-read models |
 
 Do not promise universal cross-architecture bitwise equality. A pure Rust port still may differ from C through libm, code generation, arithmetic contraction, or optimizer branch decisions. If strict mode cannot meet its own contract, label it unsupported on that stack and retain the pinned original executable as the external reproducibility oracle. The normal release cannot silently downgrade `strict` to `equivalent`. [S19, S20]
@@ -182,14 +184,17 @@ Stop and investigate on a numerical-gate failure, inconsistent random replay, ch
 - [x] Phase 1: dense Rust oracle; 115 exact differential checks, 30 full bootstrap trajectories, isolated and internal snapshot gates, conversion, review and measured baseline complete on the pinned Linux stack.
 - [x] Phase 2: strict CPU workspaces, exact repeated-block cache and bounded bootstrap queue; 226 differential checks, 180 schedule-invariant fits, 17 review controls and equal-worker measurements complete on the pinned synthetic stack.
 - [x] Phase 3a: strict single-thread AVX SIMD, generic fallback, 340 differential checks, 32 debug/release unit tests, 38 CLI controls and serial benchmarks.
-- [ ] Phase 3: broader structured CPU/full-count and objective acceleration.
+- [x] Phase 3: structured CPU/objective acceleration, linear equivalent E-step and prospective human-panel validation; strict full counts retained.
+- [x] Current follow-up: exact shared-record scheduler, complete paired strict/equivalent timing gate and v0.6.1 installation.
 - [ ] Phase 4: optional CUDA promotion.
-- [ ] Phase 5: validation and release.
+- [x] Phase 5: local CPU releases and public human-panel validation through v0.6.0; broader hardware/scientific generalization remains unclaimed.
 - [ ] Phase 6: long-read input layer.
 
 ## Decisions and surprises
 
 Initial: preserve legacy EM rather than silently adopting augmented EM. Preserve full counts because the original objective includes a full-count entropy normalizer. PHLASH is pre-existing GPU prior art. Long-read assembly support already exists through the original documented dipcall route. Subsequent changes must be appended with evidence and date.
+
+Current follow-up: the user explicitly authorizes QU and margins-only equivalent counts. The linear E-step passed its prospective C-calibrated gate and reduced median batch time by 67.71%. Scheduling must independently preserve every mode's output; measured policy screens rejected all-core and six-physical-core fit ownership in favor of testing twelve P-thread owners. Details and preserved evidence are appended below.
 
 
 ## Session decisions — Phase 0
@@ -1241,3 +1246,33 @@ E-step screen from 1.90s to 0.52s. This screen is not the paired batch acceptanc
 The supplied scratchpad prototype was not present in the available workspace or
 Downloads; the implementation was independently derived and tested against the
 retained dense/structured paths. Numerical validation and paired timing ongoing.
+
+Linear milestone completion (9d1e89c): 62 equivalent fits passed the prospective
+engineering gate and sample-13 ridge diagnostic; strict human originals plus
+30 HG001 fits remained exact. Release 49 tests/CPU debug 26 passed, CUDA hardware
+not_run. Paired batch medians 35.031s versus 11.310s, 67.71% reduction, three wins.
+Installed v0.6.0 with strict default and preserved earlier binaries.
+
+Shared record scheduling milestone in progress: fixed cooperative worker queue,
+ordered results, optional single-fit record workers and Linux affinity confined
+to inherited allowed CPUs. Predeclared exactness/performance gates are in
+`docs/shared-record-scheduling.md`; measure rather than assume hybrid-core gains.
+
+Shared-record milestone complete: final medians 10.047 → 9.477s equivalent
+(5.67%) and 46.473 → 44.024s strict (5.27%), three favorable pairs in each mode.
+Both improvement and non-regression gates pass. Earlier screens and paired
+results are preserved, including the earlier equivalent 4.55% gate miss. Final
+review corrected admission accounting for owned input copies and all uncached
+result slots, then repeated human validation and timing on the final binary.
+The audit verifies 570 human outputs, 32 synthetic comparisons, two single-fit
+comparisons, 52 release/27 CPU debug tests, plus 338 applicable pinned-C checks
+and ten traces on the identical arithmetic source before the admission-only fix.
+Two obsolete equivalent-rejection checks remain explicit in the historical raw
+regression status. Four CUDA tests, non-Linux/ARM hardware and hosted CI not_run.
+
+Installed v0.6.1 with shared CPU batch scheduling, strict numerical default and
+optional --record-workers for multi-record single fits. QU remains exclusive to
+equivalent mode. Versions 0.6.0 and earlier are preserved. No inference jobs or
+required checks remain for this milestone. Future tuning should profile the now
+larger M-step share; neither global scientific equivalence nor CPU exhaustion
+is claimed from these two chromosome panels.
