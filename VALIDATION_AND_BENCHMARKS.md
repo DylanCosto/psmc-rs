@@ -86,3 +86,19 @@ that expected availability change from numerical failures. New CLI tests require
 explicit selection and reject unsupported backend/snapshot combinations. All
 other strict regression checks still apply. Compiler variation is a measured
 sensitivity reference, not a scientific confidence interval or proof of accuracy.
+
+## Structured follow-up — 2026-10-10
+
+The user identifies that vanilla C also fails the prior fixed curve screen, and
+that one compiler pair cannot define a calibrated per-fit equivalence envelope.
+Preserve those historical measurements; interpret distribution summaries and
+bootstrap spread descriptively without selecting a new passing threshold from
+the observed results. Diagnose weakly constrained parameters with fresh observed
+likelihood and Q comparisons using the same expected counts for both candidates.
+
+Lockstep SIMD itself must preserve existing structured outputs exactly. Require
+message/count differential tests including block edges, masks and cache behavior;
+complete paired human fits; and unchanged strict regression. Performance admission
+uses the complete 30-HG001-fit workload, 16 workers, a screen followed by one
+warmup and three alternating measured pairs, >=5% less median wall time and at
+least two faster pairs. Retain rejected memory-layout evidence separately.

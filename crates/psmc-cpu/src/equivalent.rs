@@ -9,14 +9,21 @@ use psmc_core::{
     model_workspace::ModelWorkspace,
     structured::{Margins, StructuredModel},
 };
-use std::{collections::HashMap, io};
+use std::{
+    collections::{BTreeMap, HashMap, HashSet},
+    io,
+};
 
 pub struct EquivalentBackend {
     workspace: Workspace,
+    lockstep: crate::lockstep::Lockstep,
+    pub lockstep_enabled: bool,
     settings: Settings,
     factors: StructuredModel,
     margins: Margins,
     eligible: bool,
+    #[cfg(debug_assertions)]
+    factor_params: Vec<u64>,
     model_workspace: ModelWorkspace,
     pub profile: bool,
     pub cache_enabled: bool,
@@ -37,12 +44,31 @@ impl EquivalentBackend {
             factors: StructuredModel::new(states),
             margins: Margins::new(states),
             eligible: false,
+            #[cfg(debug_assertions)]
+            factor_params: Vec::new(),
             workspace: Workspace::with_simd(states, mode)?,
+            lockstep: crate::lockstep::Lockstep::default(),
+            lockstep_enabled: true,
             model_workspace: ModelWorkspace::new(states),
             profile: false,
             cache_enabled: true,
             counters: BackendStats::default(),
         })
+    }
+    // Refreshing factors at E-step entry is not an optimizer model update.
+    fn refresh(&mut self, model: &mut Model, settings: &Settings) -> bool {
+        self.factors.update(model, settings);
+        #[cfg(debug_assertions)]
+        {
+            self.factor_params.clear();
+            self.factor_params
+                .extend(model.params.iter().map(|v| v.to_bits()));
+        }
+        self.eligible = self.factors.eligible(model);
+        if !self.eligible {
+            self.model_workspace.update(model, settings);
+        }
+        !self.eligible
     }
     pub fn simd_kernel(&self) -> &'static str {
         self.workspace.simd_kernel()
@@ -65,7 +91,7 @@ impl ExpectationBackend for EquivalentBackend {
     ) -> io::Result<(Counts, f64)> {
         // Reconstruct from exactly the current parameters, including the initial model.
         let mut current = model.clone();
-        self.update_model(&mut current, &self.settings.clone());
+        self.refresh(&mut current, &self.settings.clone());
         self.materialize_model(&mut current);
         let prepared = self.workspace.prepare(&current);
         let mut aggregate = Counts::zero(model.n);
@@ -77,6 +103,46 @@ impl ExpectationBackend for EquivalentBackend {
         if cache_enabled {
             for sequence in sequences {
                 *occurrences.entry(&sequence.observations).or_default() += 1;
+            }
+        }
+        // Evaluate independent equal-length unique records together, then add
+        // their saved counts in original input order below. Length grouping is
+        // only an execution schedule; records retain their own HMM boundaries.
+        let mut batched = HashMap::<usize, Cached>::new();
+        if self.lockstep_enabled
+            && self.eligible
+            && self.workspace.avx.is_some()
+            && !observer.needs_sequence_messages()
+        {
+            let mut seen = HashSet::<&[u8]>::new();
+            let mut groups = BTreeMap::<usize, Vec<usize>>::new();
+            for (i, sequence) in sequences.iter().enumerate() {
+                let obs = sequence.observations.as_slice();
+                if !cache_enabled || seen.insert(obs) {
+                    groups.entry(obs.len()).or_default().push(i);
+                }
+            }
+            for indices in groups.values() {
+                for group in indices.chunks_exact(4) {
+                    let records =
+                        std::array::from_fn(|lane| sequences[group[lane]].observations.as_slice());
+                    let results = self.lockstep.evaluate(
+                        &mut self.workspace,
+                        &prepared,
+                        records,
+                        &self.factors,
+                    );
+                    for (lane, result) in results.into_iter().enumerate() {
+                        batched.insert(
+                            group[lane],
+                            Cached {
+                                counts: result.counts,
+                                likelihood: result.likelihood,
+                                backward_check: result.backward_check,
+                            },
+                        );
+                    }
+                }
             }
         }
         let mut cache = HashMap::<&[u8], Cached>::new();
@@ -91,6 +157,19 @@ impl ExpectationBackend for EquivalentBackend {
                 likelihood += cached.likelihood;
                 aggregate.add(&cached.counts); // one repeated addition, including tiny counts, per occurrence
                 self.counters.cache_hits += 1;
+                continue;
+            }
+            if let Some(result) = batched.remove(&index) {
+                warn(result.backward_check);
+                likelihood += result.likelihood;
+                aggregate.add(&result.counts);
+                self.counters.sequence_evaluations += 1;
+                if occurrences
+                    .get(observations)
+                    .is_some_and(|&count| count > 1)
+                {
+                    cache.insert(observations, result);
+                }
                 continue;
             }
             let (messages, counts) = if self.eligible {
@@ -122,10 +201,7 @@ impl ExpectationBackend for EquivalentBackend {
         Ok((aggregate, likelihood))
     }
     fn update_model(&mut self, model: &mut Model, settings: &Settings) {
-        self.factors.update(model, settings);
-        self.eligible = self.factors.eligible(model);
-        if !self.eligible {
-            self.model_workspace.update(model, settings);
+        if self.refresh(model, settings) {
             self.counters.structured_fallbacks += 1;
         }
         self.counters.model_updates += 1;
@@ -136,6 +212,14 @@ impl ExpectationBackend for EquivalentBackend {
         }
     }
     fn q(&self, counts: &Counts, model: &Model) -> f64 {
+        #[cfg(debug_assertions)]
+        debug_assert!(
+            self.factor_params
+                .iter()
+                .copied()
+                .eq(model.params.iter().map(|v| v.to_bits())),
+            "Q model parameters do not match the cached factor snapshot"
+        );
         if self.eligible {
             self.factors.q(counts, model, &self.margins)
         } else {
@@ -283,6 +367,8 @@ mod tests {
         close(&ca.e, &pa.e, 1e-24);
         close(&[cl], &[pl], 1e-14);
         assert_eq!(cached.stats().cache_hits, 3);
+        assert_eq!(cached.stats().model_updates, 0);
+        assert_eq!(cached.stats().structured_fallbacks, 0);
         let mut dense = DenseBackend::default();
         let (da, dl) = dense
             .expectation(&initial, &sequences, 1, &mut NoObserver)
@@ -306,5 +392,90 @@ mod tests {
             close(&initial.transition, &model.transition, 1e-14);
         }
         assert_eq!(cached.stats().structured_fallbacks, 3);
+    }
+    #[test]
+    fn lockstep_aggregation_preserves_duplicates_tails_and_cache_disabled() {
+        if !crate::avx_available() {
+            return;
+        }
+        let settings = settings(64);
+        let model = Model::new(&settings, 20, 10000, &mut LegacyRng::new(42));
+        let sequences: Vec<Sequence> = (0..11)
+            .map(|j| Sequence {
+                name: j.to_string(),
+                observations: (0..if j == 9 { 13 } else { 257 })
+                    .map(|i| {
+                        if (i + j) % 31 == 0 {
+                            1
+                        } else if (i + j) % 19 == 0 {
+                            2
+                        } else {
+                            0
+                        }
+                    })
+                    .collect(),
+            })
+            .collect();
+        let refs: Vec<_> = [3, 1, 3, 0, 2, 4, 5, 6, 1, 7, 8, 9, 10, 0]
+            .iter()
+            .map(|&j| &sequences[j])
+            .collect();
+        let mut baseline = EquivalentBackend::with_simd(&settings, SimdMode::Auto).unwrap();
+        baseline.lockstep_enabled = false;
+        let (want, ll) = baseline
+            .expectation(&model, &refs, 1, &mut NoObserver)
+            .unwrap();
+        for cache in [false, true] {
+            let mut candidate = EquivalentBackend::with_simd(&settings, SimdMode::Auto).unwrap();
+            candidate.cache_enabled = cache;
+            let (got, actual_ll) = candidate
+                .expectation(&model, &refs, 1, &mut NoObserver)
+                .unwrap();
+            assert_eq!(got.a, want.a);
+            assert_eq!(got.e, want.e);
+            assert_eq!(got.a0, want.a0);
+            assert_eq!(actual_ll, ll);
+            assert_eq!(candidate.stats().sequence_visits, refs.len() as u64);
+            assert_eq!(
+                candidate.stats().sequence_evaluations,
+                if cache { 11 } else { 14 }
+            );
+        }
+        struct Watching(usize);
+        impl Observer for Watching {
+            fn sequence(
+                &mut self,
+                _: usize,
+                _: usize,
+                _: &Sequence,
+                _: &psmc_core::hmm::Messages,
+                _: &Counts,
+            ) -> io::Result<()> {
+                self.0 += 1;
+                Ok(())
+            }
+        }
+        let mut observed = EquivalentBackend::with_simd(&settings, SimdMode::Auto).unwrap();
+        let mut watcher = Watching(0);
+        let (got, actual_ll) = observed
+            .expectation(&model, &refs, 1, &mut watcher)
+            .unwrap();
+        assert_eq!(watcher.0, refs.len());
+        assert_eq!(got.a, want.a);
+        assert_eq!(got.e, want.e);
+        assert_eq!(actual_ll, ll);
+        assert_eq!(observed.stats().snapshot_cache_bypass, refs.len() as u64);
+    }
+
+    #[test]
+    #[cfg(debug_assertions)]
+    #[should_panic(expected = "Q model parameters do not match")]
+    fn q_rejects_stale_parameter_snapshot_in_debug() {
+        let settings = settings(4);
+        let mut model = Model::new(&settings, 20, 10000, &mut LegacyRng::new(42));
+        let mut backend = EquivalentBackend::with_simd(&settings, SimdMode::Auto).unwrap();
+        backend.update_model(&mut model, &settings);
+        model.params[0] *= 1.1;
+        backend.q(&Counts::zero(4), &model);
     }
 }

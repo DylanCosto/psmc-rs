@@ -1,0 +1,17 @@
+{
+  "status": "installed",
+  "version": "0.5.1",
+  "default_mode": "strict",
+  "experimental_mode": "equivalent",
+  "sha256": "f46ab0c67d7cac6e9dcb9f341131f544589469ba6715d6ac15bcbd8cc34588eb",
+  "installed": [
+    "bin/psmc-rs",
+    "bin/psmc-rs-v0.5.1"
+  ],
+  "preserved": {
+    "bin/psmc-rs-v0.5.0": "46f55f1fcde1ff3064c5919c4b8dbd9806747c5c0309e4015b4c4e38f826e52a",
+    "bin/psmc-rs-v0.4.1": "566883bce56317b8d1720551373959fc3e2808538977240a45ff656cf9ebff43",
+    "bin/psmc-rs-cuda": "4763281272d642f10dc42ac0879676b99d9f19158b0bf17bcf45de942fa6b8ff"
+  },
+  "audit_sha256": "7c8a816e2e5507137127f50bab5f776d6e38953ae628f248d0d567e07b42ee55"
+}

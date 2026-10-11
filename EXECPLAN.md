@@ -1150,3 +1150,74 @@ and bench/equivalent-audit.json record the complete results. No inference jobs o
 candidate experiments remain pending. Next permitted work is a separately justified
 scientific-equivalence contract or broader validation; no default-mode switch is
 justified by this milestone.
+
+## Structured follow-up — user review, 2026-10-10
+
+The user requests reconsidering numerical gates, diagnosing HG001 bootstrap 13,
+lockstep SIMD across independent records, and fixing parameter coupling/counters/
+scan allocation. Preserve historical reports and strict mode.
+
+- [x] Reproduce distribution summaries and evaluate final likelihoods and common-count Q for bootstrap 13.
+- [x] Make factor ownership explicit; correct update counters; reuse scan storage.
+- [x] Implement four independent equal-length records per AVX vector, preserving scalar structured operation order and full counts/QD.
+- [x] Differential tests, full paired human fits, and measured performance decision.
+
+Decision before measurement: retain full entropy/QD in this milestone. q0 is
+subtracted inside every optimizer comparison; dropping it is mathematically a
+constant shift but changes binary64 ties. A margins-only backend is a separate
+contract change, requiring eligibility/fallback design when factors are invalid.
+Do not compare Q from different E-step posteriors as evidence of equal fits.
+Use freshly evaluated observed likelihood and both candidate Q values on each
+fixed expected-count matrix. Printed parameter precision is an explicit limitation.
+
+The old 0.01 screen also rejects four vanilla-C HG001 fits. The per-fit compiler
+envelope is descriptive, not a calibrated scientific equivalence test. Preserve
+its failed results without interpreting them as proof of incorrect inference.
+Distribution summaries and bootstrap-relative errors provide context; a new
+scientific qualification must not be inferred from this already-inspected panel.
+
+SIMD admission: require exact equality to scalar structured messages/counts and
+old equivalent fit outputs (version metadata excluded), including masks, tails,
+duplicates, cache off and observer bypass. Screen one full HG001 bootstrap batch
+against installed v0.5.0, then freeze candidate and run one warmup plus three
+alternating measured pairs, 16 workers, same inputs/options/draws. Promotion needs
+>=5% median wall reduction and at least 2/3 pair wins; retain a slower SIMD path
+only as a documented rejected experiment, not as the installed default.
+
+First SIMD screen: four full interleaved histories exactly reproduce all 30
+HG001 outputs and bootstrap draws, but take 54.06s versus 33.13s installed, with
+RSS 4.43 versus 1.25 GiB. Reject this memory layout. Preserve candidate patch,
+binary and runner in work/equivalent-followup/full-buffer-candidate. A second
+specific candidate replaces the full histories with checkpoints and small
+reconstructed blocks. Its arithmetic and count accumulation must remain exact;
+use a fresh screen, then the same fixed acceptance protocol if admitted.
+
+Bounded candidate screen: 31.7766s versus 34.2884s (7.33% less wall), CPU
+388.85s versus 437.25s, RSS 1,070,032 versus 1,259,380 KiB. All 30 exact outputs
+and draw sequences pass. Admit the bounded candidate to complete validation and
+the previously declared fixed acceptance protocol. Provisional v0.5.1 adds no
+new scientific-equivalence tolerance and keeps strict as default.
+
+Numerical review reproduces all user medians/exceedance counts. A fresh strict
+CPU re-evaluation of printed bootstrap-13 endpoint parameters gives LL delta
+-0.00026635 and common-count Q deltas around -0.00018. Varying only the first
+group's lambda changes LL by at most 2.59e-6 across the reported range, supporting
+weak identification. No assertion of a global optimum or scientific equivalence.
+Historical engineering gates remain recorded, with their limited interpretation
+corrected in the report.
+
+Completion: bounded lockstep passes the fixed acceptance, 34.9002s old versus
+32.1995s new medians (7.74% lower wall, 8.03% lower CPU, 18.16% lower RSS), three
+of three pair wins. Strict controls 49.259/47.228s do not show a regression but
+are not a standalone speed claim. All 62 structured human outputs are identical
+to v0.5.0 outside the version line. The audit verifies 510 bootstrap outputs,
+338 applicable strict checks, ten exact traces, 47 full-workspace release tests
+and final CPU message/count tests (24 debug/23 release). Four CUDA hardware tests
+and ARM/NEON are not run. Counters remove 900 E-step refreshes per 30-fit dataset.
+
+Promote v0.5.1 in the opt-in equivalent mode, preserving strict as default, the
+full Q normalizer and all earlier binaries/evidence. Updated README and reports
+correct the interpretation of the original numerical screens. No retrospective
+scientific-equivalence threshold is adopted. Next milestone is margins-only
+counts with an explicit objective-diagnostic contract and invalid-factor fallback.
+No further optimization candidate or inference job is pending for this follow-up.

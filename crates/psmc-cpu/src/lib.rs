@@ -36,6 +36,7 @@ use psmc_core::{
     model::Model,
 };
 
+mod lockstep;
 mod simd;
 pub use simd::{SimdMode, avx_available};
 
@@ -120,6 +121,7 @@ impl<'a> PreparedModel<'a> {
 pub struct Workspace {
     messages: Messages,
     counts: Counts,
+    scan: Vec<f64>,
     avx: Option<simd::Avx>,
 }
 
@@ -142,6 +144,7 @@ impl Workspace {
                 backward_check: 0.0,
             },
             counts: Counts::zero(n),
+            scan: Vec::new(),
             avx,
         })
     }
@@ -215,11 +218,10 @@ impl Workspace {
                 "AVX layout required; use workspace.prepare(model)"
             );
         }
-        let mut scan = if factors.is_some() {
-            vec![0.0; n]
-        } else {
-            Vec::new()
-        };
+        if factors.is_some() {
+            self.scan.resize(n, 0.0);
+        }
+        let scan = &mut self.scan;
         let messages = &mut self.messages;
         messages.length = length;
         // Avoid amortized doubling when a later bootstrap block is slightly larger.
@@ -254,7 +256,7 @@ impl Workspace {
             let current = &mut later[..n];
             let emission = &model.emission[observations[u - 1] as usize * n..][..n];
             if let Some(factors) = factors {
-                factors.forward(current, previous, emission, &mut scan);
+                factors.forward(current, previous, emission, scan);
                 sum = 0.0;
                 for &value in current.iter() {
                     sum += value;
@@ -301,7 +303,7 @@ impl Workspace {
                 &prepared.emission_transition[observations[u] as usize * square..][..square];
             if let Some(factors) = factors {
                 let emission = &model.emission[observations[u] as usize * n..][..n];
-                factors.backward(current, next, emission, messages.scales[u], &mut scan);
+                factors.backward(current, next, emission, messages.scales[u], scan);
             } else if let Some(avx) = self.avx {
                 let transpose = &prepared.emission_transition_transpose
                     [observations[u] as usize * square..][..square];
@@ -316,6 +318,21 @@ impl Workspace {
                 }
             }
         }
+        self.finish_evaluation(prepared, observations, transitions)
+    }
+
+    // Also used after deinterleaving independent structured AVX lanes. All count
+    // operations and per-sequence likelihood reductions retain their old order.
+    fn finish_evaluation(
+        &mut self,
+        prepared: &PreparedModel<'_>,
+        observations: &[u8],
+        transitions: bool,
+    ) -> (&Messages, &Counts) {
+        let model = prepared.model;
+        let n = model.n;
+        let first_emission = &model.emission[observations[0] as usize * n..][..n];
+        let messages = &mut self.messages;
         let mut backward_check = 0.0;
         for ((&initial, &backward), &emission) in model
             .initial
@@ -344,57 +361,14 @@ impl Workspace {
         counts.a.fill(TINY);
         counts.e.fill(TINY);
         counts.q0 = 0.0;
-        let sequence_counts = self.avx.filter(|_| transitions && n == 64);
-        if let Some(avx) = sequence_counts {
-            avx.counts_emissions64(
-                &mut counts.a,
-                observations,
-                &messages.forward,
-                &messages.backward,
-                &prepared.emission_transition,
-                &mut counts.e,
-                &messages.scales,
-            );
-        }
-        if sequence_counts.is_none() {
-            for u in 1..length {
-                let forward = &messages.forward[u * n..][..n];
-                let backward = &messages.backward[u * n..][..n];
-                let next_backward = &messages.backward[(u + 1) * n..][..n];
-                let scale = messages.scales[u];
-                let emission_counts = &mut counts.e[observations[u - 1] as usize * n..][..n];
-                let product =
-                    &prepared.emission_transition[observations[u] as usize * square..][..square];
-                if let Some(avx) = self.avx {
-                    if transitions {
-                        avx.counts(&mut counts.a, forward, product, next_backward);
-                    }
-                    for ((count, &f), &b) in emission_counts.iter_mut().zip(forward).zip(backward) {
-                        *count += f * b * scale;
-                    }
-                } else {
-                    for ((((&fuk, &buk), emission_count), transition_counts), product_row) in
-                        forward
-                            .iter()
-                            .zip(backward)
-                            .zip(emission_counts)
-                            .zip(counts.a.chunks_exact_mut(n))
-                            .zip(product.chunks_exact(n))
-                    {
-                        if transitions {
-                            for ((count, &ae), &next) in transition_counts
-                                .iter_mut()
-                                .zip(product_row)
-                                .zip(next_backward)
-                            {
-                                *count += fuk * ae * next;
-                            }
-                        }
-                        *emission_count += fuk * buk * scale;
-                    }
-                }
-            }
-        }
+        transition_emission_counts(
+            self.avx,
+            prepared,
+            observations,
+            messages,
+            counts,
+            transitions,
+        );
         for (((count, &initial), &emission), &backward) in counts
             .a0
             .iter_mut()
@@ -405,6 +379,69 @@ impl Workspace {
             *count += initial * emission * backward;
         }
         (messages, counts)
+    }
+}
+
+fn transition_emission_counts(
+    avx: Option<simd::Avx>,
+    prepared: &PreparedModel<'_>,
+    observations: &[u8],
+    messages: &Messages,
+    counts: &mut Counts,
+    transitions: bool,
+) {
+    let n = prepared.model.n;
+    let square = n * n;
+    let length = observations.len();
+    let sequence_counts = avx.filter(|_| transitions && n == 64);
+    if let Some(avx) = sequence_counts {
+        avx.counts_emissions64(
+            &mut counts.a,
+            observations,
+            &messages.forward,
+            &messages.backward,
+            &prepared.emission_transition,
+            &mut counts.e,
+            &messages.scales,
+        );
+    }
+    if sequence_counts.is_none() {
+        for u in 1..length {
+            let forward = &messages.forward[u * n..][..n];
+            let backward = &messages.backward[u * n..][..n];
+            let next_backward = &messages.backward[(u + 1) * n..][..n];
+            let scale = messages.scales[u];
+            let emission_counts = &mut counts.e[observations[u - 1] as usize * n..][..n];
+            let product =
+                &prepared.emission_transition[observations[u] as usize * square..][..square];
+            if let Some(avx) = avx {
+                if transitions {
+                    avx.counts(&mut counts.a, forward, product, next_backward);
+                }
+                for ((count, &f), &b) in emission_counts.iter_mut().zip(forward).zip(backward) {
+                    *count += f * b * scale;
+                }
+            } else {
+                for ((((&fuk, &buk), emission_count), transition_counts), product_row) in forward
+                    .iter()
+                    .zip(backward)
+                    .zip(emission_counts)
+                    .zip(counts.a.chunks_exact_mut(n))
+                    .zip(product.chunks_exact(n))
+                {
+                    if transitions {
+                        for ((count, &ae), &next) in transition_counts
+                            .iter_mut()
+                            .zip(product_row)
+                            .zip(next_backward)
+                        {
+                            *count += fuk * ae * next;
+                        }
+                    }
+                    *emission_count += fuk * buk * scale;
+                }
+            }
+        }
     }
 }
 

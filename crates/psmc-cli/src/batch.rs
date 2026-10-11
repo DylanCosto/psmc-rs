@@ -68,6 +68,7 @@ fn estimated_worker_bytes(
     max_length: usize,
     records: usize,
     maximum_draws: usize,
+    equivalent: bool,
 ) -> Option<usize> {
     let messages = max_length
         .checked_add(1)?
@@ -77,12 +78,29 @@ fn estimated_worker_bytes(
         .checked_mul(states)?
         .checked_add(states.checked_mul(4)?)?
         .checked_mul(8)?;
-    let cached = counts.checked_mul(records)?;
+    let cached = counts.checked_mul(if equivalent {
+        records.max(maximum_draws)
+    } else {
+        records
+    })?;
     let sampled = maximum_draws.checked_mul(
         3 * std::mem::size_of::<usize>() + 2 * std::mem::size_of::<psmc_io::BootstrapDraw>(),
     )?;
+    let lockstep = if equivalent {
+        // Four scale lanes, two sets of state checkpoints per 256 sites,
+        // two bounded message blocks, emissions and rolling-vector scratch.
+        let checkpoints = max_length.saturating_sub(1).div_ceil(256).max(1);
+        max_length
+            .checked_add(1)?
+            .checked_mul(4 * 8)?
+            .checked_add(checkpoints.checked_mul(states)?.checked_mul(2 * 4 * 8)?)?
+            .checked_add(states.checked_mul((2 * 258 + 81 + 3) * 4 * 8)?)?
+    } else {
+        0
+    };
     messages
         .checked_mul(2)?
+        .checked_add(lockstep)?
         .checked_add(cached.checked_mul(4)?)?
         .checked_add(states.checked_mul(states)?.checked_mul(16 * 8)?)?
         .checked_add(sampled)?
@@ -227,6 +245,7 @@ pub fn run(options: Options) -> Result<(), Box<dyn std::error::Error>> {
         max_length,
         sequences.len(),
         maximum_draws,
+        options.mode == "equivalent",
     )
     .ok_or("worker memory estimate overflow")?;
     // Completed indices and JSON construction are retained for deterministic

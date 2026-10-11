@@ -73,3 +73,13 @@ transition counts, original entropy normalizer, model, optimizer, observations a
 iteration count remain. Guarded ineligible candidates use literal dense model/Q
 calculations and are counted in `structured_fallbacks`. This is explicitly not a
 strict-output claim, and the mode name is not evidence of scientific equivalence.
+
+## Structured follow-up — 2026-10-10
+
+Independent records may occupy AVX lanes with exact scalar structured expression
+grouping, scale division and reduction order. Bounded checkpoints carry complete
+HMM state; reconstructed blocks add no independent-sequence boundaries. Full
+counts and QD remain. This follow-up must reproduce v0.5.0 equivalent output
+exactly; it does not introduce a new approximate numerical contract. The separate
+common-count-Q/likelihood diagnostic and numerical-gate interpretation are in
+`docs/equivalent-followup.md`. Strict contracts are unchanged.

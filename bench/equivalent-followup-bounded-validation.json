@@ -1,0 +1,773 @@
+{
+  "status": "completed",
+  "stage": "validation",
+  "runner_sha256": "2eeccac77862b9763ea0bdd9a1b6c55de3ad986a1e07458ebacf057090fc95d9",
+  "base_commit": "f191674",
+  "binaries": {
+    "baseline": {
+      "path": "bin/psmc-rs-v0.5.0",
+      "sha256": "46f55f1fcde1ff3064c5919c4b8dbd9806747c5c0309e4015b4c4e38f826e52a"
+    },
+    "candidate": {
+      "path": "target/release/psmc-rs",
+      "sha256": "f46ab0c67d7cac6e9dcb9f341131f544589469ba6715d6ac15bcbd8cc34588eb"
+    }
+  },
+  "runs": [
+    {
+      "command": [
+        "target/release/psmc-rs",
+        "--mode",
+        "equivalent",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/NA12878_chr22.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 11.407520467997529,
+      "time_wall_seconds": 11.4,
+      "user_seconds": 11.23,
+      "system_seconds": 0.17,
+      "peak_rss_kib": 516060,
+      "output_sha256": "5b27a3b3cd55a8273d8f7060a77bdaf7f6ffd651f5fd1af5b845521ff75a1666",
+      "output": "work/equivalent-followup/bounded-validation/hg001-equivalent.psmc",
+      "optimizer_evaluations": [
+        4475,
+        4853,
+        3831,
+        4335,
+        4796,
+        4021,
+        3983,
+        3822,
+        3720,
+        4047,
+        3681,
+        4105,
+        4495,
+        4064,
+        3721,
+        3295,
+        3756,
+        4413,
+        3981,
+        3714,
+        3946,
+        3669,
+        4001,
+        3315,
+        4255,
+        3707,
+        3857,
+        3774,
+        3143,
+        3937
+      ],
+      "nonfinite_records_beyond_initial_RI": [],
+      "dataset": "hg001",
+      "mode": "equivalent",
+      "kind": "original"
+    },
+    {
+      "command": [
+        "target/release/psmc-rs",
+        "--mode",
+        "strict",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/NA12878_chr22.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 13.604286683956161,
+      "time_wall_seconds": 13.6,
+      "user_seconds": 13.43,
+      "system_seconds": 0.16,
+      "peak_rss_kib": 516084,
+      "output_sha256": "6a696e8884194b0e505ec52ffc657a63d61a731b959fa935171da08601520a06",
+      "output": "work/equivalent-followup/bounded-validation/hg001-strict.psmc",
+      "optimizer_evaluations": [
+        4226,
+        4536,
+        3862,
+        4230,
+        4816,
+        4105,
+        4135,
+        3816,
+        3830,
+        3895,
+        3504,
+        4315,
+        4474,
+        3447,
+        3451,
+        3458,
+        3848,
+        3944,
+        3632,
+        3703,
+        3910,
+        3595,
+        3845,
+        3504,
+        3472,
+        3233,
+        4026,
+        4197,
+        3213,
+        4011
+      ],
+      "nonfinite_records_beyond_initial_RI": [],
+      "dataset": "hg001",
+      "mode": "strict",
+      "kind": "original"
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "target/release/psmc-rs",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent-followup/bounded-validation/hg001-equivalent",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 35.14311991998693,
+      "time_wall_seconds": 35.14,
+      "user_seconds": 399.2,
+      "system_seconds": 1.69,
+      "peak_rss_kib": 1078456,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent-followup/bounded-validation/hg001-equivalent-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "which": "candidate",
+      "dataset": "hg001",
+      "tag": "hg001-equivalent",
+      "mode": "equivalent",
+      "cpu_seconds": 400.89,
+      "outputs": [
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-00.psmc",
+          "sha256": "02a490d617576a4e6940251e241306cef30c4a630c635445a6ad9129e5501165"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-01.psmc",
+          "sha256": "4137a276ca20266161bd8cec5f2872eba9266d59b1aedff096928b970c1b53bd"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-02.psmc",
+          "sha256": "9588c61b7e6a6827d3c4a62fe2782dc4836c275bf878457aa184c21cb1768eb5"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-03.psmc",
+          "sha256": "6041b99db5204e0e4cfd0b3e3cc04a7cd1c32eb40c520b91f7c45a2758abb83b"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-04.psmc",
+          "sha256": "1988f3d7925be7dc4d26fb981213a7871839822f261335b5607ba0e06d0be8ca"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-05.psmc",
+          "sha256": "68e6ef55a506d2fb22d3f944ac15766717d4ddf69bd7e2b45f738abe70e41108"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-06.psmc",
+          "sha256": "2f637ba50683169ead5072388c018d8575097d622ba4123038113b2b773f00c1"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-07.psmc",
+          "sha256": "265ed9dd09400552a6606ff45f64ec275afeda214df53020c5b09edd03eb8998"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-08.psmc",
+          "sha256": "630c718fd8d47d40e5e57693b96b7cd320b4182f875acf6cff40263fb05666c2"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-09.psmc",
+          "sha256": "78f0b42fae80f80ac5e1c9ecaa05e07196b53c0a3e56c802de298fa549080688"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-10.psmc",
+          "sha256": "4da769509a374f85123f7dad2e142be215b814ee3869faa9f84be126f8a3ab81"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-11.psmc",
+          "sha256": "5f3d68fd8866b3a920bf537a399f73552fcfed0f81ce9c006551223a582ea910"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-12.psmc",
+          "sha256": "dadc4a995d30240bdbec3bf9f66ddd4d1606d425b3699806ce97fc2481ab5968"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-13.psmc",
+          "sha256": "cd241a0ad19c3d46733991771367a67391e8f90095a756cdd285759a0b1fea4e"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-14.psmc",
+          "sha256": "92b7bd3d7db8b948e9386ea0fc2bbe6de735e9299a8335c4990c4535d80534f8"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-15.psmc",
+          "sha256": "ec1cad0700a2476b200cfddfbd5864e31b418773fe1b21ec014661265c912581"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-16.psmc",
+          "sha256": "afdd56a8a37ad7c2e2a50070e0c8bf853fa11e1af56c736150ba64b8f61f783d"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-17.psmc",
+          "sha256": "e5a9e0ee8f7982a49dd9ab0f831b834bdeb3996a1064acce0407c2ceb494c688"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-18.psmc",
+          "sha256": "9b126107a76f63072c18b28c28dfcda7368090011332747c350739fac54c98fb"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-19.psmc",
+          "sha256": "e1ca048ede520a4f80f160554dae6b203ead4e190e9b5f6fb02f4174137b47af"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-20.psmc",
+          "sha256": "45991d997b741b0a15497f023f7fd31d65d005fb7432d9081b5308dc8930778d"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-21.psmc",
+          "sha256": "13a6dd10d94da9b1af766210d0536e4c4e0bce290eb0588e2686a0c6bfda04ee"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-22.psmc",
+          "sha256": "088bba5b7240b2a1abad55ab8abc9c8d85df1baf93c10d87cc1d4da435e1b9fa"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-23.psmc",
+          "sha256": "e71de9bab3f6596d74355f20c99569c2aee8441cb123b9880f3bf36e52e00e91"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-24.psmc",
+          "sha256": "f9cf83a366e547a174dde7b5bc96fb4318a5ede070a066d5fa00788d79d34a30"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-25.psmc",
+          "sha256": "9faeeb456dfed2de8a3d0ef282a73b43004e05e6b8a3b49d269370f5f7bd2caf"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-26.psmc",
+          "sha256": "b8144ec41e184d7de4cf1550037fbd5b3dffc2dfc2380cd261e81e6ba728abe2"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-27.psmc",
+          "sha256": "180c15aa6e70e57ade9f7d3235f627e8fe34acc7607051d487c00e24548b9560"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-28.psmc",
+          "sha256": "c013d495072d1f957488916f6614f1aad2a991c40a113786fc56856315b70ab2"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-equivalent/replicate-29.psmc",
+          "sha256": "5e42f35e3cf21f92aeaa8d4903781ee26528cd63b4c97967b8f6980d32c9f48b"
+        }
+      ]
+    },
+    {
+      "command": [
+        "target/release/psmc-rs",
+        "--mode",
+        "equivalent",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/cpu-next/hg002/HG002_GRCh38_chr1.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 55.06853269296698,
+      "time_wall_seconds": 55.06,
+      "user_seconds": 54.31,
+      "system_seconds": 0.74,
+      "peak_rss_kib": 2514664,
+      "output_sha256": "36edf2659aae9fcc2570434ba6118ed7691a8f0c0149d6a7f7a12836eb91617c",
+      "output": "work/equivalent-followup/bounded-validation/hg002-equivalent.psmc",
+      "optimizer_evaluations": [
+        4915,
+        4530,
+        5260,
+        3752,
+        4268,
+        3917,
+        4147,
+        3933,
+        3595,
+        4466,
+        3892,
+        3593,
+        4433,
+        3444,
+        4045,
+        3201,
+        4082,
+        3904,
+        3282,
+        3824,
+        3598,
+        3641,
+        3116,
+        4006,
+        3437,
+        3596,
+        3072,
+        3769,
+        3689,
+        3294
+      ],
+      "nonfinite_records_beyond_initial_RI": [],
+      "dataset": "hg002",
+      "mode": "equivalent",
+      "kind": "original"
+    },
+    {
+      "command": [
+        "target/release/psmc-rs",
+        "--mode",
+        "strict",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/cpu-next/hg002/HG002_GRCh38_chr1.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 61.385993076022714,
+      "time_wall_seconds": 61.38,
+      "user_seconds": 60.64,
+      "system_seconds": 0.73,
+      "peak_rss_kib": 2514664,
+      "output_sha256": "5adb3c0289ec9a105d59830b9460ed8dc674ee4c551136175b0d0ee629e96158",
+      "output": "work/equivalent-followup/bounded-validation/hg002-strict.psmc",
+      "optimizer_evaluations": [
+        4886,
+        4354,
+        4775,
+        4007,
+        4054,
+        3735,
+        4245,
+        3777,
+        3596,
+        3965,
+        3465,
+        3530,
+        4128,
+        3718,
+        3882,
+        3147,
+        3492,
+        3540,
+        3355,
+        3713,
+        3356,
+        3706,
+        3137,
+        3307,
+        3548,
+        3022,
+        3097,
+        3282,
+        3531,
+        3227
+      ],
+      "nonfinite_records_beyond_initial_RI": [],
+      "dataset": "hg002",
+      "mode": "strict",
+      "kind": "original"
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "target/release/psmc-rs",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261101",
+        "--output-dir",
+        "work/equivalent-followup/bounded-validation/hg002-equivalent",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/cpu-next/large/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 129.92085790401325,
+      "time_wall_seconds": 129.91,
+      "user_seconds": 1642.74,
+      "system_seconds": 3.1,
+      "peak_rss_kib": 949224,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent-followup/bounded-validation/hg002-equivalent-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "which": "candidate",
+      "dataset": "hg002",
+      "tag": "hg002-equivalent",
+      "mode": "equivalent",
+      "cpu_seconds": 1645.84,
+      "outputs": [
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-00.psmc",
+          "sha256": "944ac3269d2fbcf93482351173badf20fef34b834de0d65db6e1941cd863d9bb"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-01.psmc",
+          "sha256": "781223658d2d07fc09e3cc257c904e96c7d03229b8e643e798877eb454deb80d"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-02.psmc",
+          "sha256": "45c6a74b38ddb9a1e4e5f59d7e36727f50936adb0bb8e63127d5811d17599dbc"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-03.psmc",
+          "sha256": "5e7bacbd4adf19e2204adb3b1cadfc460f0aec554b340f4570200f05c2a576ce"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-04.psmc",
+          "sha256": "495891b84aef47c2d5b348efdb4634129b22ce0a1ce14a94747730e9f964b76f"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-05.psmc",
+          "sha256": "c4d1fbed66f866c103ad0b13f9038cfa0c59d99124eab0f2d0f2a988b6cc2e26"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-06.psmc",
+          "sha256": "7d69eadd541e414ea859665717a75b1b7e6bf4642ad95b71b5683ae51e116f5e"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-07.psmc",
+          "sha256": "2021ef071ec74c8f82a8ee754032886907911d35a7055a00efb0d6311ff2f7f1"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-08.psmc",
+          "sha256": "95fc2207495c002b3b15c1bbc1544ac1d8269ee8fd368172f86743d40ce5826c"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-09.psmc",
+          "sha256": "3e90f63d42aa8799f5516388e78add7944632ccff7e55a005729e7c098e28cb0"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-10.psmc",
+          "sha256": "1dceb8ace93a4954426188a16304db147cfa0eee0f48fe5e299b1613a49adb7e"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-11.psmc",
+          "sha256": "a1da09bc46de2c0fbc2898630cf602ec1382f70dd495ffd741813912510d7bc6"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-12.psmc",
+          "sha256": "b0fc6ab68e608191017a1bafd2c2e073f9ef3d8dce46710fca5dbcecc4c5d47b"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-13.psmc",
+          "sha256": "6a47bb610c43c0ae2bacfbe496fbef92fda2c3354f579c58def3b558e06a74a1"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-14.psmc",
+          "sha256": "81bd5ef824105275a03a10180d4d92b607a9697666f287f49d05b9255a5c7bb1"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-15.psmc",
+          "sha256": "043a119b620c22ff77f9a4e08b0f3a3c874b198fae8fca469b91cb76658399f6"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-16.psmc",
+          "sha256": "4eb0738c244912feb2501b7117844b96d4548b693b76dc0193f3d04fa0c7cff5"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-17.psmc",
+          "sha256": "5bb5e6ead86fbd184f438ffd9ca102d5cb70ffae969776c9bf684672bd45e850"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-18.psmc",
+          "sha256": "343f0d6ec155b40b15808752bad198b97bf402a51ed02b1015d3e26f57d1b499"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-19.psmc",
+          "sha256": "3495e4ac83a35e89cfc9d2b7fbf1a8c237981948d5ef519861954f32a856f363"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-20.psmc",
+          "sha256": "8d11d9ab8a4605c95ae68e5874164096444d8d4e16579d35996f1277a0640262"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-21.psmc",
+          "sha256": "1eaf32f37b35fbf244c04ca8780f45b100e09f8bcf29f5f7fb119e13cd309352"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-22.psmc",
+          "sha256": "7d4e5465ad9efc5fa955ea610028e4194bfb06e774b2d57d5353a6415d41318d"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-23.psmc",
+          "sha256": "b4b7817236b9c209836fe387460f63480d832636f5446467204211c0ce08ba37"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-24.psmc",
+          "sha256": "fe2ed87f16fa5df7ad38da8b9f52d4abea9bec7e74b20c481fbe870d484f5e28"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-25.psmc",
+          "sha256": "168d27cedbd640fd460c5a6bb8473568e8aece2ae7341ea9c8e33abf6f5900cc"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-26.psmc",
+          "sha256": "1af9556d6d85008cd89f9e1b2e788f8cb4f1b00ac6a115505395ebefd3fed483"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-27.psmc",
+          "sha256": "2042a0c98af34bfc4f88237bc388badafd731df6951947e385a9dccc2909f900"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-28.psmc",
+          "sha256": "1f2ee3a3f5f43b6e150232e74bec133038b38ed9996eacaffdea50aa7f7c04f4"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg002-equivalent/replicate-29.psmc",
+          "sha256": "c6da228f1ae795d29f7d6177411cfcf529ca6c8e7444d3a284f48c3a6653c32e"
+        }
+      ]
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "target/release/psmc-rs",
+        "bootstrap",
+        "--mode",
+        "strict",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent-followup/bounded-validation/hg001-strict",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 49.20482051902218,
+      "time_wall_seconds": 49.2,
+      "user_seconds": 617.47,
+      "system_seconds": 2.12,
+      "peak_rss_kib": 1307064,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent-followup/bounded-validation/hg001-strict-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "which": "candidate",
+      "dataset": "hg001",
+      "tag": "hg001-strict",
+      "mode": "strict",
+      "cpu_seconds": 619.59,
+      "outputs": [
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-00.psmc",
+          "sha256": "4b7ec8d9657c7431304059c53e112268956bad36f5582a25f8e98e65bb381bef"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-01.psmc",
+          "sha256": "a10e02274dc4de33ed6a2763dfeeef53908ae014f507918d9b97062eeac02488"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-02.psmc",
+          "sha256": "69471ab652b9971bed5b91c4dafe3ec887402f885a2a83ff443752af5be62446"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-03.psmc",
+          "sha256": "a2524932e97a28f4aec86595679242572b584ac95c8766344aa55b31ef8bb2a8"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-04.psmc",
+          "sha256": "b009175e29122d8dec7af2fef75d5010413b9c65c4079be27cc57b085f4a9790"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-05.psmc",
+          "sha256": "02e162784e6068d81128ffa64806b0cee3b552bbc37383986a53eaad344b81c3"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-06.psmc",
+          "sha256": "dd346558a9e6a3f039592a397fd1a6eb8d577623b125cbb9926c43f4cc303d3f"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-07.psmc",
+          "sha256": "280ce355a1d5b1e1353169ed0f24b14d9d3902be60db5028c86b4fef52a6fcb6"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-08.psmc",
+          "sha256": "8ab9b1cbd9565c05d312966899b7894aee206c7fc0e19bfb5b1dde84334b2d2b"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-09.psmc",
+          "sha256": "d6503d4c1fcb8ad6cdd4532f0d13f8cf3e26aea83703ac10f818b6403e930bc5"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-10.psmc",
+          "sha256": "3d0393963868031c8e7d510704fcb805af67152c951f55b022102c44a8376044"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-11.psmc",
+          "sha256": "b0e4eb4cbb584b206cdc38c73e16899d7aa23339ee7f155f1842ebede6b714b0"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-12.psmc",
+          "sha256": "a6ee2b0a5387592000c21dd6f55324109a6dea24e2190d6e98f4071801c62912"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-13.psmc",
+          "sha256": "0943269ebdb79182bc0388d203079303554e1dacc947c7b33ca2f1c50acfab88"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-14.psmc",
+          "sha256": "26b117ca557cc83a571ae85eeacc6eb924883317f7f705a253386e7547031f6c"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-15.psmc",
+          "sha256": "a5d1ad93fbcb14acc83e8d3a783f39e35e202125fd9e4a2ce02eaa2ee46b5039"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-16.psmc",
+          "sha256": "abb24cf8325d3b672bb595b67cb6e4a7f5e3eaf2f9ae155dc6898c70504bcf37"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-17.psmc",
+          "sha256": "f5577ba3e0fae2c2c99fa786f03ba920f4f66986c988eeca15660363ace1087c"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-18.psmc",
+          "sha256": "20b77847fe4f3f5469db4b2268187c6c1c5c504df970536b711ecf672c53c30d"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-19.psmc",
+          "sha256": "285b533ae4bed9ae2519807fbe47320c149652d2874629dfb60dc74b600869fb"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-20.psmc",
+          "sha256": "90bf46c4ed204ac427c0127754809f779879eb1d063fa908adc02770116b8f64"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-21.psmc",
+          "sha256": "68cea806875667b701dc9a48c1a75ac71d4e67e93e9f66614a274baed7235156"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-22.psmc",
+          "sha256": "1a701051ad5fec3c020337968da225036afe9dc24a370d6e6686f261cbe6604b"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-23.psmc",
+          "sha256": "d9967528b4dbabf4add9ad2eb53b54a1daf793e2d4897c0a86a197946e13fd61"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-24.psmc",
+          "sha256": "69f8a61cc5f4b43860513781b9158fdaae0507df25e30a9ab8b2ab4272b1977c"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-25.psmc",
+          "sha256": "ba70ae8bf8aa9972746597a411acc6bf2c2e49c981a2c69e66c00a19b3f1598e"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-26.psmc",
+          "sha256": "537fb309d7f1f3be408b922b5420bf5635a36691b82bf75d926fd02384b738fe"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-27.psmc",
+          "sha256": "295ef9e07eb0eea8eb4c73c05b18e8d1d11c43b714ceb30fc7361708686f299f"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-28.psmc",
+          "sha256": "577eb27956be0d58a5db4ee36b3e6eea476f38a735e5d8807cad994c8dc6525e"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-validation/hg001-strict/replicate-29.psmc",
+          "sha256": "ae0b5f85d5052747b1f62337e0df59f70430f1bc92a40b807e74d9f7cfb1a482"
+        }
+      ]
+    }
+  ]
+}

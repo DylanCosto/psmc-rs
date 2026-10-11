@@ -157,7 +157,26 @@ impl StructuredModel {
     }
 }
 
+/// Read-only message factors from one parameter snapshot.
+pub struct MessageFactors<'a> {
+    pub lower: &'a [f64],
+    pub upper: &'a [f64],
+    pub diagonal: &'a [f64],
+    pub delta: &'a [f64],
+    pub q_aux: &'a [f64],
+}
+
 impl StructuredModel {
+    pub fn message_factors(&self) -> MessageFactors<'_> {
+        MessageFactors {
+            lower: &self.lower,
+            upper: &self.upper,
+            diagonal: &self.diagonal,
+            delta: &self.delta,
+            q_aux: &self.q_aux,
+        }
+    }
+
     /// A linear check covers every used triangular product, including underflow.
     /// Invalid factors are never clipped. The caller must use the literal path.
     pub fn eligible(&self, model: &Model) -> bool {

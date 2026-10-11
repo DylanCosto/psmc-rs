@@ -1,9 +1,12 @@
 # PSMC-rs — PSMC in Rust
 
 This Rust workspace implements the original PSMC model, full expected counts,
-Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.5.0
-adds an opt-in experimental structured mode; strict arithmetic remains the default.
-See [structured mode and its validation](docs/equivalent-mode-report.md).
+Hooke–Jeeves optimizer, EM fitting, input handling and legacy output. Version 0.5.1
+adds bounded four-record AVX processing to opt-in structured mode: 7.7% less
+elapsed time and 18.2% lower peak memory than v0.5.0 equivalent mode on the tested
+30-HG001-bootstrap workload, with identical numerical output. Strict arithmetic
+remains the default. See the [numerical review and SIMD results](docs/equivalent-followup.md)
+and the [original structured-mode milestone](docs/equivalent-mode-report.md).
 
 Version 0.4.1
 adds ordered 64-state AVX normalization, joint-source transition tiles and emission
@@ -33,13 +36,18 @@ cargo build --release --locked --offline
 
 Equivalent mode supports the CPU backend and uses the same bootstrap command and
 worker controls. It changes floating-point grouping and optimizer trajectories.
-Current validation found a roughly 22% change in an early population-size interval
-of one HG001 bootstrap; it has not met the proposed curve-equivalence gate.
-Strict mode remains the validated choice for exact reproduction. It preserves full transition counts and the Q entropy normalizer;
+Median curve differences are similar in scale to variation between two vanilla C
+builds. One HG001 bootstrap changes an early lambda by about 22%; a fresh
+likelihood slice supports weak identification in that direction. The original
+curve screen also rejects four vanilla-C fits, so its failure is not by itself
+evidence of a structured-code defect. See the [numerical review](docs/equivalent-followup.md).
+Equivalent mode remains experimental; strict mode reproduces the tested reference
+exactly. Both modes preserve full transition counts and the Q entropy normalizer;
 transition counting still costs quadratic work per site. `--snapshot` is rejected
 in this experimental mode. Output headers, per-fit statistics and batch manifests
-identify the selected mode. `structured_fallbacks` counts model updates whose
-factors fail eligibility and therefore use the literal calculation.
+identify the selected mode. `model_updates` counts optimizer callbacks;
+`structured_fallbacks` counts those callbacks whose factors fail eligibility and
+therefore use the literal calculation. E-step factor refresh is excluded.
 
 The optimized `--backend cpu` path is the default; `--backend dense`
 selects the retained scalar oracle. `cargo test` byte-compares both against

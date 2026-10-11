@@ -1,0 +1,358 @@
+{
+  "status": "completed",
+  "stage": "screen",
+  "runner_sha256": "2eeccac77862b9763ea0bdd9a1b6c55de3ad986a1e07458ebacf057090fc95d9",
+  "base_commit": "f191674",
+  "binaries": {
+    "baseline": {
+      "path": "bin/psmc-rs-v0.5.0",
+      "sha256": "46f55f1fcde1ff3064c5919c4b8dbd9806747c5c0309e4015b4c4e38f826e52a"
+    },
+    "candidate": {
+      "path": "target/release/psmc-rs",
+      "sha256": "a2790e7fb7c7e3d3072cdfef271fd805957d2a9fd369a68c336a081111df5f48"
+    }
+  },
+  "runs": [
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "bin/psmc-rs-v0.5.0",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent-followup/bounded-screen/baseline",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 34.28843684104504,
+      "time_wall_seconds": 34.28,
+      "user_seconds": 435.26,
+      "system_seconds": 1.99,
+      "peak_rss_kib": 1259380,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent-followup/bounded-screen/baseline-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "which": "baseline",
+      "dataset": "hg001",
+      "tag": "baseline",
+      "mode": "equivalent",
+      "cpu_seconds": 437.25,
+      "outputs": [
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-00.psmc",
+          "sha256": "ea1b37900eee3ad8c22d2b5f4d9eec06a1c26ba980f9a4cefd2d27bbe49863e1"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-01.psmc",
+          "sha256": "0c24039df15bdbc5d1da0506620e4b0edcda231b06a2c1b42a56201bbc3e09e2"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-02.psmc",
+          "sha256": "23ecb85e95467fdc6a190146581287d97258726ab6174eda9f3db5913bd3ffd4"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-03.psmc",
+          "sha256": "b49be8976916bf75e9d7aab7a163323f247f0717904e10feaa69134d4aaf6fd2"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-04.psmc",
+          "sha256": "81b06e608749ad1092a2bb2bdfd81176efe5f9ce33ca811d58d2ed4c021075c9"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-05.psmc",
+          "sha256": "5fbe826a3225ed67d8134912e9203cb68b240864297cfebdd14f1b8e05a12125"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-06.psmc",
+          "sha256": "b16fa69b7c5b331c83635e7d7496cae7ed2002c3768d78f6377643c7f52c3cce"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-07.psmc",
+          "sha256": "5adb44ac336d423c2fceef31ee805991c2c67b3d9a806e8c931d6cefb1a6bdff"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-08.psmc",
+          "sha256": "fd0d8e2ed73197a6dad2226200abcb2aac0fc272280ac4aea30ee9de3eea8bf4"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-09.psmc",
+          "sha256": "f456415dd09900ee9292b89c713a06abc9f9b5773faa9fff36903665d1756f81"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-10.psmc",
+          "sha256": "fd7fd1c63465ca4c9dda60ea1207ecc6dbc7ec8d1c877363747951c028300732"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-11.psmc",
+          "sha256": "3694d746354bf93f7de1321227d5bbd8f3790c58194a22699932e8c545f3a9ee"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-12.psmc",
+          "sha256": "b9a011d681d9d58d58d20a9d41943a58f08769f0cf48dfe7ef3f09f96275c83f"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-13.psmc",
+          "sha256": "040a9daaf7c786003000297311673f31d0aaa204e60ac78f293e7dd1591f194a"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-14.psmc",
+          "sha256": "a3d4f07ec965c3e5690f3ad955d69687f00082211a75ca4940fd5efb9d91cd9e"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-15.psmc",
+          "sha256": "949fd3bdf89b9ee6fa3825093cf47323e32d7463e998a856da3d2031d00cd64b"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-16.psmc",
+          "sha256": "15c3ec834d4ad712f53802193ebfbda9d33b8db9ea5f68faf1ff90ae6a68a991"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-17.psmc",
+          "sha256": "08469ba8f9ff460cdf38ea2ef9bcc39b4be15d5334ab603d65925ec8e1f4be8a"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-18.psmc",
+          "sha256": "16763cce73b6227c309850f7c0757339492a27188ca20ea4c73e7b4f9c651a85"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-19.psmc",
+          "sha256": "fef8aff899d4dfdaf057602a87517dd458a1e5289fd4b69bb313de5572e1d91b"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-20.psmc",
+          "sha256": "e4dac088cffde667035ef719e987b1cc8f634097d12f57fde7ac91fcc65833f7"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-21.psmc",
+          "sha256": "7ecb93a51a18e1a854dc425780b220ff0babe3e74d243f458adb0920e352325a"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-22.psmc",
+          "sha256": "37f323aabbf351cd4d5853d658415410a494c8393bd944f8a42e17d08f3c565a"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-23.psmc",
+          "sha256": "9de4f9bc1de1fa42e4fab46b35da20691ac33fa457c7f3b26dd38313d2d4d05b"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-24.psmc",
+          "sha256": "cbf440ba7ea9c70a31a35d23d3d7b69513a8343472659490d4dfffb705ca2522"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-25.psmc",
+          "sha256": "cc880d326c15cd9f0a1e3478e90da8595a4ff6f962116b3e1caad2937794441f"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-26.psmc",
+          "sha256": "86076acab304ea75949080774f8bff51289bb21e65d40d8c60fc6f4968b838f6"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-27.psmc",
+          "sha256": "2f639129013c23ff425fa4a0ecb105660a6133386065e947f5ef7936ed4141b2"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-28.psmc",
+          "sha256": "67264d75842e0f218b569d091efdb4c1bcc58fc552fde3ba770e3b70e89a1f05"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/baseline/replicate-29.psmc",
+          "sha256": "cf5262a581fc5ca47406d2d2177228f8583605bcb0a543bff599f9c1fd7dca62"
+        }
+      ]
+    },
+    {
+      "command": [
+        "taskset",
+        "-c",
+        "0-15",
+        "target/release/psmc-rs",
+        "bootstrap",
+        "--mode",
+        "equivalent",
+        "--workers",
+        "16",
+        "--memory-mib",
+        "16384",
+        "--replicates",
+        "30",
+        "--seed",
+        "20261012",
+        "--output-dir",
+        "work/equivalent-followup/bounded-screen/candidate",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg-input/blocks-50000.psmcfa"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 31.776639618969057,
+      "time_wall_seconds": 31.77,
+      "user_seconds": 387.26,
+      "system_seconds": 1.59,
+      "peak_rss_kib": 1070032,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "work/equivalent-followup/bounded-screen/candidate-time.psmc",
+      "optimizer_evaluations": [],
+      "nonfinite_records_beyond_initial_RI": [],
+      "which": "candidate",
+      "dataset": "hg001",
+      "tag": "candidate",
+      "mode": "equivalent",
+      "cpu_seconds": 388.84999999999997,
+      "outputs": [
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-00.psmc",
+          "sha256": "ea1b37900eee3ad8c22d2b5f4d9eec06a1c26ba980f9a4cefd2d27bbe49863e1"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-01.psmc",
+          "sha256": "0c24039df15bdbc5d1da0506620e4b0edcda231b06a2c1b42a56201bbc3e09e2"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-02.psmc",
+          "sha256": "23ecb85e95467fdc6a190146581287d97258726ab6174eda9f3db5913bd3ffd4"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-03.psmc",
+          "sha256": "b49be8976916bf75e9d7aab7a163323f247f0717904e10feaa69134d4aaf6fd2"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-04.psmc",
+          "sha256": "81b06e608749ad1092a2bb2bdfd81176efe5f9ce33ca811d58d2ed4c021075c9"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-05.psmc",
+          "sha256": "5fbe826a3225ed67d8134912e9203cb68b240864297cfebdd14f1b8e05a12125"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-06.psmc",
+          "sha256": "b16fa69b7c5b331c83635e7d7496cae7ed2002c3768d78f6377643c7f52c3cce"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-07.psmc",
+          "sha256": "5adb44ac336d423c2fceef31ee805991c2c67b3d9a806e8c931d6cefb1a6bdff"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-08.psmc",
+          "sha256": "fd0d8e2ed73197a6dad2226200abcb2aac0fc272280ac4aea30ee9de3eea8bf4"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-09.psmc",
+          "sha256": "f456415dd09900ee9292b89c713a06abc9f9b5773faa9fff36903665d1756f81"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-10.psmc",
+          "sha256": "fd7fd1c63465ca4c9dda60ea1207ecc6dbc7ec8d1c877363747951c028300732"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-11.psmc",
+          "sha256": "3694d746354bf93f7de1321227d5bbd8f3790c58194a22699932e8c545f3a9ee"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-12.psmc",
+          "sha256": "b9a011d681d9d58d58d20a9d41943a58f08769f0cf48dfe7ef3f09f96275c83f"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-13.psmc",
+          "sha256": "040a9daaf7c786003000297311673f31d0aaa204e60ac78f293e7dd1591f194a"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-14.psmc",
+          "sha256": "a3d4f07ec965c3e5690f3ad955d69687f00082211a75ca4940fd5efb9d91cd9e"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-15.psmc",
+          "sha256": "949fd3bdf89b9ee6fa3825093cf47323e32d7463e998a856da3d2031d00cd64b"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-16.psmc",
+          "sha256": "15c3ec834d4ad712f53802193ebfbda9d33b8db9ea5f68faf1ff90ae6a68a991"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-17.psmc",
+          "sha256": "08469ba8f9ff460cdf38ea2ef9bcc39b4be15d5334ab603d65925ec8e1f4be8a"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-18.psmc",
+          "sha256": "16763cce73b6227c309850f7c0757339492a27188ca20ea4c73e7b4f9c651a85"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-19.psmc",
+          "sha256": "fef8aff899d4dfdaf057602a87517dd458a1e5289fd4b69bb313de5572e1d91b"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-20.psmc",
+          "sha256": "e4dac088cffde667035ef719e987b1cc8f634097d12f57fde7ac91fcc65833f7"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-21.psmc",
+          "sha256": "7ecb93a51a18e1a854dc425780b220ff0babe3e74d243f458adb0920e352325a"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-22.psmc",
+          "sha256": "37f323aabbf351cd4d5853d658415410a494c8393bd944f8a42e17d08f3c565a"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-23.psmc",
+          "sha256": "9de4f9bc1de1fa42e4fab46b35da20691ac33fa457c7f3b26dd38313d2d4d05b"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-24.psmc",
+          "sha256": "cbf440ba7ea9c70a31a35d23d3d7b69513a8343472659490d4dfffb705ca2522"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-25.psmc",
+          "sha256": "cc880d326c15cd9f0a1e3478e90da8595a4ff6f962116b3e1caad2937794441f"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-26.psmc",
+          "sha256": "86076acab304ea75949080774f8bff51289bb21e65d40d8c60fc6f4968b838f6"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-27.psmc",
+          "sha256": "2f639129013c23ff425fa4a0ecb105660a6133386065e947f5ef7936ed4141b2"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-28.psmc",
+          "sha256": "67264d75842e0f218b569d091efdb4c1bcc58fc552fde3ba770e3b70e89a1f05"
+        },
+        {
+          "path": "work/equivalent-followup/bounded-screen/candidate/replicate-29.psmc",
+          "sha256": "cf5262a581fc5ca47406d2d2177228f8583605bcb0a543bff599f9c1fd7dca62"
+        }
+      ]
+    }
+  ],
+  "screen_reduction": 0.07325493529262417,
+  "screen_pass": true
+}

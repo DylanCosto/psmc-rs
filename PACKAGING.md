@@ -1,8 +1,22 @@
-# Current local v0.5.0 CPU deliverable
+# Current local v0.5.1 CPU deliverable
 
-The current CPU source and `bin/psmc-rs` / `bin/psmc-rs-v0.5.0` provide strict mode
-by default and opt-in experimental `--mode equivalent`. Structured mode passes
-its performance gate but fails the full-fit numerical qualification gates. See
+`bin/psmc-rs` and `bin/psmc-rs-v0.5.1` provide strict mode by default and optional
+structured CPU mode. Bounded four-record AVX reduces measured equivalent-mode
+batch wall time 7.74%, CPU time 8.03% and RSS 18.16%, preserving its numerical
+output exactly. See [the review and results](docs/equivalent-followup.md),
+[the evidence audit](bench/equivalent-followup-audit.json) and
+[installation manifest](bench/equivalent-followup-install.json).
+The original numerical screens are retained as historical engineering evidence;
+scientific equivalence is not inferred from their pass/fail labels. v0.5.0,
+v0.4.1 and the CUDA executable are preserved. No new portable archive is generated.
+Existing zip files and CHECKSUMS.sha256 are historical snapshots.
+
+# Historical local v0.5.0 CPU deliverable
+
+The v0.5.0 milestone introduced opt-in experimental `--mode equivalent` while
+keeping strict as default. Its versioned binary remains in `bin/psmc-rs-v0.5.0`.
+It passed the performance gate and failed the original full-fit engineering
+screens, whose scientific interpretation is revised in the follow-up above. See
 [the implementation and results](docs/equivalent-mode-report.md),
 [final audit](bench/equivalent-audit.json) and
 [installed binary manifest](bench/equivalent-install.json).

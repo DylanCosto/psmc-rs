@@ -1,5 +1,11 @@
 # Structured CPU mode: implementation and validation
 
+**Follow-up:** [the numerical review and SIMD experiment](equivalent-followup.md)
+reproduce the user’s distribution summaries and investigate the weakly identified
+HG001 interval. The gates below are historical engineering screens, not a
+calibrated scientific test: vanilla C itself fails the fixed curve screen on
+four HG001 fits. Their failure alone is not evidence of a structured-code defect.
+
 Version 0.5.0 adds `--mode equivalent` as an opt-in experimental CPU mode.
 Strict mode remains the numerical default. The structured arithmetic passes its
 component checks, but it **does not meet the proposed full-fit equivalence gates**.

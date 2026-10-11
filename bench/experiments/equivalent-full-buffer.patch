@@ -1,0 +1,706 @@
+diff --git a/crates/psmc-cli/src/batch.rs b/crates/psmc-cli/src/batch.rs
+index 7677a6e..d7d6561 100644
+--- a/crates/psmc-cli/src/batch.rs
++++ b/crates/psmc-cli/src/batch.rs
+@@ -68,6 +68,7 @@ fn estimated_worker_bytes(
+     max_length: usize,
+     records: usize,
+     maximum_draws: usize,
++    equivalent: bool,
+ ) -> Option<usize> {
+     let messages = max_length
+         .checked_add(1)?
+@@ -77,12 +78,18 @@ fn estimated_worker_bytes(
+         .checked_mul(states)?
+         .checked_add(states.checked_mul(4)?)?
+         .checked_mul(8)?;
+-    let cached = counts.checked_mul(records)?;
++    let cached = counts.checked_mul(if equivalent {
++        records.max(maximum_draws)
++    } else {
++        records
++    })?;
+     let sampled = maximum_draws.checked_mul(
+         3 * std::mem::size_of::<usize>() + 2 * std::mem::size_of::<psmc_io::BootstrapDraw>(),
+     )?;
+     messages
+-        .checked_mul(2)?
++        // Equivalent AVX retains four interleaved records plus one scalar
++        // deinterleaving workspace. Allow an additional record for overhead.
++        .checked_mul(if equivalent { 6 } else { 2 })?
+         .checked_add(cached.checked_mul(4)?)?
+         .checked_add(states.checked_mul(states)?.checked_mul(16 * 8)?)?
+         .checked_add(sampled)?
+@@ -227,6 +234,7 @@ pub fn run(options: Options) -> Result<(), Box<dyn std::error::Error>> {
+         max_length,
+         sequences.len(),
+         maximum_draws,
++        options.mode == "equivalent",
+     )
+     .ok_or("worker memory estimate overflow")?;
+     // Completed indices and JSON construction are retained for deterministic
+diff --git a/crates/psmc-core/src/structured.rs b/crates/psmc-core/src/structured.rs
+index f47173e..a174334 100644
+--- a/crates/psmc-core/src/structured.rs
++++ b/crates/psmc-core/src/structured.rs
+@@ -157,7 +157,26 @@ impl StructuredModel {
+     }
+ }
+ 
++/// Read-only message factors from one parameter snapshot.
++pub struct MessageFactors<'a> {
++    pub lower: &'a [f64],
++    pub upper: &'a [f64],
++    pub diagonal: &'a [f64],
++    pub delta: &'a [f64],
++    pub q_aux: &'a [f64],
++}
++
+ impl StructuredModel {
++    pub fn message_factors(&self) -> MessageFactors<'_> {
++        MessageFactors {
++            lower: &self.lower,
++            upper: &self.upper,
++            diagonal: &self.diagonal,
++            delta: &self.delta,
++            q_aux: &self.q_aux,
++        }
++    }
++
+     /// A linear check covers every used triangular product, including underflow.
+     /// Invalid factors are never clipped. The caller must use the literal path.
+     pub fn eligible(&self, model: &Model) -> bool {
+diff --git a/crates/psmc-cpu/src/equivalent.rs b/crates/psmc-cpu/src/equivalent.rs
+index 1ad26f0..e495675 100644
+--- a/crates/psmc-cpu/src/equivalent.rs
++++ b/crates/psmc-cpu/src/equivalent.rs
+@@ -9,14 +9,21 @@ use psmc_core::{
+     model_workspace::ModelWorkspace,
+     structured::{Margins, StructuredModel},
+ };
+-use std::{collections::HashMap, io};
++use std::{
++    collections::{BTreeMap, HashMap, HashSet},
++    io,
++};
+ 
+ pub struct EquivalentBackend {
+     workspace: Workspace,
++    lockstep: crate::lockstep::Lockstep,
++    pub lockstep_enabled: bool,
+     settings: Settings,
+     factors: StructuredModel,
+     margins: Margins,
+     eligible: bool,
++    #[cfg(debug_assertions)]
++    factor_params: Vec<u64>,
+     model_workspace: ModelWorkspace,
+     pub profile: bool,
+     pub cache_enabled: bool,
+@@ -37,13 +44,32 @@ impl EquivalentBackend {
+             factors: StructuredModel::new(states),
+             margins: Margins::new(states),
+             eligible: false,
++            #[cfg(debug_assertions)]
++            factor_params: Vec::new(),
+             workspace: Workspace::with_simd(states, mode)?,
++            lockstep: crate::lockstep::Lockstep::default(),
++            lockstep_enabled: true,
+             model_workspace: ModelWorkspace::new(states),
+             profile: false,
+             cache_enabled: true,
+             counters: BackendStats::default(),
+         })
+     }
++    // Refreshing factors at E-step entry is not an optimizer model update.
++    fn refresh(&mut self, model: &mut Model, settings: &Settings) -> bool {
++        self.factors.update(model, settings);
++        #[cfg(debug_assertions)]
++        {
++            self.factor_params.clear();
++            self.factor_params
++                .extend(model.params.iter().map(|v| v.to_bits()));
++        }
++        self.eligible = self.factors.eligible(model);
++        if !self.eligible {
++            self.model_workspace.update(model, settings);
++        }
++        !self.eligible
++    }
+     pub fn simd_kernel(&self) -> &'static str {
+         self.workspace.simd_kernel()
+     }
+@@ -65,7 +91,7 @@ impl ExpectationBackend for EquivalentBackend {
+     ) -> io::Result<(Counts, f64)> {
+         // Reconstruct from exactly the current parameters, including the initial model.
+         let mut current = model.clone();
+-        self.update_model(&mut current, &self.settings.clone());
++        self.refresh(&mut current, &self.settings.clone());
+         self.materialize_model(&mut current);
+         let prepared = self.workspace.prepare(&current);
+         let mut aggregate = Counts::zero(model.n);
+@@ -79,6 +105,45 @@ impl ExpectationBackend for EquivalentBackend {
+                 *occurrences.entry(&sequence.observations).or_default() += 1;
+             }
+         }
++        // Evaluate independent equal-length unique records together, then add
++        // their saved counts in original input order below. Length grouping is
++        // only an execution schedule; records retain their own HMM boundaries.
++        let mut batched = HashMap::<usize, Cached>::new();
++        if self.lockstep_enabled
++            && self.eligible
++            && self.workspace.avx.is_some()
++            && !observer.needs_sequence_messages()
++        {
++            let mut seen = HashSet::<&[u8]>::new();
++            let mut groups = BTreeMap::<usize, Vec<usize>>::new();
++            for (i, sequence) in sequences.iter().enumerate() {
++                let obs = sequence.observations.as_slice();
++                if !cache_enabled || seen.insert(obs) {
++                    groups.entry(obs.len()).or_default().push(i);
++                }
++            }
++            for indices in groups.values() {
++                for group in indices.chunks_exact(4) {
++                    let records =
++                        std::array::from_fn(|lane| sequences[group[lane]].observations.as_slice());
++                    self.lockstep
++                        .evaluate(&self.workspace, &prepared, records, &self.factors);
++                    for lane in 0..4 {
++                        let (messages, counts) =
++                            self.lockstep
++                                .lane(lane, &mut self.workspace, &prepared, records[lane]);
++                        batched.insert(
++                            group[lane],
++                            Cached {
++                                counts: counts.clone(),
++                                likelihood: messages.log_likelihood,
++                                backward_check: messages.backward_check,
++                            },
++                        );
++                    }
++                }
++            }
++        }
+         let mut cache = HashMap::<&[u8], Cached>::new();
+         for (index, sequence) in sequences.iter().enumerate() {
+             self.counters.sequence_visits += 1;
+@@ -93,6 +158,19 @@ impl ExpectationBackend for EquivalentBackend {
+                 self.counters.cache_hits += 1;
+                 continue;
+             }
++            if let Some(result) = batched.remove(&index) {
++                warn(result.backward_check);
++                likelihood += result.likelihood;
++                aggregate.add(&result.counts);
++                self.counters.sequence_evaluations += 1;
++                if occurrences
++                    .get(observations)
++                    .is_some_and(|&count| count > 1)
++                {
++                    cache.insert(observations, result);
++                }
++                continue;
++            }
+             let (messages, counts) = if self.eligible {
+                 self.workspace
+                     .evaluate_structured(&prepared, observations, &self.factors)
+@@ -122,10 +200,7 @@ impl ExpectationBackend for EquivalentBackend {
+         Ok((aggregate, likelihood))
+     }
+     fn update_model(&mut self, model: &mut Model, settings: &Settings) {
+-        self.factors.update(model, settings);
+-        self.eligible = self.factors.eligible(model);
+-        if !self.eligible {
+-            self.model_workspace.update(model, settings);
++        if self.refresh(model, settings) {
+             self.counters.structured_fallbacks += 1;
+         }
+         self.counters.model_updates += 1;
+@@ -136,6 +211,14 @@ impl ExpectationBackend for EquivalentBackend {
+         }
+     }
+     fn q(&self, counts: &Counts, model: &Model) -> f64 {
++        #[cfg(debug_assertions)]
++        debug_assert!(
++            self.factor_params
++                .iter()
++                .copied()
++                .eq(model.params.iter().map(|v| v.to_bits())),
++            "Q model parameters do not match the cached factor snapshot"
++        );
+         if self.eligible {
+             self.factors.q(counts, model, &self.margins)
+         } else {
+@@ -283,6 +366,8 @@ mod tests {
+         close(&ca.e, &pa.e, 1e-24);
+         close(&[cl], &[pl], 1e-14);
+         assert_eq!(cached.stats().cache_hits, 3);
++        assert_eq!(cached.stats().model_updates, 0);
++        assert_eq!(cached.stats().structured_fallbacks, 0);
+         let mut dense = DenseBackend::default();
+         let (da, dl) = dense
+             .expectation(&initial, &sequences, 1, &mut NoObserver)
+@@ -307,4 +392,65 @@ mod tests {
+         }
+         assert_eq!(cached.stats().structured_fallbacks, 3);
+     }
++    #[test]
++    fn lockstep_aggregation_preserves_duplicates_tails_and_cache_disabled() {
++        if !crate::avx_available() {
++            return;
++        }
++        let settings = settings(64);
++        let model = Model::new(&settings, 20, 10000, &mut LegacyRng::new(42));
++        let sequences: Vec<Sequence> = (0..11)
++            .map(|j| Sequence {
++                name: j.to_string(),
++                observations: (0..if j == 9 { 13 } else { 257 })
++                    .map(|i| {
++                        if (i + j) % 31 == 0 {
++                            1
++                        } else if (i + j) % 19 == 0 {
++                            2
++                        } else {
++                            0
++                        }
++                    })
++                    .collect(),
++            })
++            .collect();
++        let refs: Vec<_> = [3, 1, 3, 0, 2, 4, 5, 6, 1, 7, 8, 9, 10, 0]
++            .iter()
++            .map(|&j| &sequences[j])
++            .collect();
++        let mut baseline = EquivalentBackend::with_simd(&settings, SimdMode::Auto).unwrap();
++        baseline.lockstep_enabled = false;
++        let (want, ll) = baseline
++            .expectation(&model, &refs, 1, &mut NoObserver)
++            .unwrap();
++        for cache in [false, true] {
++            let mut candidate = EquivalentBackend::with_simd(&settings, SimdMode::Auto).unwrap();
++            candidate.cache_enabled = cache;
++            let (got, actual_ll) = candidate
++                .expectation(&model, &refs, 1, &mut NoObserver)
++                .unwrap();
++            assert_eq!(got.a, want.a);
++            assert_eq!(got.e, want.e);
++            assert_eq!(got.a0, want.a0);
++            assert_eq!(actual_ll, ll);
++            assert_eq!(candidate.stats().sequence_visits, refs.len() as u64);
++            assert_eq!(
++                candidate.stats().sequence_evaluations,
++                if cache { 11 } else { 14 }
++            );
++        }
++    }
++
++    #[test]
++    #[cfg(debug_assertions)]
++    #[should_panic(expected = "Q model parameters do not match")]
++    fn q_rejects_stale_parameter_snapshot_in_debug() {
++        let settings = settings(4);
++        let mut model = Model::new(&settings, 20, 10000, &mut LegacyRng::new(42));
++        let mut backend = EquivalentBackend::with_simd(&settings, SimdMode::Auto).unwrap();
++        backend.update_model(&mut model, &settings);
++        model.params[0] *= 1.1;
++        backend.q(&Counts::zero(4), &model);
++    }
+ }
+diff --git a/crates/psmc-cpu/src/lib.rs b/crates/psmc-cpu/src/lib.rs
+index 85a2e4d..4985380 100644
+--- a/crates/psmc-cpu/src/lib.rs
++++ b/crates/psmc-cpu/src/lib.rs
+@@ -36,6 +36,7 @@ use psmc_core::{
+     model::Model,
+ };
+ 
++mod lockstep;
+ mod simd;
+ pub use simd::{SimdMode, avx_available};
+ 
+@@ -120,6 +121,7 @@ impl<'a> PreparedModel<'a> {
+ pub struct Workspace {
+     messages: Messages,
+     counts: Counts,
++    scan: Vec<f64>,
+     avx: Option<simd::Avx>,
+ }
+ 
+@@ -142,6 +144,7 @@ impl Workspace {
+                 backward_check: 0.0,
+             },
+             counts: Counts::zero(n),
++            scan: vec![0.0; n],
+             avx,
+         })
+     }
+@@ -215,11 +218,7 @@ impl Workspace {
+                 "AVX layout required; use workspace.prepare(model)"
+             );
+         }
+-        let mut scan = if factors.is_some() {
+-            vec![0.0; n]
+-        } else {
+-            Vec::new()
+-        };
++        let scan = &mut self.scan;
+         let messages = &mut self.messages;
+         messages.length = length;
+         // Avoid amortized doubling when a later bootstrap block is slightly larger.
+@@ -254,7 +253,7 @@ impl Workspace {
+             let current = &mut later[..n];
+             let emission = &model.emission[observations[u - 1] as usize * n..][..n];
+             if let Some(factors) = factors {
+-                factors.forward(current, previous, emission, &mut scan);
++                factors.forward(current, previous, emission, scan);
+                 sum = 0.0;
+                 for &value in current.iter() {
+                     sum += value;
+@@ -301,7 +300,7 @@ impl Workspace {
+                 &prepared.emission_transition[observations[u] as usize * square..][..square];
+             if let Some(factors) = factors {
+                 let emission = &model.emission[observations[u] as usize * n..][..n];
+-                factors.backward(current, next, emission, messages.scales[u], &mut scan);
++                factors.backward(current, next, emission, messages.scales[u], scan);
+             } else if let Some(avx) = self.avx {
+                 let transpose = &prepared.emission_transition_transpose
+                     [observations[u] as usize * square..][..square];
+@@ -316,6 +315,23 @@ impl Workspace {
+                 }
+             }
+         }
++        self.finish_evaluation(prepared, observations, transitions)
++    }
++
++    // Also used after deinterleaving independent structured AVX lanes. All count
++    // operations and per-sequence likelihood reductions retain their old order.
++    fn finish_evaluation(
++        &mut self,
++        prepared: &PreparedModel<'_>,
++        observations: &[u8],
++        transitions: bool,
++    ) -> (&Messages, &Counts) {
++        let model = prepared.model;
++        let n = model.n;
++        let square = n * n;
++        let length = observations.len();
++        let first_emission = &model.emission[observations[0] as usize * n..][..n];
++        let messages = &mut self.messages;
+         let mut backward_check = 0.0;
+         for ((&initial, &backward), &emission) in model
+             .initial
+diff --git a/crates/psmc-cpu/src/lockstep.rs b/crates/psmc-cpu/src/lockstep.rs
+new file mode 100644
+index 0000000..4912f35
+--- /dev/null
++++ b/crates/psmc-cpu/src/lockstep.rs
+@@ -0,0 +1,308 @@
++//! Four independent records in AVX lanes. No state or site reduction crosses lanes.
++//! All scalar structured parenthesization, divisions and scan directions survive.
++use crate::{PreparedModel, Workspace};
++use psmc_core::{
++    hmm::{Counts, Messages},
++    structured::StructuredModel,
++};
++
++#[derive(Default)]
++pub(crate) struct Lockstep {
++    forward: Vec<[f64; 4]>,
++    backward: Vec<[f64; 4]>,
++    scales: Vec<[f64; 4]>,
++    scratch: Vec<[f64; 4]>,
++}
++impl Lockstep {
++    pub(crate) fn evaluate(
++        &mut self,
++        workspace: &Workspace,
++        prepared: &PreparedModel<'_>,
++        records: [&[u8]; 4],
++        factors: &StructuredModel,
++    ) {
++        assert!(workspace.avx.is_some(), "lockstep needs detected AVX");
++        let n = prepared.model.n;
++        let len = records[0].len();
++        assert!(len > 0);
++        assert!(
++            records
++                .iter()
++                .all(|r| r.len() == len && r.iter().all(|&v| v <= 2))
++        );
++        let cells = len
++            .checked_add(1)
++            .and_then(|v| v.checked_mul(n))
++            .expect("messages too large");
++        for v in [&mut self.forward, &mut self.backward] {
++            if cells > v.capacity() {
++                v.reserve_exact(cells - v.len());
++            }
++            v.resize(cells, [0.; 4]);
++            v[..n].fill([0.; 4]);
++        }
++        if len + 1 > self.scales.capacity() {
++            self.scales.reserve_exact(len + 1 - self.scales.len());
++        }
++        self.scales.resize(len + 1, [0.; 4]);
++        self.scales[0] = [1.; 4];
++        self.scratch.resize(n, [0.; 4]);
++        #[cfg(target_arch = "x86_64")]
++        // SAFETY: runtime capability checked above. Equal nonempty record lengths,
++        // symbols 0..=2 and exact buffers are checked here. Model dimensions were
++        // checked by PreparedModel. Distinct mutable buffers cannot alias inputs.
++        unsafe {
++            self.avx_messages(prepared, records, factors);
++        }
++        #[cfg(not(target_arch = "x86_64"))]
++        unreachable!("AVX capability is never present on this architecture");
++    }
++    pub(crate) fn lane<'a>(
++        &self,
++        lane: usize,
++        workspace: &'a mut Workspace,
++        prepared: &PreparedModel<'_>,
++        obs: &[u8],
++    ) -> (&'a Messages, &'a Counts) {
++        assert!(lane < 4);
++        let n = prepared.model.n;
++        let cells = (obs.len() + 1) * n;
++        let m = &mut workspace.messages;
++        m.length = obs.len();
++        for (out, input) in [
++            (&mut m.forward, &self.forward),
++            (&mut m.backward, &self.backward),
++        ] {
++            crate::reserve_messages(out, cells);
++            out.resize(cells, 0.);
++            for (o, v) in out.iter_mut().zip(input) {
++                *o = v[lane];
++            }
++        }
++        crate::reserve_messages(&mut m.scales, obs.len() + 1);
++        m.scales.resize(obs.len() + 1, 0.);
++        for (o, v) in m.scales.iter_mut().zip(&self.scales) {
++            *o = v[lane];
++        }
++        workspace.finish_evaluation(prepared, obs, true)
++    }
++
++    #[cfg(target_arch = "x86_64")]
++    #[target_feature(enable = "avx")]
++    unsafe fn avx_messages(
++        &mut self,
++        prepared: &PreparedModel<'_>,
++        records: [&[u8]; 4],
++        factors: &StructuredModel,
++    ) {
++        use std::arch::x86_64::*;
++        let m = prepared.model;
++        let n = m.n;
++        let len = records[0].len();
++        let f = factors.message_factors();
++        assert_eq!(f.lower.len(), n);
++        assert_eq!(f.upper.len(), n);
++        assert_eq!(f.diagonal.len(), n);
++        assert_eq!(f.delta.len(), n);
++        assert_eq!(f.q_aux.len(), n - 1);
++        // SAFETY: each vector accesses exactly one checked [f64;4]. Every site,
++        // state and symbol index is bounded by the validated dimensions above.
++        unsafe {
++            let zero = _mm256_setzero_pd();
++            let one = _mm256_set1_pd(1.);
++            // Precompute the 3^4 possible emission vectors once for the model.
++            // This avoids four scalar gathers for every state at every site.
++            let mut emissions = vec![[0.; 4]; 81 * n];
++            for code in 0..81 {
++                let mut z = code;
++                let mut symbols = [0; 4];
++                for s in &mut symbols {
++                    *s = z % 3;
++                    z /= 3;
++                }
++                for k in 0..n {
++                    emissions[code * n + k] =
++                        std::array::from_fn(|l| m.emission[symbols[l] * n + k]);
++                }
++            }
++            let code = |u: usize| {
++                records[0][u] as usize
++                    + 3 * records[1][u] as usize
++                    + 9 * records[2][u] as usize
++                    + 27 * records[3][u] as usize
++            };
++            let mut sum = zero;
++            let e = &emissions[code(0) * n..];
++            for k in 0..n {
++                let v = _mm256_mul_pd(_mm256_set1_pd(m.initial[k]), _mm256_loadu_pd(e[k].as_ptr()));
++                _mm256_storeu_pd(self.forward[n + k].as_mut_ptr(), v);
++                sum = _mm256_add_pd(sum, v);
++            }
++            _mm256_storeu_pd(self.scales[1].as_mut_ptr(), sum);
++            for k in 0..n {
++                let v = _mm256_div_pd(_mm256_loadu_pd(self.forward[n + k].as_ptr()), sum);
++                _mm256_storeu_pd(self.forward[n + k].as_mut_ptr(), v);
++            }
++            for u in 2..=len {
++                let prev = (u - 1) * n;
++                let cur = u * n;
++                let mut suffix = zero;
++                for k in (0..n).rev() {
++                    _mm256_storeu_pd(self.scratch[k].as_mut_ptr(), suffix);
++                    suffix = _mm256_add_pd(
++                        suffix,
++                        _mm256_mul_pd(
++                            _mm256_loadu_pd(self.forward[prev + k].as_ptr()),
++                            _mm256_set1_pd(f.lower[k]),
++                        ),
++                    );
++                }
++                let mut prefix = zero;
++                sum = zero;
++                let e = &emissions[code(u - 1) * n..];
++                for k in 0..n {
++                    let prev = _mm256_loadu_pd(self.forward[prev + k].as_ptr());
++                    let lower = if k + 1 < n {
++                        _mm256_mul_pd(
++                            _mm256_set1_pd(f.q_aux[k]),
++                            _mm256_loadu_pd(self.scratch[k].as_ptr()),
++                        )
++                    } else {
++                        zero
++                    };
++                    let v = _mm256_mul_pd(
++                        _mm256_loadu_pd(e[k].as_ptr()),
++                        _mm256_add_pd(
++                            _mm256_add_pd(
++                                _mm256_mul_pd(_mm256_set1_pd(f.delta[k]), prefix),
++                                _mm256_mul_pd(prev, _mm256_set1_pd(f.diagonal[k])),
++                            ),
++                            lower,
++                        ),
++                    );
++                    _mm256_storeu_pd(self.forward[cur + k].as_mut_ptr(), v);
++                    sum = _mm256_add_pd(sum, v);
++                    prefix = _mm256_add_pd(prefix, _mm256_mul_pd(prev, _mm256_set1_pd(f.upper[k])));
++                }
++                _mm256_storeu_pd(self.scales[u].as_mut_ptr(), sum);
++                for k in 0..n {
++                    let v = _mm256_div_pd(_mm256_loadu_pd(self.forward[cur + k].as_ptr()), sum);
++                    _mm256_storeu_pd(self.forward[cur + k].as_mut_ptr(), v);
++                }
++            }
++            let last = _mm256_div_pd(one, _mm256_loadu_pd(self.scales[len].as_ptr()));
++            for k in 0..n {
++                _mm256_storeu_pd(self.backward[len * n + k].as_mut_ptr(), last);
++            }
++            for u in (1..len).rev() {
++                let cur = u * n;
++                let next = (u + 1) * n;
++                let e = &emissions[code(u) * n..];
++                let mut suffix = zero;
++                for k in (0..n).rev() {
++                    _mm256_storeu_pd(self.scratch[k].as_mut_ptr(), suffix);
++                    let x = _mm256_mul_pd(
++                        _mm256_loadu_pd(e[k].as_ptr()),
++                        _mm256_loadu_pd(self.backward[next + k].as_ptr()),
++                    );
++                    suffix = _mm256_add_pd(suffix, _mm256_mul_pd(_mm256_set1_pd(f.delta[k]), x));
++                }
++                let mut prefix = zero;
++                let scale = _mm256_loadu_pd(self.scales[u].as_ptr());
++                for k in 0..n {
++                    let x = _mm256_mul_pd(
++                        _mm256_loadu_pd(e[k].as_ptr()),
++                        _mm256_loadu_pd(self.backward[next + k].as_ptr()),
++                    );
++                    let v = _mm256_div_pd(
++                        _mm256_add_pd(
++                            _mm256_add_pd(
++                                _mm256_mul_pd(_mm256_set1_pd(f.lower[k]), prefix),
++                                _mm256_mul_pd(_mm256_set1_pd(f.diagonal[k]), x),
++                            ),
++                            _mm256_mul_pd(
++                                _mm256_set1_pd(f.upper[k]),
++                                _mm256_loadu_pd(self.scratch[k].as_ptr()),
++                            ),
++                        ),
++                        scale,
++                    );
++                    _mm256_storeu_pd(self.backward[cur + k].as_mut_ptr(), v);
++                    if k + 1 < n {
++                        prefix =
++                            _mm256_add_pd(prefix, _mm256_mul_pd(_mm256_set1_pd(f.q_aux[k]), x));
++                    }
++                }
++            }
++        }
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    use psmc_core::{Pattern, Settings, model::Model, rng::LegacyRng};
++    #[test]
++    fn four_independent_lanes_equal_scalar_structured_messages_and_counts() {
++        if !crate::avx_available() {
++            return;
++        }
++        for n in [4, 5, 23, 64] {
++            let settings = Settings {
++                pattern: Pattern {
++                    text: n.to_string(),
++                    groups: (0..n).collect(),
++                    n_free: n,
++                },
++                max_t: 15.,
++                alpha: 0.1,
++                tr_ratio: 5.,
++                ran_init: 0.,
++                divergence: Some(0.3),
++                initial_params: None,
++                explicit_times: None,
++            };
++            let mut model = Model::new(&settings, 20, 10000, &mut LegacyRng::new(42));
++            let mut factors = StructuredModel::new(n);
++            factors.update(&mut model, &settings);
++            assert!(factors.eligible(&model));
++            factors.materialize(&mut model);
++            let mut expected = Workspace::new(n);
++            let mut actual = Workspace::new(n);
++            let prepared = actual.prepare(&model);
++            let mut batch = Lockstep::default();
++            for length in [1, 2, 17, 257, 2048, 3] {
++                let sequences: [Vec<u8>; 4] = std::array::from_fn(|lane| {
++                    (0..length)
++                        .map(|i| {
++                            if (i + lane) % 19 == 0 {
++                                2
++                            } else if (i * (lane + 1) + lane) % 31 == 0 {
++                                1
++                            } else {
++                                0
++                            }
++                        })
++                        .collect()
++                });
++                let obs = std::array::from_fn(|lane| sequences[lane].as_slice());
++                batch.evaluate(&actual, &prepared, obs, &factors);
++                for lane in 0..4 {
++                    let (am, ac) = batch.lane(lane, &mut actual, &prepared, obs[lane]);
++                    let (em, ec) = expected.evaluate_structured(&prepared, obs[lane], &factors);
++                    assert_eq!(
++                        am.forward, em.forward,
++                        "forward n={n} len={length} lane={lane}"
++                    );
++                    assert_eq!(am.backward, em.backward);
++                    assert_eq!(am.scales, em.scales);
++                    assert_eq!(am.log_likelihood, em.log_likelihood);
++                    assert_eq!(am.backward_check, em.backward_check);
++                    assert_eq!(ac.a, ec.a);
++                    assert_eq!(ac.e, ec.e);
++                    assert_eq!(ac.a0, ec.a0);
++                }
++            }
++        }
++    }
++}

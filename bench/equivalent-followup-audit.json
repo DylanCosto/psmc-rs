@@ -1,0 +1,182 @@
+{
+  "status": "completed",
+  "base_commit": "f19167485cd0c171b7c3fc24840cbe2dca200871",
+  "decision": "promote_bounded_lockstep_in_opt_in_equivalent",
+  "strict_default": true,
+  "scientific_equivalence_qualified": false,
+  "interpretation": "Historical fixed/per-fit numerical screens are not calibrated scientific tests. Conditional-lambda diagnostic supports weak identification. This engineering change must reproduce the prior structured outputs exactly.",
+  "strict_passed": 338,
+  "ordered_traces": 10,
+  "obsolete_availability_checks": [
+    {
+      "backend": "cpu",
+      "name": "reject_equivalent_mode"
+    },
+    {
+      "backend": "scalar",
+      "name": "reject_equivalent_mode"
+    }
+  ],
+  "verified_bootstrap_outputs": 510,
+  "tests": {
+    "full_release": {
+      "passed": 47,
+      "failed": 0,
+      "ignored": 4,
+      "log_sha256": "917863d7f2d9048544da5ff83491bd331dc9e3de8a34822db743c43a4451148f"
+    },
+    "cpu_debug": {
+      "passed": 24,
+      "failed": 0,
+      "ignored": 0,
+      "log_sha256": "0afe5d7dcaeb53648c9b4bc7f8d9f6bc3205f586f03245b650fef64961684fe3"
+    },
+    "cpu_message_release": {
+      "passed": 23,
+      "failed": 0,
+      "ignored": 0,
+      "log_sha256": "b87373242b5207d15ffec830363da3f7c18e73371e6ff063a2c30e97e44b8c55"
+    }
+  },
+  "counter_checks": [
+    {
+      "dataset": "hg001",
+      "removed_estep_refreshes": 900
+    },
+    {
+      "dataset": "hg002",
+      "removed_estep_refreshes": 900
+    }
+  ],
+  "hardware_not_run": [
+    "CUDA",
+    "ARM/NEON"
+  ],
+  "binary_sha256": "f46ab0c67d7cac6e9dcb9f341131f544589469ba6715d6ac15bcbd8cc34588eb",
+  "inputs": {
+    "work/hg-input/NA12878_chr22.psmcfa": "0fe05d6fc19a94a3129803dc214660e0a72f2335ce5940b35fc3c9eab3698ea5",
+    "work/hg-input/blocks-50000.psmcfa": "dcda5cbe66ec6276a9ef208e43e45ae6e0ab68e5a5301c16e2d023b0ffae3e49",
+    "work/equivalent/c-baseline/hg001-sample-00.psmcfa": "45c89d34b768bcdcb33becf0138e9ac6146fe495d284330e59dcf00890a13c88",
+    "work/equivalent/c-baseline/hg001-sample-01.psmcfa": "652c6a6007c5cf7ab672a4e35e196e85234cc12e0a732d93118be87b765caee9",
+    "work/equivalent/c-baseline/hg001-sample-02.psmcfa": "e23ac4823d7581b82410af92601d6d26d7f7c86620f085c92c3230853f27ee6d",
+    "work/equivalent/c-baseline/hg001-sample-03.psmcfa": "9f58972e6a89f4b20a0b9e85e9cdd4d3a33f876ff560e82ad572a7fde599d967",
+    "work/equivalent/c-baseline/hg001-sample-04.psmcfa": "e383b434577310027e51d0ecfc53eefee737d3715abe214aef9197d4e799b0e4",
+    "work/equivalent/c-baseline/hg001-sample-05.psmcfa": "a67aa48d2bfdb2f69db553d1499915a0a7ff6d32dc02fe9cb4e6c5ed67f3c7d9",
+    "work/equivalent/c-baseline/hg001-sample-06.psmcfa": "7bf93d43765052c0a2d7c1f9ece1fce96c9f3ee772d908df3898d383ddc5a75b",
+    "work/equivalent/c-baseline/hg001-sample-07.psmcfa": "3572013b49b3037ba70b10ba5d316bb8cdfbc4717c69ad2e62063050e788ae6c",
+    "work/equivalent/c-baseline/hg001-sample-08.psmcfa": "a47636c50aace6fb59652878fc4f97c22e3574e47139d595fc7c437b137cb747",
+    "work/equivalent/c-baseline/hg001-sample-09.psmcfa": "1dd9866cfdc293c19099747735dcf457a06bcd066aa9e7d3b3a93f4562e09ac6",
+    "work/equivalent/c-baseline/hg001-sample-10.psmcfa": "2bd559e48be5a3c8ef6c591c290a6dba84046480b87ad20e51cf4ac5cb70cd45",
+    "work/equivalent/c-baseline/hg001-sample-11.psmcfa": "cf5a6a8103bc50fa5355231d2bcd0c0fddc9f68afd6db0fc11a970672481a197",
+    "work/equivalent/c-baseline/hg001-sample-12.psmcfa": "82d504c47a5f1c0f1bcb01223266208c22bf5f678e481b72550d407c9c29da38",
+    "work/equivalent/c-baseline/hg001-sample-13.psmcfa": "fbb1f6daca9066418f2b4ff16d1a26b365d49efba294898a6578f2d048313ac0",
+    "work/equivalent/c-baseline/hg001-sample-14.psmcfa": "a97aaa1fb54d44414b54e61910123f89c6d0c8db2f536db33f849a27f0e8dcc7",
+    "work/equivalent/c-baseline/hg001-sample-15.psmcfa": "67a0082729e2ecd618f2825a6d8cbb85a4e787dde2febbe52a32d294cd78dcb6",
+    "work/equivalent/c-baseline/hg001-sample-16.psmcfa": "c54c12a0edd29b8cae110bb5f05eb177e86b12c5297a199b0a5f1eab0993c60c",
+    "work/equivalent/c-baseline/hg001-sample-17.psmcfa": "787da967fdf9043bde4edce69e08eba5e9d5c5359a546550800d6a98ec3cc56e",
+    "work/equivalent/c-baseline/hg001-sample-18.psmcfa": "614c3f42eb9f2e9acc677ee1d635e3331268444069986da2d41fe578ebd3b403",
+    "work/equivalent/c-baseline/hg001-sample-19.psmcfa": "3e99c03960e01f837458e50f03065c5773c2116f665b4ac8a3e99fbeb757e470",
+    "work/equivalent/c-baseline/hg001-sample-20.psmcfa": "d29118eeea835a62f57cb13586940d82ff61ac4a5fdc83981fea75c074189244",
+    "work/equivalent/c-baseline/hg001-sample-21.psmcfa": "30cf87982d6ccd69f6e4b81ae0aac32c4b6365c9fe0d2d80b1ecb3e53745f790",
+    "work/equivalent/c-baseline/hg001-sample-22.psmcfa": "ec00a5575a91e532a6bb5f812b6cab31a7325aeb3085825fc87dda803cf91ede",
+    "work/equivalent/c-baseline/hg001-sample-23.psmcfa": "44cf1a35485cd717e38e5e799c76155b5189c71993157a639947fe4bd9c35685",
+    "work/equivalent/c-baseline/hg001-sample-24.psmcfa": "068a9d0c100b0cf1db27aa568cd6fa3fec50582af87356ed2747b486be47644a",
+    "work/equivalent/c-baseline/hg001-sample-25.psmcfa": "32561ed7da503cf5f806d8a3b97c4958a038dedd0d3918ca4e12223a76578b43",
+    "work/equivalent/c-baseline/hg001-sample-26.psmcfa": "787a3378d30895e1ec507f64f81f31d7f3a7ef35210be415652cd1330e7929bc",
+    "work/equivalent/c-baseline/hg001-sample-27.psmcfa": "982741968103ec55d6da9f5ac1637b0a976a489f7a8aa7b7dcb694fb83f33f71",
+    "work/equivalent/c-baseline/hg001-sample-28.psmcfa": "f7686739c51acbc8366446f6aac114361f8680e27e217cb4694cd560ff7ad91b",
+    "work/equivalent/c-baseline/hg001-sample-29.psmcfa": "3f8ea3bdc978a5176728b68b7645209e55530bfdc98b4b47ad79a9d456abc02c",
+    "work/cpu-next/hg002/HG002_GRCh38_chr1.psmcfa": "16d0f60777857fc724d46464da84c9b46c0755d3dbd7f678dfc88f1caed9bc14",
+    "work/cpu-next/large/blocks-50000.psmcfa": "ae97ac79abbd54d2fd1540e2de70a8dae7b17393b95c3b14c08d091d7a7394d5",
+    "work/equivalent/c-baseline/hg002-sample-00.psmcfa": "b7c5bda58d7993d37ae8aeb2742234e0a2a9723c2d29e8fea9488d125701f432",
+    "work/equivalent/c-baseline/hg002-sample-01.psmcfa": "da5cba32904e510c65b78325c89443a99104f4cd8314daf2d1378e347d1fad0a",
+    "work/equivalent/c-baseline/hg002-sample-02.psmcfa": "633b09e1da20a6872aa6878d10b035a7abe02cfff69ead87ab28eabeed1759cf",
+    "work/equivalent/c-baseline/hg002-sample-03.psmcfa": "ef49cfe46a9fd63f05108d0e58d9320f90c3effec3270c8a7b0a6e7cac7a4c0a",
+    "work/equivalent/c-baseline/hg002-sample-04.psmcfa": "3a98d655068835998f120cd827839de32f75637fa4a70c5f706f674ae14ba9a8",
+    "work/equivalent/c-baseline/hg002-sample-05.psmcfa": "b93ece81590bc8fd442ed338553c46a5b60e83aa07be685bf238e6b43933cddf",
+    "work/equivalent/c-baseline/hg002-sample-06.psmcfa": "5136c3711bc50f946834235356ed7943b58c46a523cf3b4dc67ef4afdb7304ff",
+    "work/equivalent/c-baseline/hg002-sample-07.psmcfa": "5694f1a191b529331b3335b6456d18961ac288cbc05c91602c98ac1edc9583f3",
+    "work/equivalent/c-baseline/hg002-sample-08.psmcfa": "2611bbe58cdec0e78055e20baf68752dfa424cc8568f1ff64dfb0f3172f2b37b",
+    "work/equivalent/c-baseline/hg002-sample-09.psmcfa": "11436de0d881a042efb5b37412c8a3a6f3ccd648536c0546958f205c815df494",
+    "work/equivalent/c-baseline/hg002-sample-10.psmcfa": "7c36ac808f074f6ed2d397a9249d218d3d48afa1f11446d7e434ede089df0bb9",
+    "work/equivalent/c-baseline/hg002-sample-11.psmcfa": "273bd9d701ccc5b9944c6a73123c8872073a6ca3101538fe32abc4e84908f789",
+    "work/equivalent/c-baseline/hg002-sample-12.psmcfa": "b8d2b659e77710cafdad701d37f88a303707a516a4a2baea85e65e964f9f18e9",
+    "work/equivalent/c-baseline/hg002-sample-13.psmcfa": "8d6b84b3f70a923dcd9b4eb1efc9ca329132fb54dde03f5acb25bc13a3cb6484",
+    "work/equivalent/c-baseline/hg002-sample-14.psmcfa": "059e03880d9cb8432dbb1c959773505851d784b57e84a0eea18c6d76add1133f",
+    "work/equivalent/c-baseline/hg002-sample-15.psmcfa": "698220290d59248df985cdba137021d5036d2705a92dddb792758b7000e8dfc1",
+    "work/equivalent/c-baseline/hg002-sample-16.psmcfa": "d9921ce3b640adc8f418ea8710cb9973f90aec81e6e64b8705876d7c8dd3d672",
+    "work/equivalent/c-baseline/hg002-sample-17.psmcfa": "d698aac9c97f1f1c4a8394ad0e273a42e60e8dd636b34b9e34ce81beb1215741",
+    "work/equivalent/c-baseline/hg002-sample-18.psmcfa": "0e308a99a767c9f6cd91a20fd5a042ed16cef77795922b94cf5299621eb6a58c",
+    "work/equivalent/c-baseline/hg002-sample-19.psmcfa": "63a60b0e7a016f3f9054a09bc3f93f5741bd98f0ac5db8a07083faa4b34c3431",
+    "work/equivalent/c-baseline/hg002-sample-20.psmcfa": "74a131b90e9b6801af2571c2bb553f7d01dee06d976a924fffd5d95aa06a72a7",
+    "work/equivalent/c-baseline/hg002-sample-21.psmcfa": "2cc7dcb711d6a6c7947939bce42d48c96998ff6bd061aebb39635c52298d1c32",
+    "work/equivalent/c-baseline/hg002-sample-22.psmcfa": "6ab03e147496ef204fd40a6117f543a83578b9eb4ea17e239c2d669de28d8865",
+    "work/equivalent/c-baseline/hg002-sample-23.psmcfa": "fdee4b7864cc832f76682232ec320c5621454baf069d733c3a5866e37619f60d",
+    "work/equivalent/c-baseline/hg002-sample-24.psmcfa": "024635e42554e14674324823a70e09a28db6308591d608d3346d5d020f20cb05",
+    "work/equivalent/c-baseline/hg002-sample-25.psmcfa": "107ce9e4c65c67cd423e0a9f4fb7d01c5b367f48f74fd8f19ffa4978c47ce257",
+    "work/equivalent/c-baseline/hg002-sample-26.psmcfa": "02cc38daa91807b7848e659ce3e740cbbc6af3f888535aae727cc4bff21fe04c",
+    "work/equivalent/c-baseline/hg002-sample-27.psmcfa": "8c10d334c9742b7d7a8f7294c5d2122070f08c355b2cee6890f7b23d4ed0ffa3",
+    "work/equivalent/c-baseline/hg002-sample-28.psmcfa": "524560ea5d274126efba1639a71db859b5eff3b7b0c95670a507980416f32796",
+    "work/equivalent/c-baseline/hg002-sample-29.psmcfa": "f055be9f2edb3df82394fe52b02bdf568a66c1ba877f5d485ce740a55fc505f8"
+  },
+  "rejected_source_patch_sha256": "a712f47eefe6357ee011074126c18a32cd2ff790d7b4e4ddfd9acae53ca0b640",
+  "sources": {
+    "Cargo.toml": "1b4eb797fe5f66aabf993f77194207ed2fd0ed81846b29badf2b58bd2ffabb0b",
+    "Cargo.lock": "6b4cc2726f88a99c35f8d148007cad0281af2d39b47968d2eb8c499dcdf064be",
+    "crates/psmc-cuda/src/tests.rs": "753fa30d7727174bc5fab8c0246a6e6b5ef71686d4313208ea2f6c8129f9dd48",
+    "crates/psmc-cuda/src/lib.rs": "362d860fee1b34ebf8a336373efbad7f51f24ff663f474dff4a43f6c0e3e9dae",
+    "crates/psmc-cuda/src/driver.rs": "c6f3c0a2fde681394206d5757c4a8b9162c071443ad001209e5b961b8203642f",
+    "crates/psmc-core/src/optimizer.rs": "a9703e4ad0b225123b7e39133ec6aeb9be302ff687c22ea1ff4501837b5b1db9",
+    "crates/psmc-core/src/structured.rs": "8e94bdfa9b6ed12e04c14dd41b9b2b58b7e434be9ad3477d7ca2881f91f5e2e2",
+    "crates/psmc-core/src/em.rs": "6691cb98393bbb49996dd59698342576c9b3546cb83642870450ba0160305f0b",
+    "crates/psmc-core/src/lib.rs": "57902b19bdd8d420667fce43842771440094f7357d95d34b94553a5863c92cd0",
+    "crates/psmc-core/src/model_workspace.rs": "304a2a30ad8e37140f7d075d96a0b8c104f59b7ed130986bb8657a54f7a6a2a3",
+    "crates/psmc-core/src/math.rs": "37fe997c02d34040a59a1a5a6f3cae3b7a4643ced78244c1b4c01ddc150f0e4e",
+    "crates/psmc-core/src/rng.rs": "bed06e67bc5f9522f811ab796c91380beb2642283dadfad0a459db5db2411767",
+    "crates/psmc-core/src/hmm.rs": "5705c4de7f87a1424569513d996b3aa445cc17590edb962e876585f7253eef77",
+    "crates/psmc-core/src/model.rs": "7fb49285a020d145c544523821cbc51270a5ddcb827142af282964ba460aa6d0",
+    "crates/psmc-io/src/gzip.rs": "422f550cf9619a62f71447243a5cea4934b012dc62d687243892edb2516a4978",
+    "crates/psmc-io/src/lib.rs": "ea22c9b3545489fac323c283706ad88cd7c48e739b96d73b6433cce87ea7175f",
+    "crates/psmc-cli/tests/equivalent.rs": "5f60fc13104c705e1d06d2710846e448eec64ae84eacfdab6317d5d0d9c010ca",
+    "crates/psmc-cli/tests/golden.rs": "60d75a67cf486d7ef6fed1cb769282946e7143e2e747e50ef0187e9de9f1cd40",
+    "crates/psmc-cli/src/snapshot.rs": "cfe7cedfb5f1cf78652b2b29ee3905e52fde0f22e81eb0d6faaace6620e89fd9",
+    "crates/psmc-cli/src/main.rs": "3037273e095d20af05a783fc481c27d632f81307641e5f49cf00b5b0ad8aa738",
+    "crates/psmc-cli/src/format.rs": "90d1e55c4ac9881f188a0be2b65eb413a128c4c5ad53f4aa289b45df7b1d24c7",
+    "crates/psmc-cli/src/batch.rs": "60769949af0d273a075589de08770304a3727cbdbf631865162a0d477c93066c",
+    "crates/psmc-cli/src/legacy.rs": "319ace6fadd3141d1fc8cf9448da86cb94bf79c07f4e4cddc3976326fbf5b013",
+    "crates/psmc-cpu/examples/equivalent_components.rs": "5514baf8d3e4d4143558b7b6e576807ee8fcbf9363affe51b3bb4354485a6e44",
+    "crates/psmc-cpu/examples/equivalent_ridge.rs": "bc8328c605dae1f145e84c844ca15e95da166fc8e586f762c73a32531f5dfcce",
+    "crates/psmc-cpu/examples/kernel_bench.rs": "d2a144c97e570865a448fb2dcad1c6acfca3598f5fadeb2dcedd859e8b362fcc",
+    "crates/psmc-cpu/examples/cuda_fixture.rs": "11db2adbb88fc00f23ed2f3fe4c4092399e400cb1903bce55d2888f23886aa33",
+    "crates/psmc-cpu/examples/simd_bench.rs": "38f4f5910f109d59f4bfedeabe563cb266c8456ef91160baa195204c565ea2b4",
+    "crates/psmc-cpu/src/tests.rs": "ea2a8ac0c418eca0a6f3da42aa4d0e7bfae87ec364a7a0b6372318173cbcbccb",
+    "crates/psmc-cpu/src/equivalent.rs": "799b1c682ae780b9077ceeaa5c4cd25e8f9eaa671744b59f071e45cfaaccaf2f",
+    "crates/psmc-cpu/src/lockstep.rs": "64719c91189816cafb43dd1aa7c0b379a2df3d9bc474c93091ac87366fe28c7f",
+    "crates/psmc-cpu/src/simd.rs": "2373e1011971183f203597557d5211997cd20db7edc292c7c0aefe4efca39842",
+    "crates/psmc-cpu/src/lib.rs": "ef4db82b8e7f67db8850bcc70498d4a048ce9eea3ef22c8ab46d31735cdf86a3",
+    "crates/psmc-cpu/src/engine.rs": "f8d938f809204a538303f119b618b9461ba032319d604847f868efab6cf00179",
+    "crates/psmc-cuda/Cargo.toml": "021e919aba486f13327947010905bd551383166eee41015563714dcbe672b1e8",
+    "crates/psmc-core/Cargo.toml": "554c9f223b12aa93e03a5f897c334c6adcb53febe0d40dff3c372a08b1d50039",
+    "crates/psmc-io/Cargo.toml": "409bcf90d4bdfd0ba961ec986245e6d884efd1daf4b478a13d3ebc8801e7fe8c",
+    "crates/psmc-cli/Cargo.toml": "e1f55a707a8e1797a869d96efb187d55ce5f69c7f9a91985037aad2058f14acf",
+    "crates/psmc-cpu/Cargo.toml": "fd6caeebb5ea1318c13b3817dc16e16c36bcdbeba1fbc9a02f05d49186d9ef91"
+  },
+  "reports": {
+    "bench/equivalent-followup-analysis.json": "17f04c61983eafe711b48c512b5dec0b83b2b4e574dea1ddbe6020ecc67233c3",
+    "bench/equivalent-followup-screen.json": "475c69abc375d1ed06ea2a5e6a5a19edc0a6f53d93fa3e14f0c108ea189ec392",
+    "bench/equivalent-followup-bounded-screen.json": "622b5b06441d99312890ef500c8aa173010b1e8b140d89b9a54249649267007d",
+    "bench/equivalent-followup-bounded-validation.json": "a28c4777e491a41343eced9643e6ebcaedb564a2d56986950428e5f88ce66ba1",
+    "bench/equivalent-followup-bounded-performance.json": "82d42c7e62caee389abadddbed48e68905d0b1337fe4e5aa15c1e4f0bf504e3a",
+    "bench/equivalent-followup-strict-regression.json": "05e33beada1aee1f65b9d03f2ddb59746d784a7967a0a2e0efb86ea0a051b21b"
+  },
+  "runners": {
+    "work/equivalent-followup/full-buffer-candidate/runner.py": "84a6d770aaebd7fdbf4b10f6cae3f437f979d4c9b8185011581cd548c18371ef",
+    "work/equivalent-followup/bounded-screen-runner.py": "2eeccac77862b9763ea0bdd9a1b6c55de3ad986a1e07458ebacf057090fc95d9",
+    "bench/equivalent_followup.py": "cdae3f31bf7e4228a4e2ebfb631d12ab1ec0d954bee34c7b44a68918b571d26f"
+  },
+  "environment": {
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12600K",
+    "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)\nbinary: rustc\ncommit-hash: 1159e78c4747b02ef996e55082b704c09b970588\ncommit-date: 2025-09-14\nhost: x86_64-unknown-linux-gnu\nrelease: 1.90.0\nLLVM version: 20.1.8\n",
+    "libc": "glibc 2.39"
+  }
+}
