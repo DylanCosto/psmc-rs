@@ -1843,3 +1843,23 @@ bootstrap draws, checks admission arithmetic, all 19 planned stage identities,
 per-fit marker/trace/stat hashes and timing records, plus curve/SD calculations.
 The first completed strict replicate's draw replay and all 575 source blocks
 passed this independent check. Final audit awaits the complete campaign.
+
+Broader qualification resource interruption: all30 strict whole-genome bootstrap
+fits completed in2449.68seconds; no nonfinite replicates. Independent split/draw/
+marker/hash checks passed for all30 (bench/adoption-qualification-partial.json).
+The next-stage preflight stopped with less than14GiB available RAM; no equivalent
+or additional-pattern stage had started. Original failure.json and all raw
+artifacts are retained, not overwritten. Runtime floors had not been breached.
+
+RAM subsequently recovered to20.6GiB. User was informed of the resource stop and
+explicit continuation. bench/continue_adoption_qualification.py validates every
+preserved strict artifact, frozen executable/input/source/protocol identity and
+prior failure, locks the same campaign, then runs only17 missing stages through
+the original unmodified runner. It waits for the same14GiB/25GiB preflight floors
+and stops on any new failure; no completed fit is rerun and no limit is relaxed.
+Continuation provenance and preflights are checked by the final audit. Report
+generator retains interruption/diagnostic status and all distribution metrics.
+
+Current release workspace tests and hosted strict CI38158020068 passed on2dd9cbf.
+Native final-archive validation, final scientific audit and public publication
+remain pending. The goal remains active.

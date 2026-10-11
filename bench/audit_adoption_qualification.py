@@ -3,6 +3,7 @@
 import bisect,hashlib,json,math,statistics,subprocess
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'work/adoption-qualification'
+BANDS={'recent':(1000,5000),'primary_early':(5000,20000),'primary_late':(20000,80000),'ancient':(80000,200000)}
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def read(path):return json.loads(Path(path).read_text())
 def relative(value):
@@ -65,9 +66,43 @@ def independent_curve(text,band):
     lo,hi=band
     return [math.log(n0*lambdas[max(0,bisect.bisect_right(starts,lo*(hi/lo)**(i/128))-1)]) for i in range(128)]
 
+def independent_comparison(a,b,bins):
+    bands={}
+    for name,limits in BANDS.items():
+        diffs=[abs(x-y) for x,y in zip(independent_curve(a,limits),independent_curve(b,limits))]
+        bands[name]=dict(rms=math.sqrt(sum(v*v for v in diffs)/len(diffs)),max=max(diffs))
+    def params(t):return list(map(float,[l.split()[2:] for l in t.splitlines() if l.startswith('PA\t')][-1]))
+    pa,pb=params(a),params(b)
+    assert all(math.isfinite(v) and v>0 for v in pa+pb)
+    def lk(t):return float([l.split()[1] for l in t.splitlines() if l.startswith('LK\t')][-1])
+    def finite(t):
+        return all(math.isfinite(float(v)) for l in t.splitlines() if l.startswith(('LK\t','TR\t','RS\t','PA\t'))
+                   for v in (l.split()[2:] if l.startswith('PA\t') else l.split()[1:]))
+    result=dict(bands=bands,theta_relative=abs(pb[0]/pa[0]-1),rho_relative=abs(pb[1]/pa[1]-1),legacy_lk_per_bin=abs(lk(a)-lk(b))/bins)
+    result['exploratory_screen']=finite(a) and finite(b) and all(bands[k]['rms']<=.01 for k in ['primary_early','primary_late']) and result['theta_relative']<=.001 and result['rho_relative']<=.001 and result['legacy_lk_per_bin']<=1e-6
+    return result
+
+def same(a,b):
+    if isinstance(a,dict):
+        assert a.keys()==b.keys()
+        for key in a:same(a[key],b[key])
+    elif isinstance(a,float):assert math.isclose(a,b,rel_tol=1e-12,abs_tol=1e-14),(a,b)
+    else:assert a==b,(a,b)
+
 def main():
     report=read(OUT/'report.json');frozen=report['frozen'];commit=frozen['commit']
-    assert not (OUT/'stop.json').exists() and not (OUT/'failure.json').exists()
+    assert not (OUT/'stop.json').exists()
+    continuation=None
+    if (OUT/'failure.json').exists():
+        failure=read(OUT/'failure.json');continuation=read(OUT/'continuation.json')
+        assert failure['error']=="AssertionError('preflight resource floor')"
+        assert continuation['status']=='completed' and continuation['frozen_commit']==commit
+        assert sha(OUT/'failure.json')==continuation['preserved_failure_sha256']
+        assert sha(OUT/'strict/manifest.json')==continuation['preserved_strict_manifest_sha256']
+        source=subprocess.check_output(['git','show',f"{continuation['source_commit']}:bench/continue_adoption_qualification.py"],cwd=ROOT)
+        assert hashlib.sha256(source).hexdigest()==continuation['continuation_sha256']
+        assert sorted(s['name'] for s in continuation['stages'])==sorted(name for name in report['runs'] if name not in ['split','bootstrap-strict'])
+        assert all(s['available_ram']>=14*1024**3 and s['free_disk']>=25*1024**3 for s in continuation['stages'])
     for name,digest in frozen['binary_hashes'].items():assert sha(OUT/'binaries'/name)==digest
     for path,digest in frozen['input_sha256'].items():assert sha(ROOT/path)==digest
     for path,key in [('docs/adoption-qualification-protocol.md','protocol_sha256'),('bench/adoption_qualification.py','runner_sha256')]:
@@ -106,16 +141,27 @@ def main():
             else:
                 assert command[command.index('--record-workers')+1]=='4'
                 assert command[command.index('--memory-mib')+1]=='4096'
-    exact=[]
+    exact=[];additional_stats={}
     for panel in report['additional_patterns']:
         label=panel['dataset']+'-'+panel['pattern'].replace('*','x')
         texts={m:check_rounds(OUT/(label+'-'+m+'.out')) for m in ['c-o2','c-fma','strict','equivalent']}
         remove=lambda t:'\n'.join(l for l in t.splitlines() if not l.startswith('MM\tVersion:'))
         value=remove(texts['c-o2'])==remove(texts['strict']);assert value==panel['strict_c_exact'];exact.append(value)
-    bands={'recent':(1000,5000),'primary_early':(5000,20000),'primary_late':(20000,80000),'ancient':(80000,200000)}
+        input_path=ROOT/('work/hg001-genome/chromosomes/chr22.psmcfa' if panel['dataset']=='hg001-chr22' else 'work/adoption-input/HG002_GRCh38_chr1.psmcfa')
+        bins=sum(len(sequence) for _,sequence in sequences(input_path))
+        control=independent_comparison(texts['c-o2'],texts['c-fma'],bins)
+        same(control,panel['compiler_control'])
+        same(independent_comparison(texts['strict'],texts['equivalent'],bins),panel['equivalent_comparison'])
+        assert control['exploratory_screen']==panel['screen_calibrated']
+        for mode in ['strict','equivalent']:
+            path=OUT/(label+'-'+mode+'.stats.json');stat=read(path)
+            assert stat['mode']==mode and stat['iterations']==30 and stat['seed']==20261011
+            additional_stats[label+'-'+mode]=dict(sha256=sha(path),stats=stat)
+    bands=BANDS
     all_curves={band:{mode:[] for mode in ['strict','equivalent']} for band in bands}
-    hashes={};traces={};stats_totals={mode:{'model_updates':0,'structured_fallbacks':0} for mode in ['strict','equivalent']}
+    hashes={};traces={};texts_by_mode={};stats_totals={mode:{'model_updates':0,'structured_fallbacks':0} for mode in ['strict','equivalent']}
     for mode in ['strict','equivalent']:
+        texts_by_mode[mode]=[]
         manifest=read(OUT/mode/'manifest.json');assert manifest['failed_replicates']==0 and len(manifest['replicates'])==30
         assert manifest['workers']<=16 and manifest['memory_mib']==8192 and manifest['mode']==mode
         assert manifest['seed']==20261011 and manifest['states']==64 and manifest['iterations']==30
@@ -127,6 +173,7 @@ def main():
             for suffix,line in zip(['psmc','stats.json','draws.jsonl'],marker[2:]):
                 path=Path(str(base)+'.'+suffix);digest=sha(path);assert line==digest+' '+suffix;hashes[str(path.relative_to(ROOT))]=digest
             text=check_rounds(base.with_suffix('.psmc'))
+            texts_by_mode[mode].append(text)
             assert sha(base.with_suffix('.psmc'))==report['bootstrap_pairs'][i]['fits'][mode]['sha256']
             stat=read(Path(str(base)+'.stats.json'));assert stat==report['bootstrap_pairs'][i]['stats'][mode]
             assert marker[1]==str(stat['nonfinite_output']).lower()
@@ -141,14 +188,26 @@ def main():
             for band,limits in bands.items():
                 values=independent_curve(text,limits);reported=report['bootstrap_pairs'][i]['fits'][mode]['curves'][band]
                 assert all(abs(a-b)<1e-12 for a,b in zip(values,reported));all_curves[band][mode].append(values)
+    flagged=set()
+    for i,pair in enumerate(report['bootstrap_pairs']):
+        comparison=independent_comparison(texts_by_mode['strict'][i],texts_by_mode['equivalent'][i],pair['fits']['strict']['bins'])
+        same(comparison,pair['comparison'])
+        if not comparison['exploratory_screen']:flagged.add(i)
     maxima={}
     for band,curves in all_curves.items():
         sd=[statistics.stdev(row[k] for row in curves['strict']) for k in range(128)]
         ratios=[abs(a[k]-b[k])/sd[k] for a,b in zip(curves['strict'],curves['equivalent']) for k in range(128) if sd[k]>0]
         maximum=max(ratios) if ratios else None;maxima[band]=maximum
         if maximum is not None:assert abs(maximum-report['uncertainty'][band]['max_ratio'])<1e-10
+        if band.startswith('primary'):
+            for i,(a,b) in enumerate(zip(curves['strict'],curves['equivalent'])):
+                values=[abs(a[k]-b[k])/sd[k] for k in range(128) if sd[k]>0]
+                if not values or max(values)>.1:flagged.add(i)
+    assert sorted(flagged)==report['diagnostic_required']
     audit=dict(integrity_passed=True,strict_c_exact=all(exact),whole_genome_pairs=30,replicate_artifact_hashes=hashes,
         split_boundaries_and_content_verified=True,independent_rng_draws_verified=True,
+        independent_screens_verified=True,additional_stats=additional_stats,
+        preserved_preflight_pause=continuation,
         uncertainty_max_ratios=maxima,stats_totals=stats_totals,diagnostic_required=report['diagnostic_required'],
         min_available_ram_gib=min(r['available_ram'] for r in resources)/1024**3,
         min_free_disk_gib=min(r['free_disk'] for r in resources)/1024**3,
