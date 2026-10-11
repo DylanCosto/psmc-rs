@@ -11,6 +11,41 @@ def relative(value):
     if isinstance(value,dict):return {k:relative(v) for k,v in value.items()}
     return value
 
+def sequences(path):
+    records=[]
+    for line in path.read_text().splitlines():
+        if line.startswith('>'):records.append([line[1:].split()[0], []])
+        else:records[-1][1].append(line.strip())
+    return [(name, ''.join(parts)) for name,parts in records]
+
+def verify_split():
+    original=sequences(ROOT/'work/hg001-genome/HG001_GRCh38_autosomes.psmcfa')
+    blocks=sequences(OUT/'blocks.psmcfa');expected=[]
+    for _,sequence in original:
+        start=0
+        while start<len(sequence):
+            end=len(sequence) if len(sequence)-start<75000 else start+50000
+            expected.append(sequence[start:end]);start=end
+    assert [sequence for _,sequence in blocks]==expected
+    assert sum(map(len,expected))==28750027 and len(original)==22
+    return list(map(len,expected))
+
+def verify_draws(path, lengths, seed, replicate):
+    records=[json.loads(line) for line in path.read_text().splitlines()]
+    state=((seed & 0xffffffff)<<16)|0x330e;total=0;selected=[];target=sum(lengths)
+    for i,record in enumerate(records[:-1]):
+        state=(state*0x5deece66d+0xb)&((1<<48)-1)
+        index=int(len(lengths)*state/(1<<48));length=lengths[index]
+        before=total;remaining=target-total;excess=total+length-target
+        accepted=excess<=0 or (remaining>0 and excess<remaining)
+        stop=remaining>=0 and excess>=0
+        if accepted:total+=length;selected.append(index)
+        assert record==dict(event='bootstrap_draw',draw=i,source_index=index,length=length,
+            accepted=accepted,before_length=before,after_length=total,target_length=target,stop=stop)
+        assert stop==(i==len(records)-2)
+    assert records[-1]==dict(event='bootstrap_end',accepted_sequences=len(selected),length=total,target_length=target)
+    assert selected==replicate['source_indices'] and total==replicate['length']
+
 def check_rounds(path):
     text=path.read_text();rounds=[int(l.split()[1]) for l in text.splitlines() if l.startswith('RD\t')]
     assert rounds==list(range(31)),path
@@ -38,6 +73,12 @@ def main():
     for path,key in [('docs/adoption-qualification-protocol.md','protocol_sha256'),('bench/adoption_qualification.py','runner_sha256')]:
         assert sha(ROOT/path)==frozen[key]
         assert hashlib.sha256(subprocess.check_output(['git','show',f'{commit}:{path}'],cwd=ROOT)).hexdigest()==frozen[key]
+    for path in ['bench/known_truth.py','bench/known_truth_200mb.py','bench/hg001_genome_run.py']:
+        assert (ROOT/path).read_bytes()==subprocess.check_output(['git','show',f'{commit}:{path}'],cwd=ROOT)
+    assert set(report['runs'])=={'split','bootstrap-strict','bootstrap-equivalent'}|{
+        f'{data}-{pattern}-{mode}' for data in ['hg001-chr22','hg002-chr1']
+        for pattern in ['4+5x3+4','8+8+8+8'] for mode in ['c-o2','c-fma','strict','equivalent']}
+    lengths=verify_split()
     resources=[json.loads(l) for l in (OUT/'resources.jsonl').read_text().splitlines()]
     assert min(r['available_ram'] for r in resources)>=4*1024**3
     assert min(r['free_disk'] for r in resources)>=25*1024**3
@@ -48,10 +89,23 @@ def main():
         assert sha(OUT/(name+'.stderr'))==run['stderr_sha256']
         time_text=(OUT/(name+'.time')).read_text()
         assert 'Exit status: 0' in time_text
+        parsed={}
+        for line in time_text.splitlines():
+            for prefix,key in [('User time (seconds):','user_seconds'),('System time (seconds):','system_seconds'),('Maximum resident set size (kbytes):','peak_rss_kib')]:
+                if line.strip().startswith(prefix):parsed[key]=float(line.strip()[len(prefix):])
+        assert parsed==run['timing'] and 0<parsed['peak_rss_kib']<12*1024**2
+        assert run['wall_seconds']>0
         assert str(OUT/'binaries/rust') in run['command'] or str(OUT/'binaries/c-o2') in run['command'] or str(OUT/'binaries/c-fma') in run['command']
         if name.startswith('bootstrap-'):
             assert '--workers' in run['command'] and run['command'][run['command'].index('--workers')+1]=='16'
             assert run['command'][run['command'].index('--memory-mib')+1]=='8192'
+        elif name!='split':
+            command=run['command']
+            if name.endswith(('c-o2','c-fma')):
+                assert command[:2]==['/usr/bin/taskset','-c'] and command[2].isdigit()
+            else:
+                assert command[command.index('--record-workers')+1]=='4'
+                assert command[command.index('--memory-mib')+1]=='4096'
     exact=[]
     for panel in report['additional_patterns']:
         label=panel['dataset']+'-'+panel['pattern'].replace('*','x')
@@ -60,10 +114,13 @@ def main():
         value=remove(texts['c-o2'])==remove(texts['strict']);assert value==panel['strict_c_exact'];exact.append(value)
     bands={'recent':(1000,5000),'primary_early':(5000,20000),'primary_late':(20000,80000),'ancient':(80000,200000)}
     all_curves={band:{mode:[] for mode in ['strict','equivalent']} for band in bands}
-    hashes={};stats_totals={mode:{'model_updates':0,'structured_fallbacks':0} for mode in ['strict','equivalent']}
+    hashes={};traces={};stats_totals={mode:{'model_updates':0,'structured_fallbacks':0} for mode in ['strict','equivalent']}
     for mode in ['strict','equivalent']:
         manifest=read(OUT/mode/'manifest.json');assert manifest['failed_replicates']==0 and len(manifest['replicates'])==30
         assert manifest['workers']<=16 and manifest['memory_mib']==8192 and manifest['mode']==mode
+        assert manifest['seed']==20261011 and manifest['states']==64 and manifest['iterations']==30
+        assert manifest['requested_workers']==16 and manifest['backend']=='cpu'
+        assert manifest['input_bytes']+manifest['estimated_metadata_bytes']+manifest['workers']*manifest['estimated_worker_bytes']<=8192*1024**2
         for i in range(30):
             base=OUT/mode/f'replicate-{i:02}'
             marker=base.with_suffix('.complete').read_text().splitlines();assert marker[0]=='PSMC-COMPLETE-1' and len(marker)==5
@@ -73,6 +130,13 @@ def main():
             assert sha(base.with_suffix('.psmc'))==report['bootstrap_pairs'][i]['fits'][mode]['sha256']
             stat=read(Path(str(base)+'.stats.json'));assert stat==report['bootstrap_pairs'][i]['stats'][mode]
             assert marker[1]==str(stat['nonfinite_output']).lower()
+            replicate=manifest['replicates'][i]
+            assert replicate['index']==i and replicate['seed']==20261011+i
+            assert stat['seed']==20261011+i and stat['mode']==mode and stat['iterations']==30
+            trace=Path(str(base)+'.draws.jsonl')
+            verify_draws(trace,lengths,20261011+i,replicate)
+            if mode=='strict':traces[i]=sha(trace)
+            assert sha(trace)==traces[i]==report['bootstrap_pairs'][i]['trace_sha256']
             for key in stats_totals[mode]:stats_totals[mode][key]+=stat[key]
             for band,limits in bands.items():
                 values=independent_curve(text,limits);reported=report['bootstrap_pairs'][i]['fits'][mode]['curves'][band]
@@ -84,6 +148,7 @@ def main():
         maximum=max(ratios) if ratios else None;maxima[band]=maximum
         if maximum is not None:assert abs(maximum-report['uncertainty'][band]['max_ratio'])<1e-10
     audit=dict(integrity_passed=True,strict_c_exact=all(exact),whole_genome_pairs=30,replicate_artifact_hashes=hashes,
+        split_boundaries_and_content_verified=True,independent_rng_draws_verified=True,
         uncertainty_max_ratios=maxima,stats_totals=stats_totals,diagnostic_required=report['diagnostic_required'],
         min_available_ram_gib=min(r['available_ram'] for r in resources)/1024**3,
         min_free_disk_gib=min(r['free_disk'] for r in resources)/1024**3,

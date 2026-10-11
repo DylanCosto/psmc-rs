@@ -1,0 +1,46 @@
+{
+  "archive": "psmc-rs-0.8.0-x86_64-unknown-linux-gnu.tar.gz",
+  "archive_sha256": "caeb9c6c67d606d05d0b4aa124c5d46d07643e1cd0b24849f30aa23c2d3f6480",
+  "build": {
+    "version": "0.8.0",
+    "version_banner": "psmc-rs 0.8.0; equivalent-default f64 CPU; strict available; legacy reference 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a",
+    "source_commit": "4ec1d13f4d3897eaefb5ccc8d5804380aa7b6691",
+    "target": "x86_64-unknown-linux-gnu",
+    "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)\nbinary: rustc\ncommit-hash: 1159e78c4747b02ef996e55082b704c09b970588\ncommit-date: 2025-09-14\nhost: x86_64-unknown-linux-gnu\nrelease: 1.90.0\nLLVM version: 20.1.8",
+    "build_command": [
+      "cargo",
+      "+1.90.0",
+      "build",
+      "--release",
+      "--locked",
+      "--offline",
+      "--target",
+      "x86_64-unknown-linux-gnu"
+    ],
+    "generic_cpu": true,
+    "runtime_simd": true,
+    "cuda": false,
+    "required_glibc": "2.34",
+    "shared_libraries": [
+      "libz.so.1",
+      "libm.so.6",
+      "libgcc_s.so.1",
+      "libc.so.6",
+      "ld-linux-x86-64.so.2"
+    ],
+    "binary_sha256": "c71ddca508d393762dfba18b068a48e77479e2dbd271707ded89481daceb5fbc",
+    "debug_symbols": false,
+    "source_paths_remapped": true,
+    "precision": "f64",
+    "strict_scope": "Pinned-build comparisons; not universal cross-libm bit equality"
+  },
+  "extracted_file_checksums_verified": true,
+  "extracted_fit_sha256": {
+    "strict": "fc8ecb0848242ad54f821ce88f63fb7199c8a7857afefad07ee91cdece401567",
+    "equivalent": "49f5ffb4321b25f4733b7d4b48678de7d5a70470858a8fe5037015b0a887e490"
+  },
+  "extracted_export_provenance_verified": true,
+  "unbundled_links_pinned_to_source": true,
+  "smoke_status": "passed",
+  "host_platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39"
+}

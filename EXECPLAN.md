@@ -1830,3 +1830,16 @@ announcement. Pending broader qualification is labeled in progress, not passed;
 release remains unpublished. Author uses owner name only, with no invented
 affiliation/ORCID or external participation. Archives will bundle practical guides
 and resolve remaining evidence links to their exact source commit.
+
+Local packaging gate on 4ec1d13 passed: archive caeb9c6c67d606d05d0b4aa124c5d46d07643e1cd0b24849f30aa23c2d3f6480,
+all extracted hashes, strict/equivalent fits, finite LK fields and CSV provenance.
+Archives now include container recipe and practical guides; evidence links not
+bundled are pinned to the exact source commit. Seventeen Markdown documents' local
+links and CFF schema validated. Compact evidence: bench/adoption-package-review.json.
+This is a candidate package, not a published release or final native ARM check.
+
+Campaign audit now independently reconstructs split boundaries/content and glibc
+bootstrap draws, checks admission arithmetic, all 19 planned stage identities,
+per-fit marker/trace/stat hashes and timing records, plus curve/SD calculations.
+The first completed strict replicate's draw replay and all 575 source blocks
+passed this independent check. Final audit awaits the complete campaign.
