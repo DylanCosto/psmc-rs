@@ -33,3 +33,5 @@ jobs:
         run: |
           cargo fmt --all -- --check
           cargo test --release --locked --offline --workspace
+      - name: Test known-truth conversion and scaling
+        run: python3 -m unittest discover -s bench -p test_known_truth.py

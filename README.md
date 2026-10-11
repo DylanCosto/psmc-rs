@@ -1,293 +1,171 @@
-# PSMC-rs — PSMC in Rust
+# PSMC-rs
 
-This Rust workspace implements the original PSMC model and Hooke–Jeeves optimizer.
-Version 0.6.1 includes an opt-in linear equivalent E-step with segmented AVX
-state scans, checkpointed messages and triangle-margin counts. It prints `QU`
-(unnormalized Q) instead of `QD`. Strict arithmetic and `QD` remain the default.
-The default CPU bootstrap scheduler now shares records across workers and
-prefers faster cores for fit ownership. Final HG001 30-bootstrap medians are
-9.48s in equivalent mode and 44.02s in strict mode. See
-[linear E-step results](docs/linear-equivalent-report.md) and
-[shared-record validation and benchmarks](docs/shared-record-results.md).
-Earlier [v0.5.1 results](docs/equivalent-followup.md) and the
-[original structured milestone](docs/equivalent-mode-report.md) remain historical.
-
-Version 0.4.1
-adds ordered 64-state AVX normalization, joint-source transition tiles and emission
-updates within those tiles. The complete 30-bootstrap acceptance benchmark has
-6.1% lower median elapsed time and 6.7% lower aggregate CPU time than v0.3.3,
-with essentially unchanged memory. See the
-[optimization campaign](docs/optimization-exhaustion.md) for exactness gates,
-all rejected alternatives and hardware/workload limits. A subsequent
-[significant-optimization review](docs/significant-optimization-recheck.md)
-retained v0.4.1: its best candidate reduced median batch time only 1.93%, below
-the predeclared 5% promotion threshold. Version 0.4.0 introduced
-the optional experimental CUDA transition-count backend. See the
-[CUDA implementation and usage](crates/psmc-cuda/README.md) and
-[CUDA milestone report](docs/cuda-report.md). Version 0.3.3's ordered AVX message
-kernels remain; v0.4.1 counts use two source rows, sixteen destinations and
-sixteen-site tiles. Bounded message capacity remains. Single fits default to one numerical thread; `--record-workers N` can share
-existing independent records. Bootstrap fits and their records use one fixed
-worker budget. `--scheduler fit` retains the previous fit-only policy. Reusable
-buffers, exact repeated-block caching and the dense oracle remain available. Double precision, summation order,
-sequence boundaries and the statistical method are preserved in strict mode.
-
-To try structured arithmetic explicitly:
-
-```bash
-cargo build --release --locked --offline
-./target/release/psmc-rs --mode equivalent -p '4+25*2+4+6' -N 30 input.psmcfa > result.psmc
-```
-
-Equivalent mode supports the CPU backend and the same bootstrap controls.
-Use `--workers 16 --memory-mib 16384` for the measured full-core batch setup;
-actual worker admission is reported in the manifest. Single-fit record workers
-help only when the input contains multiple independent records. It
-changes floating-point grouping and optimizer trajectories. Segmented state
-scans operate on every record length; checkpoint boundaries retain HMM messages.
-Only triangle margins, diagonal counts and emission counts are accumulated in
-its normal E-step. `QU` omits the entropy constant from every optimizer objective;
-compare its before/after values only within a round. Valid ineligible models
-use full counts reconstructed lazily from that round's frozen posterior.
-
-Equivalent mode remains experimental; strict reproduces the tested reference
-exactly and retains full transition counts and the entropy normalizer. Equivalent
-`--snapshot` is rejected. Headers, statistics and manifests identify the mode.
-`model_updates` counts optimizer callbacks, and `structured_fallbacks` counts
-callbacks that use the literal calculation. E-step refreshes are excluded.
-
-The optimized `--backend cpu` path is the default; `--backend dense`
-selects the retained scalar oracle. `cargo test` byte-compares both against
-pinned C outputs in `tests/fixtures/golden`. The [parallel report](docs/parallel-report.md) validates
-16-worker synthetic batches against already-parallel vanilla. The
-[human-input report](docs/hg-benchmark-report.md) adds a public HG001/NA12878
-chromosome 22 test with full 64-state, 30-iteration fits. The [CPU headroom report](docs/cpu-next-optimization.md)
-records v0.3.3: 2.1% lower median human batch wall time and 2.8% lower CPU time
-versus v0.3.2 across six paired measurements, with overlapping ranges. It also
-validates a larger public HG002 chromosome 1 input exactly against vanilla PSMC.
-The [count-kernel report](docs/counts-optimization.md) retains the v0.3.2 measurements. The [CPU campaign report](docs/cpu-campaign-report.md)
-retains the previous kernel campaign evidence. The [Phase 3a report](docs/phase-3-simd-report.md)
-retains the previous SIMD release evidence. The pinned external reference is
-[`lh3/psmc` at 82fa2ada83ee463fe1251b562ae3d60e82d7ad6a](https://github.com/lh3/psmc/tree/82fa2ada83ee463fe1251b562ae3d60e82d7ad6a).
-The [Phase 1 report](docs/phase-1-report.md) and
-[Phase 0 decision](docs/phase-0-decision.md) retain historical evidence.
-
-The CUDA backend preserves ordered double-precision counts while messages, model
-updates and optimization remain on the CPU. It requires an explicit `cuda` Cargo
-feature and `--backend cuda`; normal CPU builds require no NVIDIA installation.
-The original CUDA campaign measured 64.0 seconds versus CPU 49.6 seconds on 30
-human bootstraps. The v0.4.1 campaign tested transfer/stream changes, tile sizes,
-launch geometry, wait policies, record overlap, mixed-device scheduling and
-resident messages; no GPU option passed the speed-promotion threshold. CPU remains
-recommended. GPU use can reduce aggregate CPU consumption while taking longer.
-The optional GPU executable is separate as `bin/psmc-rs-cuda`; experimental
-optimization prototypes remain benchmark evidence only.
+A local Rust implementation of PSMC's demographic model and Hooke–Jeeves
+optimizer, with CPU acceleration and deterministic parallel record processing.
+Accepts existing `.psmcfa` inputs. **Strict mode is the default; equivalent mode
+is an explicit experimental choice.**
 
 ## Build and run
 
-Run from this directory:
+Rust 1.90.0 is pinned. The CPU build has no Cargo registry dependencies and uses
+system libm, libc and zlib. The tested platform is x86-64 Linux/glibc 2.39.
 
 ```bash
-mkdir -p work
-cargo build --release --locked --offline --jobs 1
-cargo test --workspace --locked --offline --jobs 1 -- --test-threads=1
-target/release/psmc-rs --backend cpu --seed 42 -p '4+5*3+4' -N 30 \
-  -t 15 -r 4 -I 0 -o work/example.psmc tests/fixtures/workload.psmcfa
+cargo build --release --locked --offline
+./target/release/psmc-rs -p '4+25*2+4+6' -N 30 -t 15 -r 5 -I 0 \
+  -o result.psmc input.psmcfa
 ```
 
-The supplied CPU executable is `bin/psmc-rs` (also `bin/psmc-rs-v0.4.1`).
-`bin/psmc-rs-v0.3.3` preserves the preceding recommended CPU build;
-`bin/psmc-rs-cuda-v0.4.0` preserves the original optional GPU build.
-`bin/psmc-rs-v0.3.2` preserves the
-previous release, and `bin/psmc-rs-v0.3.1` the earlier CPU release; `bin/psmc-rs-phase3a` preserves the earlier SIMD executable;
-`bin/psmc-rs-phase2` preserves the prior
-optimized CPU release and `bin/psmc-rs-phase1` the original dense release. Rust 1.90.0 is pinned and must already be installed for
-an offline build. There are no registry dependencies. The tested stack is
-x86-64 Linux/glibc 2.39 using system `libm`, `libc` and `libz.so.1`. No CUDA,
-zlib headers or Python environment is needed to build or run inference.
-Other architectures and operating systems have not passed the numerical gate.
+Plain or gzip FASTA/FASTQ input is accepted; `-` reads stdin for a single fit.
+The original T/K/N encoding and supported aliases are retained. Each record is
+an independent HMM sequence. Missing bins still carry transitions.
 
-`--help` lists supported options. Plain or gzip FASTA/FASTQ input is accepted;
-`-` reads stdin for a single fit. The original T/K/N encoding and aliases remain
-supported. Records remain independent HMM sequences; missing sites carry transitions.
+Single CPU fits automatically use the available CPU count to process independent
+records. `--record-workers 1` limits a fit to one worker; set another positive
+count to cap it. An unsplit single record cannot gain record parallelism.
+**Strict mode keeps full forward/backward histories per active record, so more
+record workers can use substantially more memory.** Single fits have no memory
+admission budget; choose an explicit worker cap for long records or limited RAM.
+Dense, CUDA and snapshot fits retain their own execution policy; automatic record
+workers do not apply to them.
 
-| Options | Behavior |
-|---|---|
-| `-p -N -t -r -l -I` | Pattern, iteration count, maximum time, theta/rho ratio, grid alpha, random initialization |
-| `-i -o` | Raw supplied parameters and legacy output file |
-| `-b` | One original ordered record bootstrap with the nearest-length stop rule |
-| `-d -D -s -C` | Posterior segments, full posterior, forward scales, decoding transition cap |
-| `-T` | Original divergence parameter, with supplied-file restrictions below |
-| `--seed INTEGER` | Replay of the original srand48/drand48 stream |
-| `--mode strict\|equivalent` | Strict (default), or experimental structured CPU arithmetic |
-| `--backend cpu\|dense` | Optimized CPU engine (default) or dense oracle |
-| `--simd auto\|off\|avx` | CPU dispatch: automatic (default), generic CPU, or require AVX support |
-| `--cache on\|off` | Per-expectation repeated-block cache for CPU; default on |
-| `--stats FILE` | Counters and separately instrumented E/M timing for a single fit |
-| `--snapshot FILE` | Test-only JSONL matrices, messages, counts and optimizer callbacks |
+To opt into the faster equivalent arithmetic:
 
-The original `-c` and simulation option `-S` are explicitly rejected. `-S` is
-not a seed option. Equivalent/research modes, VCF/long-read input,
-checkpoint/resume and new plotting commands are not implemented.
+```bash
+./target/release/psmc-rs --mode equivalent -p '4+25*2+4+6' -N 30 \
+  -t 15 -r 5 -I 0 -o equivalent.psmc input.psmcfa
+```
+
+## Guarantees and mode choice
+
+| | Strict (default) | Equivalent (opt-in, CPU only) |
+|---|---|---|
+| Model, optimizer, iterations, f64 precision | Original PSMC | Same |
+| Arithmetic | Preserves tested C operation order | Structured scans and triangle margins; different rounding and optimizer paths |
+| Objective diagnostic | Original `QD`, full entropy normalizer | `QU`, unnormalized Q; compare before/after only within one round |
+| Evidence | Exact pinned-C output and internal-trace checks on the tested stack | Component checks, C-calibrated HG001/HG002 panels, and a separate known-truth qualification pilot |
+| Snapshots | Supported for testing | Rejected |
+
+Strict output equality excludes only the honest `MM Version` line. This is a
+claim about the pinned build and tested inputs, not universal bitwise equality
+across machines, compilers or libm versions. Scheduling keeps reductions in input
+order in both modes; changing worker counts does not change fitted output.
+
+Equivalent mode's checkpoint boundaries retain HMM messages and add no sequence
+boundaries. Invalid structured candidates use the documented literal fallback.
+`QU` changes a diagnostic contract; it is not interchangeable with C's `QD`.
+The [linear-mode report](docs/linear-equivalent-report.md) describes the numerical
+gates and ridge diagnostic. The [known-truth protocol](docs/known-truth-protocol.md)
+sets the separate simulation assessment; the [qualification report](docs/qualification-report.md)
+records its results and unresolved outliers. Neither these chromosome panels nor
+an idealized simulation pilot establish accuracy for every demographic history
+or qualify the user's unavailable whole-genome workflow.
 
 ## Run independent bootstraps
 
 Supply blocks already split by your established preprocessing procedure. This
-runner does not introduce new HMM boundaries or perform splitting.
+runner does not split input or introduce new HMM boundaries.
 
 ```bash
-bin/psmc-rs bootstrap --backend cpu --replicates 30 --workers 16 \
-  --memory-mib 2048 --seed 20261009 --output-dir work/bootstrap-example \
-  -p '4+5*3+4' -N 30 -t 15 -r 4 -I 0 tests/fixtures/blocks.psmcfa
+./target/release/psmc-rs bootstrap --mode strict --replicates 30 \
+  --workers 16 --memory-mib 16384 --seed 20261009 \
+  --output-dir bootstrap-results -p '4+25*2+4+6' -N 30 -t 15 -r 5 -I 0 \
+  blocks.psmcfa
 ```
 
-The current full-core configuration uses **16 workers** on this tested 16-logical-CPU
-host. The v0.4.1 campaign retested all logical CPUs, physical cores, performance
-cores and lower worker counts: 16 had the shortest elapsed time, while physical
-cores used less total CPU time. Omit `--workers` to request the available CPU count on another machine;
-memory admission may reduce it. Single fits remain single-threaded. The parallel
-milestone validates the existing 0.3.1 queue; the slower experimental scheduling
-change was rejected. Historical SIMD measurements used one worker.
+The output directory must be new. Defaults are 30 replicates, available CPU
+workers, a 2048 MiB admission estimate and `--scheduler shared`. Fits and record
+helpers share one admitted worker budget. `--scheduler fit` selects fit-only
+scheduling. Do not combine bootstrap with `--record-workers`; use `--workers`.
+On Linux, hybrid PMU CPU lists identify P/E cores within inherited affinity;
+when unavailable, a >=85% maximum-frequency heuristic avoids treating only the
+highest-boost preferred cores as fit owners. Unknown topology stays unpinned.
 
-The destination must not exist. Replicate `i` uses seed `base + i`, consumes the
-same ordered bootstrap draws and then the same initialization RNG stream as an
-independent original fit. Every repeated block occurrence is added in order,
-even when its calculation is cached. Observations are shared through references.
+The memory estimate can reduce worker admission; it is **not an OS-enforced RSS
+limit**. Input loading precedes admission. The manifest reports requested/admitted
+workers, scheduling, affinities, estimated memory, seeds, draws and failures.
+Full-genome memory and termination recovery remain unqualified.
 
-One scoped-thread queue runs independent fits. Each fit has one numerical thread;
-there is no nested pool. The admitted count is bounded by requested workers,
-replicates, reported available CPUs and the memory estimate. The default is 30
-replicates, available CPU workers and a 2048 MiB estimated budget. Specify your
-worker limit explicitly when comparing with an already parallel workflow.
+Replicate i uses seed `base + i`, original ordered bootstrap draws and the original
+initialization RNG stream. Duplicate records retain their multiplicity and
+original reduction order even when cached. Each fit writes its `.psmc`,
+`.stats.json` and `.draws.jsonl`; `manifest.json` summarizes the batch.
+Failures retain partial files, let other fits finish and cause a failing exit.
+Atomic resume is not implemented.
 
-`--memory-mib` is a conservative admission estimate, **not an OS-enforced RSS
-limit**. Input loading precedes admission. The estimate includes retained result
-metadata, draw storage, message capacity, count caches and per-worker overhead.
-The manifest records the estimate and actual admitted count. Full-genome memory,
-hardware exhaustion and termination recovery have not been validated.
+## Useful controls
 
-Each completed fit creates `replicate-NN.psmc`, `.stats.json` and `.draws.jsonl`.
-`manifest.json` records ordered source indices, seeds, lengths, workers, failures
-and nonfinite fits. The input fingerprint is explicitly noncryptographic FNV-1a;
-benchmark provenance separately records source SHA-256. `--task-order reverse`
-is a scheduling diagnostic; it does not change sampling or reductions. Batch
-phase timers are disabled (`profile_enabled: false`, seconds zero); counters
-remain active. Failed jobs are reported, partial files retained, other jobs
-finish, and the batch exits with failure. No atomic resume is claimed.
+Run `--help` for the complete supported list.
 
-## SIMD selection and exactness
+| Option | Purpose |
+|---|---|
+| `-p -N -t -r -l -I` | Pattern, iterations, maximum time, theta/rho, grid alpha, initialization |
+| `-i -o` | Supplied parameter file and output path |
+| `-b --seed INTEGER` | One legacy ordered-record bootstrap and reproducible RNG seed |
+| `-d -D -s -C` | Posterior segments, full posterior, scales and transition cap |
+| `-T` | Legacy divergence parameter, subject to supplied-file checks |
+| `--backend cpu\|dense` | Optimized CPU (default) or retained scalar oracle |
+| `--simd auto\|off\|avx` | Runtime AVX dispatch, generic path or require AVX |
+| `--cache on\|off` | Repeated-record cache within one exact parameter snapshot |
+| `--stats FILE` | Single-fit counters and instrumented E/M timers |
+| `--snapshot FILE` | Large test-only messages, counts and optimizer traces |
 
-`--backend cpu` defaults to `--simd auto`. On tested x86-64 hardware with CPU/OS
-AVX support, models with at least four states use four independent f64 lanes.
-Smaller models and unsupported hardware use the generic CPU path. `--simd off`
-disables the explicit AVX kernels; ordinary compiler optimizations, including
-baseline SSE2 where available, remain enabled. `--simd avx` requires CPU/OS AVX
-support and the CPU backend; unsupported requests fail before opening outputs.
-Small shapes still use scalar tails. `--stats` reports both requested and selected
-paths (`simd_requested`, `simd_selected`). Dense reports `scalar-dense`.
+Snapshot execution bypasses record sharing and count-only caching so every
+occurrence's messages can be inspected. Do not use snapshots or instrumented
+phase timings for throughput claims. Batch phase timing is disabled; counters
+remain active. `PSMC_SEED`, `PSMC_SNAPSHOT`, `PSMC_BOOTSTRAP_TRACE` are supported
+harness controls; unset them for ordinary benchmark runs.
 
-AVX does not add worker threads. Each lane retains the original ordered adds,
-multiplies and divisions; there is no FMA or horizontal reduction. The additional
-backward layout is copied from the exact existing emission-transition products.
-The [derivation](docs/phase-3-simd-derivation.md) documents bounds checks and the
-small isolated unsafe intrinsic module. Default compiler target features stay
-portable; this is runtime dispatch, not a globally native-only executable.
-ARM NEON, AVX-512 and non-x86-64 execution remain unvalidated; other architectures
-retain the generic path. Explicit AVX support here does not require AVX2.
+The original `-c` and `-S` are rejected (`-S` is not a seed option). VCF/long-read
+conversion, checkpoint/resume and new plotting commands are not implemented.
+Parameter files contain the raw PA payload, without its `PA` prefix. An explicit
+time grid cannot also supply divergence; ordinary supplied parameters with `-T`
+must include their own trailing divergence.
 
-## Compatibility and limits
+Some inputs make vanilla PSMC produce NaN/Inf. Rust preserves reference behavior
+and warns on nonfinite fit records. A successful exit does not certify finite
+inference; the expected round-zero `RI inf` is treated separately. Malformed input,
+unsafe parameter combinations, path aliases and all-missing input without explicit
+initial parameters are rejected. Streaming output writes are not atomic.
 
-Strict output comparisons exclude only the single honest `MM Version` line.
-All other bytes, including numerical metadata, match on the tested stack.
-Internal finite values and signed zero compare exactly. This does not promise
-universal bitwise equality across compilers, libraries or machines.
+## Performance and evidence
 
-The [source contract](docs/reference-contract.md),
-[math contract](MATH_AND_COMPATIBILITY.md),
-[engineering derivation](docs/phase-2-engineering.md) and
-[validation policy](VALIDATION_AND_BENCHMARKS.md) describe the preserved behavior:
-per-record tiny counts, the final-site emission-count omission, full-count Q
-normalizer and final optimizer callback side effects. The dense HMM, model
-update and optimizer implementations remain available as independent oracles.
+On the tested i5-12600K, v0.6.1's HG001 30-bootstrap medians were **9.48 seconds
+in equivalent mode** and **44.02 seconds in strict mode**, with 16 workers and
+the report's exact input/configuration. The linear E-step milestone was 3.10x
+faster than v0.5.1 equivalent mode in its separate paired benchmark. These are
+workload-specific measurements; do not extrapolate them to an untested genome.
 
-Some synthetic inputs make vanilla PSMC produce NaN/Inf. Rust retains these
-results and warns when printed fit records are nonfinite, including RI-only
-failures. Initial round-zero `RI inf` alone is expected. A successful process
-exit is not a finite-inference certificate. The 30-fit synthetic fixture contains
-27 finite fits and three known reference pathologies; their output parity and
-batch timings are labeled separately from valid finite inference.
+- [Shared-record tests and measured timings](docs/shared-record-results.md)
+- [Linear equivalent validation and timings](docs/linear-equivalent-report.md)
+- [Mathematical contract](MATH_AND_COMPATIBILITY.md) and [validation policy](VALIDATION_AND_BENCHMARKS.md)
+- [Pinned original C source](https://github.com/lh3/psmc/tree/82fa2ada83ee463fe1251b562ae3d60e82d7ad6a)
+- [Historical optimization campaign](docs/optimization-exhaustion.md) and [execution history](EXECPLAN.md)
 
-Malformed/empty/non-ASCII records, truncated quality/gzip data, negative iteration
-counts, malformed patterns and unsafe supplied-grid/divergence combinations are
-rejected. All-missing selected input requires explicit initial parameters, checked
-before opening single-fit outputs. Parameter files use decimal/exponent numbers;
-remove the `PA` prefix before passing a report line to `-i`. An explicit time-grid
-file cannot also supply divergence; an ordinary file with `-T` must include its
-own trailing divergence. Patterns are limited to 255 free groups and the legacy
-signed-int state limit; bootstrap raw length is limited to INT_MAX.
+The optional [CUDA backend](crates/psmc-cuda/README.md) requires a separate Cargo
+feature and explicit selection. It was slower than CPU in the measured campaign;
+CPU remains recommended. ARM/NEON, non-Linux platforms and other CPU families
+have not passed hardware qualification. Topology policy fixtures are not tests
+on actual AMD or other Intel machines.
 
-Input/output aliases, hardlinks, redirected Linux standard streams and dangling
-output symlinks are checked. Output, stats, snapshots and traces require separate
-paths. Successful validation does not make streamed file writes atomic.
-
-Snapshots are large and expensive. With `--backend cpu`, they execute the CPU
-workspace path but visibly bypass the count-only cache to expose every
-occurrence's messages. Dense snapshots retain the dense oracle path.
-Use them for correctness tests, never throughput measurements. `PSMC_SEED`,
-`PSMC_SNAPSHOT` and `PSMC_BOOTSTRAP_TRACE` support the single-fit harness; unset
-snapshot/trace variables before batch runs. Explicit seed/snapshot flags take
-precedence. Disable `--stats` phase timers for ordinary throughput comparisons.
-
-The user's real input, command, splitting/mask provenance and worker budget are
-still unavailable. All reported measurements use synthetic fixtures. Tenfold
-acceleration, production runtime and GPU performance remain unproven.
-
-## Reproduce this milestone
-
-Build the C references using [the retained instructions](README_PHASE0.md).
-Use one allowed logical CPU and low scheduling priority while other work runs.
-Here CPU 0 is the tested affinity; choose an allowed CPU on another machine.
-All commands below are sequential. Do not run timing with builds/tests/profiling.
+## Test and reproduce
 
 ```bash
-taskset -c 0 nice -n 10 env CARGO_BUILD_JOBS=1 RUST_TEST_THREADS=1 \
-  cargo test --workspace --release --locked --offline --jobs 1 -- --test-threads=1
-taskset -c 0 nice -n 10 cargo build --release --locked --offline --jobs 1 \
-  -p psmc-cpu --example simd_bench
-taskset -c 0 nice -n 10 python3 bench/phase3_build.py
-taskset -c 0 nice -n 10 python3 bench/phase3_review.py
-taskset -c 0 nice -n 10 python3 bench/phase3_validate.py --run
-taskset -c 0 nice -n 10 python3 bench/phase3_scheduler.py --run --workers 1
-taskset -c 0 nice -n 10 python3 bench/phase3_benchmark.py --run
+cargo fmt --all -- --check
+cargo test --workspace --release --locked --offline
+python3 -m unittest discover -s bench -p test_known_truth.py
 ```
 
-The build remains Rust 1.90.0 with no registry dependencies. Raw gate/benchmark
-runs use timestamped directories and frozen executable copies; preserve parent
-reports before rerunning. The SIMD gate adds the complete K64 internal trace on
-the automatic CPU path. No tolerance was relaxed. Historical Phase 1/2 runners
-and reports describe those archived source versions; do not overwrite them with
-new runs. The one-CPU runners reject broad affinity and the scheduler gate rejects
-worker counts above one. Wall time is sensitive to shared CPU load; per-process
-CPU time and ranges are also reported.
+The [CI workflow](.github/workflows/strict.yml) builds pinned vanilla C, checks
+committed golden outputs and runs Rust tests. Hosted execution requires a remote.
+The [reference build instructions](README_PHASE0.md) and scripts in `bench/`
+retain source hashes, commands and evidence. Historical runners belong to their
+recorded source versions; do not overwrite old reports with new executions.
+Large ignored evidence is stored in a [separate local archive](docs/evidence-archive.md) with per-file
+checksums and restoration instructions. Compact reports, protocols, source,
+fixtures and reproduction scripts stay in Git.
 
-## Source and package
-
-- `crates/psmc-core`: dense f64 oracle, model workspace, optimizer, EM and RNG.
-- `crates/psmc-cpu`: reusable HMM messages, prepared model and repeated-block cache.
-- `crates/psmc-io`: parsing, gzip and ordered bootstrap indices.
-- `crates/psmc-cli`: single fit, bounded batch queue, legacy output and diagnostics.
-- `reference`, `tests/fixtures`, `bench`, `docs`: pinned C, synthetic inputs,
-  reproducible evidence, derivations and limitations.
-
-Unsafe code is confined to system math/formatting, owned gzip input and the
-checked, runtime-guarded AVX intrinsic module.
-Inference does not call C PSMC. Original MIT notices remain in translated sources
-and [LICENSE.psmc.txt](reference/LICENSE.psmc.txt). No user genome was accessed
-or uploaded. The supplied execution plan is context, not proof of implementation;
-this CPU milestone follows the user's explicit optimization request.
-
-The current local v0.4.1 source, executables and optimization evidence are in this
-project. Older zip archives and their checksums describe their historical
-releases; they are unchanged. Large snapshots and disposable build environments
-remain local. See [PACKAGING.md](PACKAGING.md) and the
-[current campaign report](docs/optimization-exhaustion.md) for scope and reproduction.
+The workspace separates the dense model/oracle (`psmc-core`), CPU engines
+(`psmc-cpu`), input/bootstrap handling (`psmc-io`) and CLI (`psmc-cli`). Inference
+does not call C PSMC. Original MIT notices remain in translated sources and
+[LICENSE.psmc.txt](reference/LICENSE.psmc.txt).

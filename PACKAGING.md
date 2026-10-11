@@ -1,3 +1,14 @@
+# Current patch release: v0.6.2
+
+The installed CPU executable is `bin/psmc-rs`, also preserved as
+`bin/psmc-rs-v0.6.2`; v0.6.1 and earlier binaries remain available.
+See [qualification report](docs/qualification-report.md) and
+[installation hashes](bench/qualification-install.json). Large historical evidence
+has moved to a verified external archive; see [restoration](docs/evidence-archive.md).
+Hosted CI and the user's real-workload qualification still need external inputs.
+
+The following packaging notes describe historical releases.
+
 # Current local v0.6.1 CPU deliverable
 
 `bin/psmc-rs` and `bin/psmc-rs-v0.6.1` are the final tested binaries. Strict remains

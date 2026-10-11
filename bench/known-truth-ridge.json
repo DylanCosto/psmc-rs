@@ -1,0 +1,722 @@
+{
+  "selection": "Post-hoc diagnostic for mode curve RMSE > 0.01; not a new passing threshold. Lambda0-only slices are not profile likelihoods.",
+  "example_binary_sha256": "daacf25fdc399fd6b2302a5103f2dac04e045371f5a32ddf2482d3561398b641",
+  "cases": [
+    {
+      "history": "bottleneck",
+      "index": 1,
+      "bins": 200000,
+      "diagnostic": [
+        {
+          "kind": "endpoints",
+          "strict_ll": -34810.18261700298,
+          "equivalent_ll": -34810.180516774264,
+          "ll_delta": 0.002100228717608843,
+          "q_on_strict_counts_delta": -0.010345208480430301,
+          "q_on_equivalent_counts_delta": 0.037183461274253204,
+          "strict_lambda0": 92.720669094,
+          "equivalent_lambda0": 92.88197624
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0,
+          "lambda0": 92.72066909400003,
+          "ll_delta_from_base": 0.0,
+          "q_strict_counts_delta": 0.0,
+          "q_equivalent_counts_delta": 0.0
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.125,
+          "lambda0": 92.74081715708446,
+          "ll_delta_from_base": -0.0002137245173798874,
+          "q_strict_counts_delta": -1.971493475139141e-07,
+          "q_equivalent_counts_delta": -5.67000824958086e-07
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.25,
+          "lambda0": 92.76096959831295,
+          "ll_delta_from_base": -0.0004280434877728112,
+          "q_strict_counts_delta": -1.2032542144879699e-06,
+          "q_equivalent_counts_delta": -1.8398277461528778e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.375,
+          "lambda0": 92.78112641863693,
+          "ll_delta_from_base": -0.0006418772318284027,
+          "q_strict_counts_delta": -1.5140976756811142e-06,
+          "q_equivalent_counts_delta": -1.6077101463451982e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.5,
+          "lambda0": 92.80128761900782,
+          "ll_delta_from_base": -0.0008559733905713074,
+          "q_strict_counts_delta": -2.3694010451436043e-06,
+          "q_equivalent_counts_delta": -2.29592842515558e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.625,
+          "lambda0": 92.82145320037749,
+          "ll_delta_from_base": -0.0010705944296205416,
+          "q_strict_counts_delta": -3.5170887713320553e-06,
+          "q_equivalent_counts_delta": -2.227221557404846e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.75,
+          "lambda0": 92.84162316369799,
+          "ll_delta_from_base": -0.0012848021142417565,
+          "q_strict_counts_delta": -4.4020198401995e-06,
+          "q_equivalent_counts_delta": -2.3280299501493573e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.875,
+          "lambda0": 92.86179750992133,
+          "ll_delta_from_base": -0.0014989199917181395,
+          "q_strict_counts_delta": -5.729118129238486e-06,
+          "q_equivalent_counts_delta": -3.440596628934145e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 1,
+          "lambda0": 92.88197624000003,
+          "ll_delta_from_base": -0.0017090783221647143,
+          "q_strict_counts_delta": -3.4664844861254096e-07,
+          "q_equivalent_counts_delta": -1.3743992894887924e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0,
+          "lambda0": 92.72066909400003,
+          "ll_delta_from_base": 0.0017079286117223091,
+          "q_strict_counts_delta": -9.282666724175215e-07,
+          "q_equivalent_counts_delta": -2.7753922040574253e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.125,
+          "lambda0": 92.74081715708446,
+          "ll_delta_from_base": NaN,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.25,
+          "lambda0": 92.76096959831295,
+          "ll_delta_from_base": NaN,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.375,
+          "lambda0": 92.78112641863693,
+          "ll_delta_from_base": 0.0010631894620019011,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.5,
+          "lambda0": 92.80128761900782,
+          "ll_delta_from_base": 0.000852788238262292,
+          "q_strict_counts_delta": -2.1755258785560727e-06,
+          "q_equivalent_counts_delta": -4.900306521449238e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.625,
+          "lambda0": 92.82145320037749,
+          "ll_delta_from_base": NaN,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.75,
+          "lambda0": 92.84162316369799,
+          "ll_delta_from_base": NaN,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.875,
+          "lambda0": 92.86179750992133,
+          "ll_delta_from_base": 0.0002091048881993629,
+          "q_strict_counts_delta": -0.00012049491488141939,
+          "q_equivalent_counts_delta": -5.9767960919998586e-05
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 1,
+          "lambda0": 92.88197624000003,
+          "ll_delta_from_base": 7.275957614183426e-12,
+          "q_strict_counts_delta": 0.0,
+          "q_equivalent_counts_delta": 0.0
+        }
+      ]
+    },
+    {
+      "history": "bottleneck",
+      "index": 3,
+      "bins": 200000,
+      "diagnostic": [
+        {
+          "kind": "endpoints",
+          "strict_ll": -33278.023262739225,
+          "equivalent_ll": -33278.0224840058,
+          "ll_delta": 0.0007787334252498113,
+          "q_on_strict_counts_delta": -0.0017183367817779072,
+          "q_on_equivalent_counts_delta": 0.0048236438815365545,
+          "strict_lambda0": 1940703.761324956,
+          "equivalent_lambda0": 884343.980897551
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0,
+          "lambda0": 1940703.7613249575,
+          "ll_delta_from_base": 0.0,
+          "q_strict_counts_delta": 0.0,
+          "q_equivalent_counts_delta": 0.0
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.125,
+          "lambda0": 1759105.938222173,
+          "ll_delta_from_base": -5.716210580430925e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.25,
+          "lambda0": 1594500.8009753458,
+          "ll_delta_from_base": -6.262125680223107e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.375,
+          "lambda0": 1445298.2899259096,
+          "ll_delta_from_base": -5.154506652615964e-07,
+          "q_strict_counts_delta": -6.037880666553974e-07,
+          "q_equivalent_counts_delta": -2.4234032025560737e-07
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.5,
+          "lambda0": 1310057.1323545252,
+          "ll_delta_from_base": -5.940091796219349e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.625,
+          "lambda0": 1187470.9200139889,
+          "ll_delta_from_base": -4.822359187528491e-07,
+          "q_strict_counts_delta": -5.820984370075166e-07,
+          "q_equivalent_counts_delta": 1.2492819223552942e-08
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.75,
+          "lambda0": 1076355.489431643,
+          "ll_delta_from_base": -6.247719284147024e-07,
+          "q_strict_counts_delta": -8.936622180044651e-07,
+          "q_equivalent_counts_delta": -3.8731377571821213e-07
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.875,
+          "lambda0": 975637.4830770452,
+          "ll_delta_from_base": -8.792630978859961e-07,
+          "q_strict_counts_delta": -1.0902585927397013e-06,
+          "q_equivalent_counts_delta": -4.4029002310708165e-07
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 1,
+          "lambda0": 884343.9808975516,
+          "ll_delta_from_base": -6.928312359377742e-07,
+          "q_strict_counts_delta": -8.652350516058505e-07,
+          "q_equivalent_counts_delta": -1.2377131497487426e-07
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0,
+          "lambda0": 1940703.7613249575,
+          "ll_delta_from_base": -3.360401024110615e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.125,
+          "lambda0": 1759105.938222173,
+          "ll_delta_from_base": -5.7138095144182444e-08,
+          "q_strict_counts_delta": -3.028690116479993e-07,
+          "q_equivalent_counts_delta": -1.0347284842282534e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.25,
+          "lambda0": 1594500.8009753458,
+          "ll_delta_from_base": -2.6702764444053173e-09,
+          "q_strict_counts_delta": -4.067260306328535e-09,
+          "q_equivalent_counts_delta": -2.653177944011986e-07
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.375,
+          "lambda0": 1445298.2899259096,
+          "ll_delta_from_base": 7.989001460373402e-09,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.5,
+          "lambda0": 1310057.1323545252,
+          "ll_delta_from_base": -1.8197169993072748e-08,
+          "q_strict_counts_delta": 6.126356311142445e-08,
+          "q_equivalent_counts_delta": -9.578070603311062e-08
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.625,
+          "lambda0": 1187470.9200139889,
+          "ll_delta_from_base": -1.2583041097968817e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.75,
+          "lambda0": 1076355.489431643,
+          "ll_delta_from_base": -1.8002174329012632e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.875,
+          "lambda0": 975637.4830770452,
+          "ll_delta_from_base": -3.3796823117882013e-08,
+          "q_strict_counts_delta": -4.390312824398279e-08,
+          "q_equivalent_counts_delta": -1.052685547620058e-07
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 1,
+          "lambda0": 884343.9808975516,
+          "ll_delta_from_base": 0.0,
+          "q_strict_counts_delta": 0.0,
+          "q_equivalent_counts_delta": 0.0
+        }
+      ]
+    },
+    {
+      "history": "bottleneck",
+      "index": 9,
+      "bins": 200000,
+      "diagnostic": [
+        {
+          "kind": "endpoints",
+          "strict_ll": -36032.58365962335,
+          "equivalent_ll": -36032.58427394842,
+          "ll_delta": -0.0006143250720924698,
+          "q_on_strict_counts_delta": -0.0038090430753072724,
+          "q_on_equivalent_counts_delta": 0.01804656102467561,
+          "strict_lambda0": 1222975.581345652,
+          "equivalent_lambda0": 1073631.263190988
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0,
+          "lambda0": 1222975.5813456522,
+          "ll_delta_from_base": -7.275957614183426e-12,
+          "q_strict_counts_delta": 0.0,
+          "q_equivalent_counts_delta": 0.0
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.125,
+          "lambda0": 1203226.6880619957,
+          "ll_delta_from_base": -4.15631802752614e-07,
+          "q_strict_counts_delta": -5.126639734953642e-07,
+          "q_equivalent_counts_delta": -9.690993465483189e-07
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.25,
+          "lambda0": 1183796.704486661,
+          "ll_delta_from_base": -2.1192681742832065e-07,
+          "q_strict_counts_delta": -3.0486989999189973e-07,
+          "q_equivalent_counts_delta": -7.27610313333571e-07
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.375,
+          "lambda0": 1164680.480791724,
+          "ll_delta_from_base": -4.982721293345094e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.5,
+          "lambda0": 1145872.9503098782,
+          "ll_delta_from_base": -6.720074452459812e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.625,
+          "lambda0": 1127369.128191536,
+          "ll_delta_from_base": -4.910179995931685e-07,
+          "q_strict_counts_delta": -1.2731616152450442e-06,
+          "q_equivalent_counts_delta": -1.8223145161755383e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.75,
+          "lambda0": 1109164.1100836142,
+          "ll_delta_from_base": -3.437744453549385e-07,
+          "q_strict_counts_delta": -8.187780622392893e-07,
+          "q_equivalent_counts_delta": -7.297421689145267e-07
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.875,
+          "lambda0": 1091253.070829667,
+          "ll_delta_from_base": -2.2453605197370052e-08,
+          "q_strict_counts_delta": -4.474277375265956e-07,
+          "q_equivalent_counts_delta": 7.911876309663057e-08
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 1,
+          "lambda0": 1073631.2631909875,
+          "ll_delta_from_base": -3.7391873775050044e-07,
+          "q_strict_counts_delta": -1.4173638192005455e-06,
+          "q_equivalent_counts_delta": -7.314010872505605e-07
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0,
+          "lambda0": 1222975.5813456522,
+          "ll_delta_from_base": -8.714705472812057e-07,
+          "q_strict_counts_delta": -6.59267243463546e-07,
+          "q_equivalent_counts_delta": -1.5587720554322004e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.125,
+          "lambda0": 1203226.6880619957,
+          "ll_delta_from_base": -5.555848474614322e-07,
+          "q_strict_counts_delta": -1.388980308547616e-07,
+          "q_equivalent_counts_delta": -8.4839848568663e-07
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.25,
+          "lambda0": 1183796.704486661,
+          "ll_delta_from_base": -5.067922757007182e-07,
+          "q_strict_counts_delta": -2.8567592380568385e-07,
+          "q_equivalent_counts_delta": -1.008811523206532e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.375,
+          "lambda0": 1164680.480791724,
+          "ll_delta_from_base": -1.1219599400646985e-06,
+          "q_strict_counts_delta": -8.902716217562556e-07,
+          "q_equivalent_counts_delta": -2.059190592262894e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.5,
+          "lambda0": 1145872.9503098782,
+          "ll_delta_from_base": -8.687566150911152e-07,
+          "q_strict_counts_delta": -4.352623363956809e-07,
+          "q_equivalent_counts_delta": -1.6141784726642072e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.625,
+          "lambda0": 1127369.128191536,
+          "ll_delta_from_base": -1.151296601165086e-06,
+          "q_strict_counts_delta": -1.026623067446053e-06,
+          "q_equivalent_counts_delta": -2.2074164007790387e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.75,
+          "lambda0": 1109164.1100836142,
+          "ll_delta_from_base": -1.0456715244799852e-06,
+          "q_strict_counts_delta": -9.934738045558333e-07,
+          "q_equivalent_counts_delta": -1.8333885236643255e-06
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.875,
+          "lambda0": 1091253.070829667,
+          "ll_delta_from_base": -6.14163582213223e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 1,
+          "lambda0": 1073631.2631909875,
+          "ll_delta_from_base": 0.0,
+          "q_strict_counts_delta": 0.0,
+          "q_equivalent_counts_delta": 0.0
+        }
+      ]
+    },
+    {
+      "history": "expansion",
+      "index": 9,
+      "bins": 200000,
+      "diagnostic": [
+        {
+          "kind": "endpoints",
+          "strict_ll": -61916.83349085811,
+          "equivalent_ll": -61916.82931379258,
+          "ll_delta": 0.0041770655298023485,
+          "q_on_strict_counts_delta": -0.046853281208314,
+          "q_on_equivalent_counts_delta": 0.014998728598584421,
+          "strict_lambda0": 1301633.702336321,
+          "equivalent_lambda0": 1335543.137442793
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0,
+          "lambda0": 1301633.7023363202,
+          "ll_delta_from_base": 0.0,
+          "q_strict_counts_delta": 0.0,
+          "q_equivalent_counts_delta": 0.0
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.125,
+          "lambda0": 1305824.8435105167,
+          "ll_delta_from_base": -1.6123158275149763e-06,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.25,
+          "lambda0": 1310029.4797750092,
+          "ll_delta_from_base": -1.236301613971591e-06,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.375,
+          "lambda0": 1314247.6545827463,
+          "ll_delta_from_base": -1.8654100131243467e-06,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.5,
+          "lambda0": 1318479.411526598,
+          "ll_delta_from_base": -1.6870835679583251e-06,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.625,
+          "lambda0": 1322724.7943397975,
+          "ll_delta_from_base": -1.2661839718930423e-06,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.75,
+          "lambda0": 1326983.846896399,
+          "ll_delta_from_base": -1.3191383914090693e-06,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 0.875,
+          "lambda0": 1331256.6132117142,
+          "ll_delta_from_base": -1.6899066395126283e-06,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "strict",
+          "fraction": 1,
+          "lambda0": 1335543.1374427928,
+          "ll_delta_from_base": -1.2501550372689962e-06,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0,
+          "lambda0": 1301633.7023363202,
+          "ll_delta_from_base": -4.6058266889303923e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.125,
+          "lambda0": 1305824.8435105167,
+          "ll_delta_from_base": -1.5112163964658976e-08,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.25,
+          "lambda0": 1310029.4797750092,
+          "ll_delta_from_base": -4.4059561332687736e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.375,
+          "lambda0": 1314247.6545827463,
+          "ll_delta_from_base": -6.58830686006695e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.5,
+          "lambda0": 1318479.411526598,
+          "ll_delta_from_base": -4.240282578393817e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.625,
+          "lambda0": 1322724.7943397975,
+          "ll_delta_from_base": -3.911482053808868e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.75,
+          "lambda0": 1326983.846896399,
+          "ll_delta_from_base": -3.905297489836812e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 0.875,
+          "lambda0": 1331256.6132117142,
+          "ll_delta_from_base": 5.501206032931805e-07,
+          "q_strict_counts_delta": -1e+300,
+          "q_equivalent_counts_delta": -1e+300
+        },
+        {
+          "kind": "lambda_slice",
+          "base": "equivalent",
+          "fraction": 1,
+          "lambda0": 1335543.1374427928,
+          "ll_delta_from_base": 0.0,
+          "q_strict_counts_delta": 0.0,
+          "q_equivalent_counts_delta": 0.0
+        }
+      ]
+    }
+  ]
+}

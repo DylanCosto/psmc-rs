@@ -56,23 +56,15 @@ fn record_helpers_preserve_full_output_for_both_modes_and_cache_policies() {
     let binary = env!("CARGO_BIN_EXE_psmc-rs");
     for mode in ["strict", "equivalent"] {
         for cache in ["on", "off"] {
-            let run = |workers: &str| {
-                let out = Command::new(binary)
+            let run = |workers: Option<&str>| {
+                let mut cmd = Command::new(binary);
+                if let Some(workers) = workers {
+                    cmd.args(["--record-workers", workers]);
+                }
+                let out = cmd
                     .args([
-                        "--mode",
-                        mode,
-                        "--cache",
-                        cache,
-                        "--record-workers",
-                        workers,
-                        "--seed",
-                        "42",
-                        "-p",
-                        "4+5*3+4",
-                        "-N",
-                        "3",
-                        "-I",
-                        "0",
+                        "--mode", mode, "--cache", cache, "--seed", "42", "-p", "4+5*3+4", "-N",
+                        "3", "-I", "0",
                     ])
                     .arg(fixture())
                     .output()
@@ -84,7 +76,9 @@ fn record_helpers_preserve_full_output_for_both_modes_and_cache_policies() {
                 );
                 out.stdout
             };
-            assert_eq!(run("1"), run("4"), "{mode}/{cache}");
+            let serial = run(Some("1"));
+            assert_eq!(serial, run(Some("4")), "{mode}/{cache}");
+            assert_eq!(serial, run(None), "default {mode}/{cache}");
         }
     }
 }

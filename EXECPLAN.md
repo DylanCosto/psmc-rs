@@ -1,6 +1,6 @@
 # Execution plan: accelerated, legacy-compatible PSMC
 
-Current status: v0.6.1 linear equivalent mode and deterministic shared-record scheduling pass their acceptance gates and are installed. Strict remains the default numerical mode. See the milestone sections at the end for current evidence.
+Current status: v0.6.2 adds robust Linux topology and automatic single-fit record workers. The first known-truth pilot passes its prospective relative-error budgets, with poor absolute recovery and unresolved common-Q outliers explicitly retained. Historical evidence has been verified and moved off the main drive. Strict remains the default. Remote CI and actual-workload qualification await user details. See docs/qualification-report.md.
 
 Historical starting status: User explicitly approved building Rust on 2026-10-10. Phase 1 dense scalar Rust is implemented and passes its supported synthetic gate; see docs/phase-1-report.md. Real-workload baseline and reference-pathology investigation remain recorded limitations, not blockers to the newly authorized port. The user subsequently authorized optimization; Phase 2 CPU engineering and deterministic scheduling now pass the local synthetic gate; see docs/phase-2-report.md. The validated dense oracle remains unchanged. The original research/design completion checkboxes below were supplied with the plan and are not independent verification of the four missing companion documents.
 
@@ -1276,3 +1276,48 @@ equivalent mode. Versions 0.6.0 and earlier are preserved. No inference jobs or
 required checks remain for this milestone. Future tuning should profile the now
 larger M-step share; neither global scientific equivalence nor CPU exhaustion
 is claimed from these two chromosome panels.
+
+## Qualification transition — user review after v0.6.1
+
+Progress: fix Linux core classification and automatic single-fit CPU workers;
+rewrite usage documentation; run a prospectively specified known-truth pilot;
+archive ignored evidence with byte verification; publish CI when a remote is supplied.
+
+Decisions: prefer disjoint, complete Linux hybrid PMU CPU lists within inherited
+affinity; otherwise use >=85% maximum frequency, and retain unpinned fallback
+when unknown. Automatic record workers apply only to ordinary single CPU fits;
+explicit counts remain validated. Strict memory scales with concurrent records.
+Keep strict the default numerical mode. No more speed campaign is planned.
+
+Surprises: historical raw evidence occupies about 17.7 GiB and only about 5 GiB
+was free initially. Archive separately, verify every member before removal, keep
+tracked reports/scripts and active reference dependencies. No remote is configured;
+actual user input, splitting and fit options remain unavailable. Asked for both.
+The pinned history2ms script generates msHOT-lite output, so the standard ms
+adapter explicitly changes only executable/output switches, with tested conversion.
+Prospective simulation design and budgets: docs/known-truth-protocol.md.
+
+
+Qualification transition results: 30 simulated datasets / 90 full fits completed;
+all strict/C outputs exact, all three prospective relative-mode gates pass.
+Absolute error remains substantial (maximum strict log RMSE 3.684), and four
+post-hoc outliers exceed the earlier HG common-Q diagnostic budget. Full scientific
+qualification remains open; no gate was relaxed and no case excluded.
+
+Validation: 55 Rust release tests, four converter/scaling tests, four live-C
+controls, 32 affinity-restricted bootstrap outputs, six final default-worker full
+fits, all-feature compilation and formatting/diff checks. CUDA hardware ignored;
+other CPU families/non-Linux and hosted CI not_run. v0.6.2 installed with strict
+default and prior binaries preserved. No new numerical kernel or speed claim.
+
+Space cleanup took priority at the user's request: suspended the simulation,
+verified 87 archives / 90,993 members on the external backup drive, removed the
+rebuildable debug cache, resumed and completed the same seeded panel. About
+19 GiB reclaimed; about 24 GiB free. Incomplete first archive retained no data
+loss. Compact source/reports remain in Git; restore raw historical paths using
+the archive index. Panel timings include the suspension and are not benchmarks.
+
+Remaining external inputs: remote repository URL for the requested push/hosted
+CI, and the user's input/splitting/mask/command for real-workload qualification.
+Those steps remain not_run. Larger known-truth studies and outlier investigation
+are the next qualification work; optimization is paused by the user's direction.

@@ -21,7 +21,7 @@ use std::{
 const HELP: &str = concat!(
     "psmc-rs ",
     env!("CARGO_PKG_VERSION"),
-    " — double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend cpu|dense|cuda --mode strict|equivalent --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nCUDA: --cuda-tile-sites COUNT (16384) --cuda-memory-mib MIB (1024)\nSingle fit: --record-workers COUNT (1); independent records only.\nBootstrap runner: --scheduler fit|shared (shared) --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nCPU (default) reuses buffers and repeated-record counts; dense is the scalar oracle.\nInput '-' reads stdin for a single fit. CUDA counts are experimental and require a cuda-feature build.\n-c and -S are unsupported; -S is not the seed flag.\n"
+    " — double-precision PSMC\n\nUsage: psmc-rs [options] input.psmcfa[.gz]\n       psmc-rs bootstrap [options] --output-dir DIRECTORY blocks.psmcfa\n\nLegacy options: -p PATTERN -N ITERATIONS -t MAX_TIME -r THETA_RHO\n  -l GRID_ALPHA -I RANDOM_AMPLITUDE -i PARAMETERS -o OUTPUT\n  -b bootstrap records; -d segments; -D full posterior; -s scales\n  -T divergence; -C decoding transition cap\nNew options: --backend cpu|dense|cuda --mode strict|equivalent --seed INTEGER\n  --snapshot FILE --stats FILE --cache on|off --simd auto|off|avx --help --version\nCUDA: --cuda-tile-sites COUNT (16384) --cuda-memory-mib MIB (1024)\nSingle fit: --record-workers COUNT (available CPUs); independent records only.\nBootstrap runner: --scheduler fit|shared (shared) --replicates COUNT --workers COUNT --memory-mib MIB\n  --task-order forward|reverse; output directory must be new.\n\nCPU (default) reuses buffers and repeated-record counts; dense is the scalar oracle.\nInput '-' reads stdin for a single fit. CUDA counts are experimental and require a cuda-feature build.\n-c and -S are unsupported; -S is not the seed flag.\n"
 );
 
 #[derive(Clone)]
@@ -104,6 +104,7 @@ fn parse() -> Result<Option<Options>, String> {
         record_pool: None,
         record_workers: 1,
     };
+    let mut record_workers_explicit = false;
     let mut i = 0;
     let mut positional = false;
     while i < args.len() {
@@ -166,6 +167,7 @@ fn parse() -> Result<Option<Options>, String> {
                     )
                 }
                 "--record-workers" => {
+                    record_workers_explicit = true;
                     options.record_workers = value
                         .parse()
                         .map_err(|_| "--record-workers requires a positive integer")?;
@@ -320,6 +322,13 @@ fn parse() -> Result<Option<Options>, String> {
     }
     if options.snapshot.is_none() {
         options.snapshot = env::var("PSMC_SNAPSHOT").ok().filter(|v| !v.is_empty());
+    }
+    if !record_workers_explicit
+        && options.batch.is_none()
+        && options.backend == "cpu"
+        && options.snapshot.is_none()
+    {
+        options.record_workers = std::thread::available_parallelism().map_or(1, usize::from);
     }
     if options.record_workers > 1
         && (options.batch.is_some() || options.backend != "cpu" || options.snapshot.is_some())

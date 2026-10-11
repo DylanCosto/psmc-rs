@@ -1,0 +1,23 @@
+{
+  "author_page": "https://home.uchicago.edu/rhudson1/source/mksamples.html",
+  "archive_sha256": "0edf46b9d35b3e677e00e4ea98c57c118c1ac7e3c3bfe748e038978b4a908205",
+  "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "build_command": [
+    "gcc",
+    "-O2",
+    "-o",
+    "ms",
+    "ms.c",
+    "rand1.c",
+    "streec.c",
+    "-lm"
+  ],
+  "source_files": {
+    "ms.c": "efefc1e28ee5113882da3880f303533da8a2c8ad205d573ba9e3b051405c7502",
+    "rand1.c": "70bd8a05a74e97340341cd45cef7b36b046b74f8c2d47564df6c18d7daf6bbfa",
+    "streec.c": "9a159f4911bbe8549eae5f627ee62d84b3d18284c109a39a48ba1b6ed957ae67"
+  },
+  "binary_sha256": "3ea4ad0ce78925c6af5eb1893974c947d8f4704f5ab324635db542a46c04cc35",
+  "protocol_sha256": "b7f55bac1a78e0c1d987be3080af6c9eb62deae9f0983f6c40b8049170c21fc2",
+  "archive_cleanup_pause": "Qualification processes were suspended while main-drive cleanup took priority; timings include this pause and are not performance evidence."
+}

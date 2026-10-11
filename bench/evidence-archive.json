@@ -1,0 +1,792 @@
+{
+  "archive_count": 87,
+  "archive_bytes": 13681890583,
+  "source_file_bytes": 19844625345,
+  "verified_members": 90993,
+  "archives": [
+    {
+      "source": "bench/cpu-campaign-benchmark",
+      "archive": "bench__cpu-campaign-benchmark.tar.zst",
+      "sha256": "b883e792b2a657dea815c99d0b5e3edbae79508e1c6a1240c0b089fce8295a85",
+      "original_bytes": 22767732,
+      "archive_bytes": 3810699,
+      "verified_files": 1400,
+      "source_removed": true
+    },
+    {
+      "source": "bench/cpu-campaign-compilers",
+      "archive": "bench__cpu-campaign-compilers.tar.zst",
+      "sha256": "31c64597be450be4c12ef2c363dd76e2b18586b1584efecffa3645bb29d436b3",
+      "original_bytes": 29825391,
+      "archive_bytes": 7538388,
+      "verified_files": 315,
+      "source_removed": true
+    },
+    {
+      "source": "bench/cpu-campaign-engineering",
+      "archive": "bench__cpu-campaign-engineering.tar.zst",
+      "sha256": "e5b2cac7dcdc46595bf7a44e673f51c7c61266856d57b438eb9f634a76fa45a1",
+      "original_bytes": 125708401,
+      "archive_bytes": 27483701,
+      "verified_files": 2678,
+      "source_removed": true
+    },
+    {
+      "source": "bench/cpu-campaign-final",
+      "archive": "bench__cpu-campaign-final.tar.zst",
+      "sha256": "f3dc085adc77c4654a836f2ebfe0b88b34185ef9b96d714a9e5aad1cc72c346d",
+      "original_bytes": 3080858,
+      "archive_bytes": 1090929,
+      "verified_files": 137,
+      "source_removed": true
+    },
+    {
+      "source": "bench/cpu-campaign-fixtures",
+      "archive": "bench__cpu-campaign-fixtures.tar.zst",
+      "sha256": "55c176fad1ffa31af530d7f65de851c09ec40172859f561b1a604f23493fda9a",
+      "original_bytes": 6068857,
+      "archive_bytes": 1259062,
+      "verified_files": 264,
+      "source_removed": true
+    },
+    {
+      "source": "bench/cpu-campaign-profile",
+      "archive": "bench__cpu-campaign-profile.tar.zst",
+      "sha256": "da72bcfeb6c6f120a556b46ca0f038512c16b16cf83f216b48a758abac8d2427",
+      "original_bytes": 33610106,
+      "archive_bytes": 9011364,
+      "verified_files": 153,
+      "source_removed": true
+    },
+    {
+      "source": "bench/cpu-campaign-q",
+      "archive": "bench__cpu-campaign-q.tar.zst",
+      "sha256": "99e765cf5174e1f5168ad2275b0ecb06847bd13fd5564625e62eb82a8501443b",
+      "original_bytes": 18123956,
+      "archive_bytes": 4414514,
+      "verified_files": 154,
+      "source_removed": true
+    },
+    {
+      "source": "bench/cpu-campaign-review",
+      "archive": "bench__cpu-campaign-review.tar.zst",
+      "sha256": "534003c69190e1fbc0c519c7d5f6e3b550bee5aa01010cf7fe0cf59a5a1b688b",
+      "original_bytes": 186898,
+      "archive_bytes": 16916,
+      "verified_files": 152,
+      "source_removed": true
+    },
+    {
+      "source": "bench/hg",
+      "archive": "bench__hg.tar.zst",
+      "sha256": "53bb74c53827d92a8557ae99665418b2b0ca0768d19b6ff710740b593335644a",
+      "original_bytes": 37215161,
+      "archive_bytes": 14267646,
+      "verified_files": 932,
+      "source_removed": true
+    },
+    {
+      "source": "bench/parallel",
+      "archive": "bench__parallel.tar.zst",
+      "sha256": "b7367107a4ca639af788af3471d75c4feb4bd998a6548c4602333f395d49678e",
+      "original_bytes": 190631109,
+      "archive_bytes": 44505273,
+      "verified_files": 12151,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-1-benchmark",
+      "archive": "bench__phase-1-benchmark.tar.zst",
+      "sha256": "e26212a347659269164183f31cc7af9c37fada1f172b9dba38147f5074e75210",
+      "original_bytes": 556048,
+      "archive_bytes": 26264,
+      "verified_files": 48,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-2-benchmark",
+      "archive": "bench__phase-2-benchmark.tar.zst",
+      "sha256": "3e6602586a21033b9c965814cd269169979a7fcfe1fd7471f2ba951d9386228c",
+      "original_bytes": 36526627,
+      "archive_bytes": 4882343,
+      "verified_files": 2354,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-2-profile",
+      "archive": "bench__phase-2-profile.tar.zst",
+      "sha256": "9c362094a616e310980a188293427a7b3c60db36e278056d5d92f5448bdc06d0",
+      "original_bytes": 140165,
+      "archive_bytes": 25315,
+      "verified_files": 12,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-2-scheduler",
+      "archive": "bench__phase-2-scheduler.tar.zst",
+      "sha256": "71c174255cf72dabcacac7cd8890696b68a5487002b22345eddee3202612ae75",
+      "original_bytes": 56231403,
+      "archive_bytes": 40713365,
+      "verified_files": 1174,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-2-validation",
+      "archive": "bench__phase-2-validation.tar.zst",
+      "sha256": "220291bf1dd9c1983d7c4d24b52d2807bb16de3ca68e6fca4be862f9fd755c48",
+      "original_bytes": 181885566,
+      "archive_bytes": 156854047,
+      "verified_files": 1864,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-3-benchmark",
+      "archive": "bench__phase-3-benchmark.tar.zst",
+      "sha256": "c1585b85a692e8f21f3e0ea095c1164ce9d20ce00103caef3e6a0b090017e977",
+      "original_bytes": 18766545,
+      "archive_bytes": 3118483,
+      "verified_files": 1256,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-3-profile",
+      "archive": "bench__phase-3-profile.tar.zst",
+      "sha256": "8c5a253324ef56769e5101536fd7dcde2f926fddae868345dd75890eeb607981",
+      "original_bytes": 140341,
+      "archive_bytes": 25453,
+      "verified_files": 12,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-3-review",
+      "archive": "bench__phase-3-review.tar.zst",
+      "sha256": "0765580e2df76dd4647578efa5dd66cdfbbb845e04d48d8cb17d4ac1fd9ab4d1",
+      "original_bytes": 186903,
+      "archive_bytes": 16934,
+      "verified_files": 152,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-3-scheduler",
+      "archive": "bench__phase-3-scheduler.tar.zst",
+      "sha256": "f184ccc6072ad38fbdda141aa65fea43799664ad5d73f50843b94d4761b58b7a",
+      "original_bytes": 87834631,
+      "archive_bytes": 78022994,
+      "verified_files": 856,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-3-validation/20261010T052725318411Z",
+      "archive": "bench__phase-3-validation__20261010T052725318411Z.tar.zst",
+      "sha256": "9c6f504be57adc2f1d525fe427f6a139562b49c1da9676764ead04667a166be5",
+      "original_bytes": 917546060,
+      "archive_bytes": 895459462,
+      "verified_files": 1406,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-3-validation/20261010T070508408256Z",
+      "archive": "bench__phase-3-validation__20261010T070508408256Z.tar.zst",
+      "sha256": "1b645e150b6325d75c247c17eab9179a5314107e024839be3dfb875a5fcec49e",
+      "original_bytes": 917553124,
+      "archive_bytes": 895461827,
+      "verified_files": 1406,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-3-validation/20261010T151655331515Z",
+      "archive": "bench__phase-3-validation__20261010T151655331515Z.tar.zst",
+      "sha256": "46cb5f8de4e848e78df2f8d744ec67de519f89b9b9c5fcbc10311b7fe9dc2c5a",
+      "original_bytes": 917573732,
+      "archive_bytes": 895467584,
+      "verified_files": 1406,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-3-validation/20261010T155141671285Z",
+      "archive": "bench__phase-3-validation__20261010T155141671285Z.tar.zst",
+      "sha256": "a78ceb640bd8a8e9f60fdbec6732a4d1301fbe4babec6432a291634f83fa7cf6",
+      "original_bytes": 917578980,
+      "archive_bytes": 895471545,
+      "verified_files": 1406,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-3-validation/20261010T184638580156Z",
+      "archive": "bench__phase-3-validation__20261010T184638580156Z.tar.zst",
+      "sha256": "f90bb5f099b7f5452f5976911225e4c951693e6faab5128ab5547fc22ec52504",
+      "original_bytes": 917598460,
+      "archive_bytes": 895475081,
+      "verified_files": 1406,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-3-validation/20261010T213151632494Z",
+      "archive": "bench__phase-3-validation__20261010T213151632494Z.tar.zst",
+      "sha256": "f55508fd8f3aabd8e31070fbdc3ad3491c6f63899b0ca072b34605195516a000",
+      "original_bytes": 917883058,
+      "archive_bytes": 895552770,
+      "verified_files": 1406,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-3-validation/20261010T235119542238Z",
+      "archive": "bench__phase-3-validation__20261010T235119542238Z.tar.zst",
+      "sha256": "5671ed9e3e1988bc6cf5adfaa6cb30044cbd2173bf8e4bf66ecb1549b359b00c",
+      "original_bytes": 918291162,
+      "archive_bytes": 895650144,
+      "verified_files": 1406,
+      "source_removed": true
+    },
+    {
+      "source": "bench/phase-3-validation/20261011T005639033170Z",
+      "archive": "bench__phase-3-validation__20261011T005639033170Z.tar.zst",
+      "sha256": "7bb3b1b828e273df59e06eb8b0a76b0a8c546088b806b8bc35ceec7e9c36f1f5",
+      "original_bytes": 919104327,
+      "archive_bytes": 895834999,
+      "verified_files": 1406,
+      "source_removed": true
+    },
+    {
+      "source": "bench/raw",
+      "archive": "bench__raw.tar.zst",
+      "sha256": "4d58c8a0b96a47c2381290ded8f534d25f9fd93ed4b8bb5d7e0b4096aa45a4b4",
+      "original_bytes": 883645752,
+      "archive_bytes": 864286444,
+      "verified_files": 3314,
+      "source_removed": true
+    },
+    {
+      "source": "work/counts-batches",
+      "archive": "work__counts-batches.tar.zst",
+      "sha256": "0f59cda45d24914638069115b26710b2912eaf983d9c904d14c901ff61880f64",
+      "original_bytes": 53741650,
+      "archive_bytes": 17386065,
+      "verified_files": 2238,
+      "source_removed": true
+    },
+    {
+      "source": "work/counts-campaign",
+      "archive": "work__counts-campaign.tar.zst",
+      "sha256": "9a22c20625ccf3c2bacb1b523bca1352e9e64fb226901360dbe788d7c85c5685",
+      "original_bytes": 614523178,
+      "archive_bytes": 180350808,
+      "verified_files": 3249,
+      "source_removed": true
+    },
+    {
+      "source": "work/counts-gates",
+      "archive": "work__counts-gates.tar.zst",
+      "sha256": "7ccf4222a217cc4d7a1edeaacf36d1fe702051ba43c91dace43826981f7c185f",
+      "original_bytes": 3250541,
+      "archive_bytes": 1103299,
+      "verified_files": 294,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-checkpoint-20261010T063312496995Z",
+      "archive": "work__cpu-checkpoint-20261010T063312496995Z.tar.zst",
+      "sha256": "a2b75e646d77f3d40c09de3b1114c510edc115bd41be1857ee02a72226d3a5c2",
+      "original_bytes": 161658186,
+      "archive_bytes": 47771848,
+      "verified_files": 823,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-compilers-20261010T061447294864Z",
+      "archive": "work__cpu-compilers-20261010T061447294864Z.tar.zst",
+      "sha256": "f180a685888d9b58ff3b2ba9df7baa102ae626aff0341a79e201f436f4ff3fda",
+      "original_bytes": 65379448,
+      "archive_bytes": 19057367,
+      "verified_files": 271,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-confirm-20261010T063615421801Z",
+      "archive": "work__cpu-confirm-20261010T063615421801Z.tar.zst",
+      "sha256": "fc84696b4066f929c04574b471ee227dffaa050fa5326bf8909755d19e4860e5",
+      "original_bytes": 150207204,
+      "archive_bytes": 44367363,
+      "verified_files": 761,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-engineering-20261010T062342875857Z-tile256",
+      "archive": "work__cpu-engineering-20261010T062342875857Z-tile256.tar.zst",
+      "sha256": "c34c45af3aac861964af302cd3bed85c482862f6cebd170e45fd99f0e9c5e868",
+      "original_bytes": 149274463,
+      "archive_bytes": 44147607,
+      "verified_files": 760,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-engineering-20261010T062342875857Z-tile64",
+      "archive": "work__cpu-engineering-20261010T062342875857Z-tile64.tar.zst",
+      "sha256": "0abd80ead51cd30baa465c23ead1487f1b78ca8b2a2313e30e66fac28bbf39da",
+      "original_bytes": 149273296,
+      "archive_bytes": 44152260,
+      "verified_files": 760,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-engineering-20261010T062342875857Z-unroll16",
+      "archive": "work__cpu-engineering-20261010T062342875857Z-unroll16.tar.zst",
+      "sha256": "ad1d8425c207fb6ae2e928f74a823a34e6f6a05b966195b6a928b77a50562fa0",
+      "original_bytes": 148771542,
+      "archive_bytes": 44030979,
+      "verified_files": 755,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-engineering-20261010T062342875857Z-unroll8",
+      "archive": "work__cpu-engineering-20261010T062342875857Z-unroll8.tar.zst",
+      "sha256": "a546d928a9cf72310c8cc2d0bed1bbdd848a1a71d0b04dae906b7f45870828bb",
+      "original_bytes": 148667676,
+      "archive_bytes": 44014753,
+      "verified_files": 755,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-engineering-20261010T062835471167Z-grid",
+      "archive": "work__cpu-engineering-20261010T062835471167Z-grid.tar.zst",
+      "sha256": "92b5a335fb99fb48242c6b4bd08a271af81b0f4b4496df46e8e6d599cfa7fceb",
+      "original_bytes": 149994343,
+      "archive_bytes": 44393700,
+      "verified_files": 769,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-engineering-20261010T062835471167Z-invariants",
+      "archive": "work__cpu-engineering-20261010T062835471167Z-invariants.tar.zst",
+      "sha256": "a44857e832bb3000775c9e8d4ffd1c5b212481e7318c429d1dd3e14127264f26",
+      "original_bytes": 150514658,
+      "archive_bytes": 44531670,
+      "verified_files": 771,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-engineering-20261010T064300104423Z-masked-wide",
+      "archive": "work__cpu-engineering-20261010T064300104423Z-masked-wide.tar.zst",
+      "sha256": "47964088161436e18ea83dc871d6d9e561d99560a7d95cb70acb6e38b26e3e4b",
+      "original_bytes": 149181531,
+      "archive_bytes": 44167952,
+      "verified_files": 758,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-engineering-20261010T064300104423Z-masked",
+      "archive": "work__cpu-engineering-20261010T064300104423Z-masked.tar.zst",
+      "sha256": "5084557195f6e720df969482ce1d64043f4749b2d5e5ae2bda514ea3420b3a62",
+      "original_bytes": 148870087,
+      "archive_bytes": 44086982,
+      "verified_files": 758,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-next-batches",
+      "archive": "work__cpu-next-batches.tar.zst",
+      "sha256": "50b3c879fc88d7beafbe27f2ae75eba89cbeacb659baba392d756dfc671779ef",
+      "original_bytes": 53741650,
+      "archive_bytes": 17368211,
+      "verified_files": 2238,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-next-gates",
+      "archive": "work__cpu-next-gates.tar.zst",
+      "sha256": "c3974219f3509873a1cce13f8c7ddfeec057472f65a4316e9a4d4649be6c5491",
+      "original_bytes": 3252562,
+      "archive_bytes": 1103486,
+      "verified_files": 294,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-next",
+      "archive": "work__cpu-next.tar.zst",
+      "sha256": "869633c11c4ffe01f7e02e33a10d1e9ac5a558ea8bef595d4331233fb8e24b5f",
+      "original_bytes": 1485865878,
+      "archive_bytes": 459242586,
+      "verified_files": 6525,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-profile-20261010T060330160593Z",
+      "archive": "work__cpu-profile-20261010T060330160593Z.tar.zst",
+      "sha256": "446436c658ae09345ab859c75eac8fb79a2156f1035b7666354d963213d022c7",
+      "original_bytes": 14068844,
+      "archive_bytes": 3537041,
+      "verified_files": 69,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-profile-20261010T060417488167Z",
+      "archive": "work__cpu-profile-20261010T060417488167Z.tar.zst",
+      "sha256": "b0440730efbcf8c07a9cc7c9d0aa91de35a6c9d840af96e8f699ec3e29effdde",
+      "original_bytes": 14020280,
+      "archive_bytes": 3522295,
+      "verified_files": 69,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-profile-20261010T072419292205Z",
+      "archive": "work__cpu-profile-20261010T072419292205Z.tar.zst",
+      "sha256": "67350eec6dbe89394647b4c606a427e92b534e780ad0dfa3c84abe381c59e4c7",
+      "original_bytes": 14050032,
+      "archive_bytes": 3633124,
+      "verified_files": 69,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-q-20261010T060922679558Z-direct",
+      "archive": "work__cpu-q-20261010T060922679558Z-direct.tar.zst",
+      "sha256": "2dd3629f9669e49c9265c460e9645b5d451eab4abdae845ae253843538e1efe9",
+      "original_bytes": 20572052,
+      "archive_bytes": 5477477,
+      "verified_files": 75,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-q-20261010T060922679558Z-flat",
+      "archive": "work__cpu-q-20261010T060922679558Z-flat.tar.zst",
+      "sha256": "f8c2f422feae0a0ec64c5234edc74ecdd529f44383ad783456fd3526a344c6e3",
+      "original_bytes": 20546204,
+      "archive_bytes": 5473449,
+      "verified_files": 75,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-q-20261010T060922679558Z-last",
+      "archive": "work__cpu-q-20261010T060922679558Z-last.tar.zst",
+      "sha256": "83987a5bcd8566e5ceaee3c6e44b8141534337dd6193850c7039870372c9f06c",
+      "original_bytes": 20575924,
+      "archive_bytes": 5476922,
+      "verified_files": 75,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-record-confirm-20261010T065617179024Z",
+      "archive": "work__cpu-record-confirm-20261010T065617179024Z.tar.zst",
+      "sha256": "6f4743c1e50a6cbe30750a3f83ecd341f0e8cbe5340fe6cb4b73b887ea4c726b",
+      "original_bytes": 151809865,
+      "archive_bytes": 44662581,
+      "verified_files": 763,
+      "source_removed": true
+    },
+    {
+      "source": "work/cpu-split-confirm-20261010T064532832507Z",
+      "archive": "work__cpu-split-confirm-20261010T064532832507Z.tar.zst",
+      "sha256": "13e2a7a9dc2c8ab5f67ef81d9387a4b01aa7b22feb0fe21e41ba37c27b84b792",
+      "original_bytes": 150268625,
+      "archive_bytes": 44392665,
+      "verified_files": 761,
+      "source_removed": true
+    },
+    {
+      "source": "work/cuda",
+      "archive": "work__cuda.tar.zst",
+      "sha256": "7a256e1d9d88b62fe52ad53cdfb73a11f55f073109a63677292ed2dbe019d250",
+      "original_bytes": 1857727393,
+      "archive_bytes": 1689757515,
+      "verified_files": 2482,
+      "source_removed": true
+    },
+    {
+      "source": "work/equivalent-followup",
+      "archive": "work__equivalent-followup.tar.zst",
+      "sha256": "0379f87fb8700191fe311fcbf3ee1e200d253ae530e937279f9b727f80b2bd6f",
+      "original_bytes": 69295666,
+      "archive_bytes": 25931780,
+      "verified_files": 1640,
+      "source_removed": true
+    },
+    {
+      "source": "work/equivalent",
+      "archive": "work__equivalent.tar.zst",
+      "sha256": "a62b1fde119349aa9e6bb81bfb4dc0d1a615b3e95a6f12a98d04af1d621f5aba",
+      "original_bytes": 214108249,
+      "archive_bytes": 46744285,
+      "verified_files": 2116,
+      "source_removed": true
+    },
+    {
+      "source": "work/exhaust",
+      "archive": "work__exhaust.tar.zst",
+      "sha256": "633c307299144b1f2d5f7995d6635438c11e0d7d663a60d80ebe2f6de3340c54",
+      "original_bytes": 2010244836,
+      "archive_bytes": 539096276,
+      "verified_files": 8515,
+      "source_removed": true
+    },
+    {
+      "source": "work/finite-probe",
+      "archive": "work__finite-probe.tar.zst",
+      "sha256": "0f3216d963f1cfc25f1432dcff00e59cb6f7c70f297bea7848f2df6e80287e45",
+      "original_bytes": 389211,
+      "archive_bytes": 87129,
+      "verified_files": 30,
+      "source_removed": true
+    },
+    {
+      "source": "work/gprof",
+      "archive": "work__gprof.tar.zst",
+      "sha256": "1def87904e8266946a3d9d278f9e8def7edab3124e4a62c8ed0f4a53b5914f80",
+      "original_bytes": 719043,
+      "archive_bytes": 197175,
+      "verified_files": 49,
+      "source_removed": true
+    },
+    {
+      "source": "work/hg-input",
+      "archive": "work__hg-input.tar.zst",
+      "sha256": "83529b04d34819615dc2edeaf66d0228022c2ebe00908d776b5686eb91b6724a",
+      "original_bytes": 16528723,
+      "archive_bytes": 235384,
+      "verified_files": 33,
+      "source_removed": true
+    },
+    {
+      "source": "work/hg-source",
+      "archive": "work__hg-source.tar.zst",
+      "sha256": "6b0300979b2f3d4efc275594edc05cedae7317e57214259a58516f1df43a120a",
+      "original_bytes": 1140851,
+      "archive_bytes": 135504,
+      "verified_files": 6,
+      "source_removed": true
+    },
+    {
+      "source": "work/instrumented-old",
+      "archive": "work__instrumented-old.tar.zst",
+      "sha256": "b25bdd580df7d251e060ea95cb97f31a5e7d5f33ef86a7aab5b7c395e0a6844b",
+      "original_bytes": 824277,
+      "archive_bytes": 224859,
+      "verified_files": 53,
+      "source_removed": true
+    },
+    {
+      "source": "work/instrumented",
+      "archive": "work__instrumented.tar.zst",
+      "sha256": "85601f03c7f0aa4af04d9ff62acbe8fd6d4d858bee2de5519c9351c40d99d658",
+      "original_bytes": 824439,
+      "archive_bytes": 224871,
+      "verified_files": 53,
+      "source_removed": true
+    },
+    {
+      "source": "work/linear-equivalent",
+      "archive": "work__linear-equivalent.tar.zst",
+      "sha256": "26abaa699f1e8b65df2c324b5fe8f8fefcebdf48fc623e8f51dd80b545b44364",
+      "original_bytes": 47113569,
+      "archive_bytes": 17415652,
+      "verified_files": 1065,
+      "source_removed": true
+    },
+    {
+      "source": "work/parallel-candidate-v2",
+      "archive": "work__parallel-candidate-v2.tar.zst",
+      "sha256": "89838120468214387c51782101263f44f0bfd2a58e24d371b2ab7ae8e163da43",
+      "original_bytes": 155494568,
+      "archive_bytes": 45814571,
+      "verified_files": 817,
+      "source_removed": true
+    },
+    {
+      "source": "work/parallel-candidate",
+      "archive": "work__parallel-candidate.tar.zst",
+      "sha256": "250de3064238d050f29e06a77ff25b0406cba68791753685b83f99cd0ada9c09",
+      "original_bytes": 197013,
+      "archive_bytes": 50888,
+      "verified_files": 30,
+      "source_removed": true
+    },
+    {
+      "source": "work/phase1-final-bin",
+      "archive": "work__phase1-final-bin.tar.zst",
+      "sha256": "755c77a0b59bb66cef870de3c3359d2c79609a2af25296f8588fed91b0412595",
+      "original_bytes": 4567200,
+      "archive_bytes": 1243934,
+      "verified_files": 1,
+      "source_removed": true
+    },
+    {
+      "source": "work/phase1-model",
+      "archive": "work__phase1-model.tar.zst",
+      "sha256": "72632c5b7896f00eabe65405334f062b8c3eb7919ab8ec4fd64346d48e9390af",
+      "original_bytes": 15212757,
+      "archive_bytes": 4392034,
+      "verified_files": 15,
+      "source_removed": true
+    },
+    {
+      "source": "work/phase1-superseded",
+      "archive": "work__phase1-superseded.tar.zst",
+      "sha256": "be42bfb9b7a3963c23f007ccaa3ac56759b441aa9837c3c71d33b87d58c6d1f9",
+      "original_bytes": 1390405326,
+      "archive_bytes": 1388217071,
+      "verified_files": 635,
+      "source_removed": true
+    },
+    {
+      "source": "work/phase2-cpu-target",
+      "archive": "work__phase2-cpu-target.tar.zst",
+      "sha256": "6aeaf586477256dd7457ca0c64cba7f0e08840a7b48dcef2aec84c16b5ca1ebf",
+      "original_bytes": 15674569,
+      "archive_bytes": 4222134,
+      "verified_files": 31,
+      "source_removed": true
+    },
+    {
+      "source": "work/phase2-model-workspace",
+      "archive": "work__phase2-model-workspace.tar.zst",
+      "sha256": "e784d8208c4cd3c0acc29a96b72ee5dccf8aae5f192ba63a1931564858ccd983",
+      "original_bytes": 15096032,
+      "archive_bytes": 4087760,
+      "verified_files": 5,
+      "source_removed": true
+    },
+    {
+      "source": "work/phase2-review-54l_oe03",
+      "archive": "work__phase2-review-54l_oe03.tar.zst",
+      "sha256": "458a47984f0618871815eb994dcf0704f41134b13e940c52ac5a6e2bd550be8f",
+      "original_bytes": 5105628,
+      "archive_bytes": 1410153,
+      "verified_files": 56,
+      "source_removed": true
+    },
+    {
+      "source": "work/phase2-review-vk0ws90b",
+      "archive": "work__phase2-review-vk0ws90b.tar.zst",
+      "sha256": "278723062b80eba9f846d64f9f23ec8b8d22e9c080f585a303075b45c66f18d4",
+      "original_bytes": 5113220,
+      "archive_bytes": 1411251,
+      "verified_files": 57,
+      "source_removed": true
+    },
+    {
+      "source": "work/phase2-review-vp2p29l5",
+      "archive": "work__phase2-review-vp2p29l5.tar.zst",
+      "sha256": "ada3bdbef2cd267ec78eb29b2f8aea8a812406249a01d27593ab0cab78af0b65",
+      "original_bytes": 5106002,
+      "archive_bytes": 1410307,
+      "verified_files": 57,
+      "source_removed": true
+    },
+    {
+      "source": "work/phase2-review",
+      "archive": "work__phase2-review.tar.zst",
+      "sha256": "92cd6c741c15f21be7a366310f908ca4cd09a5e6d229b5357e89ad710b27f93a",
+      "original_bytes": 5063197,
+      "archive_bytes": 1407008,
+      "verified_files": 5,
+      "source_removed": true
+    },
+    {
+      "source": "work/phase2",
+      "archive": "work__phase2.tar.zst",
+      "sha256": "cc25e2f3c3de2cc5b0e4389a813df9945dcfd877a829107c7c33a81c5ad1bc93",
+      "original_bytes": 296301,
+      "archive_bytes": 59871,
+      "verified_files": 37,
+      "source_removed": true
+    },
+    {
+      "source": "work/relook",
+      "archive": "work__relook.tar.zst",
+      "sha256": "015ce53a33b84ca944d5001d79e9add14f8b65362cfa8a55eb5d8404cbf14b9f",
+      "original_bytes": 527759540,
+      "archive_bytes": 147249989,
+      "verified_files": 2605,
+      "source_removed": true
+    },
+    {
+      "source": "work/shared-records",
+      "archive": "work__shared-records.tar.zst",
+      "sha256": "50d46721c983691cd47920551b5c509d1d9864a14fd84d8739f5dc86bd382b82",
+      "original_bytes": 210157011,
+      "archive_bytes": 77026518,
+      "verified_files": 4915,
+      "source_removed": true
+    },
+    {
+      "source": "work/source-gprof-failed",
+      "archive": "work__source-gprof-failed.tar.zst",
+      "sha256": "8938773a2d5f0923516c242adce8bb2eab9f160ecfb35744336af09d880a85ea",
+      "original_bytes": 50076,
+      "archive_bytes": 17229,
+      "verified_files": 13,
+      "source_removed": true
+    },
+    {
+      "source": "work/source-gprof",
+      "archive": "work__source-gprof.tar.zst",
+      "sha256": "3326c90de266129d5077c283390a4c57496202f0beaee0c5d44db6c168361e3d",
+      "original_bytes": 177947,
+      "archive_bytes": 54784,
+      "verified_files": 37,
+      "source_removed": true
+    },
+    {
+      "source": "work/source-instrumented-old",
+      "archive": "work__source-instrumented-old.tar.zst",
+      "sha256": "cb99f577f53a7a2ab3e424caa906458150acffcd3d1977f6238ce9ac2bf210f8",
+      "original_bytes": 177947,
+      "archive_bytes": 54814,
+      "verified_files": 37,
+      "source_removed": true
+    },
+    {
+      "source": "work/source-instrumented",
+      "archive": "work__source-instrumented.tar.zst",
+      "sha256": "f0d483299ddf5fdc6f4bd582729ec87d019639ba6d82d51cf6a4d5c33bb040ae",
+      "original_bytes": 177947,
+      "archive_bytes": 54800,
+      "verified_files": 37,
+      "source_removed": true
+    },
+    {
+      "source": "work/source-vanilla-failed",
+      "archive": "work__source-vanilla-failed.tar.zst",
+      "sha256": "c0d54f6cb52e1bc3e16ffde0c52412aa5c96a81d75f113689bb1c6c5071cc20c",
+      "original_bytes": 177947,
+      "archive_bytes": 54798,
+      "verified_files": 37,
+      "source_removed": true
+    },
+    {
+      "source": "work/source-vanilla-first-build",
+      "archive": "work__source-vanilla-first-build.tar.zst",
+      "sha256": "3294bd3fb3e85b2f7c4ac28595c015863174a8ce702147db378d75a27797acd0",
+      "original_bytes": 177947,
+      "archive_bytes": 54810,
+      "verified_files": 37,
+      "source_removed": true
+    },
+    {
+      "source": "work/source-vanilla",
+      "archive": "work__source-vanilla.tar.zst",
+      "sha256": "e84653aa6419c0635b56c9c85a52792a3eee40cb0a3dc56d9febede1e3c2d87b",
+      "original_bytes": 177947,
+      "archive_bytes": 54789,
+      "verified_files": 37,
+      "source_removed": true
+    },
+    {
+      "source": "work/vanilla-failed-missing-headers",
+      "archive": "work__vanilla-failed-missing-headers.tar.zst",
+      "sha256": "193b947e2d529a5eed5148810a1676b5fd5fe4a48de56f99b508a514960c3217",
+      "original_bytes": 285755,
+      "archive_bytes": 98721,
+      "verified_files": 40,
+      "source_removed": true
+    },
+    {
+      "source": "work/vanilla-first-build",
+      "archive": "work__vanilla-first-build.tar.zst",
+      "sha256": "02d74cf88e58a8fd58d8604a8f2fb136a654049f966da261eadd71148a2820d2",
+      "original_bytes": 716139,
+      "archive_bytes": 195883,
+      "verified_files": 49,
+      "source_removed": true
+    }
+  ],
+  "restoration": "See docs/evidence-archive.md and the local outputs/psmc-rs-evidence-archive/README.md for storage location."
+}

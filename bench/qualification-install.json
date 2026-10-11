@@ -1,0 +1,63 @@
+{
+  "version": "0.6.2",
+  "binary_sha256": "0fcf6323f32300a2580bea10c1003ef741f755237246ac8dde136aa41613901b",
+  "pilot_binary_sha256": "917817fd24e6567c2a27cb2f2afc329448b4a27f30c20e6f62693e0a5bf0bde0",
+  "representative_final_default_checks": [
+    {
+      "history": "constant",
+      "index": 9,
+      "mode": "strict",
+      "auto_workers_match_frozen_serial": true,
+      "seconds_user_system_maxrss_kib": "3.13 11.92 0.17 170228",
+      "output_sha256": "bedb753fb5130033d03c15a8275a72358e36510af9233f936a9883694d115c4c"
+    },
+    {
+      "history": "constant",
+      "index": 9,
+      "mode": "equivalent",
+      "auto_workers_match_frozen_serial": true,
+      "seconds_user_system_maxrss_kib": "0.72 2.76 0.06 13976",
+      "output_sha256": "05a19f5cd6a1a538312697aad95682c15a484962b91d94523ab9b921b383fa4e"
+    },
+    {
+      "history": "bottleneck",
+      "index": 9,
+      "mode": "strict",
+      "auto_workers_match_frozen_serial": true,
+      "seconds_user_system_maxrss_kib": "3.29 11.99 0.15 169888",
+      "output_sha256": "5396c93c9c9d39dbc3622e93de0554947e79d073ed36e07b2140ec4d62eb6356"
+    },
+    {
+      "history": "bottleneck",
+      "index": 9,
+      "mode": "equivalent",
+      "auto_workers_match_frozen_serial": true,
+      "seconds_user_system_maxrss_kib": "0.77 2.83 0.06 13840",
+      "output_sha256": "c0880594fe0fff906c5305eba22abd4f973aa3ae06b28607495ce064699d1b85"
+    },
+    {
+      "history": "expansion",
+      "index": 9,
+      "mode": "strict",
+      "auto_workers_match_frozen_serial": true,
+      "seconds_user_system_maxrss_kib": "2.90 11.78 0.17 169940",
+      "output_sha256": "04b7d854ebaf3c4e3c8972c19c5cf57089f21f7e80c18166f6a07cf9f9bc8ab3"
+    },
+    {
+      "history": "expansion",
+      "index": 9,
+      "mode": "equivalent",
+      "auto_workers_match_frozen_serial": true,
+      "seconds_user_system_maxrss_kib": "0.84 2.78 0.08 23740",
+      "output_sha256": "e44ae865eb0cc8ac00be0346789b7de6a8e56d9f531a90ee85fa17968641b924"
+    }
+  ],
+  "test_counts": {
+    "rust_passed": 55,
+    "cuda_ignored_not_run": 4,
+    "python_passed": 4,
+    "live_c_goldens_exact": 4,
+    "affinity_bootstrap_outputs_exact": 32
+  },
+  "performance_note": "Diagnostic timings only, no new speedup claim; qualification panel was paused for disk cleanup."
+}
