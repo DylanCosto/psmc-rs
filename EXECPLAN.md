@@ -1966,3 +1966,22 @@ observed available RAM7.752GiB and disk70.313GiB respected runtime floors.
 Publication metadata choice remains unresolved. Final native asset packaging and
 whole-genome binary continuity checks are next; the checker now waits for the
 unchanged14GiB preflight instead of starting a stage below its resource floor.
+
+### Final native binary continuity and runtime notices
+
+Native CI38161868539 on6b29df6 passed both Linux architectures. Both downloaded
+archives passed all32 internal hashes. The extracted x86 executable reproduced
+all output and bootstrap draws for whole-genome replicate0 in both modes; final
+checker passed with4 admitted workers and2GiB admission budget. Peak RSS was
+317.78MiB strict /96.97MiB equivalent. This is a continuity check, not timing.
+Evidence: bench/final-native-archives.json and bench/release-binary-check.json.
+
+Created a PRIVATE DRAFT v0.8.0 release at6b29df6 with verified candidate assets;
+it is not public. Final license review found that Rust runtime notices must also
+be bundled. Added unmodified official Rust1.90 standard-library notices, root
+license texts, compiler-builtins terms and in-tree Unicode/BSD texts with hashes.
+The package inventory and container recipe include them. No numerical source or
+frozen qualification artifact changed. Regenerate archives before publication;
+retain the original archive/replay evidence and verify executable identity.
+The audit also checks annotated tag identities and commit/tag credential patterns.
+The owner email decision remains pending; no public release or history rewrite.

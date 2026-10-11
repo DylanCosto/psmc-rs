@@ -13,10 +13,14 @@ Original notices in translated source files remain in force and must be retained
   reference/LICENSE.phlash.txt (Jonathan Terhorst, 2024, MIT). This notice does
   not claim that phlash endorses PSMC-rs. The production Rust engine does not
   invoke phlash or Python inference.
-- **System libraries:** GNU/Linux builds dynamically link the system C/math and
-  zlib libraries. Their distributions and licenses are separate; the binary
-  archive does not bundle those shared libraries. Static builds require an
-  additional bundled-library license inventory before distribution.
+- **Rust runtime:** the executables include standard-library and compiler support
+  code from Rust 1.90.0. Upstream notices, license texts and their provenance are
+  bundled in [reference/rust-1.90.0](reference/rust-1.90.0/README.md), including
+  the official standard-library dependency inventory and compiler-builtins terms.
+- **System libraries:** GNU/Linux builds dynamically link the system C/math,
+  GCC support and zlib libraries. Their distributions and licenses are separate;
+  the binary archive does not bundle those shared libraries. A fully static
+  system-library build requires an additional license inventory before release.
 
 Synthetic tutorial/test fixtures are generated for this project. Public human
 inputs used in local qualification are not distributed with source or binaries.

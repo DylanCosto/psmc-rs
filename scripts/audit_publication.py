@@ -44,21 +44,24 @@ def main():
             header = reader.stdout.readline().decode().split()
             size = int(header[2]); data = reader.stdout.read(size)
             assert reader.stdout.read(1) == b'\n'
-            if header[1] != 'blob': continue
-            count += 1; total += size
+            # Commit/tag messages can expose credentials too; do not print matches.
             for kind, pattern in patterns.items():
                 if re.search(pattern, data): findings.append(dict(path=name, object=oid, kind=kind))
+            if header[1] != 'blob': continue
+            count += 1; total += size
             if re.search(rb'/home/[A-Za-z0-9_.-]+/', data): home_paths.add(name)
             if name.lower().endswith(input_suffixes):
                 inputs.append(dict(path=name, object=oid, bytes=size, sha256=hashlib.sha256(data).hexdigest()))
         reader.stdin.close()
         assert reader.wait() == 0
     identities = set(git('log', '--all', '--format=%ae%n%ce').decode().splitlines())
+    tag_identities = {line.strip('<>') for line in git('for-each-ref', 'refs/tags', '--format=%(taggeremail)').decode().splitlines() if line}
+    identities.update(tag_identities)
     personal_identities = {email for email in identities if email and not email.lower().endswith(('@localhost', '@users.noreply.github.com'))}
     tracked = git('ls-files', '-z').decode().split('\0')[:-1]
     private_trees = [p for p in tracked if p.startswith(('work/', 'bin/', 'target/'))]
     outside = [item for item in inputs if not item['path'].startswith('tests/fixtures/')]
-    result = dict(head=head, scope='Reachable Git blobs and tracked path inventory; known credential patterns only, commit identity exposure; manual review still required',
+    result = dict(head=head, scope='Reachable Git objects and tracked path inventory; known credential patterns only, commit/tag identity exposure; manual review still required',
                   blob_count=count, blob_bytes=total,
                   tracked_files=len(tracked), tracked_bytes=sum((ROOT/p).stat().st_size for p in tracked),
                   credential_like_findings=findings, tracked_private_work_trees=private_trees,
@@ -68,7 +71,7 @@ def main():
                   fixture_provenance=['bench/prepare.py', 'bench/phlash_probe.py', 'tests/fixtures/golden/README.md',
                                       'bench/cpu_campaign_fixtures.py', 'bench/cpu-campaign-fixtures.json',
                                       'bench/cpu_campaign_hmm_fixtures.py', 'bench/cpu-campaign-hmm-fixtures.json'],
-                  non_noreply_commit_identity_count=len(personal_identities),
+                  non_noreply_commit_or_tag_identity_count=len(personal_identities),
                   author_metadata_publication_accepted=args.allow_author_metadata,
                   automated_blockers=bool(findings or private_trees or outside or (personal_identities and not args.allow_author_metadata)),
                   manual_review='Required for fixture provenance and historical build/test path context before making repository public')

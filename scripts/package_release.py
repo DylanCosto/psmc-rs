@@ -120,6 +120,12 @@ def main():
                  'docs/assets/hg001-benchmark-data.json', 'containers/Dockerfile',
                  'scripts/plot_curve.py', 'reference/LICENSE.psmc.txt',
                  'reference/LICENSE.phlash.txt']
+    runtime_notices = sorted((ROOT/'reference/rust-1.90.0').iterdir())
+    inventory = json.loads((ROOT/'reference/rust-1.90.0/inventory.json').read_text())
+    assert inventory['rust_version'] == '1.90.0'
+    for path, metadata in inventory['files'].items():
+        assert digest((ROOT/'reference/rust-1.90.0'/path).read_bytes()) == metadata['sha256']
+    included.extend(str(path.relative_to(ROOT)) for path in runtime_notices)
     for path in included:
         files[path] = archive_document(path, (ROOT/path).read_bytes(), included, source)
     files['examples/synthetic.psmcfa'] = (ROOT/'tests/fixtures/workload.psmcfa').read_bytes()

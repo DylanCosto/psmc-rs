@@ -8,6 +8,7 @@ RUN apt-get update \
 COPY psmc-rs /usr/local/bin/psmc-rs
 COPY LICENSE NOTICE.md CITATION.cff /usr/local/share/psmc-rs/
 COPY reference/LICENSE.psmc.txt reference/LICENSE.phlash.txt /usr/local/share/psmc-rs/reference/
+COPY reference/rust-1.90.0/ /usr/local/share/psmc-rs/reference/rust-1.90.0/
 USER 65532:65532
 WORKDIR /data
 ENTRYPOINT ["/usr/local/bin/psmc-rs"]
