@@ -114,6 +114,7 @@ def main():
                  'docs/binary-install.md', 'docs/tutorial.md', 'docs/bootstrap-resume.md',
                  'docs/usage.md', 'docs/modes-and-guarantees.md', 'docs/validation-overview.md',
                  'docs/methods-note.md', 'docs/external-pilot.md', 'docs/container.md',
+                 'docs/adoption-qualification-report.md', 'docs/stable-model-report.md',
                  'docs/release-0.7.0.md', 'docs/release-0.8.0.md',
                  'docs/assets/hg001-benchmark.png', 'docs/assets/hg001-benchmark.svg',
                  'docs/assets/hg001-benchmark-data.json', 'containers/Dockerfile',
