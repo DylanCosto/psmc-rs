@@ -1431,3 +1431,9 @@ Use all 22 autosomes with whole chromosome boundaries/missing regions; one proce
 at a time, hard address-space/output limits, strict admission and resource guards.
 No raw-read download, no inference arithmetic changes, no new simulation. Validate
 input conversion, freeze provenance, run/audit/report all three engines.
+
+HG001 runner/converter implemented. Three targeted tests passed: streamed upstream
+binning with masking and final partial-bin behavior, actual process memory/output
+limits and stage reuse, and fail-closed RAM monitoring. Source hashes verified.
+Preparation streams one chromosome, retains gzip state evidence, and compares every
+encoded bin with the independent Python rule before any whole-genome fit starts.
