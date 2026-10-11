@@ -54,14 +54,15 @@ def main():
     command = ['cargo', '+1.90.0', 'build', '--release', '--locked', '--offline', '--target', target]
     subprocess.run(command, cwd=ROOT, env=env, check=True)
     binary = build_dir/target/'release'/'psmc-rs'
-    assert run([str(binary), '--version']) == f'psmc-rs {version}'
+    version_banner = run([str(binary), '--version'])
+    assert version_banner.split(';', 1)[0] == f'psmc-rs {version}'
     symbols = run(['readelf', '--version-info', str(binary)])
     glibc = sorted(set(re.findall(r'GLIBC_([0-9]+(?:\.[0-9]+)+)', symbols)),
                    key=lambda s: tuple(map(int, s.split('.'))))
     # Record library SONAMEs only; build-machine absolute paths are not useful.
     dynamic = run(['readelf', '-d', str(binary)])
     libraries = re.findall(r'\(NEEDED\).*?\[(.*?)\]', dynamic)
-    provenance = dict(version=version, source_commit=source, target=target,
+    provenance = dict(version=version, version_banner=version_banner, source_commit=source, target=target,
                       rustc=run(['rustc', '+1.90.0', '-Vv']), build_command=command,
                       generic_cpu=True, runtime_simd=True, cuda=False,
                       required_glibc=glibc[-1] if glibc else None,
