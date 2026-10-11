@@ -1782,3 +1782,29 @@ outputs recovered without rerunning fits and report uses explicit null/status.
 Initial peak RSS was not captured; subsequent diagnostic memory records retained.
 Next permitted milestone: predeclared broader qualification of frozen production
 engine, including additional patterns/public input and30 whole-genome bootstraps.
+
+### Adoption milestone 4 — prospective production qualification started
+
+Frozen source e0867ad, v0.8.0 candidate, protocol SHA256
+1967fb757cf77a465086d4ee3548d0773350405241be87457563e973a421ab6f.
+Live bounded runner: bench/adoption_qualification.py, work/adoption-qualification;
+lock records PID and /proc must be checked before acting. Do not duplicate/restart
+live stages or alter frozen runner/protocol/binaries. Runner session22149 is live.
+It runs30 whole-genome strict and30 matched equivalent bootstraps, then four
+additional public-data/pattern cases with C-O2/C-FMA/strict/equivalent. HG002's
+2.53MB encoded input was selectively restored from the verified local archive;
+no genomic download/upload. Full guard policy is in the frozen protocol.
+
+v0.8.0 native CI38155781355 passed x86-64 and ARM64 (including strict goldens and
+actual interruption/resume integration tests). Both downloaded native candidate
+archives' outer and internal hashes independently verified. Local container
+built from the x86-64 candidate passed strict golden/equivalent smoke with no
+network during inference; local container is not a registry publication.
+
+Independent campaign audit is being prepared in bench/audit_adoption_qualification.py.
+Release/onboarding drafts remain staged locally pending qualification. The benchmark
+figure recomputes medians/ranges from existing audited v0.6.3 data, labels worker and
+shared-host constraints, and was visually checked after fixing footer overlap.
+Public-history audit found no known credential patterns in929 reachable blobs;
+synthetic input provenance and historical build-path inventory are under review.
+No public release/tag/visibility change or external invitation has occurred yet.

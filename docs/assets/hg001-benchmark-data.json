@@ -1,0 +1,51 @@
+{
+  "source": "bench/hg001-speed-results.json",
+  "source_sha256": "e197f3efbd643a64f38c6632cd2e245dbc079d756d787334b3a44cb7e22d7bea",
+  "rows": [
+    {
+      "configuration": "c-one",
+      "median_seconds": 3028.28,
+      "range_seconds": [
+        3007.61,
+        3030.11
+      ],
+      "peak_rss_mib": 2598.859375
+    },
+    {
+      "configuration": "strict-one",
+      "median_seconds": 632.78,
+      "range_seconds": [
+        632.3,
+        634.76
+      ],
+      "peak_rss_mib": 2481.41796875
+    },
+    {
+      "configuration": "equivalent-one",
+      "median_seconds": 171.52,
+      "range_seconds": [
+        168.55,
+        177.09
+      ],
+      "peak_rss_mib": 90.78125
+    },
+    {
+      "configuration": "strict-full",
+      "median_seconds": 335.11,
+      "range_seconds": [
+        333.85,
+        345.51
+      ],
+      "peak_rss_mib": 4893.0390625
+    },
+    {
+      "configuration": "equivalent-full",
+      "median_seconds": 26.24,
+      "range_seconds": [
+        26.24,
+        26.3
+      ],
+      "peak_rss_mib": 492.71875
+    }
+  ]
+}

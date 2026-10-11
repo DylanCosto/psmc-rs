@@ -1,0 +1,33 @@
+{
+  "image_id": "sha256:0994ab74e730c0db65f92d6b13873c41d9329e476ad7bacfb109b11e2a171dc5",
+  "source_archive": "native CI38155781355 x86-64 candidate",
+  "runtime": "Debian bookworm-slim pinned image digest; apt zlib runtime",
+  "network_during_test": "none",
+  "cpus": 1,
+  "memory_limit": "1g",
+  "runs": [
+    {
+      "mode": "strict",
+      "exit_code": 0,
+      "output_sha256": "1234471d7e4dc87f290f391ef2c601c5eb2e6c787d855d5c35085909c6e6f66b",
+      "strict_golden_exact": true
+    },
+    {
+      "mode": "equivalent",
+      "exit_code": 0,
+      "output_sha256": "d40ba3d8f33fe04224776ff4bfb469b4af81f6d44ca9ce4a86db735b076749f7",
+      "strict_golden_exact": null
+    }
+  ],
+  "scope": "local x86-64 container regression, not whole-genome or ARM-container qualification",
+  "dockerfile_sha256": "d63d7da79f8fc097600cf86508c850ac677b181398d51300ac8162ae8994bfb1",
+  "base_image_digest": "debian@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
+  "runtime_packages": [
+    "libc6:amd64\t2.36-9+deb12u14",
+    "libgcc-s1:amd64\t12.2.0-14+deb12u1",
+    "zlib1g:amd64\t1:1.2.13.dfsg-1"
+  ],
+  "archive_sha256": "be73640fe1e00963bcd79b89865e6b67cf5626f75d2572c69c007072c4e1f9e0",
+  "native_ci": "https://github.com/DylanCosto/psmc-rs/actions/runs/38155781355",
+  "native_source_commit": "e0867ada31249cfef3c6930c7f679f337740c1ef"
+}
