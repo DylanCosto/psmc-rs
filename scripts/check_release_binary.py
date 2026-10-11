@@ -5,7 +5,6 @@ import hashlib
 import json
 import os
 from pathlib import Path
-import shutil
 import subprocess
 import sys
 
@@ -45,12 +44,14 @@ def main():
             assert sha(output/(mode+'.out'))==sha(campaign/mode/'replicate-00.psmc'), 'same-mode output changed'
             assert sha(trace)==sha(campaign/mode/'replicate-00.draws.jsonl'), 'bootstrap draws changed'
             records[mode]=dict(run=run,output_exact=True,draws_exact=True,
-                               trace_sha256=sha(trace),stats=read(output/(mode+'.stats.json')))
+                               trace_sha256=sha(trace),stats=read(output/(mode+'.stats.json')),
+                               stats_sha256=sha(output/(mode+'.stats.json')),time_sha256=sha(output/(mode+'.time')))
         result=dict(status='passed',release_build=build,
                     checker_source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
                     checker_sha256=sha(__file__),protocol_sha256=sha(ROOT/'docs/release-binary-check-protocol.md'),
                     input_sha256=sha(campaign/'blocks.psmcfa'),campaign_source_commit=read(campaign/'frozen.json')['commit'],
-                    cases=records,scope='Same-mode final binary continuity, not a speed benchmark')
+                    cases=records,resources_sha256=sha(output/'resources.jsonl'),
+                    scope='Same-mode final binary continuity, not a speed benchmark')
         def relative(x):
             if isinstance(x,str):return x.replace(str(ROOT)+'/', '')
             if isinstance(x,list):return [relative(v) for v in x]

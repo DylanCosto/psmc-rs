@@ -1879,3 +1879,26 @@ Synthetic endpoint smoke matched the prior Decimal LL exactly and previous scala
 LL within1e-8. Operational slice selection, hard limits and reconstruction/evidence
 policy are documented in docs/adoption-likelihood-diagnostic-notes.md. Run only
 after campaign completion/audit and only on declared flagged pairs.
+
+Continuation status: controller PID598391 (initial session6659), command
+python3 -u bench/continue_adoption_qualification.py; verify run.lock and/proc
+before acting. All30 equivalent whole-genome fits completed (444.94s, shared-host
+resource observation only). Additional-pattern C/strict/equivalent stages began;
+the controller may wait between stages for the unchanged14GiB RAM floor. Do not
+launch a duplicate or modify the frozen runner/protocol/continuation source.
+Log: work/adoption-qualification-continuation.log; state: continuation.json.
+
+Next actions when report.json exists and continuation status is completed:
+1. Run bench/audit_adoption_qualification.py and resolve any audit discrepancy
+   without changing frozen evidence. Then bench/report_adoption_qualification.py.
+2. If diagnostic_required is nonempty, run the committed bounded diagnostic
+   runner after the audit; review literal/Decimal results and slices, regenerate
+   the report. No new diagnostic is needed if the frozen rule flags no pair.
+3. Replace in-progress wording with audited results in README/validation-overview/
+   methods/release notes and close milestone4; retain original resource stop.
+4. Final clean-source native CI and archive verification, then the predeclared
+   scripts/check_release_binary.py replay using the final extracted x86 archive.
+5. Review final publication inventory and archives; publish authorized public
+   repository/tagged release/binaries only after remaining gates. Download and
+   test uploaded assets. Preserve0.7.0 baseline and original inputs.
+No external invitations/announcements have been sent. Goal remains active.
