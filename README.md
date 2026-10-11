@@ -124,3 +124,6 @@ or restricted data. Independent feedback is welcome and is not presumed endorsem
 For implementation detail, see [mathematical contracts](MATH_AND_COMPATIBILITY.md),
 [validation policy](VALIDATION_AND_BENCHMARKS.md), [pinned C source](https://github.com/lh3/psmc/tree/82fa2ada83ee463fe1251b562ae3d60e82d7ad6a)
 and [execution history](EXECPLAN.md).
+
+Historical source IDs in frozen reports can be resolved through the
+[publication provenance and commit mapping](docs/publication-provenance.md).

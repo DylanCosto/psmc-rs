@@ -61,7 +61,7 @@ reports remain immutable except clearly labeled current status/link corrections.
 - [x] Stable-model investigation concluded; candidate isolated, adoption deferred.
 - [x] Broader qualification completed and independently audited; all declared screens passed.
 - [x] Native archives, uploaded private-draft assets and local container independently verified.
-- [ ] Public publication and anonymous download verified; owner metadata decision pending.
+- [ ] Public publication and anonymous download verified; final sanitized build pending.
 - [x] Onboarding checklist, feedback form, methods note and announcement draft prepared.
 - [ ] External participation: no recipients authorized or feedback received; owner-led follow-up.
 
@@ -90,3 +90,10 @@ publication history while retaining original evidence privately. Until answered,
 the repository stays private and the release stays draft. No history rewrite or
 public announcement has been performed. Draft downloads do not prove anonymous
 public access; that final check follows the publication decision.
+
+
+2026-10-11: the owner selected GitHub no-reply publication. Original evidence is
+preserved in a private archived repository and verified local bundle. A separate
+publication repository contains sanitized history; all64 source trees are exact.
+The remaining steps are native publication rebuilds, final audit, public release
+and anonymous download verification. See publication-provenance.md and its mapping.

@@ -2021,3 +2021,17 @@ needed. External-lab materials are prepared, but no recipients are authorized
 and no invitations/announcements or independent-feedback claims have been made.
 Goal remains incomplete solely because public publication is not yet authorized
 for the specific metadata discovered by the final audit.
+
+### Owner-approved no-reply publication history
+
+2026-10-11: owner explicitly chose GitHub no-reply publication. Preserved original
+history in a verified local bundle and renamed the original GitHub repository to
+DylanCosto/psmc-rs-private-evidence, retaining PRIVATE visibility and archiving it.
+A separate private DylanCosto/psmc-rs repository will receive only sanitized Git
+objects; no force-push over the email-bearing hosted database. git-filter-repo2.47.0
+changed the owner's email metadata only. All64 historical source trees are exact,
+and all reachable objects were checked for absence of that email. Commit mapping:
+docs/publication-history-map.json. Frozen reports and raw private evidence remain
+intact. The map resolves their original source IDs; original hosted runs stay
+private and are not claimed as public CI. Public native build/release verification
+is next. This decision resolves the prior publication blocker.
