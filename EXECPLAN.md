@@ -1863,3 +1863,19 @@ generator retains interruption/diagnostic status and all distribution metrics.
 Current release workspace tests and hosted strict CI38158020068 passed on2dd9cbf.
 Native final-archive validation, final scientific audit and public publication
 remain pending. The goal remains active.
+
+Publication inventory refreshed on4c0be83:966 reachable blobs, no known credential
+patterns or input objects outside synthetic fixtures; no tracked work/bin/target
+trees. Same nine historical build/test-path reports were reviewed previously.
+Added repeatable audit script; final publication still requires reviewing its
+latest result and both native archives. Repository description/topics prepared
+while visibility remains private.
+
+Prepared a diagnostic-only fresh likelihood evaluator/runner for any flagged
+whole-genome pairs. Literal and Decimal-supplied matrices use the unchanged dense
+HMM; invalid literal models are explicit nulls. No optimizer refit or new numerical
+acceptance gate. The sample is reconstructed from verified ordered indices.
+Synthetic endpoint smoke matched the prior Decimal LL exactly and previous scalar
+LL within1e-8. Operational slice selection, hard limits and reconstruction/evidence
+policy are documented in docs/adoption-likelihood-diagnostic-notes.md. Run only
+after campaign completion/audit and only on declared flagged pairs.
