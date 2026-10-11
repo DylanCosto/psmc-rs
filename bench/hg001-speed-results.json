@@ -1,0 +1,1950 @@
+{
+  "manifest": {
+    "source_hashes": {
+      "docs/hg001-genome-protocol.md": "8cf118b8e04035573da978ee728d204c1c41604fb0214f3cba453419e4785984",
+      "bench/hg001_genome_run.py": "6515074f08d5954ad54a9abc9cacdd59289c73771b9953bf4b2d87433f35911d",
+      "bench/hg001_genome_prepare.py": "ba5a735e247db85dc39074d6f53c11b10c096e9d27fd3ad408560b0a9ce49634",
+      "bench/cpu_next_hg002.py": "c5bb101ce22a53424e033b134c705a575a78833a166aff337e3a62ea14d53f35",
+      "bench/common.py": "3231a8578da7d342984bba7632689de32f11c15309a8e6b2c945936d5e9fe27a",
+      "bench/known_truth.py": "2864d7c4528b4143c3801ccb6bc3b6336b382bbb0e5a1c9df4e5b0e62984191e",
+      "bench/known_truth_200mb.py": "6ce55f7de2e852edaecaffe78545e54763243446b7eee3fcad6affd8cbee9727",
+      "bench/known_truth_genome.py": "3119563a3381046469180f1c156b939a08dbf4828e3398b016b65d2188518990",
+      "bench/hg001_speed.py": "9b3613e90fb93a6409a7df6c8fc4927d14690a7b1319fcba24f047c9802d02b6",
+      "docs/hg001-speed-protocol.md": "ee5a9fa6975a3defddb153a16473fa09979d048f7a540e39a0b5d8da1410f0e1"
+    },
+    "binaries": {
+      "c": "da1743512f1925da6277d5a2e5350c70c61c9771d11749df0918605f795ff32b",
+      "rust": "682be008483ef60aa226e448f03d2f1f073b008a87787f9fe7af78fe9bd810fb",
+      "fq2psmcfa": "ebb10aab193413b8c910ecd38760edb62f49c896c21e362fe7239eef465bbdeb",
+      "ridge": "739bb27bd213474231ce010950601cc66680e226a0c21846b8b2650827795914"
+    },
+    "input_sha256": "9d8633f04981b2b24114cad540368f46c508bf4290a976c430a182afcd55a112",
+    "allowed_cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "single_cpu": 0,
+    "schedule": [
+      [
+        "warmup",
+        "c-one"
+      ],
+      [
+        "warmup",
+        "strict-one"
+      ],
+      [
+        "warmup",
+        "equivalent-one"
+      ],
+      [
+        "repeat-1",
+        "c-one"
+      ],
+      [
+        "repeat-1",
+        "strict-one"
+      ],
+      [
+        "repeat-1",
+        "equivalent-one"
+      ],
+      [
+        "repeat-2",
+        "strict-one"
+      ],
+      [
+        "repeat-2",
+        "equivalent-one"
+      ],
+      [
+        "repeat-2",
+        "c-one"
+      ],
+      [
+        "repeat-3",
+        "equivalent-one"
+      ],
+      [
+        "repeat-3",
+        "c-one"
+      ],
+      [
+        "repeat-3",
+        "strict-one"
+      ],
+      [
+        "warmup",
+        "strict-full"
+      ],
+      [
+        "warmup",
+        "equivalent-full"
+      ],
+      [
+        "repeat-1",
+        "strict-full"
+      ],
+      [
+        "repeat-1",
+        "equivalent-full"
+      ],
+      [
+        "repeat-2",
+        "equivalent-full"
+      ],
+      [
+        "repeat-2",
+        "strict-full"
+      ],
+      [
+        "repeat-3",
+        "strict-full"
+      ],
+      [
+        "repeat-3",
+        "equivalent-full"
+      ]
+    ],
+    "commit": "cb74d510208840c658faf561c18926777751a705",
+    "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "prior_audit": {
+    "audit_passed": true,
+    "strict_c_exact": true,
+    "equivalent_screen_passed": true,
+    "whole_autosomes": 22,
+    "bases": 2875001522,
+    "bins": 28750027,
+    "input_sha256": "9d8633f04981b2b24114cad540368f46c508bf4290a976c430a182afcd55a112",
+    "report_sha256": "b7f52d0450eab0b25083586c8ecddd52e19c45e9a33374214a39a6343f66b846",
+    "protocol_sha256": "8cf118b8e04035573da978ee728d204c1c41604fb0214f3cba453419e4785984",
+    "resources": {
+      "samples": 1785,
+      "min_available_ram_gib": 15.489437103271484,
+      "min_free_disk_gib": 90.66817092895508,
+      "max_campaign_gib": 0.20916647370904684,
+      "max_group_rss_gib": 4.780265808105469,
+      "recorded_stop": false
+    },
+    "source_commit": "76d81f99cc91cae37689355d976fdd80789c9867",
+    "conditional_diagnostic_run": false
+  },
+  "rows": [
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0",
+        "work/hg001-genome/binaries/c",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791695572.0651891,
+      "seconds": 3088.3878967761993,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "f72a5cf1e13084690fd869720f6575375139f7de2556a9ecdd903c3baf0285e5",
+      "phase": "warmup",
+      "config": "c-one",
+      "workers": 1,
+      "stats": null,
+      "timing": {
+        "user_seconds": 3086.25,
+        "system_seconds": 1.05,
+        "peak_rss_kib": 2661300.0
+      },
+      "wall_seconds": 3087.69,
+      "host": {
+        "before": {
+          "time": 1791695572.0646992,
+          "load_average": [
+            3.76806640625,
+            2.384765625,
+            1.73046875
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=18538370\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  629020 670753 104692 10437805 46563 0 1578 0 0 0"
+        },
+        "after": {
+          "time": 1791698660.4535475,
+          "load_average": [
+            1.08984375,
+            1.16259765625,
+            1.240234375
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=19957408\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  677989 979417 121330 14981509 49128 0 1598 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 0.9998736919833274,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "strict",
+        "--record-workers",
+        "1",
+        "--stats",
+        "work/hg001-speed/warmup-strict-one.stats.json",
+        "--memory-mib",
+        "8192",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791698665.4776616,
+      "seconds": 638.0883572101593,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "6553c05880aa9e9b05f9d97ff26f96bae1d769c1e4f36186c797ef74f6cd8ebd",
+      "phase": "warmup",
+      "config": "strict-one",
+      "workers": 1,
+      "stats": {
+        "memory_admission": {
+          "budget_bytes": 8589934592,
+          "requested_workers": 1,
+          "workers": 1,
+          "estimated_bytes": 2678803520,
+          "largest_message_bytes": 2569232112
+        },
+        "mode": "strict",
+        "structured_fallbacks": 0,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791604438,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 110294,
+        "profile_enabled": true,
+        "expectation_seconds": 635.642490486,
+        "mstep_seconds": 2.080544442,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 637.15,
+        "system_seconds": 0.69,
+        "peak_rss_kib": 2540968.0
+      },
+      "wall_seconds": 637.92,
+      "host": {
+        "before": {
+          "time": 1791698665.477155,
+          "load_average": [
+            1.08251953125,
+            1.15966796875,
+            1.23876953125
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=19967458\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  678061 979417 121356 14989409 49130 0 1598 0 0 0"
+        },
+        "after": {
+          "time": 1791699303.5665207,
+          "load_average": [
+            1.08154296875,
+            1.11083984375,
+            1.1689453125
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=20259931\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  687582 1043140 124696 15928933 49607 0 1602 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 0.9998745924253826,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "equivalent",
+        "--record-workers",
+        "1",
+        "--stats",
+        "work/hg001-speed/warmup-equivalent-one.stats.json",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791699308.5912027,
+      "seconds": 172.0279369354248,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "cdb351a126a0156be97c63030eb7270242ca963fa04755ef678cda6226fe9bbe",
+      "phase": "warmup",
+      "config": "equivalent-one",
+      "workers": 1,
+      "stats": {
+        "memory_admission": null,
+        "mode": "equivalent",
+        "structured_fallbacks": 63,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791593696,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 112781,
+        "profile_enabled": true,
+        "expectation_seconds": 171.117269198,
+        "mstep_seconds": 0.46723679099999993,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 171.64,
+        "system_seconds": 0.05,
+        "peak_rss_kib": 92948.0
+      },
+      "wall_seconds": 171.71,
+      "host": {
+        "before": {
+          "time": 1791699308.59067,
+          "load_average": [
+            0.99462890625,
+            1.09228515625,
+            1.16259765625
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=20270645\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  687853 1043140 124777 15936578 49610 0 1602 0 0 0"
+        },
+        "after": {
+          "time": 1791699480.6197157,
+          "load_average": [
+            1.0390625,
+            1.08056640625,
+            1.14697265625
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=20344976\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  690286 1060307 125652 16190043 49757 0 1602 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 0.9998835245472016,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0",
+        "work/hg001-genome/binaries/c",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791699485.6447957,
+      "seconds": 3028.4452905654907,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "f72a5cf1e13084690fd869720f6575375139f7de2556a9ecdd903c3baf0285e5",
+      "phase": "repeat-1",
+      "config": "c-one",
+      "workers": 1,
+      "stats": null,
+      "timing": {
+        "user_seconds": 3026.98,
+        "system_seconds": 1.04,
+        "peak_rss_kib": 2661204.0
+      },
+      "wall_seconds": 3028.28,
+      "host": {
+        "before": {
+          "time": 1791699485.6442902,
+          "load_average": [
+            1.03564453125,
+            1.0791015625,
+            1.14599609375
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=20354763\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  690362 1060307 125678 16197940 49762 0 1603 0 0 0"
+        },
+        "after": {
+          "time": 1791702514.0906696,
+          "load_average": [
+            1.05517578125,
+            1.08349609375,
+            1.0859375
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=21442147\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  724877 1363030 139621 20673393 51944 0 1624 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 0.9999141426816542,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "strict",
+        "--record-workers",
+        "1",
+        "--stats",
+        "work/hg001-speed/repeat-1-strict-one.stats.json",
+        "--memory-mib",
+        "8192",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791702519.1147594,
+      "seconds": 635.0992112159729,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "6553c05880aa9e9b05f9d97ff26f96bae1d769c1e4f36186c797ef74f6cd8ebd",
+      "phase": "repeat-1",
+      "config": "strict-one",
+      "workers": 1,
+      "stats": {
+        "memory_admission": {
+          "budget_bytes": 8589934592,
+          "requested_workers": 1,
+          "workers": 1,
+          "estimated_bytes": 2678803520,
+          "largest_message_bytes": 2569232112
+        },
+        "mode": "strict",
+        "structured_fallbacks": 0,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791500933,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 110294,
+        "profile_enabled": true,
+        "expectation_seconds": 632.4864146890002,
+        "mstep_seconds": 2.078360757,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 634.04,
+        "system_seconds": 0.67,
+        "peak_rss_kib": 2540776.0
+      },
+      "wall_seconds": 634.76,
+      "host": {
+        "before": {
+          "time": 1791702519.114219,
+          "load_average": [
+            0.97021484375,
+            1.0654296875,
+            1.080078125
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=21450765\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  724920 1363030 139640 20681335 51948 0 1624 0 0 0"
+        },
+        "after": {
+          "time": 1791703154.2143893,
+          "load_average": [
+            1.470703125,
+            1.18017578125,
+            1.11572265625
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=21631129\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  731598 1426439 142465 21620741 52540 0 1628 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 0.9999212300712079,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "equivalent",
+        "--record-workers",
+        "1",
+        "--stats",
+        "work/hg001-speed/repeat-1-equivalent-one.stats.json",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791703159.238321,
+      "seconds": 178.0272343158722,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "cdb351a126a0156be97c63030eb7270242ca963fa04755ef678cda6226fe9bbe",
+      "phase": "repeat-1",
+      "config": "equivalent-one",
+      "workers": 1,
+      "stats": {
+        "memory_admission": null,
+        "mode": "equivalent",
+        "structured_fallbacks": 63,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791497984,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 112781,
+        "profile_enabled": true,
+        "expectation_seconds": 176.52054705899997,
+        "mstep_seconds": 0.45320035099999995,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 177.02,
+        "system_seconds": 0.05,
+        "peak_rss_kib": 92908.0
+      },
+      "wall_seconds": 177.09,
+      "host": {
+        "before": {
+          "time": 1791703159.237724,
+          "load_average": [
+            1.3525390625,
+            1.16015625,
+            1.109375
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=21641016\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  731645 1426439 142487 21628675 52543 0 1628 0 0 0"
+        },
+        "after": {
+          "time": 1791703337.26602,
+          "load_average": [
+            1.17578125,
+            1.158203125,
+            1.10986328125
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=21763940\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  734393 1444143 143480 21890978 52697 0 1630 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 0.9998870630752725,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "strict",
+        "--record-workers",
+        "1",
+        "--stats",
+        "work/hg001-speed/repeat-2-strict-one.stats.json",
+        "--memory-mib",
+        "8192",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791703342.2898254,
+      "seconds": 633.098550081253,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "6553c05880aa9e9b05f9d97ff26f96bae1d769c1e4f36186c797ef74f6cd8ebd",
+      "phase": "repeat-2",
+      "config": "strict-one",
+      "workers": 1,
+      "stats": {
+        "memory_admission": {
+          "budget_bytes": 8589934592,
+          "requested_workers": 1,
+          "workers": 1,
+          "estimated_bytes": 2678803520,
+          "largest_message_bytes": 2569232112
+        },
+        "mode": "strict",
+        "structured_fallbacks": 0,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791493055,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 110294,
+        "profile_enabled": true,
+        "expectation_seconds": 630.0892288849998,
+        "mstep_seconds": 2.0229356770000004,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 631.48,
+        "system_seconds": 0.77,
+        "peak_rss_kib": 2540972.0
+      },
+      "wall_seconds": 632.3,
+      "host": {
+        "before": {
+          "time": 1791703342.2893362,
+          "load_average": [
+            1.08154296875,
+            1.138671875,
+            1.103515625
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=21772053\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  734438 1444143 143507 21898913 52699 0 1630 0 0 0"
+        },
+        "after": {
+          "time": 1791703975.3963432,
+          "load_average": [
+            1.09521484375,
+            1.11083984375,
+            1.09033203125
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=22012382\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  741806 1507297 146699 22834430 53175 0 1635 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 0.9999209236122094,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "equivalent",
+        "--record-workers",
+        "1",
+        "--stats",
+        "work/hg001-speed/repeat-2-equivalent-one.stats.json",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791703980.4207091,
+      "seconds": 169.03378105163574,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "cdb351a126a0156be97c63030eb7270242ca963fa04755ef678cda6226fe9bbe",
+      "phase": "repeat-2",
+      "config": "equivalent-one",
+      "workers": 1,
+      "stats": {
+        "memory_admission": null,
+        "mode": "equivalent",
+        "structured_fallbacks": 63,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791520613,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 112781,
+        "profile_enabled": true,
+        "expectation_seconds": 167.97449736299998,
+        "mstep_seconds": 0.45376459799999996,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 168.49,
+        "system_seconds": 0.04,
+        "peak_rss_kib": 92960.0
+      },
+      "wall_seconds": 168.55,
+      "host": {
+        "before": {
+          "time": 1791703980.4201841,
+          "load_average": [
+            1.00732421875,
+            1.09228515625,
+            1.08447265625
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=22024470\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  741849 1507297 146716 22842375 53176 0 1635 0 0 0"
+        },
+        "after": {
+          "time": 1791704149.454969,
+          "load_average": [
+            1.19775390625,
+            1.119140625,
+            1.0947265625
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=22071041\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  743423 1524148 147426 23092658 53339 0 1636 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 0.9998813408484128,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0",
+        "work/hg001-genome/binaries/c",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791704154.4789321,
+      "seconds": 3030.4573006629944,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "f72a5cf1e13084690fd869720f6575375139f7de2556a9ecdd903c3baf0285e5",
+      "phase": "repeat-2",
+      "config": "c-one",
+      "workers": 1,
+      "stats": null,
+      "timing": {
+        "user_seconds": 3028.83,
+        "system_seconds": 1.04,
+        "peak_rss_kib": 2661204.0
+      },
+      "wall_seconds": 3030.11,
+      "host": {
+        "before": {
+          "time": 1791704154.4784253,
+          "load_average": [
+            1.181640625,
+            1.11669921875,
+            1.09375
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=22078571\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  743461 1524148 147447 23100603 53343 0 1636 0 0 0"
+        },
+        "after": {
+          "time": 1791707184.9366608,
+          "load_average": [
+            1.23876953125,
+            1.15380859375,
+            1.10546875
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=22977727\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  773293 1827053 158530 27596154 55506 0 1651 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 0.9999207949546385,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "equivalent",
+        "--record-workers",
+        "1",
+        "--stats",
+        "work/hg001-speed/repeat-3-equivalent-one.stats.json",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791707189.9607594,
+      "seconds": 172.0277876853943,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "cdb351a126a0156be97c63030eb7270242ca963fa04755ef678cda6226fe9bbe",
+      "phase": "repeat-3",
+      "config": "equivalent-one",
+      "workers": 1,
+      "stats": {
+        "memory_admission": null,
+        "mode": "equivalent",
+        "structured_fallbacks": 63,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791528948,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 112781,
+        "profile_enabled": true,
+        "expectation_seconds": 170.94996632200002,
+        "mstep_seconds": 0.454317109,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 171.46,
+        "system_seconds": 0.04,
+        "peak_rss_kib": 92884.0
+      },
+      "wall_seconds": 171.52,
+      "host": {
+        "before": {
+          "time": 1791707189.9602494,
+          "load_average": [
+            1.13916015625,
+            1.13427734375,
+            1.09912109375
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=22984191\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  773341 1827053 158547 27604116 55507 0 1651 0 0 0"
+        },
+        "after": {
+          "time": 1791707361.9890103,
+          "load_average": [
+            1.24951171875,
+            1.18505859375,
+            1.1181640625
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=23027248\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  775046 1844200 159158 27859382 55631 0 1652 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 0.999883395522388,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0",
+        "work/hg001-genome/binaries/c",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791707367.012988,
+      "seconds": 3008.4531393051147,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "f72a5cf1e13084690fd869720f6575375139f7de2556a9ecdd903c3baf0285e5",
+      "phase": "repeat-3",
+      "config": "c-one",
+      "workers": 1,
+      "stats": null,
+      "timing": {
+        "user_seconds": 3006.37,
+        "system_seconds": 1.02,
+        "peak_rss_kib": 2661232.0
+      },
+      "wall_seconds": 3007.61,
+      "host": {
+        "before": {
+          "time": 1791707367.0124884,
+          "load_average": [
+            1.1494140625,
+            1.1650390625,
+            1.11181640625
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=23035453\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  775092 1844200 159175 27867344 55632 0 1652 0 0 0"
+        },
+        "after": {
+          "time": 1791710375.4665477,
+          "load_average": [
+            1.251953125,
+            1.1611328125,
+            1.10888671875
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=23781075\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  802326 2144859 169329 32333749 57905 0 1665 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 0.9999268522182064,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "strict",
+        "--record-workers",
+        "1",
+        "--stats",
+        "work/hg001-speed/repeat-3-strict-one.stats.json",
+        "--memory-mib",
+        "8192",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791710380.4906337,
+      "seconds": 633.0997867584229,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "6553c05880aa9e9b05f9d97ff26f96bae1d769c1e4f36186c797ef74f6cd8ebd",
+      "phase": "repeat-3",
+      "config": "strict-one",
+      "workers": 1,
+      "stats": {
+        "memory_admission": {
+          "budget_bytes": 8589934592,
+          "requested_workers": 1,
+          "workers": 1,
+          "estimated_bytes": 2678803520,
+          "largest_message_bytes": 2569232112
+        },
+        "mode": "strict",
+        "structured_fallbacks": 0,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791977148,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 110294,
+        "profile_enabled": true,
+        "expectation_seconds": 630.5252265529999,
+        "mstep_seconds": 2.0520375559999997,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 632.01,
+        "system_seconds": 0.69,
+        "peak_rss_kib": 2540820.0
+      },
+      "wall_seconds": 632.78,
+      "host": {
+        "before": {
+          "time": 1791710380.4901273,
+          "load_average": [
+            1.1513671875,
+            1.1416015625,
+            1.1025390625
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=23789445\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  802367 2144859 169343 32341715 57910 0 1665 0 0 0"
+        },
+        "after": {
+          "time": 1791711013.5912602,
+          "load_average": [
+            1.04248046875,
+            1.0810546875,
+            1.08349609375
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=24019673\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  810362 2208065 172008 33278728 58403 0 1671 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 0.9998735737539114,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0-15",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "strict",
+        "--record-workers",
+        "16",
+        "--stats",
+        "work/hg001-speed/warmup-strict-full.stats.json",
+        "--memory-mib",
+        "8192",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791711018.6155925,
+      "seconds": 341.05159044265747,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "6553c05880aa9e9b05f9d97ff26f96bae1d769c1e4f36186c797ef74f6cd8ebd",
+      "phase": "warmup",
+      "config": "strict-full",
+      "workers": 2,
+      "stats": {
+        "memory_admission": {
+          "budget_bytes": 8589934592,
+          "requested_workers": 16,
+          "workers": 2,
+          "estimated_bytes": 7819889184,
+          "largest_message_bytes": 2569232112
+        },
+        "mode": "strict",
+        "structured_fallbacks": 0,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791957552,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 110294,
+        "profile_enabled": true,
+        "expectation_seconds": 338.21024184500004,
+        "mstep_seconds": 2.034262269,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 670.86,
+        "system_seconds": 1.77,
+        "peak_rss_kib": 5010412.0
+      },
+      "wall_seconds": 340.51,
+      "host": {
+        "before": {
+          "time": 1791711018.6150942,
+          "load_average": [
+            0.958984375,
+            1.06298828125,
+            1.07763671875
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=24027335\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  810406 2208065 172027 33286687 58408 0 1671 0 0 0"
+        },
+        "after": {
+          "time": 1791711359.6676764,
+          "load_average": [
+            1.99462890625,
+            1.78369140625,
+            1.41162109375
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=24122288\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  814013 2275152 173333 33758968 58628 0 1693 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 1.9753604886787466,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0-15",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "equivalent",
+        "--record-workers",
+        "16",
+        "--stats",
+        "work/hg001-speed/warmup-equivalent-full.stats.json",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791711364.6920042,
+      "seconds": 27.005542516708374,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "cdb351a126a0156be97c63030eb7270242ca963fa04755ef678cda6226fe9bbe",
+      "phase": "warmup",
+      "config": "equivalent-full",
+      "workers": 16,
+      "stats": {
+        "memory_admission": null,
+        "mode": "equivalent",
+        "structured_fallbacks": 63,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791951051,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 112781,
+        "profile_enabled": true,
+        "expectation_seconds": 25.596657270999987,
+        "mstep_seconds": 0.45781562099999995,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 314.42,
+        "system_seconds": 0.88,
+        "peak_rss_kib": 498672.0
+      },
+      "wall_seconds": 26.2,
+      "host": {
+        "before": {
+          "time": 1791711364.6915038,
+          "load_average": [
+            1.91455078125,
+            1.7705078125,
+            1.4091796875
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=24129427\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  814082 2275152 173357 33766900 58629 0 1693 0 0 0"
+        },
+        "after": {
+          "time": 1791711391.6980116,
+          "load_average": [
+            6.1279296875,
+            2.79833984375,
+            1.7626953125
+          ],
+          "cpu_pressure": "some avg10=0.83 avg60=0.36 avg300=0.09 total=24544490\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  814319 2306641 173506 33778179 58635 0 1696 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 12.034351145038169,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0-15",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "strict",
+        "--record-workers",
+        "16",
+        "--stats",
+        "work/hg001-speed/repeat-1-strict-full.stats.json",
+        "--memory-mib",
+        "8192",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791711396.7235842,
+      "seconds": 334.05732011795044,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "6553c05880aa9e9b05f9d97ff26f96bae1d769c1e4f36186c797ef74f6cd8ebd",
+      "phase": "repeat-1",
+      "config": "strict-full",
+      "workers": 2,
+      "stats": {
+        "memory_admission": {
+          "budget_bytes": 8589934592,
+          "requested_workers": 16,
+          "workers": 2,
+          "estimated_bytes": 7819889184,
+          "largest_message_bytes": 2569232112
+        },
+        "mode": "strict",
+        "structured_fallbacks": 0,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791951304,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 110294,
+        "profile_enabled": true,
+        "expectation_seconds": 331.582786423,
+        "mstep_seconds": 2.003147521,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 658.37,
+        "system_seconds": 1.7,
+        "peak_rss_kib": 5010460.0
+      },
+      "wall_seconds": 333.85,
+      "host": {
+        "before": {
+          "time": 1791711396.7230496,
+          "load_average": [
+            5.63720703125,
+            2.75146484375,
+            1.7529296875
+          ],
+          "cpu_pressure": "some avg10=0.45 avg60=0.33 avg300=0.09 total=24551343\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  814390 2306641 173528 33786111 58639 0 1696 0 0 0"
+        },
+        "after": {
+          "time": 1791711730.7816117,
+          "load_average": [
+            2.07080078125,
+            2.2705078125,
+            1.85400390625
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=24641978\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  818090 2372480 174832 34248412 58893 0 1707 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 1.9771454245918827,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0-15",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "equivalent",
+        "--record-workers",
+        "16",
+        "--stats",
+        "work/hg001-speed/repeat-1-equivalent-full.stats.json",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791711735.807548,
+      "seconds": 27.003819704055786,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "cdb351a126a0156be97c63030eb7270242ca963fa04755ef678cda6226fe9bbe",
+      "phase": "repeat-1",
+      "config": "equivalent-full",
+      "workers": 16,
+      "stats": {
+        "memory_admission": null,
+        "mode": "equivalent",
+        "structured_fallbacks": 63,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791966607,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 112781,
+        "profile_enabled": true,
+        "expectation_seconds": 25.699084928999994,
+        "mstep_seconds": 0.4578113869999999,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 316.73,
+        "system_seconds": 0.94,
+        "peak_rss_kib": 501000.0
+      },
+      "wall_seconds": 26.3,
+      "host": {
+        "before": {
+          "time": 1791711735.8070452,
+          "load_average": [
+            1.90478515625,
+            2.232421875,
+            1.84375
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=24647948\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  818142 2372480 174866 34256353 58896 0 1707 0 0 0"
+        },
+        "after": {
+          "time": 1791711762.8117828,
+          "load_average": [
+            6.296875,
+            3.22998046875,
+            2.18359375
+          ],
+          "cpu_pressure": "some avg10=0.96 avg60=0.55 avg300=0.14 total=25252988\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  818591 2404211 175065 34267124 58900 0 1710 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 12.0787072243346,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0-15",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "equivalent",
+        "--record-workers",
+        "16",
+        "--stats",
+        "work/hg001-speed/repeat-2-equivalent-full.stats.json",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791711767.8361068,
+      "seconds": 27.0088472366333,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "cdb351a126a0156be97c63030eb7270242ca963fa04755ef678cda6226fe9bbe",
+      "phase": "repeat-2",
+      "config": "equivalent-full",
+      "workers": 16,
+      "stats": {
+        "memory_admission": null,
+        "mode": "equivalent",
+        "structured_fallbacks": 63,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791967160,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 112781,
+        "profile_enabled": true,
+        "expectation_seconds": 25.644982408000004,
+        "mstep_seconds": 0.45720345800000006,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 317.03,
+        "system_seconds": 0.87,
+        "peak_rss_kib": 504544.0
+      },
+      "wall_seconds": 26.24,
+      "host": {
+        "before": {
+          "time": 1791711767.835508,
+          "load_average": [
+            5.79248046875,
+            3.17626953125,
+            2.17138671875
+          ],
+          "cpu_pressure": "some avg10=0.64 avg60=0.51 avg300=0.14 total=25260186\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  818643 2404211 175081 34275082 58905 0 1710 0 0 0"
+        },
+        "after": {
+          "time": 1791711794.845395,
+          "load_average": [
+            7.75146484375,
+            3.84033203125,
+            2.41796875
+          ],
+          "cpu_pressure": "some avg10=0.92 avg60=0.69 avg300=0.22 total=25720113\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  818984 2435962 175230 34285994 58912 0 1712 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 12.115091463414634,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0-15",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "strict",
+        "--record-workers",
+        "16",
+        "--stats",
+        "work/hg001-speed/repeat-2-strict-full.stats.json",
+        "--memory-mib",
+        "8192",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791711799.8695536,
+      "seconds": 336.0518674850464,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "6553c05880aa9e9b05f9d97ff26f96bae1d769c1e4f36186c797ef74f6cd8ebd",
+      "phase": "repeat-2",
+      "config": "strict-full",
+      "workers": 2,
+      "stats": {
+        "memory_admission": {
+          "budget_bytes": 8589934592,
+          "requested_workers": 16,
+          "workers": 2,
+          "estimated_bytes": 7819889184,
+          "largest_message_bytes": 2569232112
+        },
+        "mode": "strict",
+        "structured_fallbacks": 0,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791966451,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 110294,
+        "profile_enabled": true,
+        "expectation_seconds": 332.845545583,
+        "mstep_seconds": 2.0216223799999997,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 660.4,
+        "system_seconds": 1.71,
+        "peak_rss_kib": 5010436.0
+      },
+      "wall_seconds": 335.11,
+      "host": {
+        "before": {
+          "time": 1791711799.8690476,
+          "load_average": [
+            7.13037109375,
+            3.7763671875,
+            2.40478515625
+          ],
+          "cpu_pressure": "some avg10=0.61 avg60=0.64 avg300=0.21 total=25726020\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  819029 2435962 175251 34293951 58915 0 1712 0 0 0"
+        },
+        "after": {
+          "time": 1791712135.9218688,
+          "load_average": [
+            1.90283203125,
+            2.57861328125,
+            2.28271484375
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.04 total=25811592\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  822409 2502002 176468 34759631 59135 0 1734 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 1.9757989913759662,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0-15",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "strict",
+        "--record-workers",
+        "16",
+        "--stats",
+        "work/hg001-speed/repeat-3-strict-full.stats.json",
+        "--memory-mib",
+        "8192",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791712140.9470613,
+      "seconds": 346.0551245212555,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "6553c05880aa9e9b05f9d97ff26f96bae1d769c1e4f36186c797ef74f6cd8ebd",
+      "phase": "repeat-3",
+      "config": "strict-full",
+      "workers": 2,
+      "stats": {
+        "memory_admission": {
+          "budget_bytes": 8589934592,
+          "requested_workers": 16,
+          "workers": 2,
+          "estimated_bytes": 7819889184,
+          "largest_message_bytes": 2569232112
+        },
+        "mode": "strict",
+        "structured_fallbacks": 0,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791961688,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 110294,
+        "profile_enabled": true,
+        "expectation_seconds": 343.2180192589999,
+        "mstep_seconds": 2.04771646,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 679.14,
+        "system_seconds": 1.69,
+        "peak_rss_kib": 5010472.0
+      },
+      "wall_seconds": 345.51,
+      "host": {
+        "before": {
+          "time": 1791712140.9465199,
+          "load_average": [
+            1.75,
+            2.53564453125,
+            2.27001953125
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.04 total=25818242\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  822507 2502002 176506 34767520 59137 0 1734 0 0 0"
+        },
+        "after": {
+          "time": 1791712487.0026076,
+          "load_average": [
+            2.2841796875,
+            2.44091796875,
+            2.32080078125
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=25918233\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  826357 2569917 177889 35245427 60571 0 1753 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 1.970507365922839,
+      "output_exact": true
+    },
+    {
+      "command": [
+        "/usr/bin/taskset",
+        "-c",
+        "0-15",
+        "work/hg001-genome/binaries/rust",
+        "--mode",
+        "equivalent",
+        "--record-workers",
+        "16",
+        "--stats",
+        "work/hg001-speed/repeat-3-equivalent-full.stats.json",
+        "-p",
+        "4+25*2+4+6",
+        "-N",
+        "30",
+        "-t",
+        "15",
+        "-r",
+        "5",
+        "-I",
+        "0",
+        "work/hg001-genome/HG001_GRCh38_autosomes.psmcfa"
+      ],
+      "started": 1791712492.0269032,
+      "seconds": 27.004160404205322,
+      "exit_code": 0,
+      "ceiling_gib": 10,
+      "output_sha256": "cdb351a126a0156be97c63030eb7270242ca963fa04755ef678cda6226fe9bbe",
+      "phase": "repeat-3",
+      "config": "equivalent-full",
+      "workers": 16,
+      "stats": {
+        "memory_admission": null,
+        "mode": "equivalent",
+        "structured_fallbacks": 63,
+        "backend": "cpu",
+        "cuda_tile_sites": 16384,
+        "cuda_memory_mib": 1024,
+        "cuda_launches": 0,
+        "cuda_upload_bytes": 0,
+        "cuda_download_bytes": 0,
+        "cuda_count_seconds": 0,
+        "cuda_fallbacks": 0,
+        "seed": 1791959485,
+        "sequence_visits": 660,
+        "sequence_evaluations": 660,
+        "cache_hits": 0,
+        "snapshot_cache_bypass": 0,
+        "model_updates": 112781,
+        "profile_enabled": true,
+        "expectation_seconds": 25.648224360000004,
+        "mstep_seconds": 0.45572733800000015,
+        "nonfinite_output": false,
+        "iterations": 30,
+        "cache_enabled": true,
+        "simd_requested": "auto",
+        "simd_selected": "avx"
+      },
+      "timing": {
+        "user_seconds": 315.75,
+        "system_seconds": 0.9,
+        "peak_rss_kib": 489980.0
+      },
+      "wall_seconds": 26.24,
+      "host": {
+        "before": {
+          "time": 1791712492.0264053,
+          "load_average": [
+            2.10107421875,
+            2.400390625,
+            2.30810546875
+          ],
+          "cpu_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=25925595\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  826408 2569917 177910 35253379 60573 0 1753 0 0 0"
+        },
+        "after": {
+          "time": 1791712519.0314968,
+          "load_average": [
+            4.08544921875,
+            2.8369140625,
+            2.4541015625
+          ],
+          "cpu_pressure": "some avg10=0.78 avg60=0.36 avg300=0.09 total=26348696\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+          "cpu_ticks": "cpu  826625 2601536 178049 35264556 60577 0 1755 0 0 0"
+        }
+      },
+      "cpu_time_over_wall": 12.067454268292682,
+      "output_exact": true
+    }
+  ],
+  "summary": {
+    "c-one": {
+      "median_seconds": 3028.28,
+      "range_seconds": [
+        3007.61,
+        3030.11
+      ],
+      "peak_rss_mib": 2598.859375,
+      "actual_workers": [
+        1
+      ],
+      "speedup_vs_c_one": 1.0
+    },
+    "strict-one": {
+      "median_seconds": 632.78,
+      "range_seconds": [
+        632.3,
+        634.76
+      ],
+      "peak_rss_mib": 2481.41796875,
+      "actual_workers": [
+        1
+      ],
+      "speedup_vs_c_one": 4.785675906318152
+    },
+    "equivalent-one": {
+      "median_seconds": 171.52,
+      "range_seconds": [
+        168.55,
+        177.09
+      ],
+      "peak_rss_mib": 90.78125,
+      "actual_workers": [
+        1
+      ],
+      "speedup_vs_c_one": 17.65555037313433
+    },
+    "strict-full": {
+      "median_seconds": 335.11,
+      "range_seconds": [
+        333.85,
+        345.51
+      ],
+      "peak_rss_mib": 4893.0390625,
+      "actual_workers": [
+        2
+      ],
+      "speedup_vs_c_one": 9.036674524782907,
+      "speedup_vs_same_mode_one": 1.888275491629614
+    },
+    "equivalent-full": {
+      "median_seconds": 26.24,
+      "range_seconds": [
+        26.24,
+        26.3
+      ],
+      "peak_rss_mib": 492.71875,
+      "actual_workers": [
+        16
+      ],
+      "speedup_vs_c_one": 115.40701219512196,
+      "speedup_vs_same_mode_one": 6.536585365853659
+    }
+  },
+  "scope": "Controlled affinities, shared host; full strict may be memory-limited. Three repetitions, no truth claim."
+}

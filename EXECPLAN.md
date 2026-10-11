@@ -1471,3 +1471,53 @@ and any failure is retained. No production code, input or existing protocol
 changed. Eight targeted Python tests passed, including real affinity enforcement,
 resource limits, audit dependency rejection, order and output mismatch checks.
 Speed measurements remain pending. Do not resume the cancelled simulations.
+
+## HG001 whole-autosome comparison and controlled speed results — 2026-10-11
+
+### Progress
+
+Both campaigns completed. The independent input-comparison audit passed all
+22 chromosome conversions, strict/C exact output and the predeclared equivalent
+exploratory screen. No ridge diagnostic was triggered. The paused historical
+simulation goal remains superseded, not achieved. Its partial evidence remains.
+
+The speed runner exited normally with all 20 fits: five excluded warmups and
+15 measured fits. New bench/audit_hg001_speed.py independently checked frozen
+source/commit/binary/input provenance, original references, raw output hashes,
+all commands/affinities, stage order, stats/admission/fallback counts, GNU times,
+resource samples and recalculated summaries. All outputs matched their audited
+engine reference; all strict outputs also matched C. Ten targeted Python tests
+passed. No inference code, binaries, frozen protocols or running jobs changed.
+
+Measured median seconds: C single 3028.28; strict single 632.78; equivalent single
+171.52; memory-limited full-affinity strict 335.11; full-affinity equivalent 26.24.
+Speedups over C single: 4.79x, 17.66x, 9.04x, 115.41x respectively. Same-mode
+single/full speedups: 1.89x strict, 6.54x equivalent. Peak measured RSS: C 2598.86
+MiB; strict single/full 2481.42/4893.04 MiB; equivalent single/full 90.78/492.72 MiB.
+Memory/disk floors held (minimum available RAM 15.50 GiB, free disk 90.51 GiB),
+with no resource stop or reported swaps. New speed evidence used about 4.17 MiB
+during execution; input reused in place. Reports are docs/hg001-genome-report.md
+and docs/hg001-speed-report.md, with compact bench results/audits and ignored raw
+evidence. Completion heartbeat will be paused after delivery.
+
+### Decisions
+
+Keep strict's 8 GiB budget: it admitted 2 of 16 requested workers. Label the
+result memory-limited, not a 16-worker strict benchmark. Equivalent configured
+16 workers; aggregate CPU/wall was 12.07–12.12, with no per-thread occupancy trace.
+Report shared-host timing ranges, all repeats and excluded warmups. Scientific
+agreement remains distinct from speed and from known-truth validation. Strict
+stays default; equivalent opt-in. Actual user input/splitting, whole-genome
+bootstraps, unrestricted strict memory, other CPUs/ARM/GPU and hosted CI remain
+untested in this campaign. User workload qualification is the next useful work
+when its inputs are available; no further unattended compute is required here.
+
+### Surprises and limitations
+
+Full-affinity equivalent achieved 115.41x over serial C for this one whole-genome
+fit, substantially larger than prior small-input projections; this is not a
+30-bootstrap throughput claim. Equivalent recorded 63 fallbacks per 112,781
+updates in every fit (including warmups), and strict recorded zero. All fallback
+counts remain visible. The new auditor initially needed a parser correction for
+the existing QD/QU `before -> after` format; this was an audit parser issue, with
+no fitting failure, output modification or acceptance-threshold change.

@@ -1,0 +1,21 @@
+{
+  "audit_passed": true,
+  "strict_c_exact": true,
+  "equivalent_screen_passed": true,
+  "whole_autosomes": 22,
+  "bases": 2875001522,
+  "bins": 28750027,
+  "input_sha256": "9d8633f04981b2b24114cad540368f46c508bf4290a976c430a182afcd55a112",
+  "report_sha256": "b7f52d0450eab0b25083586c8ecddd52e19c45e9a33374214a39a6343f66b846",
+  "protocol_sha256": "8cf118b8e04035573da978ee728d204c1c41604fb0214f3cba453419e4785984",
+  "resources": {
+    "samples": 1785,
+    "min_available_ram_gib": 15.489437103271484,
+    "min_free_disk_gib": 90.66817092895508,
+    "max_campaign_gib": 0.20916647370904684,
+    "max_group_rss_gib": 4.780265808105469,
+    "recorded_stop": false
+  },
+  "source_commit": "76d81f99cc91cae37689355d976fdd80789c9867",
+  "conditional_diagnostic_run": false
+}
