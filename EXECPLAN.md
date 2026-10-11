@@ -1544,3 +1544,30 @@ decoding fits in 3500 MiB with eight workers. CUDA feature compile-check passes;
 new GPU runtime and actual plot rendering not_run. A utility harness assertion
 was corrected to check psmc_trunc's QU passthrough rather than assume discarding.
 Original failure preserved. Candidate gates passed; final 0.7.0 promotion follows.
+
+### Final progress and completion evidence
+
+Final 0.7.0 source d42a7cf (candidate 0ad72ca) passed 61 Rust tests, all 25
+candidate/final compatibility checks and the three repeated bounded allocation/
+whole-HG001 checks. Four live pinned-C goldens, 14 known-truth Python tests and
+10 HG001 Python tests pass. Formatting/CUDA feature compilation pass; GPU hardware,
+actual gnuplot rendering and hosted CI remain not_run, explicitly recorded.
+The executable SHA256 is aed1c1da7bd9140f9c2156a924d1220f74c985f0b7983b308457f68389eb170e.
+Installed current and versioned 0.7.0 binaries match it; prior versions preserved.
+
+### Final decisions and limitations
+
+Equivalent is now the ordinary CPU single-fit/bootstrap default, not merely an
+opt-in candidate. Strict remains explicit, with unchanged exact-C output tests.
+Implicit dense/CUDA/snapshot requests retain strict and explicit incompatible
+combinations fail. Both CPU single-fit modes honor memory admission; strict and
+batch estimates remain intact. Final HG001 default admitted 16 under 8 GiB and
+peaked at 480.1 MiB, matching v0.6.3 equivalent exactly. Strict 2 GiB regression
+admitted one and remained exact. Decoding reserve regression stayed within budget.
+
+Docs/release-0.7.0.md and bench/default-transition-results.json preserve source,
+binary, command, output hash, fallback, test and resource evidence. No new numerical
+method or acceptance gate, no remote publication, no revived simulations. Remaining
+external workload/hardware qualifications do not change the delivered local
+default. The completion audit checks actual installed selection, previous-binary
+preservation and source state before closing the user-authorized goal.
