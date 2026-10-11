@@ -1933,3 +1933,11 @@ Publication audit now inventories commit identities and blocks unacknowledged
 non-no-reply exposure. It reports counts, not the actual address. Existing source,
 protocols, binaries and historical evidence remain intact. No external invitations
 or announcement messages have been sent. Continue independent validation.
+
+Updated-container smoke on the62460c6 x86-64 native binary passed: strict golden
+bytes, equivalent completion, both CSV provenance exports and completed-bootstrap
+resume with unchanged artifacts. Container inference had no network, read-only
+root, a non-root user, one CPU and1GiB ceiling. The image executable hash matches
+the verified native archive. Evidence: bench/container-workflow-smoke.json; local
+image psmc-rs:workflow-62460c6. No registry image, ARM-container or whole-genome
+container qualification is claimed. Original container evidence/images retained.
